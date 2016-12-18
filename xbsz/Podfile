@@ -1,0 +1,13 @@
+platform :ios, "8.0"
+use_frameworks!
+
+target 'xbsz' do
+    pod 'ReactiveCocoa' , '2.5'
+    pod 'Masonry'
+#    pod 'Realm'
+    pod 'SDWebImage'
+    pod 'AFNetworking'
+    pod 'YYCategories'
+    pod 'YYModel'
+    pod 'FDFullscreenPopGesture'
+end
