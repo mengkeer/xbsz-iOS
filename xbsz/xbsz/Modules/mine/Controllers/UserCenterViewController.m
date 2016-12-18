@@ -10,6 +10,7 @@
 #import "CXSectionButton.h"
 #import "SetViewController.h"
 #import "UserInfoViewController.h"
+#import "InformViewController.h"
 
 #define SectionHeaderHeight   45
 
@@ -444,7 +445,7 @@
 }
 
 - (void)clickMessage{
-    
+    [self.navigationController pushViewController:[InformViewController controller] animated:YES];
 }
 
 - (void)clickInfo{

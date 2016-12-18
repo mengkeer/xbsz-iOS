@@ -36,6 +36,7 @@
 		AD79924B1E01A011008F733F /* YZDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7992451E01A011008F733F /* YZDisplayViewController.m */; };
 		AD79924C1E01A011008F733F /* YZFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7992481E01A011008F733F /* YZFlowLayout.m */; };
 		ADA278DE1DFAF16C00681C47 /* CXHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA278DD1DFAF16C00681C47 /* CXHomeViewController.m */; };
+		ADEA477D1E065B4200167EF0 /* InformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADEA477C1E065B4200167EF0 /* InformViewController.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
 		ADF042451E0192EF00171489 /* avatar11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423A1E0192EF00171489 /* avatar11.jpg */; };
@@ -120,6 +121,8 @@
 		AD7992481E01A011008F733F /* YZFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFlowLayout.m; sourceTree = "<group>"; };
 		ADA278DC1DFAF16C00681C47 /* CXHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXHomeViewController.h; sourceTree = "<group>"; };
 		ADA278DD1DFAF16C00681C47 /* CXHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXHomeViewController.m; sourceTree = "<group>"; };
+		ADEA477B1E065B4200167EF0 /* InformViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformViewController.h; sourceTree = "<group>"; };
+		ADEA477C1E065B4200167EF0 /* InformViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformViewController.m; sourceTree = "<group>"; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
 		ADF042391E0192EF00171489 /* avatar10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar10.jpg; sourceTree = "<group>"; };
 		ADF0423A1E0192EF00171489 /* avatar11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar11.jpg; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				05F4814F1E0267DB002B83CC /* SetViewController.m */,
 				056E20D11E03CA4A007A9DD7 /* UserInfoViewController.h */,
 				056E20D21E03CA4A007A9DD7 /* UserInfoViewController.m */,
+				ADEA477B1E065B4200167EF0 /* InformViewController.h */,
+				ADEA477C1E065B4200167EF0 /* InformViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -764,6 +769,7 @@
 				056E45701DFFD9E600D5C956 /* CXViewController.m in Sources */,
 				05947D701E02897300F05CFB /* SetItemView.m in Sources */,
 				ADA278DE1DFAF16C00681C47 /* CXHomeViewController.m in Sources */,
+				ADEA477D1E065B4200167EF0 /* InformViewController.m in Sources */,
 				AD02DC701DFAE733002F1BA4 /* CXNavigationController.m in Sources */,
 				AD79924A1E01A011008F733F /* YZDisplayTitleLabel.m in Sources */,
 				AD5B73D11DFD56B600A02C93 /* CXBaseViewController.m in Sources */,
