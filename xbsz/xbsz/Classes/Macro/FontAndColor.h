@@ -20,6 +20,7 @@
 #define CXRedColor   [UIColor redColor]
 #define CXBlueColor  [UIColor blueColor]
 #define CXClearColor [UIColor clearColor]
+#define CXLightGrayColor  [UIColor lightGrayColor]
 #define CXTextGrayColor    (CXHexColor(0x272b3c))
 
 //RGB Color
