@@ -635,6 +635,7 @@
 				AD30B1351DFAC900000189DD /* Resources */,
 				88CAB7C88E1F5CE4E3E2EDE0 /* [CP] Embed Pods Frameworks */,
 				151ED957E011D9361A1B6733 /* [CP] Copy Pods Resources */,
+				E4AA058C976EE6B09DAB3963 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -740,6 +741,21 @@
 			inputPaths = (
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4AA058C976EE6B09DAB3963 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
