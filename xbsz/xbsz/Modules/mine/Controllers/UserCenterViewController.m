@@ -11,6 +11,7 @@
 #import "SetViewController.h"
 #import "UserInfoViewController.h"
 #import "InformViewController.h"
+#import "LoginViewController.h"
 
 #define SectionHeaderHeight   45
 
@@ -202,7 +203,7 @@
         [_headBtn setBackgroundImage:[UIImage imageNamed:@"mine_bg_avatar"] forState:UIControlStateNormal];
         _headBtn.layer.cornerRadius = 45;
         _headBtn.clipsToBounds = YES;
-        [_headBtn addTarget:self action:@selector(clickInfo) forControlEvents:UIControlEventTouchUpInside];
+        [_headBtn addTarget:self action:@selector(clickLogin) forControlEvents:UIControlEventTouchUpInside];
     }
     return _headBtn;
 }
@@ -448,6 +449,10 @@
     [self.navigationController pushViewController:[InformViewController controller] animated:YES];
 }
 
+- (void)clickLogin{
+    [self presentViewController:[LoginViewController controller] animated:YES completion:nil];
+}
+
 - (void)clickInfo{
     
     [self.navigationController pushViewController:[UserInfoViewController controller] animated:YES];
@@ -458,7 +463,6 @@
     
     SetViewController *set = [SetViewController controller];
     [self.navigationController pushViewController:set animated:YES];
-    
 }
 
 #pragma mark - UIScrollView Delegate
