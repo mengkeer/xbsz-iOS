@@ -9,7 +9,7 @@
 #ifndef PodsImport_h
 #define PodsImport_h
 
-#import <Masonry/Masonry.h>
+#import "Masonry.h"
 #import "YYCategories.h"
 
 // RAC
