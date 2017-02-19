@@ -15,14 +15,8 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - FDFullscreenPopGesture (1.1)
+  - IQKeyboardManager (4.0.6)
   - Masonry (1.0.2)
-  - ReactiveCocoa (2.5):
-    - ReactiveCocoa/UI (= 2.5)
-  - ReactiveCocoa/Core (2.5):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.5)
-  - ReactiveCocoa/UI (2.5):
-    - ReactiveCocoa/Core
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -34,8 +28,8 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - FDFullscreenPopGesture
+  - IQKeyboardManager
   - Masonry
-  - ReactiveCocoa (= 2.5)
   - SDWebImage
   - YYCategories
   - YYModel
@@ -43,12 +37,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
-  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 84e4686fbe1b866134d90783e2c78fc16f516c56
+PODFILE CHECKSUM: 0b1762ec5adda6534af35addea757d442bf908f2
 
 COCOAPODS: 1.2.0.beta.1

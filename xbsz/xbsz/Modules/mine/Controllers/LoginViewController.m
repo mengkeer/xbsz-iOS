@@ -236,7 +236,7 @@
         [_closeBtn setImage:[UIImage imageNamed:@"common_close"] forState:UIControlStateNormal];
         @weakify(self);
         [_closeBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [weak_self dismissViewControllerAnimated:YES completion:nil];
         }];
         
     }

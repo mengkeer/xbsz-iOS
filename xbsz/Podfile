@@ -2,7 +2,7 @@ platform :ios, "8.0"
 use_frameworks!
 
 target 'xbsz' do
-    pod 'ReactiveCocoa' , '2.5'
+#    pod 'ReactiveCocoa' , '2.5'
     pod 'Masonry'
 #    pod 'Realm'
     pod 'SDWebImage'
@@ -10,4 +10,5 @@ target 'xbsz' do
     pod 'YYCategories'
     pod 'YYModel'
     pod 'FDFullscreenPopGesture'
+    pod 'IQKeyboardManager'
 end
