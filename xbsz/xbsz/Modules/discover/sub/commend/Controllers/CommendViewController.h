@@ -6,8 +6,8 @@
 //  Copyright © 2016年 lotus. All rights reserved.
 //
 
-#import "CXPushViewController.h"
+#import "CXBaseDisplayViewController.h"
 
-@interface CommendViewController : CXBaseViewController
+@interface CommendViewController : CXBaseDisplayViewController
 
 @end

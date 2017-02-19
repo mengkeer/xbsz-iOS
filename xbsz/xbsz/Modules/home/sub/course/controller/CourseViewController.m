@@ -1,30 +1,27 @@
 //
-//  CommendViewController.m
+//  CourseViewController.m
 //  xbsz
 //
-//  Created by 陈鑫 on 16/12/15.
+//  Created by lotus on 2016/12/30.
 //  Copyright © 2016年 lotus. All rights reserved.
 //
 
-#import "CommendViewController.h"
+#import "CourseViewController.h"
 
-@interface CommendViewController ()
+@interface CourseViewController ()
 
 @end
 
-@implementation CommendViewController
+@implementation CourseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 @end

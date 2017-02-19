@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CXBaseViewController.h"
+#import "YZDisplayViewController.h"
 
-@interface CXHomeViewController : CXBaseViewController
+@interface CXHomeViewController : YZDisplayViewController
 
 @end

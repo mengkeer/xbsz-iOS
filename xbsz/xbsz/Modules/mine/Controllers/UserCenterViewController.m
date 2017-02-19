@@ -450,7 +450,7 @@
 }
 
 - (void)clickLogin{
-    [self presentViewController:[LoginViewController controller] animated:YES completion:nil];
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
 }
 
 - (void)clickInfo{

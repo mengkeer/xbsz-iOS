@@ -29,9 +29,10 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     self.view.backgroundColor = CXBackGroundColor;
     self.title = @"个人资料";
     
+    
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight-64.f)];
     [self.contentView addSubview:tableView];
-    tableView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight+300);
+    tableView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight+400);
     tableView.backgroundColor = CXBackGroundColor;
     tableView.delegate = self;
     tableView.separatorColor = CXLineColor;
@@ -39,9 +40,9 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     tableView.dataSource = self;
     
     
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+300) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(CXTopCornerRadius, CXTopCornerRadius)];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+400) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(CXTopCornerRadius, CXTopCornerRadius)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+300);
+    maskLayer.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+400);
     maskLayer.path = maskPath.CGPath;
     tableView.layer.mask = maskLayer;
     
@@ -61,7 +62,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(section == 0)    return 0;
+    if(section == 0 || section == 3)    return 0;
     return 20;
 }
 
@@ -86,7 +87,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 #pragma mark - UITableView dataSource 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -153,7 +154,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
             if(cell)    return cell;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"个性签名" andDetailText:@"(＾－＾)V 介绍一下自己吧 (＾－＾)V 介绍一下自己吧 (＾－＾)V 介绍一下自己吧 (＾－＾)V 介绍一下自己吧" andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_brief"]];
+            [item setTitle:@"个性签名" andDetailText:@"(＾－＾) 介绍一下自己吧" andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_brief"]];
             [cell.contentView addSubview:item];
         }
         
@@ -162,18 +163,26 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
         if(cell)    return cell;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
         SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-        [item setTitle:@"教务网账号授权" andDetailText:@"131340126" andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_author"]];
+        [item setTitle:@"教务网账号授权" andDetailText:@"131340126" andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_auth"]];
         [cell.contentView addSubview:item];
 
-    }else{
+    }else if(indexPath.section == 2){
         cell = [tableView dequeueReusableCellWithIdentifier:@"loginCellId"];
         if(cell)    return cell;
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"loginCellId"];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(0, 0, CXScreenWidth, 45);
         [btn setTitle:@"退出登录" forState:UIControlStateNormal];
+//        [btn setTitleColor:CXRedColor forState:UIControlStateNormal];
         [btn setTitleColor:CXBlackColor forState:UIControlStateNormal];
         [cell.contentView addSubview:btn];
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"nromalCell"];
+        if(cell)    return cell;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"normalCell"];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
+        view.backgroundColor = CXBackGroundColor;
+        [cell.contentView addSubview:view];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

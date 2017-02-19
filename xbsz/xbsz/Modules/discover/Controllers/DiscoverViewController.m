@@ -17,9 +17,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
     [self.navigationController.navigationBar setHidden:YES];
-//    self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
@@ -34,7 +32,7 @@
      设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
      */
     [self setUpContentViewFrame:^(UIView *contentView) {
-        contentView.frame = CGRectMake(0, 20, CXScreenWidth, CXScreenHeight - 20-49);
+        contentView.frame = CGRectMake(0, 20, CXScreenWidth, CXScreenHeight - CXStatusBarHeight - CXTabbarHeight);
         contentView.backgroundColor = CXMainColor;
     }];
     
@@ -47,7 +45,7 @@
         *selColor = [UIColor whiteColor];
         *titleWidth = 75;;
         *titleFont = CXSystemFont(16);
-        *titleHeight = 32;
+        *titleHeight = CXDisplayTitleHeight;
     }];
     
     // 标题渐变
@@ -65,10 +63,6 @@
     }];
     
     self.selectIndex = 0;
-    
-    
-
-    
     
     
 }
