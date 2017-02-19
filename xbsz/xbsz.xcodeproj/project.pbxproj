@@ -22,7 +22,6 @@
 		AD7F88DE1E595A5E009603E4 /* CXPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F88C31E595A5E009603E4 /* CXPushViewController.m */; };
 		AD7F88DF1E595A5E009603E4 /* CXTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F88C51E595A5E009603E4 /* CXTabBarController.m */; };
 		AD7F88E01E595A5E009603E4 /* CXSectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F88CB1E595A5E009603E4 /* CXSectionButton.m */; };
-		AD7F88E11E595A5E009603E4 /* CXNetworkMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F88D81E595A5E009603E4 /* CXNetworkMonitoring.m */; };
 		AD7F89151E595B29009603E4 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F88E61E595B29009603E4 /* DiscoverViewController.m */; };
 		AD7F89161E595B29009603E4 /* CommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F88EB1E595B29009603E4 /* CommendViewController.m */; };
 		AD7F89171E595B29009603E4 /* CXHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F88F31E595B29009603E4 /* CXHomeViewController.m */; };
@@ -39,6 +38,7 @@
 		AD7F89221E595B29009603E4 /* SetItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89141E595B29009603E4 /* SetItemView.m */; };
 		AD7F89271E596036009603E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89251E596036009603E4 /* AppDelegate.m */; };
 		AD7F89281E596036009603E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89261E596036009603E4 /* main.m */; };
+		AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F892B1E59624A009603E4 /* CXNetworkMonitoring.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
 		ADF042451E0192EF00171489 /* avatar11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423A1E0192EF00171489 /* avatar11.jpg */; };
@@ -98,8 +98,6 @@
 		AD7F88D31E595A5E009603E4 /* FontAndColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontAndColor.h; sourceTree = "<group>"; };
 		AD7F88D41E595A5E009603E4 /* NotificationMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationMacro.h; sourceTree = "<group>"; };
 		AD7F88D51E595A5E009603E4 /* UtilsMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMacro.h; sourceTree = "<group>"; };
-		AD7F88D71E595A5E009603E4 /* CXNetworkMonitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXNetworkMonitoring.h; sourceTree = "<group>"; };
-		AD7F88D81E595A5E009603E4 /* CXNetworkMonitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXNetworkMonitoring.m; sourceTree = "<group>"; };
 		AD7F88E51E595B29009603E4 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		AD7F88E61E595B29009603E4 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		AD7F88EA1E595B29009603E4 /* CommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommendViewController.h; sourceTree = "<group>"; };
@@ -131,6 +129,8 @@
 		AD7F89241E596036009603E4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD7F89251E596036009603E4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AD7F89261E596036009603E4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD7F892A1E59624A009603E4 /* CXNetworkMonitoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXNetworkMonitoring.h; sourceTree = "<group>"; };
+		AD7F892B1E59624A009603E4 /* CXNetworkMonitoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXNetworkMonitoring.m; sourceTree = "<group>"; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
 		ADF042391E0192EF00171489 /* avatar10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar10.jpg; sourceTree = "<group>"; };
 		ADF0423A1E0192EF00171489 /* avatar11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar11.jpg; sourceTree = "<group>"; };
@@ -413,8 +413,7 @@
 		AD7F88D61E595A5E009603E4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AD7F88D71E595A5E009603E4 /* CXNetworkMonitoring.h */,
-				AD7F88D81E595A5E009603E4 /* CXNetworkMonitoring.m */,
+				AD7F89291E59624A009603E4 /* NetworkMonitoring */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -640,6 +639,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		AD7F89291E59624A009603E4 /* NetworkMonitoring */ = {
+			isa = PBXGroup;
+			children = (
+				AD7F892A1E59624A009603E4 /* CXNetworkMonitoring.h */,
+				AD7F892B1E59624A009603E4 /* CXNetworkMonitoring.m */,
+			);
+			path = NetworkMonitoring;
+			sourceTree = "<group>";
+		};
 		ADF042371E0192EF00171489 /* avatar */ = {
 			isa = PBXGroup;
 			children = (
@@ -793,9 +801,9 @@
 				AD7F88991E595206009603E4 /* UIAlertController+CXAlertController.m in Sources */,
 				AD7F89151E595B29009603E4 /* DiscoverViewController.m in Sources */,
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
-				AD7F88E11E595A5E009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD7F89211E595B29009603E4 /* UserInfoViewController.m in Sources */,
+				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
 				AD7F89161E595B29009603E4 /* CommendViewController.m in Sources */,
 				AD7F882C1E594D5E009603E4 /* YZFlowLayout.m in Sources */,
