@@ -19,12 +19,12 @@
 
 @property (nonatomic,strong) UILabel *nickNamelabel;        //昵称
 
-@property (nonatomic,strong) UIView *infoBgView;
+@property (nonatomic,strong) UIView *infoBgView;        //头像区域的背景view
 
 @property (nonatomic,strong) UIView *dotView;
 
 @property (nonatomic,strong) UIView *infoView;
-@property (nonatomic,strong) UILabel *briefLabel;
+@property (nonatomic,strong) UILabel *briefLabel;       //简介
 @property (nonatomic,strong) UIButton *headBtn;     //头像
 
 @property (nonatomic,strong) UIView *contentView;
@@ -292,7 +292,7 @@
         
         CXSectionButton *btn6 = [[CXSectionButton alloc] init:CGRectMake(width, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine6"]
-                                                     andTitle:@"校园讲座"];
+                                                     andTitle:@"通讯录"];
         [_contentView addSubview:btn6];
         
         
@@ -303,7 +303,7 @@
         
         CXSectionButton *btn8 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine8"]
-                                                     andTitle:@"就业服务"];
+                                                     andTitle:@"学费查询"];
         [_contentView addSubview:btn8];
         
         offsetY += height;
@@ -361,7 +361,7 @@
         
         CXSectionButton *btn10 = [[CXSectionButton alloc] init:CGRectMake(width, offsetY, width, height)
                                                       andImage:[UIImage imageNamed:@"school2"]
-                                                      andTitle:@"通讯录"];
+                                                      andTitle:@"校园讲座"];
         [_contentView addSubview:btn10];
         
         
@@ -398,7 +398,7 @@
         
         CXSectionButton *btn15 = [[CXSectionButton alloc] init:CGRectMake(width*2, offsetY, width, height)
                                                       andImage:[UIImage imageNamed:@"school7"]
-                                                      andTitle:@"学费查询"];
+                                                      andTitle:@"就业服务"];
         [_contentView addSubview:btn15];
         
         CXSectionButton *btn16 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)

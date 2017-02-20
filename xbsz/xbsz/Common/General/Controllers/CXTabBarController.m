@@ -8,7 +8,7 @@
 
 #import "CXTabBarController.h"
 #import "CXNavigationController.h"
-#import "CXHomeViewController.h"
+#import "CXStudyViewController.h"
 #import "UserCenterViewController.h"
 #import "DiscoverViewController.h"
 
@@ -31,7 +31,7 @@
     
     self.delegate = self;
     
-    [self addChildVC:[CXHomeViewController controller] title:@"学习" image:@"tab_home" selectedImage:@"tab_home_s"];
+    [self addChildVC:[CXStudyViewController controller] title:@"学习" image:@"tab_home" selectedImage:@"tab_home_s"];
     
 //    [self addChildVC:[CXHomeViewController controller] title:@"校园" image:@"tab_school" selectedImage:@"tab_school_s"];
     

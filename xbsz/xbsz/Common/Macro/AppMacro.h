@@ -36,9 +36,9 @@
 
 
 //常用单例类
-
-#define CXUserDefaults  ([NSUserDefaults standardUserDefaults])
+#define CXUserDefaults   ([NSUserDefaults standardUserDefaults])
 #define CXApplication    ([UIApplication sharedApplication])
+#define CXAppDelegate    ([UIApplication sharedApplication].delegate)
 
 
 //3D touch item类型
@@ -51,9 +51,9 @@
 //应用里一些常见宽高或其他定义
 #define CXStatusBarHeight  20
 #define CXNavigationBarHeight 64
-#define CXTabbarHeight  49
-#define CXDisplayTitleHeight   32
-#define CXTopCornerRadius 8
+#define CXTabbarHeight  49          
+#define CXDisplayTitleHeight   32           //CXStudyViewController等的导航高度
+#define CXTopCornerRadius 8         //导航栏下的弧度  eg：SetViewController  
 
 
 #endif /* AppMacro_h */

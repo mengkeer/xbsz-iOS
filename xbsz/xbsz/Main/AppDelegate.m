@@ -35,13 +35,13 @@
     //如果是从快捷选项标签启动app，则根据不同标识执行不同操作，然后返回NO，防止调用- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
     if (shortcutItem) {
         if([shortcutItem.type isEqualToString:CX3DTouchItemTypeShare]){
-            NSLog(@"通过3D Touch进入分享界面");
+            CXLog(@"通过3D Touch进入分享界面");
         } else if ([shortcutItem.type isEqualToString:CX3DTouchItemTypeSearch]) {//进入搜索界面
-            NSLog(@"通过3D Touch进入搜索界面");
+            CXLog(@"通过3D Touch进入搜索界面");
         } else if ([shortcutItem.type isEqualToString:CX3DTouchItemTypeLove]) {//进入收藏界面
-            NSLog(@"通过3D Touch进入收藏界面");
+            CXLog(@"通过3D Touch进入收藏界面");
         }else{
-            NSLog(@"通过3D Touch反馈Bug");
+            CXLog(@"通过3D Touch反馈Bug");
         }
         return NO;
     }
@@ -79,13 +79,13 @@
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
     
     if([shortcutItem.type isEqualToString:CX3DTouchItemTypeShare]){
-        NSLog(@"通过3D Touch进入分享界面");
+        CXLog(@"通过3D Touch进入分享界面");
     } else if ([shortcutItem.type isEqualToString:CX3DTouchItemTypeSearch]) {//进入搜索界面
-        NSLog(@"通过3D Touch进入搜索界面");
+        CXLog(@"通过3D Touch进入搜索界面");
     } else if ([shortcutItem.type isEqualToString:CX3DTouchItemTypeLove]) {//进入收藏界面
-        NSLog(@"通过3D Touch进入收藏界面");
+        CXLog(@"通过3D Touch进入收藏界面");
     }else{
-        NSLog(@"通过3D Touch反馈Bug");
+        CXLog(@"通过3D Touch反馈Bug");
     }
 
     

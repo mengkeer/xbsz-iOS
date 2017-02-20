@@ -1,20 +1,20 @@
 //
-//  CXHomeViewController.m
+//  CXStudyViewController.m
 //  xbsz
 //
-//  Created by lotus on 2016/12/9.
-//  Copyright © 2016年 lotus. All rights reserved.
+//  Created by lotus on 2017/2/19.
+//  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "CXHomeViewController.h"
+#import "CXStudyViewController.h"
 #import "CourseViewController.h"
 #import "ExerciseViewController.h"
 
-@interface CXHomeViewController ()
+@interface CXStudyViewController ()
 
 @end
 
-@implementation CXHomeViewController
+@implementation CXStudyViewController
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
+    
     
     self.view.backgroundColor = CXMainColor;
     
@@ -88,12 +88,8 @@
     [self addChildViewController:vc2];
     
     
-
+    
     
     
 }
-
-
-
-
 @end

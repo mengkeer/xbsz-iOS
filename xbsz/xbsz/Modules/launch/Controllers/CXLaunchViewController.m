@@ -98,9 +98,8 @@
         
         anim.duration = 1.0f;
         
-        [[UIApplication sharedApplication].keyWindow.layer addAnimation:anim forKey:nil];
-        
-        [UIApplication sharedApplication].keyWindow.rootViewController = [CXTabBarController controller];
+        [CXApplication.keyWindow.layer addAnimation:anim forKey:nil];
+        CXApplication.keyWindow.rootViewController = [CXTabBarController controller];
 //        [[UIApplication sharedApplication].keyWindow sendSubviewToBack:[UIApplication sharedApplication].keyWindow.rootViewController.view];
 //
     }];

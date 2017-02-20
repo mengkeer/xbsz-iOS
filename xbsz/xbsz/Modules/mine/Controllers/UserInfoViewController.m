@@ -39,7 +39,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     tableView.showsVerticalScrollIndicator = NO;
     tableView.dataSource = self;
     
-    
+    //高度加400没有特别意思  只是为了保证高度足够高
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+400) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(CXTopCornerRadius, CXTopCornerRadius)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+400);

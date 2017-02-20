@@ -18,7 +18,7 @@
         // 当网络状态发生改变的时候调用这个block
         switch (status) {
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                NSLog(@"WIFI状态");
+                CXLog(@"切换至WIFI状态");
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
             {
@@ -27,22 +27,22 @@
                 switch (wwanStatus) {
                     case YYReachabilityWWANStatusNone:
                     {
-                        CXLog(@"蜂窝网络");
+                        CXLog(@"切换至蜂窝网络");
                         break;
                     }
                     case YYReachabilityWWANStatus2G:
                     {
-                        CXLog(@"2G");
+                        CXLog(@"切换至2G");
                         break;
                     }
                     case YYReachabilityWWANStatus3G:
                     {
-                        CXLog(@"3G");
+                        CXLog(@"切换至3G");
                         break;
                     }
                     case YYReachabilityWWANStatus4G:
                     {
-                        CXLog(@"4G");
+                        CXLog(@"切换至4G");
                         break;
                     }
                     default:
@@ -52,10 +52,10 @@
                 break;
             }
             case AFNetworkReachabilityStatusNotReachable:
-                NSLog(@"没有网络");
+                CXLog(@"没有网络");
                 break;
             case AFNetworkReachabilityStatusUnknown:
-                NSLog(@"未知网络");
+                CXLog(@"未知网络");
                 break;
             default:
                 break;

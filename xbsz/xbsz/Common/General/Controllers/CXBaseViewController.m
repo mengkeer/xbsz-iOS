@@ -20,7 +20,6 @@
     //    self.navigationController.navigationBar.hidden = YES;
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    //    [self.navigationController.navigationBar setHidden:YES];
 }
 
 - (void)viewDidLoad {
