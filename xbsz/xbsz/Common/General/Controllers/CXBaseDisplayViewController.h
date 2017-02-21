@@ -10,4 +10,6 @@
 
 @interface CXBaseDisplayViewController : CXBaseViewController
 
+@property (nonatomic, strong) UIView *contentView;
+
 @end

@@ -13,4 +13,5 @@ target 'xbsz' do
     pod 'IQKeyboardManager'
     pod 'MJRefresh'
     pod 'DZNEmptyDataSet'
+    pod 'MBProgressHUD', '~> 1.0.0'
 end

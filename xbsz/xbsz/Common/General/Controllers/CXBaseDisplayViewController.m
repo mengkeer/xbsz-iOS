@@ -20,20 +20,20 @@
     UIView *topBackView = [[UIView alloc ]initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXTopCornerRadius)];
     topBackView.backgroundColor = CXMainColor;
     
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth,CXScreenHeight-CXTabbarHeight-CXStatusBarHeight-CXDisplayTitleHeight)];
-    contentView.backgroundColor = CXWhiteColor;
+    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth,CXScreenHeight-CXTabbarHeight-CXStatusBarHeight-CXDisplayTitleHeight)];
+    _contentView.backgroundColor = CXWhiteColor;
     
     
     
     [self.view addSubview:topBackView];
-    [self.view addSubview:contentView];
+    [self.view addSubview:_contentView];
     
     
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, contentView.height) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(CXTopCornerRadius, CXTopCornerRadius)];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, _contentView.height) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(CXTopCornerRadius, CXTopCornerRadius)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = CGRectMake(0, 0, CXScreenWidth, contentView.height);
+    maskLayer.frame = CGRectMake(0, 0, CXScreenWidth, _contentView.height);
     maskLayer.path = maskPath.CGPath;
-    contentView.layer.mask = maskLayer;
+    _contentView.layer.mask = maskLayer;
 
     
 }

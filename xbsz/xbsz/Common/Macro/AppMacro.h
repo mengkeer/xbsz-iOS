@@ -26,7 +26,7 @@
 #define CXScreenBounds ([UIScreen mainScreen].bounds)
 #define CXScreenWidth  ([UIScreen mainScreen].bounds.size.width)
 #define CXScreenHeight ([UIScreen mainScreen].bounds.size.height)
-#define CXScreenRect   (CGRectMake(0,0,CXScreenWidth,CXScreenHeight)
+#define CXScreenRect   (CGRectMake(0,0,CXScreenWidth,CXScreenHeight))
 #define CXMainScale     ([UIScreen mainScreen].scale)
 
 
@@ -53,7 +53,8 @@
 #define CXNavigationBarHeight 64
 #define CXTabbarHeight  49          
 #define CXDisplayTitleHeight   32           //CXStudyViewController等的导航高度
-#define CXTopCornerRadius 8         //导航栏下的弧度  eg：SetViewController  
+#define CXTopCornerRadius 8         //导航栏下的弧度  eg：SetViewController
+#define CXDisplayContentHeight    (CXScreenHeight-CXStatusBarHeight-CXDisplayTitleHeight-CXTabbarHeight)
 
 
 #endif /* AppMacro_h */

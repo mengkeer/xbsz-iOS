@@ -7,6 +7,7 @@
 //
 
 #import "CXBaseTableView.h"
+#import "MJRefresh.h"
 
 @interface CXBaseTableView ()
 
@@ -20,16 +21,13 @@
 @implementation CXBaseTableView
 
 - (id)initWithFrame:(CGRect)frame enablePullRefresh:(BOOL)enable{
-    self = [super initWithFrame:frame style:UITableViewStylePlain];
-    if(self){
-        _pullRefreshEnabled = enable;
-    }
-    return self;
+    return [self initWithFrame:frame style:UITableViewStylePlain enablePullRefresh:enable];
 }
 
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style enablePullRefresh:(BOOL)enable{
     self = [super initWithFrame:frame style:style];
     if(self){
+        [self initBaseTableView];
         _pullRefreshEnabled = enable;
         self.showEmptyTips = NO;
     }
@@ -39,6 +37,41 @@
 - (void)initBaseTableView{
     self.emptyDataSetSource = self;
     self.emptyDataSetDelegate = self;
+    
+    self.backgroundColor = CXWhiteColor;
+    MJRefreshNormalHeader *gifHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        CXLog(@"下拉刷新");
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 结束刷新
+            [self.mj_header endRefreshing];
+        });
+    }];
+    
+    gifHeader.lastUpdatedTimeLabel.hidden = YES;
+    self.mj_header = gifHeader;
+
+    
+    self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        CXLog(@"上拉加载");
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 结束刷新
+            [self.mj_footer endRefreshing];
+            [self.mj_footer setHidden:YES];
+        });
+    }];
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 - (void)setBaseDelegate:(id<CXBaseTableViewDelegate>)baseDelegate{
@@ -53,6 +86,7 @@
 #pragma mark DZNEmptyDataSetDelegate
 
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
+    CXLog(@"显示默认图片");
     return _showEmptyTips;
 }
 
@@ -60,11 +94,14 @@
     CXLog(@"点击了默认空白页");
 }
 
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
+    return YES;
+}
 
 #pragma DZNEmptyDataSetDataSource
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
-    return [UIImage imageNamed:@"empty_placeholder"];
+    return [UIImage imageNamed:@"bilibili_splash_default_2"];
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
@@ -105,11 +142,7 @@
 }
 
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView{
-    return -self.tableHeaderView.frame.size.height/2.0f;
-}
-
-- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView{
-    return 20.0f;
+    return -10;
 }
 
 
