@@ -45,7 +45,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-//        [self initTableViewCell];
+        [self initTableViewCell];
     }
     return self;
 }
@@ -79,19 +79,34 @@
     
     
     [self.contentView addSubview:self.sharedImageView];
-    CGFloat height = _sharedImageView.image.size.height;
-    CGFloat width = _sharedImageView.image.size.width;
+
     
     [_sharedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(CXScreenWidth * height/width);
-        make.top.mas_equalTo(50);
+//        make.height.mas_equalTo(CXScreenWidth * height/width);
+        make.top.mas_equalTo(_userInfoView.mas_bottom);
         make.left.right.mas_equalTo(self.contentView);
-        make.bottom.mas_equalTo(self.contentView.mas_bottom);
-//         make.bottom.equalTo(self.contentView);
     }];
-//    [self layoutIfNeeded];
     
+    
+    [self.contentView addSubview:self.toolBarView];
+    
+    [_toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.contentView);
+        make.top.mas_equalTo(_sharedImageView.mas_bottom);
+        make.bottom.mas_equalTo(self.contentView.mas_bottom);
+        make.height.mas_equalTo(45);
+        make.width.mas_equalTo(self.contentView);
+    }];
 
+    
+    _lineView = [[UIView alloc] init];
+    _lineView.backgroundColor = CXLineColor;
+    [self.contentView addSubview:_lineView];
+    [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_toolBarView.mas_bottom);
+        make.width.mas_equalTo(self.contentView);
+        make.height.mas_equalTo(1/CXMainScale);
+    }];
     
     
     
@@ -140,17 +155,34 @@
 - (UIImageView *)sharedImageView{
     if(!_sharedImageView){
         _sharedImageView = [[UIImageView alloc] init];
-//        _sharedImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cell1.jpg"]];
-
-//        _sharedImageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _sharedImageView;
 }
 
+- (ToolBarView *)toolBarView{
+    if(!_toolBarView){
+        _toolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
+    }
+    return _toolBarView;
+}
+
 - (void)updateUIWithModel:(NSInteger)index{
-    _sharedImageView = [[UIImageView alloc] init];
     [_sharedImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"cell%ld.jpg",index]]];
-    [self initTableViewCell];
+    
+    CGFloat height = _sharedImageView.image.size.height;
+    CGFloat width = _sharedImageView.image.size.width;
+    
+    CXLog(@"height = %f",CXScreenWidth * height/width);
+    
+    [_sharedImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(CXScreenWidth * height/width);
+    }];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+
+    
+
+
 }
 
 @end
