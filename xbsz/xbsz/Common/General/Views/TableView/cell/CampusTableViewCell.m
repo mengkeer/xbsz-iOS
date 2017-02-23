@@ -31,6 +31,9 @@
 @property (nonatomic, strong) UILabel *dateLabel;       //发布日期
 
 
+@property (nonatomic, strong) MASConstraint  *constraintHeight;
+
+
 
 
 @end
@@ -58,14 +61,13 @@
 
 - (void)initTableViewCell{
     
-    [self.contentView addSubview:self.userInfoView];
+    [self addSubview:self.userInfoView];
     
     [_userInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(self.contentView);
+        make.width.mas_equalTo(self);
         make.height.mas_equalTo(50);
-        make.left.top.right.mas_equalTo(self.contentView);
+        make.left.top.right.mas_equalTo(self);
     }];
-    
     
     [_headBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self).mas_offset(8);
@@ -77,39 +79,32 @@
         make.centerY.mas_equalTo(_userInfoView.mas_centerY);
     }];
     
-    
-    [self.contentView addSubview:self.sharedImageView];
+    [self addSubview:self.sharedImageView];
 
     
     [_sharedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(CXScreenWidth * height/width);
         make.top.mas_equalTo(_userInfoView.mas_bottom);
-        make.left.right.mas_equalTo(self.contentView);
+        make.left.right.mas_equalTo(self);
     }];
     
-    
-    [self.contentView addSubview:self.toolBarView];
+    [self addSubview:self.toolBarView];
     
     [_toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self.contentView);
+        make.left.right.mas_equalTo(self);
         make.top.mas_equalTo(_sharedImageView.mas_bottom);
-        make.bottom.mas_equalTo(self.contentView.mas_bottom);
         make.height.mas_equalTo(45);
-        make.width.mas_equalTo(self.contentView);
     }];
 
-    
     _lineView = [[UIView alloc] init];
     _lineView.backgroundColor = CXLineColor;
-    [self.contentView addSubview:_lineView];
+    [self addSubview:_lineView];
     [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_toolBarView.mas_bottom);
-        make.width.mas_equalTo(self.contentView);
+        make.width.mas_equalTo(self);
         make.height.mas_equalTo(1/CXMainScale);
+        make.bottom.mas_equalTo(self.mas_bottom);
     }];
-    
-    
-    
+
 }
 
 
@@ -121,10 +116,6 @@
         _userInfoView.backgroundColor = CXWhiteColor;
         [_userInfoView addSubview:self.headBtn];
         [_userInfoView addSubview:self.nickNameLabel];
-        
-        
-        
-        
     }
     return _userInfoView;
 }
@@ -136,7 +127,7 @@
           [_headBtn setImage:[[[UIImage imageNamed:@"avatar1.jpg"] imageByResizeToSize:CGSizeMake(36, 36) contentMode:UIViewContentModeScaleToFill] imageByRoundCornerRadius:18] forState:UIControlStateNormal];
         _headBtn.layer.cornerRadius = 18;
         _headBtn.clipsToBounds = YES;
-//        [_headBtn addTarget:self action:@selector(clickLogin) forControlEvents:UIControlEventTouchUpInside];          //暂时取消头像按钮点击事件
+//        [_headBtn addTarget:self action:@selector(clickLogin) forControlEvents:UIControlEventTouchUpInside];          //暂时取消头像按钮  击事件
     }
     return _headBtn;
 }
@@ -155,6 +146,7 @@
 - (UIImageView *)sharedImageView{
     if(!_sharedImageView){
         _sharedImageView = [[UIImageView alloc] init];
+//        _sharedImageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _sharedImageView;
 }
@@ -171,18 +163,10 @@
     
     CGFloat height = _sharedImageView.image.size.height;
     CGFloat width = _sharedImageView.image.size.width;
-    
-    CXLog(@"height = %f",CXScreenWidth * height/width);
-    
+
     [_sharedImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(CXScreenWidth * height/width);
+        make.height.mas_equalTo((int)(CXScreenWidth * height/width));
     }];
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
-
-    
-
-
 }
 
 @end
