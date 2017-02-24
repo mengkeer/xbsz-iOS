@@ -10,7 +10,10 @@
 #define PodsImport_h
 
 #import "Masonry.h"
-#import "YYCategories.h"
+#import "YYCategories.h"        
+#import  <YYImage/YYImage.h>
+#import  <YYWebImage/YYWebImage.h>
+#import <YYModel/YYModel.h>
 
 
 #endif /* PodsImport_h */

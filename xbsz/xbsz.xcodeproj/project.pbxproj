@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0518ECA71E5FCD2E0018F432 /* cell_gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECA61E5FCD2E0018F432 /* cell_gif.gif */; };
+		0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECAA1E6012400018F432 /* CampusViewController.m */; };
+		0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECAE1E6012400018F432 /* CampusTableViewCell.m */; };
+		0518ECB31E6012AD0018F432 /* CampusNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECB21E6012AD0018F432 /* CampusNote.m */; };
+		0518ECB61E60138A0018F432 /* CXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECB51E60138A0018F432 /* CXUser.m */; };
+		0518ECB91E6016D80018F432 /* CXLocalUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECB81E6016D80018F432 /* CXLocalUser.m */; };
+		0518ECBC1E601B790018F432 /* CampusNoteList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECBB1E601B790018F432 /* CampusNoteList.m */; };
+		0518ECC61E6037C60018F432 /* notes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC51E6037C60018F432 /* notes.json */; };
+		0518ECC81E603E480018F432 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC71E603E480018F432 /* user.json */; };
+		0518ECCA1E6041E10018F432 /* note.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC91E6041E10018F432 /* note.json */; };
 		05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21ACD1E5BE5AD00D7BA6C /* DiscoverViewController.m */; };
 		05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21AD31E5BE5AD00D7BA6C /* RecommendViewController.m */; };
-		05C21AD81E5BE72900D7BA6C /* CampusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21AD71E5BE72900D7BA6C /* CampusViewController.m */; };
-		05C21ADC1E5C1CEB00D7BA6C /* CampusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21ADB1E5C1CEB00D7BA6C /* CampusTableViewCell.m */; };
 		05C21ADF1E5C23C000D7BA6C /* ToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21ADE1E5C23C000D7BA6C /* ToolBarView.m */; };
 		05C21AE11E5C35E100D7BA6C /* cell1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05C21AE01E5C35E100D7BA6C /* cell1.jpg */; };
 		05C21AE41E5C46CC00D7BA6C /* cell2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05C21AE21E5C46CC00D7BA6C /* cell2.jpg */; };
@@ -64,14 +72,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0518ECA61E5FCD2E0018F432 /* cell_gif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = cell_gif.gif; sourceTree = "<group>"; };
+		0518ECA91E6012400018F432 /* CampusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusViewController.h; sourceTree = "<group>"; };
+		0518ECAA1E6012400018F432 /* CampusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusViewController.m; sourceTree = "<group>"; };
+		0518ECAD1E6012400018F432 /* CampusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusTableViewCell.h; sourceTree = "<group>"; };
+		0518ECAE1E6012400018F432 /* CampusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusTableViewCell.m; sourceTree = "<group>"; };
+		0518ECB11E6012AD0018F432 /* CampusNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusNote.h; sourceTree = "<group>"; };
+		0518ECB21E6012AD0018F432 /* CampusNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusNote.m; sourceTree = "<group>"; };
+		0518ECB41E60138A0018F432 /* CXUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXUser.h; sourceTree = "<group>"; };
+		0518ECB51E60138A0018F432 /* CXUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXUser.m; sourceTree = "<group>"; };
+		0518ECB71E6016D80018F432 /* CXLocalUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXLocalUser.h; sourceTree = "<group>"; };
+		0518ECB81E6016D80018F432 /* CXLocalUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXLocalUser.m; sourceTree = "<group>"; };
+		0518ECBA1E601B790018F432 /* CampusNoteList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusNoteList.h; sourceTree = "<group>"; };
+		0518ECBB1E601B790018F432 /* CampusNoteList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusNoteList.m; sourceTree = "<group>"; };
+		0518ECC51E6037C60018F432 /* notes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notes.json; sourceTree = "<group>"; };
+		0518ECC71E603E480018F432 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
+		0518ECC91E6041E10018F432 /* note.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = note.json; sourceTree = "<group>"; };
 		05C21ACC1E5BE5AD00D7BA6C /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		05C21ACD1E5BE5AD00D7BA6C /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		05C21AD21E5BE5AD00D7BA6C /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
 		05C21AD31E5BE5AD00D7BA6C /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
-		05C21AD61E5BE72900D7BA6C /* CampusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusViewController.h; sourceTree = "<group>"; };
-		05C21AD71E5BE72900D7BA6C /* CampusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusViewController.m; sourceTree = "<group>"; };
-		05C21ADA1E5C1CEB00D7BA6C /* CampusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusTableViewCell.h; sourceTree = "<group>"; };
-		05C21ADB1E5C1CEB00D7BA6C /* CampusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusTableViewCell.m; sourceTree = "<group>"; };
 		05C21ADD1E5C23C000D7BA6C /* ToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarView.h; sourceTree = "<group>"; };
 		05C21ADE1E5C23C000D7BA6C /* ToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarView.m; sourceTree = "<group>"; };
 		05C21AE01E5C35E100D7BA6C /* cell1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cell1.jpg; sourceTree = "<group>"; };
@@ -181,10 +201,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0518ECA81E6012400018F432 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0518ECA91E6012400018F432 /* CampusViewController.h */,
+				0518ECAA1E6012400018F432 /* CampusViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0518ECAB1E6012400018F432 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0518ECB11E6012AD0018F432 /* CampusNote.h */,
+				0518ECB21E6012AD0018F432 /* CampusNote.m */,
+				0518ECBA1E601B790018F432 /* CampusNoteList.h */,
+				0518ECBB1E601B790018F432 /* CampusNoteList.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0518ECAC1E6012400018F432 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0518ECAD1E6012400018F432 /* CampusTableViewCell.h */,
+				0518ECAE1E6012400018F432 /* CampusTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		056E45741DFFE55F00D5C956 /* image */ = {
 			isa = PBXGroup;
 			children = (
 				05C21AE01E5C35E100D7BA6C /* cell1.jpg */,
+				0518ECA61E5FCD2E0018F432 /* cell_gif.gif */,
 				05C21AE21E5C46CC00D7BA6C /* cell2.jpg */,
 				05C21AE61E5C470D00D7BA6C /* cell4.jpg */,
 				05C21AE71E5C470D00D7BA6C /* cell5.jpg */,
@@ -197,18 +247,11 @@
 		05C21ACA1E5BE5AD00D7BA6C /* campus */ = {
 			isa = PBXGroup;
 			children = (
-				05C21ACB1E5BE5AD00D7BA6C /* controlles */,
+				0518ECA81E6012400018F432 /* Controller */,
+				0518ECAB1E6012400018F432 /* Model */,
+				0518ECAC1E6012400018F432 /* View */,
 			);
 			path = campus;
-			sourceTree = "<group>";
-		};
-		05C21ACB1E5BE5AD00D7BA6C /* controlles */ = {
-			isa = PBXGroup;
-			children = (
-				05C21AD61E5BE72900D7BA6C /* CampusViewController.h */,
-				05C21AD71E5BE72900D7BA6C /* CampusViewController.m */,
-			);
-			path = controlles;
 			sourceTree = "<group>";
 		};
 		05C21ACE1E5BE5AD00D7BA6C /* dynamic */ = {
@@ -243,15 +286,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		05C21AD91E5C1CBD00D7BA6C /* cell */ = {
-			isa = PBXGroup;
-			children = (
-				05C21ADA1E5C1CEB00D7BA6C /* CampusTableViewCell.h */,
-				05C21ADB1E5C1CEB00D7BA6C /* CampusTableViewCell.m */,
-			);
-			path = cell;
-			sourceTree = "<group>";
-		};
 		27FD3D8363471AE4FDEA5C28 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,7 +306,6 @@
 		AD29F47F1E5B22B0008346BD /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				AD29F4851E5B238C008346BD /* cell */,
 				AD29F4861E5B23C9008346BD /* CXBaseCollectionView.h */,
 				AD29F4871E5B23C9008346BD /* CXBaseCollectionView.m */,
 			);
@@ -282,20 +315,12 @@
 		AD29F4801E5B22B0008346BD /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				05C21AD91E5C1CBD00D7BA6C /* cell */,
 				AD29F4811E5B235F008346BD /* CXBaseTableView.h */,
 				AD29F4821E5B235F008346BD /* CXBaseTableView.m */,
 				05C21ADD1E5C23C000D7BA6C /* ToolBarView.h */,
 				05C21ADE1E5C23C000D7BA6C /* ToolBarView.m */,
 			);
 			path = TableView;
-			sourceTree = "<group>";
-		};
-		AD29F4851E5B238C008346BD /* cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = cell;
 			sourceTree = "<group>";
 		};
 		AD29F4891E5B244E008346BD /* AlertView */ = {
@@ -367,6 +392,9 @@
 		AD30B16F1DFAC992000189DD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0518ECC71E603E480018F432 /* user.json */,
+				0518ECC91E6041E10018F432 /* note.json */,
+				0518ECC51E6037C60018F432 /* notes.json */,
 				AD30B1461DFAC900000189DD /* Assets.xcassets */,
 				056E45741DFFE55F00D5C956 /* image */,
 				AD30B1701DFAC992000189DD /* Fonts */,
@@ -456,7 +484,6 @@
 			children = (
 				AD7F88BB1E595A5E009603E4 /* Controllers */,
 				AD7F88C61E595A5E009603E4 /* Models */,
-				AD7F88C71E595A5E009603E4 /* ViewModel */,
 				AD7F88C81E595A5E009603E4 /* Views */,
 				AD7F88B61E595A5E009603E4 /* Categories */,
 			);
@@ -494,15 +521,12 @@
 		AD7F88C61E595A5E009603E4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0518ECB41E60138A0018F432 /* CXUser.h */,
+				0518ECB51E60138A0018F432 /* CXUser.m */,
+				0518ECB71E6016D80018F432 /* CXLocalUser.h */,
+				0518ECB81E6016D80018F432 /* CXLocalUser.m */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		AD7F88C71E595A5E009603E4 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AD7F88C81E595A5E009603E4 /* Views */ = {
@@ -743,6 +767,7 @@
 				AD30B1351DFAC900000189DD /* Resources */,
 				7849EF8CE684D90B0B9D3767 /* [CP] Embed Pods Frameworks */,
 				578830598CD46A4C2DE733D1 /* [CP] Copy Pods Resources */,
+				ED956A2C3F39AA2EE309356D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -796,14 +821,18 @@
 				ADF042431E0192EF00171489 /* avatar1.jpg in Resources */,
 				05C21AE41E5C46CC00D7BA6C /* cell2.jpg in Resources */,
 				05C21AE51E5C46CC00D7BA6C /* cell3.jpg in Resources */,
+				0518ECC81E603E480018F432 /* user.json in Resources */,
 				ADF0424D1E0192EF00171489 /* avatar9.jpg in Resources */,
+				0518ECCA1E6041E10018F432 /* note.json in Resources */,
 				ADF042471E0192EF00171489 /* avatar3.jpg in Resources */,
 				ADF042441E0192EF00171489 /* avatar10.jpg in Resources */,
+				0518ECA71E5FCD2E0018F432 /* cell_gif.gif in Resources */,
 				ADF042461E0192EF00171489 /* avatar2.jpg in Resources */,
 				ADF042481E0192EF00171489 /* avatar4.jpg in Resources */,
 				ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */,
 				ADF042491E0192EF00171489 /* avatar5.jpg in Resources */,
 				AD30B1471DFAC900000189DD /* Assets.xcassets in Resources */,
+				0518ECC61E6037C60018F432 /* notes.json in Resources */,
 				05C21AE81E5C470D00D7BA6C /* cell4.jpg in Resources */,
 				05C21AE91E5C470D00D7BA6C /* cell5.jpg in Resources */,
 				05C21AE11E5C35E100D7BA6C /* cell1.jpg in Resources */,
@@ -860,6 +889,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		ED956A2C3F39AA2EE309356D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -872,36 +916,40 @@
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
 				AD7F89211E595B29009603E4 /* UserInfoViewController.m in Sources */,
 				AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */,
-				05C21AD81E5BE72900D7BA6C /* CampusViewController.m in Sources */,
 				05C21ADF1E5C23C000D7BA6C /* ToolBarView.m in Sources */,
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
+				0518ECB61E60138A0018F432 /* CXUser.m in Sources */,
 				AD7F882C1E594D5E009603E4 /* YZFlowLayout.m in Sources */,
 				AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */,
 				AD7F893B1E5976FE009603E4 /* CourseViewController.m in Sources */,
 				AD7F891D1E595B29009603E4 /* RegisterViewController.m in Sources */,
 				AD7F88DD1E595A5E009603E4 /* CXNavigationController.m in Sources */,
+				0518ECB91E6016D80018F432 /* CXLocalUser.m in Sources */,
 				AD7F89221E595B29009603E4 /* SetItemView.m in Sources */,
 				AD7F89281E596036009603E4 /* main.m in Sources */,
 				AD7F891B1E595B29009603E4 /* InformViewController.m in Sources */,
+				0518ECB31E6012AD0018F432 /* CampusNote.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
 				05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */,
 				AD7F891E1E595B29009603E4 /* ResetViewController.m in Sources */,
 				AD7F88DF1E595A5E009603E4 /* CXTabBarController.m in Sources */,
 				AD7F882B1E594D5E009603E4 /* YZDisplayViewController.m in Sources */,
-				05C21ADC1E5C1CEB00D7BA6C /* CampusTableViewCell.m in Sources */,
 				AD7F891F1E595B29009603E4 /* SetViewController.m in Sources */,
 				AD7F882A1E594D5E009603E4 /* YZDisplayTitleLabel.m in Sources */,
 				AD2BE4EB1E5980CB00D0B0ED /* CXSectionButton.m in Sources */,
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
+				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,
 				AD7F891A1E595B29009603E4 /* CXLaunchViewController.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,
 				AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */,
 				AD7F88291E594D5E009603E4 /* UIView+Frame.m in Sources */,
+				0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */,
 				AD7F88DE1E595A5E009603E4 /* CXPushViewController.m in Sources */,
+				0518ECBC1E601B790018F432 /* CampusNoteList.m in Sources */,
 				05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
