@@ -17,6 +17,10 @@
 
 @property (nonatomic, copy) NSString *imageUrl;
 
+@property (nonatomic, assign) NSInteger width;          //图片宽度
+
+@property (nonatomic, assign) NSInteger height;         //图片高度
+
 @property (nonatomic, copy) NSString *subject;
 
 @property (nonatomic, copy) NSString *locaiton;         //发帖地址

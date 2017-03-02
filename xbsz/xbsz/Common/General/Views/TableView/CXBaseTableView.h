@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger,LoadResultStatus){
 
 @optional
 
-- (void)LoadDataAtPageIndex:(NSUInteger )pageIndex;
+- (void)loadDataAtPageIndex:(NSUInteger )pageIndex;
 
 @end
 
@@ -43,5 +43,7 @@ typedef NS_ENUM(NSInteger,LoadResultStatus){
 - (id)initWithFrame:(CGRect)frame enablePullRefresh:(BOOL)enable;
 
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style enablePullRefresh:(BOOL)enable;
+
+@property (nonatomic, assign) NSInteger currentPage;
 
 @end

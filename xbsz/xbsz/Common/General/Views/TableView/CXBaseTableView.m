@@ -54,11 +54,16 @@
     
     self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         CXLog(@"上拉加载");
+        self.currentPage ++;
+        if([self.baseDelegate respondsToSelector:@selector(loadDataAtPageIndex:)]){
+            [self.baseDelegate loadDataAtPageIndex:_currentPage];
+        }
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             // 结束刷新
             [self.mj_footer endRefreshing];
 //            [self.mj_footer setHidden:YES];
+            
         });
     }];
 

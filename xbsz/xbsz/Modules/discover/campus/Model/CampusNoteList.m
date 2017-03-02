@@ -12,9 +12,9 @@
 @implementation CampusNoteList
 
 
-+ (NSDictionary *)modelCustomPropertyMapper{
++ (NSDictionary *)modelContainerPropertyGenericClass{
     return @{
-        @"notes":[CampusNote class]
+        @"notes":CampusNote.class
     };
 }
 

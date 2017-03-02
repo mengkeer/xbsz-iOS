@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CampusNote.h"
 
 @interface CampusTableViewCell : UITableViewCell
 
 
-- (void)updateUIWithModel:(NSInteger)index tableView:(UITableView *)tableView;
+- (void)updateUIWithModel:(CampusNote *)model;
 
 @end

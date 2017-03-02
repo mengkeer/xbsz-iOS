@@ -32,11 +32,6 @@
 @property (nonatomic, strong) UILabel *dateLabel;       //发布日期
 
 
-@property (nonatomic, strong) MASConstraint  *constraintHeight;
-
-
-
-
 @end
 
 @implementation CampusTableViewCell
@@ -46,6 +41,7 @@
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+//    self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -62,16 +58,16 @@
 
 - (void)initTableViewCell{
     
-    [self addSubview:self.userInfoView];
+    [self.contentView addSubview:self.userInfoView];
     
     [_userInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(self);
+        make.width.mas_equalTo(self.contentView);
         make.height.mas_equalTo(50);
-        make.left.top.right.mas_equalTo(self);
+        make.left.top.right.mas_equalTo(self.contentView);
     }];
     
     [_headBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self).mas_offset(8);
+        make.left.mas_equalTo(self.contentView).mas_offset(8);
         make.centerY.mas_equalTo(_userInfoView.mas_centerY);
     }];
     
@@ -80,37 +76,43 @@
         make.centerY.mas_equalTo(_userInfoView.mas_centerY);
     }];
     
-    [self addSubview:self.sharedImageView];
+    [self.contentView addSubview:self.sharedImageView];
 
     
     [_sharedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_userInfoView.mas_bottom);
-        make.left.right.mas_equalTo(self);
+        make.left.right.mas_equalTo(self.contentView);
+        make.bottom.mas_equalTo(self.contentView);
     }];
     
-    [self addSubview:self.toolBarView];
-    
-    [_toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self);
-        make.top.mas_equalTo(_sharedImageView.mas_bottom);
-        make.height.mas_equalTo(45);
-    }];
-
-    _lineView = [[UIView alloc] init];
-    _lineView.backgroundColor = CXLineColor;
-    [self addSubview:_lineView];
-    [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_toolBarView.mas_bottom);
-        make.width.mas_equalTo(self);
-        make.height.mas_equalTo(1/CXMainScale);
-        make.bottom.mas_equalTo(self.mas_bottom);
-    }];
-
+//    [self.contentView addSubview:self.toolBarView];
+//    
+//    [_toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.mas_equalTo(self.contentView);
+//        make.top.mas_equalTo(_sharedImageView.mas_bottom);
+//        make.height.mas_equalTo(45);
+////        make.bottom.mas_equalTo(self.contentView.mas_bottom);
+//    }];
+//
+//    [self.contentView addSubview:self.lineView];
+//    [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(_toolBarView.mas_bottom);
+//        make.width.left.right.mas_equalTo(self.contentView);
+//        make.height.mas_equalTo(1/CXMainScale);
+//        make.bottom.mas_equalTo(self.contentView.mas_bottom);
+//    }];
 }
 
 
 #pragma mark getter / setter
 
+- (UIView *)lineView{
+    if(!_lineView){
+        _lineView = [[UIView alloc] init];
+        _lineView.backgroundColor = CXLineColor;
+    }
+    return _lineView;
+}
 - (UIView *)userInfoView{
     if(!_userInfoView){
         _userInfoView = [[UIView alloc] init];
@@ -147,7 +149,6 @@
 - (UIImageView *)sharedImageView{
     if(!_sharedImageView){
         _sharedImageView = [[YYAnimatedImageView alloc] init];
-//        _sharedImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _sharedImageView;
 }
@@ -159,37 +160,29 @@
     return _toolBarView;
 }
 
-- (void)updateUIWithModel:(NSInteger)index tableView:(UITableView *)tableView{
+//注：UITableView重用机制会出问题  解决方案如下:http://www.jianshu.com/p/70d6200b097a
+
+- (void)updateUIWithModel:(CampusNote *)model{
 //    [_sharedImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"cell%ld.jpg",index]]];
 //    _sharedImageView.contentMode = UIViewContentModeScaleAspectFill;
 
-    [_sharedImageView setImage:[YYImage imageNamed:@"cell_gif.gif"]];
-//    _sharedImageView.yy_imageURL = [NSURL URLWithString:@"http://github.com/logo.png"];
-//    [_sharedImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-//                make.height.mas_equalTo(300);
-//    }];
-    [_sharedImageView yy_setImageWithURL:[NSURL URLWithString:@"http://github.com/logo.png"]
-                      placeholder:nil
-                         options:YYWebImageOptionSetImageWithFadeAnimation
-                        progress:nil
-                       transform:nil
-                       completion:^(UIImage *image, NSURL *url, YYWebImageFromType from, YYWebImageStage stage, NSError *error) {
-                           CGFloat height = image.size.height;
-                           CGFloat width = image.size.width;
-//                           //必须要强制转换成 整形 否则会约束冲突   我也不知道为什么
-                           [_sharedImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-                               make.height.mas_equalTo((int)(CXScreenWidth * height/width));
-                           }];
-                           [tableView reloadRow:index-1 inSection:0 withRowAnimation:UITableViewRowAnimationAutomatic ];
-                       }];
+//    [_sharedImageView setImage:[YYImage imageNamed:@"cell_gif.gif"]];
+    NSURL *url = [NSURL URLWithString:model.imageUrl];
+    
+    [_sharedImageView yy_setImageWithURL:url options:YYWebImageOptionProgressiveBlur
+     |YYWebImageOptionSetImageWithFadeAnimation];
+    
+    _nickNameLabel.text = model.user.nickName;
     
     
-//    CGFloat height = _sharedImageView.image.size.height;
-//    CGFloat width = _sharedImageView.image.size.width;
-//    //必须要强制转换成 整形 否则会约束冲突   我也不知道为什么
-//    [_sharedImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo((int)(CXScreenWidth * height/width));
-//    }];
+    CGFloat height = model.height;
+    CGFloat width = model.width;
+    CXLog(@"高度为：%d",(int)(CXScreenWidth * height/width));
+    //必须要强制转换成 整形 否则会约束冲突   我也不知道为什么
+    [_sharedImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+          make.height.mas_equalTo((int)(CXScreenWidth * height/width));
+    }];
+    
 }
 
 @end

@@ -17,6 +17,8 @@
     },
     "noteID":"2223",
     "subject":"帖子主题",
+    "width":"200",
+    "height":"200",
     "locaiton":"东华大学",
     "imageUrl":"http://github.com/logo.png",
     "likes":"234"

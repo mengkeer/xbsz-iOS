@@ -34,6 +34,9 @@
     }];
     
     [self loadDataAtPageIndex:InitialLoadPage];
+    
+    
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +58,7 @@
 
 #pragma mark  CXBaseTableViewDelegate
 
-- (void)loadDataAtPageIndex:(NSUInteger)pageIndex{
+- (void)loadDataAtPageIndex:(NSUInteger )pageIndex{
 
     NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"notes.json"];
     NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
@@ -64,7 +67,12 @@
     
 //    CampusNote *note = [CampusNote yy_modelWithJSON:jsonStr];
     
-    _noteList = [CampusNoteList yy_modelWithJSON:jsonStr];
+    if(_noteList && [_noteList.notes count]>0){
+        [_noteList.notes addObjectsFromArray:[CampusNoteList yy_modelWithJSON:jsonStr].notes];
+    }else{
+        _noteList = [CampusNoteList yy_modelWithJSON:jsonStr];
+    }
+    
     
     [_tableView reloadData];
     
@@ -100,7 +108,7 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return [_noteList.notes count];
 }
 
 
@@ -108,15 +116,18 @@
     return 1;
 }
 
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    CXLog(@"显示第%ld行",indexPath.row);
     CampusTableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
+//    cell = [tableView cellForRowAtIndexPath:indexPath];
     if(cell == nil){
         cell = [[CampusTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
     }
     
-    [cell updateUIWithModel:indexPath.row+1 tableView:tableView];
+    [cell updateUIWithModel:[_noteList.notes objectAtIndex:indexPath.row]];
 
     return cell;
 }
