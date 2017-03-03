@@ -82,25 +82,24 @@
     [_sharedImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_userInfoView.mas_bottom);
         make.left.right.mas_equalTo(self.contentView);
-        make.bottom.mas_equalTo(self.contentView);
     }];
     
-//    [self.contentView addSubview:self.toolBarView];
-//    
-//    [_toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.right.mas_equalTo(self.contentView);
-//        make.top.mas_equalTo(_sharedImageView.mas_bottom);
-//        make.height.mas_equalTo(45);
-////        make.bottom.mas_equalTo(self.contentView.mas_bottom);
-//    }];
-//
-//    [self.contentView addSubview:self.lineView];
-//    [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(_toolBarView.mas_bottom);
-//        make.width.left.right.mas_equalTo(self.contentView);
-//        make.height.mas_equalTo(1/CXMainScale);
+    [self.contentView addSubview:self.toolBarView];
+    
+    [_toolBarView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.contentView);
+        make.top.mas_equalTo(_sharedImageView.mas_bottom);
+        make.height.mas_equalTo(45);
 //        make.bottom.mas_equalTo(self.contentView.mas_bottom);
-//    }];
+    }];
+
+    [self.contentView addSubview:self.lineView];
+    [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_toolBarView.mas_bottom);
+        make.width.left.right.mas_equalTo(self.contentView);
+        make.height.mas_equalTo(1/CXMainScale);
+        make.bottom.mas_equalTo(self.contentView.mas_bottom);
+    }];
 }
 
 
@@ -161,6 +160,7 @@
 }
 
 //注：UITableView重用机制会出问题  解决方案如下:http://www.jianshu.com/p/70d6200b097a
+//注：感谢stackoverflowe的解决方案  http://stackoverflow.com/questions/31963753/how-to-set-constraint-in-a-reusable-uitableviewcell?answertab=votes#tab-top
 
 - (void)updateUIWithModel:(CampusNote *)model{
 //    [_sharedImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"cell%ld.jpg",index]]];
@@ -177,10 +177,10 @@
     
     CGFloat height = model.height;
     CGFloat width = model.width;
-    CXLog(@"高度为：%d",(int)(CXScreenWidth * height/width));
-    //必须要强制转换成 整形 否则会约束冲突   我也不知道为什么
+//    CXLog(@"高度为：%d",(int)(CXScreenWidth * height/width));
+    
     [_sharedImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-          make.height.mas_equalTo((int)(CXScreenWidth * height/width));
+          make.height.mas_equalTo(CXScreenWidth * height/width).priority(750);
     }];
     
 }
