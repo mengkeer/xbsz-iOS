@@ -24,8 +24,10 @@
 
 @property (nonatomic, strong) UIView *lineView;     //工具栏下的分割线
 
-
+@property (nonatomic, strong) UIView *likedInfoView;
+@property (nonatomic, strong) UIImageView *likedImgaeView;
 @property (nonatomic, strong) UILabel *likeNumLabel;        //显示点赞数量
+
 @property (nonatomic, strong) UILabel *sharedMessageLabel;          //用户分享时的留言
 @property (nonatomic, strong) UILabel *moreReplyLabel;          //更多回复提示
 
@@ -90,16 +92,38 @@
         make.left.right.mas_equalTo(self.contentView);
         make.top.mas_equalTo(_sharedImageView.mas_bottom);
         make.height.mas_equalTo(45);
-//        make.bottom.mas_equalTo(self.contentView.mas_bottom);
     }];
 
     [self.contentView addSubview:self.lineView];
     [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_toolBarView.mas_bottom);
-        make.width.left.right.mas_equalTo(self.contentView);
+        make.left.mas_equalTo(self.contentView).mas_offset(10);
+        make.right.mas_equalTo(self.contentView).mas_offset(-10);
         make.height.mas_equalTo(1/CXMainScale);
-        make.bottom.mas_equalTo(self.contentView.mas_bottom);
+//        make.bottom.mas_equalTo(self.contentView.mas_bottom);
     }];
+    
+    [self.contentView addSubview:self.likedInfoView];
+    [_likedInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_lineView.mas_bottom);
+        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10);
+        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10);
+        make.bottom.mas_equalTo(self.contentView.mas_bottom);
+        make.height.mas_equalTo(30);
+    }];
+    
+    [_likedImgaeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(12);
+        make.left.mas_equalTo(_likedInfoView.mas_left);
+        make.centerY.mas_equalTo(_likedInfoView.mas_centerY);
+    }];
+    
+    [_likeNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(12);
+        make.left.mas_equalTo(_likedImgaeView.mas_right).mas_offset(4);
+        make.centerY.mas_equalTo(_likedInfoView.mas_centerY);
+    }];
+    
 }
 
 
@@ -157,6 +181,34 @@
         _toolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
     }
     return _toolBarView;
+}
+
+- (UIView *)likedInfoView{
+    if(!_likedInfoView){
+        _likedInfoView = [[UIView alloc] init];
+        [_likedInfoView addSubview:self.likedImgaeView];
+        [_likedInfoView addSubview:self.likeNumLabel];
+    }
+    return _likedInfoView;
+}
+
+- (UIImageView *)likedImgaeView{
+    if(!_likedImgaeView){
+        _likedImgaeView = [[UIImageView alloc] init];
+        _likedImgaeView.image = [UIImage imageNamed:@"comment_liked"];
+    }
+    return _likedImgaeView;
+}
+
+- (UILabel *)likeNumLabel{
+    if(!_likeNumLabel){
+        _likeNumLabel = [[UILabel alloc] init];
+        _likeNumLabel.numberOfLines = 1;
+        _likeNumLabel.text = @"100次赞";
+        _likeNumLabel.font = CXSystemBoldFont(12);
+        _likeNumLabel.textColor = CXBlackColor;
+    }
+    return _likeNumLabel;
 }
 
 //注：UITableView重用机制会出问题  解决方案如下:http://www.jianshu.com/p/70d6200b097a
