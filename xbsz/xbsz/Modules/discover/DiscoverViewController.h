@@ -12,5 +12,4 @@
 @interface DiscoverViewController :YZDisplayViewController
 
 
-
 @end

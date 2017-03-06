@@ -14,6 +14,7 @@
 
 #define  paddingX   (10)
 #define  wordsFont   CXSystemFont(12)
+#define  boldWordsFont  CXSystemBoldFont(12)
 
 @interface CampusTableViewCell ()
 
@@ -142,10 +143,6 @@
         make.bottom.mas_equalTo(self.contentView.mas_bottom);
     }];
     
-    
-    
-    
-    
 }
 
 
@@ -240,12 +237,6 @@
         _words = [[NSMutableAttributedString alloc] initWithString:@"嘻嘻"];
         _words.yy_font = wordsFont;
         _sharedWordsLabel.userInteractionEnabled = YES;
-        @weakify(self)
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            _note.isOpend = YES;
-            [weak_self autoSizeToFit];
-        }];
-        [_sharedWordsLabel addGestureRecognizer:tap];
         _sharedWordsLabel.numberOfLines = 0;
         _sharedWordsLabel.textVerticalAlignment = YYTextVerticalAlignmentTop;
         _sharedWordsLabel.attributedText = _words;
@@ -270,37 +261,58 @@
     return lineHeight;
 }
 
-- (void)autoSizeToFit{
-    CGRect labelRect = [_note.subject boundingRectWithSize:CGSizeMake(CXScreenWidth-2*paddingX, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:wordsFont} context:nil] ;
+- (void)autoWordsLabel{
+    [_words replaceCharactersInRange:[_words.string rangeOfString:_words.string] withAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: ",_note.user.nickName] attributes:@{NSFontAttributeName:boldWordsFont}]];
     
+    [_words appendAttributedString:[[NSAttributedString alloc] initWithString:_note.subject attributes:@{NSFontAttributeName:wordsFont}]];
+    
+    
+//    _words.yy_font = wordsFont;
+    
+    [_words yy_setTextHighlightRange:[_words.string rangeOfString:_note.user.nickName]
+                               color:nil
+                     backgroundColor:nil
+                           tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
+                               CXLog(@"您点击了用户名");
+                           }];
+    
+    [_words yy_setTextHighlightRange:[_words.string rangeOfString:_note.subject]
+                             color:nil
+                    backgroundColor:nil
+                          tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
+                               if(_note.isOpend)    return;
+                               _note.isOpend = YES;
+                               [self autoSizeToFit];
+                           }];
+    
+    [self autoSizeToFit];
+    
+    
+}
+
+- (void)autoSizeToFit{
+    
+    CGRect labelRect = [_words.string boundingRectWithSize:CGSizeMake(CXScreenWidth-2*paddingX, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:wordsFont} context:nil] ;
+
     NSInteger height = (int)CGRectGetHeight(labelRect);
     CXLog(@"UILabel高度:%ld",height);
     
-    _sharedWordsLabel.text = _note.subject;
+    _sharedWordsLabel.attributedText = _words;
     
     if(_note.isOpend == YES){
-       
-        
-        [UIView animateWithDuration:10 delay:0.3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            
-        } completion:^(BOOL finished) {
-            [_sharedWordsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(height+1);
-            }];
-            _sharedWordsLabel.userInteractionEnabled = NO;
-            [self.contentView layoutIfNeeded];
-            return;
-        }];
-
-    }
-    
-    if(height < 3*[self getLineHeight]){
-        _sharedWordsLabel.userInteractionEnabled = NO;
         [_sharedWordsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(height+1);
         }];
+        [self.contentView layoutIfNeeded];
+        return;
+    }
+    
+    if(height < 3*[self getLineHeight]){
+        [_sharedWordsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(height+1);
+        }];
+        _note.isOpend = YES;
     }else{
-        _sharedWordsLabel.userInteractionEnabled = YES;
         [_sharedWordsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo((int)(3*[self getLineHeight])+1);
         }];
@@ -348,9 +360,7 @@
      |YYWebImageOptionSetImageWithFadeAnimation];
     
     _nickNameLabel.text = model.user.nickName;
-    [self autoSizeToFit];
-    
-    
+    [self autoWordsLabel];
     
     CGFloat height = model.height;
     CGFloat width = model.width;

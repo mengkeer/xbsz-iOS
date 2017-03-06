@@ -64,8 +64,7 @@
     }];
     
     self.selectIndex = 0;
-    
-    
+    self.showFps = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,7 +94,8 @@
     vc3.title = @"动态";
     [self addChildViewController:vc3];
     
-    
 }
+
+
 
 @end

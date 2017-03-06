@@ -10,5 +10,7 @@
 
 @interface CXBaseViewController : UIViewController
 
+@property (nonatomic, strong) UILabel *fpsLabel;
+@property (nonatomic, assign) BOOL showFps;     //default  NO
 
 @end

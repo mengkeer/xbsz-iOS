@@ -34,9 +34,6 @@
     }];
     
     [self loadDataAtPageIndex:InitialLoadPage];
-    
-    
-   
 }
 
 - (void)didReceiveMemoryWarning {

@@ -18,6 +18,7 @@
 #define CXWhiteColor [UIColor whiteColor]
 #define CXBlackColor   ([UIColor blackColor])
 #define CXRedColor   [UIColor redColor]
+#define CXGreenColor   ([UIColor greenColor])
 #define CXBlueColor  [UIColor blueColor]
 #define CXClearColor [UIColor clearColor]
 #define CXLightGrayColor  [UIColor lightGrayColor]
