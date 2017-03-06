@@ -9,6 +9,11 @@
 #import "CampusTableViewCell.h"
 #import "ToolBarView.h"
 #import <YYImage/YYAnimatedImageView.h>
+#import <YYText/YYText.h>
+
+
+#define  paddingX   (10)
+#define  wordsFont   CXSystemFont(12)
 
 @interface CampusTableViewCell ()
 
@@ -28,10 +33,14 @@
 @property (nonatomic, strong) UIImageView *likedImgaeView;
 @property (nonatomic, strong) UILabel *likeNumLabel;        //显示点赞数量
 
-@property (nonatomic, strong) UILabel *sharedMessageLabel;          //用户分享时的留言
+@property (nonatomic, strong) YYLabel *sharedWordsLabel;          //用户分享时的留言
+@property (nonatomic, strong) NSMutableAttributedString *words;
+
 @property (nonatomic, strong) UILabel *moreReplyLabel;          //更多回复提示
 
 @property (nonatomic, strong) UILabel *dateLabel;       //发布日期
+
+@property (nonatomic, strong) CampusNote *note;
 
 
 @end
@@ -97,18 +106,18 @@
     [self.contentView addSubview:self.lineView];
     [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_toolBarView.mas_bottom);
-        make.left.mas_equalTo(self.contentView).mas_offset(10);
-        make.right.mas_equalTo(self.contentView).mas_offset(-10);
+        make.left.mas_equalTo(self.contentView).mas_offset(paddingX);
+        make.right.mas_equalTo(self.contentView).mas_offset(-paddingX);
         make.height.mas_equalTo(1/CXMainScale);
-//        make.bottom.mas_equalTo(self.contentView.mas_bottom);
     }];
     
+    //添加已点赞人数
     [self.contentView addSubview:self.likedInfoView];
     [_likedInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_lineView.mas_bottom);
-        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(10);
-        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-10);
-        make.bottom.mas_equalTo(self.contentView.mas_bottom);
+        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(paddingX);
+        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-paddingX);
+//        make.bottom.mas_equalTo(self.contentView.mas_bottom);
         make.height.mas_equalTo(30);
     }];
     
@@ -123,6 +132,19 @@
         make.left.mas_equalTo(_likedImgaeView.mas_right).mas_offset(4);
         make.centerY.mas_equalTo(_likedInfoView.mas_centerY);
     }];
+    
+    //添加用户发表图片时的留言
+    [self.contentView addSubview:self.sharedWordsLabel];
+    [_sharedWordsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_likedInfoView.mas_bottom);
+        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(paddingX);
+        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-paddingX);
+        make.bottom.mas_equalTo(self.contentView.mas_bottom);
+    }];
+    
+    
+    
+    
     
 }
 
@@ -161,7 +183,7 @@
 - (UILabel *)nickNameLabel{
     if(!_nickNameLabel){
         _nickNameLabel = [[UILabel alloc] init];
-        _nickNameLabel.font = CXSystemFont(12);
+        _nickNameLabel.font = wordsFont;
         _nickNameLabel.text = @"默认昵称";
         _nickNameLabel.textAlignment = NSTextAlignmentLeft;
         _nickNameLabel.textColor = CXBlackColor;
@@ -211,6 +233,105 @@
     return _likeNumLabel;
 }
 
+- (YYLabel *)sharedWordsLabel{
+    if(!_sharedWordsLabel){
+        _sharedWordsLabel = [[YYLabel alloc] init];
+        
+        _words = [[NSMutableAttributedString alloc] initWithString:@"嘻嘻"];
+        _words.yy_font = wordsFont;
+        _sharedWordsLabel.userInteractionEnabled = YES;
+        @weakify(self)
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+            _note.isOpend = YES;
+            [weak_self autoSizeToFit];
+        }];
+        [_sharedWordsLabel addGestureRecognizer:tap];
+        _sharedWordsLabel.numberOfLines = 0;
+        _sharedWordsLabel.textVerticalAlignment = YYTextVerticalAlignmentTop;
+        _sharedWordsLabel.attributedText = _words;
+        _sharedWordsLabel.textColor = CXBlackColor;
+//        _sharedWordsLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        
+        [self addSeeMoreButton];
+
+    }
+    return _sharedWordsLabel;
+}
+
+//获取一行的高度
+- (CGFloat)getLineHeight{
+    static CGFloat lineHeight = 0;
+    static dispatch_once_t once;
+    //只执行一次
+    dispatch_once(&once, ^{
+        CGSize size  = [@"嘻嘻" sizeWithAttributes:@{NSFontAttributeName:wordsFont}];
+        lineHeight = size.height;
+    });
+    return lineHeight;
+}
+
+- (void)autoSizeToFit{
+    CGRect labelRect = [_note.subject boundingRectWithSize:CGSizeMake(CXScreenWidth-2*paddingX, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:wordsFont} context:nil] ;
+    
+    NSInteger height = (int)CGRectGetHeight(labelRect);
+    CXLog(@"UILabel高度:%ld",height);
+    
+    _sharedWordsLabel.text = _note.subject;
+    
+    if(_note.isOpend == YES){
+       
+        
+        [UIView animateWithDuration:10 delay:0.3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+        } completion:^(BOOL finished) {
+            [_sharedWordsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.mas_equalTo(height+1);
+            }];
+            _sharedWordsLabel.userInteractionEnabled = NO;
+            [self.contentView layoutIfNeeded];
+            return;
+        }];
+
+    }
+    
+    if(height < 3*[self getLineHeight]){
+        _sharedWordsLabel.userInteractionEnabled = NO;
+        [_sharedWordsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(height+1);
+        }];
+    }else{
+        _sharedWordsLabel.userInteractionEnabled = YES;
+        [_sharedWordsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo((int)(3*[self getLineHeight])+1);
+        }];
+    }
+}
+
+#pragma mark private method
+- (void)addSeeMoreButton{
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"...更多"];
+    
+    YYTextHighlight *hi = [YYTextHighlight new];
+    [hi setColor:[UIColor colorWithRed:0.578 green:0.790 blue:1.000 alpha:1.000]];
+    @weakify(self);
+    hi.tapAction = ^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect) {
+        _note.isOpend = YES;
+        [weak_self autoSizeToFit];
+    };
+    
+    [text yy_setColor:CXLightGrayColor range:[text.string rangeOfString:@"更多"]];
+    [text yy_setTextHighlight:hi range:[text.string rangeOfString:@"更多"]];
+    text.yy_font = _sharedWordsLabel.font;
+    
+    YYLabel *seeMore = [YYLabel new];
+    seeMore.attributedText = text;
+    [seeMore sizeToFit];
+    
+    NSAttributedString *truncationToken = [NSAttributedString yy_attachmentStringWithContent:seeMore contentMode:UIViewContentModeCenter attachmentSize:seeMore.size alignToFont:text.yy_font alignment:YYTextVerticalAlignmentCenter];
+    _sharedWordsLabel.truncationToken = truncationToken;
+}
+
+
 //注：UITableView重用机制会出问题  解决方案如下:http://www.jianshu.com/p/70d6200b097a
 //注：感谢stackoverflowe的解决方案  http://stackoverflow.com/questions/31963753/how-to-set-constraint-in-a-reusable-uitableviewcell?answertab=votes#tab-top
 
@@ -219,12 +340,16 @@
 //    _sharedImageView.contentMode = UIViewContentModeScaleAspectFill;
 
 //    [_sharedImageView setImage:[YYImage imageNamed:@"cell_gif.gif"]];
+    _note = model;
+    
     NSURL *url = [NSURL URLWithString:model.imageUrl];
     
     [_sharedImageView yy_setImageWithURL:url options:YYWebImageOptionProgressiveBlur
      |YYWebImageOptionSetImageWithFadeAnimation];
     
     _nickNameLabel.text = model.user.nickName;
+    [self autoSizeToFit];
+    
     
     
     CGFloat height = model.height;

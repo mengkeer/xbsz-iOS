@@ -27,5 +27,7 @@
 
 @property (nonatomic, assign) NSInteger likes;
 
+@property (nonatomic, assign) BOOL isOpend;     //帖子是否展开过
+
 
 @end

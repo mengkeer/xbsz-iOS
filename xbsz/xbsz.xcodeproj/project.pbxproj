@@ -566,7 +566,6 @@
 			children = (
 				AD7F88FD1E595B29009603E4 /* launch */,
 				AD7F892D1E5976FE009603E4 /* study */,
-				AD7F88E31E595B29009603E4 /* discover */,
 				AD7F89011E595B29009603E4 /* mine */,
 			);
 			path = Modules;
@@ -581,7 +580,8 @@
 				05C21ACE1E5BE5AD00D7BA6C /* dynamic */,
 				05C21AD01E5BE5AD00D7BA6C /* recommend */,
 			);
-			path = discover;
+			name = discover;
+			path = ../discover;
 			sourceTree = "<group>";
 		};
 		AD7F88FD1E595B29009603E4 /* launch */ = {
@@ -670,6 +670,7 @@
 		AD7F892D1E5976FE009603E4 /* study */ = {
 			isa = PBXGroup;
 			children = (
+				AD7F88E31E595B29009603E4 /* discover */,
 				AD7F892E1E5976FE009603E4 /* Controllers */,
 				AD7F89311E5976FE009603E4 /* sub */,
 			);
@@ -767,6 +768,7 @@
 				AD30B1351DFAC900000189DD /* Resources */,
 				4B48811561B2B3A5498B68C2 /* [CP] Embed Pods Frameworks */,
 				E4CCFF9DD67370DB7E57F32E /* [CP] Copy Pods Resources */,
+				B89C90F8F59F7F3D69432094 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -866,6 +868,21 @@
 			inputPaths = (
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B89C90F8F59F7F3D69432094 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
