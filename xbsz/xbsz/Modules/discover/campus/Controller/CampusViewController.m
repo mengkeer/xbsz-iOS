@@ -148,6 +148,12 @@
         case CellActionTypeMore:
             CXLog(@"点击了更多");
             break;
+        case CellActionTypeUserInfo:
+            CXLog(@"进入个人信息详细页面");
+            break;
+        case CellActionTypeComment:
+            CXLog(@"进入评论列表界面");
+            break;
         default:
             break;
     }

@@ -161,9 +161,6 @@
         make.bottom.mas_equalTo(self.contentView.mas_bottom);
     }];
     
-    
-    
-    
 }
 
 
@@ -182,6 +179,9 @@
     if(!_userInfoView){
         _userInfoView = [[UIView alloc] init];
         _userInfoView.backgroundColor = CXWhiteColor;
+        _userInfoView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoUserInfo)];
+        [_userInfoView addGestureRecognizer:tap];
         [_userInfoView addSubview:self.headBtn];
         [_userInfoView addSubview:self.nickNameLabel];
         [_userInfoView addSubview:self.dateLabel];
@@ -196,7 +196,7 @@
           [_headBtn setImage:[[[UIImage imageNamed:@"avatar1.jpg"] imageByResizeToSize:CGSizeMake(36, 36) contentMode:UIViewContentModeScaleToFill] imageByRoundCornerRadius:18] forState:UIControlStateNormal];
         _headBtn.layer.cornerRadius = 18;
         _headBtn.clipsToBounds = YES;
-//        [_headBtn addTarget:self action:@selector(clickLogin) forControlEvents:UIControlEventTouchUpInside];          //暂时取消头像按钮  击事件
+        [_headBtn addTarget:self action:@selector(gotoUserInfo) forControlEvents:UIControlEventTouchUpInside];          //暂时取消头像按钮  击事件
     }
     return _headBtn;
 }
@@ -293,6 +293,11 @@
         _moreReplyLabel.font = CXSystemFont(13);
         _moreReplyLabel.textColor = CXLightGrayColor;
         _moreReplyLabel.textAlignment = NSTextAlignmentLeft;
+        _moreReplyLabel.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+            _actionBlock(_note,CellActionTypeComment);
+        }];
+        [_moreReplyLabel addGestureRecognizer:tap];
     }
     return _moreReplyLabel;
 }
@@ -350,7 +355,7 @@
                                color:nil
                      backgroundColor:nil
                            tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
-                               CXLog(@"您点击了用户名");
+                               [self gotoUserInfo];
                            }];
     
     [_words yy_setTextHighlightRange:[_words.string rangeOfString:_note.subject]
@@ -396,8 +401,8 @@
 
 #pragma mark private method
 
-- (void)clickLike{
-    CXLog(@"点击了喜欢按钮");
+- (void)gotoUserInfo{
+    if(_actionBlock)    _actionBlock(_note,CellActionTypeUserInfo);
 }
 
 - (void)addSeeMoreButton{
