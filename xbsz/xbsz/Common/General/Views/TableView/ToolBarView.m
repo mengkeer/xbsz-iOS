@@ -14,6 +14,8 @@
 @property (nonatomic, strong) UIButton *replyBtn;
 @property (nonatomic, strong) UIButton *shareBtn;
 @property (nonatomic, strong) UIButton *moreBtn;
+@property (nonatomic, strong) id model;
+@property (nonatomic, copy) ToolBarActionBlock actionBlock;
 
 @end
 
@@ -66,16 +68,14 @@
         make.right.mas_equalTo(self.mas_right).mas_offset(-4);
         make.centerY.mas_equalTo(self.mas_centerY);
     }];
-    
-    
-    
-    
+
 }
 
 - (UIButton *)likeBtn{
     if(!_likeBtn){
         _likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_likeBtn setImage:[UIImage imageNamed:@"comment_like"] forState:UIControlStateNormal];
+        [_likeBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _likeBtn;
 }
@@ -84,6 +84,7 @@
     if(!_replyBtn){
         _replyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_replyBtn setImage:[UIImage imageNamed:@"comment"] forState:UIControlStateNormal];
+        [_replyBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _replyBtn;
 }
@@ -92,6 +93,7 @@
     if(!_shareBtn){
         _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_shareBtn setImage:[UIImage imageNamed:@"comment_share"] forState:UIControlStateNormal];
+        [_shareBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _shareBtn;
 }
@@ -100,12 +102,29 @@
     if(!_moreBtn){
         _moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_moreBtn setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+        [_moreBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _moreBtn;
 }
+#pragma  mark private method
+
+- (void)btnClicked:(UIButton *)sender{
+    if(!_actionBlock)   return;
+    if(sender == self.likeBtn){
+        _actionBlock(self,self.model,ToolBarClickTypeLike);
+    }else if(sender == self.replyBtn){
+         _actionBlock(self,self.model,ToolBarClickTypeReply);
+    }else if(sender == self.shareBtn){
+         _actionBlock(self,self.model,ToolBarClickTypeShare);
+    }else if(sender == self.moreBtn){
+         _actionBlock(self,self.model,ToolBarClickTypeMore);
+    }
+}
 
 - (void)updateUIWithModel:(id) model action:(ToolBarActionBlock)actionBlock{
-    
+    _actionBlock = actionBlock;
+    _model = model;
 }
+
 
 @end

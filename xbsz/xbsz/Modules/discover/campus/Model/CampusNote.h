@@ -21,13 +21,17 @@
 
 @property (nonatomic, assign) NSInteger height;         //图片高度
 
+@property (nonatomic, assign) NSUInteger total;         //评论总数
+
 @property (nonatomic, copy) NSString *subject;
 
 @property (nonatomic, copy) NSString *locaiton;         //发帖地址
 
 @property (nonatomic, assign) NSInteger likes;
 
-@property (nonatomic, assign) BOOL isOpend;     //帖子是否展开过
+@property (nonatomic, assign) BOOL isOpend;     //帖子主题是否展开过
+
+@property (nonatomic, copy) NSString *create_at;
 
 
 @end

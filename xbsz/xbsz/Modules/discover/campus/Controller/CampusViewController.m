@@ -96,7 +96,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CXLog(@"%@",[NSString stringWithFormat:@"点击了第%ld行",indexPath.row])
+//    CXLog(@"%@",[NSString stringWithFormat:@"点击了第%lu行",indexPath.row])
 }
 
 
@@ -119,14 +119,38 @@
 //    CXLog(@"显示第%ld行",indexPath.row);
     CampusTableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    cell = [tableView cellForRowAtIndexPath:indexPath];
     if(cell == nil){
         cell = [[CampusTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
     }
     
-    [cell updateUIWithModel:[_noteList.notes objectAtIndex:indexPath.row]];
+    [cell updateUIWithModel:[_noteList.notes objectAtIndex:indexPath.row] action:^(id model, CellActionType actionType) {
+        [self handleAction:actionType model:(CampusNote *)model];
+    }];
 
     return cell;
+}
+
+#pragma mark private method
+
+- (void)handleAction:(CellActionType )type model:(CampusNote *)model{
+    switch (type) {
+        case CellActionTypeLike:
+            CXLog(@"点击了喜欢");
+            break;
+        case CellActionTypeReply:
+            CXLog(@"点击了回复");
+            break;
+        case CellActionTypeShare:
+            CXLog(@"点击了分享");
+            break;
+        case CellActionTypeMore:
+            CXLog(@"点击了更多");
+            break;
+        default:
+            break;
+    }
 }
 
 

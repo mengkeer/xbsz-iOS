@@ -11,6 +11,7 @@
 
 #import "UIViewController+CXInit.h"
 #import "UIView+CXAdd.h"
+#import "NSString+CXAdd.h"
 
 
 #endif /* CategoryImport_h */

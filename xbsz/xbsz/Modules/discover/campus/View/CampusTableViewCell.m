@@ -43,6 +43,8 @@
 
 @property (nonatomic, strong) CampusNote *note;
 
+@property (nonatomic, copy) CellActionBlock actionBlock;
+
 
 @end
 
@@ -85,8 +87,14 @@
     
     [_nickNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(_headBtn.mas_right).mas_offset(15);
-        make.centerY.mas_equalTo(_userInfoView.mas_centerY);
+        make.centerY.mas_equalTo(_userInfoView.mas_centerY).mas_offset(-8);
     }];
+    
+    [_dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(_headBtn.mas_right).mas_offset(15);
+        make.centerY.mas_equalTo(_userInfoView.mas_centerY).mas_offset(8);
+    }];
+    
     
     [self.contentView addSubview:self.sharedImageView];
 
@@ -140,8 +148,21 @@
         make.top.mas_equalTo(_likedInfoView.mas_bottom);
         make.left.mas_equalTo(self.contentView.mas_left).mas_offset(paddingX);
         make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-paddingX);
+//        if(_note.total <= 0)      make.bottom.mas_equalTo(self.contentView.mas_bottom);         //判断<=0只是为了容错性更高 并无他意  实际上 total不应该为负数
+    }];
+//    if(_note.total <= 0)     return;
+    //更多回复Label
+    [self.contentView addSubview:self.moreReplyLabel];
+    [_moreReplyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_sharedWordsLabel.mas_bottom);
+        make.height.mas_equalTo(24);
+        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(paddingX);
+        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-paddingX);
         make.bottom.mas_equalTo(self.contentView.mas_bottom);
     }];
+    
+    
+    
     
 }
 
@@ -155,12 +176,15 @@
     }
     return _lineView;
 }
+
+
 - (UIView *)userInfoView{
     if(!_userInfoView){
         _userInfoView = [[UIView alloc] init];
         _userInfoView.backgroundColor = CXWhiteColor;
         [_userInfoView addSubview:self.headBtn];
         [_userInfoView addSubview:self.nickNameLabel];
+        [_userInfoView addSubview:self.dateLabel];
     }
     return _userInfoView;
 }
@@ -180,13 +204,25 @@
 - (UILabel *)nickNameLabel{
     if(!_nickNameLabel){
         _nickNameLabel = [[UILabel alloc] init];
-        _nickNameLabel.font = wordsFont;
+        _nickNameLabel.font = CXSystemFont(13);
         _nickNameLabel.text = @"默认昵称";
         _nickNameLabel.textAlignment = NSTextAlignmentLeft;
         _nickNameLabel.textColor = CXBlackColor;
     }
     return _nickNameLabel;
 }
+
+- (UILabel *)dateLabel{
+    if(!_dateLabel){
+        _dateLabel = [[UILabel alloc] init];
+        _dateLabel.font = CXSystemFont(11);
+        _dateLabel.textColor = CXLightGrayColor;
+        _dateLabel.textAlignment = NSTextAlignmentLeft;
+        _dateLabel.text = @"20:00";
+    }
+    return _dateLabel;
+}
+
 
 - (UIImageView *)sharedImageView{
     if(!_sharedImageView){
@@ -205,6 +241,7 @@
 - (UIView *)likedInfoView{
     if(!_likedInfoView){
         _likedInfoView = [[UIView alloc] init];
+        _likedInfoView.layer.masksToBounds = YES;
         [_likedInfoView addSubview:self.likedImgaeView];
         [_likedInfoView addSubview:self.likeNumLabel];
     }
@@ -249,6 +286,17 @@
     return _sharedWordsLabel;
 }
 
+- (UILabel *)moreReplyLabel{
+    if(!_moreReplyLabel){
+        _moreReplyLabel = [[UILabel alloc] init];
+        _moreReplyLabel.text = @"";
+        _moreReplyLabel.font = CXSystemFont(13);
+        _moreReplyLabel.textColor = CXLightGrayColor;
+        _moreReplyLabel.textAlignment = NSTextAlignmentLeft;
+    }
+    return _moreReplyLabel;
+}
+
 //获取一行的高度
 - (CGFloat)getLineHeight{
     static CGFloat lineHeight = 0;
@@ -259,6 +307,35 @@
         lineHeight = size.height;
     });
     return lineHeight;
+}
+
+- (void)autoShowOrHide{
+    if(_note.likes <= 0 ){
+        [_likedInfoView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0);
+        }];
+    }else{
+        [_likedInfoView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(30);
+        }];
+    }
+    
+    if(_note.subject == nil || [_note.subject isEqualToString:@""]){
+        [_sharedWordsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0);
+        }];
+    }
+    
+    if(_note.total <= 0){
+        [_moreReplyLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0);
+        }];
+    }else{
+        [_moreReplyLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(24);
+        }];
+    }
+    
 }
 
 - (void)autoWordsLabel{
@@ -294,16 +371,14 @@
     
     CGRect labelRect = [_words.string boundingRectWithSize:CGSizeMake(CXScreenWidth-2*paddingX, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:wordsFont} context:nil] ;
 
-    NSInteger height = (int)CGRectGetHeight(labelRect);
-    CXLog(@"UILabel高度:%ld",height);
-    
+    NSInteger height = (int)CGRectGetHeight(labelRect); 
     _sharedWordsLabel.attributedText = _words;
     
     if(_note.isOpend == YES){
         [_sharedWordsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(height+1);
         }];
-        [self.contentView layoutIfNeeded];
+//        [self.contentView layoutIfNeeded];  
         return;
     }
     
@@ -320,6 +395,11 @@
 }
 
 #pragma mark private method
+
+- (void)clickLike{
+    CXLog(@"点击了喜欢按钮");
+}
+
 - (void)addSeeMoreButton{
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"...更多"];
     
@@ -347,20 +427,27 @@
 //注：UITableView重用机制会出问题  解决方案如下:http://www.jianshu.com/p/70d6200b097a
 //注：感谢stackoverflowe的解决方案  http://stackoverflow.com/questions/31963753/how-to-set-constraint-in-a-reusable-uitableviewcell?answertab=votes#tab-top
 
-- (void)updateUIWithModel:(CampusNote *)model{
+- (void)updateUIWithModel:(CampusNote *)model action:(CellActionBlock)actiobBlock{
 //    [_sharedImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"cell%ld.jpg",index]]];
 //    _sharedImageView.contentMode = UIViewContentModeScaleAspectFill;
 
 //    [_sharedImageView setImage:[YYImage imageNamed:@"cell_gif.gif"]];
+    
+    _actionBlock = actiobBlock;
     _note = model;
     
     NSURL *url = [NSURL URLWithString:model.imageUrl];
     
     [_sharedImageView yy_setImageWithURL:url options:YYWebImageOptionProgressiveBlur
-     |YYWebImageOptionSetImageWithFadeAnimation];
+     |YYWebImageOptionSetImageWithFadeAnimation];                               //更新分享图片url
     
-    _nickNameLabel.text = model.user.nickName;
-    [self autoWordsLabel];
+    _nickNameLabel.text = model.user.nickName;                                //更新昵称
+    _dateLabel.text = [_note.create_at convertToLocalTime];
+    _likeNumLabel.text = [NSString stringWithFormat:@"%ld次赞",_note.likes];
+    _moreReplyLabel.text = [NSString stringWithFormat:@"所有%lu条评论",_note.total];
+    [self autoShowOrHide];
+    if(_note.subject != nil && [_note.subject isNotBlank])          [self autoWordsLabel];                  //更新帖子主题
+    
     
     CGFloat height = model.height;
     CGFloat width = model.width;
@@ -370,6 +457,25 @@
           make.height.mas_equalTo(CXScreenWidth * height/width).priority(750);
     }];
     
+    [self.toolBarView updateUIWithModel:model action:^(ToolBarView *view, id model, ToolBarActionType actionType) {
+        switch (actionType) {
+            case ToolBarClickTypeLike:
+                _actionBlock(model,CellActionTypeLike);
+                break;
+            case ToolBarClickTypeReply:
+                _actionBlock(model,CellActionTypeReply);
+                break;
+            case ToolBarClickTypeShare:
+                 _actionBlock(model,CellActionTypeShare);
+                break;
+            case ToolBarClickTypeMore:
+                _actionBlock(model,CellActionTypeMore);
+                break;
+            default:
+                break;
+        }
+    }];
 }
+
 
 @end

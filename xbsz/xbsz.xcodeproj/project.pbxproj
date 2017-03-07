@@ -17,6 +17,8 @@
 		0518ECC61E6037C60018F432 /* notes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC51E6037C60018F432 /* notes.json */; };
 		0518ECC81E603E480018F432 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC71E603E480018F432 /* user.json */; };
 		0518ECCA1E6041E10018F432 /* note.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC91E6041E10018F432 /* note.json */; };
+		0538AAA51E6E91C400E7A51D /* CampusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA41E6E91C400E7A51D /* CampusComment.m */; };
+		0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */; };
 		05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21ACD1E5BE5AD00D7BA6C /* DiscoverViewController.m */; };
 		05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21AD31E5BE5AD00D7BA6C /* RecommendViewController.m */; };
 		05C21ADF1E5C23C000D7BA6C /* ToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21ADE1E5C23C000D7BA6C /* ToolBarView.m */; };
@@ -88,6 +90,10 @@
 		0518ECC51E6037C60018F432 /* notes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notes.json; sourceTree = "<group>"; };
 		0518ECC71E603E480018F432 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		0518ECC91E6041E10018F432 /* note.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = note.json; sourceTree = "<group>"; };
+		0538AAA31E6E91C400E7A51D /* CampusComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusComment.h; sourceTree = "<group>"; };
+		0538AAA41E6E91C400E7A51D /* CampusComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusComment.m; sourceTree = "<group>"; };
+		0538AAA61E6E9BDC00E7A51D /* NSString+CXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXAdd.h"; sourceTree = "<group>"; };
+		0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXAdd.m"; sourceTree = "<group>"; };
 		05C21ACC1E5BE5AD00D7BA6C /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		05C21ACD1E5BE5AD00D7BA6C /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		05C21AD21E5BE5AD00D7BA6C /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
@@ -217,6 +223,8 @@
 				0518ECB21E6012AD0018F432 /* CampusNote.m */,
 				0518ECBA1E601B790018F432 /* CampusNoteList.h */,
 				0518ECBB1E601B790018F432 /* CampusNoteList.m */,
+				0538AAA31E6E91C400E7A51D /* CampusComment.h */,
+				0538AAA41E6E91C400E7A51D /* CampusComment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -463,6 +471,7 @@
 		AD7F88B41E595A5E009603E4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AD7F88BB1E595A5E009603E4 /* Controllers */,
 				AD7F88B51E595A5E009603E4 /* General */,
 				AD7F88CC1E595A5E009603E4 /* Import */,
 				AD7F88D11E595A5E009603E4 /* Macro */,
@@ -474,7 +483,6 @@
 		AD7F88B51E595A5E009603E4 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				AD7F88BB1E595A5E009603E4 /* Controllers */,
 				AD7F88C61E595A5E009603E4 /* Models */,
 				AD7F88C81E595A5E009603E4 /* Views */,
 				AD7F88B61E595A5E009603E4 /* Categories */,
@@ -489,6 +497,8 @@
 				AD7F88B81E595A5E009603E4 /* UIView+CXAdd.m */,
 				AD7F88B91E595A5E009603E4 /* UIViewController+CXInit.h */,
 				AD7F88BA1E595A5E009603E4 /* UIViewController+CXInit.m */,
+				0538AAA61E6E9BDC00E7A51D /* NSString+CXAdd.h */,
+				0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -507,7 +517,8 @@
 				AD7F88C41E595A5E009603E4 /* CXTabBarController.h */,
 				AD7F88C51E595A5E009603E4 /* CXTabBarController.m */,
 			);
-			path = Controllers;
+			name = Controllers;
+			path = General/Controllers;
 			sourceTree = "<group>";
 		};
 		AD7F88C61E595A5E009603E4 /* Models */ = {
@@ -767,6 +778,7 @@
 				AD30B1351DFAC900000189DD /* Resources */,
 				307CC26FF8CA25173107802B /* [CP] Embed Pods Frameworks */,
 				698A88AB35DD151759A5FD66 /* [CP] Copy Pods Resources */,
+				F42ABE0E1425C6385EE5EEC4 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -888,6 +900,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F42ABE0E1425C6385EE5EEC4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -905,6 +932,7 @@
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
 				0518ECB61E60138A0018F432 /* CXUser.m in Sources */,
+				0538AAA51E6E91C400E7A51D /* CampusComment.m in Sources */,
 				AD7F882C1E594D5E009603E4 /* YZFlowLayout.m in Sources */,
 				AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */,
 				AD7F893B1E5976FE009603E4 /* CourseViewController.m in Sources */,
@@ -926,6 +954,7 @@
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
+				0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */,
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,
 				AD7F891A1E595B29009603E4 /* CXLaunchViewController.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,
