@@ -84,7 +84,7 @@
 - (UIButton *)replyBtn{
     if(!_replyBtn){
         _replyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_replyBtn setImage:[UIImage imageNamed:@"comment"] forState:UIControlStateNormal];
+        [_replyBtn setImage:[UIImage imageNamed:@"comment_reply"] forState:UIControlStateNormal];
         [_replyBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _replyBtn;
@@ -102,7 +102,7 @@
 - (UIButton *)moreBtn{
     if(!_moreBtn){
         _moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_moreBtn setImage:[UIImage imageNamed:@"more"] forState:UIControlStateNormal];
+        [_moreBtn setImage:[UIImage imageNamed:@"comment_more"] forState:UIControlStateNormal];
         [_moreBtn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _moreBtn;
@@ -110,10 +110,13 @@
 #pragma  mark private method
 
 - (void)btnClicked:(UIButton *)sender{
-    if(!_actionBlock || _status == YES)   return;
+    if(!_actionBlock || _status == YES){
+        _actionBlock(self,ToolBarClickTypeLike);
+        return;
+    }
     if(sender == self.likeBtn){
         
-        [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+        [_likeBtn setImage:[UIImage imageNamed:@"liked"] forState:UIControlStateNormal];
         [_likeBtn.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(32);
         }];
@@ -121,7 +124,11 @@
         [UIView animateWithDuration:1.f delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:8.0f options:0 animations:^{
             [_likeBtn layoutIfNeeded];
         } completion:^(BOOL finished) {
-            
+            [_likeBtn setImage:[UIImage imageNamed:@"comment_liked"] forState:UIControlStateNormal];
+            [_likeBtn.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.width.height.mas_equalTo(24);
+            }];
+            _status = YES;              //点击后将其设为YES
         }];
         _actionBlock(self,ToolBarClickTypeLike);
     }else if(sender == self.replyBtn){
@@ -136,14 +143,9 @@
 - (void)updateUIByStatus:(BOOL) status action:(ToolBarActionBlock)actionBlock{
     _actionBlock = actionBlock;
     _status = status;
+//    CXLog(@"点击状态为%d",status);
     if(status == YES){
-        [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
-//        [_likeBtn.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
-//            make.width.height.mas_equalTo(32);
-//            make.edges.mas_equalTo(_likeBtn);
-//        }];
-//        [_likeBtn layoutIfNeeded];
-
+        [_likeBtn setImage:[UIImage imageNamed:@"comment_liked"] forState:UIControlStateNormal];
     }else{
         [_likeBtn setImage:[UIImage imageNamed:@"comment_like"] forState:UIControlStateNormal];
     }

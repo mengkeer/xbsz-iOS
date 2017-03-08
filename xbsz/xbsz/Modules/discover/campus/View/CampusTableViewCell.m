@@ -251,7 +251,7 @@
 - (UIImageView *)likedImgaeView{
     if(!_likedImgaeView){
         _likedImgaeView = [[UIImageView alloc] init];
-        _likedImgaeView.image = [UIImage imageNamed:@"comment_liked"];
+        _likedImgaeView.image = [UIImage imageNamed:@"like"];
     }
     return _likedImgaeView;
 }
