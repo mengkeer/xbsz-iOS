@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSMutableArray *notes;
 
+@property (nonatomic, strong) NSMutableDictionary *likes;
+
 @end

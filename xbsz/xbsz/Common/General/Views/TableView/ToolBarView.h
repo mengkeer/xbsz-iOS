@@ -16,11 +16,11 @@ typedef NS_ENUM(NSInteger,ToolBarActionType){
 };
 
 @class ToolBarView;
-typedef   void(^ToolBarActionBlock)(ToolBarView *view , id model , ToolBarActionType actionType);
+typedef   void(^ToolBarActionBlock)(ToolBarView *view , ToolBarActionType actionType);
 
 
 @interface ToolBarView : UIView
 
-- (void)updateUIWithModel:(id) model action:(ToolBarActionBlock)actionBlock;
+- (void)updateUIByStatus:(BOOL)status action:(ToolBarActionBlock)actionBlock;             //根据是否点过赞来更新状态
 
 @end

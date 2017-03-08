@@ -23,6 +23,6 @@ typedef void(^CellActionBlock)(id model , CellActionType actionType);
 
 @interface CampusTableViewCell : UITableViewCell
 
-- (void)updateUIWithModel:(CampusNote *)model action:(CellActionBlock)actiobBlock;
+- (void)updateUIWithModel:(CampusNote *)model hasLiked:(BOOL)liked action:(CellActionBlock)actiobBlock;
 
 @end

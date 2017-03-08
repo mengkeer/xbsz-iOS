@@ -14,8 +14,9 @@
 @property (nonatomic, strong) UIButton *replyBtn;
 @property (nonatomic, strong) UIButton *shareBtn;
 @property (nonatomic, strong) UIButton *moreBtn;
-@property (nonatomic, strong) id model;
-@property (nonatomic, copy) ToolBarActionBlock actionBlock;
+@property (nonatomic, copy)   ToolBarActionBlock actionBlock;
+
+@property (nonatomic, assign) BOOL status;      //点赞按钮可点击状态
 
 @end
 
@@ -109,22 +110,43 @@
 #pragma  mark private method
 
 - (void)btnClicked:(UIButton *)sender{
-    if(!_actionBlock)   return;
+    if(!_actionBlock || _status == YES)   return;
     if(sender == self.likeBtn){
-        _actionBlock(self,self.model,ToolBarClickTypeLike);
+        
+        [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+        [_likeBtn.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(32);
+        }];
+        
+        [UIView animateWithDuration:1.f delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:8.0f options:0 animations:^{
+            [_likeBtn layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            
+        }];
+        _actionBlock(self,ToolBarClickTypeLike);
     }else if(sender == self.replyBtn){
-         _actionBlock(self,self.model,ToolBarClickTypeReply);
+         _actionBlock(self,ToolBarClickTypeReply);
     }else if(sender == self.shareBtn){
-         _actionBlock(self,self.model,ToolBarClickTypeShare);
+         _actionBlock(self,ToolBarClickTypeShare);
     }else if(sender == self.moreBtn){
-         _actionBlock(self,self.model,ToolBarClickTypeMore);
+         _actionBlock(self,ToolBarClickTypeMore);
     }
 }
 
-- (void)updateUIWithModel:(id) model action:(ToolBarActionBlock)actionBlock{
+- (void)updateUIByStatus:(BOOL) status action:(ToolBarActionBlock)actionBlock{
     _actionBlock = actionBlock;
-    _model = model;
+    _status = status;
+    if(status == YES){
+        [_likeBtn setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+//        [_likeBtn.imageView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.width.height.mas_equalTo(32);
+//            make.edges.mas_equalTo(_likeBtn);
+//        }];
+//        [_likeBtn layoutIfNeeded];
+
+    }else{
+        [_likeBtn setImage:[UIImage imageNamed:@"comment_like"] forState:UIControlStateNormal];
+    }
 }
-
-
+    
 @end

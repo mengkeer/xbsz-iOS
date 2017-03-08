@@ -34,7 +34,7 @@
      设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
      */
     [self setUpContentViewFrame:^(UIView *contentView) {
-        contentView.frame = CGRectMake(0, 20, CXScreenWidth, CXScreenHeight - 20-49);
+        contentView.frame = CGRectMake(0, 20, CXScreenWidth, CXScreenHeight - CXStatusBarHeight);
         contentView.backgroundColor = CXMainColor;
     }];
     

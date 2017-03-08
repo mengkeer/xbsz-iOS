@@ -18,17 +18,10 @@
 
 @implementation CXTabBarController
 
-+ (void)initialize{
-    UITabBar *tabbar = [UITabBar appearance];
-    tabbar.barTintColor = CXWhiteColor;
-    [tabbar setTranslucent:NO];
-    tabbar.tintColor = CXMainColor;
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tabBar.tintColor = CXMainColor;
+    self.tabBar.translucent = YES;
     self.delegate = self;
     
     [self addChildVC:[CXStudyViewController controller] title:@"学习" image:@"tab_home" selectedImage:@"tab_home_s"];

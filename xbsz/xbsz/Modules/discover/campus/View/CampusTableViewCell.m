@@ -432,12 +432,7 @@
 //注：UITableView重用机制会出问题  解决方案如下:http://www.jianshu.com/p/70d6200b097a
 //注：感谢stackoverflowe的解决方案  http://stackoverflow.com/questions/31963753/how-to-set-constraint-in-a-reusable-uitableviewcell?answertab=votes#tab-top
 
-- (void)updateUIWithModel:(CampusNote *)model action:(CellActionBlock)actiobBlock{
-//    [_sharedImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"cell%ld.jpg",index]]];
-//    _sharedImageView.contentMode = UIViewContentModeScaleAspectFill;
-
-//    [_sharedImageView setImage:[YYImage imageNamed:@"cell_gif.gif"]];
-    
+- (void)updateUIWithModel:(CampusNote *)model hasLiked:(BOOL)liked action:(CellActionBlock)actiobBlock{
     _actionBlock = actiobBlock;
     _note = model;
     
@@ -462,11 +457,12 @@
           make.height.mas_equalTo(CXScreenWidth * height/width).priority(750);
     }];
     
-    [self.toolBarView updateUIWithModel:model action:^(ToolBarView *view, id model, ToolBarActionType actionType) {
+    [self.toolBarView updateUIByStatus:liked action:^(ToolBarView *view, ToolBarActionType actionType) {
         switch (actionType) {
-            case ToolBarClickTypeLike:
+            case ToolBarClickTypeLike:{
                 _actionBlock(model,CellActionTypeLike);
                 break;
+            }
             case ToolBarClickTypeReply:
                 _actionBlock(model,CellActionTypeReply);
                 break;

@@ -11,7 +11,6 @@
 #import "CampusTableViewCell.h"
 #import "CXUser.h"
 #import "CampusNote.h"
-
 #import "CampusNoteList.h"
 
 @interface CampusViewController ()<CXBaseTableViewDelegate>
@@ -124,8 +123,9 @@
     if(cell == nil){
         cell = [[CampusTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
     }
-    
-    [cell updateUIWithModel:[_noteList.notes objectAtIndex:indexPath.row] action:^(id model, CellActionType actionType) {
+    CampusNote *note = [_noteList.notes objectAtIndex:indexPath.row];
+    BOOL hasLiked = [[_noteList.likes objectForKey:note.noteID] isEqualToString:@"1"] ? YES:NO;
+    [cell updateUIWithModel:[_noteList.notes objectAtIndex:indexPath.row] hasLiked:hasLiked action:^(id model, CellActionType actionType) {
         [self handleAction:actionType model:(CampusNote *)model];
     }];
 
@@ -137,7 +137,12 @@
 - (void)handleAction:(CellActionType )type model:(CampusNote *)model{
     switch (type) {
         case CellActionTypeLike:
-            CXLog(@"点击了喜欢");
+            if([[_noteList.likes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
+                CXLog(@"已经点过赞了");
+            }else{
+                CXLog(@"开始点赞");
+                [_noteList.likes setValue:@"1" forKey:model.noteID];
+            }
             break;
         case CellActionTypeReply:
             CXLog(@"点击了回复");
