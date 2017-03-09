@@ -7,7 +7,7 @@
 //
 
 #import "CampusTableViewCell.h"
-#import "ToolBarView.h"
+#import "CommentToolBarView.h"
 #import <YYImage/YYAnimatedImageView.h>
 #import <YYText/YYText.h>
 
@@ -26,7 +26,7 @@
 
 //用户分享的图片
 @property (nonatomic, strong) UIImageView *sharedImageView;
-@property (nonatomic, strong) ToolBarView *toolBarView;      //点赞 留言 分享 更多等功能
+@property (nonatomic, strong) CommentToolBarView *toolBarView;      //点赞 留言 分享 更多等功能
 
 @property (nonatomic, strong) UIView *lineView;     //工具栏下的分割线
 
@@ -231,9 +231,9 @@
     return _sharedImageView;
 }
 
-- (ToolBarView *)toolBarView{
+- (CommentToolBarView *)toolBarView{
     if(!_toolBarView){
-        _toolBarView = [[ToolBarView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
+        _toolBarView = [[CommentToolBarView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
     }
     return _toolBarView;
 }
@@ -457,7 +457,7 @@
           make.height.mas_equalTo(CXScreenWidth * height/width).priority(750);
     }];
     
-    [self.toolBarView updateUIByStatus:liked action:^(ToolBarView *view, ToolBarActionType actionType) {
+    [self.toolBarView updateUIByStatus:liked action:^(CommentToolBarView *view, ToolBarActionType actionType) {
         switch (actionType) {
             case ToolBarClickTypeLike:{
                 _actionBlock(model,CellActionTypeLike);

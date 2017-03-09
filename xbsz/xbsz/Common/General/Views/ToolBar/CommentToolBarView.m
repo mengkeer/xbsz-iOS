@@ -6,9 +6,10 @@
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "ToolBarView.h"
+#import "CommentToolBarView.h"
 
-@interface ToolBarView ()
+
+@interface CommentToolBarView ()
 
 @property (nonatomic, strong) UIButton *likeBtn;
 @property (nonatomic, strong) UIButton *replyBtn;
@@ -20,7 +21,7 @@
 
 @end
 
-@implementation ToolBarView
+@implementation CommentToolBarView
 
 - (instancetype)init{
     self = [super init];

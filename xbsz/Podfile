@@ -16,4 +16,5 @@ target 'xbsz' do
     pod 'MBProgressHUD', '~> 1.0.0'
     pod 'YYText'
     pod 'YYWebImage'
+    pod 'MBProgressHUD', '~> 1.0.0'
 end

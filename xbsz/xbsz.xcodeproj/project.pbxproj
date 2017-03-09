@@ -21,12 +21,13 @@
 		0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */; };
 		05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21ACD1E5BE5AD00D7BA6C /* DiscoverViewController.m */; };
 		05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21AD31E5BE5AD00D7BA6C /* RecommendViewController.m */; };
-		05C21ADF1E5C23C000D7BA6C /* ToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21ADE1E5C23C000D7BA6C /* ToolBarView.m */; };
 		05C21AE11E5C35E100D7BA6C /* cell1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05C21AE01E5C35E100D7BA6C /* cell1.jpg */; };
 		05C21AE41E5C46CC00D7BA6C /* cell2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05C21AE21E5C46CC00D7BA6C /* cell2.jpg */; };
 		05C21AE51E5C46CC00D7BA6C /* cell3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05C21AE31E5C46CC00D7BA6C /* cell3.jpg */; };
 		05C21AE81E5C470D00D7BA6C /* cell4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05C21AE61E5C470D00D7BA6C /* cell4.jpg */; };
 		05C21AE91E5C470D00D7BA6C /* cell5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05C21AE71E5C470D00D7BA6C /* cell5.jpg */; };
+		05F472F81E7131890085345F /* CommentToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472F71E7131890085345F /* CommentToolBarView.m */; };
+		05F472FB1E7132640085345F /* ShareToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472FA1E7132640085345F /* ShareToolBarView.m */; };
 		122D53F7EF84200FA67CEF45 /* Pods_xbsz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3678D0730108C67FA8E2B /* Pods_xbsz.framework */; };
 		AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F4821E5B235F008346BD /* CXBaseTableView.m */; };
 		AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F4871E5B23C9008346BD /* CXBaseCollectionView.m */; };
@@ -98,13 +99,15 @@
 		05C21ACD1E5BE5AD00D7BA6C /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		05C21AD21E5BE5AD00D7BA6C /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
 		05C21AD31E5BE5AD00D7BA6C /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
-		05C21ADD1E5C23C000D7BA6C /* ToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarView.h; sourceTree = "<group>"; };
-		05C21ADE1E5C23C000D7BA6C /* ToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarView.m; sourceTree = "<group>"; };
 		05C21AE01E5C35E100D7BA6C /* cell1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cell1.jpg; sourceTree = "<group>"; };
 		05C21AE21E5C46CC00D7BA6C /* cell2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cell2.jpg; path = avatar/cell2.jpg; sourceTree = "<group>"; };
 		05C21AE31E5C46CC00D7BA6C /* cell3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cell3.jpg; path = avatar/cell3.jpg; sourceTree = "<group>"; };
 		05C21AE61E5C470D00D7BA6C /* cell4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cell4.jpg; sourceTree = "<group>"; };
 		05C21AE71E5C470D00D7BA6C /* cell5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cell5.jpg; sourceTree = "<group>"; };
+		05F472F61E7131890085345F /* CommentToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentToolBarView.h; sourceTree = "<group>"; };
+		05F472F71E7131890085345F /* CommentToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentToolBarView.m; sourceTree = "<group>"; };
+		05F472F91E7132640085345F /* ShareToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToolBarView.h; sourceTree = "<group>"; };
+		05F472FA1E7132640085345F /* ShareToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareToolBarView.m; sourceTree = "<group>"; };
 		56685A326DAFBF051912917D /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
 		9A122C04542BE79F00F6874B /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
 		9AA3678D0730108C67FA8E2B /* Pods_xbsz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xbsz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +297,17 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		05F472F51E7131260085345F /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				05F472F61E7131890085345F /* CommentToolBarView.h */,
+				05F472F71E7131890085345F /* CommentToolBarView.m */,
+				05F472F91E7132640085345F /* ShareToolBarView.h */,
+				05F472FA1E7132640085345F /* ShareToolBarView.m */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
 		3336B0567B9ED9017433A6EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,8 +339,6 @@
 			children = (
 				AD29F4811E5B235F008346BD /* CXBaseTableView.h */,
 				AD29F4821E5B235F008346BD /* CXBaseTableView.m */,
-				05C21ADD1E5C23C000D7BA6C /* ToolBarView.h */,
-				05C21ADE1E5C23C000D7BA6C /* ToolBarView.m */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -542,6 +554,7 @@
 		AD7F88C81E595A5E009603E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				05F472F51E7131260085345F /* ToolBar */,
 				AD29F47F1E5B22B0008346BD /* CollectionView */,
 				AD29F4801E5B22B0008346BD /* TableView */,
 				AD2BE4E81E5980CB00D0B0ED /* SectionButton */,
@@ -777,6 +790,7 @@
 				AD30B1351DFAC900000189DD /* Resources */,
 				891FCAC998F9EBA6CD0057C4 /* [CP] Embed Pods Frameworks */,
 				DA471E90F67E3AEF2CC25DA8 /* [CP] Copy Pods Resources */,
+				B47F9A267120174E3E1280C5 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -883,6 +897,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B47F9A267120174E3E1280C5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DA471E90F67E3AEF2CC25DA8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -909,8 +938,8 @@
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
 				AD7F89211E595B29009603E4 /* UserInfoViewController.m in Sources */,
+				05F472FB1E7132640085345F /* ShareToolBarView.m in Sources */,
 				AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */,
-				05C21ADF1E5C23C000D7BA6C /* ToolBarView.m in Sources */,
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
@@ -936,6 +965,7 @@
 				AD2BE4EB1E5980CB00D0B0ED /* CXSectionButton.m in Sources */,
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
+				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
 				0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */,
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,

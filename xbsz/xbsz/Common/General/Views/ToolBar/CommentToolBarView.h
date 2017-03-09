@@ -15,11 +15,11 @@ typedef NS_ENUM(NSInteger,ToolBarActionType){
     ToolBarClickTypeMore = 1<<3         //更多
 };
 
-@class ToolBarView;
-typedef   void(^ToolBarActionBlock)(ToolBarView *view , ToolBarActionType actionType);
+@class CommentToolBarView;
+typedef   void(^ToolBarActionBlock)(CommentToolBarView *view , ToolBarActionType actionType);
 
 
-@interface ToolBarView : UIView
+@interface CommentToolBarView : UIView
 
 - (void)updateUIByStatus:(BOOL)status action:(ToolBarActionBlock)actionBlock;             //根据是否点过赞来更新状态
 
