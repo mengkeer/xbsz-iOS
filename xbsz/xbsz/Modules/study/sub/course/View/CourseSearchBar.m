@@ -10,6 +10,8 @@
 
 @interface CourseSearchBar ()
 
+@property (nonatomic, copy) ActionBlock actionBlock;
+
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *tilteLabel;
@@ -83,17 +85,22 @@
     if(!_btn){
         _btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_btn setImage:[UIImage imageNamed:@"course_search"] forState:UIControlStateNormal];
-        [_btn setTitle:@"搜索科目" forState:UIControlStateNormal];
+        [_btn setTitle:@"搜索课程" forState:UIControlStateNormal];
         _btn.titleLabel.font = CXSystemFont(12);
         [_btn setImageEdgeInsets:UIEdgeInsetsMake(0.0, -5, 0.0, 0.0)];
         [_btn setTitleColor:CXLightGrayColor forState:UIControlStateNormal];
+        [_btn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btn;
 }
 
 
+- (void)setClicked:(ActionBlock)action{
+    _actionBlock = action;
+}
+
 - (void)click{
-    CXLog(@"点击跳转到搜索栏");
+    if(_actionBlock)    _actionBlock();
 }
 
 @end

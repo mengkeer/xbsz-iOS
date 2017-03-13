@@ -11,15 +11,21 @@
 #import "CourseSearchBar.h"
 #import "Course.h"
 #import "CourseList.h"
+#import "PYTempViewController.h"                //注意 要删除
+
+
+#import "PYSearch.h"
 
 static int numberOfItems = 3;           //每行的cell个数
 
 static NSString *const cellID = @"CollectionCellID";
 static NSString *const headerCellID = @"CollectionHeaderCellID";
+static NSString *const footerCellID = @"CollectionFooterCellID";
 
-#define gap (CX_IS_IPHONE6PLUS ? 20 : 15)
 
-@interface CourseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+#define gap (CX_IS_IPHONE6PLUS ? 20 : CX_IS_IPHONE6 ?  15 : 14)
+
+@interface CourseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PYSearchViewControllerDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -63,9 +69,10 @@ static NSString *const headerCellID = @"CollectionHeaderCellID";
     
     
     [_collectionView reloadData];
-    
-    
+
     CXLog(@"开始加载校园动态");
+    
+
 }
 
 
@@ -84,21 +91,17 @@ static NSString *const headerCellID = @"CollectionHeaderCellID";
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
         [_collectionView registerClass:[CourseCollectionViewCell class] forCellWithReuseIdentifier:cellID];
+        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerCellID];
+          [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerCellID];
         
         _collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
         
         [self.collectionView addSubview:self.searchBar];
-        
-//        _collectionView.contentOffset = CGPointMake(0, 0);
-        
-    
+ 
     }
     return _collectionView;
 }
-//
-//- (void)viewDidLayoutSubviews{
-//    _collectionView.contentOffset = CGPointMake(0, 0);
-//}
+
 
 - (void)viewWillLayoutSubviews{
     _collectionView.contentOffset = CGPointMake(0, 0);
@@ -106,9 +109,35 @@ static NSString *const headerCellID = @"CollectionHeaderCellID";
 
 - (CourseSearchBar *)searchBar{
     if(!_searchBar){
+        @weakify(self);
         _searchBar = [[CourseSearchBar alloc] initWithFrame:CGRectMake(gap, -30, CXScreenWidth-2*gap, 30)];
+        [_searchBar setClicked:^{
+            [weak_self gotoSearchView];
+        }];
     }
     return _searchBar;
+}
+
+
+#pragma mark - action method
+
+- (void)gotoSearchView{
+    // 1. 创建热门搜索
+    NSArray *hotSeaches = @[@"密码学", @"网络攻防", @"数据结构", @"线性代数", @"算法" , @"C++程序设计", @"数据库", @"操作系统", @"Linux系统",@"iOS程序设计"];
+    // 2. 创建控制器
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索课程" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        // 开始搜索执行以下代码
+        // 如：跳转到指定控制器
+        [searchViewController.navigationController pushViewController:[[PYTempViewController alloc] init] animated:YES];
+    }];
+    // 3. 设置风格
+    searchViewController.hotSearchStyle = PYHotSearchStyleColorfulTag;
+    searchViewController.searchHistoryStyle = PYSearchHistoryStyleDefault;
+    // 4. 设置代理
+    searchViewController.delegate = self;
+    // 5. 跳转到搜索控制器
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -139,20 +168,43 @@ static NSString *const headerCellID = @"CollectionHeaderCellID";
     return UIEdgeInsetsMake(gap, gap, 0, gap);
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-//    return CGSizeMake(CXScreenWidth, 40);
-//}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    return CGSizeZero;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    
+    
+    NSInteger rows = [_courseList.courses count] / numberOfItems +1;
+    if([_courseList.courses count]%3 == 0)  rows -= 1;
+    
+    if(section == rows - 1){
+        
+//        BOOL isPlus =  CX_IS_IPHONE6PLUS;
+        NSUInteger singalHeight = (cellHeight + gap);
+        
+        NSInteger height = CGRectGetHeight(self.contentView.frame) - singalHeight*rows;;
+        if(height < 0){
+            height = -(-height % singalHeight);
+            height = singalHeight + height;
+        }
+        
+        
+        return CGSizeMake(CXScreenWidth, height);
+    }
+    return CGSizeZero;
+}
+
 
 #pragma mark - UICollectionDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-//    NSInteger nums = [_courseList.courses count]/numberOfItems +1;
-//    return [_courseList.courses count] % 3 == 0 ? nums-1 : nums;
-    return 2;
+    NSInteger nums = [_courseList.courses count]/numberOfItems +1;
+    return [_courseList.courses count] % 3 == 0 ? nums-1 : nums;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    if([_courseList.courses count] > (section+1)*numberOfItems){
+    if([_courseList.courses count] >= (section+1)*numberOfItems){
         return numberOfItems;
     }else{
         return [_courseList.courses count]%numberOfItems;
@@ -170,6 +222,38 @@ static NSString *const headerCellID = @"CollectionHeaderCellID";
     return NO;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    UICollectionReusableView *reusableView = nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+        UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerCellID forIndexPath:indexPath];
+        reusableView = header;
+    }
+    reusableView.backgroundColor = [UIColor greenColor];
+    if (kind == UICollectionElementKindSectionFooter){
+        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerCellID forIndexPath:indexPath];
+        footerview.backgroundColor = [UIColor clearColor];
+        reusableView = footerview;
+    }
+    return reusableView;
+}
+
+
+#pragma mark - PYSearchViewControllerDelegate
+- (void)searchViewController:(PYSearchViewController *)searchViewController searchTextDidChange:(UISearchBar *)seachBar searchText:(NSString *)searchText{
+    if (searchText.length) { // 与搜索条件再搜索
+        // 根据条件发送查询（这里模拟搜索）
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // 搜索完毕
+            // 显示建议搜索结果
+            NSMutableArray *searchSuggestionsM = [NSMutableArray array];
+            for (int i = 0; i < arc4random_uniform(5) + 10; i++) {
+                NSString *searchSuggestion = [NSString stringWithFormat:@"搜索建议 %d", i];
+                [searchSuggestionsM addObject:searchSuggestion];
+            }
+            // 返回
+            searchViewController.searchSuggestions = searchSuggestionsM;
+        });
+    }
+}
 
 
 

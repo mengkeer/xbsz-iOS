@@ -43,7 +43,6 @@
 		05C21AE91E5C470D00D7BA6C /* cell5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 05C21AE71E5C470D00D7BA6C /* cell5.jpg */; };
 		05F472F81E7131890085345F /* CommentToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472F71E7131890085345F /* CommentToolBarView.m */; };
 		05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472FA1E7132640085345F /* MoreToolBarView.m */; };
-		122D53F7EF84200FA67CEF45 /* Pods_xbsz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA3678D0730108C67FA8E2B /* Pods_xbsz.framework */; };
 		AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F4821E5B235F008346BD /* CXBaseTableView.m */; };
 		AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F4871E5B23C9008346BD /* CXBaseCollectionView.m */; };
 		AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F48B1E5B244E008346BD /* UIAlertController+CXAlertController.m */; };
@@ -75,6 +74,14 @@
 		AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F892B1E59624A009603E4 /* CXNetworkMonitoring.m */; };
 		AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89391E5976FE009603E4 /* ExerciseViewController.m */; };
 		AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F893E1E597742009603E4 /* CXStudyViewController.m */; };
+		ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */; };
+		ADB7462D1E76DA8B00644812 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADB746201E76DA8B00644812 /* PYSearch.bundle */; };
+		ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746231E76DA8B00644812 /* PYSearchConst.m */; };
+		ADB7462F1E76DA8B00644812 /* PYSearchSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746251E76DA8B00644812 /* PYSearchSuggestionViewController.m */; };
+		ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746271E76DA8B00644812 /* PYSearchViewController.m */; };
+		ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */; };
+		ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */; };
+		ADB746351E76DEF700644812 /* PYTempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746341E76DEF700644812 /* PYTempViewController.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
 		ADF042451E0192EF00171489 /* avatar11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423A1E0192EF00171489 /* avatar11.jpg */; };
@@ -86,6 +93,7 @@
 		ADF0424B1E0192EF00171489 /* avatar7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042401E0192EF00171489 /* avatar7.jpg */; };
 		ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042411E0192EF00171489 /* avatar8.jpg */; };
 		ADF0424D1E0192EF00171489 /* avatar9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042421E0192EF00171489 /* avatar9.jpg */; };
+		B544DD9C6BED6D38367A354E /* Pods_xbsz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F334E72EB504A0D75561AD /* Pods_xbsz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,9 +150,9 @@
 		05F472F71E7131890085345F /* CommentToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentToolBarView.m; sourceTree = "<group>"; };
 		05F472F91E7132640085345F /* MoreToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreToolBarView.h; sourceTree = "<group>"; };
 		05F472FA1E7132640085345F /* MoreToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreToolBarView.m; sourceTree = "<group>"; };
-		56685A326DAFBF051912917D /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
-		9A122C04542BE79F00F6874B /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
-		9AA3678D0730108C67FA8E2B /* Pods_xbsz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xbsz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A46E81103195277B4A62305 /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
+		4F56F2BD79B68A06A818D5F6 /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
+		64F334E72EB504A0D75561AD /* Pods_xbsz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xbsz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD29F4811E5B235F008346BD /* CXBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseTableView.h; sourceTree = "<group>"; };
 		AD29F4821E5B235F008346BD /* CXBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBaseTableView.m; sourceTree = "<group>"; };
 		AD29F4861E5B23C9008346BD /* CXBaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseCollectionView.h; sourceTree = "<group>"; };
@@ -217,6 +225,22 @@
 		AD7F89391E5976FE009603E4 /* ExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseViewController.m; sourceTree = "<group>"; };
 		AD7F893D1E597742009603E4 /* CXStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXStudyViewController.h; sourceTree = "<group>"; };
 		AD7F893E1E597742009603E4 /* CXStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXStudyViewController.m; sourceTree = "<group>"; };
+		ADB7461E1E76DA8B00644812 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
+		ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
+		ADB746201E76DA8B00644812 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
+		ADB746211E76DA8B00644812 /* PYSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearch.h; sourceTree = "<group>"; };
+		ADB746221E76DA8B00644812 /* PYSearchConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchConst.h; sourceTree = "<group>"; };
+		ADB746231E76DA8B00644812 /* PYSearchConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchConst.m; sourceTree = "<group>"; };
+		ADB746241E76DA8B00644812 /* PYSearchSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchSuggestionViewController.h; sourceTree = "<group>"; };
+		ADB746251E76DA8B00644812 /* PYSearchSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchSuggestionViewController.m; sourceTree = "<group>"; };
+		ADB746261E76DA8B00644812 /* PYSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchViewController.h; sourceTree = "<group>"; };
+		ADB746271E76DA8B00644812 /* PYSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchViewController.m; sourceTree = "<group>"; };
+		ADB746281E76DA8B00644812 /* UIColor+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PYSearchExtension.h"; sourceTree = "<group>"; };
+		ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYSearchExtension.m"; sourceTree = "<group>"; };
+		ADB7462A1E76DA8B00644812 /* UIView+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYSearchExtension.h"; sourceTree = "<group>"; };
+		ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
+		ADB746331E76DEF700644812 /* PYTempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PYTempViewController.h; path = xbsz/Modules/study/sub/course/controller/PYTempViewController.h; sourceTree = SOURCE_ROOT; };
+		ADB746341E76DEF700644812 /* PYTempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PYTempViewController.m; path = xbsz/Modules/study/sub/course/controller/PYTempViewController.m; sourceTree = SOURCE_ROOT; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
 		ADF042391E0192EF00171489 /* avatar10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar10.jpg; sourceTree = "<group>"; };
 		ADF0423A1E0192EF00171489 /* avatar11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar11.jpg; sourceTree = "<group>"; };
@@ -235,7 +259,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				122D53F7EF84200FA67CEF45 /* Pods_xbsz.framework in Frameworks */,
+				B544DD9C6BED6D38367A354E /* Pods_xbsz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +316,8 @@
 			children = (
 				05B4D0651E763676005DC854 /* CourseViewController.h */,
 				05B4D0661E763676005DC854 /* CourseViewController.m */,
+				ADB746331E76DEF700644812 /* PYTempViewController.h */,
+				ADB746341E76DEF700644812 /* PYTempViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -387,19 +413,10 @@
 			path = ToolBar;
 			sourceTree = "<group>";
 		};
-		3336B0567B9ED9017433A6EB /* Pods */ = {
+		420878909325D3D378E160D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				56685A326DAFBF051912917D /* Pods-xbsz.debug.xcconfig */,
-				9A122C04542BE79F00F6874B /* Pods-xbsz.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		4C1C64BB8F73E3AA1C1416A9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9AA3678D0730108C67FA8E2B /* Pods_xbsz.framework */,
+				64F334E72EB504A0D75561AD /* Pods_xbsz.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -452,8 +469,8 @@
 			children = (
 				AD30B1391DFAC900000189DD /* xbsz */,
 				AD30B1381DFAC900000189DD /* Products */,
-				3336B0567B9ED9017433A6EB /* Pods */,
-				4C1C64BB8F73E3AA1C1416A9 /* Frameworks */,
+				D3BD84C37CCBC8BE6D50C5F9 /* Pods */,
+				420878909325D3D378E160D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -514,6 +531,7 @@
 		AD7F881A1E594D5E009603E4 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				ADB7461D1E76DA8B00644812 /* PYSearch */,
 				AD7F881B1E594D5E009603E4 /* YYKit */,
 				AD7F881E1E594D5E009603E4 /* YZDisplayViewController */,
 			);
@@ -801,6 +819,7 @@
 		AD7F89311E5976FE009603E4 /* sub */ = {
 			isa = PBXGroup;
 			children = (
+				ADB746191E76D69700644812 /* search */,
 				AD7F89321E5976FE009603E4 /* course */,
 				AD7F89361E5976FE009603E4 /* exercise */,
 			);
@@ -834,6 +853,58 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		ADB746191E76D69700644812 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				ADB7461A1E76D69700644812 /* Controller */,
+				ADB7461B1E76D69700644812 /* Model */,
+				ADB7461C1E76D69700644812 /* View */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		ADB7461A1E76D69700644812 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ADB7461B1E76D69700644812 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ADB7461C1E76D69700644812 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ADB7461D1E76DA8B00644812 /* PYSearch */ = {
+			isa = PBXGroup;
+			children = (
+				ADB7461E1E76DA8B00644812 /* NSBundle+PYSearchExtension.h */,
+				ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */,
+				ADB746201E76DA8B00644812 /* PYSearch.bundle */,
+				ADB746211E76DA8B00644812 /* PYSearch.h */,
+				ADB746221E76DA8B00644812 /* PYSearchConst.h */,
+				ADB746231E76DA8B00644812 /* PYSearchConst.m */,
+				ADB746241E76DA8B00644812 /* PYSearchSuggestionViewController.h */,
+				ADB746251E76DA8B00644812 /* PYSearchSuggestionViewController.m */,
+				ADB746261E76DA8B00644812 /* PYSearchViewController.h */,
+				ADB746271E76DA8B00644812 /* PYSearchViewController.m */,
+				ADB746281E76DA8B00644812 /* UIColor+PYSearchExtension.h */,
+				ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */,
+				ADB7462A1E76DA8B00644812 /* UIView+PYSearchExtension.h */,
+				ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */,
+			);
+			path = PYSearch;
+			sourceTree = "<group>";
+		};
 		ADF042371E0192EF00171489 /* avatar */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,6 +923,15 @@
 			path = avatar;
 			sourceTree = "<group>";
 		};
+		D3BD84C37CCBC8BE6D50C5F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F56F2BD79B68A06A818D5F6 /* Pods-xbsz.debug.xcconfig */,
+				2A46E81103195277B4A62305 /* Pods-xbsz.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -859,13 +939,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD30B14E1DFAC900000189DD /* Build configuration list for PBXNativeTarget "xbsz" */;
 			buildPhases = (
-				7A7FD5257EAECF0E3D57783C /* [CP] Check Pods Manifest.lock */,
+				8B9F1DEC42FED84AE59F593E /* [CP] Check Pods Manifest.lock */,
 				AD30B1331DFAC900000189DD /* Sources */,
 				AD30B1341DFAC900000189DD /* Frameworks */,
 				AD30B1351DFAC900000189DD /* Resources */,
-				891FCAC998F9EBA6CD0057C4 /* [CP] Embed Pods Frameworks */,
-				DA471E90F67E3AEF2CC25DA8 /* [CP] Copy Pods Resources */,
-				B47F9A267120174E3E1280C5 /* Embed Pods Frameworks */,
+				E5EF6C2BFF0924F2F35A048C /* [CP] Embed Pods Frameworks */,
+				DE95F1B319AAECC104F42BC9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -937,6 +1016,7 @@
 				05B4D07C1E7671EC005DC854 /* course7.png in Resources */,
 				05B4D07D1E7671EC005DC854 /* course8.png in Resources */,
 				05B4D0771E7671EC005DC854 /* course2.png in Resources */,
+				ADB7462D1E76DA8B00644812 /* PYSearch.bundle in Resources */,
 				0518ECC61E6037C60018F432 /* notes.json in Resources */,
 				05B4D0761E7671EC005DC854 /* course1.png in Resources */,
 				05C21AE81E5C470D00D7BA6C /* cell4.jpg in Resources */,
@@ -952,7 +1032,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7A7FD5257EAECF0E3D57783C /* [CP] Check Pods Manifest.lock */ = {
+		8B9F1DEC42FED84AE59F593E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -967,37 +1047,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		891FCAC998F9EBA6CD0057C4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B47F9A267120174E3E1280C5 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DA471E90F67E3AEF2CC25DA8 /* [CP] Copy Pods Resources */ = {
+		DE95F1B319AAECC104F42BC9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1012,6 +1062,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E5EF6C2BFF0924F2F35A048C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1024,6 +1089,7 @@
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
 				AD7F89211E595B29009603E4 /* UserInfoViewController.m in Sources */,
 				05B4D0801E7675FA005DC854 /* Course.m in Sources */,
+				ADB746351E76DEF700644812 /* PYTempViewController.m in Sources */,
 				05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */,
 				AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */,
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,
@@ -1040,13 +1106,17 @@
 				AD7F89221E595B29009603E4 /* SetItemView.m in Sources */,
 				AD7F89281E596036009603E4 /* main.m in Sources */,
 				AD7F891B1E595B29009603E4 /* InformViewController.m in Sources */,
+				ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */,
 				0518ECB31E6012AD0018F432 /* CampusNote.m in Sources */,
+				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
 				05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */,
 				AD7F891E1E595B29009603E4 /* ResetViewController.m in Sources */,
+				ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */,
 				AD7F88DF1E595A5E009603E4 /* CXTabBarController.m in Sources */,
 				AD7F882B1E594D5E009603E4 /* YZDisplayViewController.m in Sources */,
 				05B4D08C1E76A1D2005DC854 /* CourseList.m in Sources */,
+				ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */,
 				AD7F891F1E595B29009603E4 /* SetViewController.m in Sources */,
 				AD7F882A1E594D5E009603E4 /* YZDisplayTitleLabel.m in Sources */,
 				AD2BE4EB1E5980CB00D0B0ED /* CXSectionButton.m in Sources */,
@@ -1057,6 +1127,7 @@
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
 				0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */,
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,
+				ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */,
 				AD7F891A1E595B29009603E4 /* CXLaunchViewController.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,
 				AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */,
@@ -1064,6 +1135,7 @@
 				05B4D0691E763676005DC854 /* CourseViewController.m in Sources */,
 				0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */,
 				AD7F88DE1E595A5E009603E4 /* CXPushViewController.m in Sources */,
+				ADB7462F1E76DA8B00644812 /* PYSearchSuggestionViewController.m in Sources */,
 				0518ECBC1E601B790018F432 /* CampusNoteList.m in Sources */,
 				05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */,
 			);
@@ -1168,7 +1240,7 @@
 		};
 		AD30B14F1DFAC900000189DD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56685A326DAFBF051912917D /* Pods-xbsz.debug.xcconfig */;
+			baseConfigurationReference = 4F56F2BD79B68A06A818D5F6 /* Pods-xbsz.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1201,7 +1273,7 @@
 		};
 		AD30B1501DFAC900000189DD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A122C04542BE79F00F6874B /* Pods-xbsz.release.xcconfig */;
+			baseConfigurationReference = 2A46E81103195277B4A62305 /* Pods-xbsz.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;

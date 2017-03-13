@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef void (^ActionBlock)();
+
 @interface CourseSearchBar : UIView
+
+- (void)setClicked:(ActionBlock)action;
 
 @end
