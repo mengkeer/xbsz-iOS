@@ -9,16 +9,13 @@
 #import "CourseCollectionViewCell.h"
 #import "Course.h"
 
-
 @interface CourseCollectionViewCell ()
-
 
 @property (nonatomic, strong) YYAnimatedImageView *imageView;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
 @property (nonatomic, strong) UILabel *semesterLabel;
-
 
 @end
 
@@ -73,6 +70,7 @@
 - (YYAnimatedImageView *)imageView{
     if(!_imageView){
         _imageView = [[YYAnimatedImageView alloc] init];
+        _imageView.userInteractionEnabled = YES;
         _imageView.layer.cornerRadius = 4;
         _imageView.clipsToBounds = YES;
     }
@@ -112,8 +110,8 @@
      |YYWebImageOptionSetImageWithFadeAnimation];
 }
 
-
-
-
+- (void)registerTouch:(id)delegate{
+    [delegate registerForPreviewingWithDelegate:delegate sourceView:_imageView];
+}
 
 @end

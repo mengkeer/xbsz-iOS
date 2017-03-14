@@ -18,10 +18,9 @@
 
 @implementation CXBaseViewController
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
-    //    self.navigationController.navigationBar.hidden = YES;
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
 }

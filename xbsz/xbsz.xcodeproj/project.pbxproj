@@ -82,6 +82,8 @@
 		ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */; };
 		ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */; };
 		ADB746351E76DEF700644812 /* PYTempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746341E76DEF700644812 /* PYTempViewController.m */; };
+		ADB746381E7706AE00644812 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746371E7706AE00644812 /* CourseDetailViewController.m */; };
+		ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7463A1E77116500644812 /* CXWhitePushViewController.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
 		ADF042451E0192EF00171489 /* avatar11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423A1E0192EF00171489 /* avatar11.jpg */; };
@@ -241,6 +243,10 @@
 		ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
 		ADB746331E76DEF700644812 /* PYTempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PYTempViewController.h; path = xbsz/Modules/study/sub/course/controller/PYTempViewController.h; sourceTree = SOURCE_ROOT; };
 		ADB746341E76DEF700644812 /* PYTempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PYTempViewController.m; path = xbsz/Modules/study/sub/course/controller/PYTempViewController.m; sourceTree = SOURCE_ROOT; };
+		ADB746361E7706AE00644812 /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDetailViewController.h; path = xbsz/Modules/study/sub/course/controller/CourseDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		ADB746371E7706AE00644812 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDetailViewController.m; path = xbsz/Modules/study/sub/course/controller/CourseDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		ADB746391E77116500644812 /* CXWhitePushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXWhitePushViewController.h; sourceTree = "<group>"; };
+		ADB7463A1E77116500644812 /* CXWhitePushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXWhitePushViewController.m; sourceTree = "<group>"; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
 		ADF042391E0192EF00171489 /* avatar10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar10.jpg; sourceTree = "<group>"; };
 		ADF0423A1E0192EF00171489 /* avatar11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar11.jpg; sourceTree = "<group>"; };
@@ -318,6 +324,8 @@
 				05B4D0661E763676005DC854 /* CourseViewController.m */,
 				ADB746331E76DEF700644812 /* PYTempViewController.h */,
 				ADB746341E76DEF700644812 /* PYTempViewController.m */,
+				ADB746361E7706AE00644812 /* CourseDetailViewController.h */,
+				ADB746371E7706AE00644812 /* CourseDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -636,6 +644,8 @@
 				AD7F88C31E595A5E009603E4 /* CXPushViewController.m */,
 				AD7F88C41E595A5E009603E4 /* CXTabBarController.h */,
 				AD7F88C51E595A5E009603E4 /* CXTabBarController.m */,
+				ADB746391E77116500644812 /* CXWhitePushViewController.h */,
+				ADB7463A1E77116500644812 /* CXWhitePushViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1085,6 +1095,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
+				ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */,
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
 				AD7F89211E595B29009603E4 /* UserInfoViewController.m in Sources */,
@@ -1107,6 +1118,7 @@
 				AD7F89281E596036009603E4 /* main.m in Sources */,
 				AD7F891B1E595B29009603E4 /* InformViewController.m in Sources */,
 				ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */,
+				ADB746381E7706AE00644812 /* CourseDetailViewController.m in Sources */,
 				0518ECB31E6012AD0018F432 /* CampusNote.m in Sources */,
 				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,

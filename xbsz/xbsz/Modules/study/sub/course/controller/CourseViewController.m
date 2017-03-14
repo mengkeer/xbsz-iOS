@@ -12,7 +12,7 @@
 #import "Course.h"
 #import "CourseList.h"
 #import "PYTempViewController.h"                //注意 要删除
-
+#import "CourseDetailViewController.h"
 
 #import "PYSearch.h"
 
@@ -25,13 +25,15 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 #define gap (CX_IS_IPHONE6PLUS ? 20 : CX_IS_IPHONE6 ?  15 : 14)
 
-@interface CourseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PYSearchViewControllerDelegate>
+@interface CourseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PYSearchViewControllerDelegate,UIViewControllerPreviewingDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) CourseSearchBar *searchBar;
 
 @property (nonatomic, strong) CourseList  *courseList;
+
+@property (nonatomic, strong) YYAnimatedImageView *imageView;
 
 
 @end
@@ -59,20 +61,20 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 - (void)loadData{
-
+    
     
     NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"courses.json"];
     NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
     
     _courseList = [CourseList yy_modelWithJSON:jsonStr];
-
+    
     
     
     [_collectionView reloadData];
-
+    
     CXLog(@"开始加载校园动态");
     
-
+    
 }
 
 
@@ -92,12 +94,12 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         _collectionView.showsHorizontalScrollIndicator = NO;
         [_collectionView registerClass:[CourseCollectionViewCell class] forCellWithReuseIdentifier:cellID];
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerCellID];
-          [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerCellID];
+        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerCellID];
         
         _collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
         
         [self.collectionView addSubview:self.searchBar];
- 
+        
     }
     return _collectionView;
 }
@@ -140,10 +142,16 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     [self presentViewController:nav animated:YES completion:nil];
 }
 
+- (void)gotoCourseDetailView:(Course *)course{
+    CourseDetailViewController *detailViewController = [CourseDetailViewController controller];
+    detailViewController.course = course;
+    [self.navigationController pushViewController:detailViewController animated:YES];
+}
+
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    CXLog(@"点击了第%ld行第%ld列",indexPath.section,indexPath.row);
+    [self gotoCourseDetailView:[_courseList.courses objectAtIndex:(indexPath.section)*numberOfItems+indexPath.row]];
 }
 
 
@@ -180,7 +188,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     
     if(section == rows - 1){
         
-//        BOOL isPlus =  CX_IS_IPHONE6PLUS;
         NSUInteger singalHeight = (cellHeight + gap);
         
         NSInteger height = CGRectGetHeight(self.contentView.frame) - singalHeight*rows;;
@@ -215,6 +222,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     CourseCollectionViewCell *cell = (CourseCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     NSInteger index = (indexPath.section == 0 ? indexPath.row : (indexPath.section)*numberOfItems+indexPath.row);
     [cell updateCellWithModel:[_courseList.courses objectAtIndex:index]];
+    if(CX3DTouchOpened)       [cell registerTouch:self];
     return cell;
 }
 
@@ -254,6 +262,39 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         });
     }
 }
+
+#pragma mark - 3D Touch Status Changed
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    CXLog(@"3Dtouch状态发生改变");
+}
+
+#pragma mark - 3DTouch Delegate
+
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location{
+    //防止重复加入
+    if ([self.presentedViewController isKindOfClass:[CourseDetailViewController class]]){
+        return nil;
+    }else{
+        CourseDetailViewController *peekViewController = [[CourseDetailViewController alloc] init];
+        peekViewController.course = [_courseList.courses objectAtIndex:[self getIndexByPreviewing:previewingContext]];
+        return peekViewController;
+    }
+}
+
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit{
+    CourseDetailViewController *popViewController = [CourseDetailViewController controller];
+    popViewController.course = [_courseList.courses objectAtIndex:[self getIndexByPreviewing:previewingContext]];
+    [self showViewController:popViewController sender:self];
+}
+
+
+- (NSInteger)getIndexByPreviewing:(id<UIViewControllerPreviewing>)previewingContext{
+    CourseCollectionViewCell  *cell = (CourseCollectionViewCell *)[[[previewingContext sourceView] superview] superview];
+    NSIndexPath *indexPath = [_collectionView indexPathForCell:cell];
+    NSInteger index = indexPath.section*numberOfItems + indexPath.row;
+    return index;
+}
+
 
 
 

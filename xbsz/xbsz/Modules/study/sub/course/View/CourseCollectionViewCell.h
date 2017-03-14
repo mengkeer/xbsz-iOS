@@ -20,4 +20,6 @@
 
 - (void)updateCellWithModel:(id)model;
 
+- (void)registerTouch:(id)delegate;
+
 @end

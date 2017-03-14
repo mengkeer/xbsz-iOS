@@ -18,8 +18,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setHidden:YES];
+    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
     self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController.view bringSubviewToFront:self.navigationController.navigationBar];
 }
 
 - (void)viewDidLoad {

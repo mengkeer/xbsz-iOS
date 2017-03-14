@@ -42,6 +42,12 @@
 
 
 //3D touch item类型
+//UIForceTouchCapability
+//UIForceTouchCapabilityUnknown //3D Touch检测失败
+//UIForceTouchCapabilityUnavailable //3D Touch不可用
+//UIForceTouchCapabilityAvailable //3D Touch可用
+#define CX3DTouchOpened   (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
+
 #define CX3DTouchItemTypeShare   @"cc.slotus.xbsz.share"
 #define CX3DTouchItemTypeSearch  @"cc.slotus.xbsz.search"
 #define CX3DTouchItemTypeLove    @"cc.slotus.xbsz.love"
