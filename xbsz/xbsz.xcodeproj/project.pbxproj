@@ -18,6 +18,7 @@
 		0518ECCA1E6041E10018F432 /* note.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC91E6041E10018F432 /* note.json */; };
 		0538AAA51E6E91C400E7A51D /* CampusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA41E6E91C400E7A51D /* CampusComment.m */; };
 		0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */; };
+		0563B1491E794169008283C7 /* course.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0563B1481E794169008283C7 /* course.jpg */; };
 		05B4D0691E763676005DC854 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D0661E763676005DC854 /* CourseViewController.m */; };
 		05B4D06C1E7646B4005DC854 /* CourseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */; };
 		05B4D0801E7675FA005DC854 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D07F1E7675FA005DC854 /* Course.m */; };
@@ -104,6 +105,7 @@
 		0538AAA41E6E91C400E7A51D /* CampusComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusComment.m; sourceTree = "<group>"; };
 		0538AAA61E6E9BDC00E7A51D /* NSString+CXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXAdd.h"; sourceTree = "<group>"; };
 		0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXAdd.m"; sourceTree = "<group>"; };
+		0563B1481E794169008283C7 /* course.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = course.jpg; sourceTree = "<group>"; };
 		05B4D0651E763676005DC854 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		05B4D0661E763676005DC854 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		05B4D06A1E7646B4005DC854 /* CourseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCollectionViewCell.h; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		056E45741DFFE55F00D5C956 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				0563B1481E794169008283C7 /* course.jpg */,
 				ADF042371E0192EF00171489 /* avatar */,
 			);
 			path = image;
@@ -957,6 +960,7 @@
 				ADF042451E0192EF00171489 /* avatar11.jpg in Resources */,
 				ADF042431E0192EF00171489 /* avatar1.jpg in Resources */,
 				0518ECC81E603E480018F432 /* user.json in Resources */,
+				0563B1491E794169008283C7 /* course.jpg in Resources */,
 				ADF0424D1E0192EF00171489 /* avatar9.jpg in Resources */,
 				0518ECCA1E6041E10018F432 /* note.json in Resources */,
 				05B4D08E1E76A532005DC854 /* course.json in Resources */,

@@ -15,4 +15,5 @@
 
 @property (nonatomic, strong) Course *course;
 
+
 @end

@@ -57,11 +57,7 @@
         make.height.mas_equalTo(20);
         make.bottom.mas_equalTo(self.contentView.mas_bottom);
     }];
-    
-    
-    
-    
-    
+ 
 }
 
 
@@ -105,9 +101,8 @@
     Course *course = model;
     _titleLabel.text = course.title;
     _semesterLabel.text = course.semester;
-    NSURL *url = [NSURL URLWithString:course.url];
-    [_imageView yy_setImageWithURL:url options:YYWebImageOptionProgressiveBlur
-     |YYWebImageOptionSetImageWithFadeAnimation];
+    NSURL *url = [NSURL URLWithString:course.icon];
+    [_imageView yy_setImageWithURL:url options:0];
 }
 
 - (void)registerTouch:(id)delegate{

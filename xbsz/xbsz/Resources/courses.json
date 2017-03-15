@@ -2,83 +2,91 @@
     "courses":[{
                "courseID":"11",
                "userID":"uid222",
-               "url":"http://pic.sjjiasu.com/upload/20161014/10/5800486d035ff.png",
+               "icon":"http://pic.sjjiasu.com/upload/20161014/10/5800486d035ff.png",
                "title":"密码学",
                "status":1,
                "max":34,
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
-               "semester":"2015年春"
+               "semester":"2015年春",
+               "image":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489581199585&di=34477ddfadc2454359b1a271a51435b5&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130424%2F11588775_115415688157_2.jpg"
                },{
                "courseID":"12",
                "userID":"uid222",
-               "url":"http://pic.sjjiasu.com/upload/20160818/10/57b5174bdc2c5.png",
+               "icon":"http://pic.sjjiasu.com/upload/20160818/10/57b5174bdc2c5.png",
                "title":"网络攻防",
                "status":1,
                "max":34,
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
-               "semester":"2016年春"
+               "semester":"2016年春",
+               "image":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489581199585&di=34477ddfadc2454359b1a271a51435b5&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130424%2F11588775_115415688157_2.jpg"
                },{
                "courseID":"13",
                "userID":"uid222",
-               "url":"http://pic.sjjiasu.com/upload/20160810/17/57aaf6193c175.png",
+               "icon":"http://pic.sjjiasu.com/upload/20160810/17/57aaf6193c175.png",
                "title":"数据结构",
                "status":1,
                "max":34,
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
-               "semester":"2016年春"
+               "semester":"2016年春",
+               "image":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489581199585&di=34477ddfadc2454359b1a271a51435b5&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130424%2F11588775_115415688157_2.jpg"
                },{
                "courseID":"14",
                "userID":"uid222",
-               "url":"http://pic.sjjiasu.com/upload/20160823/17/57bc14ad7ad84.png",
+               "icon":"http://pic.sjjiasu.com/upload/20160823/17/57bc14ad7ad84.png",
                "title":"算法",
                "status":1,
                "max":34,
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
-               "semester":"2017年秋"
+               "semester":"2017年秋",
+               "image":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489581199585&di=34477ddfadc2454359b1a271a51435b5&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130424%2F11588775_115415688157_2.jpg"
                },{
                "courseID":"15",
                "userID":"uid222",
-               "url":"http://pic.sjjiasu.com/upload/20160823/17/57bc158e90175.png",
+               "icon":"http://pic.sjjiasu.com/upload/20160823/17/57bc158e90175.png",
                "title":"离散数学",
                "status":1,
                "max":34,
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
-               "semester":"2017年春"
+               "semester":"2017年春",
+               "image":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489581199585&di=34477ddfadc2454359b1a271a51435b5&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130424%2F11588775_115415688157_2.jpg"
                },{
                "courseID":"16",
               "userID":"uid222",
-               "url":"http://pic.sjjiasu.com/upload/20160824/09/57bcff423bdc1.png",
+               "icon":"http://pic.sjjiasu.com/upload/20160824/09/57bcff423bdc1.png",
                "title":"软件工程",
                "status":1,
                "max":34,
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
-               "semester":"2012年春"
+               "semester":"2012年春",
+               "image":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489581199585&di=34477ddfadc2454359b1a271a51435b5&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130424%2F11588775_115415688157_2.jpg"
                },{
                "courseID":"17",
               "userID":"uid222",
-               "url":"http://pic.sjjiasu.com/upload/20160823/17/57bc15547950f.png",
+               "icon":"http://pic.sjjiasu.com/upload/20160823/17/57bc15547950f.png",
                "title":"数据库",
                "status":1,
                "max":34,
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
-               "semester":"2013年秋"
+               "semester":"2013年秋",
+               "image":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489581199585&di=34477ddfadc2454359b1a271a51435b5&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130424%2F11588775_115415688157_2.jpg"
                },{
                "courseID":"18",
                "userID":"uid222",
-               "url":"http://pic.sjjiasu.com/upload/20160824/09/57bcfef05bc11.png",
+               "icon":"http://pic.sjjiasu.com/upload/20160824/09/57bcfef05bc11.png",
                "title":"企业Java",
                "status":1,
                "max":34,
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
-               "semester":"2018年春"
+               "semester":"2018年春",
+               "image":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489581199585&di=34477ddfadc2454359b1a271a51435b5&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130424%2F11588775_115415688157_2.jpg"
                }
     ]
 }

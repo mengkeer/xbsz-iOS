@@ -14,7 +14,7 @@
 
 @property (nonatomic, copy) NSString *userID;           //课程创建者的用户id
 
-@property (nonatomic, copy) NSString *url;              //课程icon图标地址
+@property (nonatomic, copy) NSString *icon;              //课程icon图标地址
 
 @property (nonatomic, copy) NSString *title;            //课程的title
 
@@ -29,6 +29,8 @@
 @property (nonatomic, copy) NSString *endTime;             //课程结束日期
 
 @property (nonatomic, copy) NSString *semester;             //学期
+
+@property (nonatomic, copy) NSString *image;
 
 
 
