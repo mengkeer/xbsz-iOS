@@ -7,6 +7,7 @@
 //
 
 #import "CourseDetailViewController.h"
+#import "CourseInfoViewController.h"
 
 @interface CourseDetailViewController ()
 
@@ -14,6 +15,9 @@
 @property (nonatomic, strong) UIButton *shareBtn;
 @property (nonatomic, strong) UIButton *commentBtn;
 
+@property (nonatomic, strong) Course *course;
+
+@property (nonatomic, strong) CourseInfoViewController *infoViewController;
 
 @end
 
@@ -45,16 +49,34 @@
     [self.view addSubview:self.imageView];
     
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(self.view);
+        make.left.right.mas_equalTo(self.view);
         make.height.mas_equalTo(200);
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
+    
+    [_imageView setYy_imageURL:[NSURL URLWithString:_course.image]];
+    
+    _infoViewController = [CourseInfoViewController controller];
+    [self addChildViewController:_infoViewController];
+    [self.view addSubview:_infoViewController.view];
+    [_infoViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
+        make.top.mas_equalTo(_imageView.mas_bottom);
+        make.bottom.mas_equalTo(self.view);
+    }];
+}
+
+
+#pragma  mark - public method
+- (void)updateDetailWithCourse:(Course *)course{
+    _course = course;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - 3DTouch Item
 - (NSArray<id<UIPreviewActionItem>> *)previewActionItems{
     
     // 生成UIPreviewAction
@@ -77,16 +99,10 @@
 
 #pragma mark - getter/setter
 
-- (void)setCourse:(Course *)course{
-    _course = course;
-    NSURL *url = [NSURL URLWithString:course.image];
-    [_imageView yy_setImageWithURL:url options:YYWebImageOptionProgressiveBlur];
-}
-
 - (UIButton *)shareBtn{
     if(!_shareBtn){
         _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _shareBtn.frame = CGRectMake(CXScreenWidth - 30, 20, 20, 44);
+        _shareBtn.frame = CGRectMake(CXScreenWidth - 35, 20, 20, 44);
         [_shareBtn setImage:[UIImage imageNamed:@"course_share"] forState:UIControlStateNormal];
         [_shareBtn setImage:[UIImage imageNamed:@"course_share"] forState:UIControlStateHighlighted];
         [_shareBtn addTarget:self action:@selector(showShareBar) forControlEvents:UIControlEventTouchUpInside];
@@ -97,7 +113,7 @@
 - (UIButton *)commentBtn{
     if(!_commentBtn){
         _commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _commentBtn.frame = CGRectMake(CXScreenWidth - 60, 20, 20, 44);
+        _commentBtn.frame = CGRectMake(CXScreenWidth - 70, 20, 20, 44);
         [_commentBtn setImage:[UIImage imageNamed:@"course_comment"] forState:UIControlStateNormal];
         [_commentBtn setImage:[UIImage imageNamed:@"course_comment"] forState:UIControlStateHighlighted];
         [_commentBtn addTarget:self action:@selector(showShareBar) forControlEvents:UIControlEventTouchUpInside];
@@ -111,6 +127,9 @@
     }
     return _imageView;
 }
+
+
+
 
 #pragma mark  - action method
 - (void)showShareBar{

@@ -31,7 +31,6 @@
     [self addChildVC:[DiscoverViewController controller] title:@"发现" image:@"tab_discover" selectedImage:@"tab_discover_s"];
     
     [self addChildVC:[UserCenterViewController controller] title:@"我的" image:@"tab_mine" selectedImage:@"tab_mine_s"];
-    
 }
 
 #pragma private method

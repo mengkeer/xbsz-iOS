@@ -13,7 +13,6 @@
 
 @interface CourseDetailViewController : CXWhitePushViewController
 
-@property (nonatomic, strong) Course *course;
-
+- (void)updateDetailWithCourse:(Course *)course;
 
 @end

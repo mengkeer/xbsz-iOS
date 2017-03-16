@@ -23,8 +23,7 @@
     _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth,CXScreenHeight-CXStatusBarHeight-CXDisplayTitleHeight)];
     _contentView.backgroundColor = CXWhiteColor;
     
-    
-    
+
     [self.view addSubview:topBackView];
     [self.view addSubview:_contentView];
     

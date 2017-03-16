@@ -19,7 +19,6 @@
 		0538AAA51E6E91C400E7A51D /* CampusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA41E6E91C400E7A51D /* CampusComment.m */; };
 		0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */; };
 		0563B1491E794169008283C7 /* course.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0563B1481E794169008283C7 /* course.jpg */; };
-		05B4D0691E763676005DC854 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D0661E763676005DC854 /* CourseViewController.m */; };
 		05B4D06C1E7646B4005DC854 /* CourseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */; };
 		05B4D0801E7675FA005DC854 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D07F1E7675FA005DC854 /* Course.m */; };
 		05B4D0861E769109005DC854 /* CourseSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D0851E769109005DC854 /* CourseSearchBar.m */; };
@@ -30,6 +29,7 @@
 		05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21AD31E5BE5AD00D7BA6C /* RecommendViewController.m */; };
 		05F472F81E7131890085345F /* CommentToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472F71E7131890085345F /* CommentToolBarView.m */; };
 		05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472FA1E7132640085345F /* MoreToolBarView.m */; };
+		51C630EFDAE492F2E1D2968C /* Pods_xbsz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB216B940BEEEB392A0BE826 /* Pods_xbsz.framework */; };
 		AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F4821E5B235F008346BD /* CXBaseTableView.m */; };
 		AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F4871E5B23C9008346BD /* CXBaseCollectionView.m */; };
 		AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F48B1E5B244E008346BD /* UIAlertController+CXAlertController.m */; };
@@ -61,6 +61,9 @@
 		AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F892B1E59624A009603E4 /* CXNetworkMonitoring.m */; };
 		AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89391E5976FE009603E4 /* ExerciseViewController.m */; };
 		AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F893E1E597742009603E4 /* CXStudyViewController.m */; };
+		ADAAE07B1E7AE89300A0FA2C /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0781E7AE89300A0FA2C /* CourseDetailViewController.m */; };
+		ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */; };
+		ADAAE07F1E7AE8C400A0FA2C /* CourseInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE07E1E7AE8C400A0FA2C /* CourseInfoViewController.m */; };
 		ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */; };
 		ADB7462D1E76DA8B00644812 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADB746201E76DA8B00644812 /* PYSearch.bundle */; };
 		ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746231E76DA8B00644812 /* PYSearchConst.m */; };
@@ -68,8 +71,6 @@
 		ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746271E76DA8B00644812 /* PYSearchViewController.m */; };
 		ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */; };
 		ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */; };
-		ADB746351E76DEF700644812 /* PYTempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746341E76DEF700644812 /* PYTempViewController.m */; };
-		ADB746381E7706AE00644812 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746371E7706AE00644812 /* CourseDetailViewController.m */; };
 		ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7463A1E77116500644812 /* CXWhitePushViewController.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
@@ -82,7 +83,6 @@
 		ADF0424B1E0192EF00171489 /* avatar7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042401E0192EF00171489 /* avatar7.jpg */; };
 		ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042411E0192EF00171489 /* avatar8.jpg */; };
 		ADF0424D1E0192EF00171489 /* avatar9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042421E0192EF00171489 /* avatar9.jpg */; };
-		B544DD9C6BED6D38367A354E /* Pods_xbsz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F334E72EB504A0D75561AD /* Pods_xbsz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,8 +106,6 @@
 		0538AAA61E6E9BDC00E7A51D /* NSString+CXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXAdd.h"; sourceTree = "<group>"; };
 		0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXAdd.m"; sourceTree = "<group>"; };
 		0563B1481E794169008283C7 /* course.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = course.jpg; sourceTree = "<group>"; };
-		05B4D0651E763676005DC854 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
-		05B4D0661E763676005DC854 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		05B4D06A1E7646B4005DC854 /* CourseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCollectionViewCell.h; sourceTree = "<group>"; };
 		05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCollectionViewCell.m; sourceTree = "<group>"; };
 		05B4D07E1E7675FA005DC854 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
@@ -126,9 +124,9 @@
 		05F472F71E7131890085345F /* CommentToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentToolBarView.m; sourceTree = "<group>"; };
 		05F472F91E7132640085345F /* MoreToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreToolBarView.h; sourceTree = "<group>"; };
 		05F472FA1E7132640085345F /* MoreToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreToolBarView.m; sourceTree = "<group>"; };
-		2A46E81103195277B4A62305 /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
-		4F56F2BD79B68A06A818D5F6 /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
-		64F334E72EB504A0D75561AD /* Pods_xbsz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xbsz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3915E3B0BC1257B5246BAC29 /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
+		80772F8FC1CD2FB2EA0DE929 /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
+		AB216B940BEEEB392A0BE826 /* Pods_xbsz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xbsz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD29F4811E5B235F008346BD /* CXBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseTableView.h; sourceTree = "<group>"; };
 		AD29F4821E5B235F008346BD /* CXBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBaseTableView.m; sourceTree = "<group>"; };
 		AD29F4861E5B23C9008346BD /* CXBaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseCollectionView.h; sourceTree = "<group>"; };
@@ -201,6 +199,12 @@
 		AD7F89391E5976FE009603E4 /* ExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseViewController.m; sourceTree = "<group>"; };
 		AD7F893D1E597742009603E4 /* CXStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXStudyViewController.h; sourceTree = "<group>"; };
 		AD7F893E1E597742009603E4 /* CXStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXStudyViewController.m; sourceTree = "<group>"; };
+		ADAAE0771E7AE89300A0FA2C /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
+		ADAAE0781E7AE89300A0FA2C /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
+		ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
+		ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
+		ADAAE07D1E7AE8C400A0FA2C /* CourseInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseInfoViewController.h; sourceTree = "<group>"; };
+		ADAAE07E1E7AE8C400A0FA2C /* CourseInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseInfoViewController.m; sourceTree = "<group>"; };
 		ADB7461E1E76DA8B00644812 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
 		ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
 		ADB746201E76DA8B00644812 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
@@ -215,10 +219,6 @@
 		ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYSearchExtension.m"; sourceTree = "<group>"; };
 		ADB7462A1E76DA8B00644812 /* UIView+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYSearchExtension.h"; sourceTree = "<group>"; };
 		ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
-		ADB746331E76DEF700644812 /* PYTempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PYTempViewController.h; path = xbsz/Modules/study/sub/course/controller/PYTempViewController.h; sourceTree = SOURCE_ROOT; };
-		ADB746341E76DEF700644812 /* PYTempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PYTempViewController.m; path = xbsz/Modules/study/sub/course/controller/PYTempViewController.m; sourceTree = SOURCE_ROOT; };
-		ADB746361E7706AE00644812 /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDetailViewController.h; path = xbsz/Modules/study/sub/course/controller/CourseDetailViewController.h; sourceTree = SOURCE_ROOT; };
-		ADB746371E7706AE00644812 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDetailViewController.m; path = xbsz/Modules/study/sub/course/controller/CourseDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		ADB746391E77116500644812 /* CXWhitePushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXWhitePushViewController.h; sourceTree = "<group>"; };
 		ADB7463A1E77116500644812 /* CXWhitePushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXWhitePushViewController.m; sourceTree = "<group>"; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B544DD9C6BED6D38367A354E /* Pods_xbsz.framework in Frameworks */,
+				51C630EFDAE492F2E1D2968C /* Pods_xbsz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,19 +284,6 @@
 				ADF042371E0192EF00171489 /* avatar */,
 			);
 			path = image;
-			sourceTree = "<group>";
-		};
-		05B4D0641E763676005DC854 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				05B4D0651E763676005DC854 /* CourseViewController.h */,
-				05B4D0661E763676005DC854 /* CourseViewController.m */,
-				ADB746331E76DEF700644812 /* PYTempViewController.h */,
-				ADB746341E76DEF700644812 /* PYTempViewController.m */,
-				ADB746361E7706AE00644812 /* CourseDetailViewController.h */,
-				ADB746371E7706AE00644812 /* CourseDetailViewController.m */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		05B4D0671E763676005DC854 /* Model */ = {
@@ -374,12 +361,21 @@
 			path = ToolBar;
 			sourceTree = "<group>";
 		};
-		420878909325D3D378E160D6 /* Frameworks */ = {
+		0A7F21A5988CED5497CF0984 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				64F334E72EB504A0D75561AD /* Pods_xbsz.framework */,
+				AB216B940BEEEB392A0BE826 /* Pods_xbsz.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		47CBCA5ED540D38E5EC55CF9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3915E3B0BC1257B5246BAC29 /* Pods-xbsz.debug.xcconfig */,
+				80772F8FC1CD2FB2EA0DE929 /* Pods-xbsz.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		AD29F47F1E5B22B0008346BD /* CollectionView */ = {
@@ -430,8 +426,8 @@
 			children = (
 				AD30B1391DFAC900000189DD /* xbsz */,
 				AD30B1381DFAC900000189DD /* Products */,
-				D3BD84C37CCBC8BE6D50C5F9 /* Pods */,
-				420878909325D3D378E160D6 /* Frameworks */,
+				47CBCA5ED540D38E5EC55CF9 /* Pods */,
+				0A7F21A5988CED5497CF0984 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -791,7 +787,7 @@
 		AD7F89321E5976FE009603E4 /* course */ = {
 			isa = PBXGroup;
 			children = (
-				05B4D0641E763676005DC854 /* Controller */,
+				ADAAE0761E7AE89300A0FA2C /* Controller */,
 				05B4D0671E763676005DC854 /* Model */,
 				05B4D0681E763676005DC854 /* View */,
 			);
@@ -813,6 +809,19 @@
 				AD7F89391E5976FE009603E4 /* ExerciseViewController.m */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		ADAAE0761E7AE89300A0FA2C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */,
+				ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */,
+				ADAAE0771E7AE89300A0FA2C /* CourseDetailViewController.h */,
+				ADAAE0781E7AE89300A0FA2C /* CourseDetailViewController.m */,
+				ADAAE07D1E7AE8C400A0FA2C /* CourseInfoViewController.h */,
+				ADAAE07E1E7AE8C400A0FA2C /* CourseInfoViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		ADB746191E76D69700644812 /* search */ = {
@@ -885,15 +894,6 @@
 			path = avatar;
 			sourceTree = "<group>";
 		};
-		D3BD84C37CCBC8BE6D50C5F9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4F56F2BD79B68A06A818D5F6 /* Pods-xbsz.debug.xcconfig */,
-				2A46E81103195277B4A62305 /* Pods-xbsz.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -901,13 +901,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD30B14E1DFAC900000189DD /* Build configuration list for PBXNativeTarget "xbsz" */;
 			buildPhases = (
-				8B9F1DEC42FED84AE59F593E /* [CP] Check Pods Manifest.lock */,
+				5B714071F3CEBD393A2E74DC /* [CP] Check Pods Manifest.lock */,
 				AD30B1331DFAC900000189DD /* Sources */,
 				AD30B1341DFAC900000189DD /* Frameworks */,
 				AD30B1351DFAC900000189DD /* Resources */,
-				E5EF6C2BFF0924F2F35A048C /* [CP] Embed Pods Frameworks */,
-				DE95F1B319AAECC104F42BC9 /* [CP] Copy Pods Resources */,
-				68583FEF8750EB36BF4820CD /* Embed Pods Frameworks */,
+				846E42CBC8EB6A839D5A58DF /* [CP] Embed Pods Frameworks */,
+				0A9088433F053594BF88D7F6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -982,37 +981,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		68583FEF8750EB36BF4820CD /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8B9F1DEC42FED84AE59F593E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		DE95F1B319AAECC104F42BC9 /* [CP] Copy Pods Resources */ = {
+		0A9088433F053594BF88D7F6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1027,7 +996,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E5EF6C2BFF0924F2F35A048C /* [CP] Embed Pods Frameworks */ = {
+		5B714071F3CEBD393A2E74DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		846E42CBC8EB6A839D5A58DF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1050,12 +1034,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
+				ADAAE07F1E7AE8C400A0FA2C /* CourseInfoViewController.m in Sources */,
 				ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */,
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
+				ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */,
 				AD7F89211E595B29009603E4 /* UserInfoViewController.m in Sources */,
 				05B4D0801E7675FA005DC854 /* Course.m in Sources */,
-				ADB746351E76DEF700644812 /* PYTempViewController.m in Sources */,
 				05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */,
 				AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */,
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,
@@ -1073,7 +1058,6 @@
 				AD7F89281E596036009603E4 /* main.m in Sources */,
 				AD7F891B1E595B29009603E4 /* InformViewController.m in Sources */,
 				ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */,
-				ADB746381E7706AE00644812 /* CourseDetailViewController.m in Sources */,
 				0518ECB31E6012AD0018F432 /* CampusNote.m in Sources */,
 				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
@@ -1091,6 +1075,7 @@
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
 				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,
+				ADAAE07B1E7AE89300A0FA2C /* CourseDetailViewController.m in Sources */,
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
 				0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */,
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,
@@ -1099,7 +1084,6 @@
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,
 				AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */,
 				AD7F88291E594D5E009603E4 /* UIView+Frame.m in Sources */,
-				05B4D0691E763676005DC854 /* CourseViewController.m in Sources */,
 				0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */,
 				AD7F88DE1E595A5E009603E4 /* CXPushViewController.m in Sources */,
 				ADB7462F1E76DA8B00644812 /* PYSearchSuggestionViewController.m in Sources */,
@@ -1207,7 +1191,7 @@
 		};
 		AD30B14F1DFAC900000189DD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F56F2BD79B68A06A818D5F6 /* Pods-xbsz.debug.xcconfig */;
+			baseConfigurationReference = 3915E3B0BC1257B5246BAC29 /* Pods-xbsz.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1240,7 +1224,7 @@
 		};
 		AD30B1501DFAC900000189DD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A46E81103195277B4A62305 /* Pods-xbsz.release.xcconfig */;
+			baseConfigurationReference = 80772F8FC1CD2FB2EA0DE929 /* Pods-xbsz.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;

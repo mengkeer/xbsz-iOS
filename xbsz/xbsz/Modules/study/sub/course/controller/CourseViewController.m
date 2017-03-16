@@ -11,7 +11,6 @@
 #import "CourseSearchBar.h"
 #import "Course.h"
 #import "CourseList.h"
-#import "PYTempViewController.h"                //注意 要删除
 #import "CourseDetailViewController.h"
 
 #import "PYSearch.h"
@@ -130,7 +129,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索课程" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         // 开始搜索执行以下代码
         // 如：跳转到指定控制器
-        [searchViewController.navigationController pushViewController:[[PYTempViewController alloc] init] animated:YES];
+        [searchViewController.navigationController pushViewController:[[CourseViewController alloc] init] animated:YES];
     }];
     // 3. 设置风格
     searchViewController.hotSearchStyle = PYHotSearchStyleColorfulTag;
@@ -144,7 +143,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (void)gotoCourseDetailView:(Course *)course{
     CourseDetailViewController *detailViewController = [CourseDetailViewController controller];
-    detailViewController.course = course;
+    [detailViewController updateDetailWithCourse: course];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
@@ -276,14 +275,14 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         return nil;
     }else{
         CourseDetailViewController *peekViewController = [[CourseDetailViewController alloc] init];
-        peekViewController.course = [_courseList.courses objectAtIndex:[self getIndexByPreviewing:previewingContext]];
+        [peekViewController updateDetailWithCourse:[_courseList.courses objectAtIndex:[self getIndexByPreviewing:previewingContext]]];
         return peekViewController;
     }
 }
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit{
     CourseDetailViewController *popViewController = [CourseDetailViewController controller];
-    popViewController.course = [_courseList.courses objectAtIndex:[self getIndexByPreviewing:previewingContext]];
+    [popViewController updateDetailWithCourse:[_courseList.courses objectAtIndex:[self getIndexByPreviewing:previewingContext]]];
     [self showViewController:popViewController sender:self];
 }
 

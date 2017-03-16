@@ -53,7 +53,7 @@
     [self.titleLabel setText:self.title];
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backButton.frame = CGRectMake(10, 20, 20, 44);
+    self.backButton.frame = CGRectMake(15, 20, 20, 44);
     [self.backButton setImage:[UIImage imageNamed:@"common_back_black"] forState:UIControlStateNormal];
     [self.backButton setImage:[UIImage imageNamed:@"common_back_black"] forState:UIControlStateHighlighted];
     [self.backButton addTarget:self action:@selector(popFromCurrentViewController) forControlEvents:UIControlEventTouchUpInside];
