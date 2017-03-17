@@ -8,7 +8,9 @@
 
 #import "CourseInfoViewController.h"
 #import "CourseViewController.h"
-#import "ExerciseViewController.h"
+#import "CourseIntroductionViewController.h"
+
+static int _titleHeight  = 40;           //标题导航栏的高度
 
 @interface CourseInfoViewController ()
 
@@ -28,7 +30,7 @@
      设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
      */
     [self setUpContentViewFrame:^(UIView *contentView) {
-        contentView.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight - CXStatusBarHeight - CXNavigationBarHeight -200);
+        contentView.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight  - CXNavigationBarHeight -200);
         contentView.backgroundColor = CXWhiteColor;
     }];
     
@@ -38,7 +40,7 @@
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
         make.height.mas_equalTo(1/CXMainScale);
-        make.bottom.mas_equalTo(self.view.mas_top).mas_offset(CXDisplayTitleHeight);
+        make.bottom.mas_equalTo(self.view.mas_top).mas_offset(_titleHeight);
     }];
     
     // 添加所有子控制器
@@ -47,10 +49,10 @@
     [self setUpTitleEffect:^(UIColor *__autoreleasing *titleScrollViewColor, UIColor *__autoreleasing *norColor, UIColor *__autoreleasing *selColor, UIFont *__autoreleasing *titleFont, CGFloat *titleHeight, CGFloat *titleWidth){
         *titleScrollViewColor = CXWhiteColor;
         *norColor = CXBlackColor;
-        *selColor = CXGreenColor;
-        *titleWidth = 50;
-        *titleFont = CXSystemFont(14);
-        *titleHeight = CXDisplayTitleHeight;
+        *selColor = CXHexColor(0x43CD80);
+        *titleWidth = CXScreenWidth/3;
+        *titleFont = CXSystemFont(15);
+        *titleHeight = _titleHeight;
     }];
     
     // 标题渐变
@@ -61,14 +63,12 @@
     
     [self setUpUnderLineEffect:^(BOOL *isUnderLineDelayScroll, CGFloat *underLineH, UIColor *__autoreleasing *underLineColor,BOOL *isUnderLineEqualTitleWidth) {
         
-//        *isUnderLineDelayScroll = YES;      //此时修改起1/2
-        *underLineColor = CXGreenColor;
-//        *isUnderLineEqualTitleWidth = YES;
-        *underLineH = 1;
+        *underLineColor = CXHexColor(0x43CD80);
+        *isUnderLineEqualTitleWidth = NO;
+        *underLineH = 2;
     }];
     
     self.selectIndex = 0;
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,24 +78,22 @@
 
 #pragma mark - Private
 // 添加所有子控制器
-- (void)setUpAllViewController
-{
+- (void)setUpAllViewController{
     
-    //课程
-    ExerciseViewController  *vc1 = [ExerciseViewController controller];
+    CourseIntroductionViewController  *vc1 = [CourseIntroductionViewController controller];
     vc1.title = @"介绍";
+    vc1.course = _course;
     [self addChildViewController:vc1];
     
-    //训练
-    ExerciseViewController *vc2 = [ExerciseViewController controller];
+    CourseIntroductionViewController *vc2 = [CourseIntroductionViewController controller];
     vc2.title = @"目录";
+    vc2.course = _course;
     [self addChildViewController:vc2];
     
-    //训练
-    ExerciseViewController *vc3 = [ExerciseViewController controller];
+    CourseIntroductionViewController *vc3 = [CourseIntroductionViewController controller];
     vc3.title = @"评价";
+    vc3.course = _course;
     [self addChildViewController:vc3];
-    
 }
 
 @end

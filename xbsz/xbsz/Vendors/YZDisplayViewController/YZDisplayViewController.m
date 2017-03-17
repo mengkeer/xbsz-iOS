@@ -949,7 +949,7 @@ static NSString * const ID = @"CONTENTCELL";
     
     CGFloat underLineH = _underLineH?_underLineH:YZUnderLineH;
     
-    self.underLine.yz_y = label.yz_height - underLineH-2.5;
+    self.underLine.yz_y = _isUnderLineEqualTitleWidth ? label.yz_height - underLineH-2.5 : label.yz_height - underLineH;            //此处为自定义修改
     self.underLine.yz_height = underLineH;
     
     
@@ -958,7 +958,7 @@ static NSString * const ID = @"CONTENTCELL";
         if (_isUnderLineEqualTitleWidth) {
             self.underLine.yz_width = titleBounds.size.width;
         } else {
-            self.underLine.yz_width = label.yz_width;
+            self.underLine.yz_width = label.yz_width * 0.6;            //此处为自定义修改  如果下划线宽度等于该单元格宽度  取其0.6
         }
         
         self.underLine.yz_centerX = label.yz_centerX;
@@ -970,7 +970,7 @@ static NSString * const ID = @"CONTENTCELL";
         if (_isUnderLineEqualTitleWidth) {
             self.underLine.yz_width = titleBounds.size.width;
         } else {
-            self.underLine.yz_width = label.yz_width;
+            self.underLine.yz_width = label.yz_width * 0.6;
         }
         self.underLine.yz_centerX = label.yz_centerX;
     }];

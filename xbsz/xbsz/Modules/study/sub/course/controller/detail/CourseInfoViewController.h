@@ -7,7 +7,10 @@
 //
 
 #import "YZDisplayViewController.h"
+#import "Course.h"
 
 @interface CourseInfoViewController : YZDisplayViewController
+
+@property (nonatomic, strong) Course *course;
 
 @end

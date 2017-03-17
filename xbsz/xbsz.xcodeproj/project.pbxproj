@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05067FEC1E7BF02200868AC1 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05067FE71E7BF02200868AC1 /* CourseDetailViewController.m */; };
+		05067FED1E7BF02200868AC1 /* CourseInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05067FE91E7BF02200868AC1 /* CourseInfoViewController.m */; };
+		05067FEE1E7BF02200868AC1 /* CourseIntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05067FEB1E7BF02200868AC1 /* CourseIntroductionViewController.m */; };
+		05067FF31E7BF1E900868AC1 /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05067FF21E7BF1E900868AC1 /* RateView.m */; };
 		0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECAA1E6012400018F432 /* CampusViewController.m */; };
 		0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECAE1E6012400018F432 /* CampusTableViewCell.m */; };
 		0518ECB31E6012AD0018F432 /* CampusNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECB21E6012AD0018F432 /* CampusNote.m */; };
@@ -18,6 +22,9 @@
 		0518ECCA1E6041E10018F432 /* note.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC91E6041E10018F432 /* note.json */; };
 		0538AAA51E6E91C400E7A51D /* CampusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA41E6E91C400E7A51D /* CampusComment.m */; };
 		0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */; };
+		054B8B7C1E7B876600E4E0BD /* b27_icon_star_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054B8B781E7B876600E4E0BD /* b27_icon_star_gray@2x.png */; };
+		054B8B7D1E7B876600E4E0BD /* b27_icon_star_yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054B8B791E7B876600E4E0BD /* b27_icon_star_yellow@2x.png */; };
+		054B8B7E1E7B876600E4E0BD /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B8B7B1E7B876600E4E0BD /* CWStarRateView.m */; };
 		0563B1491E794169008283C7 /* course.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0563B1481E794169008283C7 /* course.jpg */; };
 		05B4D06C1E7646B4005DC854 /* CourseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */; };
 		05B4D0801E7675FA005DC854 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D07F1E7675FA005DC854 /* Course.m */; };
@@ -61,9 +68,7 @@
 		AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F892B1E59624A009603E4 /* CXNetworkMonitoring.m */; };
 		AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89391E5976FE009603E4 /* ExerciseViewController.m */; };
 		AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F893E1E597742009603E4 /* CXStudyViewController.m */; };
-		ADAAE07B1E7AE89300A0FA2C /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0781E7AE89300A0FA2C /* CourseDetailViewController.m */; };
 		ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */; };
-		ADAAE07F1E7AE8C400A0FA2C /* CourseInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE07E1E7AE8C400A0FA2C /* CourseInfoViewController.m */; };
 		ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */; };
 		ADB7462D1E76DA8B00644812 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADB746201E76DA8B00644812 /* PYSearch.bundle */; };
 		ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746231E76DA8B00644812 /* PYSearchConst.m */; };
@@ -86,6 +91,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05067FE61E7BF02200868AC1 /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
+		05067FE71E7BF02200868AC1 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
+		05067FE81E7BF02200868AC1 /* CourseInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseInfoViewController.h; sourceTree = "<group>"; };
+		05067FE91E7BF02200868AC1 /* CourseInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseInfoViewController.m; sourceTree = "<group>"; };
+		05067FEA1E7BF02200868AC1 /* CourseIntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseIntroductionViewController.h; sourceTree = "<group>"; };
+		05067FEB1E7BF02200868AC1 /* CourseIntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseIntroductionViewController.m; sourceTree = "<group>"; };
+		05067FF11E7BF1E900868AC1 /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
+		05067FF21E7BF1E900868AC1 /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
 		0518ECA91E6012400018F432 /* CampusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusViewController.h; sourceTree = "<group>"; };
 		0518ECAA1E6012400018F432 /* CampusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusViewController.m; sourceTree = "<group>"; };
 		0518ECAD1E6012400018F432 /* CampusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusTableViewCell.h; sourceTree = "<group>"; };
@@ -105,6 +118,10 @@
 		0538AAA41E6E91C400E7A51D /* CampusComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusComment.m; sourceTree = "<group>"; };
 		0538AAA61E6E9BDC00E7A51D /* NSString+CXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXAdd.h"; sourceTree = "<group>"; };
 		0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CXAdd.m"; sourceTree = "<group>"; };
+		054B8B781E7B876600E4E0BD /* b27_icon_star_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b27_icon_star_gray@2x.png"; sourceTree = "<group>"; };
+		054B8B791E7B876600E4E0BD /* b27_icon_star_yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b27_icon_star_yellow@2x.png"; sourceTree = "<group>"; };
+		054B8B7A1E7B876600E4E0BD /* CWStarRateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStarRateView.h; sourceTree = "<group>"; };
+		054B8B7B1E7B876600E4E0BD /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
 		0563B1481E794169008283C7 /* course.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = course.jpg; sourceTree = "<group>"; };
 		05B4D06A1E7646B4005DC854 /* CourseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCollectionViewCell.h; sourceTree = "<group>"; };
 		05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCollectionViewCell.m; sourceTree = "<group>"; };
@@ -199,12 +216,8 @@
 		AD7F89391E5976FE009603E4 /* ExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseViewController.m; sourceTree = "<group>"; };
 		AD7F893D1E597742009603E4 /* CXStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXStudyViewController.h; sourceTree = "<group>"; };
 		AD7F893E1E597742009603E4 /* CXStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXStudyViewController.m; sourceTree = "<group>"; };
-		ADAAE0771E7AE89300A0FA2C /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
-		ADAAE0781E7AE89300A0FA2C /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
 		ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
-		ADAAE07D1E7AE8C400A0FA2C /* CourseInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseInfoViewController.h; sourceTree = "<group>"; };
-		ADAAE07E1E7AE8C400A0FA2C /* CourseInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseInfoViewController.m; sourceTree = "<group>"; };
 		ADB7461E1E76DA8B00644812 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
 		ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
 		ADB746201E76DA8B00644812 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
@@ -246,6 +259,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05067FE51E7BF02200868AC1 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				05067FE61E7BF02200868AC1 /* CourseDetailViewController.h */,
+				05067FE71E7BF02200868AC1 /* CourseDetailViewController.m */,
+				05067FE81E7BF02200868AC1 /* CourseInfoViewController.h */,
+				05067FE91E7BF02200868AC1 /* CourseInfoViewController.m */,
+				05067FEA1E7BF02200868AC1 /* CourseIntroductionViewController.h */,
+				05067FEB1E7BF02200868AC1 /* CourseIntroductionViewController.m */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		05067FF01E7BF16E00868AC1 /* RateView */ = {
+			isa = PBXGroup;
+			children = (
+				05067FF11E7BF1E900868AC1 /* RateView.h */,
+				05067FF21E7BF1E900868AC1 /* RateView.m */,
+			);
+			path = RateView;
+			sourceTree = "<group>";
+		};
 		0518ECA81E6012400018F432 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +310,17 @@
 				0518ECAE1E6012400018F432 /* CampusTableViewCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		054B8B771E7B876600E4E0BD /* CWStarRateView */ = {
+			isa = PBXGroup;
+			children = (
+				054B8B781E7B876600E4E0BD /* b27_icon_star_gray@2x.png */,
+				054B8B791E7B876600E4E0BD /* b27_icon_star_yellow@2x.png */,
+				054B8B7A1E7B876600E4E0BD /* CWStarRateView.h */,
+				054B8B7B1E7B876600E4E0BD /* CWStarRateView.m */,
+			);
+			path = CWStarRateView;
 			sourceTree = "<group>";
 		};
 		056E45741DFFE55F00D5C956 /* image */ = {
@@ -487,6 +533,7 @@
 		AD7F881A1E594D5E009603E4 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				054B8B771E7B876600E4E0BD /* CWStarRateView */,
 				ADB7461D1E76DA8B00644812 /* PYSearch */,
 				AD7F881B1E594D5E009603E4 /* YYKit */,
 				AD7F881E1E594D5E009603E4 /* YZDisplayViewController */,
@@ -612,6 +659,7 @@
 		AD7F88C81E595A5E009603E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				05067FF01E7BF16E00868AC1 /* RateView */,
 				05F472F51E7131260085345F /* ToolBar */,
 				AD29F47F1E5B22B0008346BD /* CollectionView */,
 				AD29F4801E5B22B0008346BD /* TableView */,
@@ -814,12 +862,9 @@
 		ADAAE0761E7AE89300A0FA2C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				05067FE51E7BF02200868AC1 /* detail */,
 				ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */,
 				ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */,
-				ADAAE0771E7AE89300A0FA2C /* CourseDetailViewController.h */,
-				ADAAE0781E7AE89300A0FA2C /* CourseDetailViewController.m */,
-				ADAAE07D1E7AE8C400A0FA2C /* CourseInfoViewController.h */,
-				ADAAE07E1E7AE8C400A0FA2C /* CourseInfoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -907,6 +952,7 @@
 				AD30B1351DFAC900000189DD /* Resources */,
 				846E42CBC8EB6A839D5A58DF /* [CP] Embed Pods Frameworks */,
 				0A9088433F053594BF88D7F6 /* [CP] Copy Pods Resources */,
+				776181DD9DDB647E94C2008B /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -968,7 +1014,9 @@
 				ADF042461E0192EF00171489 /* avatar2.jpg in Resources */,
 				ADF042481E0192EF00171489 /* avatar4.jpg in Resources */,
 				ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */,
+				054B8B7C1E7B876600E4E0BD /* b27_icon_star_gray@2x.png in Resources */,
 				ADF042491E0192EF00171489 /* avatar5.jpg in Resources */,
+				054B8B7D1E7B876600E4E0BD /* b27_icon_star_yellow@2x.png in Resources */,
 				AD30B1471DFAC900000189DD /* Assets.xcassets in Resources */,
 				ADB7462D1E76DA8B00644812 /* PYSearch.bundle in Resources */,
 				0518ECC61E6037C60018F432 /* notes.json in Resources */,
@@ -1011,6 +1059,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		776181DD9DDB647E94C2008B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		846E42CBC8EB6A839D5A58DF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1033,8 +1096,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05067FF31E7BF1E900868AC1 /* RateView.m in Sources */,
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
-				ADAAE07F1E7AE8C400A0FA2C /* CourseInfoViewController.m in Sources */,
 				ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */,
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
@@ -1044,6 +1107,7 @@
 				05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */,
 				AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */,
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,
+				05067FEC1E7BF02200868AC1 /* CourseDetailViewController.m in Sources */,
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
 				05B4D06C1E7646B4005DC854 /* CourseCollectionViewCell.m in Sources */,
@@ -1054,6 +1118,7 @@
 				AD7F891D1E595B29009603E4 /* RegisterViewController.m in Sources */,
 				AD7F88DD1E595A5E009603E4 /* CXNavigationController.m in Sources */,
 				0518ECB91E6016D80018F432 /* CXLocalUser.m in Sources */,
+				054B8B7E1E7B876600E4E0BD /* CWStarRateView.m in Sources */,
 				AD7F89221E595B29009603E4 /* SetItemView.m in Sources */,
 				AD7F89281E596036009603E4 /* main.m in Sources */,
 				AD7F891B1E595B29009603E4 /* InformViewController.m in Sources */,
@@ -1075,16 +1140,17 @@
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
 				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,
-				ADAAE07B1E7AE89300A0FA2C /* CourseDetailViewController.m in Sources */,
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
 				0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */,
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,
 				ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */,
+				05067FED1E7BF02200868AC1 /* CourseInfoViewController.m in Sources */,
 				AD7F891A1E595B29009603E4 /* CXLaunchViewController.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,
 				AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */,
 				AD7F88291E594D5E009603E4 /* UIView+Frame.m in Sources */,
 				0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */,
+				05067FEE1E7BF02200868AC1 /* CourseIntroductionViewController.m in Sources */,
 				AD7F88DE1E595A5E009603E4 /* CXPushViewController.m in Sources */,
 				ADB7462F1E76DA8B00644812 /* PYSearchSuggestionViewController.m in Sources */,
 				0518ECBC1E601B790018F432 /* CampusNoteList.m in Sources */,

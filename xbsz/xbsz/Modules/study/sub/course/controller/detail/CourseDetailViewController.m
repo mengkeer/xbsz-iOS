@@ -54,9 +54,10 @@
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
     
-    [_imageView setYy_imageURL:[NSURL URLWithString:_course.image]];
+    [_imageView setYy_imageURL:[NSURL URLWithString:_course.imageUrl]];
     
     _infoViewController = [CourseInfoViewController controller];
+    _infoViewController.course = _course;
     [self addChildViewController:_infoViewController];
     [self.view addSubview:_infoViewController.view];
     [_infoViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {

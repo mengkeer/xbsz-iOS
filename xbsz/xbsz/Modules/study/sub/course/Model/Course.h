@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CXUser.h"
 
 @interface Course : NSObject
 
@@ -30,8 +31,17 @@
 
 @property (nonatomic, copy) NSString *semester;             //学期
 
-@property (nonatomic, copy) NSString *image;
+@property (nonatomic, copy) NSString *imageUrl;
 
+@property (nonatomic, assign) CGFloat rate;                 //课程评级
+
+@property (nonatomic, assign) NSUInteger total;             //当前参与的学生的人数
+
+@property (nonatomic, copy) NSString *brief;
+
+@property (nonatomic, copy) NSString *suit;                 //适合人群
+
+@property (nonatomic, strong) CXUser *teacher;                     //该课程的教师
 
 
 

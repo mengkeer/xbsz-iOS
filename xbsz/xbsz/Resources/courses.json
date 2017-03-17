@@ -9,7 +9,17 @@
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
                "semester":"2015年春",
-               "image":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100"
+               "imageUrl":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100",
+               "rate":"0.3",
+               "total":"1234",
+               "suit":"信息安全,软件工程13级学生",
+               "brief":"《分分钟理财》是935理财咨询发布的一套小白理财课程。整套课程一手绘的形式生动活泼的介绍生活中各个理财小技巧和理财误区。第一期的《分分钟理财》分为5课，涵盖货币基金理财、储蓄理财的正确姿势、信用卡的使用误区、社会保障制度的优越性和合理规划商业保险。学习中的疑问和建议，都可以上935理财咨询免费提问和建议。微信订阅号：licai935",
+               "teacher":{
+                            "userID":"uid2333",
+                            "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
+                            "truename":"李悦老师",
+                            "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
+                        }
                },{
                "courseID":"12",
                "userID":"uid222",
@@ -20,7 +30,17 @@
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
                "semester":"2016年春",
-               "image":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100"
+               "imageUrl":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100",
+               "rate":"0.4",
+               "total":"1234",
+               "suit":"信息安全,软件工程13级学生",
+               "brief":"《分分钟理财》是935理财咨询发布的一套小白理财课程。整套课程一手绘的形式生动活泼的介绍生活中各个理财小技巧和理财误区。第一期的《分分钟理财》分为5课，涵盖货币基金理财、储蓄理财的正确姿势、信用卡的使用误区、社会保障制度的优越性和合理规划商业保险。学习中的疑问和建议，都可以上935理财咨询免费提问和建议。微信订阅号：licai935",
+               "teacher":{
+                        "userID":"uid2333",
+                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
+                        "truename":"李悦老师",
+                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
+                    }
                },{
                "courseID":"13",
                "userID":"uid222",
@@ -31,7 +51,17 @@
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
                "semester":"2016年春",
-               "image":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100"
+               "imageUrl":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100",
+               "rate":"0.5",
+               "total":"1234",
+               "suit":"信息安全,软件工程13级学生",
+               "brief":"《分分钟理财》是935理财咨询发布的一套小白理财课程。整套课程一手绘的形式生动活泼的介绍生活中各个理财小技巧和理财误区。第一期的《分分钟理财》分为5课，涵盖货币基金理财、储蓄理财的正确姿势、信用卡的使用误区、社会保障制度的优越性和合理规划商业保险。学习中的疑问和建议，都可以上935理财咨询免费提问和建议。微信订阅号：licai935",
+               "teacher":{
+                    "userID":"uid2333",
+                    "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
+                    "truename":"李悦老师",
+                    "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
+                    }
                },{
                "courseID":"14",
                "userID":"uid222",
@@ -42,7 +72,17 @@
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
                "semester":"2017年秋",
-               "image":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100"
+               "imageUrl":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100",
+               "rate":"0.6",
+               "total":"1234",
+               "suit":"信息安全,软件工程13级学生",
+               "brief":"《分分钟理财》是935理财咨询发布的一套小白理财课程。整套课程一手绘的形式生动活泼的介绍生活中各个理财小技巧和理财误区。第一期的《分分钟理财》分为5课，涵盖货币基金理财、储蓄理财的正确姿势、信用卡的使用误区、社会保障制度的优越性和合理规划商业保险。学习中的疑问和建议，都可以上935理财咨询免费提问和建议。微信订阅号：licai935",
+               "teacher":{
+                        "userID":"uid2333",
+                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
+                        "truename":"李悦老师",
+                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
+                    }
                },{
                "courseID":"15",
                "userID":"uid222",
@@ -53,7 +93,17 @@
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
                "semester":"2017年春",
-               "image":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100"
+               "imageUrl":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100",
+               "rate":"0.7",
+               "total":"1234",
+               "suit":"信息安全,软件工程13级学生",
+               "brief":"《分分钟理财》是935理财咨询发布的一套小白理财课程。整套课程一手绘的形式生动活泼的介绍生活中各个理财小技巧和理财误区。第一期的《分分钟理财》分为5课，涵盖货币基金理财、储蓄理财的正确姿势、信用卡的使用误区、社会保障制度的优越性和合理规划商业保险。学习中的疑问和建议，都可以上935理财咨询免费提问和建议。微信订阅号：licai935",
+                "teacher":{
+                        "userID":"uid2333",
+                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
+                        "truename":"李悦老师",
+                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
+                    }
                },{
                "courseID":"16",
               "userID":"uid222",
@@ -64,7 +114,17 @@
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
                "semester":"2012年春",
-               "image":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100"
+               "imageUrl":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100",
+               "rate":"0.8",
+               "total":"1234",
+               "suit":"信息安全,软件工程13级学生",
+               "brief":"《分分钟理财》是935理财咨询发布的一套小白理财课程。整套课程一手绘的形式生动活泼的介绍生活中各个理财小技巧和理财误区。第一期的《分分钟理财》分为5课，涵盖货币基金理财、储蓄理财的正确姿势、信用卡的使用误区、社会保障制度的优越性和合理规划商业保险。学习中的疑问和建议，都可以上935理财咨询免费提问和建议。微信订阅号：licai935",
+               "teacher":{
+                        "userID":"uid2333",
+                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
+                        "truename":"李悦老师",
+                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
+                    }
                },{
                "courseID":"17",
               "userID":"uid222",
@@ -75,7 +135,17 @@
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
                "semester":"2013年秋",
-               "image":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100"
+               "imageUrl":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100",
+               "rate":"0.9",
+               "total":"1234",
+               "suit":"信息安全,软件工程13级学生",
+               "brief":"《分分钟理财》是935理财咨询发布的一套小白理财课程。整套课程一手绘的形式生动活泼的介绍生活中各个理财小技巧和理财误区。第一期的《分分钟理财》分为5课，涵盖货币基金理财、储蓄理财的正确姿势、信用卡的使用误区、社会保障制度的优越性和合理规划商业保险。学习中的疑问和建议，都可以上935理财咨询免费提问和建议。微信订阅号：licai935",
+               "teacher":{
+                        "userID":"uid2333",
+                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
+                        "truename":"李悦老师",
+                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
+                    }
                },{
                "courseID":"18",
                "userID":"uid222",
@@ -86,7 +156,17 @@
                "startTime":"2017-03-16",
                "endTime":"2017-06-20",
                "semester":"2018年春",
-               "image":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100"
+               "imageUrl":"http://nos.netease.com/edu-image/32AB56A3885DEE29DF19026F49EFBF2D.png?imageView&thumbnail=470y184&quality=100",
+               "rate":"1.0",
+               "total":"1234",
+               "suit":"信息安全,软件工程13级学生",
+               "brief":"《分分钟理财》是935理财咨询发布的一套小白理财课程。整套课程一手绘的形式生动活泼的介绍生活中各个理财小技巧和理财误区。第一期的《分分钟理财》分为5课，涵盖货币基金理财、储蓄理财的正确姿势、信用卡的使用误区、社会保障制度的优越性和合理规划商业保险。学习中的疑问和建议，都可以上935理财咨询免费提问和建议。微信订阅号：licai935",
+               "teacher":{
+                        "userID":"uid2333",
+                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
+                        "truename":"李悦老师",
+                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
+                    }
                }
     ]
 }
