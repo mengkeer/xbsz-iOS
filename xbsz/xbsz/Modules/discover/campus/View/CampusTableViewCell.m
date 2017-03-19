@@ -121,7 +121,6 @@
         make.top.mas_equalTo(_lineView.mas_bottom);
         make.left.mas_equalTo(self.contentView.mas_left).mas_offset(paddingX);
         make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-paddingX);
-//        make.bottom.mas_equalTo(self.contentView.mas_bottom);
         make.height.mas_equalTo(30);
     }];
     
@@ -313,10 +312,12 @@
     if(_note.likes <= 0 ){
         [_likedInfoView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(0);
+             make.top.mas_equalTo(_lineView.mas_bottom).mas_offset(8);
         }];
     }else{
         [_likedInfoView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(30);
+            make.top.mas_equalTo(_lineView.mas_bottom);
         }];
     }
     
