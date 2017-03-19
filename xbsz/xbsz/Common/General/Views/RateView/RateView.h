@@ -11,10 +11,18 @@
 //用于课程详情星级评分与评论bar   
 
 
+@protocol RateViewDelegate <NSObject>
+
+- (void)rateView:(CGFloat)scorePoint contnet:(NSString *)content;
+
+@end
+
 
 @interface RateView : UIView
 
-+ (instancetype)instance;       
+@property (nonatomic, weak) id<RateViewDelegate> delegate;
+
++ (instancetype)instance;
 
 - (void)showInView:(UIView *)view;
 

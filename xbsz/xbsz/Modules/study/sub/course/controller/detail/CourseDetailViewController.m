@@ -10,7 +10,7 @@
 #import "CourseInfoViewController.h"
 #import "RateView.h"
 
-@interface CourseDetailViewController ()
+@interface CourseDetailViewController () <RateViewDelegate>
 
 @property (nonatomic, strong) YYAnimatedImageView *imageView;     //顶部imageView
 @property (nonatomic, strong) UIButton *shareBtn;
@@ -140,10 +140,15 @@
 
 - (void)showCommentDialog{
     [[RateView instance] showInView:self.view];
+     [RateView instance].delegate = self;
 }
 
 
+#pragma mark - RateViewDelegate
 
+- (void)rateView:(CGFloat)scorePoint contnet:(NSString *)content{
+    CXLog(@"评分为%.1f 评论内容为:%@",scorePoint,content);
+}
 
 
 

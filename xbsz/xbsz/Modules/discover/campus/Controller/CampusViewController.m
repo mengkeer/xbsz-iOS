@@ -141,7 +141,7 @@
     switch (type) {
         case CellActionTypeLike:
             if([[_noteList.likes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
-                CXLog(@"已经点过赞了");
+                [self showErrorWithStaus:@"已经赞过了"];
             }else{
                 CXLog(@"开始点赞");
                 [_noteList.likes setValue:@"1" forKey:model.noteID];
@@ -161,6 +161,10 @@
             [[MoreToolBarView instance] updateUIWithModel:model action:^(MoreToolBarActionTyep actionType) {
                 [self handleMoreAction:actionType model:model];
             }];
+            BOOL loved = [[_noteList.loves objectForKey:model.noteID] isEqualToString:@"1"] ? YES:NO;
+            BOOL liked = [[_noteList.likes objectForKey:model.noteID] isEqualToString:@"1"] ? YES:NO;
+            BOOL disliked = [[_noteList.dislikes objectForKey:model.noteID] isEqualToString:@"1"] ? YES:NO;
+            [[MoreToolBarView instance] updateUIByLoved:loved liked:liked disliked:disliked];
             [[MoreToolBarView instance] showInView:self.view.window];
             break;
         }
@@ -211,12 +215,25 @@
         case MoreToolBarActionTyepDislike:
             CXLog(@"不感兴趣");
             break;
-        case MoreToolBarActionTyepDigup:
-            CXLog(@"点赞");
+        case MoreToolBarActionTyepDigup:{
+            if([[_noteList.likes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
+                [self showErrorWithStaus:@"已经赞过了"];
+            }else{
+                CXLog(@"开始点赞");
+                //注：此处需要手动出发toolbar栏里的点赞效果
+                [_noteList.likes setValue:@"1" forKey:model.noteID];
+            }
             break;
-        case MoreToolBarActionTyepDigdown:
-            CXLog(@"踩");
+        }
+        case MoreToolBarActionTyepDigdown:{
+            if([[_noteList.dislikes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
+                [self showErrorWithStaus:@"已经踩过了"];
+            }else{
+                CXLog(@"开始踩");
+                [_noteList.dislikes setValue:@"1" forKey:model.noteID];
+            }
             break;
+        }
         case MoreToolBarActionTyepReport:
             CXLog(@"举报");
             break;
@@ -228,6 +245,26 @@
     }
 }
 
+- (void)showSuccessWithStaus:(NSString *)status{
+    [SVProgressHUD showSuccessWithStatus:status];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+    });
+    return ;
+}
 
+- (void)showErrorWithStaus:(NSString *)status{
+    [SVProgressHUD showErrorWithStatus:status];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+    });
+    return ;
+}
 
 @end

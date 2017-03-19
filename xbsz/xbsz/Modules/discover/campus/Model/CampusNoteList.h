@@ -14,4 +14,8 @@
 
 @property (nonatomic, strong) NSMutableDictionary *likes;
 
+@property (nonatomic, strong) NSMutableDictionary *dislikes;
+
+@property (nonatomic, strong) NSMutableDictionary *loves;
+
 @end

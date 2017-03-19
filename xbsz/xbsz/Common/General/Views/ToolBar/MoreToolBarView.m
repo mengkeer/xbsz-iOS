@@ -31,6 +31,12 @@ static MoreToolBarView *sharedObj;
 
 @property (nonatomic, strong) NSMutableArray *cellTitles;
 
+@property (nonatomic, assign) BOOL loved;
+
+@property (nonatomic, assign) BOOL liked;
+
+@property (nonatomic, assign) BOOL disliked;
+
 @end
 
 @implementation MoreToolBarView
@@ -114,6 +120,39 @@ static MoreToolBarView *sharedObj;
     }
 }
 
+- (void)updateUIWithModel:(CampusNote *)model action:(MoreToolBarActionBlock)actionBlock{
+    NSString *digupNum = model.likes>0 ? [NSString stringWithFormat:@"顶 %ld",model.likes] : @"顶" ;
+    NSString *digdownNum = model.dislikes>0 ? [NSString stringWithFormat:@"踩 %ld",model.dislikes] : @"踩" ;
+    
+    [_cellTitles replaceObjectAtIndex:2 withObject:digupNum];
+    [_cellTitles replaceObjectAtIndex:3 withObject:digdownNum];
+    [_collectionView reloadData];
+    _collectionView.contentOffset = CGPointMake(0, 0);
+    _actionBlock = actionBlock;
+}
+
+- (void)updateUIByLoved:(BOOL)loved liked:(BOOL)liked disliked:(BOOL)disliked{
+    _loved = loved,_liked = liked,_disliked = disliked;
+    if(loved == YES){
+        [_cellImageNames replaceObjectAtIndex:0 withObject:@"more_love_press"];
+    }else{
+         [_cellImageNames replaceObjectAtIndex:0 withObject:@"more_love"];
+    }
+    
+    if(liked == YES){
+        [_cellImageNames replaceObjectAtIndex:2 withObject:@"more_digup_press"];
+    }else{
+        [_cellImageNames replaceObjectAtIndex:2 withObject:@"more_digup"];
+    }
+    
+    if(disliked == YES){
+        [_cellImageNames replaceObjectAtIndex:3 withObject:@"more_digdown_press"];
+    }else{
+        [_cellImageNames replaceObjectAtIndex:3 withObject:@"more_digdown"];
+    }
+    [_collectionView reloadData];
+}
+
 #pragma mark - getter/setter
 
 - (UICollectionView *)collectionView{
@@ -151,17 +190,6 @@ static MoreToolBarView *sharedObj;
 }
 
 
-- (void)updateUIWithModel:(CampusNote *)model action:(MoreToolBarActionBlock)actionBlock{
-    NSString *digupNum = model.likes>0 ? [NSString stringWithFormat:@"顶 %ld",model.likes] : @"顶" ;
-    NSString *digdownNum = model.dislikes>0 ? [NSString stringWithFormat:@"踩 %ld",model.dislikes] : @"踩" ;
-
-    [_cellTitles replaceObjectAtIndex:2 withObject:digupNum];
-    [_cellTitles replaceObjectAtIndex:3 withObject:digdownNum];
-    [_collectionView reloadData];
-    _collectionView.contentOffset = CGPointMake(0, 0);
-    _actionBlock = actionBlock;
-}
-
 
 #pragma mark - UICollectionDelegate
 
@@ -173,8 +201,18 @@ static MoreToolBarView *sharedObj;
         _actionBlock(MoreToolBarActionTyepDislike);
     }else if(indexPath.row == 2){
         _actionBlock(MoreToolBarActionTyepDigup);
+        if(_liked == NO){
+            [_cellImageNames replaceObjectAtIndex:2 withObject:@"more_digup_press"];
+            [_collectionView reloadData];
+            _liked = YES;
+        }
     }else if(indexPath.row == 3){
         _actionBlock(MoreToolBarActionTyepDigdown);
+        if(_disliked == NO){
+            [_cellImageNames replaceObjectAtIndex:3 withObject:@"more_digdown_press"];
+            [_collectionView reloadData];
+            _disliked = YES;
+        }
     }else if(indexPath.row == 4){
         _actionBlock(MoreToolBarActionTyepReport);
     }

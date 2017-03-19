@@ -5,7 +5,6 @@ target 'xbsz' do
 #    pod 'ReactiveCocoa' , '2.5'
     pod 'Masonry'
 #    pod 'Realm'
-##    pod 'SDWebImage'
     pod 'AFNetworking'
     pod 'YYCategories'
     pod 'YYModel'
@@ -13,9 +12,7 @@ target 'xbsz' do
     pod 'IQKeyboardManager'
     pod 'MJRefresh'
     pod 'DZNEmptyDataSet'
-    pod 'MBProgressHUD', '~> 1.0.0'
     pod 'YYText'
     pod 'YYWebImage'
-    pod 'MBProgressHUD', '~> 1.0.0'
-    pod 'relam'
+    pod 'SVProgressHUD'
 end

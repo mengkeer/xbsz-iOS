@@ -23,7 +23,7 @@
 
 @property (nonatomic, assign) NSUInteger total;         //评论总数
 
-@property (nonatomic, copy) NSString *subject;
+@property (nonatomic, copy) NSString *subject;              //帖子主题  也就是帖子发表者留言
 
 @property (nonatomic, copy) NSString *locaiton;         //发帖地址
 

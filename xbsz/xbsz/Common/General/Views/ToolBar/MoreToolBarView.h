@@ -27,6 +27,8 @@ typedef void (^MoreToolBarActionBlock)(MoreToolBarActionTyep actionType);
 
 - (void)updateUIWithModel: (CampusNote *)model action:(MoreToolBarActionBlock)actionBlock;
 
+- (void)updateUIByLoved:(BOOL)loved liked:(BOOL)liked disliked:(BOOL)disliked;
+
 - (void)showInView:(UIView *)view;
 
 - (void)dismissInView:(UIView *)view;

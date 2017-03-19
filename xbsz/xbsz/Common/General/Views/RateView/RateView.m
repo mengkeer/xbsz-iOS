@@ -132,7 +132,20 @@ static RateView *sharedObj;
 
 - (void)submit{
     
+    if(_startRateView.scorePercent == 0.0){
+        [SVProgressHUD showErrorWithStatus:@"您还没评分哦😯"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+       
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+        return ;
+    }
     
+    if(_delegate && [_delegate respondsToSelector:@selector(rateView:contnet:)]){
+        [_delegate rateView:_startRateView.scorePercent contnet:_commentTextView.text];
+    }
     
 }
 
@@ -148,6 +161,7 @@ static RateView *sharedObj;
         make.top.mas_equalTo(self.mas_top).mas_offset(height*0.3);
     }];
     _startRateView.scorePercent = 0.0;
+    _commentTextView.text = @"";
     
     
     UIView *backView = [[UIView alloc] initWithFrame:view.frame];

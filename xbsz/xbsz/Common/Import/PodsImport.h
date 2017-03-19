@@ -9,11 +9,11 @@
 #ifndef PodsImport_h
 #define PodsImport_h
 
-#import "Masonry.h"
-#import "YYCategories.h"        
+#import  "Masonry.h"
+#import  "YYCategories.h"
 #import  <YYImage/YYImage.h>
 #import  <YYWebImage/YYWebImage.h>
-#import <YYModel/YYModel.h>
-
+#import  <YYModel/YYModel.h>
+#import  "SVProgressHUD.h"
 
 #endif /* PodsImport_h */
