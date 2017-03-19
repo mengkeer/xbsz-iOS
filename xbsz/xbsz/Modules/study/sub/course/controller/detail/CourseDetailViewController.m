@@ -8,6 +8,7 @@
 
 #import "CourseDetailViewController.h"
 #import "CourseInfoViewController.h"
+#import "RateView.h"
 
 @interface CourseDetailViewController ()
 
@@ -117,7 +118,7 @@
         _commentBtn.frame = CGRectMake(CXScreenWidth - 70, 20, 20, 44);
         [_commentBtn setImage:[UIImage imageNamed:@"course_comment"] forState:UIControlStateNormal];
         [_commentBtn setImage:[UIImage imageNamed:@"course_comment"] forState:UIControlStateHighlighted];
-        [_commentBtn addTarget:self action:@selector(showShareBar) forControlEvents:UIControlEventTouchUpInside];
+        [_commentBtn addTarget:self action:@selector(showCommentDialog) forControlEvents:UIControlEventTouchUpInside];
     }
     return _commentBtn;
 }
@@ -134,11 +135,11 @@
 
 #pragma mark  - action method
 - (void)showShareBar{
-    CXLog(@"点击了课程分享按钮");
+    [[RateView instance] dismissInView:self.view];
 }
 
 - (void)showCommentDialog{
-    CXLog(@"展开了评论对话框");
+    [[RateView instance] showInView:self.view];
 }
 
 

@@ -7,28 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "CampusNote.h"
 
 typedef NS_ENUM(NSUInteger,MoreToolBarActionTyep){
-    MoreToolBarActionTyepWechat,                //微信好友
-    MoreToolBarActionTyepFriends,               //微信朋友圈
-    MoreToolBarActionTyepWeibo,                 //微博
-    MoreToolBarActionTyepQzone,                  //QQ空间
-    MoreToolBarActionTyepQQ,                    //QQ好友
-    MoreToolBarActionTyepMessage,                 //短信
-    MoreToolBarActionTyepEmail,                    //Email
+    MoreToolBarActionTyepDigup,                     //点赞
+    MoreToolBarActionTyepDigdown,                     //踩
+    MoreToolBarActionTyepDislike,                   //不感兴趣
+    MoreToolBarActionTyepLove,                   //收藏
+    MoreToolBarActionTyepReport,                     //举报
     
-    MoreToolBarActionTyepLike,                     //点赞
-    MoreToolBarActionTyepDislike,                   //狠踩它
-    MoreToolBarActionTyepCollect,                   //收藏
-    MoreToolBarActionTyepReport                     //举报
+    MoreToolBarActionTyepCancel                     //取消
 };
 
-@class ShareToolBarView;
-typedef void (^ToolBarActionBlock)(ShareToolBarView *toolbar,MoreToolBarActionTyep actionType);
+typedef void (^MoreToolBarActionBlock)(MoreToolBarActionTyep actionType);
 
 @interface MoreToolBarView : UIView
 
-- (void)updateUIWithModel: (id)model action:(ToolBarActionBlock)actionBlock;
++ (instancetype)instance; 
+
+- (void)updateUIWithModel: (CampusNote *)model action:(MoreToolBarActionBlock)actionBlock;
+
+- (void)showInView:(UIView *)view;
+
+- (void)dismissInView:(UIView *)view;
 
 @end
+

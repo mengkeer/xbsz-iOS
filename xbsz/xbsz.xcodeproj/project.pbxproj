@@ -36,7 +36,7 @@
 		05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21AD31E5BE5AD00D7BA6C /* RecommendViewController.m */; };
 		05F472F81E7131890085345F /* CommentToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472F71E7131890085345F /* CommentToolBarView.m */; };
 		05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472FA1E7132640085345F /* MoreToolBarView.m */; };
-		51C630EFDAE492F2E1D2968C /* Pods_xbsz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB216B940BEEEB392A0BE826 /* Pods_xbsz.framework */; };
+		0B10E8964D848F899BB75440 /* Pods_xbsz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E63B23BCE653D6BCD373EB95 /* Pods_xbsz.framework */; };
 		AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F4821E5B235F008346BD /* CXBaseTableView.m */; };
 		AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F4871E5B23C9008346BD /* CXBaseCollectionView.m */; };
 		AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F48B1E5B244E008346BD /* UIAlertController+CXAlertController.m */; };
@@ -69,6 +69,14 @@
 		AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89391E5976FE009603E4 /* ExerciseViewController.m */; };
 		AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F893E1E597742009603E4 /* CXStudyViewController.m */; };
 		ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */; };
+		ADAAE0841E7CC91100A0FA2C /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0831E7CC91100A0FA2C /* Exercise.m */; };
+		ADAAE0871E7CCFE700A0FA2C /* ExerciseList.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0861E7CCFE700A0FA2C /* ExerciseList.m */; };
+		ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = ADAAE0881E7CD06400A0FA2C /* exercises.json */; };
+		ADAAE08E1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */; };
+		ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */; };
+		ADAAE0921E7CDCDF00A0FA2C /* ExerciseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0911E7CDCDF00A0FA2C /* ExerciseDetailViewController.m */; };
+		ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0941E7D751200A0FA2C /* ToolBarCell.m */; };
+		ADAAE0981E7D91F400A0FA2C /* ShareToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0971E7D91F400A0FA2C /* ShareToolBarView.m */; };
 		ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */; };
 		ADB7462D1E76DA8B00644812 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADB746201E76DA8B00644812 /* PYSearch.bundle */; };
 		ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746231E76DA8B00644812 /* PYSearchConst.m */; };
@@ -141,9 +149,8 @@
 		05F472F71E7131890085345F /* CommentToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentToolBarView.m; sourceTree = "<group>"; };
 		05F472F91E7132640085345F /* MoreToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreToolBarView.h; sourceTree = "<group>"; };
 		05F472FA1E7132640085345F /* MoreToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreToolBarView.m; sourceTree = "<group>"; };
-		3915E3B0BC1257B5246BAC29 /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
-		80772F8FC1CD2FB2EA0DE929 /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
-		AB216B940BEEEB392A0BE826 /* Pods_xbsz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xbsz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A23747145CC1BEFE8732577 /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
+		5A7A8CB54CD5813581E43A24 /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
 		AD29F4811E5B235F008346BD /* CXBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseTableView.h; sourceTree = "<group>"; };
 		AD29F4821E5B235F008346BD /* CXBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBaseTableView.m; sourceTree = "<group>"; };
 		AD29F4861E5B23C9008346BD /* CXBaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseCollectionView.h; sourceTree = "<group>"; };
@@ -218,6 +225,21 @@
 		AD7F893E1E597742009603E4 /* CXStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXStudyViewController.m; sourceTree = "<group>"; };
 		ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
+		ADAAE0821E7CC91100A0FA2C /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		ADAAE0831E7CC91100A0FA2C /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
+		ADAAE0851E7CCFE700A0FA2C /* ExerciseList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseList.h; sourceTree = "<group>"; };
+		ADAAE0861E7CCFE700A0FA2C /* ExerciseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseList.m; sourceTree = "<group>"; };
+		ADAAE0881E7CD06400A0FA2C /* exercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
+		ADAAE08A1E7CD74200A0FA2C /* ExerciseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCollectionViewCell.h; sourceTree = "<group>"; };
+		ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCollectionViewCell.m; sourceTree = "<group>"; };
+		ADAAE08C1E7CD74200A0FA2C /* ExerciseSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSearchBar.h; sourceTree = "<group>"; };
+		ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSearchBar.m; sourceTree = "<group>"; };
+		ADAAE0901E7CDCDF00A0FA2C /* ExerciseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseDetailViewController.h; path = xbsz/Modules/study/sub/exercise/Controller/ExerciseDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		ADAAE0911E7CDCDF00A0FA2C /* ExerciseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseDetailViewController.m; path = xbsz/Modules/study/sub/exercise/Controller/ExerciseDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		ADAAE0931E7D751200A0FA2C /* ToolBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarCell.h; sourceTree = "<group>"; };
+		ADAAE0941E7D751200A0FA2C /* ToolBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarCell.m; sourceTree = "<group>"; };
+		ADAAE0961E7D91F400A0FA2C /* ShareToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToolBarView.h; sourceTree = "<group>"; };
+		ADAAE0971E7D91F400A0FA2C /* ShareToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareToolBarView.m; sourceTree = "<group>"; };
 		ADB7461E1E76DA8B00644812 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
 		ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
 		ADB746201E76DA8B00644812 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
@@ -245,6 +267,7 @@
 		ADF042401E0192EF00171489 /* avatar7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar7.jpg; sourceTree = "<group>"; };
 		ADF042411E0192EF00171489 /* avatar8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar8.jpg; sourceTree = "<group>"; };
 		ADF042421E0192EF00171489 /* avatar9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar9.jpg; sourceTree = "<group>"; };
+		E63B23BCE653D6BCD373EB95 /* Pods_xbsz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xbsz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,7 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51C630EFDAE492F2E1D2968C /* Pods_xbsz.framework in Frameworks */,
+				0B10E8964D848F899BB75440 /* Pods_xbsz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,25 +424,29 @@
 			children = (
 				05F472F61E7131890085345F /* CommentToolBarView.h */,
 				05F472F71E7131890085345F /* CommentToolBarView.m */,
+				ADAAE0961E7D91F400A0FA2C /* ShareToolBarView.h */,
+				ADAAE0971E7D91F400A0FA2C /* ShareToolBarView.m */,
 				05F472F91E7132640085345F /* MoreToolBarView.h */,
 				05F472FA1E7132640085345F /* MoreToolBarView.m */,
+				ADAAE0931E7D751200A0FA2C /* ToolBarCell.h */,
+				ADAAE0941E7D751200A0FA2C /* ToolBarCell.m */,
 			);
 			path = ToolBar;
 			sourceTree = "<group>";
 		};
-		0A7F21A5988CED5497CF0984 /* Frameworks */ = {
+		4D68E2034530D7D614C34C54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AB216B940BEEEB392A0BE826 /* Pods_xbsz.framework */,
+				E63B23BCE653D6BCD373EB95 /* Pods_xbsz.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		47CBCA5ED540D38E5EC55CF9 /* Pods */ = {
+		AB734790F9CCD9EB82BA63EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3915E3B0BC1257B5246BAC29 /* Pods-xbsz.debug.xcconfig */,
-				80772F8FC1CD2FB2EA0DE929 /* Pods-xbsz.release.xcconfig */,
+				5A23747145CC1BEFE8732577 /* Pods-xbsz.debug.xcconfig */,
+				5A7A8CB54CD5813581E43A24 /* Pods-xbsz.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -472,8 +499,8 @@
 			children = (
 				AD30B1391DFAC900000189DD /* xbsz */,
 				AD30B1381DFAC900000189DD /* Products */,
-				47CBCA5ED540D38E5EC55CF9 /* Pods */,
-				0A7F21A5988CED5497CF0984 /* Frameworks */,
+				AB734790F9CCD9EB82BA63EB /* Pods */,
+				4D68E2034530D7D614C34C54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -511,8 +538,9 @@
 		AD30B16F1DFAC992000189DD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0518ECC71E603E480018F432 /* user.json */,
+				ADAAE0881E7CD06400A0FA2C /* exercises.json */,
 				05B4D0881E769EF1005DC854 /* courses.json */,
+				0518ECC71E603E480018F432 /* user.json */,
 				05B4D08D1E76A532005DC854 /* course.json */,
 				0518ECC91E6041E10018F432 /* note.json */,
 				0518ECC51E6037C60018F432 /* notes.json */,
@@ -845,17 +873,22 @@
 		AD7F89361E5976FE009603E4 /* exercise */ = {
 			isa = PBXGroup;
 			children = (
-				AD7F89371E5976FE009603E4 /* controller */,
+				AD7F89371E5976FE009603E4 /* Controller */,
+				ADAAE0801E7CC87200A0FA2C /* Model */,
+				ADAAE0811E7CC87200A0FA2C /* View */,
 			);
 			path = exercise;
 			sourceTree = "<group>";
 		};
-		AD7F89371E5976FE009603E4 /* controller */ = {
+		AD7F89371E5976FE009603E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				AD7F89381E5976FE009603E4 /* ExerciseViewController.h */,
 				AD7F89391E5976FE009603E4 /* ExerciseViewController.m */,
+				ADAAE0901E7CDCDF00A0FA2C /* ExerciseDetailViewController.h */,
+				ADAAE0911E7CDCDF00A0FA2C /* ExerciseDetailViewController.m */,
 			);
+			name = Controller;
 			path = controller;
 			sourceTree = "<group>";
 		};
@@ -867,6 +900,28 @@
 				ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		ADAAE0801E7CC87200A0FA2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ADAAE0821E7CC91100A0FA2C /* Exercise.h */,
+				ADAAE0831E7CC91100A0FA2C /* Exercise.m */,
+				ADAAE0851E7CCFE700A0FA2C /* ExerciseList.h */,
+				ADAAE0861E7CCFE700A0FA2C /* ExerciseList.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ADAAE0811E7CC87200A0FA2C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ADAAE08A1E7CD74200A0FA2C /* ExerciseCollectionViewCell.h */,
+				ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */,
+				ADAAE08C1E7CD74200A0FA2C /* ExerciseSearchBar.h */,
+				ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		ADB746191E76D69700644812 /* search */ = {
@@ -946,13 +1001,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD30B14E1DFAC900000189DD /* Build configuration list for PBXNativeTarget "xbsz" */;
 			buildPhases = (
-				5B714071F3CEBD393A2E74DC /* [CP] Check Pods Manifest.lock */,
+				F6EC92FBCEC17FD09DDCC1F2 /* [CP] Check Pods Manifest.lock */,
 				AD30B1331DFAC900000189DD /* Sources */,
 				AD30B1341DFAC900000189DD /* Frameworks */,
 				AD30B1351DFAC900000189DD /* Resources */,
-				846E42CBC8EB6A839D5A58DF /* [CP] Embed Pods Frameworks */,
-				0A9088433F053594BF88D7F6 /* [CP] Copy Pods Resources */,
-				776181DD9DDB647E94C2008B /* Embed Pods Frameworks */,
+				8C94FDBAE94C22ACD7115FA5 /* [CP] Embed Pods Frameworks */,
+				8A2D53A97ED2417C35A63F6D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1005,6 +1059,7 @@
 				ADF042451E0192EF00171489 /* avatar11.jpg in Resources */,
 				ADF042431E0192EF00171489 /* avatar1.jpg in Resources */,
 				0518ECC81E603E480018F432 /* user.json in Resources */,
+				ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */,
 				0563B1491E794169008283C7 /* course.jpg in Resources */,
 				ADF0424D1E0192EF00171489 /* avatar9.jpg in Resources */,
 				0518ECCA1E6041E10018F432 /* note.json in Resources */,
@@ -1029,7 +1084,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A9088433F053594BF88D7F6 /* [CP] Copy Pods Resources */ = {
+		8A2D53A97ED2417C35A63F6D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1044,37 +1099,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5B714071F3CEBD393A2E74DC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		776181DD9DDB647E94C2008B /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		846E42CBC8EB6A839D5A58DF /* [CP] Embed Pods Frameworks */ = {
+		8C94FDBAE94C22ACD7115FA5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1089,6 +1114,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-xbsz/Pods-xbsz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F6EC92FBCEC17FD09DDCC1F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1097,7 +1137,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				05067FF31E7BF1E900868AC1 /* RateView.m in Sources */,
+				ADAAE0841E7CC91100A0FA2C /* Exercise.m in Sources */,
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
+				ADAAE0921E7CDCDF00A0FA2C /* ExerciseDetailViewController.m in Sources */,
 				ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */,
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
@@ -1106,6 +1148,7 @@
 				05B4D0801E7675FA005DC854 /* Course.m in Sources */,
 				05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */,
 				AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */,
+				ADAAE08E1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m in Sources */,
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,
 				05067FEC1E7BF02200868AC1 /* CourseDetailViewController.m in Sources */,
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
@@ -1114,6 +1157,7 @@
 				0518ECB61E60138A0018F432 /* CXUser.m in Sources */,
 				0538AAA51E6E91C400E7A51D /* CampusComment.m in Sources */,
 				AD7F882C1E594D5E009603E4 /* YZFlowLayout.m in Sources */,
+				ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */,
 				AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */,
 				AD7F891D1E595B29009603E4 /* RegisterViewController.m in Sources */,
 				AD7F88DD1E595A5E009603E4 /* CXNavigationController.m in Sources */,
@@ -1126,6 +1170,7 @@
 				0518ECB31E6012AD0018F432 /* CampusNote.m in Sources */,
 				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
+				ADAAE0981E7D91F400A0FA2C /* ShareToolBarView.m in Sources */,
 				05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */,
 				AD7F891E1E595B29009603E4 /* ResetViewController.m in Sources */,
 				ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */,
@@ -1145,7 +1190,9 @@
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,
 				ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */,
 				05067FED1E7BF02200868AC1 /* CourseInfoViewController.m in Sources */,
+				ADAAE0871E7CCFE700A0FA2C /* ExerciseList.m in Sources */,
 				AD7F891A1E595B29009603E4 /* CXLaunchViewController.m in Sources */,
+				ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,
 				AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */,
 				AD7F88291E594D5E009603E4 /* UIView+Frame.m in Sources */,
@@ -1257,7 +1304,7 @@
 		};
 		AD30B14F1DFAC900000189DD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3915E3B0BC1257B5246BAC29 /* Pods-xbsz.debug.xcconfig */;
+			baseConfigurationReference = 5A23747145CC1BEFE8732577 /* Pods-xbsz.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1290,7 +1337,7 @@
 		};
 		AD30B1501DFAC900000189DD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80772F8FC1CD2FB2EA0DE929 /* Pods-xbsz.release.xcconfig */;
+			baseConfigurationReference = 5A7A8CB54CD5813581E43A24 /* Pods-xbsz.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;

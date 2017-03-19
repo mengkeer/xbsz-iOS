@@ -21,6 +21,7 @@
 #define CXGreenColor   ([UIColor greenColor])
 #define CXBlueColor  [UIColor blueColor]
 #define CXClearColor [UIColor clearColor]
+#define CXGrayColor   [UIColor grayColor]
 #define CXLightGrayColor  [UIColor lightGrayColor]
 #define CXTextGrayColor    (CXHexColor(0x272b3c))
 

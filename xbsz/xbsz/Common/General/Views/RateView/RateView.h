@@ -14,7 +14,10 @@
 
 @interface RateView : UIView
 
++ (instancetype)instance;       
 
+- (void)showInView:(UIView *)view;
 
+- (void)dismissInView:(UIView *)view;
 
 @end

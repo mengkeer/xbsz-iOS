@@ -29,6 +29,8 @@
 
 @property (nonatomic, assign) NSInteger likes;
 
+@property (nonatomic, assign) NSInteger dislikes;
+
 @property (nonatomic, assign) BOOL isOpend;     //帖子主题是否展开过
 
 @property (nonatomic, copy) NSString *create_at;

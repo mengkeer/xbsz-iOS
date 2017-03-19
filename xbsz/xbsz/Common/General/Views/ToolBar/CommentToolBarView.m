@@ -111,11 +111,12 @@
 #pragma  mark private method
 
 - (void)btnClicked:(UIButton *)sender{
-    if(!_actionBlock || _status == YES){
-        _actionBlock(self,ToolBarClickTypeLike);
-        return;
-    }
     if(sender == self.likeBtn){
+        
+        if(!_actionBlock || _status == YES){
+            _actionBlock(self,ToolBarClickTypeLike);
+            return;
+        }
         
         [_likeBtn setImage:[UIImage imageNamed:@"liked"] forState:UIControlStateNormal];
         [_likeBtn.imageView mas_updateConstraints:^(MASConstraintMaker *make) {

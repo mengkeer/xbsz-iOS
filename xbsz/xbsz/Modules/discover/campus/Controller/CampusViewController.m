@@ -12,6 +12,8 @@
 #import "CXUser.h"
 #import "CampusNote.h"
 #import "CampusNoteList.h"
+#import "MoreToolBarView.h"
+#import "ShareToolBarView.h"
 
 @interface CampusViewController ()<CXBaseTableViewDelegate>
 
@@ -33,6 +35,7 @@
     }];
     
     [self loadDataAtPageIndex:InitialLoadPage];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,7 +128,7 @@
     }
     CampusNote *note = [_noteList.notes objectAtIndex:indexPath.row];
     BOOL hasLiked = [[_noteList.likes objectForKey:note.noteID] isEqualToString:@"1"] ? YES:NO;
-    [cell updateUIWithModel:[_noteList.notes objectAtIndex:indexPath.row] hasLiked:hasLiked action:^(id model, CellActionType actionType) {
+    [cell updateUIWithModel:[_noteList.notes objectAtIndex:indexPath.row] hasLiked:hasLiked action:^(id model, CommentCellActionType actionType) {
         [self handleAction:actionType model:(CampusNote *)model];
     }];
 
@@ -134,7 +137,7 @@
 
 #pragma mark private method
 
-- (void)handleAction:(CellActionType )type model:(CampusNote *)model{
+- (void)handleAction:(CommentCellActionType)type model:(CampusNote *)model{
     switch (type) {
         case CellActionTypeLike:
             if([[_noteList.likes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
@@ -147,17 +150,78 @@
         case CellActionTypeReply:
             CXLog(@"点击了回复");
             break;
-        case CellActionTypeShare:
-            CXLog(@"点击了分享");
+        case CellActionTypeShare:{
+            [[ShareToolBarView instance] updateUIWithModel:model action:^(ShareToolBarActionTyep actionType) {
+                [self handleShareAction:actionType model:model];
+            }];
+            [[ShareToolBarView instance] showInView:self.view.window];
             break;
-        case CellActionTypeMore:
-            CXLog(@"点击了更多");
+        }
+        case CellActionTypeMore:{
+            [[MoreToolBarView instance] updateUIWithModel:model action:^(MoreToolBarActionTyep actionType) {
+                [self handleMoreAction:actionType model:model];
+            }];
+            [[MoreToolBarView instance] showInView:self.view.window];
             break;
+        }
         case CellActionTypeUserInfo:
             CXLog(@"进入个人信息详细页面");
             break;
         case CellActionTypeComment:
             CXLog(@"进入评论列表界面");
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)handleShareAction:(ShareToolBarActionTyep) actionType model:(CampusNote *)model{
+    switch (actionType) {
+        case ShareToolBarActionTyepPYQ:
+            CXLog(@"朋友圈分享");
+            break;
+        case ShareToolBarActionTyepWechat:
+            CXLog(@"微信分享");
+            break;
+        case ShareToolBarActionTyepQQ:
+            CXLog(@"QQ分享");
+            break;
+        case ShareToolBarActionTyepQzone:
+            CXLog(@"QQ空间分享");
+            break;
+        case ShareToolBarActionTyepWeibo:
+            CXLog(@"微博分享");
+            break;
+        case ShareToolBarActionTyepSystem:
+            CXLog(@"系统分享");
+            break;
+        case ShareToolBarActionTyepCancel:
+            [[ShareToolBarView instance] dismissInView:self.view.window];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)handleMoreAction:(MoreToolBarActionTyep) actionType model:(CampusNote *)model{
+    switch (actionType) {
+        case MoreToolBarActionTyepLove:
+            CXLog(@"收藏");
+            break;
+        case MoreToolBarActionTyepDislike:
+            CXLog(@"不感兴趣");
+            break;
+        case MoreToolBarActionTyepDigup:
+            CXLog(@"点赞");
+            break;
+        case MoreToolBarActionTyepDigdown:
+            CXLog(@"踩");
+            break;
+        case MoreToolBarActionTyepReport:
+            CXLog(@"举报");
+            break;
+        case MoreToolBarActionTyepCancel:
+            [[ShareToolBarView instance] dismissInView:self.view.window];
             break;
         default:
             break;

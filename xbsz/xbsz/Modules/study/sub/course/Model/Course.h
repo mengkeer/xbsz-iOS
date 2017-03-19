@@ -41,7 +41,7 @@
 
 @property (nonatomic, copy) NSString *suit;                 //适合人群
 
-@property (nonatomic, strong) CXUser *teacher;                     //该课程的教师
+@property (nonatomic, strong) CXUser *user;                     //该课程的教师
 
 
 

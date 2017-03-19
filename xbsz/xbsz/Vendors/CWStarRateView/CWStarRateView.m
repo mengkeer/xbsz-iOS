@@ -74,7 +74,12 @@
     CGFloat offset = tapPoint.x;
     CGFloat realStarScore = offset / (self.bounds.size.width / self.numberOfStars);
     CGFloat starScore = self.allowIncompleteStar ? realStarScore : ceilf(realStarScore);
-    self.scorePercent = starScore / self.numberOfStars;
+    
+    int starNum = (int)starScore;
+    
+    CGFloat score = (starScore - starNum) > 0.45 ? starNum + 1 :starNum+0.5;
+    
+    self.scorePercent = score / self.numberOfStars;
 }
 
 - (UIView *)createStarViewWithImage:(NSString *)imageName {

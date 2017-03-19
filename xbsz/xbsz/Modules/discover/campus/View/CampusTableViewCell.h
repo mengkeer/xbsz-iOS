@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CampusNote.h"
 
-typedef NS_ENUM(NSUInteger,CellActionType){
+typedef NS_ENUM(NSUInteger,CommentCellActionType){
     CellActionTypeLike = 1<<0,       //点赞
     CellActionTypeReply = 1<<1,       //回复
     CellActionTypeShare = 1<<2,       //分享
@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger,CellActionType){
     CellActionTypeComment               //点击进入评论列表
 };
 
-typedef void(^CellActionBlock)(id model , CellActionType actionType);
+typedef void(^CellActionBlock)(id model , CommentCellActionType actionType);
 
 @interface CampusTableViewCell : UITableViewCell
 

@@ -344,7 +344,7 @@ static int avatarWidth = 40;
 - (YYAnimatedImageView *)avatarImageView{
     if(!_avatarImageView){
         _avatarImageView = [[YYAnimatedImageView alloc] init];
-        _avatarImageView.yy_imageURL = [NSURL URLWithString:_course.teacher.avatar];
+        _avatarImageView.yy_imageURL = [NSURL URLWithString:_course.user.avatar];
         _avatarImageView.layer.cornerRadius = avatarWidth/2;
         _avatarImageView.clipsToBounds = YES;
     }
@@ -357,7 +357,7 @@ static int avatarWidth = 40;
         _nameLable.font = CXSystemFont(15);
         _nameLable.textColor = CXBlackColor;
         _nameLable.textAlignment = NSTextAlignmentLeft;
-        _nameLable.text = [NSString stringWithFormat:@"%@",_course.teacher.truename];
+        _nameLable.text = [NSString stringWithFormat:@"%@",_course.user.truename];
     }
     return _nameLable;
 }
@@ -369,10 +369,10 @@ static int avatarWidth = 40;
         _teacherBriefLabel.textColor = CXLightGrayColor;
         _teacherBriefLabel.numberOfLines = 0;
         // 调整行间距
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_course.teacher.brief];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_course.user.brief];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         [paragraphStyle setLineSpacing:3];
-        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [_course.teacher.brief length])];
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [_course.user.brief length])];
         _teacherBriefLabel.attributedText = attributedString;
         
         [_teacherBriefLabel sizeToFit];

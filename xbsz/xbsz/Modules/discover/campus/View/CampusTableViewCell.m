@@ -445,7 +445,7 @@
     _dateLabel.text = [_note.create_at convertToLocalTime];
     _likeNumLabel.text = [NSString stringWithFormat:@"%ld次赞",_note.likes];
     _moreReplyLabel.text = [NSString stringWithFormat:@"所有%lu条评论",_note.total];
-    [self autoShowOrHide];
+    [self autoShowOrHide];                          //根据是否有主题 与是否有评论自动隐藏与显示
     if(_note.subject != nil && [_note.subject isNotBlank])          [self autoWordsLabel];                  //更新帖子主题
     
     
