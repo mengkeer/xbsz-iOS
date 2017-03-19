@@ -62,7 +62,9 @@
 #define CXTopCornerRadius 8         //导航栏下的弧度  eg：SetViewController
 #define CXDisplayContentHeight    (CXScreenHeight-CXStatusBarHeight-CXDisplayTitleHeight-CXTabbarHeight)
 
+//一些第三方服务所需要的App ID  与  App Key
 
+#define    BuglyAppID       @"c48b5790e9"
 
 
 #endif /* AppMacro_h */

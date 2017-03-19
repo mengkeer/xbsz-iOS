@@ -62,6 +62,20 @@ static MoreToolBarView *sharedObj;
     return self;
 }
 
+- (void)layoutSubviews{
+    CGFloat time = 1.0;
+    for(ToolBarCell *cell in _collectionView.subviews){
+        CGPoint point = cell.center;
+        CGPoint newPoint = CGPointMake(point.x, point.y-90);
+        cell.center = newPoint;
+        time += 0.1;
+        [UIView animateWithDuration:time delay:0 usingSpringWithDamping:0.3f initialSpringVelocity:21.f options:0 animations:^{
+            cell.center = point;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+}
 
 - (void)initMoreToolBar{
     self.backgroundColor = CXClearColor;
@@ -83,6 +97,7 @@ static MoreToolBarView *sharedObj;
         make.bottom.mas_equalTo(_cancleLabel.mas_top);
         make.top.mas_equalTo(self.mas_top);
     }];
+    [_collectionView reloadData];
 }
 
 

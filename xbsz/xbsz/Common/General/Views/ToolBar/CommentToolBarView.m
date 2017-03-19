@@ -112,7 +112,7 @@
 
 - (void)btnClicked:(UIButton *)sender{
     if(sender == self.likeBtn){
-        
+        //如果已经点过赞了 就退出
         if(!_actionBlock || _status == YES){
             _actionBlock(self,ToolBarClickTypeLike);
             return;
@@ -152,5 +152,10 @@
         [_likeBtn setImage:[UIImage imageNamed:@"comment_like"] forState:UIControlStateNormal];
     }
 }
+
+- (void)setLikeBtnSelect{
+    [_likeBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+}
+
     
 @end
