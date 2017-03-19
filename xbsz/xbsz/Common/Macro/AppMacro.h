@@ -64,5 +64,11 @@
 
 
 
+//一些第三方服务所需要的App ID  与  App Key
+
+#define    BuglyAppID       @"c48b5790e9"
+
+
+
 
 #endif /* AppMacro_h */

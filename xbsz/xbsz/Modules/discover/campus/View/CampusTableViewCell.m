@@ -7,7 +7,6 @@
 //
 
 #import "CampusTableViewCell.h"
-#import "CommentToolBarView.h"
 #import <YYImage/YYAnimatedImageView.h>
 #import <YYText/YYText.h>
 
@@ -26,7 +25,6 @@
 
 //用户分享的图片
 @property (nonatomic, strong) UIImageView *sharedImageView;
-@property (nonatomic, strong) CommentToolBarView *toolBarView;      //点赞 留言 分享 更多等功能
 
 @property (nonatomic, strong) UIView *lineView;     //工具栏下的分割线
 
@@ -41,10 +39,7 @@
 
 @property (nonatomic, strong) UILabel *dateLabel;       //发布日期
 
-@property (nonatomic, strong) CampusNote *note;
-
 @property (nonatomic, copy) CellActionBlock actionBlock;
-
 
 @end
 

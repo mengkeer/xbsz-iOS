@@ -9,6 +9,7 @@
 #import "CourseDetailViewController.h"
 #import "CourseInfoViewController.h"
 #import "RateView.h"
+#import "ShareToolBarView.h"
 
 @interface CourseDetailViewController () <RateViewDelegate>
 
@@ -135,7 +136,11 @@
 
 #pragma mark  - action method
 - (void)showShareBar{
-    [[RateView instance] dismissInView:self.view];
+    [[ShareToolBarView instance] updateUIWithModel:nil action:^(ShareToolBarActionTyep actionType) {
+        [self handleShareAction:actionType];
+    }];
+    [[ShareToolBarView instance] showInView:self.view.window];
+    
 }
 
 - (void)showCommentDialog{
@@ -143,6 +148,33 @@
      [RateView instance].delegate = self;
 }
 
+- (void)handleShareAction:(ShareToolBarActionTyep) actionType{
+    switch (actionType) {
+        case ShareToolBarActionTyepPYQ:
+            CXLog(@"朋友圈分享");
+            break;
+        case ShareToolBarActionTyepWechat:
+            CXLog(@"微信分享");
+            break;
+        case ShareToolBarActionTyepQQ:
+            CXLog(@"QQ分享");
+            break;
+        case ShareToolBarActionTyepQzone:
+            CXLog(@"QQ空间分享");
+            break;
+        case ShareToolBarActionTyepWeibo:
+            CXLog(@"微博分享");
+            break;
+        case ShareToolBarActionTyepSystem:
+            CXLog(@"系统分享");
+            break;
+        case ShareToolBarActionTyepCancel:
+            [[ShareToolBarView instance] dismissInView:self.view.window];
+            break;
+        default:
+            break;
+    }
+}
 
 #pragma mark - RateViewDelegate
 
