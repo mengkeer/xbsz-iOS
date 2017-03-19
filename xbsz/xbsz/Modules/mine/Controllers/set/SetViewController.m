@@ -166,9 +166,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             if(cell)    return cell;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
             SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            YYImageCache *cache = [YYWebImageManager sharedManager].cache;
-            NSString *num = [NSString stringWithFormat:@"%.2lfM",cache.diskCache.totalCost/(1024.0*1024.0)];
-            [item setTitle:@"清除缓存" andDetailText:num andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_clear"]];
+            [item setTitle:@"清除缓存" andDetailText:@"12.3M" andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_clear"]];
             [cell.contentView addSubview:item];
         }
         

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CampusNote.h"
-#import "CommentToolBarView.h"
 
 typedef NS_ENUM(NSUInteger,CommentCellActionType){
     CellActionTypeLike = 1<<0,       //点赞
@@ -23,10 +22,6 @@ typedef NS_ENUM(NSUInteger,CommentCellActionType){
 typedef void(^CellActionBlock)(id model , CommentCellActionType actionType);
 
 @interface CampusTableViewCell : UITableViewCell
-
-@property (nonatomic, strong) CampusNote *note;
-
-@property (nonatomic, strong) CommentToolBarView *toolBarView;      //点赞 留言 分享 更多等功能
 
 - (void)updateUIWithModel:(CampusNote *)model hasLiked:(BOOL)liked action:(CellActionBlock)actiobBlock;
 

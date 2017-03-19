@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "CXLaunchViewController.h"
 #import "CXNetworkMonitoring.h"
-#import <Bugly/Bugly.h>         //集成bugly服务
+//#import "CXTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -45,8 +45,6 @@
         }
         return NO;
     }
-    
-    [Bugly startWithAppId:BuglyAppID];         //集成bugly服务
     
     return YES;
 }

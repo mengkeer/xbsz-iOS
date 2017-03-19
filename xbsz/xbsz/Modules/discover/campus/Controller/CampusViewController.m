@@ -14,7 +14,6 @@
 #import "CampusNoteList.h"
 #import "MoreToolBarView.h"
 #import "ShareToolBarView.h"
-#import "CommentToolBarView.h"
 
 @interface CampusViewController ()<CXBaseTableViewDelegate>
 
@@ -99,7 +98,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CXLog(@"%@",[NSString stringWithFormat:@"点击了第%lu行",indexPath.row])
+//    CXLog(@"%@",[NSString stringWithFormat:@"点击了第%lu行",indexPath.row])
 }
 
 
@@ -119,7 +118,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+//    CXLog(@"显示第%ld行",indexPath.row);
     CampusTableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -222,7 +221,6 @@
             }else{
                 CXLog(@"开始点赞");
                 //注：此处需要手动出发toolbar栏里的点赞效果
-                [self digUpWithModel:model];
                 [_noteList.likes setValue:@"1" forKey:model.noteID];
             }
             break;
@@ -240,20 +238,10 @@
             CXLog(@"举报");
             break;
         case MoreToolBarActionTyepCancel:
-            [[MoreToolBarView instance] dismissInView:self.view.window];
+            [[ShareToolBarView instance] dismissInView:self.view.window];
             break;
         default:
             break;
-    }
-}
-
-//根据model中的noteID出发点赞效果  指在MoreToolBar里点赞时出发toolBar点赞按钮的效果
-- (void)digUpWithModel:(CampusNote *)model{
-    for(CampusTableViewCell *cell in _tableView.visibleCells){
-        if([cell.note.noteID isEqualToString:model.noteID]){
-            CommentToolBarView *toolbarView = cell.toolBarView;
-            [toolbarView setLikeBtnSelect];
-        }
     }
 }
 
