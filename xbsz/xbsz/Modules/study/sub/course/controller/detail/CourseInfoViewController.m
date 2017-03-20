@@ -29,8 +29,9 @@ static int _titleHeight  = 40;           //标题导航栏的高度
      
      设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
      */
+    @weakify(self);
     [self setUpContentViewFrame:^(UIView *contentView) {
-        contentView.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight  - CXNavigationBarHeight -200);
+        contentView.frame = weak_self.view.frame;
         contentView.backgroundColor = CXWhiteColor;
     }];
     
@@ -83,16 +84,19 @@ static int _titleHeight  = 40;           //标题导航栏的高度
     CourseIntroductionViewController  *vc1 = [CourseIntroductionViewController controller];
     vc1.title = @"介绍";
     vc1.course = _course;
+    vc1.delegate = _delegate;
     [self addChildViewController:vc1];
     
     CourseIntroductionViewController *vc2 = [CourseIntroductionViewController controller];
     vc2.title = @"目录";
     vc2.course = _course;
+    vc2.delegate = _delegate;
     [self addChildViewController:vc2];
     
     CourseIntroductionViewController *vc3 = [CourseIntroductionViewController controller];
     vc3.title = @"评价";
     vc3.course = _course;
+    vc3.delegate = _delegate;
     [self addChildViewController:vc3];
 }
 

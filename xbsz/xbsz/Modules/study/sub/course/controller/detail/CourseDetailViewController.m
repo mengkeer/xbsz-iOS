@@ -11,7 +11,7 @@
 #import "RateView.h"
 #import "ShareToolBarView.h"
 
-@interface CourseDetailViewController () <RateViewDelegate>
+@interface CourseDetailViewController () <RateViewDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) YYAnimatedImageView *imageView;     //顶部imageView
 @property (nonatomic, strong) UIButton *shareBtn;
@@ -42,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.view bringSubviewToFront:self.navigationController.navigationBar];
-    self.navigationController.navigationBar.backgroundColor = CXWhiteColor;
+    self.customNavBarView.backgroundColor = CXBackGroundColor;
     self.title = self.course.title;
     self.view.backgroundColor = CXWhiteColor;
     
@@ -60,6 +60,7 @@
     
     _infoViewController = [CourseInfoViewController controller];
     _infoViewController.course = _course;
+    _infoViewController.delegate = self;
     [self addChildViewController:_infoViewController];
     [self.view addSubview:_infoViewController.view];
     [_infoViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -181,6 +182,53 @@
     CXLog(@"评分为%.1f 评论内容为:%@",scorePoint,content);
 }
 
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGPoint nowOffset = scrollView.contentOffset;
+    
+    CGPoint center = _imageView.center;             //图片的center
+    
+    CXLog(@"ContentSzie = %f ,%f",scrollView.contentSize.width,scrollView.contentSize.height);
+    CXLog(@"上一级的height = %f",CGRectGetHeight(_infoViewController.view.frame));
+
+    //    CXLog(@"ContentOffset = %f ,%f",scrollView.contentOffset.x,scrollView.contentOffset.y);
+//    CXLog(@"ContentInset = %f",scrollView.contentInset.bottom);
+    
+    
+//    CXLog(@"Y偏移量= %lf 图片的centerY = %lf",nowOffset.y,center.y);
+    if(nowOffset.y >= 0.0 && center.y > ([self getStartOriginY]-100)){
+        CGFloat top =  _imageView.center.y - nowOffset.y <= -36 ? -36 : _imageView.center.y - nowOffset.y ;
+        CGFloat gap = _imageView.center.y - top;
+        _imageView.center = CGPointMake(CXScreenWidth/2, top);
+        scrollView.contentOffset = CGPointZero;
+        
+        CGRect frame = _infoViewController.view.frame;
+        _infoViewController.view.frame = CGRectMake(0,frame.origin.y-gap, CXScreenWidth, CGRectGetHeight(frame)+gap);
+//        frame = _infoViewController.view.frame;
+//        [_infoViewController setUpContentViewFrame:^(UIView *contentView) {
+//            contentView.frame = frame;
+//        }];
+    }else{
+        if(nowOffset.y <= 0.0 && center.y >= -36 && center.y < 164){
+             CGFloat top =  _imageView.center.y - nowOffset.y >164 ? 164 : _imageView.center.y - nowOffset.y ;
+            CGFloat gap = _imageView.center.y - top;
+            _imageView.center = CGPointMake(CXScreenWidth/2, top);
+            scrollView.contentOffset = CGPointZero;
+            
+            if(center.y >= 164)     return;
+            CGRect frame = _infoViewController.view.frame;
+            _infoViewController.view.frame = CGRectMake(0,frame.origin.y-gap, CXScreenWidth, CGRectGetHeight(frame)+gap);
+//            frame = _infoViewController.view.frame;
+//            [_infoViewController setUpContentViewFrame:^(UIView *contentView) {
+//                contentView.frame = frame;
+//            }];
+            
+        }
+    }
+}
 
 
 @end

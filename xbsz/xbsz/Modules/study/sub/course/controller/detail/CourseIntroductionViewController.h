@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) Course *course;
 
+@property (nonatomic, weak) id<UIScrollViewDelegate> delegate;
+
 @end

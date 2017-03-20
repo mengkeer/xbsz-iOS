@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - Bugly (2.4.7)
+  - Bugly (2.4.2)
   - DZNEmptyDataSet (1.8.1)
   - FDFullscreenPopGesture (1.1)
   - IQKeyboardManager (4.0.6)
@@ -36,7 +36,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - Bugly (~> 2.4.7)
+  - Bugly
   - DZNEmptyDataSet
   - FDFullscreenPopGesture
   - IQKeyboardManager
@@ -50,7 +50,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  Bugly: 2c256069145f550171907c5cb1c0f84ad291f6c1
+  Bugly: b09cd3c7e54048a0e079be88a7a99610f14eab8f
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
@@ -64,6 +64,4 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 0822655d80c6738989b6a47c4c48b956be732b00
-
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 0.39.0

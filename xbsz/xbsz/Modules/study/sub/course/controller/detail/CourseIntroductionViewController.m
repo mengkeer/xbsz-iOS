@@ -50,7 +50,8 @@ static int avatarWidth = 40;
     
     [self.view addSubview:self.scrollView];
     [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.mas_equalTo(self.view);
+        make.left.right.top.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view);
     }];
     //添加课程名称 评分 参与人数
     [_scrollView addSubview:self.infoView];
@@ -164,14 +165,6 @@ static int avatarWidth = 40;
         make.bottom.mas_equalTo(_scrollView.mas_bottom).mas_offset(-40);
     }];
     
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 
@@ -186,8 +179,11 @@ static int avatarWidth = 40;
         _scrollView = [[UIScrollView alloc] init];
         _scrollView.backgroundColor = CXBackGroundColor;
         _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = YES;
         _scrollView.alwaysBounceHorizontal = NO;
         _scrollView.alwaysBounceVertical = YES;
+        _scrollView.delegate = _delegate;
+//        _scrollView.contentSize = CGSizeMake(CXScreenWidth, self.view.frame.size.height+300);
     }
     return _scrollView;
 }
