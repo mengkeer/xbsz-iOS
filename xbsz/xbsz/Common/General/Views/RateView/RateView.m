@@ -182,7 +182,7 @@ static RateView *sharedObj;
     
     [UIView animateWithDuration:0.4 animations:^{
         backView.alpha = 0.2;
-        CGPoint windowCenter = [UIApplication sharedApplication].keyWindow.center;
+        CGPoint windowCenter = CGPointMake(CXScreenWidth/2, CXScreenHeight/2);
         rateView.center = windowCenter;
     }];
 }

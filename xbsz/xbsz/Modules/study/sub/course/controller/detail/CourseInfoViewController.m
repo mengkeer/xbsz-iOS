@@ -31,7 +31,7 @@ static int _titleHeight  = 40;           //标题导航栏的高度
      */
     @weakify(self);
     [self setUpContentViewFrame:^(UIView *contentView) {
-        contentView.frame = weak_self.view.frame;
+        contentView.frame = CGRectMake(0, 0, CXScreenWidth, CGRectGetHeight(weak_self.view.frame));
         contentView.backgroundColor = CXWhiteColor;
     }];
     
