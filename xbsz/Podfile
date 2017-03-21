@@ -15,5 +15,5 @@ target 'xbsz' do
     pod 'YYText'
     pod 'YYWebImage'
     pod 'SVProgressHUD'
-     pod 'Bugly', '~> 2.4.7'
+    pod 'Bugly'
 end

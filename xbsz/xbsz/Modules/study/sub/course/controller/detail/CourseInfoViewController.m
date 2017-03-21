@@ -29,9 +29,8 @@ static int _titleHeight  = 40;           //标题导航栏的高度
      
      设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
      */
-    @weakify(self);
     [self setUpContentViewFrame:^(UIView *contentView) {
-        contentView.frame = CGRectMake(0, 0, CXScreenWidth, CGRectGetHeight(weak_self.view.frame));
+        contentView.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight-CXNavigationBarHeight);
         contentView.backgroundColor = CXWhiteColor;
     }];
     

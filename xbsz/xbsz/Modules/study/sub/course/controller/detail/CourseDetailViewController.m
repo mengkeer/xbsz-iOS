@@ -191,14 +191,6 @@
     
     CGPoint center = _imageView.center;             //图片的center
     
-    CXLog(@"ContentSzie = %f ,%f",scrollView.contentSize.width,scrollView.contentSize.height);
-    CXLog(@"上一级的height = %lf",scrollView.frame.size.height);
-
-    //    CXLog(@"ContentOffset = %f ,%f",scrollView.contentOffset.x,scrollView.contentOffset.y);
-//    CXLog(@"ContentInset = %f",scrollView.contentInset.bottom);
-    
-    
-//    CXLog(@"Y偏移量= %lf 图片的centerY = %lf",nowOffset.y,center.y);
     if(nowOffset.y >= 0.0 && center.y > ([self getStartOriginY]-100)){
         CGFloat top =  _imageView.center.y - nowOffset.y <= -36 ? -36 : _imageView.center.y - nowOffset.y ;
         CGFloat gap = _imageView.center.y - top;
@@ -207,13 +199,7 @@
         
         CGRect frame = _infoViewController.view.frame;
         _infoViewController.view.frame = CGRectMake(0,frame.origin.y-gap, CXScreenWidth, CGRectGetHeight(frame)+gap);
-//        frame = _infoViewController.view.frame;
-//        [_infoViewController setUpContentViewFrame:^(UIView *contentView) {
-//            contentView.frame = frame;
-//        }];
-        
-//        CGRect frame2 = scrollView.frame;
-//        scrollView.frame = CGRectMake(frame.origin.x, 0, frame2.size.width, frame2.size.height+gap);
+
     }else{
         if(nowOffset.y <= 0.0 && center.y >= -36 && center.y < 164){
              CGFloat top =  _imageView.center.y - nowOffset.y >164 ? 164 : _imageView.center.y - nowOffset.y ;
@@ -224,12 +210,7 @@
             if(center.y >= 164)     return;
             CGRect frame = _infoViewController.view.frame;
             _infoViewController.view.frame = CGRectMake(0,frame.origin.y-gap, CXScreenWidth, CGRectGetHeight(frame)+gap);
-//            frame = _infoViewController.view.frame;
-//            [_infoViewController setUpContentViewFrame:^(UIView *contentView) {
-//                contentView.frame = frame;
-//            }];
-//            CGRect frame2 = scrollView.frame;
-//             scrollView.frame = CGRectMake(frame.origin.x, 0, frame2.size.width, frame2.size.height+gap);
+
         }
     }
 }
