@@ -15,6 +15,7 @@
 #import "MoreToolBarView.h"
 #import "ShareToolBarView.h"
 #import "CommentToolBarView.h"
+#import "ToastView.h"
 
 @interface CampusViewController ()<CXBaseTableViewDelegate>
 
@@ -142,7 +143,7 @@
     switch (type) {
         case CellActionTypeLike:
             if([[_noteList.likes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
-                [self showErrorWithStaus:@"已经赞过了"];
+                [ToastView showErrorWithStaus:@"已经赞过了"];
             }else{
                 CXLog(@"开始点赞");
                 [_noteList.likes setValue:@"1" forKey:model.noteID];
@@ -183,22 +184,22 @@
 - (void)handleShareAction:(ShareToolBarActionTyep) actionType model:(CampusNote *)model{
     switch (actionType) {
         case ShareToolBarActionTyepPYQ:
-            CXLog(@"朋友圈分享");
+            [ToastView showSuccessWithStaus:@"朋友圈分享"];
             break;
         case ShareToolBarActionTyepWechat:
-            CXLog(@"微信分享");
+            [ToastView showSuccessWithStaus:@"微信分享"];
             break;
         case ShareToolBarActionTyepQQ:
-            CXLog(@"QQ分享");
+            [ToastView showSuccessWithStaus:@"QQ分享"];
             break;
         case ShareToolBarActionTyepQzone:
-            CXLog(@"QQ空间分享");
+            [ToastView showSuccessWithStaus:@"QQ控件分享"];
             break;
         case ShareToolBarActionTyepWeibo:
-            CXLog(@"微博分享");
+            [ToastView showSuccessWithStaus:@"微博分享"];
             break;
         case ShareToolBarActionTyepSystem:
-            CXLog(@"系统分享");
+            [ToastView showSuccessWithStaus:@"系统分享"];
             break;
         case ShareToolBarActionTyepCancel:
             [[ShareToolBarView instance] dismissInView:self.view.window];
@@ -218,7 +219,7 @@
             break;
         case MoreToolBarActionTyepDigup:{
             if([[_noteList.likes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
-                [self showErrorWithStaus:@"已经赞过了"];
+                [ToastView showErrorWithStaus:@"已经赞过了"];
             }else{
                 CXLog(@"开始点赞");
                 //注：此处需要手动出发toolbar栏里的点赞效果
@@ -229,7 +230,7 @@
         }
         case MoreToolBarActionTyepDigdown:{
             if([[_noteList.dislikes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
-                [self showErrorWithStaus:@"已经踩过了"];
+                [ToastView showErrorWithStaus:@"已经踩过了"];
             }else{
                 CXLog(@"开始踩");
                 [_noteList.dislikes setValue:@"1" forKey:model.noteID];
@@ -255,30 +256,6 @@
             [toolbarView setLikeBtnSelect];
         }
     }
-}
-
-
-
-- (void)showSuccessWithStaus:(NSString *)status{
-    [SVProgressHUD showSuccessWithStatus:status];
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [SVProgressHUD dismiss];
-    });
-    return ;
-}
-
-- (void)showErrorWithStaus:(NSString *)status{
-    [SVProgressHUD showErrorWithStatus:status];
-    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [SVProgressHUD dismiss];
-    });
-    return ;
 }
 
 @end

@@ -14,6 +14,5 @@
 #import  <YYImage/YYImage.h>
 #import  <YYWebImage/YYWebImage.h>
 #import  <YYModel/YYModel.h>
-#import  "SVProgressHUD.h"
 
 #endif /* PodsImport_h */

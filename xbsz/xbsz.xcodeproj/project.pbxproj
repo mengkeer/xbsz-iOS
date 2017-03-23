@@ -20,6 +20,7 @@
 		0518ECC61E6037C60018F432 /* notes.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC51E6037C60018F432 /* notes.json */; };
 		0518ECC81E603E480018F432 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC71E603E480018F432 /* user.json */; };
 		0518ECCA1E6041E10018F432 /* note.json in Resources */ = {isa = PBXBuildFile; fileRef = 0518ECC91E6041E10018F432 /* note.json */; };
+		0537E0C21E8398FA00C2F81C /* ToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0537E0C11E8398FA00C2F81C /* ToastView.m */; };
 		0538AAA51E6E91C400E7A51D /* CampusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA41E6E91C400E7A51D /* CampusComment.m */; };
 		0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */; };
 		054B8B7C1E7B876600E4E0BD /* b27_icon_star_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054B8B781E7B876600E4E0BD /* b27_icon_star_gray@2x.png */; };
@@ -123,6 +124,8 @@
 		0518ECC51E6037C60018F432 /* notes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notes.json; sourceTree = "<group>"; };
 		0518ECC71E603E480018F432 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		0518ECC91E6041E10018F432 /* note.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = note.json; sourceTree = "<group>"; };
+		0537E0C01E8398FA00C2F81C /* ToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToastView.h; sourceTree = "<group>"; };
+		0537E0C11E8398FA00C2F81C /* ToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToastView.m; sourceTree = "<group>"; };
 		0538AAA31E6E91C400E7A51D /* CampusComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusComment.h; sourceTree = "<group>"; };
 		0538AAA41E6E91C400E7A51D /* CampusComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusComment.m; sourceTree = "<group>"; };
 		0538AAA61E6E9BDC00E7A51D /* NSString+CXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CXAdd.h"; sourceTree = "<group>"; };
@@ -338,6 +341,15 @@
 				0518ECAE1E6012400018F432 /* CampusTableViewCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0537E0BF1E83794D00C2F81C /* ToastView */ = {
+			isa = PBXGroup;
+			children = (
+				0537E0C01E8398FA00C2F81C /* ToastView.h */,
+				0537E0C11E8398FA00C2F81C /* ToastView.m */,
+			);
+			path = ToastView;
 			sourceTree = "<group>";
 		};
 		054B8B771E7B876600E4E0BD /* CWStarRateView */ = {
@@ -675,6 +687,7 @@
 		AD7F88C81E595A5E009603E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0537E0BF1E83794D00C2F81C /* ToastView */,
 				05067FF01E7BF16E00868AC1 /* RateView */,
 				05F472F51E7131260085345F /* ToolBar */,
 				AD29F47F1E5B22B0008346BD /* CollectionView */,
@@ -1165,6 +1178,7 @@
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
 				ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */,
+				0537E0C21E8398FA00C2F81C /* ToastView.m in Sources */,
 				AD7F89211E595B29009603E4 /* UserInfoViewController.m in Sources */,
 				05B4D0801E7675FA005DC854 /* Course.m in Sources */,
 				05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */,
