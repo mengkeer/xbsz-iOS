@@ -17,10 +17,10 @@ target 'xbsz' do
     pod 'SVProgressHUD'
     pod 'Bugly'
     #社会化分享与授权登录组件
-    #    pod 'UMengUShare/Plugin/IDFA'
-    #pod 'UMengUShare/Social/ReducedWeChat'
-    #pod 'UMengUShare/Social/ReducedQQ'
-    #pod 'UMengUShare/Social/ReducedSina'
+    pod 'UMengUShare/Plugin/IDFA'
+    pod 'UMengUShare/Social/ReducedWeChat'
+    pod 'UMengUShare/Social/ReducedQQ'
+    pod 'UMengUShare/Social/ReducedSina'
 
     
 end

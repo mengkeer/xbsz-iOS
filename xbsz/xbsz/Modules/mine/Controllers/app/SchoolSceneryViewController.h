@@ -7,7 +7,8 @@
 //
 
 #import "CXWhitePushViewController.h"
+#import "CXBaseWebViewController.h"
 
-@interface SchoolSceneryViewController : CXWhitePushViewController
+@interface SchoolSceneryViewController : CXBaseWebViewController
 
 @end

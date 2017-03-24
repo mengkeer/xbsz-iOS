@@ -14,7 +14,7 @@
 #import "LoginViewController.h"
 
 //APP Controller
-#import "CommonAPPViewController.h"
+#import "CXBaseWebViewController.h"
 #import "SchoolSceneryViewController.h"
 
 #define SectionHeaderHeight   45
@@ -302,7 +302,7 @@
         
         CXSectionButton *btn7 = [[CXSectionButton alloc] init:CGRectMake(width*2, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine7"]
-                                                     andTitle:@"空余教室"];
+                                                     andTitle:@"失物招领"];
         [_contentView addSubview:btn7];
         
         CXSectionButton *btn8 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
@@ -359,7 +359,8 @@
         
         CXSectionButton *btn9 = [[CXSectionButton alloc] init:CGRectMake(0, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"school1"]
-                                                     andTitle:@"东华校历"];
+                                                     andTitle:@"学工服务"];
+        [btn9 addTarget:self action:@selector(gotoStudentService) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn9];
         
         
@@ -391,21 +392,26 @@
         [_contentView addSubview:hLine5];
         
         
+        
         CXSectionButton *btn13 = [[CXSectionButton alloc] init:CGRectMake(0, offsetY, width, height)
-                                                      andImage:[UIImage imageNamed:@"school5"]
-                                                      andTitle:@"失物招领"];
+                                                     andImage:[UIImage imageNamed:@"school5"]
+                                                     andTitle:@"空余教室"];
+        [btn13 addTarget:self action:@selector(gotoFreeClassroom) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn13];
+    
         
         
         CXSectionButton *btn14 = [[CXSectionButton alloc] init:CGRectMake(width, offsetY, width, height)
                                                       andImage:[UIImage imageNamed:@"school6"]
                                                       andTitle:@"书目检索"];
+        [btn14 addTarget:self action:@selector(gotoBookFind) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn14];
         
         
         CXSectionButton *btn15 = [[CXSectionButton alloc] init:CGRectMake(width*2, offsetY, width, height)
                                                       andImage:[UIImage imageNamed:@"school7"]
                                                       andTitle:@"就业服务"];
+        [btn15 addTarget:self action:@selector(gotoEmployment) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn15];
         
         CXSectionButton *btn16 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
@@ -488,22 +494,42 @@
 #pragma  mark - private method
 
 - (void)gotoCommonView:(NSString *)title  url:(NSString *)url{
-    CommonAPPViewController *common = [CommonAPPViewController controller];
-    common.title = title;
-    common.url = url;
-    [self.navigationController pushViewController:common animated:YES];
+    CXBaseWebViewController *webViewController = [CXBaseWebViewController controller];
+    webViewController.title = title;
+    webViewController.url = url;
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
-- (void)gotoYellowPages{
-    [self gotoCommonView:@"电话黄页" url:URLPhoneYellowPages];
+- (void)gotoStudentService{
+    [self gotoCommonView:@"学工服务" url:URLStudentService];
 }
 
 - (void)gotoSchoolLecture{
     [self gotoCommonView:@"校园讲座" url:URLSchoolLecture];
 }
 
+- (void)gotoYellowPages{
+    [self gotoCommonView:@"电话黄页" url:URLPhoneYellowPages];
+}
+
+- (void)gotoFreeClassroom{
+    [self gotoCommonView:@"空余教室" url:URLFreeClassroom];
+}
+
+- (void)gotoEmployment{
+     [self gotoCommonView:@"就业服务" url:URLEmployment];
+}
+
+- (void)gotoBookFind{
+    [self gotoCommonView:@"书籍查询" url:URLBookFind];
+}
+
+
+
 - (void)gotoSchoolScenery{
-    [self.navigationController pushViewController:[SchoolSceneryViewController controller] animated:YES];
+    SchoolSceneryViewController *school = [SchoolSceneryViewController controller];
+    school.url = URLSchoolScenery;
+    [self.navigationController pushViewController:school animated:YES];
 }
 
 

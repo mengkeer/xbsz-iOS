@@ -11,7 +11,6 @@
 
 @interface SchoolSceneryViewController ()
 
-@property (nonatomic, strong) WKWebView *webView;
 
 @end
 
@@ -27,9 +26,8 @@
     self.title = @"校园风光";
     self.customNavBarView.backgroundColor = CXHexAlphaColor(0xF6F6F6, 0.5);
     
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight)];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:URLSchoolScenery]]];
-    [self.view addSubview:webView];
+    self.webView.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight);
+    
 }
 
 - (void)didReceiveMemoryWarning {

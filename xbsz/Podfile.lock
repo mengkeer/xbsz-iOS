@@ -21,6 +21,17 @@ PODS:
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
   - SVProgressHUD (2.0.3)
+  - UMengUShare/Core (6.4.0):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.0)
+  - UMengUShare/Plugin/IDFA (6.4.0):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedQQ (6.4.0):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedSina (6.4.0):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.0):
+    - UMengUShare/Core
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -43,6 +54,10 @@ DEPENDENCIES:
   - Masonry
   - MJRefresh
   - SVProgressHUD
+  - UMengUShare/Plugin/IDFA
+  - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/ReducedWeChat
   - YYCategories
   - YYModel
   - YYText
@@ -57,6 +72,7 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  UMengUShare: 83f849f356db0db9f18488cfbc2055a20b150481
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
@@ -64,4 +80,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 1bbf878a7208136975925d1e9fea2615aaeede56
+
+COCOAPODS: 1.2.0.beta.1
