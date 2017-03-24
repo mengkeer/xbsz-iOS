@@ -7,10 +7,11 @@
 //
 
 #import "SchoolSceneryViewController.h"
+#import <WebKit/WKWebView.h>
 
 @interface SchoolSceneryViewController ()
 
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) WKWebView *webView;
 
 @end
 
@@ -26,13 +27,9 @@
     self.title = @"校园风光";
     self.customNavBarView.backgroundColor = CXHexAlphaColor(0xF6F6F6, 0.5);
     
-    
-    
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight)];
-    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:URLSchoolScenery]];
-    [self.view addSubview: self.webView];
-    [self.webView loadRequest:request];
-    
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight)];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:URLSchoolScenery]]];
+    [self.view addSubview:webView];
 }
 
 - (void)didReceiveMemoryWarning {

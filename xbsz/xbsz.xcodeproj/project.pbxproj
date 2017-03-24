@@ -40,6 +40,9 @@
 		05CAAE541E81063B005F7715 /* CourseCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CAAE531E81063B005F7715 /* CourseCatalogViewController.m */; };
 		05CEE4A71E851DAB0033DD3D /* SchoolSceneryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CEE4A61E851DAB0033DD3D /* SchoolSceneryViewController.m */; };
 		05CEE4AA1E8525AC0033DD3D /* CommonAPPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CEE4A91E8525AC0033DD3D /* CommonAPPViewController.m */; };
+		05CEE4B01E85305E0033DD3D /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CEE4AD1E85305E0033DD3D /* NJKWebViewProgress.m */; };
+		05CEE4B11E85305E0033DD3D /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CEE4AF1E85305E0033DD3D /* NJKWebViewProgressView.m */; };
+		05CEE4B41E8530AF0033DD3D /* CXBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CEE4B31E8530AF0033DD3D /* CXBaseWebViewController.m */; };
 		05F472F81E7131890085345F /* CommentToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472F71E7131890085345F /* CommentToolBarView.m */; };
 		05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472FA1E7132640085345F /* MoreToolBarView.m */; };
 		1CD42E024E266B58E2A85E95 /* Pods_xbsz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72780BCABE2073D799CD5C44 /* Pods_xbsz.framework */; };
@@ -163,6 +166,12 @@
 		05CEE4A61E851DAB0033DD3D /* SchoolSceneryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolSceneryViewController.m; sourceTree = "<group>"; };
 		05CEE4A81E8525AC0033DD3D /* CommonAPPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAPPViewController.h; sourceTree = "<group>"; };
 		05CEE4A91E8525AC0033DD3D /* CommonAPPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonAPPViewController.m; sourceTree = "<group>"; };
+		05CEE4AC1E85305E0033DD3D /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		05CEE4AD1E85305E0033DD3D /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		05CEE4AE1E85305E0033DD3D /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		05CEE4AF1E85305E0033DD3D /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		05CEE4B21E8530AF0033DD3D /* CXBaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXBaseWebViewController.h; sourceTree = "<group>"; };
+		05CEE4B31E8530AF0033DD3D /* CXBaseWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXBaseWebViewController.m; sourceTree = "<group>"; };
 		05F472F61E7131890085345F /* CommentToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentToolBarView.h; sourceTree = "<group>"; };
 		05F472F71E7131890085345F /* CommentToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentToolBarView.m; sourceTree = "<group>"; };
 		05F472F91E7132640085345F /* MoreToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreToolBarView.h; sourceTree = "<group>"; };
@@ -468,6 +477,17 @@
 			path = app;
 			sourceTree = "<group>";
 		};
+		05CEE4AB1E85305E0033DD3D /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				05CEE4AC1E85305E0033DD3D /* NJKWebViewProgress.h */,
+				05CEE4AD1E85305E0033DD3D /* NJKWebViewProgress.m */,
+				05CEE4AE1E85305E0033DD3D /* NJKWebViewProgressView.h */,
+				05CEE4AF1E85305E0033DD3D /* NJKWebViewProgressView.m */,
+			);
+			path = NJKWebViewProgress;
+			sourceTree = "<group>";
+		};
 		05F472F51E7131260085345F /* ToolBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +613,7 @@
 		AD7F881A1E594D5E009603E4 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				05CEE4AB1E85305E0033DD3D /* NJKWebViewProgress */,
 				055A3B851E84BAB0004D09CC /* TZScrollViewPopGesture */,
 				054B8B771E7B876600E4E0BD /* CWStarRateView */,
 				ADB7461D1E76DA8B00644812 /* PYSearch */,
@@ -704,6 +725,8 @@
 				AD7F88C51E595A5E009603E4 /* CXTabBarController.m */,
 				ADB746391E77116500644812 /* CXWhitePushViewController.h */,
 				ADB7463A1E77116500644812 /* CXWhitePushViewController.m */,
+				05CEE4B21E8530AF0033DD3D /* CXBaseWebViewController.h */,
+				05CEE4B31E8530AF0033DD3D /* CXBaseWebViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1224,6 +1247,7 @@
 				05067FEC1E7BF02200868AC1 /* CourseDetailViewController.m in Sources */,
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
+				05CEE4B01E85305E0033DD3D /* NJKWebViewProgress.m in Sources */,
 				05B4D06C1E7646B4005DC854 /* CourseCollectionViewCell.m in Sources */,
 				0518ECB61E60138A0018F432 /* CXUser.m in Sources */,
 				0538AAA51E6E91C400E7A51D /* CampusComment.m in Sources */,
@@ -1244,6 +1268,7 @@
 				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
 				05CEE4A71E851DAB0033DD3D /* SchoolSceneryViewController.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
+				05CEE4B11E85305E0033DD3D /* NJKWebViewProgressView.m in Sources */,
 				ADAAE0981E7D91F400A0FA2C /* ShareToolBarView.m in Sources */,
 				05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */,
 				AD7F891E1E595B29009603E4 /* ResetViewController.m in Sources */,
@@ -1254,6 +1279,7 @@
 				ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */,
 				AD7F891F1E595B29009603E4 /* SetViewController.m in Sources */,
 				AD7F882A1E594D5E009603E4 /* YZDisplayTitleLabel.m in Sources */,
+				05CEE4B41E8530AF0033DD3D /* CXBaseWebViewController.m in Sources */,
 				AD2BE4EB1E5980CB00D0B0ED /* CXSectionButton.m in Sources */,
 				05B4D0861E769109005DC854 /* CourseSearchBar.m in Sources */,
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,

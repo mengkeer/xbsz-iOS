@@ -7,10 +7,11 @@
 //
 
 #import "CommonAPPViewController.h"
+#import <WebKit/WKWebView.h>
 
 @interface CommonAPPViewController ()
 
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) WKWebView *webView;
 
 @end
 
@@ -20,12 +21,9 @@
     [super viewDidLoad];
     self.customNavBarView.backgroundColor = CXBackGroundColor;
     
-    
-    
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, CXScreenWidth, CXScreenHeight-64)];
-    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:_url]];
-    [self.view addSubview: self.webView];
-    [self.webView loadRequest:request];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight)];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+    [self.view addSubview:webView];
     
 }
 
