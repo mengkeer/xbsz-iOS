@@ -8,6 +8,7 @@
 
 #import "UserInfoViewController.h"
 #import "SetItemView.h"
+#import "UIViewController+Authorization.h"
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
 static NSString *cellSwitchId = @"cellSwitchCellId";
@@ -15,7 +16,7 @@ static NSString *cellDetailTextId  = @"cellDetailTextId";
 static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 
-@interface UserInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@interface UserInfoViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end
 
@@ -79,6 +80,24 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    
+    if(indexPath.section == 3)  return ;
+    if(indexPath.section == 0){
+        switch (indexPath.row) {
+            case 0:
+                [self handleImagePicker];
+                break;
+            default:
+                break;
+        }
+    }
+    if(indexPath.section == 1){
+        
+    }
+    
+    if(indexPath.section == 2){
+        
+    }
     
 }
 
@@ -202,7 +221,68 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 }
 
 
+#pragma mark - provate
 
+- (void)handleImagePicker{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *takePhoto = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if([self cameraAuthorization]){
+            UIImagePickerController *take = [[UIImagePickerController alloc] init];
+            take.delegate = self;
+            take.sourceType = UIImagePickerControllerSourceTypeCamera;
+            take.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            take.allowsEditing = YES;
+            [self presentViewController:take animated:YES completion:nil];
+
+        }else{
+            [self showAlert:@"无法访问您的相机" message:@"请在”设置-东华微课堂-相机“中启用访问"];
+        }
+    }];
+    [alert addAction:takePhoto];
+    
+    UIAlertAction *selectPhtot = [UIAlertAction actionWithTitle:@"从手机相册选取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if([self albumAuthorization]){
+            UIImagePickerController *pick = [[UIImagePickerController alloc] init];
+            pick.delegate = self;
+            pick.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            pick.allowsEditing = YES;
+            [self presentViewController:pick animated:YES completion:nil];
+        }else{
+            [self showAlert:@"无法访问您的相册" message:@"请在”设置-东华微课堂-照片“中启用访问"];
+        }
+    }];
+    [alert addAction:selectPhtot];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showAlert:(NSString *)text message:(NSString *)message{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:text message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    UIAlertAction *goSetting = [UIAlertAction actionWithTitle:@"立即前往" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:url];
+    }];
+    [alert addAction:goSetting];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+   
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 @end

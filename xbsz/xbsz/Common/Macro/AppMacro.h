@@ -66,5 +66,10 @@
 
 #define    BuglyAppID       @"c48b5790e9"
 
+//定义app里的一些url
+#define  URLSchoolScenery      @"http://wxserver.dhu.edu.cn/msmis/wd_mobile.do?method=schoolView"
+#define  URLPhoneYellowPages                    @"http://wxserver.dhu.edu.cn/msmis/queryMag.do?method=dhhyShow"
+#define   URLSchoolLecture                    @"http://wxserver.dhu.edu.cn/msmis/queryMag.do?method=toNewList"
+
 
 #endif /* AppMacro_h */

@@ -69,7 +69,7 @@
 
 
 - (void)setTitle:(NSString *)title{
-    //    [super setTitle:title];
+    [super setTitle:title];
     self.titleLabel.text = title;
 }
 

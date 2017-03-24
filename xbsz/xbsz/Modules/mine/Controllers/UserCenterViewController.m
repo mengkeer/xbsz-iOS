@@ -13,6 +13,10 @@
 #import "InformViewController.h"
 #import "LoginViewController.h"
 
+//APP Controller
+#import "CommonAPPViewController.h"
+#import "SchoolSceneryViewController.h"
+
 #define SectionHeaderHeight   45
 
 @interface UserCenterViewController ()<UIScrollViewDelegate>
@@ -363,11 +367,13 @@
                                                       andImage:[UIImage imageNamed:@"school2"]
                                                       andTitle:@"校园讲座"];
         [_contentView addSubview:btn10];
+        [btn10 addTarget:self action:@selector(gotoSchoolLecture) forControlEvents:UIControlEventTouchUpInside];
         
         
         CXSectionButton *btn11 = [[CXSectionButton alloc] init:CGRectMake(width*2, offsetY, width, height)
                                                       andImage:[UIImage imageNamed:@"school3"]
                                                       andTitle:@"校园风光"];
+        [btn11 addTarget:self action:@selector(gotoSchoolScenery) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn11];
         
         
@@ -375,6 +381,7 @@
         CXSectionButton *btn12 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
                                                       andImage:[UIImage imageNamed:@"school4"]
                                                       andTitle:@"电话黄页"];
+        [btn12 addTarget:self action:@selector(gotoYellowPages) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn12];
         
         
@@ -477,6 +484,29 @@
         }];
     }
 }
+
+#pragma  mark - private method
+
+- (void)gotoCommonView:(NSString *)title  url:(NSString *)url{
+    CommonAPPViewController *common = [CommonAPPViewController controller];
+    common.title = title;
+    common.url = url;
+    [self.navigationController pushViewController:common animated:YES];
+}
+
+- (void)gotoYellowPages{
+    [self gotoCommonView:@"电话黄页" url:URLPhoneYellowPages];
+}
+
+- (void)gotoSchoolLecture{
+    [self gotoCommonView:@"校园讲座" url:URLSchoolLecture];
+}
+
+- (void)gotoSchoolScenery{
+    [self.navigationController pushViewController:[SchoolSceneryViewController controller] animated:YES];
+}
+
+
 
 
 
