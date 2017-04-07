@@ -12,6 +12,12 @@
 #import "AppMacro.h"
 #import "FontAndColor.h"
 #import "UtilsMacro.h"
+#import "URLString.h"
+
+
+#import "ToastView.h"
+#import "CXLocalUser.h"
+#import "JWLocalUser.h"
 
 
 #endif /* MacroImport_h */

@@ -6,10 +6,19 @@
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "ToastView.h"
 #import  "SVProgressHUD.h"
 
 @implementation ToastView
+
++ (void)show{
+    [SVProgressHUD show];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+}
+
++ (void)dismiss{
+    [SVProgressHUD dismiss];
+}
 
 + (void)showSuccessWithStaus:(NSString *)status{
     [SVProgressHUD dismiss];

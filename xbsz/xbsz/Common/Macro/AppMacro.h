@@ -66,15 +66,16 @@
 
 #define    BuglyAppID       @"c48b5790e9"
 
-//定义app里的一些url
-//校园应用
-#define  URLStudentService    @"http://dhuservice.dhu.edu.cn/sscwp_app/login.do?method=index&iportal.uxid=131340126"
-#define  URLSchoolScenery      @"http://wxserver.dhu.edu.cn/msmis/wd_mobile.do?method=schoolView"
-#define  URLPhoneYellowPages                    @"http://wxserver.dhu.edu.cn/msmis/queryMag.do?method=dhhyShow"
-#define   URLSchoolLecture                    @"http://wxserver.dhu.edu.cn/msmis/queryMag.do?method=toNewList"
-#define   URLEmployment             @"http://wxserver.dhu.edu.cn/msmis/wd_mobile.do?method=imain"
-#define   URLBookFind              @"http://wxserver.dhu.edu.cn/msmis/mlMag.do?method=show"
-#define   URLFreeClassroom         @"http://wxserver.dhu.edu.cn/msmis/dhu/mobile/kyjs/kyjs.jsp"
+
+//定义第三方登录APP Key与Secret
+#define    WeiBoAPPKey   @"2498144776";
+#define    WeiBoSecret   @"2a57a50b590d3b6998ebab0c23926503"
+
+#define    QQAPPKey      @"1105988289"
+#define    QQSecret      @"McS0iWg3GBW1glQm"
+
+#define    WechatAPPKey  @""
+#define    WechatSecret   @""
 
 
 //个人应用

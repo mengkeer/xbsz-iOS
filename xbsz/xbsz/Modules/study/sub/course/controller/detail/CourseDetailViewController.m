@@ -10,7 +10,6 @@
 #import "CourseInfoViewController.h"
 #import "RateView.h"
 #import "ShareToolBarView.h"
-#import "ToastView.h"
 
 @interface CourseDetailViewController () <RateViewDelegate,UIScrollViewDelegate>
 

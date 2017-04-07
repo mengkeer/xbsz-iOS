@@ -44,6 +44,7 @@
     [super viewDidLoad];
     
     [self createUI];
+    
 }
 
 - (void)createUI{
@@ -260,18 +261,21 @@
         CXSectionButton *btn1 = [[CXSectionButton alloc] init:CGRectMake(0, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine1"]
                                                      andTitle:@"我的课表"];
+        [btn1 addTarget:self action:@selector(gotoMyCourseTable) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn1];
         
         
         CXSectionButton *btn2 = [[CXSectionButton alloc] init:CGRectMake(width, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine2"]
                                                      andTitle:@"考试安排"];
+        [btn2 addTarget:self action:@selector(gotoMyExam) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn2];
         
         
         CXSectionButton *btn3 = [[CXSectionButton alloc] init:CGRectMake(width*2, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine3"]
                                                      andTitle:@"成绩查询"];
+        [btn3 addTarget:self action:@selector(gotoMyScore) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn3];
         
         
@@ -279,6 +283,7 @@
         CXSectionButton *btn4 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine4"]
                                                      andTitle:@"绩点查询"];
+        [btn4 addTarget:self action:@selector(gotoMyScorePoint) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn4];
         
         
@@ -291,6 +296,7 @@
         CXSectionButton *btn5 = [[CXSectionButton alloc] init:CGRectMake(0, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine5"]
                                                      andTitle:@"借书查询"];
+        [btn5 addTarget:self action:@selector(gotoMyBookInfo) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn5];
         
         
@@ -308,6 +314,7 @@
         CXSectionButton *btn8 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine8"]
                                                      andTitle:@"学费查询"];
+        [btn8 addTarget:self action:@selector(gotoMyTuition) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn8];
         
         offsetY += height;
@@ -500,35 +507,74 @@
     [self.navigationController pushViewController:webViewController animated:YES];
 }
 
+- (void)gotoAuthCommonView:(NSString *)title  url:(NSString *)url{
+    if(![[JWLocalUser instance] isAuthorized]){
+        [ToastView showErrorWithStaus:@"请先在个人中心授权教务网登陆"];
+        return;
+    }
+    CXBaseWebViewController *webViewController = [CXBaseWebViewController controller];
+    webViewController.title = title;
+    webViewController.url = url;
+    [self.navigationController pushViewController:webViewController animated:YES];
+}
+
+
+- (void)gotoMyCourseTable{
+    [self gotoAuthCommonView:@"我的课表" url:JWURLMyCourseTable]; 
+}
+
+- (void)gotoMyExam{
+    [self gotoAuthCommonView:@"考试安排" url:JWURLMyExamQuery];
+}
+
+- (void)gotoMyScore{
+    [self gotoAuthCommonView:@"我的成绩" url:JWURLMyScore];
+}
+
+- (void)gotoMyScorePoint{
+    [self gotoAuthCommonView:@"我的绩点" url:JWURLMyScorePoint];
+}
+
+- (void)gotoMyBookInfo{
+    [self gotoAuthCommonView:@"借书查询" url:JWURLMyBookInfo];
+}
+
+- (void)gotoMyTuition{
+    [self gotoAuthCommonView:@"学费查询" url:JWURLMyTuition];
+}
+
+
+
+
 - (void)gotoStudentService{
-    [self gotoCommonView:@"学工服务" url:URLStudentService];
+    [self gotoCommonView:@"学工服务" url:JWURLStudentService];
 }
 
 - (void)gotoSchoolLecture{
-    [self gotoCommonView:@"校园讲座" url:URLSchoolLecture];
+    [self gotoCommonView:@"校园讲座" url:JWURLSchoolLecture];
 }
 
 - (void)gotoYellowPages{
-    [self gotoCommonView:@"电话黄页" url:URLPhoneYellowPages];
+    [self gotoCommonView:@"电话黄页" url:JWURLPhoneYellowPages];
 }
 
 - (void)gotoFreeClassroom{
-    [self gotoCommonView:@"空余教室" url:URLFreeClassroom];
+    [self gotoCommonView:@"空余教室" url:JWURLFreeClassroom];
 }
 
 - (void)gotoEmployment{
-     [self gotoCommonView:@"就业服务" url:URLEmployment];
+     [self gotoCommonView:@"就业服务" url:JWURLEmployment];
 }
 
 - (void)gotoBookFind{
-    [self gotoCommonView:@"书籍查询" url:URLBookFind];
+    [self gotoCommonView:@"书籍查询" url:JWURLBookFind];
 }
 
 
 
 - (void)gotoSchoolScenery{
     SchoolSceneryViewController *school = [SchoolSceneryViewController controller];
-    school.url = URLSchoolScenery;
+    school.url = JWURLSchoolScenery;
     [self.navigationController pushViewController:school animated:YES];
 }
 

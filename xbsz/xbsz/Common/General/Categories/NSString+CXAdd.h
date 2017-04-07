@@ -12,4 +12,6 @@
 
 - (NSString *)convertToLocalTime;
 
+- (id)JSONValue;
+
 @end

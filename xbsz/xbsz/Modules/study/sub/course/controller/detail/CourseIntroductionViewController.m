@@ -355,7 +355,7 @@ static int avatarWidth = 40;
         _nameLable.font = CXSystemFont(15);
         _nameLable.textColor = CXBlackColor;
         _nameLable.textAlignment = NSTextAlignmentLeft;
-        _nameLable.text = [NSString stringWithFormat:@"%@",_course.user.truename];
+        _nameLable.text = [NSString stringWithFormat:@"%@",_course.user.trueName];
     }
     return _nameLable;
 }

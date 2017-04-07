@@ -20,6 +20,19 @@
 //记录上次登录防暑
 @property (nonatomic, copy) NSString *loginType;
 
+//单例
++ (CXLocalUser *)instance;
 
+//读取用户信息
++ (id)read;
+
+//保存用户信息
+- (BOOL)save;
+
+//重置用户信息，登出
+- (void)reset;
+
+//是否登录
+- (BOOL)isLogin;
 
 @end

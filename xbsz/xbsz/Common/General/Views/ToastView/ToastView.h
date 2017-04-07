@@ -10,6 +10,10 @@
 
 @interface ToastView : NSObject
 
++ (void)show;
+
++ (void)dismiss;
+
 + (void)showErrorWithStaus:(NSString *)status;
 
 + (void)showSuccessWithStaus:(NSString *)status;

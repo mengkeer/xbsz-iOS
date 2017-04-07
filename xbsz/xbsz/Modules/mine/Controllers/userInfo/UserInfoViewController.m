@@ -9,6 +9,8 @@
 #import "UserInfoViewController.h"
 #import "SetItemView.h"
 #import "UIViewController+Authorization.h"
+#import "AuthorizedLoginViewController.h"
+
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
 static NSString *cellSwitchId = @"cellSwitchCellId";
@@ -92,7 +94,9 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
         }
     }
     if(indexPath.section == 1){
-        
+        if(indexPath.row == 0){
+            [self.navigationController pushViewController:[AuthorizedLoginViewController controller] animated:YES];
+        }
     }
     
     if(indexPath.section == 2){
@@ -113,6 +117,8 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     if(section == 0)    return 8;
     return 1;
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
@@ -275,9 +281,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
-   
-    
+
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{

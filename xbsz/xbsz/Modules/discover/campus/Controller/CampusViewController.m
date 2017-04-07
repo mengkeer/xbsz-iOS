@@ -15,7 +15,6 @@
 #import "MoreToolBarView.h"
 #import "ShareToolBarView.h"
 #import "CommentToolBarView.h"
-#import "ToastView.h"
 
 @interface CampusViewController ()<CXBaseTableViewDelegate>
 
@@ -116,7 +115,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

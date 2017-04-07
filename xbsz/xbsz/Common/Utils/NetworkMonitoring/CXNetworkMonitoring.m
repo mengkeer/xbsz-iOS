@@ -9,6 +9,12 @@
 #import "CXNetworkMonitoring.h"
 #import "AFNetworkReachabilityManager.h"
 
+@interface CXNetworkMonitoring ()
+
+@property (nonatomic, assign) AFNetworkReachabilityStatus status;
+
+@end
+
 @implementation CXNetworkMonitoring
 
 + (void)startNetworkMonitoring{

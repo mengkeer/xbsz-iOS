@@ -10,7 +10,8 @@
 #import "NJKWebViewProgress.h"
 #import "NJKWebViewProgressView.h"
 #import "ShareToolBarView.h"
-#import "ToastView.h"
+#import "DefaultTipsView.h"
+#import "AFNetworkReachabilityManager.h"
 
 @interface CXBaseWebViewController ()<WKNavigationDelegate,WKUIDelegate>
 
@@ -18,6 +19,8 @@
 
 @property (nonatomic, strong) UIButton *closeBtn;
 @property (nonatomic, strong) UIButton *shareBtn;
+
+@property (nonatomic, strong) DefaultTipsView *tipsView;
 
 @end
 
@@ -39,15 +42,28 @@
     _progressView.hidden = YES;
     _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.customNavBarView addSubview:_progressView];
+    
+    NSString *cookieStr = [NSString stringWithFormat:@"JSESSIONID=%@;CASTGC=%@",[JWLocalUser instance].JWSessionID,[JWLocalUser instance].JWCastgc];
 
     _webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, [self getStartOriginY], CXScreenWidth, [self getContentViewHeight])];
-    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:_url]];
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
+    [request addValue:cookieStr forHTTPHeaderField:@"Cookie"];
     [_webView loadRequest:request];
     _webView.navigationDelegate = self;
     _webView.UIDelegate = self;
     [self.view addSubview:_webView];
     
     [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+    
+    
+    _tipsView = [[DefaultTipsView alloc] initWithFrame:self.webView.bounds];
+    _tipsView.hidden = YES;
+    [self.view addSubview:self.tipsView];
+    @weakify(self);
+    [self.tipsView SetClicked:^{
+        weak_self.tipsView.hidden = YES;
+        [weak_self.webView loadRequest:request];
+    }];
     
 }
 
@@ -138,7 +154,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
         CGFloat newProgress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
-        CXLog(@"%lf",newProgress);
+//        CXLog(@"%lf",newProgress);
         if (newProgress == 1) {
             [self.progressView setProgress:newProgress animated:YES];
             // 之后0.3秒延迟隐藏
@@ -166,6 +182,20 @@
     }else{
         self.closeBtn.hidden = YES;
     }
+}
+
+// 页面开始加载时调用
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    if([AFNetworkReachabilityManager sharedManager].reachable){
+        self.tipsView.hidden = YES;
+    }else{
+        self.tipsView.hidden = NO;
+    }
+}
+
+// 页面加载失败时调用
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation {
+    self.tipsView.hidden = NO;
 }
 
 #pragma mark - UIDelegate

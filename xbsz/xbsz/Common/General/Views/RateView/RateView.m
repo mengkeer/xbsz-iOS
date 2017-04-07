@@ -8,7 +8,6 @@
 
 #import "RateView.h"
 #import "CWStarRateView.h"
-#import "ToastView.h"
 
 static RateView *sharedObj;
 
