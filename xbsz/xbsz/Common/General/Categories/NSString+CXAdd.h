@@ -12,6 +12,7 @@
 
 - (NSString *)convertToLocalTime;
 
+//JSON数组类型的字符串 转化为  数组
 - (id)JSONValue;
 
 @end

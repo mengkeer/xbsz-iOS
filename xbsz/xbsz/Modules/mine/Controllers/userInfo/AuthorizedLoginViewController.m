@@ -8,6 +8,7 @@
 
 #import "AuthorizedLoginViewController.h"
 #import "IQKeyboardManager.h"
+#import "CXNetwork+User.h"
 
 @interface AuthorizedLoginViewController ()<UITextFieldDelegate>
 
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) UITextField *passwordFiled;
 
 @property (nonatomic, strong) UIButton *loginBtn;
+
+@property (nonatomic, strong) UILabel *tipsLabel;
 
 @property (nonatomic, assign) BOOL isAuthorized;
 
@@ -136,6 +139,13 @@
         make.height.mas_equalTo(40);
         make.top.mas_equalTo(_passwordFiled.mas_bottom).mas_offset(30);
     }];
+    
+    [self.contentView addSubview:self.tipsLabel];
+    [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.loginBtn.mas_bottom).mas_offset(20);
+        make.left.right.mas_equalTo(self.contentView);
+        make.height.mas_equalTo(15);
+    }];
 }
 
 #pragma mark - getter/setter
@@ -144,7 +154,7 @@
     if(!_loginLabel){
         _loginLabel = [[UILabel alloc] init];
         _loginLabel.textAlignment = NSTextAlignmentCenter;
-        _loginLabel.text = @"使用东华大学教务网账号登录";
+        _loginLabel.text = @"使用门户信息网站账号登录";
         CGAffineTransform matrix = CGAffineTransformMake(1, 0, tanf(-15 * (CGFloat)M_PI / 180), 1, 0, 0);
         _loginLabel.transform = matrix;
         _loginLabel.textColor = CXHexColor(0xf16c4d);
@@ -171,7 +181,6 @@
         _userNameField.backgroundColor = CXWhiteColor;
         _userNameField.clearButtonMode=UITextFieldViewModeWhileEditing;
         _userNameField.returnKeyType = UIReturnKeyNext;
-        if(_isAuthorized)   _userNameField.placeholder = [JWLocalUser instance].JWUserName;
         [_userNameField setFont:[UIFont systemFontOfSize:16.0]];
         [_userNameField setTextColor:CXLightGrayColor];
         _userNameField.delegate = self;
@@ -190,7 +199,7 @@
 - (UITextField *)passwordFiled{
     if(!_passwordFiled){
         _passwordFiled = [[UITextField alloc] init];
-        _passwordFiled.placeholder = @"教务网密码";
+        _passwordFiled.placeholder = @"密码";
         _passwordFiled.backgroundColor = CXWhiteColor;
         _passwordFiled.returnKeyType = UIReturnKeyDone;
         _passwordFiled.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -226,6 +235,18 @@
     return  _loginBtn;
 }
 
+- (UILabel *)tipsLabel{
+    if(!_tipsLabel){
+        _tipsLabel = [[UILabel alloc] init];
+        _tipsLabel.textAlignment = NSTextAlignmentCenter;
+        _tipsLabel.text = @"tips:该账号为门户信息网站(my.dhu.edu.cn)的账号";
+        CGAffineTransform matrix = CGAffineTransformMake(1, 0, tanf(-15 * (CGFloat)M_PI / 180), 1, 0, 0);
+        _tipsLabel.transform = matrix;
+        _tipsLabel.textColor = CXHexColor(0xf16c4d);
+        _tipsLabel.font = [UIFont italicSystemFontOfSize:11];
+    }
+    return _tipsLabel;
+}
 
 #pragma mark - Action
 - (void)authorize{
@@ -237,47 +258,23 @@
 }
 
 - (void)getJWUserInfo:(NSString *)username password:(NSString *)password{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES; // not recommended for production
-    manager.securityPolicy.validatesDomainName = NO;//不验证证书的域名
     
-    NSDictionary *parameters = @{@"username": username, @"password":password,
-                                 @"apnsKey":JWAPNSKey,@"serialNo":JWSerialNo};
     [ToastView show];
     
-    [manager POST:JWLoginUrl parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        // 获取所有数据报头信息
-        NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)task.response;
-        NSDictionary *fields = [HTTPResponse allHeaderFields];// 原生NSURLConnection写法
-        
-        NSString *cookieString = [fields valueForKey:@"ssoCookie"];
-        NSArray *arr = [cookieString JSONValue];
-        NSString *CASTGC = [[arr objectAtIndex:0] valueForKey:@"cookieValue"];
-        NSString *JWSessionID = [fields valueForKey:@"Set-Cookie"];
-        JWSessionID = [JWSessionID stringByReplacingOccurrencesOfString:@"JSESSIONID=" withString:@""];
-        JWSessionID = [JWSessionID stringByReplacingOccurrencesOfString:@"; Path=/; Secure" withString:@""];
-        
-        NSString *userPwd = [fields valueForKey:@"userPwd"];
-        JWLocalUser *user = [JWLocalUser instance];
-        user.JWUserName = username;
-        user.JWPassword = password;
-        user.JWEncryptPassword = userPwd;
-        user.JWCastgc = CASTGC;
-        user.JWSessionID = JWSessionID;
-        user.time = [[NSDate new] stringWithFormat:@"yyyy-MM-dd HH-mm"];
-        [user save];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //        [ToastView showErrorWithStaus:@"mmm"];
-            [ToastView dismiss];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [ToastView showSuccessWithStaus:@"授权成功"];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self.navigationController popViewControllerAnimated:YES];
+    [CXNetwork JWLogin:username password:password success:^(NSObject *obj) {
+        if(obj){
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //        [ToastView showErrorWithStaus:@"mmm"];
+                [ToastView dismiss];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [ToastView showSuccessWithStaus:@"授权成功"];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    });
                 });
             });
-        });
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        }
+    } failure:^(NSError *error) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             //        [ToastView showErrorWithStaus:@"mmm"];
             [ToastView dismiss];
@@ -286,6 +283,7 @@
             });
         });
     }];
+    
 }
 
 

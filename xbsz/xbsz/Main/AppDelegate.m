@@ -48,6 +48,7 @@
     }
     
     [Bugly startWithAppId:BuglyAppID];         //集成bugly服务
+    [self JWRefreshLogin];
     
     return YES;
 }
@@ -99,7 +100,7 @@
 
 //进入前台时重新获取教务网CASTGC参数   类似于Token
 - (void)applicationWillEnterForeground:(UIApplication *)application{
-    [CXNetwork JWRefreshLogin];
+    [self JWRefreshLogin];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -121,6 +122,15 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - private method
+- (void)JWRefreshLogin{
+    [CXNetwork JWRefreshLogin:nil success:^(NSObject *obj) {
+        CXLog(@"刷新Token成功");
+    } failure:^(NSError *error) {
+        CXLog(@"刷新获取Token失败");
+    }];
 }
 
 

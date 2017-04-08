@@ -161,12 +161,15 @@
             __weak typeof(self) weakSelf = self;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 weakSelf.progressView.hidden = YES;
-                [weakSelf.progressView setProgress:0 animated:NO];
+                [weakSelf.progressView setProgress:0 animated:YES];
             });
             
         }else {
             self.progressView.hidden = NO;
-            [self.progressView setProgress:newProgress animated:YES];
+            if(self.progressView.progress<0.1){
+                [self.progressView setProgress:0.1 animated:YES];
+            }
+            else [self.progressView setProgress:newProgress animated:YES];
         }
     }else{
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -188,6 +191,7 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     if([AFNetworkReachabilityManager sharedManager].reachable){
         self.tipsView.hidden = YES;
+        [self.progressView setProgress:0.1 animated:YES];
     }else{
         self.tipsView.hidden = NO;
     }

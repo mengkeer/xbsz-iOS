@@ -547,7 +547,12 @@
 
 
 - (void)gotoStudentService{
-    [self gotoCommonView:@"学工服务" url:JWURLStudentService];
+    if(![[JWLocalUser instance] isAuthorized]){
+        [ToastView showErrorWithStaus:@"请先在个人中心授权教务网登陆"];
+        return;
+    }
+    NSString *url = [JWURLStudentService stringByReplacingOccurrencesOfString:@"131340126" withString:[JWLocalUser instance].JWUserName];
+    [self gotoCommonView:@"学工服务" url:url];
 }
 
 - (void)gotoSchoolLecture{
