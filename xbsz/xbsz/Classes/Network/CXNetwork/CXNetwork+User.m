@@ -10,10 +10,29 @@
 
 @implementation CXNetwork (User)
 
++ (void)userLogin:(NSString *)username
+         password:(NSString *)password
+          success:(CXNetworkSuccessBlock)success
+          failure:(CXNetworkFailureBlock)failure{
+    
+    
+    
+}
+
++ (void)userRegister:(NSString *)username
+            password:(NSString *)password
+            nickname:(NSString *)nickname
+             success:(CXNetworkSuccessBlock)success
+             failure:(CXNetworkFailureBlock)failure{
+    
+    
+    
+}
+
 + (void)JWLogin:(NSString *)username
        password:(NSString *)password
-        success:(CXNetWorkSuccessBlock)success
-        failure:(CXNetWorkFailureBlock)failure{
+        success:(CXNetworkSuccessBlock)success
+        failure:(CXNetworkFailureBlock)failure{
     NSDictionary *parameters = @{@"username": username, @"password":password,
                                  @"apnsKey":JWAPNSKey,@"serialNo":JWSerialNo};
     
@@ -31,7 +50,7 @@
         NSString *userPwd = [fields valueForKey:@"userPwd"];            //获取加密后的密码
         
         JWLocalUser *user = [JWLocalUser instance];
-        user.JWUserName = username;
+        user.JWUsername = username;
         user.JWPassword = password;             //明文密码
         user.JWEncryptPassword = userPwd;
         user.JWCastgc = CASTGC;
@@ -39,16 +58,17 @@
         user.time = [[NSDate new] stringWithFormat:@"yyyy-MM-dd HH:mm"];
         [user save];
         
-        CallbackRsp(task.response);
+        success(task.response);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         [[JWLocalUser instance] reset];
         InvokeFailure(error);
     }];
 }
 
 
 + (void)JWRefreshLogin:(NSString *)url
-               success:(CXNetWorkSuccessBlock)success
-               failure:(CXNetWorkFailureBlock)failure{
+               success:(CXNetworkSuccessBlock)success
+               failure:(CXNetworkFailureBlock)failure{
     JWLocalUser *user = [JWLocalUser instance];
     if(![user isAuthorized])    return;
     
@@ -60,7 +80,7 @@
         cookieStr = [NSString stringWithFormat:@"JSESSIONID=%@;CASTGC=%@",[JWLocalUser instance].JWSessionID,[JWLocalUser instance].JWCastgc];
     }
     
-    NSDictionary *parameters = @{@"username": user.JWUserName, @"password":user.JWEncryptPassword,
+    NSDictionary *parameters = @{@"username": user.JWUsername, @"password":user.JWEncryptPassword,
                                 @"serialNo":JWSerialNo};
 
     [self invokeUnsafePOSTRequest:JWRefreshLoginURL parameters:parameters cookieStr:cookieStr success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -80,7 +100,7 @@
         user.JWCastgc = CASTGC;
         if(JWSessionID != nil)  user.JWSessionID = JWSessionID;
         [user save];
-        CallbackRsp(task.response);
+        success(task.response);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         InvokeFailure(error);
     }];

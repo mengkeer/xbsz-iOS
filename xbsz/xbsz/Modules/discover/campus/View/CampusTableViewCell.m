@@ -340,14 +340,14 @@
 }
 
 - (void)autoWordsLabel{
-    [_words replaceCharactersInRange:[_words.string rangeOfString:_words.string] withAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: ",_note.user.nickName] attributes:@{NSFontAttributeName:boldWordsFont}]];
+    [_words replaceCharactersInRange:[_words.string rangeOfString:_words.string] withAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: ",_note.user.nickname] attributes:@{NSFontAttributeName:boldWordsFont}]];
     
     [_words appendAttributedString:[[NSAttributedString alloc] initWithString:_note.subject attributes:@{NSFontAttributeName:wordsFont}]];
     
     
 //    _words.yy_font = wordsFont;
     
-    [_words yy_setTextHighlightRange:[_words.string rangeOfString:_note.user.nickName]
+    [_words yy_setTextHighlightRange:[_words.string rangeOfString:_note.user.nickname]
                                color:nil
                      backgroundColor:nil
                            tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
@@ -437,7 +437,7 @@
     [_sharedImageView yy_setImageWithURL:url options:YYWebImageOptionProgressiveBlur
      |YYWebImageOptionSetImageWithFadeAnimation];                               //更新分享图片url
     
-    _nickNameLabel.text = model.user.nickName;                                //更新昵称
+    _nickNameLabel.text = model.user.nickname;                                //更新昵称
     _dateLabel.text = [_note.create_at convertToLocalTime];
     _likeNumLabel.text = [NSString stringWithFormat:@"%ld次赞",_note.likes];
     _moreReplyLabel.text = [NSString stringWithFormat:@"所有%lu条评论",_note.total];

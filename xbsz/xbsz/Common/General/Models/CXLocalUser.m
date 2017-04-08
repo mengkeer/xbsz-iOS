@@ -59,9 +59,9 @@ static CXLocalUser *instance = nil;
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.token forKey:@"token"];
     [aCoder encodeObject:self.userID forKey:@"userID"];
-    [aCoder encodeObject:self.userName forKey:@"userName"];
-    [aCoder encodeObject:self.nickName forKey:@"nickName"];
-    [aCoder encodeObject:self.trueName forKey:@"trueName"];
+    [aCoder encodeObject:self.username forKey:@"username"];
+    [aCoder encodeObject:self.nickname forKey:@"nickname"];
+    [aCoder encodeObject:self.truename forKey:@"trueName"];
     [aCoder encodeObject:self.avatar forKey:@"avatar"];
     [aCoder encodeObject:[NSNumber numberWithInteger:self.gender] forKey:@"gender"];
     [aCoder encodeObject:self.email forKey:@"email"];
@@ -76,9 +76,9 @@ static CXLocalUser *instance = nil;
     if (self = [super init]) {
         self.token = [aDecoder decodeObjectForKey:@"token"];
         self.userID = [aDecoder decodeObjectForKey:@"userID"];
-        self.userName = [aDecoder decodeObjectForKey:@"userName"];
-        self.nickName = [aDecoder decodeObjectForKey:@"nickName"];
-        self.trueName = [aDecoder decodeObjectForKey:@"trueName"];
+        self.username = [aDecoder decodeObjectForKey:@"username"];
+        self.nickname = [aDecoder decodeObjectForKey:@"nickname"];
+        self.truename = [aDecoder decodeObjectForKey:@"truename"];
         self.avatar = [aDecoder decodeObjectForKey:@"avatar"];
         self.gender = [(NSNumber *)[aDecoder decodeObjectForKey:@"gender"] integerValue];
         self.email = [aDecoder decodeObjectForKey:@"email"];

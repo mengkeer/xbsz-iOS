@@ -11,11 +11,11 @@
 @interface CXUser : NSObject
 
 @property (nonatomic, copy) NSString *userID;
-@property (nonatomic, copy) NSString *userName;             //登录名
+@property (nonatomic, copy) NSString *username;             //登录名
 @property (nonatomic, copy) NSString *password;
 @property (nonatomic, copy) NSString *avatar;                   //头像
-@property (nonatomic, copy) NSString *nickName;                 //昵称
-@property (nonatomic, copy) NSString *trueName;                 //真实姓名
+@property (nonatomic, copy) NSString *nickname;                 //昵称
+@property (nonatomic, copy) NSString *truename;                 //真实姓名
 @property (nonatomic, assign) NSInteger gender;
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *mobile;                   //电话

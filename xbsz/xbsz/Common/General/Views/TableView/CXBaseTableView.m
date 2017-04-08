@@ -68,15 +68,6 @@
     }];
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 - (void)setBaseDelegate:(id<CXBaseTableViewDelegate>)baseDelegate{

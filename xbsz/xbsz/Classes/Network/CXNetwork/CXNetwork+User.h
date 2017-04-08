@@ -11,13 +11,24 @@
 
 @interface CXNetwork (User)
 
++ (void)userLogin:(NSString *)username
+         password:(NSString *)password
+          success:(CXNetworkSuccessBlock)success
+          failure:(CXNetworkFailureBlock)failure;
+
++ (void)userRegister:(NSString *)username
+            password:(NSString *)password
+            nickname:(NSString *)nickname
+             success:(CXNetworkSuccessBlock)success
+             failure:(CXNetworkFailureBlock)failure;
+
 + (void)JWLogin:(NSString *)username
        password:(NSString *)password
-        success:(CXNetWorkSuccessBlock)success
-        failure:(CXNetWorkFailureBlock)failure;
+        success:(CXNetworkSuccessBlock)success
+        failure:(CXNetworkFailureBlock)failure;
 //注：该url不是必须  可置为nil  此处只是为了对称而已
 + (void)JWRefreshLogin:(NSString *)url
-               success:(CXNetWorkSuccessBlock)success
-               failure:(CXNetWorkFailureBlock)failure;
+               success:(CXNetworkSuccessBlock)success
+               failure:(CXNetworkFailureBlock)failure;
 
 @end

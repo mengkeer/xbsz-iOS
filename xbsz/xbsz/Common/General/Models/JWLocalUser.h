@@ -11,7 +11,7 @@
 @interface JWLocalUser : NSObject
 
 //教务网账号
-@property (nonatomic, copy) NSString *JWUserName;
+@property (nonatomic, copy) NSString *JWUsername;
 //教务网明文密码
 @property (nonatomic, copy) NSString *JWPassword;
 //教务网加密后的密码

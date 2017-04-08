@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface UIViewController (Authorization)
-
+//相机是否授权
 - (BOOL)cameraAuthorization;
-
+//相册是否授权
 - (BOOL)albumAuthorization;
 
 @end

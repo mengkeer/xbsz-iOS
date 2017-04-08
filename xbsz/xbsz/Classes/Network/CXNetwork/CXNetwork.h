@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CXBaseResponseModel.h"
 
 typedef void (^CXRequestSuccessBlock)(NSURLSessionDataTask * task, id responseObject);
 typedef void (^CXRequestFailureBlock)(NSURLSessionDataTask *task, NSError *error);
 
-typedef void (^CXNetWorkSuccessBlock)(NSObject *obj);
-typedef void (^CXNetWorkFailureBlock)(NSError *error);
+typedef void (^CXNetworkSuccessBlock)(NSObject *obj);
+typedef void (^CXNetworkFailureBlock)(NSError *error);
 
 #define DefaultPageSize     (20) //默认分页大小
 
@@ -25,9 +26,12 @@ typedef void (^CXNetWorkFailureBlock)(NSError *error);
             InvokeFailure(err); \
             return ; \
         }\
-        else{ \
-            InvokeSuccess(rsp); \
-        }\
+        if (rsp.code == 200) { \
+            InvokeSuccess(rsp.data); \
+        }else { \
+            NSError * err = [CXNetwork netWorkErrorWithCode:rsp.code message:rsp.errMsg];\
+            InvokeFailure(err); \
+        } \
     }
 
 
@@ -43,5 +47,7 @@ typedef void (^CXNetWorkFailureBlock)(NSError *error);
                       cookieStr:(NSString *)cookieStr
                         success:(CXRequestSuccessBlock)success
                         failure:(CXRequestFailureBlock)failure;
+
++ (NSError *)netWorkErrorWithCode:(NSInteger)code message:(NSString *)message;
 
 @end

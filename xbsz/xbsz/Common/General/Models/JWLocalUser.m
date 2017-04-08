@@ -49,14 +49,14 @@ static JWLocalUser *instance = nil;
 }
 
 - (BOOL)isAuthorized {
-    if (self != nil && ![instance.JWUserName isEqualToString:@"null"] && instance.JWUserName.length>0 && ![instance.JWPassword isEqualToString:@"null"] && instance.JWPassword.length>0) {
+    if (self != nil && ![instance.JWUsername isEqualToString:@"null"] && instance.JWUsername.length>0 && ![instance.JWPassword isEqualToString:@"null"] && instance.JWPassword.length>0) {
         return YES;
     }
     return NO;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder{
-    [aCoder encodeObject:self.JWUserName forKey:@"JWUserName"];
+    [aCoder encodeObject:self.JWUsername forKey:@"JWUsername"];
     [aCoder encodeObject:self.JWPassword forKey:@"JWPassword"];
     [aCoder encodeObject:self.JWEncryptPassword forKey:@"JWEncryptPassword"];
     [aCoder encodeObject:self.JWCastgc forKey:@"JWCastgc"];
@@ -65,7 +65,7 @@ static JWLocalUser *instance = nil;
 }
 - (id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
-        self.JWUserName = [aDecoder decodeObjectForKey:@"JWUserName"];
+        self.JWUsername = [aDecoder decodeObjectForKey:@"JWUsername"];
         self.JWPassword = [aDecoder decodeObjectForKey:@"JWPassword"];
         self.JWEncryptPassword = [aDecoder decodeObjectForKey:@"JWEncryptPassword"];
         self.JWCastgc = [aDecoder decodeObjectForKey:@"JWCastgc"];
