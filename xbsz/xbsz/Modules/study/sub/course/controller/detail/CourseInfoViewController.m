@@ -74,7 +74,6 @@ static int _titleHeight  = 40;           //标题导航栏的高度
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Private

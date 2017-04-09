@@ -10,6 +10,24 @@
 
 @implementation CXNetwork
 
++ (void)invokePostRequest:(NSString *)url
+               parameters:(NSDictionary *)parameters
+                  success:(CXRequestSuccessBlock)success
+                  failure:(CXRequestFailureBlock)failure{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nullable task, id _Nullable responseObject) {
+        if(success){
+            success(task,responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if(failure){
+            failure(task,error);
+        }
+    }];
+}
+
+
 + (void)invokeUnsafePOSTRequest:(NSString *)url
                      parameters:(NSDictionary *)parameters
                         success:(CXRequestSuccessBlock)success
@@ -29,15 +47,11 @@
     
     [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nullable task, id _Nullable responseObject) {
         if(success){
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                success(task,responseObject);
-            });
+            success(task,responseObject);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if(failure){
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                failure(task,error);
-            });
+           failure(task,error);
         }
     }];
 }

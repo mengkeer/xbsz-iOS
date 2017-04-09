@@ -76,7 +76,7 @@
 		AD7F891E1E595B29009603E4 /* ResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F890A1E595B29009603E4 /* ResetViewController.m */; };
 		AD7F891F1E595B29009603E4 /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F890D1E595B29009603E4 /* SetViewController.m */; };
 		AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F890F1E595B29009603E4 /* UserCenterViewController.m */; };
-		AD7F89221E595B29009603E4 /* SetItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89141E595B29009603E4 /* SetItemView.m */; };
+		AD7F89221E595B29009603E4 /* SetItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89141E595B29009603E4 /* SetItemTableViewCell.m */; };
 		AD7F89271E596036009603E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89251E596036009603E4 /* AppDelegate.m */; };
 		AD7F89281E596036009603E4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89261E596036009603E4 /* main.m */; };
 		AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F892B1E59624A009603E4 /* CXNetworkMonitoring.m */; };
@@ -255,8 +255,8 @@
 		AD7F890D1E595B29009603E4 /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		AD7F890E1E595B29009603E4 /* UserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterViewController.h; sourceTree = "<group>"; };
 		AD7F890F1E595B29009603E4 /* UserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterViewController.m; sourceTree = "<group>"; };
-		AD7F89131E595B29009603E4 /* SetItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetItemView.h; sourceTree = "<group>"; };
-		AD7F89141E595B29009603E4 /* SetItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetItemView.m; sourceTree = "<group>"; };
+		AD7F89131E595B29009603E4 /* SetItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetItemTableViewCell.h; sourceTree = "<group>"; };
+		AD7F89141E595B29009603E4 /* SetItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetItemTableViewCell.m; sourceTree = "<group>"; };
 		AD7F89241E596036009603E4 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD7F89251E596036009603E4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AD7F89261E596036009603E4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -923,8 +923,8 @@
 		AD7F89121E595B29009603E4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AD7F89131E595B29009603E4 /* SetItemView.h */,
-				AD7F89141E595B29009603E4 /* SetItemView.m */,
+				AD7F89131E595B29009603E4 /* SetItemTableViewCell.h */,
+				AD7F89141E595B29009603E4 /* SetItemTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1303,7 +1303,7 @@
 				AD2540B21E977A9900AA330D /* UserInfoViewController.m in Sources */,
 				05CEE4AA1E8525AC0033DD3D /* CommonAPPViewController.m in Sources */,
 				AD2540B51E977B4100AA330D /* AuthorizedLoginViewController.m in Sources */,
-				AD7F89221E595B29009603E4 /* SetItemView.m in Sources */,
+				AD7F89221E595B29009603E4 /* SetItemTableViewCell.m in Sources */,
 				AD7F89281E596036009603E4 /* main.m in Sources */,
 				AD7F891B1E595B29009603E4 /* InformViewController.m in Sources */,
 				ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */,

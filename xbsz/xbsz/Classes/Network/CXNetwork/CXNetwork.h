@@ -37,6 +37,11 @@ typedef void (^CXNetworkFailureBlock)(NSError *error);
 
 @interface CXNetwork : NSObject
 
++ (void)invokePostRequest:(NSString *)url
+               parameters:(NSDictionary *)parameters
+                  success:(CXRequestSuccessBlock)success
+                  failure:(CXRequestFailureBlock)failure;
+
 + (void)invokeUnsafePOSTRequest:(NSString *)url
                      parameters:(NSDictionary *)parameters
                         success:(CXRequestSuccessBlock)success

@@ -60,7 +60,7 @@
         
         success(task.response);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-         [[JWLocalUser instance] reset];
+        [[JWLocalUser instance] reset];             //如果登录失败将此前本地教务网账号信息重置
         InvokeFailure(error);
     }];
 }

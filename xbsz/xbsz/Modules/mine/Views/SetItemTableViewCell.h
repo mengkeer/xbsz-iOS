@@ -18,11 +18,14 @@ typedef NS_ENUM(NSInteger, SetItemType) {
 };
 
 
-@interface SetItemView : UIView
+@interface SetItemTableViewCell : UITableViewCell
 
-- (void)setTitle:(NSString *)title andDetailText:(NSString *)detailText andType:(SetItemType)type andImage:(UIImage *)image;
+- (void)updateCell:(NSString *)title
+        detailText:(NSString *)detailText
+              type:(SetItemType)type
+     iconImageName:(NSString *)imageName;
 
 //此方法需在setTitle方法后调用
-- (void)setHeadImage:(UIImage *)image;
+- (void)setHeadImage:(NSString *)imageName;
 
 @end

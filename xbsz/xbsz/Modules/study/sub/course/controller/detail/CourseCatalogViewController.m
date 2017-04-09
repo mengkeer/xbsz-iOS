@@ -7,8 +7,11 @@
 //
 
 #import "CourseCatalogViewController.h"
+#import "CXBaseTableView.h"
 
 @interface CourseCatalogViewController ()
+
+@property (nonatomic, strong) CXBaseTableView *tableView;
 
 @end
 
@@ -16,23 +19,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = CXBackGroundColor;
+    
+    [self.view addSubview:self.tableView];
+    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.mas_equalTo(self.view);
+    }];
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - getter/setter
+- (CXBaseTableView *)tableView{
+    if(_tableView){
+        _tableView = [[CXBaseTableView alloc] init];
+    }
+    return _tableView;
 }
-*/
 
 @end

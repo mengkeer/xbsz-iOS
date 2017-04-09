@@ -7,10 +7,7 @@
 //
 
 #import "SetViewController.h"
-#import "SetItemView.h"
-
-
-
+#import "SetItemTableViewCell.h"
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
 static NSString *cellSwitchId = @"cellSwitchCellId";
@@ -98,160 +95,128 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 }
 
 
-//
-//static NSString *cellArrowId = @"SetItemArrowCellId";
-//static NSString *cellSwitchId = @"cellSwitchCellId";
-//static NSString *cellDetailTextId  = @"cellDetailTextId";
-//static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell;
+    SetItemTableViewCell *cell;
     if(indexPath.section == 0){
         
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellSwitchId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"音效" andDetailText:nil andType:SetItemTypeSwitch andImage:[UIImage imageNamed:@"set_sound"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
+            }
+            [cell updateCell:@"音效" detailText:nil type:SetItemTypeSwitch iconImageName:@"set_sound"];
         }else{
             cell = [tableView dequeueReusableCellWithIdentifier:cellSwitchId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"震动" andDetailText:nil andType:SetItemTypeSwitch andImage:[UIImage imageNamed:@"set_shake"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
+            }
+            [cell updateCell:@"震动" detailText:nil type:SetItemTypeSwitch iconImageName:@"set_shake"];
         }
         
     }else if(indexPath.section == 1){
-        
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"主题选择" andDetailText:nil andType:SetItemTypeArrow andImage:[UIImage imageNamed:@"set_theme"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+            }
+            [cell updateCell:@"主题选择" detailText:nil type:SetItemTypeArrow iconImageName:@"set_theme"];
         }else if(indexPath.row == 1){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"翻页效果" andDetailText:@"左右滑动" andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_page"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+            }
+            [cell updateCell:@"翻页效果" detailText:@"左右滑动" type:SetItemTypeTextAndArrow iconImageName:@"set_page"];
         }else if(indexPath.row == 2){
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"做题背景" andDetailText:nil andType:SetItemTypeArrow andImage:[UIImage imageNamed:@"set_bg"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+            }
+            [cell updateCell:@"做题背景" detailText:nil type:SetItemTypeArrow iconImageName:@"set_bg"];
         }else if(indexPath.row == 3){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"字体大小" andDetailText:@"中" andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_font"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+            }
+            [cell updateCell:@"字体大小" detailText:@"中" type:SetItemTypeTextAndArrow iconImageName:@"set_font"];
         }else if(indexPath.row == 4){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"错题自动删除次数" andDetailText:@"2次" andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_delete"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+            }
+            [cell updateCell:@"错题自动删除次数" detailText:@"2次" type:SetItemTypeTextAndArrow iconImageName:@"set_delete"];
         }else if(indexPath.row == 5){
-            cell = [tableView dequeueReusableCellWithIdentifier:cellDetailTextId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
+            cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+            }
             YYImageCache *cache = [YYWebImageManager sharedManager].cache;
             NSString *num = [NSString stringWithFormat:@"%.2lfM",cache.diskCache.totalCost/(1024.0*1024.0)];
-            [item setTitle:@"清除缓存" andDetailText:num andType:SetItemTypeTextAndArrow andImage:[UIImage imageNamed:@"set_clear"]];
-            [cell.contentView addSubview:item];
+            [cell updateCell:@"清除缓存" detailText:num type:SetItemTypeTextAndArrow iconImageName:@"set_clear"];
         }
-        
-    
     }else if(indexPath.section == 2){
-        
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"关于「学霸思政APP」" andDetailText:nil andType:SetItemTypeArrow andImage:[UIImage imageNamed:@"set_about"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+            }
+            [cell updateCell:@"关于「学霸思政APP」" detailText:nil type:SetItemTypeArrow iconImageName:@"set_about"];
         }else if(indexPath.row == 1){
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"给我好评" andDetailText:nil andType:SetItemTypeArrow andImage:[UIImage imageNamed:@"set_good"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+            }
+            [cell updateCell:@"给我好评" detailText:nil type:SetItemTypeArrow iconImageName:@"set_good"];
         }else if(indexPath.row == 2){
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"反馈与建议" andDetailText:nil andType:SetItemTypeArrow andImage:[UIImage imageNamed:@"set_feedback"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+            }
+            [cell updateCell:@"反馈与建议" detailText:nil type:SetItemTypeArrow iconImageName:@"set_feedback"];
         }else{
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"友情打赏" andDetailText:nil andType:SetItemTypeArrow andImage:[UIImage imageNamed:@"set_smile"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+            }
+            [cell updateCell:@"友情打赏" detailText:nil type:SetItemTypeArrow iconImageName:@"set_smile"];
         }
         
     }else if(indexPath.section == 3){
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellDetailTextId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"当前版本" andDetailText:@"V1.4" andType:SetItemTypeDetailText andImage:[UIImage imageNamed:@"set_version"]] ;
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
+            }
+            [cell updateCell:@"当前版本" detailText:@"V1.4" type:SetItemTypeDetailText iconImageName:@"set_version"];
         }else if(indexPath.row == 1){
             cell = [tableView dequeueReusableCellWithIdentifier:cellDetailTextId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"题库版本" andDetailText:@"2016-12-16" andType:SetItemTypeDetailText andImage:[UIImage imageNamed:@"set_tiku_version"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
+            }
+            [cell updateCell:@"题库版本" detailText:@"2016-12-16" type:SetItemTypeDetailText iconImageName:@"set_tiku_version"];
         }else if(indexPath.row == 2){
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"更新说明" andDetailText:nil andType:SetItemTypeArrow andImage:[UIImage imageNamed:@"set_updateInfo"]];
-            [cell.contentView addSubview:item];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+            }
+            [cell updateCell:@"更新说明" detailText:nil type:SetItemTypeArrow iconImageName:@"set_updateInfo"];
         }else{
-            cell = [tableView dequeueReusableCellWithIdentifier:cellDetailTextId];
-            if(cell)    return cell;
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
-            SetItemView *item = [[SetItemView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
-            [item setTitle:@"检查更新" andDetailText:nil andType:SetItemTypeArrow andImage:[UIImage imageNamed:@"set_check"]];
-            [cell.contentView addSubview:item];
+            cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+            }
+            [cell updateCell:@"检查更新" detailText:nil type:SetItemTypeArrow iconImageName:@"set_check"];
         }
     }else{
         
         NSString *cellId = @"NormalCell";
-        cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
         }
         cell.contentView.backgroundColor = CXBackGroundColor;
+        return cell;
     }
-    
-    
-    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
-    
-    
     return cell;
 }
 
