@@ -16,6 +16,10 @@
 
 + (void)showErrorWithStaus:(NSString *)status;
 
++ (void)showErrorWithStaus:(NSString *)status delay:(NSInteger)delay;
+
 + (void)showSuccessWithStaus:(NSString *)status;
+
++ (void)showSuccessWithStaus:(NSString *)status delay:(NSInteger)delay;
 
 @end

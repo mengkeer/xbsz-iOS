@@ -10,10 +10,21 @@
 
 @implementation CXNetwork (User)
 
+//登录成功则保存token  失败则重置本地用户
 + (void)userLogin:(NSString *)username
          password:(NSString *)password
           success:(CXNetworkSuccessBlock)success
           failure:(CXNetworkFailureBlock)failure{
+    
+    NSDictionary *parameters = @{@"userName": username, @"password":password};
+    [self invokePostRequest:CXLoginUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:(NSDictionary *)responseObject];
+        [self saveToken:rsp.data];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [[CXLocalUser instance] reset];
+        InvokeFailure(error);
+    }];
     
     
     
@@ -65,7 +76,6 @@
     }];
 }
 
-
 + (void)JWRefreshLogin:(NSString *)url
                success:(CXNetworkSuccessBlock)success
                failure:(CXNetworkFailureBlock)failure{
@@ -104,6 +114,21 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         InvokeFailure(error);
     }];
+}
+
+//登录成功则保存token  失败则重置本地用户
++ (void)saveToken:(NSDictionary *)data{
+    if(!data){
+        [[CXLocalUser instance] reset];
+        return;
+    }
+    if([data containsObjectForKey:@"token"]){
+        NSString *token = [data valueForKey:@"token"];
+        [CXLocalUser instance].token = token;
+        [[CXLocalUser instance] save];
+    }else{
+        [[CXLocalUser instance] reset];
+    }
 }
 
 @end

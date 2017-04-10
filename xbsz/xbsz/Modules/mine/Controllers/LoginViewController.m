@@ -10,6 +10,7 @@
 #import "IQKeyboardManager.h"
 #import "RegisterViewController.h"
 #import "ResetViewController.h"
+#import "CXNetwork+User.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -313,11 +314,11 @@
     if(!_loginBtn){
         _loginBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
         [_loginBtn setTitle:@"登 录" forState:UIControlStateNormal];
-//        _loginBtn.titleLabel.font = CXSystemFont(24);
         [_loginBtn setTitleColor:CXWhiteColor forState:UIControlStateNormal];
         [_loginBtn setBackgroundColor:CXMainColor];
         _loginBtn.layer.cornerRadius = 20;
         [_loginBtn setClipsToBounds:YES];
+        [_loginBtn addTarget:self action:@selector(userLogin) forControlEvents:UIControlEventTouchUpInside];
     }
     return  _loginBtn;
 }
@@ -391,15 +392,38 @@
     [self.navigationController pushViewController:[ResetViewController controller] animated:YES];
 }
 
+- (void)userLogin{
+    if([[_userNameField.text stringByTrim] isEqualToString:@""] || [[_passwordFiled.text stringByTrim] isEqualToString:@""]){
+        [ToastView showErrorWithStaus:@"信息填写有误🙃"];
+    }else{
+        [ToastView show];
+        [CXNetwork userLogin:_userNameField.text password:_passwordFiled.text success:^(NSObject *obj) {
+            if([CXLocalUser instance].token){
+                [self getUserInfo];
+            }else{
+                [ToastView showErrorWithStaus:@"登录失败，该账号异常" delay:1];
+            }
+        } failure:^(NSError *error) {
+            [ToastView showErrorWithStaus:@"登录失败，账号或密码错误" delay:1];
+        }];
+    }
+}
 
-#pragma mark - UITextFieldDelegate 
+- (void)getUserInfo{
+    [ToastView showSuccessWithStaus:@"登录成功" delay:1];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    });
+}
+
+#pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     if(textField == _userNameField){
         [_passwordFiled becomeFirstResponder];
     }else{
-        CXLog(@"点击登录");
         [self.view endEditing:YES];
+        [self userLogin];
     }
     return YES;
 }

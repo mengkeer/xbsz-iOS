@@ -263,25 +263,13 @@
     
     [CXNetwork JWLogin:username password:password success:^(NSObject *obj) {
         if(obj){
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                //        [ToastView showErrorWithStaus:@"mmm"];
-                [ToastView dismiss];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [ToastView showSuccessWithStaus:@"授权成功"];
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [self.navigationController popViewControllerAnimated:YES];
-                    });
-                });
+            [ToastView showSuccessWithStaus:@"授权成功"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
             });
         }
     } failure:^(NSError *error) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //        [ToastView showErrorWithStaus:@"mmm"];
-            [ToastView dismiss];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [ToastView showErrorWithStaus:@"授权失败，账号或密码错误"];
-            });
-        });
+        [ToastView showErrorWithStaus:@"授权失败，账号或密码错误"];
     }];
     
 }

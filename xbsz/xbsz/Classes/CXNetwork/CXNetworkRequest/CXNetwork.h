@@ -19,14 +19,14 @@ typedef void (^CXNetworkFailureBlock)(NSError *error);
 
 #define InvokeSuccess(e)    {if(success) dispatch_async(dispatch_get_main_queue(), ^{success(e);});}
 #define InvokeFailure(e)    {if(failure) dispatch_async(dispatch_get_main_queue(), ^{failure(e);});}
+//300表示请求成功  不要问我为什么  是后端要这么做的  他不喜欢200这个数字
 #define CallbackRsp(rsp)  { \
         if (!rsp) { \
-            NSDictionary * userInfo = [NSDictionary dictionaryWithObject:@"rsp = nil" forKey:NSLocalizedDescriptionKey]; \
-            NSError * err = [[NSError alloc] initWithDomain:@"CXNetWorkError" code:-1 userInfo:userInfo]; \
+            NSError * err = [CXNetwork netWorkErrorWithCode:rsp.code message:@"返回数据为空"];\
             InvokeFailure(err); \
             return ; \
         }\
-        if (rsp.code == 200) { \
+        if(rsp.code == 300) { \
             InvokeSuccess(rsp.data); \
         }else { \
             NSError * err = [CXNetwork netWorkErrorWithCode:rsp.code message:rsp.errMsg];\

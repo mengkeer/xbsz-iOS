@@ -45,7 +45,7 @@ static CXLocalUser *instance = nil;
 }
 
 -(void)reset{
-    instance = [[CXLocalUser alloc]init];
+    instance = [[CXLocalUser alloc] init];
     [instance save];
 }
 

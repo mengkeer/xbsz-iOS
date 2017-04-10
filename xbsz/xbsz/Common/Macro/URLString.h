@@ -10,8 +10,9 @@
 #define URLString_h
 
 
-#define CXLoginUrl          @"http://www.slotus.cc/api/login"
-#define CXRegisterUrl       @"http://www.slotus.cc/api/register"
+#define CXLoginUrl          @"http://www.slotus.cc/common-api/login"
+#define CXRegisterUrl       @"http://www.slotus.cc/common-api/register"
+
 
 
 #define JWLoginUrl   @"https://mobile4.dhu.edu.cn/_ids_mobile/login18_9"

@@ -9,7 +9,7 @@
 #import "CourseCatalogViewController.h"
 #import "CXBaseTableView.h"
 
-@interface CourseCatalogViewController ()
+@interface CourseCatalogViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) CXBaseTableView *tableView;
 
@@ -36,6 +36,8 @@
 - (CXBaseTableView *)tableView{
     if(_tableView){
         _tableView = [[CXBaseTableView alloc] init];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
     }
     return _tableView;
 }

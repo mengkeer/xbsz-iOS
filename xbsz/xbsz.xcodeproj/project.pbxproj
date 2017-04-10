@@ -987,10 +987,10 @@
 		AD8B86101E9A913F007F4CEC /* CXNetworkRequest */ = {
 			isa = PBXGroup;
 			children = (
-				AD8B86131E9A913F007F4CEC /* CXNetwork+User.h */,
-				AD8B86141E9A913F007F4CEC /* CXNetwork+User.m */,
 				AD8B86151E9A913F007F4CEC /* CXNetwork.h */,
 				AD8B86161E9A913F007F4CEC /* CXNetwork.m */,
+				AD8B86131E9A913F007F4CEC /* CXNetwork+User.h */,
+				AD8B86141E9A913F007F4CEC /* CXNetwork+User.m */,
 			);
 			path = CXNetworkRequest;
 			sourceTree = "<group>";
