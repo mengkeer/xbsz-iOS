@@ -10,8 +10,6 @@
 
 @interface DefaultTipsView ()
 
-
-
 @property (nonatomic, strong) UIImageView *tipsImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 

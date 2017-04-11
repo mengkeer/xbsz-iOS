@@ -183,7 +183,6 @@ static CGPoint beforeScrollPoint ;
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     beforeScrollPoint = scrollView.contentOffset;
     if(beforeScrollPoint.y < 0)     beforeScrollPoint = CGPointZero;
-    CXLog(@"开始滑动前 = %lf",scrollView.contentOffset.y);
 }
 
 
@@ -194,10 +193,7 @@ static CGPoint beforeScrollPoint ;
     CGPoint center = _imageView.center;             //图片的center
     
     if(nowOffset.y > 0.0 && center.y > ([self getStartOriginY]-100)){
-        CXLog(@"初始偏移量 %lf",beforeScrollPoint.y);
-        CXLog(@"当前偏移量 %lf",nowOffset.y);
         if(nowOffset.y < beforeScrollPoint.y) return;
-        CXLog(@"进入到下一回合");
         CGFloat paddingY = nowOffset.y  - beforeScrollPoint.y;
         CGFloat top =  _imageView.center.y - paddingY <= -36 ? -36 : _imageView.center.y - paddingY ;
         CGFloat gap = _imageView.center.y - top;
