@@ -73,9 +73,7 @@
         _noteList = [CampusNoteList yy_modelWithJSON:jsonStr];
     }
     
-    
     [_tableView reloadData];
-    
     
     CXLog(@"开始加载校园动态");
 }

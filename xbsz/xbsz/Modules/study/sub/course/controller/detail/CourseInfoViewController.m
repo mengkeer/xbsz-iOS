@@ -89,7 +89,7 @@ static int _titleHeight  = 40;           //标题导航栏的高度
     CourseCatalogViewController *vc2 = [CourseCatalogViewController controller];
     vc2.title = @"目录";
     vc2.course = _course;
-    vc2.delegate = _delegate;
+    vc2.scrollViewDelegate = _delegate;
     [self addChildViewController:vc2];
     
     CourseIntroductionViewController *vc3 = [CourseIntroductionViewController controller];

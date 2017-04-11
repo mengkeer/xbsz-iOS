@@ -11,6 +11,8 @@
 #import "RateView.h"
 #import "ShareToolBarView.h"
 
+static CGPoint beforeScrollPoint ;
+
 @interface CourseDetailViewController () <RateViewDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) YYAnimatedImageView *imageView;     //顶部imageView
@@ -176,14 +178,14 @@
     }
 }
 
-#pragma mark - RateViewDelegate
+#pragma mark - UIScrollViewDelegate
 
-- (void)rateView:(CGFloat)scorePoint contnet:(NSString *)content{
-    CXLog(@"评分为%.1f 评论内容为:%@",scorePoint,content);
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    beforeScrollPoint = scrollView.contentOffset;
+    if(beforeScrollPoint.y < 0)     beforeScrollPoint = CGPointZero;
+    CXLog(@"开始滑动前 = %lf",scrollView.contentOffset.y);
 }
 
-
-#pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
@@ -191,18 +193,23 @@
     
     CGPoint center = _imageView.center;             //图片的center
     
-    if(nowOffset.y >= 0.0 && center.y > ([self getStartOriginY]-100)){
-        CGFloat top =  _imageView.center.y - nowOffset.y <= -36 ? -36 : _imageView.center.y - nowOffset.y ;
+    if(nowOffset.y > 0.0 && center.y > ([self getStartOriginY]-100)){
+        CXLog(@"初始偏移量 %lf",beforeScrollPoint.y);
+        CXLog(@"当前偏移量 %lf",nowOffset.y);
+        if(nowOffset.y < beforeScrollPoint.y) return;
+        CXLog(@"进入到下一回合");
+        CGFloat paddingY = nowOffset.y  - beforeScrollPoint.y;
+        CGFloat top =  _imageView.center.y - paddingY <= -36 ? -36 : _imageView.center.y - paddingY ;
         CGFloat gap = _imageView.center.y - top;
         _imageView.center = CGPointMake(CXScreenWidth/2, top);
-        scrollView.contentOffset = CGPointZero;
+        scrollView.contentOffset = beforeScrollPoint;
         
         CGRect frame = _infoViewController.view.frame;
         _infoViewController.view.frame = CGRectMake(0,frame.origin.y-gap, CXScreenWidth, CGRectGetHeight(frame)+gap);
-
+        
     }else{
         if(nowOffset.y <= 0.0 && center.y >= -36 && center.y < 164){
-             CGFloat top =  _imageView.center.y - nowOffset.y >164 ? 164 : _imageView.center.y - nowOffset.y ;
+            CGFloat top =  _imageView.center.y - nowOffset.y >164 ? 164 : _imageView.center.y - nowOffset.y ;
             CGFloat gap = _imageView.center.y - top;
             _imageView.center = CGPointMake(CXScreenWidth/2, top);
             scrollView.contentOffset = CGPointZero;
@@ -210,10 +217,9 @@
             if(center.y >= 164)     return;
             CGRect frame = _infoViewController.view.frame;
             _infoViewController.view.frame = CGRectMake(0,frame.origin.y-gap, CXScreenWidth, CGRectGetHeight(frame)+gap);
-
+            
         }
     }
 }
-
 
 @end

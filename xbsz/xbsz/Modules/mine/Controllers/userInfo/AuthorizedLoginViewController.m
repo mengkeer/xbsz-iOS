@@ -263,13 +263,13 @@
     
     [CXNetwork JWLogin:username password:password success:^(NSObject *obj) {
         if(obj){
-            [ToastView showSuccessWithStaus:@"授权成功"];
+            [ToastView showSuccessWithStaus:@"授权成功" delay:1];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.navigationController popViewControllerAnimated:YES];
             });
         }
     } failure:^(NSError *error) {
-        [ToastView showErrorWithStaus:@"授权失败，账号或密码错误"];
+        [ToastView showErrorWithStaus:@"授权失败，账号或密码错误" delay:1];
     }];
     
 }

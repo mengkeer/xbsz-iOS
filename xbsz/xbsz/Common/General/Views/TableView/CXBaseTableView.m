@@ -20,11 +20,11 @@
 
 @implementation CXBaseTableView
 
-- (id)initWithFrame:(CGRect)frame enablePullRefresh:(BOOL)enable{
+- (instancetype)initWithFrame:(CGRect)frame enablePullRefresh:(BOOL)enable{
     return [self initWithFrame:frame style:UITableViewStylePlain enablePullRefresh:enable];
 }
 
-- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style enablePullRefresh:(BOOL)enable{
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style enablePullRefresh:(BOOL)enable{
     self = [super initWithFrame:frame style:style];
     if(self){
         [self initBaseTableView];
@@ -39,6 +39,7 @@
     self.emptyDataSetDelegate = self;
     
     self.backgroundColor = CXWhiteColor;
+    if(_pullRefreshEnabled == NO)   return;
     MJRefreshNormalHeader *gifHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         CXLog(@"下拉刷新");
         
@@ -51,7 +52,6 @@
     gifHeader.lastUpdatedTimeLabel.hidden = YES;
     self.mj_header = gifHeader;
 
-    
     self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         CXLog(@"上拉加载");
         self.currentPage ++;
@@ -66,8 +66,6 @@
             
         });
     }];
-
-    
 }
 
 - (void)setBaseDelegate:(id<CXBaseTableViewDelegate>)baseDelegate{
@@ -75,9 +73,6 @@
     self.delegate = baseDelegate;
     self.dataSource = baseDelegate;
 }
-
-
-
 
 #pragma mark DZNEmptyDataSetDelegate
 

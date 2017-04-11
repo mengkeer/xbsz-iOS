@@ -58,15 +58,6 @@
     [_btnLetter setTitleColor:CXHexAlphaColor(0xFFFFFF, 0.7) forState:UIControlStateNormal];
     [self.view addSubview:_btnLetter];
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

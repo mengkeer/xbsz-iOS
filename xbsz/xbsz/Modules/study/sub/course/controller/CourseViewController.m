@@ -67,13 +67,10 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     
     _courseList = [CourseList yy_modelWithJSON:jsonStr];
     
-    
-    
     [_collectionView reloadData];
     
     CXLog(@"开始加载校园动态");
-    
-    
+
 }
 
 
