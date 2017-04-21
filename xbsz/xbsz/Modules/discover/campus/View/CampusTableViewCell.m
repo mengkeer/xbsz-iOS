@@ -90,7 +90,6 @@
         make.centerY.mas_equalTo(_userInfoView.mas_centerY).mas_offset(8);
     }];
     
-    
     [self.contentView addSubview:self.sharedImageView];
 
     

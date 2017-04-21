@@ -9,6 +9,8 @@
 #import "CourseCatalogViewController.h"
 #import "CXBaseTableView.h"
 #import "ChapterHeaderView.h"
+#import "DownloadManager.h"
+#import "AttachmentViewController.h"
 
 static NSString *cellID = @"chapterItemID";
 static NSString *sectionID = @"chapterheaderID";
@@ -85,7 +87,14 @@ static NSString *sectionID = @"chapterheaderID";
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CXLog(@"%@",[NSString stringWithFormat:@"点击了第%lu行",indexPath.row])
+//    CXLog(@"%@",[NSString stringWithFormat:@"点击了第%lu行",indexPath.row]);
+//    [[DownloadManager manager] downloadFromServer:@"http://www.slotus.cc/ppt.ppt"];
+    NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [cachesPath stringByAppendingPathComponent:@"ppt.ppt"];
+    AttachmentViewController *vc = [AttachmentViewController controller];
+    vc.path = path;
+    vc.title = @"毕业设计开题报告";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -117,14 +126,14 @@ static NSString *sectionID = @"chapterheaderID";
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if([_scrollViewDelegate respondsToSelector:@selector(scrollViewDidScroll:)]){
-        [_scrollViewDelegate scrollViewDidScroll:scrollView];
+    if([_baseDelegate respondsToSelector:@selector(scrollViewDidScroll:)]){
+        [_baseDelegate scrollViewDidScroll:scrollView];
     }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    if([_scrollViewDelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]){
-        [_scrollViewDelegate scrollViewWillBeginDragging:scrollView];
+    if([_baseDelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]){
+        [_baseDelegate scrollViewWillBeginDragging:scrollView];
     }
 }
 

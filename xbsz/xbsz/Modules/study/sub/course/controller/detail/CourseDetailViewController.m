@@ -147,7 +147,7 @@ static CGPoint beforeScrollPoint ;
 
 - (void)showCommentDialog{
     [[RateView instance] showInView:[self.view superview]];
-     [RateView instance].delegate = self;
+    [RateView instance].delegate = self;
 }
 
 - (void)handleShareAction:(ShareToolBarActionTyep) actionType{
@@ -216,6 +216,12 @@ static CGPoint beforeScrollPoint ;
             
         }
     }
+}
+
+#pragma  mark - RateViewDelegate
+
+- (void)rateView:(CGFloat)scorePoint contnet:(NSString *)content{
+    CXLog(@"评分为：%lf 内容为%@",scorePoint,content);
 }
 
 @end

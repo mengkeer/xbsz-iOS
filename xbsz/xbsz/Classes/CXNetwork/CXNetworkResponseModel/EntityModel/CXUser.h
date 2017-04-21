@@ -12,7 +12,6 @@
 
 @property (nonatomic, copy) NSString *userID;
 @property (nonatomic, copy) NSString *username;             //登录名
-@property (nonatomic, copy) NSString *password;
 @property (nonatomic, copy) NSString *avatar;                   //头像
 @property (nonatomic, copy) NSString *nickname;                 //昵称
 @property (nonatomic, copy) NSString *truename;                 //真实姓名
@@ -27,8 +26,5 @@
 
 @property (nonatomic, assign) NSInteger fans;       //粉丝数
 @property (nonatomic, assign) NSInteger concerns;       //关注数目
-
-@property (nonatomic, copy) NSString *createAt;
-@property (nonatomic, copy) NSString *updateAt;
 
 @end

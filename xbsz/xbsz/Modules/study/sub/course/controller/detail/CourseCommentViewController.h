@@ -1,15 +1,15 @@
 //
-//  CourseCatalogViewController.h
+//  CourseCommentViewController.h
 //  xbsz
 //
-//  Created by 陈鑫 on 17/3/21.
+//  Created by lotus on 2017/4/20.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Course.h"
 
-@interface CourseCatalogViewController : UIViewController
+@interface CourseCommentViewController : UIViewController
 
 @property (nonatomic, strong) Course *course;
 

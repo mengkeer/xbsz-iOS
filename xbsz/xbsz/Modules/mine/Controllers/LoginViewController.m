@@ -393,13 +393,11 @@
 }
 
 - (void)userLogin{
-    if([[_userNameField.text stringByTrim] isEqualToString:@""] || [[_passwordFiled.text stringByTrim] isEqualToString:@""]){
-        [ToastView showErrorWithStaus:@"信息填写有误🙃"];
-    }else{
+    if([self check]){
         [ToastView show];
         [CXNetwork userLogin:_userNameField.text password:_passwordFiled.text success:^(NSObject *obj) {
             if([CXLocalUser instance].token){
-                [self getUserInfo];
+                [self getUserInfo:[CXLocalUser instance].token];
             }else{
                 [ToastView showErrorWithStaus:@"登录失败，该账号异常" delay:1];
             }
@@ -409,11 +407,50 @@
     }
 }
 
-- (void)getUserInfo{
-    [ToastView showSuccessWithStaus:@"登录成功" delay:1];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self dismissViewControllerAnimated:YES completion:nil];
-    });
+- (void)getUserInfo:(NSString *)token{
+
+    [CXNetwork getUserInfo:token success:^(NSObject *obj) {
+        if(obj && ((NSDictionary *)obj)[@"userInfo"]){
+            [ToastView showSuccessWithStaus:@"登录成功" delay:1];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self dismissViewControllerAnimated:YES completion:nil];
+            });
+        }
+        
+    } failure:^(NSError *error) {
+        [ToastView showErrorWithStaus:@"获取用户信息失败" delay:1];
+    }];
+}
+
+- (BOOL)check{
+    
+    if([_userNameField.text length] > 0){
+        NSString *pattern = @"^[a-zA-Z0-9]{6,20}$";
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pattern];
+        BOOL isMatched = [pred evaluateWithObject:_userNameField.text];
+        if(!isMatched){
+            [ToastView showErrorWithStaus:@"请输入正确的用户名(6-20为字母或数字)"];
+            return NO;
+        }
+    }else{
+        [ToastView showErrorWithStaus:@"请输入用户名"];
+        return NO;
+    }
+    
+    if([_passwordFiled.text length] > 0){
+        NSString *pattern = @"^[a-zA-Z0-9]{6,20}$";
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pattern];
+        BOOL isMatched = [pred evaluateWithObject:_passwordFiled.text];
+        if(!isMatched){
+            [ToastView showErrorWithStaus:@"密码错误(6-20为字母或数字)"];
+            return NO;
+        }
+    }else{
+        [ToastView showErrorWithStaus:@"请输入密码"];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - UITextFieldDelegate

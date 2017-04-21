@@ -9,6 +9,8 @@
 #import "CXNetworkMonitoring.h"
 #import "AFNetworkReachabilityManager.h"
 
+static AFNetworkReachabilityStatus status = -1;
+
 @interface CXNetworkMonitoring ()
 
 @property (nonatomic, assign) AFNetworkReachabilityStatus status;
@@ -22,10 +24,12 @@
     AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         // 当网络状态发生改变的时候调用这个block
+        [self setStatus:status];
         switch (status) {
-            case AFNetworkReachabilityStatusReachableViaWiFi:
+            case AFNetworkReachabilityStatusReachableViaWiFi:{
                 CXLog(@"切换至WIFI状态");
                 break;
+            }
             case AFNetworkReachabilityStatusReachableViaWWAN:
             {
                 YYReachability *reach = [YYReachability reachability];
@@ -69,6 +73,14 @@
     }];
     // 开始监控
     [mgr startMonitoring];
+}
+
++ (AFNetworkReachabilityStatus)currentStatus{
+    return status;
+}
+
++ (void)setStatus:(AFNetworkReachabilityStatus)currentStatus{
+    status = currentStatus;
 }
 
 @end

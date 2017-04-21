@@ -21,6 +21,7 @@
 
 #endif
 
+#define  CXDefaultAvatar    [UIImage imageNamed:@"defaultUserPhoto"]
 
 
 #endif /* UtilsMacro_h */

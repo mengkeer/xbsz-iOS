@@ -29,6 +29,8 @@
 //保存用户信息
 - (BOOL)save;
 
+- (BOOL)save:(CXUser *)user;
+
 //重置用户信息，登出
 - (void)reset;
 

@@ -10,6 +10,7 @@
 #import "CourseViewController.h"
 #import "CourseIntroductionViewController.h"
 #import "CourseCatalogViewController.h"
+#import "CourseCommentViewController.h"
 
 static int _titleHeight  = 40;           //标题导航栏的高度
 
@@ -83,19 +84,19 @@ static int _titleHeight  = 40;           //标题导航栏的高度
     CourseIntroductionViewController  *vc1 = [CourseIntroductionViewController controller];
     vc1.title = @"介绍";
     vc1.course = _course;
-    vc1.delegate = _delegate;
+    vc1.baseDelegate = _delegate;
     [self addChildViewController:vc1];
     
     CourseCatalogViewController *vc2 = [CourseCatalogViewController controller];
     vc2.title = @"目录";
     vc2.course = _course;
-    vc2.scrollViewDelegate = _delegate;
+    vc2.baseDelegate = _delegate;
     [self addChildViewController:vc2];
     
-    CourseIntroductionViewController *vc3 = [CourseIntroductionViewController controller];
+    CourseCommentViewController *vc3 = [CourseCommentViewController controller];
     vc3.title = @"评价";
     vc3.course = _course;
-    vc3.delegate = _delegate;
+    vc3.baseDelegate = _delegate;
     [self addChildViewController:vc3];
 }
 

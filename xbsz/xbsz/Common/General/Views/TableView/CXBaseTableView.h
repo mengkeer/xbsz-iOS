@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIScrollView+EmptyDataSet.h"
 
-#define InitialLoadPage  1
+#define CXFisrtLoadPage  1
 //设置下拉加载风格
 typedef NS_ENUM(NSInteger,LoadMoreFooterStyle){
     LoadMoreFooterStyleNone,        //不加载

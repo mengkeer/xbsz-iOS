@@ -7,6 +7,7 @@
 //
 
 #import "RegisterViewController.h"
+#import "CXNetwork+User.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate>
 
@@ -263,7 +264,6 @@
         _passwordFiled.leftView = leftView;
         _passwordFiled.leftViewMode=UITextFieldViewModeAlways; //此处用来设置leftview现实时机
         
-        
     }
     return _passwordFiled;
 }
@@ -277,10 +277,69 @@
         [_registerBtn setBackgroundColor:CXMainColor];
         _registerBtn.layer.cornerRadius = 20;
         [_registerBtn setClipsToBounds:YES];
+        [_registerBtn addTarget:self action:@selector(userRegister) forControlEvents:UIControlEventTouchUpInside];
     }
     return  _registerBtn;
 }
 
+#pragma mark - private method
+
+- (void)userRegister{
+    if([self check]){
+        [ToastView show];
+        [CXNetwork userRegister:_userNameField.text password:_passwordFiled.text nickname:_nickFiled.text success:^(NSObject *obj) {
+            [ToastView showSuccessWithStaus:@"注册成功" delay:1];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        } failure:^(NSError *error) {
+            if(error.code == 402){
+                [ToastView showErrorWithStaus:@"该账号已经被注册" delay:1];
+            }else{
+                [ToastView showErrorWithStaus:@"注册失败" delay:1];
+            }
+            
+        }];
+    }
+}
+
+- (BOOL)check{
+    
+    if([_userNameField.text length] > 0){
+        NSString *pattern = @"^[a-zA-Z0-9]{6,20}$";
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pattern];
+        BOOL isMatched = [pred evaluateWithObject:_userNameField.text];
+        if(!isMatched){
+            [ToastView showErrorWithStaus:@"请输入正确的用户名(6-20为字母或数字)"];
+            return NO;
+        }
+    }else{
+        [ToastView showErrorWithStaus:@"请输入用户名"];
+        return NO;
+    }
+    
+    if([_nickFiled.text length] > 0){
+        
+    }else{
+        [ToastView showErrorWithStaus:@"请输入昵称"];
+        return NO;
+    }
+    
+    if([_passwordFiled.text length] > 0){
+        NSString *pattern = @"^[a-zA-Z0-9]{6,20}$";
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pattern];
+        BOOL isMatched = [pred evaluateWithObject:_passwordFiled.text];
+        if(!isMatched){
+            [ToastView showErrorWithStaus:@"密码错误(6-20为字母或数字)"];
+            return NO;
+        }
+    }else{
+        [ToastView showErrorWithStaus:@"请输入密码"];
+        return NO;
+    }
+    
+    return YES;
+}
 
 #pragma mark - UITextFieldDelegate
 
@@ -288,8 +347,8 @@
     if(textField == _userNameField){
         [_passwordFiled becomeFirstResponder];
     }else{
-        CXLog(@"点击注册");
         [self.view endEditing:YES];
+        [self userRegister];
     }
     return YES;
     

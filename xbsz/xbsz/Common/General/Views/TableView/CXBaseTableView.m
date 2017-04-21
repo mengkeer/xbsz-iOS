@@ -27,9 +27,9 @@
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style enablePullRefresh:(BOOL)enable{
     self = [super initWithFrame:frame style:style];
     if(self){
-        [self initBaseTableView];
         _pullRefreshEnabled = enable;
         self.showEmptyTips = NO;
+        [self initBaseTableView];
     }
     return self;
 }

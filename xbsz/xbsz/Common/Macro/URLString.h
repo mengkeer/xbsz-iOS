@@ -9,18 +9,15 @@
 #ifndef URLString_h
 #define URLString_h
 
-
 #define CXLoginUrl          @"http://www.slotus.cc/common-api/login"
 #define CXRegisterUrl       @"http://www.slotus.cc/common-api/register"
-
+#define CXGetUserInfoUrl      @"http://www.slotus.cc/limit-api/getUserInfo"
 
 
 #define JWLoginUrl   @"https://mobile4.dhu.edu.cn/_ids_mobile/login18_9"
 #define JWRefreshLoginURL       @"https://mobile4.dhu.edu.cn/_ids_mobile/serialNoLogin18_9" 
 #define JWAPNSKey      @"%3Ca5c64187%20308303f1%20b9fcb265%208782b8bb%20b43ef8d5%207df584b5%203d6146e8%206d832958%3E"
 #define JWSerialNo    @"10afab0aa-4c27-4c5b-a9da-f89773655714"
-
-
 
 //定义app里的一些url
 //个人应用

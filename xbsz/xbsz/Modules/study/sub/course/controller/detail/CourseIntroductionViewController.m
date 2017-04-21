@@ -184,7 +184,7 @@ static int avatarWidth = 40;
         _scrollView.showsVerticalScrollIndicator = YES;
         _scrollView.alwaysBounceHorizontal = NO;
         _scrollView.alwaysBounceVertical = YES;
-        _scrollView.delegate = _delegate;
+        _scrollView.delegate = self;
 //        _scrollView.contentSize = CGSizeMake(CXScreenWidth, self.view.frame.size.height+300);
     }
     return _scrollView;
@@ -376,6 +376,19 @@ static int avatarWidth = 40;
         [_teacherBriefLabel sizeToFit];
     }
     return _teacherBriefLabel;
+}
+
+#pragma  mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if([_baseDelegate respondsToSelector:@selector(scrollViewDidScroll:)]){
+        [_baseDelegate scrollViewDidScroll:scrollView];
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    if([_baseDelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]){
+        [_baseDelegate scrollViewWillBeginDragging:scrollView];
+    }
 }
 
 @end

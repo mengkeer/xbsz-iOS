@@ -8,13 +8,47 @@
 
 #import "CXNetwork.h"
 
+static id _instance = nil;
+
 @implementation CXNetwork
+
++ (instancetype)instance{
+    static CXNetwork *_instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[CXNetwork alloc] init];
+    });
+    return _instance;
+}
+
+
++ (AFHTTPSessionManager *)manager{
+    static AFHTTPSessionManager *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [AFHTTPSessionManager manager];
+        instance.requestSerializer.timeoutInterval = 10.f;
+    });
+    return instance;
+}
+
++ (AFHTTPSessionManager *)unsafeManager{
+    static AFHTTPSessionManager *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [AFHTTPSessionManager manager];
+        instance.securityPolicy.allowInvalidCertificates = YES; // not recommended for production
+        instance.securityPolicy.validatesDomainName = NO;//不验证证书的域名
+        instance.requestSerializer.timeoutInterval = 10.f;
+    });
+    return instance;
+}
 
 + (void)invokePostRequest:(NSString *)url
                parameters:(NSDictionary *)parameters
                   success:(CXRequestSuccessBlock)success
                   failure:(CXRequestFailureBlock)failure{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [self manager];
     
     [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nullable task, id _Nullable responseObject) {
         if(success){
@@ -40,9 +74,7 @@
                       cookieStr:(NSString *)cookieStr
                         success:(CXRequestSuccessBlock)success
                         failure:(CXRequestFailureBlock)failure{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.securityPolicy.allowInvalidCertificates = YES; // not recommended for production
-    manager.securityPolicy.validatesDomainName = NO;//不验证证书的域名
+    AFHTTPSessionManager *manager = [self unsafeManager];
     if(cookieStr != nil)    [manager.requestSerializer setValue:cookieStr forHTTPHeaderField:@"Cookie"];
     
     [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nullable task, id _Nullable responseObject) {
@@ -58,7 +90,7 @@
 
 +(NSError*) netWorkErrorWithCode:(NSInteger) code message:(NSString*) message{
     
-    if(code == 998){
+    if(code == 502){
         [[CXLocalUser instance] reset];
     }
     NSError *newError = [NSError errorWithDomain:@"CXNetWorkResponseError" code:code userInfo:[NSDictionary dictionaryWithObject:message?message:@"" forKey:NSLocalizedDescriptionKey]];

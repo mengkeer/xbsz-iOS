@@ -47,7 +47,7 @@
         return NO;
     }
     
-    [Bugly startWithAppId:BuglyAppID];         //集成bugly服务
+//    [Bugly startWithAppId:BuglyAppID];         //集成bugly服务
     [self JWRefreshLogin];
     
     return YES;

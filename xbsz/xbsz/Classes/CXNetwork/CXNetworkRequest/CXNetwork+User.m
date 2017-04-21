@@ -25,9 +25,6 @@
         [[CXLocalUser instance] reset];
         InvokeFailure(error);
     }];
-    
-    
-    
 }
 
 + (void)userRegister:(NSString *)username
@@ -36,9 +33,32 @@
              success:(CXNetworkSuccessBlock)success
              failure:(CXNetworkFailureBlock)failure{
     
+    NSDictionary *parameters = @{@"userName":username,@"password":password,@"nickname":nickname};
+    [self invokePostRequest:CXRegisterUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:responseObject];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        InvokeFailure(error);
+    }];
     
     
 }
+
++ (void)getUserInfo:(NSString *)token
+            success:(CXNetworkSuccessBlock)success
+            failure:(CXNetworkFailureBlock)failure{
+    
+    NSDictionary *parameters = @{@"token":token};
+    [self invokePostRequest:CXGetUserInfoUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:responseObject];
+        [self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        InvokeFailure(error);
+    }];
+    
+}
+
 
 + (void)JWLogin:(NSString *)username
        password:(NSString *)password
@@ -124,10 +144,18 @@
     }
     if([data containsObjectForKey:@"token"]){
         NSString *token = [data valueForKey:@"token"];
+        if([token isEqualToString:@""])     [[CXLocalUser instance] reset];
         [CXLocalUser instance].token = token;
         [[CXLocalUser instance] save];
     }else{
         [[CXLocalUser instance] reset];
+    }
+}
+
++ (void)saveUserInfo:(NSDictionary *)data{
+    if(data && [data containsObjectForKey:@"userInfo"]){
+        CXLocalUser *user = [CXLocalUser yy_modelWithDictionary:data[@"userInfo"]];
+        [[CXLocalUser instance] save:user];
     }
 }
 

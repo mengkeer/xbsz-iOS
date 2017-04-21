@@ -36,7 +36,7 @@ static CXLocalUser *instance = nil;
     return t;
 }
 
--(BOOL)save{
+- (BOOL)save{
     
     NSString *path = [NSString stringWithFormat:@"%@/Documents/UserInfo.dat", NSHomeDirectory()];
     //序列化
@@ -44,7 +44,27 @@ static CXLocalUser *instance = nil;
     return [NSKeyedArchiver archiveRootObject:instance toFile:path];
 }
 
--(void)reset{
+
+
+- (BOOL)save:(CXUser *)user{
+    instance.userID = user.userID;
+    instance.username = user.username;
+    instance.avatar = user.avatar;
+    instance.nickname = user.nickname;
+    instance.truename = user.truename;
+    instance.gender = user.gender;
+    instance.email = user.email;
+    instance.mobile = user.mobile;
+    instance.major = user.major;
+    instance.birthday = user.birthday;
+    instance.signature = user.signature;
+    instance.brief = user.brief;
+    instance.district = user.district;
+
+    return [self save];
+}
+
+- (void)reset{
     instance = [[CXLocalUser alloc] init];
     [instance save];
 }
@@ -72,6 +92,7 @@ static CXLocalUser *instance = nil;
     [aCoder encodeObject:self.brief forKey:@"brief"];
     [aCoder encodeObject:self.signature forKey:@"signature"];
 }
+
 - (id)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
         self.token = [aDecoder decodeObjectForKey:@"token"];

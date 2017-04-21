@@ -22,6 +22,10 @@
              success:(CXNetworkSuccessBlock)success
              failure:(CXNetworkFailureBlock)failure;
 
++ (void)getUserInfo:(NSString *)token
+            success:(CXNetworkSuccessBlock)success
+            failure:(CXNetworkFailureBlock)failure;
+
 + (void)JWLogin:(NSString *)username
        password:(NSString *)password
         success:(CXNetworkSuccessBlock)success

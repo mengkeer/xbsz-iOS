@@ -68,7 +68,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     _exerciseList = [ExerciseList yy_modelWithJSON:jsonStr];
     
     
-    
     [_collectionView reloadData];
     
     CXLog(@"开始加载校园动态");
@@ -124,7 +123,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (void)gotoSearchView{
     // 1. 创建热门搜索
-    NSArray *hotSeaches = @[@"近代史", @"马克思", @"思修", @"毛概1", @"毛概2" , @"大学英语3", @"", @"Java程序设计", @"计算机二级",@"多媒体技术"];
+    NSArray *hotSeaches = @[@"近代史", @"马克思", @"思修", @"毛概1", @"毛概2" , @"大学英语3", @"Java程序设计", @"计算机二级",@"多媒体技术"];
     // 2. 创建控制器
     PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索课程" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         // 开始搜索执行以下代码

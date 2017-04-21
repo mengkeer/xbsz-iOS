@@ -48,6 +48,8 @@
 		AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD29F48B1E5B244E008346BD /* UIAlertController+CXAlertController.m */; };
 		AD2BE4EB1E5980CB00D0B0ED /* CXSectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2BE4EA1E5980CB00D0B0ED /* CXSectionButton.m */; };
 		AD30B1471DFAC900000189DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD30B1461DFAC900000189DD /* Assets.xcassets */; };
+		AD36F8821EA3119600775F90 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD36F8811EA3119600775F90 /* DownloadManager.m */; };
+		AD3891CF1EA4C0F70074426C /* AttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3891CE1EA4C0F70074426C /* AttachmentViewController.m */; };
 		AD7092AA1E861CF10024427C /* DefaultTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7092A91E861CF10024427C /* DefaultTipsView.m */; };
 		AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F881D1E594D5E009603E4 /* YYReachability.m */; };
 		AD7F88291E594D5E009603E4 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F88201E594D5E009603E4 /* UIView+Frame.m */; };
@@ -74,6 +76,12 @@
 		AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F892B1E59624A009603E4 /* CXNetworkMonitoring.m */; };
 		AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89391E5976FE009603E4 /* ExerciseViewController.m */; };
 		AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F893E1E597742009603E4 /* CXStudyViewController.m */; };
+		AD8B452A1EA890DB00E8D539 /* CourseCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45291EA890DB00E8D539 /* CourseCommentViewController.m */; };
+		AD8B452D1EA89CD200E8D539 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B452C1EA89CD200E8D539 /* CommentTableViewCell.m */; };
+		AD8B45331EA9DC5B00E8D539 /* CourseComment.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45321EA9DC5B00E8D539 /* CourseComment.m */; };
+		AD8B45361EA9DCA600E8D539 /* CourseCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45351EA9DCA600E8D539 /* CourseCommentList.m */; };
+		AD8B45381EA9DE3D00E8D539 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = AD8B45371EA9DE3D00E8D539 /* comments.json */; };
+		AD8B453A1EA9E06800E8D539 /* comment.json in Resources */ = {isa = PBXBuildFile; fileRef = AD8B45391EA9E06800E8D539 /* comment.json */; };
 		AD8B861B1E9A913F007F4CEC /* CXNetwork+User.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B86141E9A913F007F4CEC /* CXNetwork+User.m */; };
 		AD8B861C1E9A913F007F4CEC /* CXNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B86161E9A913F007F4CEC /* CXNetwork.m */; };
 		AD8B861F1E9A9191007F4CEC /* CXBaseResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B861E1E9A9191007F4CEC /* CXBaseResponseModel.m */; };
@@ -191,6 +199,10 @@
 		AD30B1461DFAC900000189DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		AD30B14B1DFAC900000189DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD30B1751DFACA0C000189DD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		AD36F8801EA3119600775F90 /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
+		AD36F8811EA3119600775F90 /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
+		AD3891CD1EA4C0F70074426C /* AttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentViewController.h; sourceTree = "<group>"; };
+		AD3891CE1EA4C0F70074426C /* AttachmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentViewController.m; sourceTree = "<group>"; };
 		AD7092A81E861CF10024427C /* DefaultTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTipsView.h; sourceTree = "<group>"; };
 		AD7092A91E861CF10024427C /* DefaultTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTipsView.m; sourceTree = "<group>"; };
 		AD7F881C1E594D5E009603E4 /* YYReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYReachability.h; sourceTree = "<group>"; };
@@ -251,6 +263,16 @@
 		AD7F89391E5976FE009603E4 /* ExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseViewController.m; sourceTree = "<group>"; };
 		AD7F893D1E597742009603E4 /* CXStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXStudyViewController.h; sourceTree = "<group>"; };
 		AD7F893E1E597742009603E4 /* CXStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXStudyViewController.m; sourceTree = "<group>"; };
+		AD8B45281EA890DB00E8D539 /* CourseCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentViewController.h; sourceTree = "<group>"; };
+		AD8B45291EA890DB00E8D539 /* CourseCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCommentViewController.m; sourceTree = "<group>"; };
+		AD8B452B1EA89CD200E8D539 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		AD8B452C1EA89CD200E8D539 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		AD8B45311EA9DC5B00E8D539 /* CourseComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseComment.h; sourceTree = "<group>"; };
+		AD8B45321EA9DC5B00E8D539 /* CourseComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseComment.m; sourceTree = "<group>"; };
+		AD8B45341EA9DCA600E8D539 /* CourseCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentList.h; sourceTree = "<group>"; };
+		AD8B45351EA9DCA600E8D539 /* CourseCommentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCommentList.m; sourceTree = "<group>"; };
+		AD8B45371EA9DE3D00E8D539 /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
+		AD8B45391EA9E06800E8D539 /* comment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comment.json; sourceTree = "<group>"; };
 		AD8B86131E9A913F007F4CEC /* CXNetwork+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CXNetwork+User.h"; sourceTree = "<group>"; };
 		AD8B86141E9A913F007F4CEC /* CXNetwork+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CXNetwork+User.m"; sourceTree = "<group>"; };
 		AD8B86151E9A913F007F4CEC /* CXNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXNetwork.h; sourceTree = "<group>"; };
@@ -342,6 +364,10 @@
 				05067FEB1E7BF02200868AC1 /* CourseIntroductionViewController.m */,
 				05CAAE521E81063B005F7715 /* CourseCatalogViewController.h */,
 				05CAAE531E81063B005F7715 /* CourseCatalogViewController.m */,
+				AD8B45281EA890DB00E8D539 /* CourseCommentViewController.h */,
+				AD8B45291EA890DB00E8D539 /* CourseCommentViewController.m */,
+				AD3891CD1EA4C0F70074426C /* AttachmentViewController.h */,
+				AD3891CE1EA4C0F70074426C /* AttachmentViewController.m */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -434,6 +460,8 @@
 				05B4D0851E769109005DC854 /* CourseSearchBar.m */,
 				AD8B86321E9CD7EB007F4CEC /* ChapterHeaderView.h */,
 				AD8B86331E9CD7EB007F4CEC /* ChapterHeaderView.m */,
+				AD8B452B1EA89CD200E8D539 /* CommentTableViewCell.h */,
+				AD8B452C1EA89CD200E8D539 /* CommentTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -616,6 +644,8 @@
 			isa = PBXGroup;
 			children = (
 				ADAAE0881E7CD06400A0FA2C /* exercises.json */,
+				AD8B45391EA9E06800E8D539 /* comment.json */,
+				AD8B45371EA9DE3D00E8D539 /* comments.json */,
 				05B4D0881E769EF1005DC854 /* courses.json */,
 				0518ECC71E603E480018F432 /* user.json */,
 				05B4D08D1E76A532005DC854 /* course.json */,
@@ -996,6 +1026,8 @@
 				AD8B86161E9A913F007F4CEC /* CXNetwork.m */,
 				AD8B86131E9A913F007F4CEC /* CXNetwork+User.h */,
 				AD8B86141E9A913F007F4CEC /* CXNetwork+User.m */,
+				AD36F8801EA3119600775F90 /* DownloadManager.h */,
+				AD36F8811EA3119600775F90 /* DownloadManager.m */,
 			);
 			path = CXNetworkRequest;
 			sourceTree = "<group>";
@@ -1014,6 +1046,8 @@
 		AD8B86181E9A913F007F4CEC /* EntityModel */ = {
 			isa = PBXGroup;
 			children = (
+				AD8B45311EA9DC5B00E8D539 /* CourseComment.h */,
+				AD8B45321EA9DC5B00E8D539 /* CourseComment.m */,
 				AD8B86201E9A92A4007F4CEC /* CampusComment.h */,
 				AD8B86211E9A92A4007F4CEC /* CampusComment.m */,
 				AD8B86221E9A92A4007F4CEC /* CampusNote.h */,
@@ -1033,6 +1067,8 @@
 				AD8B862D1E9A92B1007F4CEC /* CampusNoteList.m */,
 				AD8B862E1E9A92B1007F4CEC /* CourseList.h */,
 				AD8B862F1E9A92B1007F4CEC /* CourseList.m */,
+				AD8B45341EA9DCA600E8D539 /* CourseCommentList.h */,
+				AD8B45351EA9DCA600E8D539 /* CourseCommentList.m */,
 			);
 			path = ModularModel;
 			sourceTree = "<group>";
@@ -1218,6 +1254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD8B45381EA9DE3D00E8D539 /* comments.json in Resources */,
 				ADF042451E0192EF00171489 /* avatar11.jpg in Resources */,
 				ADF042431E0192EF00171489 /* avatar1.jpg in Resources */,
 				0518ECC81E603E480018F432 /* user.json in Resources */,
@@ -1232,6 +1269,7 @@
 				ADF042481E0192EF00171489 /* avatar4.jpg in Resources */,
 				ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */,
 				054B8B7C1E7B876600E4E0BD /* b27_icon_star_gray@2x.png in Resources */,
+				AD8B453A1EA9E06800E8D539 /* comment.json in Resources */,
 				ADF042491E0192EF00171489 /* avatar5.jpg in Resources */,
 				054B8B7D1E7B876600E4E0BD /* b27_icon_star_yellow@2x.png in Resources */,
 				AD30B1471DFAC900000189DD /* Assets.xcassets in Resources */,
@@ -1323,12 +1361,16 @@
 				AD8B86311E9A92B1007F4CEC /* CourseList.m in Sources */,
 				ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */,
 				AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */,
+				AD3891CF1EA4C0F70074426C /* AttachmentViewController.m in Sources */,
 				AD7F891D1E595B29009603E4 /* RegisterViewController.m in Sources */,
+				AD8B452D1EA89CD200E8D539 /* CommentTableViewCell.m in Sources */,
 				AD7F88DD1E595A5E009603E4 /* CXNavigationController.m in Sources */,
 				0518ECB91E6016D80018F432 /* CXLocalUser.m in Sources */,
+				AD8B45331EA9DC5B00E8D539 /* CourseComment.m in Sources */,
 				054B8B7E1E7B876600E4E0BD /* CWStarRateView.m in Sources */,
 				AD2540B21E977A9900AA330D /* UserInfoViewController.m in Sources */,
 				05CEE4AA1E8525AC0033DD3D /* CommonAPPViewController.m in Sources */,
+				AD36F8821EA3119600775F90 /* DownloadManager.m in Sources */,
 				AD8B86341E9CD7EB007F4CEC /* ChapterHeaderView.m in Sources */,
 				AD2540B51E977B4100AA330D /* AuthorizedLoginViewController.m in Sources */,
 				AD7F89221E595B29009603E4 /* SetItemTableViewCell.m in Sources */,
@@ -1369,8 +1411,10 @@
 				ADAAE0871E7CCFE700A0FA2C /* ExerciseList.m in Sources */,
 				AD7F891A1E595B29009603E4 /* CXLaunchViewController.m in Sources */,
 				ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */,
+				AD8B452A1EA890DB00E8D539 /* CourseCommentViewController.m in Sources */,
 				055A3B8B1E84CC7D004D09CC /* UIViewController+Authorization.m in Sources */,
 				AD8B86281E9A92A4007F4CEC /* CampusComment.m in Sources */,
+				AD8B45361EA9DCA600E8D539 /* CourseCommentList.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,
 				AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */,
 				AD7F88291E594D5E009603E4 /* UIView+Frame.m in Sources */,

@@ -10,6 +10,8 @@
 
 @implementation CXUser
 
-
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"username":@"userName"};
+}
 
 @end

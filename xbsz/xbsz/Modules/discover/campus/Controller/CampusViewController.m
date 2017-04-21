@@ -35,7 +35,7 @@
         make.left.right.top.bottom.equalTo(self.view);
     }];
     
-    [self loadDataAtPageIndex:InitialLoadPage];
+    [self loadDataAtPageIndex:CXFisrtLoadPage];
     
 }
 

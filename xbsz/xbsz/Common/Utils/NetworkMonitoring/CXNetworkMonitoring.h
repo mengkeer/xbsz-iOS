@@ -10,6 +10,8 @@
 
 @interface CXNetworkMonitoring : NSObject
 
++ (AFNetworkReachabilityStatus)currentStatus;
+
 + (void)startNetworkMonitoring;
 
 @end
