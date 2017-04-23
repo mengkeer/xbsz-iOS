@@ -39,6 +39,14 @@
 
 @implementation UserCenterViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    if([[CXLocalUser instance] isLogin]){
+        _nickNamelabel.text = [CXLocalUser instance].nickname;
+    }else{
+        _nickNamelabel.text = @"请登录";
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -470,13 +478,19 @@
 }
 
 - (void)clickLogin{
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
+    if([[CXLocalUser instance] isLogin]){
+        [self.navigationController pushViewController:[UserInfoViewController controller] animated:YES];
+    }else{
+        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
+    }
 }
 
 - (void)clickInfo{
-    
-    [self.navigationController pushViewController:[UserInfoViewController controller] animated:YES];
-
+    if([[CXLocalUser instance] isLogin]){
+         [self.navigationController pushViewController:[UserInfoViewController controller] animated:YES];
+    }else{
+        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
+    }
 }
 
 - (void)clickSet{
@@ -542,8 +556,6 @@
 - (void)gotoMyTuition{
     [self gotoAuthCommonView:@"学费查询" url:JWURLMyTuition];
 }
-
-
 
 
 - (void)gotoStudentService{

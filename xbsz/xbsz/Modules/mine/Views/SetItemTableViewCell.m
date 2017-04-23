@@ -134,6 +134,7 @@
         _rightArrow = [UIButton buttonWithType:UIButtonTypeCustom];
         [_rightArrow setImage:[UIImage imageNamed:@"common_right_arrow"] forState:UIControlStateNormal];
         [_rightArrow setImage:[UIImage imageNamed:@"common_right_arrow"] forState:UIControlStateHighlighted];
+        _rightArrow.enabled = NO;
     }
     return _rightArrow;
 }

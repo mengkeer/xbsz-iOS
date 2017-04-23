@@ -40,6 +40,9 @@
 		05F472F81E7131890085345F /* CommentToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472F71E7131890085345F /* CommentToolBarView.m */; };
 		05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F472FA1E7132640085345F /* MoreToolBarView.m */; };
 		39B543BDB6E83CDE2678E461 /* Pods_xbsz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0133D7149C83299B5B66CF /* Pods_xbsz.framework */; };
+		AD196E651EAC3C3700111EB5 /* NicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD196E641EAC3C3700111EB5 /* NicknameViewController.m */; };
+		AD196E681EAC8AFC00111EB5 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD196E671EAC8AFC00111EB5 /* EmailViewController.m */; };
+		AD196E6B1EAC8E2900111EB5 /* PhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD196E6A1EAC8E2900111EB5 /* PhoneViewController.m */; };
 		AD2540B21E977A9900AA330D /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2540B11E977A9900AA330D /* UserInfoViewController.m */; };
 		AD2540B51E977B4100AA330D /* AuthorizedLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2540B41E977B4100AA330D /* AuthorizedLoginViewController.m */; };
 		AD2540B81E97860F00AA330D /* JWLocalUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2540B71E97860F00AA330D /* JWLocalUser.m */; };
@@ -181,6 +184,12 @@
 		05F472FA1E7132640085345F /* MoreToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreToolBarView.m; sourceTree = "<group>"; };
 		AC0133D7149C83299B5B66CF /* Pods_xbsz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xbsz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0BC92C1E97BC68006DB588 /* URLString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLString.h; sourceTree = "<group>"; };
+		AD196E631EAC3C3700111EB5 /* NicknameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NicknameViewController.h; sourceTree = "<group>"; };
+		AD196E641EAC3C3700111EB5 /* NicknameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NicknameViewController.m; sourceTree = "<group>"; };
+		AD196E661EAC8AFC00111EB5 /* EmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailViewController.h; sourceTree = "<group>"; };
+		AD196E671EAC8AFC00111EB5 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
+		AD196E691EAC8E2900111EB5 /* PhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneViewController.h; sourceTree = "<group>"; };
+		AD196E6A1EAC8E2900111EB5 /* PhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneViewController.m; sourceTree = "<group>"; };
 		AD2540B01E977A9900AA330D /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		AD2540B11E977A9900AA330D /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		AD2540B31E977B4100AA330D /* AuthorizedLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizedLoginViewController.h; sourceTree = "<group>"; };
@@ -552,6 +561,12 @@
 				AD2540B11E977A9900AA330D /* UserInfoViewController.m */,
 				AD2540B31E977B4100AA330D /* AuthorizedLoginViewController.h */,
 				AD2540B41E977B4100AA330D /* AuthorizedLoginViewController.m */,
+				AD196E631EAC3C3700111EB5 /* NicknameViewController.h */,
+				AD196E641EAC3C3700111EB5 /* NicknameViewController.m */,
+				AD196E661EAC8AFC00111EB5 /* EmailViewController.h */,
+				AD196E671EAC8AFC00111EB5 /* EmailViewController.m */,
+				AD196E691EAC8E2900111EB5 /* PhoneViewController.h */,
+				AD196E6A1EAC8E2900111EB5 /* PhoneViewController.m */,
 			);
 			path = userInfo;
 			sourceTree = "<group>";
@@ -1349,7 +1364,9 @@
 				05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */,
 				AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */,
 				ADAAE08E1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m in Sources */,
+				AD196E651EAC3C3700111EB5 /* NicknameViewController.m in Sources */,
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,
+				AD196E681EAC8AFC00111EB5 /* EmailViewController.m in Sources */,
 				05067FEC1E7BF02200868AC1 /* CourseDetailViewController.m in Sources */,
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
@@ -1403,6 +1420,7 @@
 				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,
 				AD8B862B1E9A92A4007F4CEC /* CXUser.m in Sources */,
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
+				AD196E6B1EAC8E2900111EB5 /* PhoneViewController.m in Sources */,
 				0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */,
 				055A3B881E84BAB0004D09CC /* UINavigationController+TZPopGesture.m in Sources */,
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,

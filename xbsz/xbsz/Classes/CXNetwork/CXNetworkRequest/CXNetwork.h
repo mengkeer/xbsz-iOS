@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CXBaseResponseModel.h"
+#import "URLString.h"
 
 typedef void (^CXRequestSuccessBlock)(NSURLSessionDataTask * task, id responseObject);
 typedef void (^CXRequestFailureBlock)(NSURLSessionDataTask *task, NSError *error);
@@ -26,7 +27,7 @@ typedef void (^CXNetworkFailureBlock)(NSError *error);
             InvokeFailure(err); \
             return ; \
         }\
-        if(rsp.code == 300) { \
+        if(rsp.code == CXResponseCodeOK) { \
             InvokeSuccess(rsp.data); \
         }else { \
             NSError * err = [CXNetwork netWorkErrorWithCode:rsp.code message:rsp.errMsg];\

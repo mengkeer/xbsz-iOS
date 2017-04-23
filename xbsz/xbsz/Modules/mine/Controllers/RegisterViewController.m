@@ -293,7 +293,7 @@
                 [self.navigationController popViewControllerAnimated:YES];
             });
         } failure:^(NSError *error) {
-            if(error.code == 402){
+            if(error.code == CXResponseCodeUserRepeat){
                 [ToastView showErrorWithStaus:@"该账号已经被注册" delay:1];
             }else{
                 [ToastView showErrorWithStaus:@"注册失败" delay:1];

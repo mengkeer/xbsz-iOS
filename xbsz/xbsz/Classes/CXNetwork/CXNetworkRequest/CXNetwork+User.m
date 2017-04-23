@@ -40,8 +40,6 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         InvokeFailure(error);
     }];
-    
-    
 }
 
 + (void)getUserInfo:(NSString *)token
@@ -56,7 +54,20 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         InvokeFailure(error);
     }];
-    
+}
+
++ (void)updateUserInfo:(NSString *)token
+            parameters:(NSMutableDictionary *)parameters
+               success:(CXNetworkSuccessBlock)success
+               failure:(CXNetworkFailureBlock)failure{
+    [parameters setValue:token forKey:@"token"];
+    [self invokePostRequest:CXUpdateUserInfoUrl parameters:[parameters copy] success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:responseObject];
+        [self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        InvokeFailure(error);
+    }];
 }
 
 

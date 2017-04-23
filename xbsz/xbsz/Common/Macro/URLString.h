@@ -5,6 +5,7 @@
 //  Created by lotus on 2017/4/7.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
+#import <Foundation/Foundation.h>
 
 #ifndef URLString_h
 #define URLString_h
@@ -12,7 +13,10 @@
 #define CXLoginUrl          @"http://www.slotus.cc/common-api/login"
 #define CXRegisterUrl       @"http://www.slotus.cc/common-api/register"
 #define CXGetUserInfoUrl      @"http://www.slotus.cc/limit-api/getUserInfo"
+#define CXUpdateUserInfoUrl   @"http://www.slotus.cc/limit-api/updateUserInfo"
 
+//学习
+#define CXGetCoursesUrl     @"http://www.slotus.cc/common-api/getCourses"
 
 #define JWLoginUrl   @"https://mobile4.dhu.edu.cn/_ids_mobile/login18_9"
 #define JWRefreshLoginURL       @"https://mobile4.dhu.edu.cn/_ids_mobile/serialNoLogin18_9" 
@@ -40,5 +44,15 @@
 #define   JWURLFreeClassroom         @"http://wxserver.dhu.edu.cn/msmis/dhu/mobile/kyjs/kyjs.jsp"
 
 
+typedef NS_ENUM(NSUInteger,CXResponseCode){
+    CXResponseCodeOK = 300,
+    CXResponseCodeUserRepeat = 402,         //注册时用户名 重复
+    CXResponseCodeTokenIsVoid = 501,                //token为空
+    CXResponseCodeTokenIsExpired = 502              //token过期了
+};
+
+
 
 #endif /* URLString_h */
+
+

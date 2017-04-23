@@ -10,6 +10,10 @@
 #import "SetItemTableViewCell.h"
 #import "UIViewController+Authorization.h"
 #import "AuthorizedLoginViewController.h"
+#import "NicknameViewController.h"
+#import "CXNetwork+User.h"
+#import "EmailViewController.h"
+#import "PhoneViewController.h"
 
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
@@ -96,6 +100,22 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
             case 0:
                 [self handleImagePicker];
                 break;
+            case 1:{
+                [self.navigationController pushViewController:[NicknameViewController controller] animated:YES];
+                break;
+            }
+            case 2:{
+                [self selectGender];
+                break;
+            }
+            case 3:{
+                [self.navigationController pushViewController:[EmailViewController controller] animated:YES];
+                break;
+            }
+            case 4:{
+                [self.navigationController pushViewController:[PhoneViewController controller] animated:YES];
+                break;
+            }
             default:
                 break;
         }
@@ -106,8 +126,8 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
         }
     }
     
-    if(indexPath.section == 2){
-        
+    if(indexPath.section == 2 && indexPath.row == 0){
+        [self quitLogin];
     }
     
 }
@@ -138,25 +158,28 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            [cell updateCell:@"昵称" detailText:@"空の境界" type:SetItemTypeTextAndArrow iconImageName:@"set_nick"];
+            [cell updateCell:@"昵称" detailText:[CXLocalUser instance].nickname type:SetItemTypeTextAndArrow iconImageName:@"set_nick"];
         }else if(indexPath.row == 2){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            [cell updateCell:@"性别" detailText:@"男" type:SetItemTypeTextAndArrow iconImageName:@"set_sex"];
+            NSInteger gender = [CXLocalUser instance].gender;
+            NSString *title = gender == 1 ? @"男" : (gender == 2 ? @"女" : @"保密");
+            [cell updateCell:@"性别" detailText:title type:SetItemTypeTextAndArrow iconImageName:@"set_sex"];
         }else if(indexPath.row == 3){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            [cell updateCell:@"邮箱" detailText:@"slotus@vip.qq.com" type:SetItemTypeTextAndArrow iconImageName:@"set_email"];
+
+            [cell updateCell:@"邮箱" detailText:[CXLocalUser instance].email type:SetItemTypeTextAndArrow iconImageName:@"set_email"];
         }else if(indexPath.row == 4){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            [cell updateCell:@"手机" detailText:@"13122139590" type:SetItemTypeTextAndArrow iconImageName:@"set_phone"];
+            [cell updateCell:@"手机" detailText:[CXLocalUser instance].mobile type:SetItemTypeTextAndArrow iconImageName:@"set_phone"];
         }else if(indexPath.row == 5){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
@@ -193,6 +216,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
             btn.frame = CGRectMake(0, 0, CXScreenWidth, 45);
             [btn setTitle:@"退出登录" forState:UIControlStateNormal];
             [btn setTitleColor:CXBlackColor forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(quitLogin) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:btn];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -225,8 +249,8 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 }
 
 
-#pragma mark - provate
-
+#pragma mark - private
+//处理头像上传
 - (void)handleImagePicker{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *takePhoto = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -284,6 +308,70 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+//处理性别设置
+
+- (void)selectGender{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *male = [UIAlertAction actionWithTitle:@"男" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *token = [CXLocalUser instance].token;
+        NSMutableDictionary *paremeters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"gender", nil];
+        [CXNetwork updateUserInfo:token parameters:paremeters success:^(NSObject *obj) {
+            [ToastView showSuccessWithStaus:@"修改成功"];
+             [_tableView reloadData];
+        } failure:^(NSError *error) {
+            [ToastView showErrorWithStaus:@"修改失败"];
+        }];
+    }];
+    [alert addAction:male];
+    
+    UIAlertAction *female = [UIAlertAction actionWithTitle:@"女" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *token = [CXLocalUser instance].token;
+        NSMutableDictionary *paremeters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"2",@"gender", nil];
+        [CXNetwork updateUserInfo:token parameters:paremeters success:^(NSObject *obj) {
+            [ToastView showSuccessWithStaus:@"修改成功"];
+             [_tableView reloadData];
+        } failure:^(NSError *error) {
+            [ToastView showErrorWithStaus:@"修改失败"];
+        }];
+    }];
+    [alert addAction:female];
+    
+    
+    UIAlertAction *unknown = [UIAlertAction actionWithTitle:@"保密" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *token = [CXLocalUser instance].token;
+        NSMutableDictionary *paremeters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"3",@"gender", nil];
+        [CXNetwork updateUserInfo:token parameters:paremeters success:^(NSObject *obj) {
+            [ToastView showSuccessWithStaus:@"修改成功"];
+            [_tableView reloadData];
+        } failure:^(NSError *error) {
+            [ToastView showErrorWithStaus:@"修改失败"];
+        }];
+    }];
+    [alert addAction:unknown];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+//处理用户登录
+- (void)quitLogin{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"退出后不会删除历史数据，下次使用本账号登录将重新载入数据" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *quit = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        [[CXLocalUser instance] reset];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [alert addAction:quit];
+    
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
