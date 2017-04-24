@@ -70,6 +70,29 @@
     }];
 }
 
++ (void)updateUserAvatar:(UIImage *)image
+                 success:(CXNetworkSuccessBlock)success
+                 failure:(CXNetworkFailureBlock)failure{
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager POST:@"" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        //
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"yyyyMMddHHmmss";
+        NSString *fileName = [NSString stringWithFormat:@"%@.png",[formatter stringFromDate:[NSDate date]]];
+        //二进制文件，接口key值，文件路径，图片格式
+        [formData appendPartWithFileData:imageData name:@"avatar" fileName:fileName mimeType:@"image/jpg/png/jpeg"];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:responseObject];
+        [self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        InvokeFailure(error);
+    }];
+}
 
 + (void)JWLogin:(NSString *)username
        password:(NSString *)password

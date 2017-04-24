@@ -43,9 +43,16 @@
     [super viewWillAppear:YES];
     if([[CXLocalUser instance] isLogin]){
         _nickNamelabel.text = [CXLocalUser instance].nickname;
+        if([CXLocalUser instance].signature != nil && [[CXLocalUser instance].signature length] != 0){
+            _briefLabel.text = [CXLocalUser instance].signature;
+        }else{
+            _briefLabel.text = @"(＾－＾) 介绍一下自己吧";
+        }
     }else{
         _nickNamelabel.text = @"请登录";
+        _briefLabel.text = @"(＾－＾) 介绍一下自己吧";
     }
+    [self updateInfoViewHeight];
 }
 
 - (void)viewDidLoad {
@@ -139,7 +146,7 @@
     [_infoView layoutIfNeeded];          //通过在父亲视图中调用layoutIfNeeded立即更新约束
 
   
-    [self updateInfoViewHeight];
+//    [self updateInfoViewHeight];
     
     UIImageView *rightArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mine_right_arrow"]];
     rightArrow.userInteractionEnabled = YES;
@@ -227,7 +234,7 @@
         _briefLabel.font = CXSystemFont(12);
         _briefLabel.textColor = CXTextGrayColor;
         _briefLabel.numberOfLines = 2;
-        _briefLabel.text = @"虚伪的眼泪会伤害他人,虚伪的笑容只会伤害自己。";
+        _briefLabel.text = @"(＾－＾) 介绍一下自己吧";
         _briefLabel.alpha = 0.5;
         _briefLabel.textAlignment = NSTextAlignmentCenter;
     }

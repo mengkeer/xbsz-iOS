@@ -1,36 +1,34 @@
 //
-//  EmailViewController.m
+//  MajorViewController.m
 //  xbsz
 //
-//  Created by lotus on 2017/4/23.
+//  Created by lotus on 2017/4/24.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "EmailViewController.h"
+#import "MajorViewController.h"
 #import "CXNetwork+User.h"
 
-@interface EmailViewController () <UITextFieldDelegate>
+@interface MajorViewController () <UITextFieldDelegate>
 
 @property (nonatomic, strong) UIButton *saveBtn;
 
-@property (nonatomic, strong) UITextField *emailTextField;
-
+@property (nonatomic, strong) UITextField *majorTextField;
 
 @end
 
-@implementation EmailViewController
-
+@implementation MajorViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的邮箱";
+    self.title = @"我的专业";
     
     [self.customNavBarView addSubview:self.saveBtn];
     
     
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, [self getStartOriginY]+15, CXScreenWidth, 44)];
     bgView.backgroundColor = CXWhiteColor;
-    [bgView addSubview:self.emailTextField];
+    [bgView addSubview:self.majorTextField];
     
     [self.view addSubview:bgView];
 }
@@ -52,34 +50,43 @@
         _saveBtn.titleLabel.font = CXSystemBoldFont(15);
         CGFloat width = [title sizeWithAttributes:@{NSFontAttributeName:CXSystemBoldFont(15)}].width;
         _saveBtn.frame = CGRectMake(CXScreenWidth-15-width, 20, width, 44);
-        [_saveBtn addTarget:self action:@selector(saveEmail) forControlEvents:UIControlEventTouchUpInside];
+        [_saveBtn addTarget:self action:@selector(saveNickname) forControlEvents:UIControlEventTouchUpInside];
         [_saveBtn setEnabled:NO];
     }
     return _saveBtn;
 }
 
-- (UITextField *)emailTextField{
-    if(!_emailTextField){
-        _emailTextField = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, CXScreenWidth-15, 44)];
-        _emailTextField.backgroundColor = CXWhiteColor;
-        _emailTextField.font = CXSystemFont(15);
-        _emailTextField.textColor = CXHexColor(0x272b3c);
-        _emailTextField.returnKeyType = UIReturnKeyDone;
-        _emailTextField.delegate = self;
-        _emailTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _emailTextField.placeholder = @"请输入邮箱";
-        _emailTextField.text = [CXLocalUser instance].email;
+- (UITextField *)majorTextField{
+    if(!_majorTextField){
+        _majorTextField = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, CXScreenWidth-15, 44)];
+        _majorTextField.backgroundColor = CXWhiteColor;
+        _majorTextField.font = CXSystemFont(15);
+        _majorTextField.textColor = CXHexColor(0x272b3c);
+        _majorTextField.returnKeyType = UIReturnKeyDone;
+        _majorTextField.delegate = self;
+        _majorTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _majorTextField.placeholder = @"请输入专业";
+        _majorTextField.text = [CXLocalUser instance].major;
     }
-    return _emailTextField;
+    return _majorTextField;
 }
 
 
 #pragma mark - private method
 
-- (void)saveEmail{
-    if([self emailIsLegal]){
+- (void)saveNickname{
+    
+    NSString *nickname = [_majorTextField.text stringByTrim];
+    long len = [nickname length];
+    if(len == 0){
+        [ToastView showErrorWithStaus:@"请输入专业名"];
+        return;
+    }else if(len < 2 || len > 12){
+        [ToastView showErrorWithStaus:@"限2~12个字符"];
+        return;
+    }else{
         NSString *token = [CXLocalUser instance].token;
-        NSMutableDictionary *paremeters = [NSMutableDictionary dictionaryWithObjectsAndKeys:[_emailTextField.text stringByTrim],@"email", nil];
+        NSMutableDictionary *paremeters = [NSMutableDictionary dictionaryWithObjectsAndKeys:[_majorTextField.text stringByTrim],@"major", nil];
         [CXNetwork updateUserInfo:token parameters:paremeters success:^(NSObject *obj) {
             [ToastView showSuccessWithStaus:@"修改成功"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -88,26 +95,8 @@
         } failure:^(NSError *error) {
             [ToastView showErrorWithStaus:@"修改失败"];
         }];
+        
     }
-}
-
-- (BOOL)emailIsLegal{
-    NSString *email = [_emailTextField.text stringByTrim];
-    long len = [email length];
-    if(len == 0){
-        [ToastView showErrorWithStaus:@"请输入邮箱"];
-        return NO;
-    }else{
-        NSString *pattern = @"^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pattern];
-        BOOL isMatched = [pred evaluateWithObject:email];
-        if(!isMatched){
-            [ToastView showErrorWithStaus:@"非法的邮箱格式"];
-            return NO;
-        }
-    }
-
-    return YES;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -117,7 +106,7 @@
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self saveEmail];
+    [self saveNickname];
     return  YES;
 }
 

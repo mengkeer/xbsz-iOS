@@ -14,6 +14,9 @@
 #import "CXNetwork+User.h"
 #import "EmailViewController.h"
 #import "PhoneViewController.h"
+#import "BirthdayViewController.h"
+#import "SignatureViewController.h"
+#import "MajorViewController.h"
 
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
@@ -116,6 +119,18 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
                 [self.navigationController pushViewController:[PhoneViewController controller] animated:YES];
                 break;
             }
+            case 5:{
+                [self.navigationController pushViewController:[MajorViewController controller] animated:YES];
+                break;
+            }
+            case 6:{
+                [self.navigationController pushViewController:[BirthdayViewController controller] animated:YES];
+                break;
+            }
+            case 7:{
+                [self.navigationController pushViewController:[SignatureViewController controller] animated:YES];
+                break;
+            }
             default:
                 break;
         }
@@ -185,19 +200,23 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            [cell updateCell:@"专业" detailText:@"纺织" type:SetItemTypeTextAndArrow iconImageName:@"set_major"];
+            [cell updateCell:@"专业" detailText:[CXLocalUser instance].major type:SetItemTypeTextAndArrow iconImageName:@"set_major"];
         }else if(indexPath.row == 6){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            [cell updateCell:@"出生年月" detailText:@"2016-10-22" type:SetItemTypeTextAndArrow iconImageName:@"set_birth"];
+            [cell updateCell:@"出生年月" detailText:[CXLocalUser instance].birthday type:SetItemTypeTextAndArrow iconImageName:@"set_birth"];
         }else{
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            [cell updateCell:@"个性签名" detailText:@"(＾－＾) 介绍一下自己吧" type:SetItemTypeTextAndArrow iconImageName:@"set_brief"];
+            NSString *text = @"(＾－＾) 介绍一下自己吧";
+            if([CXLocalUser instance].signature != nil && [[CXLocalUser instance].signature length] != 0){
+                text = [CXLocalUser instance].signature;
+            }
+            [cell updateCell:@"个性签名" detailText:text type:SetItemTypeTextAndArrow iconImageName:@"set_brief"];
         }
         
     }else if(indexPath.section == 1){
@@ -303,7 +322,11 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     [picker dismissViewControllerAnimated:YES completion:nil];
-
+    [CXNetwork updateUserAvatar:[info objectForKey:UIImagePickerControllerEditedImage] success:^(NSObject *obj) {
+        
+    } failure:^(NSError *error) {
+        CXLog(@"上传图片错误");
+    }];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
@@ -357,7 +380,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-//处理用户登录
+//处理用户登录退出
 - (void)quitLogin{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"退出后不会删除历史数据，下次使用本账号登录将重新载入数据" preferredStyle:UIAlertControllerStyleActionSheet];
     

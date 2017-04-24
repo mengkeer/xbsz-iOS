@@ -25,8 +25,7 @@
     
     [self.customNavBarView addSubview:self.saveBtn];
     
-    
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, [self getStartOriginY]+10, CXScreenWidth, 44)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, [self getStartOriginY]+15, CXScreenWidth, 44)];
     bgView.backgroundColor = CXWhiteColor;
     [bgView addSubview:self.phoneTextField];
     

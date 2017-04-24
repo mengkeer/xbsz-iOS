@@ -7,7 +7,6 @@
 //
 
 #import "CXNetwork.h"
-#import "CXNetwork.h"
 
 @interface CXNetwork (User)
 
@@ -31,6 +30,9 @@
               success:(CXNetworkSuccessBlock)success
               failure:(CXNetworkFailureBlock)failure;
 
++ (void)updateUserAvatar:(UIImage *)image
+                 success:(CXNetworkSuccessBlock)success
+                 failure:(CXNetworkFailureBlock)failure;
 
 + (void)JWLogin:(NSString *)username
        password:(NSString *)password

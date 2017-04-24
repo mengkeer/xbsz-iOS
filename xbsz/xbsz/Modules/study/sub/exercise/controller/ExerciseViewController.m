@@ -12,6 +12,7 @@
 #import "Exercise.h"
 #import "ExerciseList.h"
 #import "ExerciseDetailViewController.h"
+#import "ExerciseChapterViewController.h"
 
 #import "PYSearch.h"
 
@@ -71,8 +72,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     [_collectionView reloadData];
     
     CXLog(@"开始加载校园动态");
-    
-    
+
 }
 
 
@@ -101,7 +101,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     }
     return _collectionView;
 }
-
 
 - (void)viewWillLayoutSubviews{
     _collectionView.contentOffset = CGPointMake(0, 0);
@@ -141,9 +140,11 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 - (void)gotoExerciseDetailView:(Exercise *)exercise{
-    ExerciseDetailViewController *detailViewController = [ExerciseDetailViewController controller];
-    [detailViewController updateDetailWithCourse: exercise];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+//    ExerciseDetailViewController *detailViewController = [ExerciseDetailViewController controller];
+//    [detailViewController updateDetailWithCourse: exercise];
+    ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
+    chapterVC.exercise = exercise;
+    [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
 #pragma mark - UICollectionViewDelegate

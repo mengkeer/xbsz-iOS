@@ -151,7 +151,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 
-
 #pragma mark - UICollctionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -290,8 +289,5 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     NSInteger index = indexPath.section*numberOfItems + indexPath.row;
     return index;
 }
-
-
-
 
 @end

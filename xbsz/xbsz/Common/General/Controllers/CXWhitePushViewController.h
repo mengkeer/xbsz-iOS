@@ -12,7 +12,6 @@
 
 @property (nonatomic,strong) UIView *customNavBarView;
 @property (nonatomic,assign) BOOL showTopRadius;
-@property (nonatomic,strong) UIView *contentView;
 
 - (float)getStartOriginY;
 
