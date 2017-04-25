@@ -9,12 +9,23 @@
 #import "ExerciseChapterCollectionViewCell.h"
 #import "CXBaseTableView.h"
 #import "ExerciseChapterTableViewCell.h"
+#import "StudyUtil.h"
 
 static NSString *cellID = @"ChapterTableViewCellID";
 
 @interface ExerciseChapterCollectionViewCell ()<CXBaseTableViewDelegate>
 
 @property (nonatomic, strong) CXBaseTableView *tableView;
+
+@property (nonatomic, assign) ExerciseType type;
+
+@property (nonatomic, assign) BOOL isSingle;
+
+@property (nonatomic, copy) NSArray *chapterIndex;     //章节数
+
+@property (nonatomic, copy) NSArray *chapterNums;       //每一章的题目数量
+
+@property (nonatomic, copy) NSArray *indexMap;
 
 @end
 
@@ -25,6 +36,7 @@ static NSString *cellID = @"ChapterTableViewCellID";
         [self initCollectionCell];
     }
     return self;
+    
 }
 
 - (void)initCollectionCell{
@@ -32,6 +44,18 @@ static NSString *cellID = @"ChapterTableViewCellID";
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.top.mas_equalTo(self.contentView);
     }];
+    
+    //设置章节索引映射到图片上，每次都是随机映射
+    _indexMap = [NSArray arrayWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",nil];
+    _indexMap = [_indexMap sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        int seed = arc4random_uniform(2);
+        if (seed) {
+            return [obj1 compare:obj2];
+        } else {
+            return [obj2 compare:obj1];
+        }
+    }];
+    
 }
 
 #pragma mark - getter/setter
@@ -60,7 +84,8 @@ static NSString *cellID = @"ChapterTableViewCellID";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] init];
     UILabel *label = [[UILabel alloc] init];
-    label.text = [NSString stringWithFormat:@"%@ (共875题)",_exercise.title];
+    NSInteger num = [StudyUtil getQuestionsTotalByType:_type];
+    label.text = [NSString stringWithFormat:@"%@ (共%ld题)",[StudyUtil exerciseTypeToExerciseName:_type],num];
     label.font = CXSystemFont(14);
     label.textAlignment = NSTextAlignmentLeft;
     label.textColor = CXHexColor(0x4A4A4A);
@@ -76,7 +101,9 @@ static NSString *cellID = @"ChapterTableViewCellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CXLog(@"您点击了%ld行",indexPath.row);
+    if(_selectDelegate && [_selectDelegate respondsToSelector:@selector(selectChapter:)]){
+        [_selectDelegate selectChapter:indexPath.row];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -86,7 +113,7 @@ static NSString *cellID = @"ChapterTableViewCellID";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 9;
+    return [_chapterIndex count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -95,7 +122,12 @@ static NSString *cellID = @"ChapterTableViewCellID";
         cell = [[ExerciseChapterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         cell.backgroundColor = CXWhiteColor;
     }
-    [cell updateUI:indexPath.row title:nil num:123];
+    NSArray *arr = [_chapterNums objectAtIndex:indexPath.row];
+    NSInteger num = [[arr objectAtIndex:_isSingle ? 0 :1] integerValue];
+    NSString *imageName = [NSString stringWithFormat:@"chapter_%ld",[[_indexMap objectAtIndex:indexPath.row] integerValue]];
+    [cell updateUI: imageName
+      chapterIndex:[[_chapterIndex objectAtIndex:indexPath.row] integerValue]
+               num:num];
     return cell;
 }
 
@@ -108,5 +140,16 @@ static NSString *cellID = @"ChapterTableViewCellID";
         scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
     }
 }
+
+#pragma mark - public method
+- (void)upadteUIByType:(ExerciseType)type isSingle:(BOOL)isSingle{
+    _type = type;
+    _isSingle = isSingle;
+    _chapterIndex = [StudyUtil getChapterIndex:type];
+    _chapterNums = [StudyUtil getChapterNums:type];
+    [_tableView reloadData];
+}
+
+
 
 @end

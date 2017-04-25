@@ -25,9 +25,9 @@
 
 @property (nonatomic, assign) NSUInteger max;             //最大学生人数
 
-@property (nonatomic, copy) NSString *startTime;            //课程开启日期
+@property (nonatomic, strong) NSDate *startTime;            //课程开启日期
 
-@property (nonatomic, copy) NSString *endTime;             //课程结束日期
+@property (nonatomic, strong) NSDate *endTime;             //课程结束日期
 
 @property (nonatomic, copy) NSString *semester;             //学期
 

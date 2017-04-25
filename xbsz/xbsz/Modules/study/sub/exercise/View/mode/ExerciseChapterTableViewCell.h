@@ -10,6 +10,6 @@
 
 @interface ExerciseChapterTableViewCell : UITableViewCell
 
-- (void)updateUI:(NSInteger)index title:(NSString *)title num:(NSInteger)num;
+- (void)updateUI:(NSString *)imageName chapterIndex:(NSInteger)chapterIndex num:(NSInteger)num;
 
 @end

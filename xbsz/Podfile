@@ -5,6 +5,7 @@ target 'xbsz' do
 #    pod 'ReactiveCocoa' , '2.5'
     pod 'Masonry'
 #    pod 'Realm'
+    pod 'FMDB'
     pod 'AFNetworking'
     pod 'YYCategories'
     pod 'YYModel'

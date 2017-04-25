@@ -8,10 +8,13 @@
 
 #import "ExerciseChapterViewController.h"
 #import "ExerciseChapterCollectionViewCell.h"
+#import "ExerciseQuestionViewController.h"
+#import "StudyUtil.h"
+
 
 static NSString *cellID = @"ChapterCellID";
 
-@interface ExerciseChapterViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface ExerciseChapterViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ExerciseChapterTableViewDelegate>
 
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
 
@@ -76,6 +79,10 @@ static NSString *cellID = @"ChapterCellID";
     if(!_collectionView){
         UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        layout.itemSize = CGSizeMake(CXScreenWidth , CXScreenHeight-[self getStartOriginY]);
+        layout.minimumLineSpacing = 0;
+        layout.minimumInteritemSpacing = 0;
+        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.backgroundColor = CXWhiteColor;
@@ -87,33 +94,6 @@ static NSString *cellID = @"ChapterCellID";
         [_collectionView registerClass:[ExerciseChapterCollectionViewCell class] forCellWithReuseIdentifier:cellID];
     }
     return _collectionView;
-}
-
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    CXLog(@"点击了单选或多选");
-}
-
-
-#pragma mark - UICollctionViewDelegateFlowLayout
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(CXScreenWidth , CXScreenHeight-[self getStartOriginY]);
-}
-
-//最小行间距
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
-}
-
-//最小列间距
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 0;
-}
-
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 #pragma mark - UICollectionDataSource
@@ -128,13 +108,12 @@ static NSString *cellID = @"ChapterCellID";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;{
     ExerciseChapterCollectionViewCell *cell = (ExerciseChapterCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
-    cell.exercise = _exercise;
+    cell.selectDelegate = self;
+    BOOL isSingle = indexPath.row == 0 ? YES : NO;
+    [cell upadteUIByType:_type isSingle:isSingle];
     return cell;
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
-    return NO;
-}
 
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
@@ -153,6 +132,22 @@ static NSString *cellID = @"ChapterCellID";
 
 - (void)questionSearch{
     CXLog(@"搜索题目");
+}
+
+#pragma mark - ExerciseChapterTableViewDelegate
+
+- (void)selectChapter:(NSInteger)index{
+    ExerciseQuestionViewController *questionVC = [ExerciseQuestionViewController controller];
+    questionVC.mode = ExerciseModeRecite;
+    questionVC.type = _type;
+    questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
+    [self.navigationController pushViewController:questionVC animated:YES];
+}
+
+
+- (void)popFromCurrentViewController{
+    [super popFromCurrentViewController];
+    [StudyUtil closeDB];
 }
 
 @end

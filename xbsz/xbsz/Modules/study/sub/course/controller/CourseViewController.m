@@ -12,6 +12,7 @@
 #import "Course.h"
 #import "CourseList.h"
 #import "CourseDetailViewController.h"
+#import "CXNetwork+Course.h"
 
 #import "PYSearch.h"
 
@@ -39,6 +40,11 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 @implementation CourseViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,9 +54,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         make.centerX.mas_equalTo(self.contentView.mas_centerX);
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
     }];
-    
-    [self loadData];
-    
     
 }
 
@@ -62,12 +65,20 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 - (void)loadData{
     
     
-    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"courses.json"];
-    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
+    [CXNetwork getCoursesByStatus:-1 success:^(NSObject *obj) {
+        _courseList = [CourseList yy_modelWithDictionary:(NSDictionary *)obj];
+        [_collectionView reloadData];
+    } failure:^(NSError *error) {
+        CXLog(@"获取课程失败");
+    }];
     
-    _courseList = [CourseList yy_modelWithJSON:jsonStr];
     
-    [_collectionView reloadData];
+//    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"courses.json"];
+//    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
+//    
+//    _courseList = [CourseList yy_modelWithJSON:jsonStr];
+//    
+//    [_collectionView reloadData];
     
     CXLog(@"开始加载校园动态");
 

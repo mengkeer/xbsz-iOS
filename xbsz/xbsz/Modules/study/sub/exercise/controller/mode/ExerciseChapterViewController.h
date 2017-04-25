@@ -7,10 +7,11 @@
 //
 
 #import "CXWhitePushViewController.h"
-#import "Exercise.h""
+#import "Exercise.h"
+#import "ExerciseMode.h"
 
 @interface ExerciseChapterViewController : CXWhitePushViewController
 
-@property (nonatomic, strong) Exercise *exercise;
+@property (nonatomic, assign) ExerciseType type;
 
 @end

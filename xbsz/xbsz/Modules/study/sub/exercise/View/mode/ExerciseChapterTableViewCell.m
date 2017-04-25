@@ -29,7 +29,6 @@ static NSInteger imageWidth = 32;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if([super initWithStyle:style reuseIdentifier:reuseIdentifier]){
-//        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self initChapterCell];
     }
     return self;
@@ -104,14 +103,12 @@ static NSInteger imageWidth = 32;
 
 #pragma mark - public method
 
-- (void)updateUI:(NSInteger)index title:(NSString *)title num:(NSInteger)num{
-    _iconImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"chapter_%ld",index]];
-    if(title != nil && [title length] != 0){
-        _titleLabel.text = title;
-    }else{
-        _titleLabel.text = [NSString stringWithFormat:@"第%ld章",index+1];
+- (void)updateUI:(NSString *)imageName chapterIndex:(NSInteger)chapterIndex num:(NSInteger)num{
+    _iconImageView.image = [UIImage imageNamed:imageName];
+    if(chapterIndex == 0)     _titleLabel.text = @"序章";
+    else{
+        _titleLabel.text = [NSString stringWithFormat:@"第%ld章",chapterIndex];
     }
-    
     _numLabel.text = [NSString stringWithFormat:@"共%ld题",num];
 }
 

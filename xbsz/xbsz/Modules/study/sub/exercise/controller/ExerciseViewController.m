@@ -140,10 +140,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 - (void)gotoExerciseDetailView:(Exercise *)exercise{
-//    ExerciseDetailViewController *detailViewController = [ExerciseDetailViewController controller];
-//    [detailViewController updateDetailWithCourse: exercise];
     ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
-    chapterVC.exercise = exercise;
+    chapterVC.type = ExerciseTypeMao2;
     [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
