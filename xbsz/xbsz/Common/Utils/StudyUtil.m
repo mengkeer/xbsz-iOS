@@ -33,6 +33,24 @@
 }
 
 
++ (ExerciseType)indexToExerciseType:(NSInteger)index{
+    ExerciseType type ;
+    if(index == 0){
+        type = ExerciseTypeMarx;
+    }else if(index == 1){
+        type = ExerciseTypeHistory;
+    }else if(index == 2){
+        type = ExerciseTypeThought;
+    }else if(index == 3){
+        type = ExerciseTypeMao1;
+    }else if(index == 4){
+        type = ExerciseTypeMao2;
+    }else{
+        type = ExerciseTypeUnknown;
+    }
+    return type;
+}
+
 + (NSString *)exerciseTypeToExerciseName:(ExerciseType)type{
     if(type == ExerciseTypeMao1){
         return @"毛概1";

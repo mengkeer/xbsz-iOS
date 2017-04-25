@@ -10,6 +10,7 @@
 #import "ExerciseChapterCollectionViewCell.h"
 #import "ExerciseQuestionViewController.h"
 #import "StudyUtil.h"
+#import "UINavigationController+TZPopGesture.h"
 
 
 static NSString *cellID = @"ChapterCellID";
@@ -46,7 +47,10 @@ static NSString *cellID = @"ChapterCellID";
         make.left.mas_equalTo(self.view.mas_left);
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
+    
+    [self tz_addPopGestureToView:_collectionView];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

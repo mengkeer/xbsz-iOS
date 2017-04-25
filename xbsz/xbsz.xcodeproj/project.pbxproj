@@ -114,7 +114,6 @@
 		ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = ADAAE0881E7CD06400A0FA2C /* exercises.json */; };
 		ADAAE08E1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */; };
 		ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */; };
-		ADAAE0921E7CDCDF00A0FA2C /* ExerciseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0911E7CDCDF00A0FA2C /* ExerciseDetailViewController.m */; };
 		ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0941E7D751200A0FA2C /* ToolBarCell.m */; };
 		ADAAE0981E7D91F400A0FA2C /* ShareToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0971E7D91F400A0FA2C /* ShareToolBarView.m */; };
 		ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */; };
@@ -352,8 +351,6 @@
 		ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCollectionViewCell.m; sourceTree = "<group>"; };
 		ADAAE08C1E7CD74200A0FA2C /* ExerciseSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSearchBar.h; sourceTree = "<group>"; };
 		ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSearchBar.m; sourceTree = "<group>"; };
-		ADAAE0901E7CDCDF00A0FA2C /* ExerciseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseDetailViewController.h; path = xbsz/Modules/study/sub/exercise/Controller/ExerciseDetailViewController.h; sourceTree = SOURCE_ROOT; };
-		ADAAE0911E7CDCDF00A0FA2C /* ExerciseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseDetailViewController.m; path = xbsz/Modules/study/sub/exercise/Controller/ExerciseDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		ADAAE0931E7D751200A0FA2C /* ToolBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarCell.h; sourceTree = "<group>"; };
 		ADAAE0941E7D751200A0FA2C /* ToolBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarCell.m; sourceTree = "<group>"; };
 		ADAAE0961E7D91F400A0FA2C /* ShareToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToolBarView.h; sourceTree = "<group>"; };
@@ -1095,8 +1092,6 @@
 				AD196E6C1EAC935F00111EB5 /* mode */,
 				AD7F89381E5976FE009603E4 /* ExerciseViewController.h */,
 				AD7F89391E5976FE009603E4 /* ExerciseViewController.m */,
-				ADAAE0901E7CDCDF00A0FA2C /* ExerciseDetailViewController.h */,
-				ADAAE0911E7CDCDF00A0FA2C /* ExerciseDetailViewController.m */,
 			);
 			name = Controller;
 			path = controller;
@@ -1439,7 +1434,6 @@
 				AD45BBA61EAEE8A000D53813 /* ExerciseQuestionViewController.m in Sources */,
 				AD2540B81E97860F00AA330D /* JWLocalUser.m in Sources */,
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
-				ADAAE0921E7CDCDF00A0FA2C /* ExerciseDetailViewController.m in Sources */,
 				ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */,
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,

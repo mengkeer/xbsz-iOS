@@ -21,7 +21,8 @@ typedef NS_ENUM(NSInteger,ExerciseType){
     ExerciseTypeMao2,       //毛概2
     ExerciseTypeHistory,        //近代史
     ExerciseTypeMarx,       //马克思
-    ExerciseTypeThought     //思修
+    ExerciseTypeThought,     //思修
+    ExerciseTypeUnknown     //未知
 };
 
 

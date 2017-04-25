@@ -11,8 +11,9 @@
 #import "ExerciseSearchBar.h"
 #import "Exercise.h"
 #import "ExerciseList.h"
-#import "ExerciseDetailViewController.h"
 #import "ExerciseChapterViewController.h"
+#import "StudyUtil.h"
+#import "ExerciseMode.h"
 
 #import "PYSearch.h"
 
@@ -139,18 +140,19 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     [self presentViewController:nav animated:YES completion:nil];
 }
 
-- (void)gotoExerciseDetailView:(Exercise *)exercise{
+- (void)gotoExerciseDetailView:(ExerciseType)type{
     ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
-    chapterVC.type = ExerciseTypeMao2;
+    chapterVC.type = type;
     [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self gotoExerciseDetailView:[_exerciseList.exercises objectAtIndex:(indexPath.section)*numberOfItems+indexPath.row]];
+    NSInteger index = indexPath.section*numberOfItems + indexPath.row;
+    ExerciseType type = [StudyUtil indexToExerciseType:index];
+    [self gotoExerciseDetailView:type];
 }
-
 
 
 #pragma mark - UICollctionViewDelegateFlowLayout
@@ -269,18 +271,18 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location{
     //防止重复加入
-    if ([self.presentedViewController isKindOfClass:[ExerciseDetailViewController class]]){
+    if ([self.presentedViewController isKindOfClass:[ExerciseChapterViewController class]]){
         return nil;
     }else{
-        ExerciseDetailViewController *peekViewController = [[ExerciseDetailViewController alloc] init];
-        [peekViewController updateDetailWithCourse:[_exerciseList.exercises objectAtIndex:[self getIndexByPreviewing:previewingContext]]];
+        ExerciseChapterViewController *peekViewController = [[ExerciseChapterViewController alloc] init];
+        peekViewController.type = [StudyUtil indexToExerciseType:[self getIndexByPreviewing:previewingContext]];
         return peekViewController;
     }
 }
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit{
-    ExerciseDetailViewController *popViewController = [ExerciseDetailViewController controller];
-    [popViewController updateDetailWithCourse:[_exerciseList.exercises objectAtIndex:[self getIndexByPreviewing:previewingContext]]];
+    ExerciseChapterViewController *popViewController = [ExerciseChapterViewController controller];
+    popViewController.type = [StudyUtil indexToExerciseType:[self getIndexByPreviewing:previewingContext]];
     [self showViewController:popViewController sender:self];
 }
 

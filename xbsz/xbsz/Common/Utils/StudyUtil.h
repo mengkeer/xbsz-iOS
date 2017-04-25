@@ -13,6 +13,7 @@
 
 + (instancetype)instance;
 
++ (ExerciseType)indexToExerciseType:(NSInteger)index;
 //根据题库类型转换为对应的table name
 + (NSString *)exerciseTypeToExerciseName:(ExerciseType )type;
 //获取题库题目总数
