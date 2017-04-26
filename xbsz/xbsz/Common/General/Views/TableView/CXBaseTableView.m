@@ -77,7 +77,6 @@
 #pragma mark DZNEmptyDataSetDelegate
 
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
-    CXLog(@"显示默认图片");
     return _showEmptyTips;
 }
 

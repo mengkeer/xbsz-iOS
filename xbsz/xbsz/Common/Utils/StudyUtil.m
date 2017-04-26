@@ -8,6 +8,7 @@
 
 #import "StudyUtil.h"
 #import "FMDB.h"
+#import "ExerciseQuestion.h"
 
 
 @implementation StudyUtil
@@ -132,6 +133,78 @@
         
     }
     return [NSArray array];
+}
+
++ (NSArray *)getQuestions:(ExerciseType)type isSingle:(BOOL)isSingle chapterIndex:(NSInteger)index{
+    NSString *table_name = [self exerciseTypeToTableName:type];
+    FMDatabase *db = [self getDefaultDB];
+    if ([db open])  {
+        NSString *sql = nil;
+        if(isSingle == YES){
+            sql = [NSString stringWithFormat:@"select * from %@ where id != 0 and pid = %ld and ( type = 1 or type = 3) ",table_name,index];
+        }else{
+            sql = [NSString stringWithFormat:@"select * from %@ where id != 0 and pid = %ld and type = 2 ",table_name,index];
+        }
+        NSMutableArray *ans = [NSMutableArray array];
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            ExerciseQuestion *temp = [[ExerciseQuestion alloc] init];
+            temp.question_id = [rs intForColumn:@"id"];
+            temp.pid = [rs intForColumn:@"pid"];
+            temp.qid = [rs intForColumn:@"qid"];
+            temp.type = [rs intForColumn:@"type"];
+            temp.title = [rs stringForColumn:@"title"];
+            temp.option = [rs stringForColumn:@"option"];
+            temp.answer = [rs stringForColumn:@"answer"];
+            temp.flag = [rs intForColumn:@"flag"];
+            [ans addObject:temp];
+        }
+        return [ans copy];
+        
+    }
+    return [NSArray array];
+}
+
++ (NSArray *)getOptionsByString:(NSString *)optionStr type:(NSInteger)type{
+    
+    NSMutableArray *ans = [NSMutableArray array];
+    if(type == 3){
+        [ans addObject:@"对"];
+        [ans addObject:@"错"];
+        return ans;
+    }
+    
+    NSString *temp = @"";
+    for (size_t i = 0; i < [optionStr length]; i++) {
+        unichar ch = [optionStr characterAtIndex:i];
+        if (ch <= 'F' && ch >= 'A') {
+            temp = [NSString stringWithFormat:@"%C",ch];
+            ch = [optionStr characterAtIndex:++i];
+            while (ch < 'A' || ch > 'F') {
+                temp = [temp stringByAppendingString:[NSString stringWithFormat:@"%C",ch]];
+                if (i >= [optionStr length] - 1)
+                    break;
+                ch = [optionStr characterAtIndex:++i];
+            }
+            [ans addObject:[self getSubstring:temp]];
+            --i;
+        }
+        
+    }
+    return ans;
+}
+
+//从第一个汉字开始  去除前面非汉字
++ (NSString *)getSubstring:(NSString *)option{
+    NSInteger index = 0;
+    for(size_t i = 0;i < [option length];i++){
+        unichar ch = [option characterAtIndex:i];
+        if( ch >= 0x4e00&& ch <=0x9fff){
+            index = i;
+            break;
+        }
+    }
+    return [option substringFromIndex:index];
 }
 
 + (void)closeDB{

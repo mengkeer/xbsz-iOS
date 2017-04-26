@@ -57,6 +57,35 @@ static NSString *cellID = @"ChapterCellID";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - 3DTouch Item
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems{
+    
+    // 生成UIPreviewAction
+    UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"预览模式" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        _mode = ExerciseModeRecite;
+    }];
+    
+    UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"训练模式(顺序)" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        _mode = ExerciseModePractice;
+    }];
+    
+    UIPreviewAction *action3 = [UIPreviewAction actionWithTitle:@"训练模式(随机)" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        _mode = ExerciseModePracticeRandom;
+    }];
+    
+    UIPreviewAction *action4 = [UIPreviewAction actionWithTitle:@"模拟考场" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        _mode = ExerciseModeExam;
+    }];
+    
+    UIPreviewAction *action5 = [UIPreviewAction actionWithTitle:@"错题集" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        _mode = ExerciseModeMistakes;
+    }];
+    
+    
+    NSArray *actions = @[action1, action2, action3,action4,action5];
+    return actions;
+}
+
 #pragma mark - getter/setter
 - (UISegmentedControl *)segmentControl{
     if(!_segmentControl){
@@ -114,7 +143,7 @@ static NSString *cellID = @"ChapterCellID";
     ExerciseChapterCollectionViewCell *cell = (ExerciseChapterCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     cell.selectDelegate = self;
     BOOL isSingle = indexPath.row == 0 ? YES : NO;
-    [cell upadteUIByType:_type isSingle:isSingle];
+    [cell upadteUIByType:_type mode:_mode isSingle:isSingle];
     return cell;
 }
 
@@ -125,7 +154,6 @@ static NSString *cellID = @"ChapterCellID";
     NSInteger index = startX/CXScreenWidth;
     [_segmentControl setSelectedSegmentIndex:index];
 }
-
 
 #pragma private method
 - (void)segementValueChanged:(UISegmentedControl *)segementControl{
@@ -145,6 +173,7 @@ static NSString *cellID = @"ChapterCellID";
     questionVC.mode = ExerciseModeRecite;
     questionVC.type = _type;
     questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
+    questionVC.chapterIndex = index;
     [self.navigationController pushViewController:questionVC animated:YES];
 }
 

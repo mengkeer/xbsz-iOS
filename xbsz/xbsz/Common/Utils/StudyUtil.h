@@ -20,8 +20,15 @@
 + (NSInteger)getQuestionsTotalByType:(ExerciseType )type;
 //获取章节索引
 + (NSArray *)getChapterIndex:(ExerciseType)type;
-//获取每章的题目数
+
+//获取每章的题目数构成的数组
 + (NSArray *)getChapterNums:(ExerciseType)type;
+
+//根据type 是否单选 章节数获取具体的章节题目数
++ (NSArray *)getQuestions:(ExerciseType)type isSingle:(BOOL)isSingle chapterIndex:(NSInteger)index;
+
+//根据option字符窜分离出来 各个选项
++ (NSArray *)getOptionsByString:(NSString *)optionStr type:(NSInteger)type;
 
 + (void)closeDB;
 

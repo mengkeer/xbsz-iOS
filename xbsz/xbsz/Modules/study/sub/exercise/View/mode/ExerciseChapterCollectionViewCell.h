@@ -13,14 +13,14 @@
 @protocol ExerciseChapterTableViewDelegate <NSObject>
 
 @required
-
+//返回点击的章节索引  注：不是cell索引
 - (void)selectChapter:(NSInteger)index;
 
 @end
 
 @interface ExerciseChapterCollectionViewCell : UICollectionViewCell
 
-- (void)upadteUIByType:(ExerciseType)type isSingle:(BOOL)isSingle;
+- (void)upadteUIByType:(ExerciseType)type mode:(ExerciseMode)mode isSingle:(BOOL)isSingle;
 
 @property (nonatomic, weak) id<ExerciseChapterTableViewDelegate> selectDelegate;
 

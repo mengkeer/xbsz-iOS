@@ -11,6 +11,13 @@
 
 @interface QuestionTableViewCell : UITableViewCell
 
-- (void)updateUIWithIndex:(NSInteger)index question:(ExerciseQuestion *)question;
+- (instancetype)initWithStyle:(UITableViewCellStyle)style
+              reuseIdentifier:(NSString *)reuseIdentifier
+                     isSingle:(BOOL)isSingle;
+
+- (void)updateUIWithIndex:(NSInteger)index option:(NSString *)option;
+
+//根据答案将题目标亮  指预览模式
+- (void)showRightAnswer:(NSInteger)index answer:(NSString *)answer;
 
 @end

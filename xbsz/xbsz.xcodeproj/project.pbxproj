@@ -65,6 +65,7 @@
 		AD45BBC11EAF37EA00D53813 /* ExerciseList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBC01EAF37EA00D53813 /* ExerciseList.m */; };
 		AD45BBC41EAF42C300D53813 /* StudyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBC31EAF42C300D53813 /* StudyUtil.m */; };
 		AD45BBC61EAF52C400D53813 /* tiku.db in Resources */ = {isa = PBXBuildFile; fileRef = AD45BBC51EAF52C400D53813 /* tiku.db */; };
+		AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */; };
 		AD7092AA1E861CF10024427C /* DefaultTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7092A91E861CF10024427C /* DefaultTipsView.m */; };
 		AD7BD61B1EAD8ABF00F34023 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BD61A1EAD8ABF00F34023 /* SignatureViewController.m */; };
 		AD7BD61E1EAD9B2900F34023 /* MajorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BD61D1EAD9B2900F34023 /* MajorViewController.m */; };
@@ -248,6 +249,8 @@
 		AD45BBC21EAF42C300D53813 /* StudyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyUtil.h; sourceTree = "<group>"; };
 		AD45BBC31EAF42C300D53813 /* StudyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyUtil.m; sourceTree = "<group>"; };
 		AD45BBC51EAF52C400D53813 /* tiku.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = tiku.db; sourceTree = "<group>"; };
+		AD592E5D1EB0ABF000CBDCC8 /* QuestionTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTitleLabel.h; sourceTree = "<group>"; };
+		AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTitleLabel.m; sourceTree = "<group>"; };
 		AD7092A81E861CF10024427C /* DefaultTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTipsView.h; sourceTree = "<group>"; };
 		AD7092A91E861CF10024427C /* DefaultTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTipsView.m; sourceTree = "<group>"; };
 		AD7BD6191EAD8ABF00F34023 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
@@ -747,6 +750,8 @@
 				AD45BBB11EAF336800D53813 /* QuestionCollectionViewCell.m */,
 				AD45BBB51EAF339500D53813 /* QuestionTableViewCell.h */,
 				AD45BBB61EAF339500D53813 /* QuestionTableViewCell.m */,
+				AD592E5D1EB0ABF000CBDCC8 /* QuestionTitleLabel.h */,
+				AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */,
 			);
 			path = mode;
 			sourceTree = "<group>";
@@ -1485,6 +1490,7 @@
 				05CEE4A71E851DAB0033DD3D /* SchoolSceneryViewController.m in Sources */,
 				AD8B86301E9A92B1007F4CEC /* CampusNoteList.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
+				AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */,
 				05CEE4B11E85305E0033DD3D /* NJKWebViewProgressView.m in Sources */,
 				AD8B862A1E9A92A4007F4CEC /* Course.m in Sources */,
 				ADAAE0981E7D91F400A0FA2C /* ShareToolBarView.m in Sources */,

@@ -17,4 +17,6 @@
 
 @property (nonatomic, assign) ExerciseType type;
 
+@property (nonatomic, assign) NSInteger chapterIndex;       //文章索引
+
 @end

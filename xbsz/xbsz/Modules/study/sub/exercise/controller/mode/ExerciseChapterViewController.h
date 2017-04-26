@@ -14,4 +14,6 @@
 
 @property (nonatomic, assign) ExerciseType type;
 
+@property (nonatomic, assign) ExerciseMode mode;
+
 @end

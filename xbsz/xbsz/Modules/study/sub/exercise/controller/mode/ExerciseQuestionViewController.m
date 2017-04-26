@@ -8,11 +8,13 @@
 
 #import "ExerciseQuestionViewController.h"
 #import "QuestionCollectionViewCell.h"
+#import "ExerciseQuestion.h"
+#import "StudyUtil.h"
 
 static NSString *cellID = @"ExerciseQuestionCellID";
 static NSInteger bottomHeight = 45;
 
-@interface ExerciseQuestionViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,QuestionTableViewDelegate>
+@interface ExerciseQuestionViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -24,6 +26,10 @@ static NSInteger bottomHeight = 45;
 @property (nonatomic, strong) UIButton *nextBtn;
 @property (nonatomic, strong) UILabel *nextLabel;
 
+@property (nonatomic, copy) NSArray *questions;         //题目集合
+
+@property (nonatomic, assign) NSInteger index;          //cell索引
+
 @end
 
 @implementation ExerciseQuestionViewController
@@ -32,7 +38,6 @@ static NSInteger bottomHeight = 45;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"1/13";
     [self.customNavBarView addSubview:self.gotoBtn];
     self.customNavBarView.backgroundColor  = CXBackGroundColor;
 
@@ -47,6 +52,14 @@ static NSInteger bottomHeight = 45;
     
     [self addBottomView];
     
+    [self loadData];
+    self.title = [NSString stringWithFormat:@"1/%ld",[_questions count]];
+    _index = 0;         //初始化cell索引为0
+}
+//加载题库数据
+- (void)loadData{
+    _questions = [StudyUtil getQuestions:_type isSingle:_isSingle chapterIndex:_chapterIndex];
+    CXLog(@"加载题目数据完成");
 }
 
 - (void)addBottomView{
@@ -57,6 +70,7 @@ static NSInteger bottomHeight = 45;
     
     [bottomLeftBgView addSubview:self.preBtn];
     [bottomLeftBgView addSubview:self.preLabel];
+    
     [bottomRightBgView addSubview:self.nextBtn];
     [bottomRightBgView addSubview:self.nextLabel];
     [self.view addSubview:bottomLeftBgView];
@@ -69,14 +83,14 @@ static NSInteger bottomHeight = 45;
     
     [_preBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(bottomLeftBgView.mas_centerX);
-        make.width.height.mas_equalTo(20);
-        make.top.mas_equalTo(bottomLeftBgView.mas_top).mas_offset(6);
+        make.width.height.mas_equalTo(30);
+        make.top.mas_equalTo(bottomLeftBgView.mas_top);
     }];
     
     [_preLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(bottomLeftBgView.mas_centerX);
         make.width.mas_equalTo(80);
-        make.height.mas_equalTo(14);
+        make.height.mas_equalTo(13);
         make.bottom.mas_equalTo(bottomLeftBgView.mas_bottom).mas_offset(-2);
 
     }];
@@ -89,14 +103,14 @@ static NSInteger bottomHeight = 45;
     
     [_nextBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(bottomRightBgView.mas_centerX);
-        make.width.height.mas_equalTo(20);
-        make.top.mas_equalTo(bottomLeftBgView.mas_top).mas_offset(6);
+        make.width.height.mas_equalTo(30);
+        make.top.mas_equalTo(bottomLeftBgView.mas_top);
     }];
     
     [_nextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(bottomRightBgView.mas_centerX);
         make.width.mas_equalTo(80);
-        make.height.mas_equalTo(16);
+        make.height.mas_equalTo(13);
         make.bottom.mas_equalTo(bottomRightBgView.mas_bottom).mas_offset(-2);
     }];
 }
@@ -157,6 +171,9 @@ static NSInteger bottomHeight = 45;
         _preLabel.textAlignment = NSTextAlignmentCenter;
         _preLabel.textColor = CXHexColor(0x08b292);
         _preLabel.text = @"无";
+        _preLabel.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pre)];
+        [_preLabel addGestureRecognizer:tap];
         [_preLabel sizeToFit];
     }
     return _preLabel;
@@ -178,6 +195,9 @@ static NSInteger bottomHeight = 45;
         _nextLabel.textAlignment = NSTextAlignmentCenter;
         _nextLabel.textColor = CXHexColor(0x08b292);
         _nextLabel.text = @"下一题";
+        _nextLabel.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(next)];
+        [_nextLabel addGestureRecognizer:tap];
         [_nextLabel sizeToFit];
     }
     return _nextLabel;
@@ -189,14 +209,24 @@ static NSInteger bottomHeight = 45;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 2;
+    return [_questions count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;{
     QuestionCollectionViewCell *cell = (QuestionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
-    cell.selectDelegate = self;
+    [cell updateUIByQuestion:[_questions objectAtIndex:indexPath.row] mode:_mode];
     return cell;
 }
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    CGFloat startX = scrollView.contentOffset.x;
+    NSInteger index = startX/CXScreenWidth;
+    _index = index;
+    self.title = [NSString stringWithFormat:@"%ld/%ld",index+1,[_questions count]];
+    [self updatePreAndNextLabel:_index];
+}
+
 
 #pragma mark - ExerciseChapterTableViewDelegate
 
@@ -210,11 +240,35 @@ static NSInteger bottomHeight = 45;
 }
 
 - (void)pre{
-    CXLog(@"上一题");
+    if(_index <= 0) return;
+    --_index;
+    NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
+    [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [self updatePreAndNextLabel:_index];
 }
 
 - (void)next{
-     CXLog(@"下一题");
+    if(_index == [_questions count] -1){
+        CXLog(@"已经到了最后一题了");
+        return;
+    }
+    ++_index;
+    NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
+    [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [self updatePreAndNextLabel:_index];
+
+}
+
+- (void)updatePreAndNextLabel:(NSInteger)index{
+    if(_index == 0){
+        _preLabel.text = @"无";
+    }else if(_index == [_questions count] -1){
+        _nextLabel.text = @"无";
+    }else{
+        _preLabel.text = @"上一题";
+        _nextLabel.text = @"下一题";
+    }
+    self.title = [NSString stringWithFormat:@"%ld/%ld",index+1,[_questions count]];
 }
 
 @end

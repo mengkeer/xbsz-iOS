@@ -7,17 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol QuestionTableViewDelegate <NSObject>
-
-@required
-
-- (void)selectOption:(NSInteger)index;
-
-@end
+#import "ExerciseQuestion.h"
+#import "ExerciseMode.h"
 
 @interface QuestionCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, weak) id<QuestionTableViewDelegate> selectDelegate;
+- (void)updateUIByQuestion:(ExerciseQuestion *)question mode:(ExerciseMode)mode;
 
 @end

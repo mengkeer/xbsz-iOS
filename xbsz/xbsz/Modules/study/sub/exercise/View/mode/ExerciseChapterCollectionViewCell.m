@@ -19,6 +19,8 @@ static NSString *cellID = @"ChapterTableViewCellID";
 
 @property (nonatomic, assign) ExerciseType type;
 
+@property (nonatomic, assign) ExerciseMode mode;
+
 @property (nonatomic, assign) BOOL isSingle;
 
 @property (nonatomic, copy) NSArray *chapterIndex;     //章节数
@@ -101,9 +103,14 @@ static NSString *cellID = @"ChapterTableViewCellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSelector:@selector(deselect) withObject:nil afterDelay:0.2f];
     if(_selectDelegate && [_selectDelegate respondsToSelector:@selector(selectChapter:)]){
-        [_selectDelegate selectChapter:indexPath.row];
+        [_selectDelegate selectChapter:[[_chapterIndex objectAtIndex:indexPath.row] integerValue]];
     }
+}
+
+- (void)deselect{
+    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -142,8 +149,9 @@ static NSString *cellID = @"ChapterTableViewCellID";
 }
 
 #pragma mark - public method
-- (void)upadteUIByType:(ExerciseType)type isSingle:(BOOL)isSingle{
+- (void)upadteUIByType:(ExerciseType)type mode:(ExerciseMode)mode isSingle:(BOOL)isSingle{
     _type = type;
+    _mode = mode;
     _isSingle = isSingle;
     _chapterIndex = [StudyUtil getChapterIndex:type];
     _chapterNums = [StudyUtil getChapterNums:type];
