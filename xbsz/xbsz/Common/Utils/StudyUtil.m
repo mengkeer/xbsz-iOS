@@ -194,17 +194,79 @@
     return ans;
 }
 
-//从第一个汉字开始  去除前面非汉字
+//从第一个汉字或数字开始  去除前面非汉字
 + (NSString *)getSubstring:(NSString *)option{
     NSInteger index = 0;
     for(size_t i = 0;i < [option length];i++){
         unichar ch = [option characterAtIndex:i];
-        if( ch >= 0x4e00&& ch <=0x9fff){
+        if([self isOptionStart:ch]){
             index = i;
             break;
         }
     }
     return [option substringFromIndex:index];
+}
+
++ (BOOL)isOptionStart:(unichar)ch{
+    if((ch >= 0x4e00&& ch <=0x9fff) || (ch >= '0' && ch<= '9')){
+        return YES;
+    }
+    // 《 ( （这三个符号
+    if( ch == 0x300a || ch == 0x0028 || ch == 0xff08){
+        return YES;
+    }
+    //①②③④⑤...
+    if(ch == 0x2460 || ch == 0x2461 || ch == 0x2462 || ch == 0x2463 || ch == 0x2464 || ch == 0x2465 || ch == 0x2466){
+        return YES;
+    }
+    
+    return NO;
+}
+
++ (NSString *)getPureTitle:(NSString *)title{
+    NSInteger index = 0;
+    for(size_t i = 0;i < [title length];i++){
+        unichar ch = [title characterAtIndex:i];
+        if(ch >= '0' && ch<= '9'){
+            
+            while (ch >= '0' && ch <= '9') {
+                ch = [title characterAtIndex:++i];
+                index = i;
+            }
+            break;
+        }
+    }
+    title = [title substringFromIndex:index];
+    return [self getSubstring:title];
+}
+
++ (NSMutableArray *)getSearchResultsBySearchText:(NSString *)text type:(ExerciseType)type{
+    
+    FMDatabase *db = [self getDefaultDB];
+    if([db open]){
+        NSString *tableName = [self exerciseTypeToTableName:type];
+        NSString *sql = [NSString stringWithFormat:@"select * from %@ where id != 0 and ( title like '%%%@%%' or option like '%%%@\%%')",tableName,text,text];
+        NSMutableArray *ans = [NSMutableArray array];
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            ExerciseQuestion *temp = [[ExerciseQuestion alloc] init];
+            temp.question_id = [rs intForColumn:@"id"];
+            temp.pid = [rs intForColumn:@"pid"];
+            temp.qid = [rs intForColumn:@"qid"];
+            temp.type = [rs intForColumn:@"type"];
+            temp.title = [rs stringForColumn:@"title"];
+            temp.option = [rs stringForColumn:@"option"];
+            temp.answer = [rs stringForColumn:@"answer"];
+            temp.flag = [rs intForColumn:@"flag"];
+            [ans addObject:temp];
+            if([ans count] >=21)    break;
+        }
+        return ans;
+    }
+    
+    return [NSMutableArray array];
+    
+    
 }
 
 + (void)closeDB{

@@ -6,15 +6,16 @@
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "ExerciseQuestionViewController.h"
+#import "ReciteViewController.h"
 #import "QuestionCollectionViewCell.h"
 #import "ExerciseQuestion.h"
+#import "ExerciseProgressViewController.h"
 #import "StudyUtil.h"
 
 static NSString *cellID = @"ExerciseQuestionCellID";
 static NSInteger bottomHeight = 45;
 
-@interface ExerciseQuestionViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface ReciteViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -32,7 +33,7 @@ static NSInteger bottomHeight = 45;
 
 @end
 
-@implementation ExerciseQuestionViewController
+@implementation ReciteViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -125,7 +126,8 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)gotoBtn{
     if(!_gotoBtn){
         _gotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _gotoBtn.frame = CGRectMake(CXScreenWidth - 35, 20, 20, 44);
+        _gotoBtn.frame = CGRectMake(CXScreenWidth - 49, 20, 44, 44);
+        [_gotoBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateNormal];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateHighlighted];
         [_gotoBtn addTarget:self action:@selector(questionGoto) forControlEvents:UIControlEventTouchUpInside];
@@ -235,12 +237,23 @@ static NSInteger bottomHeight = 45;
 }
 
 - (void)questionGoto{
-    CXLog(@"跳转");
-    self.title = @"2/13";
+    ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
+    [progressVC updateData:_mode questions:_questions currentIndex:_index clicked:^(NSInteger index) {
+        if(index >= 0){
+            _index = index;
+            NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+            [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+            [self updatePreAndNextLabel:index];
+        }
+    }];
+    [self presentViewController:progressVC animated:YES completion:nil];
 }
 
 - (void)pre{
-    if(_index <= 0) return;
+    if(_index <= 0){
+        [ToastView showErrorWithStaus:@"没有上一题了"];
+        return;
+    }
     --_index;
     NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
     [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
@@ -249,7 +262,7 @@ static NSInteger bottomHeight = 45;
 
 - (void)next{
     if(_index == [_questions count] -1){
-        CXLog(@"已经到了最后一题了");
+        [ToastView showErrorWithStaus:@"没有下一题了"];
         return;
     }
     ++_index;

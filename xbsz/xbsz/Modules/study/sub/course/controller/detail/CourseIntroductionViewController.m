@@ -28,6 +28,11 @@ static int avatarWidth = 40;
 @property (nonatomic, strong) UILabel *briefTitleLabel;
 @property (nonatomic, strong) UILabel *briefLabel;
 
+@property (nonatomic, strong) UIView *noticeView;          //适用人群
+@property (nonatomic, strong) UILabel *noticeTitleLabel;
+@property (nonatomic, strong) UILabel *noticeLabel;
+
+
 @property (nonatomic, strong) UIView *peopleView;          //适用人群
 @property (nonatomic, strong) UILabel *peopleTitleLabel;
 @property (nonatomic, strong) UILabel *peopleLabel;
@@ -99,19 +104,53 @@ static int avatarWidth = 40;
         make.left.mas_equalTo(self.view).mas_offset(15);
         make.right.mas_equalTo(self.view).mas_offset(-15);
     }];
+    
+    
+    //添加最新通告
+    [_scrollView addSubview:self.noticeView];
+    [_noticeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
+        make.top.mas_equalTo(lineView1.mas_bottom);
+    }];
+    
+    [_noticeTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view.mas_left).mas_offset(15);
+        make.right.mas_equalTo(self.view.mas_right).mas_offset(-15);
+        make.height.mas_equalTo(titleHeight);
+        make.top.mas_equalTo(_briefView.mas_bottom);
+    }];
+    
+    [_noticeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view).mas_offset(15);
+        make.right.mas_equalTo(self.view).mas_offset(-15);
+        make.top.mas_equalTo(_noticeTitleLabel.mas_bottom);
+        make.bottom.mas_equalTo(_noticeView.mas_bottom).mas_offset(-10);
+    }];
+
+    
+    UIView *lineView2 = [[UIView alloc] init];
+    lineView2.backgroundColor = CXLineColor;
+    [_scrollView addSubview:lineView2];
+    [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_noticeView.mas_bottom);
+        make.height.mas_equalTo(1/CXMainScale);
+        make.left.mas_equalTo(self.view).mas_offset(15);
+        make.right.mas_equalTo(self.view).mas_offset(-15);
+    }];
+    
 
     //添加适用人群
     [_scrollView addSubview:self.peopleView];
     [_peopleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
-        make.top.mas_equalTo(lineView1.mas_bottom);
+        make.top.mas_equalTo(lineView2.mas_bottom);
     }];
     
     [_peopleTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.view.mas_left).mas_offset(15);
         make.right.mas_equalTo(self.view.mas_right).mas_offset(-15);
         make.height.mas_equalTo(titleHeight);
-        make.top.mas_equalTo(_briefView.mas_bottom);
+        make.top.mas_equalTo(_noticeView.mas_bottom);
     }];
     
     [_peopleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -121,10 +160,10 @@ static int avatarWidth = 40;
         make.bottom.mas_equalTo(_peopleView.mas_bottom).mas_offset(-10);
     }];
 
-    UIView *lineView2 = [[UIView alloc] init];
-    lineView2.backgroundColor = CXLineColor;
-    [_scrollView addSubview:lineView2];
-    [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *lineView3 = [[UIView alloc] init];
+    lineView3.backgroundColor = CXLineColor;
+    [_scrollView addSubview:lineView3];
+    [lineView3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_peopleView.mas_bottom);
         make.height.mas_equalTo(1/CXMainScale);
         make.left.mas_equalTo(self.view).mas_offset(15);
@@ -135,7 +174,7 @@ static int avatarWidth = 40;
     [_scrollView addSubview:self.teacherView];
     [_teacherView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
-        make.top.mas_equalTo(lineView2.mas_bottom);
+        make.top.mas_equalTo(lineView3.mas_bottom);
         make.bottom.mas_equalTo(_scrollView.mas_bottom);
     }];
     
@@ -216,7 +255,7 @@ static int avatarWidth = 40;
 - (CWStarRateView *)rateView{
     if(!_rateView){
         _rateView = [[CWStarRateView alloc] initWithFrame:CGRectMake(15, 50, 100, 15) numberOfStars:5];
-        _rateView.scorePercent = _course.rate;
+        _rateView.scorePercent = _course.rate/5;
         _rateView.allowIncompleteStar = YES;
         _rateView.allowRate = NO;
         _rateView.hasAnimation = NO;                             //不允许打分
@@ -230,7 +269,7 @@ static int avatarWidth = 40;
         _scoreLabel.font = CXSystemFont(11);
         _scoreLabel.textAlignment = NSTextAlignmentLeft;
         _scoreLabel.textColor = CXLightGrayColor;
-        _scoreLabel.text = [NSString stringWithFormat:@"%.1f分",_course.rate*5];
+        _scoreLabel.text = [NSString stringWithFormat:@"%.1f分",_course.rate];
     }
     return _scoreLabel;
 }
@@ -281,13 +320,48 @@ static int avatarWidth = 40;
     return _briefLabel;
 }
 
+
+- (UIView *)noticeView{
+    if(!_noticeView){
+        _noticeView = [[UIView alloc] init];
+        _noticeView.backgroundColor = CXWhiteColor;
+        
+        _noticeTitleLabel = [[UILabel alloc] init];
+        _noticeTitleLabel.text = @"最新通告";
+        _noticeTitleLabel.font = CXSystemFont(16);
+        _noticeTitleLabel.textColor =  CXRedColor;
+        _noticeTitleLabel.textAlignment = NSTextAlignmentLeft;
+        [_noticeView addSubview:_noticeTitleLabel];
+        [_noticeView addSubview:self.noticeLabel];
+    }
+    return _noticeView;
+}
+
+- (UILabel *)noticeLabel{
+    if(!_noticeLabel){
+        _noticeLabel = [[UILabel alloc] init];
+        _noticeLabel.font = CXSystemFont(14);
+        _noticeLabel.textColor = CXLightGrayColor;
+        _noticeLabel.numberOfLines = 0;
+        // 调整行间距
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"下周课程将在140机房"];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle setLineSpacing:3];
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [_course.suit length])];
+        _noticeLabel.attributedText = attributedString;
+        
+        [_noticeLabel sizeToFit];
+    }
+    return _noticeLabel;
+}
+
 - (UIView *)peopleView{
     if(!_peopleView){
         _peopleView = [[UIView alloc] init];
         _peopleView.backgroundColor = CXWhiteColor;
         
         _peopleTitleLabel = [[UILabel alloc] init];
-        _peopleTitleLabel.text = @"适用人群";
+        _peopleTitleLabel.text = @"面向专业";
         _peopleTitleLabel.font = CXSystemFont(16);
         _peopleTitleLabel.textColor =  CXHexAlphaColor(0x000000, 0.8);;
         _peopleTitleLabel.textAlignment = NSTextAlignmentLeft;
@@ -310,7 +384,7 @@ static int avatarWidth = 40;
         [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [_course.suit length])];
         _peopleLabel.attributedText = attributedString;
 
-        [_briefLabel sizeToFit];
+        [_peopleLabel sizeToFit];
     }
     return _peopleLabel;
 }
@@ -342,7 +416,7 @@ static int avatarWidth = 40;
 - (YYAnimatedImageView *)avatarImageView{
     if(!_avatarImageView){
         _avatarImageView = [[YYAnimatedImageView alloc] init];
-        _avatarImageView.yy_imageURL = [NSURL URLWithString:_course.user.avatar];
+        _avatarImageView.yy_imageURL = [NSURL URLWithString:_course.teacher.avatar];
         _avatarImageView.layer.cornerRadius = avatarWidth/2;
         _avatarImageView.clipsToBounds = YES;
     }
@@ -355,7 +429,7 @@ static int avatarWidth = 40;
         _nameLable.font = CXSystemFont(15);
         _nameLable.textColor = CXBlackColor;
         _nameLable.textAlignment = NSTextAlignmentLeft;
-        _nameLable.text = [NSString stringWithFormat:@"%@",_course.user.truename];
+        _nameLable.text = [NSString stringWithFormat:@"%@",_course.teacher.truename];
     }
     return _nameLable;
 }
@@ -367,10 +441,10 @@ static int avatarWidth = 40;
         _teacherBriefLabel.textColor = CXLightGrayColor;
         _teacherBriefLabel.numberOfLines = 0;
         // 调整行间距
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_course.user.brief];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:_course.teacher.brief];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         [paragraphStyle setLineSpacing:3];
-        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [_course.user.brief length])];
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [_course.teacher.brief length])];
         _teacherBriefLabel.attributedText = attributedString;
         
         [_teacherBriefLabel sizeToFit];

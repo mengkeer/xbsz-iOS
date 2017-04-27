@@ -122,9 +122,8 @@ static NSInteger TitlePaddingRight = 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 50;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self performSelector:@selector(deselect) withObject:nil afterDelay:0.2f];

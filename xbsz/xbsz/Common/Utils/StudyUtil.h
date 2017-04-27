@@ -29,6 +29,11 @@
 
 //根据option字符窜分离出来 各个选项
 + (NSArray *)getOptionsByString:(NSString *)optionStr type:(NSInteger)type;
+//获取纯净的题干内容  去除前面的题号索引
++ (NSString *)getPureTitle:(NSString *)title;
+
+//根据关键字获取查询结果 最多显示前20条数据
++ (NSMutableArray *)getSearchResultsBySearchText:(NSString *)text type:(ExerciseType)type;
 
 + (void)closeDB;
 

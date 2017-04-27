@@ -26,6 +26,6 @@ typedef NS_ENUM(NSInteger, SetItemType) {
      iconImageName:(NSString *)imageName;
 
 //此方法需在setTitle方法后调用
-- (void)setHeadImage:(NSString *)imageName;
+- (void)setHeadImage:(NSString *)imageUrl;
 
 @end

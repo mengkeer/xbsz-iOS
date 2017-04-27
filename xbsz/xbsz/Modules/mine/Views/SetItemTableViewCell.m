@@ -181,8 +181,8 @@
     }
 }
  
-- (void)setHeadImage:(NSString *)imageName{
-    _headImageView.image = [UIImage imageNamed:imageName];
+- (void)setHeadImage:(NSString *)imageUrl{
+    _headImageView.yy_imageURL = [NSURL URLWithString:imageUrl];
 }
 
 @end

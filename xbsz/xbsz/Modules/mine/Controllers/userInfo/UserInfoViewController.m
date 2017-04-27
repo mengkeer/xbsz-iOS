@@ -167,7 +167,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
                  cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellImageAndArrowId];
             }
             [cell updateCell:@"我的头像" detailText:nil type:SetItemTypeImageAndArrow iconImageName:@"set_head"];
-            [cell setHeadImage:@"avatar1.jpg"];
+            [cell setHeadImage:[CXLocalUser instance].avatar];
         }else if(indexPath.row == 1){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
@@ -323,9 +323,10 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     [picker dismissViewControllerAnimated:YES completion:nil];
     [CXNetwork updateUserAvatar:[info objectForKey:UIImagePickerControllerEditedImage] success:^(NSObject *obj) {
-        
+        [ToastView showSuccessWithStaus:@"修改成功"];
+        [_tableView reloadData];
     } failure:^(NSError *error) {
-        CXLog(@"上传图片错误");
+        [ToastView showErrorWithStaus:@"上传失败"];
     }];
 }
 

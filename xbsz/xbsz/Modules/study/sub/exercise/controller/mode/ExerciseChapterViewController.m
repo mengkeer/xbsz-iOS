@@ -8,10 +8,12 @@
 
 #import "ExerciseChapterViewController.h"
 #import "ExerciseChapterCollectionViewCell.h"
-#import "ExerciseQuestionViewController.h"
+#import "ReciteViewController.h"
 #import "StudyUtil.h"
 #import "UINavigationController+TZPopGesture.h"
-
+#import "PYSearch.h"
+#import "QuestionSearchViewController.h"
+#import "CXNavigationController.h"
 
 static NSString *cellID = @"ChapterCellID";
 
@@ -62,23 +64,26 @@ static NSString *cellID = @"ChapterCellID";
     
     // 生成UIPreviewAction
     UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"预览模式" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-        _mode = ExerciseModeRecite;
+        [self gotoChapterViewController:_type mode:ExerciseModeRecite];
     }];
     
     UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"训练模式(顺序)" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-        _mode = ExerciseModePractice;
+        [self gotoChapterViewController:_type mode:ExerciseModePractice];
+
     }];
     
     UIPreviewAction *action3 = [UIPreviewAction actionWithTitle:@"训练模式(随机)" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-        _mode = ExerciseModePracticeRandom;
+        [self gotoChapterViewController:_type mode:ExerciseModePracticeRandom];
+
     }];
     
     UIPreviewAction *action4 = [UIPreviewAction actionWithTitle:@"模拟考场" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-        _mode = ExerciseModeExam;
+        [self gotoChapterViewController:_type mode:ExerciseModeExam];
+
     }];
     
     UIPreviewAction *action5 = [UIPreviewAction actionWithTitle:@"错题集" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-        _mode = ExerciseModeMistakes;
+        [self gotoChapterViewController:_type mode:ExerciseModeMistakes];
     }];
     
     
@@ -100,7 +105,8 @@ static NSString *cellID = @"ChapterCellID";
 - (UIButton *)searchBtn{
     if(!_searchBtn){
         _searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _searchBtn.frame = CGRectMake(CXScreenWidth - 35, 20, 20, 44);
+        _searchBtn.frame = CGRectMake(CXScreenWidth - 47, 20, 44, 44);
+        _searchBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 12, 0, 12);
         [_searchBtn setImage:[UIImage imageNamed:@"question_search"] forState:UIControlStateNormal];
         [_searchBtn setImage:[UIImage imageNamed:@"question_search"] forState:UIControlStateHighlighted];
         [_searchBtn addTarget:self action:@selector(questionSearch) forControlEvents:UIControlEventTouchUpInside];
@@ -163,20 +169,45 @@ static NSString *cellID = @"ChapterCellID";
 }
 
 - (void)questionSearch{
-    CXLog(@"搜索题目");
+    // 2. 创建控制器
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:nil searchBarPlaceholder:@"搜索题干、选项" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        // 开始搜索执行以下代码
+        // 如：跳转到指定控制器
+        if(searchText == nil || [[searchText stringByTrim] length] == 0){
+            [ToastView showErrorWithStaus:@"搜索内容为空"];
+        }else{
+            QuestionSearchViewController *vc = [QuestionSearchViewController controller];
+            vc.type = _type;
+            vc.searchText = [searchText stringByTrim];
+            [searchViewController.navigationController pushViewController:vc animated:YES];
+        }
+    }];
+    // 3. 设置风格
+    searchViewController.hotSearchStyle = PYHotSearchStyleColorfulTag;
+    searchViewController.searchHistoryStyle = PYSearchHistoryStyleDefault;
+    // 4. 设置代理
+    // 5. 跳转到搜索控制器
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - ExerciseChapterTableViewDelegate
 
 - (void)selectChapter:(NSInteger)index{
-    ExerciseQuestionViewController *questionVC = [ExerciseQuestionViewController controller];
-    questionVC.mode = ExerciseModeRecite;
+    ReciteViewController *questionVC = [ReciteViewController controller];
+    questionVC.mode = _mode;
     questionVC.type = _type;
     questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
     questionVC.chapterIndex = index;
     [self.navigationController pushViewController:questionVC animated:YES];
 }
 
+- (void)gotoChapterViewController:(ExerciseType)type mode:(ExerciseMode)mode{
+    ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
+    chapterVC.type = type;
+    chapterVC.mode = mode;
+    [self.navigationController pushViewController:chapterVC animated:YES];
+}
 
 - (void)popFromCurrentViewController{
     [super popFromCurrentViewController];

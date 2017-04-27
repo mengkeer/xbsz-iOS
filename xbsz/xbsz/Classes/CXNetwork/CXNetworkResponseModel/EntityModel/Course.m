@@ -10,5 +10,9 @@
 
 @implementation Course
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"courseID":@"courseId",@"userID":@"xalUserId"};
+}
+
 
 @end

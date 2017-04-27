@@ -65,18 +65,18 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 - (void)loadData{
     
     
-//    [CXNetwork getCoursesByStatus:-1 success:^(NSObject *obj) {
-//        _courseList = [CourseList yy_modelWithDictionary:(NSDictionary *)obj];
-//        [_collectionView reloadData];
-//    } failure:^(NSError *error) {
-//        CXLog(@"获取课程失败");
-//    }];
+    [CXNetwork getCoursesByStatus:-1 success:^(NSObject *obj) {
+        _courseList = [CourseList yy_modelWithDictionary:(NSDictionary *)obj];
+        [_collectionView reloadData];
+    } failure:^(NSError *error) {
+        CXLog(@"获取课程失败");
+    }];
+    
 //    
-    
-    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"courses.json"];
-    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
-    
-    _courseList = [CourseList yy_modelWithJSON:jsonStr];
+//    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"courses.json"];
+//    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
+//    
+//    _courseList = [CourseList yy_modelWithJSON:jsonStr];
     
     [_collectionView reloadData];
     
@@ -137,7 +137,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索课程" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         // 开始搜索执行以下代码
         // 如：跳转到指定控制器
-        [searchViewController.navigationController pushViewController:[[CourseViewController alloc] init] animated:YES];
+        [searchViewController dismissViewControllerAnimated:YES completion:nil];
+        [ToastView showErrorWithStaus:@"暂未开设此课程"];
     }];
     // 3. 设置风格
     searchViewController.hotSearchStyle = PYHotSearchStyleColorfulTag;
@@ -190,7 +191,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     
     
     NSInteger rows = [_courseList.courses count] / numberOfItems +1;
-    if([_courseList.courses count]%3 == 0)  rows -= 1;
+    if([_courseList.courses count] % numberOfItems == 0)  rows -= 1;
     
     if(section == rows - 1){
         

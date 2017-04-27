@@ -9,7 +9,7 @@
 #import "CXWhitePushViewController.h"
 #import "ExerciseMode.h"
 
-@interface ExerciseQuestionViewController : CXWhitePushViewController
+@interface ReciteViewController : CXWhitePushViewController
 
 @property (nonatomic, assign) ExerciseMode mode;                //做题模式
 

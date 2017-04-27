@@ -128,7 +128,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索课程" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         // 开始搜索执行以下代码
         // 如：跳转到指定控制器
-        [searchViewController.navigationController pushViewController:[[ExerciseViewController alloc] init] animated:YES];
+        [searchViewController dismissViewControllerAnimated:YES completion:nil];
+        [ToastView showErrorWithStaus:@"无此题库"];
     }];
     // 3. 设置风格
     searchViewController.hotSearchStyle = PYHotSearchStyleColorfulTag;
@@ -143,6 +144,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 - (void)gotoExerciseDetailView:(ExerciseType)type{
     ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
     chapterVC.type = type;
+    chapterVC.mode = ExerciseModeRecite;
     [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
@@ -206,7 +208,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     NSInteger nums = [_exerciseList.exercises count]/numberOfItems +1;
-    return [_exerciseList.exercises count] % 3 == 0 ? nums-1 : nums;
+    return [_exerciseList.exercises count] % numberOfItems == 0 ? nums-1 : nums;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

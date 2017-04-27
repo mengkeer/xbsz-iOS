@@ -63,7 +63,7 @@
     [parameters setValue:token forKey:@"token"];
     [self invokePostRequest:CXUpdateUserInfoUrl parameters:[parameters copy] success:^(NSURLSessionDataTask *task, id responseObject) {
         CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:responseObject];
-        [self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
+         if(rsp.code == CXResponseCodeOK)   [self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
         CallbackRsp(rsp);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         InvokeFailure(error);
@@ -76,7 +76,9 @@
     NSData *imageData = UIImageJPEGRepresentation(image, 0.1);
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager POST:@"" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    
+    NSDictionary *parameters = @{@"token":[CXLocalUser instance].token};
+    [manager POST:CXUpdateUserAvatar parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         //
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyyMMddHHmmss";
@@ -86,8 +88,9 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:responseObject];
-        [self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
+        id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:obj];
+        if(rsp.code == CXResponseCodeOK)    [self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
         CallbackRsp(rsp);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         InvokeFailure(error);

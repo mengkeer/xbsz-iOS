@@ -77,7 +77,6 @@ static NSString *cellID = @"ChapterTableViewCellID";
     return 50;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(section == 0)    return 40;
     return 0.01f;

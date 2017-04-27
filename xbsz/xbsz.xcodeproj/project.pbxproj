@@ -55,7 +55,7 @@
 		AD3891CF1EA4C0F70074426C /* AttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3891CE1EA4C0F70074426C /* AttachmentViewController.m */; };
 		AD45BB9D1EAE21C700D53813 /* ExerciseChapterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BB9C1EAE21C700D53813 /* ExerciseChapterViewController.m */; };
 		AD45BBA31EAE4A5800D53813 /* CXNetwork+Course.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBA21EAE4A5800D53813 /* CXNetwork+Course.m */; };
-		AD45BBA61EAEE8A000D53813 /* ExerciseQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBA51EAEE8A000D53813 /* ExerciseQuestionViewController.m */; };
+		AD45BBA61EAEE8A000D53813 /* ReciteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBA51EAEE8A000D53813 /* ReciteViewController.m */; };
 		AD45BBB21EAF336800D53813 /* ExerciseChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBAD1EAF336800D53813 /* ExerciseChapterCollectionViewCell.m */; };
 		AD45BBB31EAF336800D53813 /* ExerciseChapterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBAF1EAF336800D53813 /* ExerciseChapterTableViewCell.m */; };
 		AD45BBB41EAF336800D53813 /* QuestionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBB11EAF336800D53813 /* QuestionCollectionViewCell.m */; };
@@ -66,6 +66,9 @@
 		AD45BBC41EAF42C300D53813 /* StudyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBC31EAF42C300D53813 /* StudyUtil.m */; };
 		AD45BBC61EAF52C400D53813 /* tiku.db in Resources */ = {isa = PBXBuildFile; fileRef = AD45BBC51EAF52C400D53813 /* tiku.db */; };
 		AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */; };
+		AD592E621EB182D200CBDCC8 /* ExerciseProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E611EB182D200CBDCC8 /* ExerciseProgressViewController.m */; };
+		AD592E6E1EB20DA800CBDCC8 /* QuestionSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E6B1EB20DA800CBDCC8 /* QuestionSearchViewController.m */; };
+		AD592E6F1EB20DA800CBDCC8 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E6D1EB20DA800CBDCC8 /* SearchResultViewController.m */; };
 		AD7092AA1E861CF10024427C /* DefaultTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7092A91E861CF10024427C /* DefaultTipsView.m */; };
 		AD7BD61B1EAD8ABF00F34023 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BD61A1EAD8ABF00F34023 /* SignatureViewController.m */; };
 		AD7BD61E1EAD9B2900F34023 /* MajorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BD61D1EAD9B2900F34023 /* MajorViewController.m */; };
@@ -229,8 +232,8 @@
 		AD45BB9C1EAE21C700D53813 /* ExerciseChapterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseChapterViewController.m; sourceTree = "<group>"; };
 		AD45BBA11EAE4A5800D53813 /* CXNetwork+Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CXNetwork+Course.h"; sourceTree = "<group>"; };
 		AD45BBA21EAE4A5800D53813 /* CXNetwork+Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CXNetwork+Course.m"; sourceTree = "<group>"; };
-		AD45BBA41EAEE8A000D53813 /* ExerciseQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseQuestionViewController.h; sourceTree = "<group>"; };
-		AD45BBA51EAEE8A000D53813 /* ExerciseQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseQuestionViewController.m; sourceTree = "<group>"; };
+		AD45BBA41EAEE8A000D53813 /* ReciteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReciteViewController.h; sourceTree = "<group>"; };
+		AD45BBA51EAEE8A000D53813 /* ReciteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReciteViewController.m; sourceTree = "<group>"; };
 		AD45BBA71EAEEB4200D53813 /* ExerciseMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseMode.h; sourceTree = "<group>"; };
 		AD45BBAC1EAF336800D53813 /* ExerciseChapterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseChapterCollectionViewCell.h; sourceTree = "<group>"; };
 		AD45BBAD1EAF336800D53813 /* ExerciseChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseChapterCollectionViewCell.m; sourceTree = "<group>"; };
@@ -251,6 +254,12 @@
 		AD45BBC51EAF52C400D53813 /* tiku.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = tiku.db; sourceTree = "<group>"; };
 		AD592E5D1EB0ABF000CBDCC8 /* QuestionTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTitleLabel.h; sourceTree = "<group>"; };
 		AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTitleLabel.m; sourceTree = "<group>"; };
+		AD592E601EB182D200CBDCC8 /* ExerciseProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseProgressViewController.h; sourceTree = "<group>"; };
+		AD592E611EB182D200CBDCC8 /* ExerciseProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseProgressViewController.m; sourceTree = "<group>"; };
+		AD592E6A1EB20DA800CBDCC8 /* QuestionSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionSearchViewController.h; sourceTree = "<group>"; };
+		AD592E6B1EB20DA800CBDCC8 /* QuestionSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionSearchViewController.m; sourceTree = "<group>"; };
+		AD592E6C1EB20DA800CBDCC8 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
+		AD592E6D1EB20DA800CBDCC8 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		AD7092A81E861CF10024427C /* DefaultTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTipsView.h; sourceTree = "<group>"; };
 		AD7092A91E861CF10024427C /* DefaultTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTipsView.m; sourceTree = "<group>"; };
 		AD7BD6191EAD8ABF00F34023 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
@@ -599,8 +608,10 @@
 				AD45BBA71EAEEB4200D53813 /* ExerciseMode.h */,
 				AD45BB9B1EAE21C700D53813 /* ExerciseChapterViewController.h */,
 				AD45BB9C1EAE21C700D53813 /* ExerciseChapterViewController.m */,
-				AD45BBA41EAEE8A000D53813 /* ExerciseQuestionViewController.h */,
-				AD45BBA51EAEE8A000D53813 /* ExerciseQuestionViewController.m */,
+				AD45BBA41EAEE8A000D53813 /* ReciteViewController.h */,
+				AD45BBA51EAEE8A000D53813 /* ReciteViewController.m */,
+				AD592E601EB182D200CBDCC8 /* ExerciseProgressViewController.h */,
+				AD592E611EB182D200CBDCC8 /* ExerciseProgressViewController.m */,
 			);
 			name = mode;
 			path = xbsz/Modules/study/sub/exercise/Controller/mode;
@@ -755,6 +766,18 @@
 			);
 			path = mode;
 			sourceTree = "<group>";
+		};
+		AD592E691EB20DA800CBDCC8 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				AD592E6A1EB20DA800CBDCC8 /* QuestionSearchViewController.h */,
+				AD592E6B1EB20DA800CBDCC8 /* QuestionSearchViewController.m */,
+				AD592E6C1EB20DA800CBDCC8 /* SearchResultViewController.h */,
+				AD592E6D1EB20DA800CBDCC8 /* SearchResultViewController.m */,
+			);
+			name = search;
+			path = xbsz/Modules/study/sub/exercise/Controller/search;
+			sourceTree = SOURCE_ROOT;
 		};
 		AD7092A71E861CC70024427C /* DefaultTipsView */ = {
 			isa = PBXGroup;
@@ -1094,6 +1117,7 @@
 		AD7F89371E5976FE009603E4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AD592E691EB20DA800CBDCC8 /* search */,
 				AD196E6C1EAC935F00111EB5 /* mode */,
 				AD7F89381E5976FE009603E4 /* ExerciseViewController.h */,
 				AD7F89391E5976FE009603E4 /* ExerciseViewController.m */,
@@ -1436,7 +1460,7 @@
 			files = (
 				05067FF31E7BF1E900868AC1 /* RateView.m in Sources */,
 				AD45BB9D1EAE21C700D53813 /* ExerciseChapterViewController.m in Sources */,
-				AD45BBA61EAEE8A000D53813 /* ExerciseQuestionViewController.m in Sources */,
+				AD45BBA61EAEE8A000D53813 /* ReciteViewController.m in Sources */,
 				AD2540B81E97860F00AA330D /* JWLocalUser.m in Sources */,
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
 				ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */,
@@ -1512,6 +1536,8 @@
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
 				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,
 				AD8B862B1E9A92A4007F4CEC /* CXUser.m in Sources */,
+				AD592E6E1EB20DA800CBDCC8 /* QuestionSearchViewController.m in Sources */,
+				AD592E621EB182D200CBDCC8 /* ExerciseProgressViewController.m in Sources */,
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
 				AD196E6B1EAC8E2900111EB5 /* PhoneViewController.m in Sources */,
 				0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */,
@@ -1525,6 +1551,7 @@
 				ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */,
 				AD8B452A1EA890DB00E8D539 /* CourseCommentViewController.m in Sources */,
 				055A3B8B1E84CC7D004D09CC /* UIViewController+Authorization.m in Sources */,
+				AD592E6F1EB20DA800CBDCC8 /* SearchResultViewController.m in Sources */,
 				AD8B86281E9A92A4007F4CEC /* CampusComment.m in Sources */,
 				AD8B45361EA9DCA600E8D539 /* CourseCommentList.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,

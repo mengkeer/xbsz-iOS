@@ -14,6 +14,7 @@
 #define CXRegisterUrl       @"http://www.slotus.cc/common-api/register"
 #define CXGetUserInfoUrl      @"http://www.slotus.cc/limit-api/getUserInfo"
 #define CXUpdateUserInfoUrl   @"http://www.slotus.cc/limit-api/updateUserInfo"
+#define CXUpdateUserAvatar    @"http://www.slotus.cc/limit-api/updateAvatar"
 
 //学习
 #define CXGetCoursesUrl     @"http://www.slotus.cc/common-api/getCourses"
@@ -45,10 +46,10 @@
 
 
 typedef NS_ENUM(NSUInteger,CXResponseCode){
-    CXResponseCodeOK = 300,
-    CXResponseCodeUserRepeat = 402,         //注册时用户名 重复
-    CXResponseCodeTokenIsVoid = 501,                //token为空
-    CXResponseCodeTokenIsExpired = 502              //token过期了
+    CXResponseCodeOK = 3300,
+    CXResponseCodeUserRepeat = 4012,         //注册时用户名 重复
+    CXResponseCodeTokenIsVoid = 5001,                //token为空
+    CXResponseCodeTokenIsExpired = 5002              //token过期了
 };
 
 

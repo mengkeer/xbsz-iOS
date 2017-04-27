@@ -3,10 +3,10 @@
       {
           "user":{
               "userID":"uid2334",
-              "username":"mengkeer",
+              "userName":"mengkeer",
               "password":"2345",
               "avatar":"http://github.com/logo.png",
-              "nickname":"么么哒",
+              "nickName":"么么哒",
               "gender":"1",
               "email":"1812422367@qq.com",
               "mobile":"13122139590",
@@ -31,10 +31,10 @@
       },{
           "user":{
               "userID":"uid2334",
-              "username":"mengkeer",
+              "userName":"mengkeer",
               "password":"2345",
               "avatar":"http://github.com/logo.png",
-              "nickname":"嘻嘻",
+              "nickName":"嘻嘻",
               "gender":"1",
               "email":"1812422367@qq.com",
               "mobile":"13122139590",
@@ -59,10 +59,10 @@
         },{
            "user":{
                 "userID":"uid2334",
-                "username":"mengkeer",
+                "userName":"mengkeer",
                 "password":"2345",
                 "avatar":"http://github.com/logo.png",
-                "nickname":"嘻嘻",
+                "nickName":"嘻嘻",
                 "gender":"1",
                 "email":"1812422367@qq.com",
                 "mobile":"13122139590",
@@ -88,10 +88,10 @@
            {
            "user":{
            "userID":"uid2334",
-           "username":"mengkeer",
+           "userName":"mengkeer",
            "password":"2345",
            "avatar":"http://github.com/logo.png",
-           "nickname":"么么哒",
+           "nickName":"么么哒",
            "gender":"1",
            "email":"1812422367@qq.com",
            "mobile":"13122139590",
