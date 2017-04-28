@@ -1,21 +1,20 @@
 //
-//  ExerciseQuestionViewController.m
+//  PracticeViewController.m
 //  xbsz
 //
-//  Created by lotus on 2017/4/25.
+//  Created by lotus on 2017/4/28.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "ReciteViewController.h"
-#import "QuestionCollectionViewCell.h"
-#import "ExerciseQuestion.h"
-#import "ExerciseProgressViewController.h"
+#import "SinglePracticeViewController.h"
 #import "StudyUtil.h"
+#import "ExerciseProgressViewController.h"
+#import "QuestionCollectionViewCell.h"
 
-static NSString *cellID = @"ExerciseQuestionCellID";
+static NSString *cellID = @"ExercisePracticeQuestionCellID";
 static NSInteger bottomHeight = 45;
 
-@interface ReciteViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface SinglePracticeViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,QuestionOptionDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -31,17 +30,20 @@ static NSInteger bottomHeight = 45;
 
 @property (nonatomic, assign) NSInteger index;          //cell索引
 
+@property (nonatomic, strong) NSMutableDictionary *practicedDic;
+
+@property (nonatomic, strong) NSMutableDictionary *judgedDic;
+
 @end
 
-@implementation ReciteViewController
+@implementation SinglePracticeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     [self.customNavBarView addSubview:self.gotoBtn];
     self.customNavBarView.backgroundColor  = CXBackGroundColor;
-
+    
     
     [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -56,11 +58,19 @@ static NSInteger bottomHeight = 45;
     [self loadData];
     self.title = [NSString stringWithFormat:@"1/%ld",[_questions count]];
     _index = 0;         //初始化cell索引为0
+    _practicedDic = [[NSMutableDictionary alloc] init];
+    _judgedDic = [[NSMutableDictionary alloc] init];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 //加载题库数据
 - (void)loadData{
-    _questions = [StudyUtil getQuestions:_type isSingle:_isSingle chapterIndex:_chapterIndex];
-    CXLog(@"加载题目数据完成");
+    _questions = [StudyUtil getQuestions:_type isSingle:YES chapterIndex:_chapterIndex];
 }
 
 - (void)addBottomView{
@@ -93,7 +103,7 @@ static NSInteger bottomHeight = 45;
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(13);
         make.bottom.mas_equalTo(bottomLeftBgView.mas_bottom).mas_offset(-2);
-
+        
     }];
     
     [bottomRightBgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -116,10 +126,6 @@ static NSInteger bottomHeight = 45;
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - getter/setter
 
@@ -216,7 +222,18 @@ static NSInteger bottomHeight = 45;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;{
     QuestionCollectionViewCell *cell = (QuestionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
-    [cell updateUIByQuestion:[_questions objectAtIndex:indexPath.row] showRightAnswer:YES];
+    cell.baseDelegate = self;
+    NSString *key = [NSString stringWithFormat:@"%ld",indexPath.row];
+    if([_practicedDic containsObjectForKey:key]){
+        [cell updateUIByQuestion:[_questions objectAtIndex:indexPath.row] allowSelect:NO];
+    }else{
+        [cell updateUIByQuestion:[_questions objectAtIndex:indexPath.row] allowSelect:YES];
+    }
+    //从已做过的记录中回复做题记录
+    if([_practicedDic containsObjectForKey:key]){
+        NSInteger selectedIndex = [[_practicedDic valueForKey:key] integerValue];
+        [cell showSinglePracticeAnswer:selectedIndex];
+    }
     return cell;
 }
 
@@ -229,9 +246,30 @@ static NSInteger bottomHeight = 45;
     [self updatePreAndNextLabel:_index];
 }
 
+
+#pragma mark - ExerciseChapterTableViewDelegate
+
+- (void)selectOption:(NSInteger)selectedIndex{
+    NSString *key = [NSString stringWithFormat:@"%ld",_index];
+    if([_practicedDic containsObjectForKey:key])    return;         //如果该题已做过 则跳过点击选项事件
+    NSString *value = [NSString stringWithFormat:@"%ld",selectedIndex];
+    [_practicedDic setValue:value forKey:key];    
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
+    QuestionCollectionViewCell *cell = (QuestionCollectionViewCell *)[_collectionView cellForItemAtIndexPath:path];
+    BOOL isRight = [cell showSinglePracticeAnswer:selectedIndex];
+    if(isRight == YES){
+        [_judgedDic setValue:@"1" forKey:key];
+        [self performSelector:@selector(next) withObject:nil afterDelay:0.3];
+    }else{
+        [_judgedDic setValue:@"-1" forKey:key];
+    }
+    
+}
+
 - (void)questionGoto{
     ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
-    [progressVC updateData:_mode total:[_questions count] judgedDic:nil currentIndex:_index clicked:^(NSInteger index) {
+    [progressVC updateData:_mode total:[_questions count] judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
         if(index >= 0){
             _index = index;
             NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
@@ -239,9 +277,10 @@ static NSInteger bottomHeight = 45;
             [self updatePreAndNextLabel:index];
         }
     }];
-   
     [self presentViewController:progressVC animated:YES completion:nil];
 }
+
+#pragma mark - 私有方法
 
 - (void)pre{
     if(_index <= 0){
@@ -263,19 +302,47 @@ static NSInteger bottomHeight = 45;
     NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
     [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     [self updatePreAndNextLabel:_index];
-
 }
 
 - (void)updatePreAndNextLabel:(NSInteger)index{
     if(_index == 0){
         _preLabel.text = @"无";
+        _nextLabel.text = @"下一题";
     }else if(_index == [_questions count] -1){
+        _preLabel.text = @"上一题";
         _nextLabel.text = @"无";
     }else{
         _preLabel.text = @"上一题";
         _nextLabel.text = @"下一题";
     }
     self.title = [NSString stringWithFormat:@"%ld/%ld",index+1,[_questions count]];
+}
+
+
+#pragma mark - 共有方法
+
+- (void)updateData:(ExerciseMode)mode type:(ExerciseType)type chapter:(NSInteger)chapterIndex{
+    _mode = mode;
+    _type = type;
+    _chapterIndex = chapterIndex;
+}
+
+#pragma mark - 自定义界面返回事件
+- (void)popFromCurrentViewController{
+    if([_judgedDic count] == [_questions count]){
+        [super popFromCurrentViewController];
+    }else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"是否确认退出" message:@"当前练习未完成\ntips:已做错的题会保存在错题集" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancel];
+        
+        UIAlertAction *back = [UIAlertAction actionWithTitle:@"离开" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [super popFromCurrentViewController];
+        }];
+        [alert addAction:back];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 @end

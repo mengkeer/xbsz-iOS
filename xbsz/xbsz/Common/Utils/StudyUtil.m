@@ -240,6 +240,77 @@
     return [self getSubstring:title];
 }
 
++ (BOOL)isSingleRightAnswer:(NSInteger)index answer:(NSString *)answer{
+    NSString *symbol = [self indexConvertToSymbol:index];
+    NSString *minSymbol = [self indexConvertToMinSymbol:index];
+    NSString *chinaSymbol = [self indexToChinaSymbol:index];
+    if([answer containsString:symbol] || [answer containsString:minSymbol] || [answer containsString:chinaSymbol]){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
++ (BOOL)isMutiRightAnswer:(NSString *)selectedIndexs answer:(NSString *)answer{
+    for(NSInteger i = 0;i<[selectedIndexs length];i++){
+        NSInteger index = [[NSString stringWithFormat:@"%c",[selectedIndexs characterAtIndex:i]] integerValue];
+        if(![self isSingleRightAnswer:index answer:answer]){
+            return NO;
+        }
+    }
+    return [selectedIndexs length] == [answer length];
+}
+
++ (NSString *)indexConvertToSymbol:(NSInteger)index{
+    if(index == 0){
+        return @"A";
+    }else if(index == 1){
+        return @"B";
+    }else if(index == 2){
+        return @"C";
+    }else if(index == 3){
+        return @"D";
+    }else if(index == 4){
+        return @"E";
+    }else if(index == 5){
+        return @"F";
+    }else if(index == 6){
+        return @"G";
+    }else{
+        return @"X";
+    }
+}
+
++ (NSString *)indexConvertToMinSymbol:(NSInteger)index{
+    if(index == 0){
+        return @"a";
+    }else if(index == 1){
+        return @"b";
+    }else if(index == 2){
+        return @"c";
+    }else if(index == 3){
+        return @"d";
+    }else if(index == 4){
+        return @"e";
+    }else if(index == 5){
+        return @"f";
+    }else if(index == 6){
+        return @"g";
+    }else{
+        return @"x";
+    }
+}
+
++ (NSString *)indexToChinaSymbol:(NSInteger)index{
+    if(index == 0){
+        return @"对";
+    }else if(index == 1){
+        return @"错";
+    }else{
+        return @"未知";
+    }
+}
+
 + (NSMutableArray *)getSearchResultsBySearchText:(NSString *)text type:(ExerciseType)type{
     
     FMDatabase *db = [self getDefaultDB];

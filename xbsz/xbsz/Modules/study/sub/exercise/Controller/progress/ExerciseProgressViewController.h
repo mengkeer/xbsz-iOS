@@ -14,7 +14,8 @@ typedef void (^ClickBlock)(NSInteger index);
 @interface ExerciseProgressViewController : UIViewController
 
 - (void)updateData:(ExerciseMode)mode
-         questions:(NSArray *)questions
+             total:(NSInteger )total
+         judgedDic:(NSDictionary *)judgedDic
       currentIndex:(NSInteger) currentIndex
            clicked:(ClickBlock)clickBlock;
 
@@ -31,5 +32,6 @@ typedef void (^ClickBlock)(NSInteger index);
 //是否是当前焦点，根据跳转过来时的index判断
 - (void)updateUIByQuestionIndex:(NSInteger)index isFocused:(BOOL)isFocused;
 
+- (void)updateUIByQuestionIsRight:(BOOL)isRight;
 
 @end

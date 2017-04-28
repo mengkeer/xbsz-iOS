@@ -115,6 +115,7 @@
 		ADA187691EB2EFEC00C771A4 /* ExerciseChapterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA187671EB2EFEC00C771A4 /* ExerciseChapterViewController.m */; };
 		ADA1876E1EB2F04000C771A4 /* ExerciseChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA1876B1EB2F04000C771A4 /* ExerciseChapterCollectionViewCell.m */; };
 		ADA1876F1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA1876D1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m */; };
+		ADA187721EB333CB00C771A4 /* SinglePracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA187711EB333CB00C771A4 /* SinglePracticeViewController.m */; };
 		ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */; };
 		ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = ADAAE0881E7CD06400A0FA2C /* exercises.json */; };
 		ADAAE08E1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */; };
@@ -129,6 +130,7 @@
 		ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */; };
 		ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */; };
 		ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7463A1E77116500644812 /* CXWhitePushViewController.m */; };
+		ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
 		ADF042451E0192EF00171489 /* avatar11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423A1E0192EF00171489 /* avatar11.jpg */; };
@@ -359,6 +361,8 @@
 		ADA1876B1EB2F04000C771A4 /* ExerciseChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseChapterCollectionViewCell.m; sourceTree = "<group>"; };
 		ADA1876C1EB2F04000C771A4 /* ExerciseChapterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseChapterTableViewCell.h; sourceTree = "<group>"; };
 		ADA1876D1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseChapterTableViewCell.m; sourceTree = "<group>"; };
+		ADA187701EB333CB00C771A4 /* SinglePracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePracticeViewController.h; sourceTree = "<group>"; };
+		ADA187711EB333CB00C771A4 /* SinglePracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePracticeViewController.m; sourceTree = "<group>"; };
 		ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		ADAAE0881E7CD06400A0FA2C /* exercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
@@ -386,6 +390,8 @@
 		ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
 		ADB746391E77116500644812 /* CXWhitePushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXWhitePushViewController.h; sourceTree = "<group>"; };
 		ADB7463A1E77116500644812 /* CXWhitePushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXWhitePushViewController.m; sourceTree = "<group>"; };
+		ADE663681EB384BF00DBA92A /* MutiPracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiPracticeViewController.h; sourceTree = "<group>"; };
+		ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutiPracticeViewController.m; sourceTree = "<group>"; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
 		ADF042391E0192EF00171489 /* avatar10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar10.jpg; sourceTree = "<group>"; };
 		ADF0423A1E0192EF00171489 /* avatar11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar11.jpg; sourceTree = "<group>"; };
@@ -610,6 +616,10 @@
 			children = (
 				AD45BBA41EAEE8A000D53813 /* ReciteViewController.h */,
 				AD45BBA51EAEE8A000D53813 /* ReciteViewController.m */,
+				ADA187701EB333CB00C771A4 /* SinglePracticeViewController.h */,
+				ADA187711EB333CB00C771A4 /* SinglePracticeViewController.m */,
+				ADE663681EB384BF00DBA92A /* MutiPracticeViewController.h */,
+				ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */,
 			);
 			name = mode;
 			path = xbsz/Modules/study/sub/exercise/Controller/mode;
@@ -1501,6 +1511,7 @@
 				05CAAE541E81063B005F7715 /* CourseCatalogViewController.m in Sources */,
 				AD45BBB41EAF336800D53813 /* QuestionCollectionViewCell.m in Sources */,
 				AD7F882C1E594D5E009603E4 /* YZFlowLayout.m in Sources */,
+				ADA187721EB333CB00C771A4 /* SinglePracticeViewController.m in Sources */,
 				AD8B86311E9A92B1007F4CEC /* CourseList.m in Sources */,
 				ADA187611EB2C05B00C771A4 /* ExerciseModeViewController.m in Sources */,
 				ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */,
@@ -1535,6 +1546,7 @@
 				ADAAE0981E7D91F400A0FA2C /* ShareToolBarView.m in Sources */,
 				05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */,
 				AD7F891E1E595B29009603E4 /* ResetViewController.m in Sources */,
+				ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */,
 				ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */,
 				AD7F88DF1E595A5E009603E4 /* CXTabBarController.m in Sources */,
 				AD7F882B1E594D5E009603E4 /* YZDisplayViewController.m in Sources */,

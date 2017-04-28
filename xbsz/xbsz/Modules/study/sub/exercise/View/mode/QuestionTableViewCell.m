@@ -7,6 +7,7 @@
 //
 
 #import "QuestionTableViewCell.h"
+#import "StudyUtil.h"
 
 static NSInteger symbolWidth = 35;
 
@@ -71,7 +72,7 @@ static NSInteger symbolWidth = 35;
             _symbolLabel.clipsToBounds = YES;
         }else{
             _symbolLabel.layer.borderWidth = 1;
-            _symbolLabel.layer.cornerRadius = 4;
+            _symbolLabel.layer.cornerRadius = 6;
             _symbolLabel.layer.borderColor = CXBlackColor.CGColor;
             _symbolLabel.clipsToBounds = YES;
         }
@@ -92,8 +93,9 @@ static NSInteger symbolWidth = 35;
 }
 
 - (void)updateUIWithIndex:(NSInteger)index option:(NSString *)option{
-    NSString *symbolText = [self indexConvertToSymbol:index];
+    NSString *symbolText = [StudyUtil indexConvertToSymbol:index];
     _symbolLabel.text = symbolText;
+    [self updateOptionUI:QuestionStatusSingleDefault];
     
     NSInteger textHeight = [self getTitleHeight:option];
     [_optionLabel mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -102,67 +104,107 @@ static NSInteger symbolWidth = 35;
     [_optionLabel sizeToFit];
 }
 
-- (void)showRightAnswer:(NSInteger)index answer:(NSString *)answer{
-    NSString *symbol = [self indexConvertToSymbol:index];
-    NSString *minSymbol = [self indexConvertToMinSymbol:index];
-    NSString *chinaSymbol = [self indexToChinaSymbol:index];
-    if([answer containsString:symbol] || [answer containsString:minSymbol] || [answer containsString:chinaSymbol]){
-        _symbolLabel.layer.borderColor = CXHexColor(0x08b292).CGColor;
-        _symbolLabel.textColor = CXHexColor(0x08b292);
+- (void)showSingleRightAnswer:(NSInteger)index answer:(NSString *)answer{
+    if([StudyUtil isSingleRightAnswer:index answer:answer]){
+        [self updateOptionUI:QuestionStatusSingleRight];
     }else{
+        [self updateOptionUI:QuestionStatusSingleDefault];
+    }
+}
+
+- (void)showSinglePracticeResult:(NSInteger)index
+       selectedIndex:(NSInteger)selectedIndex
+              answer:(NSString *)answer{
+    
+    if([StudyUtil isSingleRightAnswer:index answer:answer]){
+        [self updateOptionUI:QuestionStatusSingleRight];
+    }else{
+        if(index == selectedIndex){
+            [self updateOptionUI:QuestionStatusSingleWrong];
+            return;
+        }
+        [self updateOptionUI:QuestionStatusSingleDefault];
+    }
+}
+
+- (void)showMutiPracticeResult:(NSInteger)index
+                 selectedIndex:(NSString *)selectedIndexs
+                        answer:(NSString *)answer{
+    
+
+    BOOL isRight = [StudyUtil isMutiRightAnswer:selectedIndexs answer:answer];
+    if(isRight){
+        NSString *str = [NSString stringWithFormat:@"%ld",index];
+        if([selectedIndexs containsString:str]){
+            [self updateOptionUI:QuestionStatusMutiRight];
+        }else{
+            [self updateOptionUI:QuestionStatusMutiDefault];
+        }
+    }else{
+        NSString *str = [NSString stringWithFormat:@"%ld",index];
+        if([selectedIndexs containsString:str] && [StudyUtil isSingleRightAnswer:index answer:answer]){
+            [self updateOptionUI:QuestionStatusMutiRightWrong];
+        }else if([StudyUtil isSingleRightAnswer:index answer:answer] && ![selectedIndexs containsString:str]){
+            [self updateOptionUI:QuestionStatusMutiRight];
+        }else if(![StudyUtil isSingleRightAnswer:index answer:answer] && [selectedIndexs containsString:str]){
+            [self updateOptionUI:QuestionStatusMutiWrong];
+        }else{
+            [self updateOptionUI:QuestionStatusMutiDefault];
+        }
+    }
+}
+
+- (void)setTemporarySelected:(NSInteger)index selectedIndexs:(NSString *)selectedIndexs{
+    if([selectedIndexs containsString:[NSString stringWithFormat:@"%ld",index]]){
+        [self updateOptionUI:QuestionStatusMutiSelected];
+    }else{
+        [self updateOptionUI:QuestionStatusMutiDefault];
+    }
+}
+
+- (void)updateOptionUI:(QuestionStatus)status{
+    
+    if(status == QuestionStatusSingleDefault || status == QuestionStatusMutiDefault){
+        _symbolLabel.layer.borderWidth = 1;
         _symbolLabel.layer.borderColor = CXBlackColor.CGColor;
         _symbolLabel.textColor = CXBlackColor;
+        _symbolLabel.backgroundColor = CXWhiteColor;
+        return;
     }
-}
+    
+    if(status == QuestionStatusSingleRight || status == QuestionStatusMutiRight){
+        _symbolLabel.layer.borderWidth = 0;
+        _symbolLabel.backgroundColor = CXHexColor(0x08b292);
+        _symbolLabel.textColor = CXWhiteColor;
+        return;
+    }
+    
+    if(status == QuestionStatusSingleWrong || status == QuestionStatusMutiWrong){
+        _symbolLabel.layer.borderWidth = 0;
+        _symbolLabel.backgroundColor = CXRedColor;
+        _symbolLabel.textColor = CXWhiteColor;
+        return;
+    }
+    
+    if(status == QuestionStatusMutiSelected){
+        _symbolLabel.layer.borderWidth = 1;
+        _symbolLabel.layer.borderColor = CXHexColor(0x08b292).CGColor;
+        _symbolLabel.textColor = CXHexColor(0x08b292);
+        _symbolLabel.backgroundColor = CXWhiteColor;
+        return;
+    }
+    
+    if(status == QuestionStatusMutiRightWrong){
+        UIColor *color = [UIColor colorWithPatternImage:[UIImage imageNamed:@"statusRightError"]];
+        [_symbolLabel setBackgroundColor:color];
+        
+        _symbolLabel.layer.borderWidth = 0;
+        [_symbolLabel setClipsToBounds:YES];
+        return;
+    }
+    
+    
 
-- (NSString *)indexConvertToSymbol:(NSInteger)index{
-    if(index == 0){
-        return @"A";
-    }else if(index == 1){
-        return @"B";
-    }else if(index == 2){
-        return @"C";
-    }else if(index == 3){
-        return @"D";
-    }else if(index == 4){
-        return @"E";
-    }else if(index == 5){
-        return @"F";
-    }else if(index == 6){
-        return @"G";
-    }else{
-        return @"X";
-    }
-}
-
-- (NSString *)indexConvertToMinSymbol:(NSInteger)index{
-    if(index == 0){
-        return @"a";
-    }else if(index == 1){
-        return @"b";
-    }else if(index == 2){
-        return @"c";
-    }else if(index == 3){
-        return @"d";
-    }else if(index == 4){
-        return @"e";
-    }else if(index == 5){
-        return @"f";
-    }else if(index == 6){
-        return @"g";
-    }else{
-        return @"x";
-    }
-}
-
-- (NSString *)indexToChinaSymbol:(NSInteger)index{
-    if(index == 0){
-        return @"对";
-    }else if(index == 1){
-        return @"错";
-    }else{
-        return @"未知";
-    }
 }
 
 - (NSInteger)getTitleHeight:(NSString *)text{

@@ -22,7 +22,7 @@
     self.customNavBarView.backgroundColor = CXBackGroundColor;
     
     QuestionCollectionViewCell *contentView = [[QuestionCollectionViewCell alloc] initWithFrame:CGRectZero];
-    [contentView updateUIByQuestion:_question mode:ExerciseModeRecite];
+    [contentView updateUIByQuestion:_question showRightAnswer:YES];
     [self.view addSubview:contentView];
     
     [contentView mas_makeConstraints:^(MASConstraintMaker *make) {

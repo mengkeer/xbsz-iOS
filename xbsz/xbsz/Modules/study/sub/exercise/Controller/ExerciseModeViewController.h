@@ -26,8 +26,4 @@
 
 - (void)updateUIByQuestionIndex:(NSInteger)index;
 
-//是否是当前焦点，根据跳转过来时的index判断
-- (void)updateUIByQuestionIndex:(NSInteger)index;
-
-
 @end

@@ -8,12 +8,14 @@
 
 #import "ExerciseChapterViewController.h"
 #import "ExerciseChapterCollectionViewCell.h"
-#import "ReciteViewController.h"
 #import "StudyUtil.h"
 #import "UINavigationController+TZPopGesture.h"
 #import "PYSearch.h"
 #import "QuestionSearchViewController.h"
 #import "CXNavigationController.h"
+#import "ReciteViewController.h"
+#import "SinglePracticeViewController.h"
+#import "MutiPracticeViewController.h"
 
 static NSString *cellID = @"ChapterCellID";
 
@@ -164,13 +166,31 @@ static NSString *cellID = @"ChapterCellID";
 #pragma mark - ExerciseChapterTableViewDelegate
 
 - (void)selectChapter:(NSInteger)index{
-    ReciteViewController *questionVC = [ReciteViewController controller];
-    questionVC.mode = _mode;
-    questionVC.type = _type;
-    questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
-    questionVC.chapterIndex = index;
-    [self.navigationController pushViewController:questionVC animated:YES];
+    if(_mode == ExerciseModeRecite){
+        ReciteViewController *questionVC = [ReciteViewController controller];
+        questionVC.mode = _mode;
+        questionVC.type = _type;
+        questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
+        questionVC.chapterIndex = index;
+        [self.navigationController pushViewController:questionVC animated:YES];
+    }else if(_mode == ExerciseModePractice){
+        if(_segmentControl.selectedSegmentIndex == 0){
+            SinglePracticeViewController *questionVC = [SinglePracticeViewController controller];
+            [questionVC updateData:_mode type:_type chapter:index];
+            [self.navigationController pushViewController:questionVC animated:YES];
+        }else{
+            MutiPracticeViewController *questionVC = [MutiPracticeViewController controller];
+            [questionVC updateData:_mode type:_type chapter:index];
+            [self.navigationController pushViewController:questionVC animated:YES];
+
+        }
+    }
+    else{
+        [ToastView showErrorWithStaus:@"该模式还未开放"];
+    }
+   
 }
+
 
 - (void)popFromCurrentViewController{
     [super popFromCurrentViewController];

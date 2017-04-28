@@ -33,9 +33,17 @@
 //获取纯净的题干内容  去除前面的题号索引
 + (NSString *)getPureTitle:(NSString *)title;
 
++ (BOOL)isSingleRightAnswer:(NSInteger)index answer:(NSString *)answer;       //单选
+
++ (BOOL)isMutiRightAnswer:(NSString *)selectedIndexs answer:(NSString *)answer;
+
++ (NSString *)indexConvertToSymbol:(NSInteger)index;
+
 #pragma mark - 搜索模式接口
 //根据关键字获取查询结果 最多显示前20条数据
 + (NSMutableArray *)getSearchResultsBySearchText:(NSString *)text type:(ExerciseType)type;
+
+
 
 + (void)closeDB;
 

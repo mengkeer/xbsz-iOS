@@ -16,9 +16,11 @@ static NSInteger numberOfItems = 5;
 
 @property (nonatomic, assign) ExerciseMode mode;
 
-@property (nonatomic, copy) NSArray *questions;
+@property (nonatomic, assign) NSInteger total;
 
 @property (nonatomic, assign) NSInteger currentIndex;
+
+@property (nonatomic, copy) NSDictionary *judgedDic;
 
 @property (nonatomic, copy) ClickBlock clickBlock;
 
@@ -145,7 +147,7 @@ static NSInteger numberOfItems = 5;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [_questions count];
+    return _total;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;{
@@ -155,7 +157,15 @@ static NSInteger numberOfItems = 5;
         [cell updateUIByQuestionIndex:index+1 isFocused:YES];
     }else{
         [cell updateUIByQuestionIndex:index+1 isFocused:NO];
-
+    }
+    NSString *key = [NSString stringWithFormat:@"%ld",indexPath.row];
+    if(_judgedDic != nil && [_judgedDic containsObjectForKey:key]){
+        NSInteger judge = [[_judgedDic valueForKey:key] integerValue];
+        if(judge == 1){
+            [cell updateUIByQuestionIsRight:YES];
+        }else if(judge == -1){
+            [cell updateUIByQuestionIsRight:NO];
+        }
     }
     return cell;
 }
@@ -169,11 +179,12 @@ static NSInteger numberOfItems = 5;
 }
 
 - (void)updateData:(ExerciseMode)mode
-         questions:(NSArray *)questions
-      currentIndex:(NSInteger)currentIndex
-           clicked:(ClickBlock)clickBlock{
+             total:(NSInteger)total
+         judgedDic:(NSDictionary *)judgedDic
+      currentIndex:(NSInteger)currentIndex clicked:(ClickBlock)clickBlock{
     _mode = mode;
-    _questions = questions;
+    _total = total;
+    _judgedDic = judgedDic;
     _currentIndex = currentIndex;
     _clickBlock = clickBlock;
 }
@@ -220,12 +231,27 @@ static NSInteger numberOfItems = 5;
 
 - (void)updateUIByQuestionIndex:(NSInteger)index isFocused:(BOOL)isFocused{
     _symbolLabel.text = [NSString stringWithFormat:@"%ld",index];
+    _symbolLabel.layer.borderWidth = 1;
+    _symbolLabel.textColor = CXBlackColor;
+    _symbolLabel.backgroundColor = CXWhiteColor;
     if(isFocused){
         _symbolLabel.layer.borderColor = CXBlackColor.CGColor;
         _symbolLabel.textColor = CXBlackColor;
     }else{
         _symbolLabel.layer.borderColor = CXLightGrayColor.CGColor;
         _symbolLabel.textColor = CXLightGrayColor;
+    }
+}
+
+- (void)updateUIByQuestionIsRight:(BOOL)isRight{
+    if(isRight == YES){
+        _symbolLabel.layer.borderWidth = 0;
+        _symbolLabel.textColor = CXWhiteColor;
+        _symbolLabel.backgroundColor = CXHexColor(0x08b292);
+    }else{
+        _symbolLabel.layer.borderWidth = 0;
+        _symbolLabel.textColor = CXWhiteColor;
+        _symbolLabel.backgroundColor = CXRedColor;
     }
 }
 
