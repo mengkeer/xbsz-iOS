@@ -13,7 +13,8 @@ typedef NS_ENUM(NSUInteger,ExerciseMode){
     ExerciseModePractice,               //做题模式
     ExerciseModePracticeRandom,          //做题模式,随机
     ExerciseModeExam,                           //考试模式
-    ExerciseModeMistakes                    //错题集模式
+    ExerciseModeMistakes,                    //错题集模式
+    ExerciseModeUnknown
 };
 
 typedef NS_ENUM(NSInteger,ExerciseType){

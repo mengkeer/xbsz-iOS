@@ -11,7 +11,7 @@
 #import "ExerciseSearchBar.h"
 #import "Exercise.h"
 #import "ExerciseList.h"
-#import "ExerciseChapterViewController.h"
+#import "ExerciseModeViewController.h"
 #import "StudyUtil.h"
 #import "ExerciseMode.h"
 
@@ -142,9 +142,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 - (void)gotoExerciseDetailView:(ExerciseType)type{
-    ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
+    ExerciseModeViewController *chapterVC = [ExerciseModeViewController controller];
     chapterVC.type = type;
-    chapterVC.mode = ExerciseModeRecite;
     [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
@@ -273,17 +272,18 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location{
     //防止重复加入
-    if ([self.presentedViewController isKindOfClass:[ExerciseChapterViewController class]]){
+    if ([self.presentedViewController isKindOfClass:[ExerciseModeViewController class]]){
         return nil;
     }else{
-        ExerciseChapterViewController *peekViewController = [[ExerciseChapterViewController alloc] init];
+        ExerciseModeViewController *peekViewController = [[ExerciseModeViewController alloc] init];
+        peekViewController.beforePeekedViewConreoller = self;
         peekViewController.type = [StudyUtil indexToExerciseType:[self getIndexByPreviewing:previewingContext]];
         return peekViewController;
     }
 }
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit{
-    ExerciseChapterViewController *popViewController = [ExerciseChapterViewController controller];
+    ExerciseModeViewController *popViewController = [ExerciseModeViewController controller];
     popViewController.type = [StudyUtil indexToExerciseType:[self getIndexByPreviewing:previewingContext]];
     [self showViewController:popViewController sender:self];
 }
@@ -295,8 +295,5 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     NSInteger index = indexPath.section*numberOfItems + indexPath.row;
     return index;
 }
-
-
-
 
 @end

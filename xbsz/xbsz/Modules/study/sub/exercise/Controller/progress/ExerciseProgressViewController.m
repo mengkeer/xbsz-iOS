@@ -181,6 +181,8 @@ static NSInteger numberOfItems = 5;
 @end
 
 
+#pragma mark - 自定义的Cell
+
 @implementation ExerciseProgressCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame{

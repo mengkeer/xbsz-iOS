@@ -298,8 +298,9 @@ static NSInteger symbolWidth = 35;
 #pragma mark - private method
 
 - (void)cancel{
-    [self.navigationController.topViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 @end
 
