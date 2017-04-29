@@ -10,6 +10,7 @@
 #import "StudyUtil.h"
 #import "ExerciseProgressViewController.h"
 #import "QuestionCollectionViewCell.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 static NSString *cellID = @"ExercisePracticeQuestionCellID";
 static NSInteger bottomHeight = 45;
@@ -19,6 +20,8 @@ static NSInteger bottomHeight = 45;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) UIButton *gotoBtn;
+@property (nonatomic, strong) UIButton *restartBtn;
+
 
 @property (nonatomic, strong) UIButton *preBtn;
 @property (nonatomic, strong) UILabel *preLabel;
@@ -38,10 +41,19 @@ static NSInteger bottomHeight = 45;
 
 @implementation SinglePracticeViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.fd_interactivePopDisabled = YES;
+    id traget = self.navigationController.interactivePopGestureRecognizer.delegate;
+    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:traget action:nil];
+    [self.view addGestureRecognizer:pan];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.customNavBarView addSubview:self.gotoBtn];
+    [self.customNavBarView addSubview:self.restartBtn];
     self.customNavBarView.backgroundColor  = CXBackGroundColor;
     
     
@@ -132,13 +144,25 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)gotoBtn{
     if(!_gotoBtn){
         _gotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _gotoBtn.frame = CGRectMake(CXScreenWidth - 49, 20, 44, 44);
-        [_gotoBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+        _gotoBtn.frame = CGRectMake(CXScreenWidth - 46, 23, 38, 38);
+        [_gotoBtn setImageEdgeInsets:UIEdgeInsetsMake(7, 7, 7, 7)];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateNormal];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateHighlighted];
         [_gotoBtn addTarget:self action:@selector(questionGoto) forControlEvents:UIControlEventTouchUpInside];
     }
     return _gotoBtn;
+}
+
+- (UIButton *)restartBtn{
+    if(!_restartBtn){
+        _restartBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _restartBtn.frame = CGRectMake(CXScreenWidth - 84, 23, 38, 38);
+        [_restartBtn setImageEdgeInsets:UIEdgeInsetsMake(6, 6,6,6)];
+        [_restartBtn setImage:[UIImage imageNamed:@"question_restart"] forState:UIControlStateNormal];
+        [_restartBtn setImage:[UIImage imageNamed:@"question_restart"] forState:UIControlStateHighlighted];
+        [_restartBtn addTarget:self action:@selector(restartByWrongQuestion) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _restartBtn;
 }
 
 - (UICollectionView *)collectionView{
@@ -260,7 +284,7 @@ static NSInteger bottomHeight = 45;
     BOOL isRight = [cell showSinglePracticeAnswer:selectedIndex];
     if(isRight == YES){
         [_judgedDic setValue:@"1" forKey:key];
-        [self performSelector:@selector(next) withObject:nil afterDelay:0.3];
+        if(_index != [_questions count] -1 )[self performSelector:@selector(next) withObject:nil afterDelay:0.5];
     }else{
         [_judgedDic setValue:@"-1" forKey:key];
     }
@@ -295,7 +319,7 @@ static NSInteger bottomHeight = 45;
 
 - (void)next{
     if(_index == [_questions count] -1){
-        [ToastView showErrorWithStaus:@"没有下一题了"];
+        [self restartByWrongQuestion];
         return;
     }
     ++_index;
@@ -310,7 +334,7 @@ static NSInteger bottomHeight = 45;
         _nextLabel.text = @"下一题";
     }else if(_index == [_questions count] -1){
         _preLabel.text = @"上一题";
-        _nextLabel.text = @"无";
+        _nextLabel.text = @"错题重做";
     }else{
         _preLabel.text = @"上一题";
         _nextLabel.text = @"下一题";
@@ -325,6 +349,41 @@ static NSInteger bottomHeight = 45;
     _mode = mode;
     _type = type;
     _chapterIndex = chapterIndex;
+}
+
+- (void)restartByWrongQuestion{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错题重做" message:@"以当前练习的错题进行下一轮练习" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSMutableArray *arr = [NSMutableArray array];
+        for(NSInteger i = 0;i<[_questions count];i++){
+            NSString *key = [NSString stringWithFormat:@"%ld",i];
+            if([_judgedDic containsObjectForKey:key] && [[_judgedDic valueForKey:key] isEqualToString:@"-1"]){
+                [arr addObject:[_questions objectAtIndex:i]];
+            }
+        }
+        
+        if([arr count] == 0){
+            [ToastView showErrorWithStaus:@"本轮练习无错题"];
+            return ;
+        }
+        
+        _questions = arr;
+        [_practicedDic removeAllObjects];
+        [_judgedDic removeAllObjects];
+        self.title =     self.title = [NSString stringWithFormat:@"1/%ld",[_questions count]];
+        _index = 0;
+        [_collectionView reloadData];
+        NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
+        [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        [self updatePreAndNextLabel:_index];
+    }];
+    [alert addAction:confirm];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - 自定义界面返回事件

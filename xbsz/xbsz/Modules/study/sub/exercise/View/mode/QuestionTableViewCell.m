@@ -197,7 +197,7 @@ static NSInteger symbolWidth = 35;
     if(status == QuestionStatusMutiRightWrong){
         UIColor *color = [UIColor colorWithPatternImage:[UIImage imageNamed:@"statusRightError"]];
         [_symbolLabel setBackgroundColor:color];
-        
+        _symbolLabel.textColor = CXWhiteColor;
         _symbolLabel.layer.borderWidth = 0;
         [_symbolLabel setClipsToBounds:YES];
         return;
