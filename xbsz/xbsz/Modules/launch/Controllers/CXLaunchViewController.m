@@ -40,7 +40,7 @@
         make.centerY.mas_equalTo(self.view.mas_centerY);
     }];
     
-    NSString *launchTimes = [CXUserDefaults objectForKey:AppLaunchTimes];
+    NSString *launchTimes = [CXStandardUserDefaults objectForKey:AppLaunchTimes];
     
     //App不是第一次启动
     if([launchTimes isNotBlank]){

@@ -10,6 +10,8 @@
 #ifndef URLString_h
 #define URLString_h
 
+#define CXTiKuUrl           @"http://www.slotus.cc/tiku.db"
+
 #define CXLoginUrl          @"http://www.slotus.cc/common-api/login"
 #define CXRegisterUrl       @"http://www.slotus.cc/common-api/register"
 #define CXGetUserInfoUrl      @"http://www.slotus.cc/limit-api/getUserInfo"

@@ -27,8 +27,10 @@
     static FMDatabase *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"tiku" ofType:@"db"];
-        instance = [FMDatabase databaseWithPath:path];
+        NSString *localPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        // 要检查的文件目录
+        NSString *filePath = [localPath  stringByAppendingPathComponent:@"tiku.db"];
+        instance = [FMDatabase databaseWithPath:filePath];
     });
     return instance;
 }
@@ -88,10 +90,10 @@
     NSString *table_name = [self exerciseTypeToTableName:type];
     FMDatabase *db = [self getDefaultDB];
     if ([db open])  {
-        NSString *sql = [NSString stringWithFormat:@"select * from %@ where id = 0",table_name];
+        NSString *sql = [NSString stringWithFormat:@"select count(*) from %@ where id != 0",table_name];
         FMResultSet *rs = [db executeQuery:sql];
         while ([rs next]) {
-            NSInteger total = [rs longForColumn:@"qid"];
+            NSInteger total  = [rs longForColumnIndex:0];
             return total;
         }
         
@@ -99,38 +101,168 @@
     return 0;
 }
 
-+ (NSArray *)getChapterIndex:(ExerciseType)type{
++ (NSInteger)getQuestionsTotalByType:(ExerciseType)type isWrong:(BOOL)isWrong{
     NSString *table_name = [self exerciseTypeToTableName:type];
     FMDatabase *db = [self getDefaultDB];
     if ([db open])  {
-        NSString *sql = [NSString stringWithFormat:@"select * from %@ where id = 0",table_name];
+        NSString *sql = [NSString stringWithFormat:@"select count(*) from %@ where id != 0 and flag = -1",table_name];
         FMResultSet *rs = [db executeQuery:sql];
         while ([rs next]) {
-            NSString *option = [rs stringForColumn:@"option"];
-            return [option componentsSeparatedByString:@","];
+            NSInteger total =  [rs longForColumnIndex:0];
+            return total;
         }
         
+    }
+    return 0;
+}
+
++ (NSInteger)getQuestionsTotalByType:(ExerciseType)type isSingle:(BOOL)isSingle{
+    NSString *table_name = [self exerciseTypeToTableName:type];
+    FMDatabase *db = [self getDefaultDB];
+    if ([db open])  {
+        NSString *sql = @"";
+        if(isSingle == YES){
+            sql = [NSString stringWithFormat:@"select count(*) from %@ where id != 0 and ( type = 1 or type = 3)",table_name];
+        }else{
+            sql = [NSString stringWithFormat:@"select count(*) from %@ where id != 0 and type = 2",table_name];
+        }
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            NSInteger total =  [rs longForColumnIndex:0];
+            return total;
+        }
+        
+    }
+    return 0;
+}
+
++ (NSInteger)getQuestionsTotalByType:(ExerciseType)type isSingle:(BOOL)isSingle isWrong:(BOOL)isWrong{
+    NSString *table_name = [self exerciseTypeToTableName:type];
+    FMDatabase *db = [self getDefaultDB];
+    if ([db open])  {
+        NSString *sql = @"";
+        if(isSingle == YES){
+            sql = [NSString stringWithFormat:@"select count(*) from %@ where id != 0 and flag = -1 and ( type = 1 or type = 3)",table_name];
+        }else{
+            sql = [NSString stringWithFormat:@"select count(*) from %@ where id != 0 and flag = -1 and type = 2",table_name];
+        }
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            NSInteger total =  [rs longForColumnIndex:0];
+            return total;
+        }
+        
+    }
+    return 0;
+}
+
++ (NSArray *)getChapterIndex:(ExerciseType)type isSingle:(BOOL)isSingle{
+    NSString *table_name = [self exerciseTypeToTableName:type];
+    FMDatabase *db = [self getDefaultDB];
+    NSMutableArray *ans = [[NSMutableArray alloc] init];
+    if ([db open])  {
+        NSString *sql = @"";
+        if(isSingle == YES){
+            sql = [NSString stringWithFormat:@"select pid from %@ where id != 0 and ( type = 1 or type = 3)",table_name];
+        }else{
+            sql = [NSString stringWithFormat:@"select pid from %@ where id != 0 and type = 2",table_name];
+        }
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            NSInteger pid = [rs longForColumn:@"pid"];
+            NSString *val = [NSString stringWithFormat:@"%ld",pid];
+            if(![ans containsObject:val]){
+                [ans addObject:val];
+            }
+        }
+        return  [ans sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            return [obj1 compare:obj2];
+        }];
     }
     return [NSArray array];
 }
 
-+ (NSArray *)getChapterNums:(ExerciseType)type{
++ (NSArray *)getChapterIndex:(ExerciseType)type isSingle:(BOOL)isSingle isWrong:(BOOL)isWrong{
+    NSString *table_name = [self exerciseTypeToTableName:type];
+    FMDatabase *db = [self getDefaultDB];
+    NSMutableArray *ans = [[NSMutableArray alloc] init];
+    if ([db open])  {
+        NSString *sql = @"";
+        if(isSingle == YES){
+            sql = [NSString stringWithFormat:@"select pid from %@ where id != 0 and flag = -1 and ( type = 1 or type = 3)",table_name];
+        }else{
+             sql = [NSString stringWithFormat:@"select pid from %@ where id != 0 and flag = -1 and type = 2",table_name];
+        }
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            NSInteger pid = [rs longForColumn:@"pid"];
+            NSString *val = [NSString stringWithFormat:@"%ld",pid];
+            if(![ans containsObject:val]){
+                [ans addObject:val];
+            }
+        }
+        return  [ans sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            return [obj1 compare:obj2];
+        }];
+    }
+    return [NSArray array];
+}
+
++ (NSArray *)getChapterNums:(ExerciseType)type isSingle:(BOOL)isSingle{
     NSString *table_name = [self exerciseTypeToTableName:type];
     FMDatabase *db = [self getDefaultDB];
     if ([db open])  {
-        NSString *sql = [NSString stringWithFormat:@"select * from %@ where id = 0",table_name];
+        
+        NSString *sql = @"";
+        if(isSingle == YES){
+            sql = [NSString stringWithFormat:@"select pid from %@ where id != 0 and ( type = 1 or type = 3)",table_name];
+        }else{
+            sql = [NSString stringWithFormat:@"select pid from %@ where id != 0 and type = 2",table_name];
+        }
         FMResultSet *rs = [db executeQuery:sql];
+        NSMutableDictionary *temp = [[NSMutableDictionary alloc] init];
         while ([rs next]) {
-            NSString *option = [rs stringForColumn:@"answer"];
-            NSArray *arr = [option componentsSeparatedByString:@";"];
-            NSMutableArray *ans = [NSMutableArray array];
-            [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                NSArray *temp = [(obj) componentsSeparatedByString:@","];
-                [ans addObject:temp];
-            }];
-            return [ans copy];
+            NSInteger pid = [rs longForColumn:@"pid"];
+            NSString *key = [NSString stringWithFormat:@"%ld",pid];
+            if([temp containsObjectForKey:key]){
+                NSInteger val = [[temp valueForKey:key] integerValue];
+                [temp setValue:[NSString stringWithFormat:@"%ld",val+1] forKey:key];
+            }else{
+                [temp setValue:@"1" forKey:key];
+            }
         }
         
+        NSArray *ans = [temp allValuesSortedByKeys];
+        return ans;
+    }
+    return [NSArray array];
+}
+
++ (NSArray *)getChapterNums:(ExerciseType)type isSingle:(BOOL)isSingle isWrong:(BOOL)isWrong{
+    NSString *table_name = [self exerciseTypeToTableName:type];
+    FMDatabase *db = [self getDefaultDB];
+    if ([db open])  {
+        NSString *sql = @"";
+        if(isSingle == YES){
+            sql = [NSString stringWithFormat:@"select pid from %@ where id != 0 and flag = -1 and ( type = 1 or type = 3)",table_name];
+        }else{
+            sql = [NSString stringWithFormat:@"select pid from %@ where id != 0 and flag = -1 and type = 2",table_name];
+        }
+        FMResultSet *rs = [db executeQuery:sql];
+        NSMutableDictionary *temp = [[NSMutableDictionary alloc] init];
+        while ([rs next]) {
+            NSInteger pid = [rs longForColumn:@"pid"];
+            NSString *key = [NSString stringWithFormat:@"%ld",pid];
+            if([temp containsObjectForKey:key]){
+                NSInteger val = [[temp valueForKey:key] integerValue];
+                [temp setValue:[NSString stringWithFormat:@"%ld",val+1] forKey:key];
+            }else{
+                [temp setValue:@"1" forKey:key];
+            }
+        }
+        
+        NSArray *ans = [temp allValuesSortedByKeys];
+        return ans;
     }
     return [NSArray array];
 }
@@ -144,6 +276,36 @@
             sql = [NSString stringWithFormat:@"select * from %@ where id != 0 and pid = %ld and ( type = 1 or type = 3) ",table_name,index];
         }else{
             sql = [NSString stringWithFormat:@"select * from %@ where id != 0 and pid = %ld and type = 2 ",table_name,index];
+        }
+        NSMutableArray *ans = [NSMutableArray array];
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            ExerciseQuestion *temp = [[ExerciseQuestion alloc] init];
+            temp.question_id = [rs intForColumn:@"id"];
+            temp.pid = [rs intForColumn:@"pid"];
+            temp.qid = [rs intForColumn:@"qid"];
+            temp.type = [rs intForColumn:@"type"];
+            temp.title = [rs stringForColumn:@"title"];
+            temp.option = [rs stringForColumn:@"option"];
+            temp.answer = [rs stringForColumn:@"answer"];
+            temp.flag = [rs intForColumn:@"flag"];
+            [ans addObject:temp];
+        }
+        return [ans copy];
+        
+    }
+    return [NSArray array];
+}
+
++ (NSArray *)getQuestions:(ExerciseType)type isSingle:(BOOL)isSingle isWrong:(NSInteger)isWrong chapterIndex:(NSInteger)index{
+    NSString *table_name = [self exerciseTypeToTableName:type];
+    FMDatabase *db = [self getDefaultDB];
+    if ([db open])  {
+        NSString *sql = nil;
+        if(isSingle == YES){
+            sql = [NSString stringWithFormat:@"select * from %@ where id != 0 and pid = %ld and flag = -1 and ( type = 1 or type = 3) ",table_name,index];
+        }else{
+            sql = [NSString stringWithFormat:@"select * from %@ where id != 0 and pid = %ld and flag = -1 and type = 2 ",table_name,index];
         }
         NSMutableArray *ans = [NSMutableArray array];
         FMResultSet *rs = [db executeQuery:sql];
@@ -258,7 +420,22 @@
             return NO;
         }
     }
-    return [selectedIndexs length] == [answer length];
+    return [selectedIndexs length] == [[answer stringByTrim] length];
+}
+
++ (void)setQuestionFlag:(ExerciseType)type quesionID:(NSInteger)quesionID isWrong:(BOOL)isWrong{
+    NSString *table_name = [self exerciseTypeToTableName:type];
+    FMDatabase *db = [self getDefaultDB];
+    
+    if ([db open]){
+        if(isWrong == YES){
+            NSString *sql = [NSString stringWithFormat:@"update %@ set flag = ? where id = ?",table_name];
+            [db executeUpdate:sql,@(-1),@(quesionID)];
+        }else{
+            NSString *sql = [NSString stringWithFormat:@"update %@ set flag = 0 where id = %ld",table_name,quesionID];
+            [db executeUpdate:sql];
+        }
+    }
 }
 
 + (NSString *)indexConvertToSymbol:(NSInteger)index{
@@ -336,8 +513,46 @@
     }
     
     return [NSMutableArray array];
+}
+
++ (NSArray *)getExamQuestionsByType:(ExerciseType)type{
+    FMDatabase *db = [self getDefaultDB];
+    if([db open]){
+        NSString *tableName = [self exerciseTypeToTableName:type];
+        NSString *sql = [NSString stringWithFormat:@"select * from %@ where id != 0 and (type = 1 or type = 3 ) order by random() limit 60",tableName];
+        NSMutableArray *ans = [NSMutableArray array];
+        FMResultSet *rs = [db executeQuery:sql];
+        while ([rs next]) {
+            ExerciseQuestion *temp = [[ExerciseQuestion alloc] init];
+            temp.question_id = [rs intForColumn:@"id"];
+            temp.pid = [rs intForColumn:@"pid"];
+            temp.qid = [rs intForColumn:@"qid"];
+            temp.type = [rs intForColumn:@"type"];
+            temp.title = [rs stringForColumn:@"title"];
+            temp.option = [rs stringForColumn:@"option"];
+            temp.answer = [rs stringForColumn:@"answer"];
+            temp.flag = [rs intForColumn:@"flag"];
+            [ans addObject:temp];
+        }
+        
+        sql = [NSString stringWithFormat:@"select * from %@ where id != 0 and type = 2 order by random() limit 20",tableName];
+        rs = [db executeQuery:sql];
+        while ([rs next]) {
+            ExerciseQuestion *temp = [[ExerciseQuestion alloc] init];
+            temp.question_id = [rs intForColumn:@"id"];
+            temp.pid = [rs intForColumn:@"pid"];
+            temp.qid = [rs intForColumn:@"qid"];
+            temp.type = [rs intForColumn:@"type"];
+            temp.title = [rs stringForColumn:@"title"];
+            temp.option = [rs stringForColumn:@"option"];
+            temp.answer = [rs stringForColumn:@"answer"];
+            temp.flag = [rs intForColumn:@"flag"];
+            [ans addObject:temp];
+        }
+        return ans;
+    }
     
-    
+    return [NSMutableArray array];
 }
 
 + (void)closeDB{

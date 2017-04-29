@@ -24,6 +24,7 @@
 
 @property (nonatomic, strong) UIImageView *headImageView;
 
+@property (nonatomic, copy) SwitchBlock switchBlock;
 
 @end
 
@@ -117,6 +118,7 @@
         _iSwitch = [[UISwitch alloc] init];
         _iSwitch.on = YES;
         _iSwitch.onTintColor = CXMainColor;
+        [_iSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _iSwitch;
 }
@@ -180,9 +182,22 @@
         _headImageView.hidden = YES;
     }
 }
- 
+
+- (void)setSwitched:(BOOL)isOpen changed:(SwitchBlock)switchBlock{
+    _switchBlock = switchBlock;
+    _iSwitch.on = isOpen;
+}
+
 - (void)setHeadImage:(NSString *)imageUrl{
     _headImageView.yy_imageURL = [NSURL URLWithString:imageUrl];
+}
+
+- (void)switchChanged:(UISwitch *)switched{
+    if(switched.on){
+        if(_switchBlock)    _switchBlock(YES);
+    }else{
+        if(_switchBlock)    _switchBlock(NO);
+    }
 }
 
 @end

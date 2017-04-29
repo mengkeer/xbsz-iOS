@@ -11,6 +11,7 @@
 #import "ExerciseProgressViewController.h"
 #import "QuestionCollectionViewCell.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
+#import "CXAudioPlayer.h"
 
 static NSString *cellID = @"ExercisePracticeQuestionCellID";
 static NSInteger bottomHeight = 45;
@@ -21,6 +22,7 @@ static NSInteger bottomHeight = 45;
 
 @property (nonatomic, strong) UIButton *gotoBtn;
 @property (nonatomic, strong) UIButton *restartBtn;
+@property (nonatomic, strong) UIButton *removeBtn;
 
 
 @property (nonatomic, strong) UIButton *preBtn;
@@ -54,6 +56,9 @@ static NSInteger bottomHeight = 45;
     
     [self.customNavBarView addSubview:self.gotoBtn];
     [self.customNavBarView addSubview:self.restartBtn];
+    if(_mode == ExerciseModeMistakes){
+        [self.customNavBarView addSubview:self.removeBtn];
+    }
     self.customNavBarView.backgroundColor  = CXBackGroundColor;
     
     
@@ -82,8 +87,10 @@ static NSInteger bottomHeight = 45;
 
 //加载题库数据
 - (void)loadData{
-    _questions = [StudyUtil getQuestions:_type isSingle:NO chapterIndex:_chapterIndex];
-    if(_mode == ExerciseModePracticeRandom){
+    if(_mode == ExerciseModePractice){
+        _questions = [StudyUtil getQuestions:_type isSingle:NO chapterIndex:_chapterIndex];
+    }else if(_mode == ExerciseModePracticeRandom){
+        _questions = [StudyUtil getQuestions:_type isSingle:NO chapterIndex:_chapterIndex];
         _questions = [_questions sortedArrayUsingComparator:^NSComparisonResult(ExerciseQuestion *one, ExerciseQuestion *two) {
             int seed = arc4random_uniform(2);
             if (seed) {
@@ -92,6 +99,8 @@ static NSInteger bottomHeight = 45;
                 return [two.title compare:one.title];
             }
         }];
+    }else if(_mode == ExerciseModeMistakes){
+        _questions = [StudyUtil getQuestions:_type isSingle:NO isWrong:YES chapterIndex:_chapterIndex];
     }
     [_collectionView reloadData];
 }
@@ -155,8 +164,8 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)gotoBtn{
     if(!_gotoBtn){
         _gotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _gotoBtn.frame = CGRectMake(CXScreenWidth - 46, 23, 38, 38);
-        [_gotoBtn setImageEdgeInsets:UIEdgeInsetsMake(7, 7, 7, 7)];
+        _gotoBtn.frame = CGRectMake(CXScreenWidth - 44, 25, 34, 34);
+        [_gotoBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateNormal];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateHighlighted];
         [_gotoBtn addTarget:self action:@selector(questionGoto) forControlEvents:UIControlEventTouchUpInside];
@@ -167,13 +176,25 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)restartBtn{
     if(!_restartBtn){
         _restartBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _restartBtn.frame = CGRectMake(CXScreenWidth - 84, 23, 38, 38);
-        [_restartBtn setImageEdgeInsets:UIEdgeInsetsMake(6, 6,6,6)];
+        _restartBtn.frame = CGRectMake(CXScreenWidth - 78, 25, 34, 34);
+        [_restartBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5,5,5)];
         [_restartBtn setImage:[UIImage imageNamed:@"question_restart"] forState:UIControlStateNormal];
         [_restartBtn setImage:[UIImage imageNamed:@"question_restart"] forState:UIControlStateHighlighted];
         [_restartBtn addTarget:self action:@selector(restartByWrongQuestion) forControlEvents:UIControlEventTouchUpInside];
     }
     return _restartBtn;
+}
+
+- (UIButton *)removeBtn{
+    if(!_removeBtn){
+        _removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _removeBtn.frame = CGRectMake(CXScreenWidth - 112, 25, 34, 34);
+        [_removeBtn setImageEdgeInsets:UIEdgeInsetsMake(4, 7,4,1)];
+        [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateNormal];
+        [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateHighlighted];
+        [_removeBtn addTarget:self action:@selector(removeQuestion) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _removeBtn;
 }
 
 - (UICollectionView *)collectionView{
@@ -190,7 +211,7 @@ static NSInteger bottomHeight = 45;
         _collectionView.dataSource = self;
         _collectionView.alwaysBounceHorizontal = YES;
         _collectionView.delegate = self;
-        _collectionView.scrollEnabled = NO;
+//        _collectionView.scrollEnabled = NO;
         _collectionView.pagingEnabled = YES;
         _collectionView.showsHorizontalScrollIndicator = NO;
         [_collectionView registerClass:[QuestionCollectionViewCell class] forCellWithReuseIdentifier:cellID];
@@ -260,16 +281,27 @@ static NSInteger bottomHeight = 45;
     QuestionCollectionViewCell *cell = (QuestionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     cell.baseDelegate = self;
     NSString *key = [NSString stringWithFormat:@"%ld",indexPath.row];
+    ExerciseQuestion *question = [_questions objectAtIndex:indexPath.row];
     if([_judgedDic containsObjectForKey:key]){
-        [cell updateUIByQuestion:[_questions objectAtIndex:indexPath.row] allowSelect:NO];
+        [cell updateUIByQuestion:question allowSelect:NO];
     }else{
-        [cell updateUIByQuestion:[_questions objectAtIndex:indexPath.row] allowSelect:YES];
+        [cell updateUIByQuestion:question allowSelect:YES];
     }
     //从已做过的记录中回复做题记录
     if([_practicedDic containsObjectForKey:key]){
         NSString *selectedIndexs = [_practicedDic valueForKey:key];
-        [cell showMutiPracticeAnswer:selectedIndexs];
+        if([_judgedDic containsObjectForKey:key])       [cell showMutiPracticeAnswer:selectedIndexs];
+        else        [cell setTemporarySelected:selectedIndexs];
     }
+    
+    if(question.flag == 0){
+        [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateNormal];
+        [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateHighlighted];
+    }else{
+        [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateNormal];
+        [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateHighlighted];
+    }
+    
     return cell;
 }
 
@@ -364,10 +396,13 @@ static NSInteger bottomHeight = 45;
         QuestionCollectionViewCell *cell = (QuestionCollectionViewCell *)[_collectionView cellForItemAtIndexPath:path];
         BOOL isRight = [cell showMutiPracticeAnswer:[_practicedDic objectForKey:key]];
         if(isRight == YES){
+            [CXAudioPlayer playSoundByFilename:@"correct"];
             [_judgedDic setValue:@"1" forKey:key];
-            [self performSelector:@selector(next) withObject:nil afterDelay:0.3];
         }else{
+            [CXAudioPlayer playSoundByFilename:@"mistake"];
             [_judgedDic setValue:@"-1" forKey:key];
+            ExerciseQuestion *question = [_questions objectAtIndex:_index];
+            if(question.flag != -1) [StudyUtil setQuestionFlag:_type quesionID:question.question_id isWrong:YES];
         }
         [self updatePreAndNextLabel:_index];
     }
@@ -435,6 +470,36 @@ static NSInteger bottomHeight = 45;
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+- (void)removeQuestion{
+    ExerciseQuestion *quesion = [_questions objectAtIndex:_index];
+    
+    if(quesion.flag == 0){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"该题已移除错题集" message:@"退出后将生效" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancel];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"是否从错题集中删除" message:@"退出后重新进入错题集将生效" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancel];
+        
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            quesion.flag = 0;
+            
+            [StudyUtil setQuestionFlag:_type quesionID:quesion.question_id isWrong:NO];
+            [ToastView showBlackSuccessWithStaus:@"删除成功"];
+            [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateNormal];
+            [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateHighlighted];
+        }];
+        [alert addAction:confirm];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+
 
 #pragma mark - 自定义界面返回事件
 - (void)popFromCurrentViewController{

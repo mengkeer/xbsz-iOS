@@ -170,7 +170,7 @@ static NSInteger TitlePaddingRight = 5;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    [cell updateUIWithIndex:indexPath.row option:[_options objectAtIndex:indexPath.row]];
+    [cell updateUIWithIndex:indexPath.row option:[_options objectAtIndex:indexPath.row] isSingle:_isSingle];
     
     //预览模式下显示正确的答案
     if(_showRightAnswer == YES){
@@ -282,6 +282,7 @@ static NSInteger TitlePaddingRight = 5;
     [_tableView reloadData];
     return [StudyUtil isMutiRightAnswer:selectIndexs answer:_question.answer];
 }
+
 
 - (void)setTemporarySelected:(NSString *)selectedIndexs{
     _selectedIndexs = selectedIndexs;

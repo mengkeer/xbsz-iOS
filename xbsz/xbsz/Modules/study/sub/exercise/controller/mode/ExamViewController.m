@@ -1,35 +1,33 @@
 //
-//  PracticeViewController.m
+//  ExamViewController.m
 //  xbsz
 //
-//  Created by lotus on 2017/4/28.
+//  Created by lotus on 2017/4/29.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "SinglePracticeViewController.h"
-#import "StudyUtil.h"
-#import "ExerciseProgressViewController.h"
+#import "ExamViewController.h"
 #import "QuestionCollectionViewCell.h"
-#import "UINavigationController+FDFullscreenPopGesture.h"
-#import "CXAudioPlayer.h"
+#import "ExerciseProgressViewController.h"
+#import "StudyUtil.h"
 
-static NSString *cellID = @"ExercisePracticeQuestionCellID";
+static NSString *cellID = @"ExerciseExamQuestionCellID";
 static NSInteger bottomHeight = 45;
 
-@interface SinglePracticeViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,QuestionOptionDelegate>
-
-@property (nonatomic, strong) UICollectionView *collectionView;
+@interface ExamViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,QuestionOptionDelegate>
 
 @property (nonatomic, strong) UIButton *gotoBtn;
-@property (nonatomic, strong) UIButton *restartBtn;
-@property (nonatomic, strong) UIButton *removeBtn;
+@property (nonatomic, strong) UIButton *submitBtn;
 
+
+@property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) UIButton *preBtn;
 @property (nonatomic, strong) UILabel *preLabel;
 
 @property (nonatomic, strong) UIButton *nextBtn;
 @property (nonatomic, strong) UILabel *nextLabel;
+
 
 @property (nonatomic, copy) NSArray *questions;         //题目集合
 
@@ -41,24 +39,13 @@ static NSInteger bottomHeight = 45;
 
 @end
 
-@implementation SinglePracticeViewController
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.fd_interactivePopDisabled = YES;
-    id traget = self.navigationController.interactivePopGestureRecognizer.delegate;
-    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:traget action:nil];
-    [self.view addGestureRecognizer:pan];
-}
+@implementation ExamViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+   
     [self.customNavBarView addSubview:self.gotoBtn];
-    [self.customNavBarView addSubview:self.restartBtn];
-    if(_mode == ExerciseModeMistakes){
-        [self.customNavBarView addSubview:self.removeBtn];
-    }
+    [self.customNavBarView addSubview:self.submitBtn];
     self.customNavBarView.backgroundColor  = CXBackGroundColor;
     
     
@@ -84,25 +71,9 @@ static NSInteger bottomHeight = 45;
     // Dispose of any resources that can be recreated.
 }
 
-
 //加载题库数据
 - (void)loadData{
-    if(_mode == ExerciseModePractice){
-        _questions = [StudyUtil getQuestions:_type isSingle:YES chapterIndex:_chapterIndex];
-    }else if(_mode == ExerciseModePracticeRandom){
-        _questions = [StudyUtil getQuestions:_type isSingle:YES chapterIndex:_chapterIndex];
-        _questions = [_questions sortedArrayUsingComparator:^NSComparisonResult(ExerciseQuestion *one, ExerciseQuestion *two) {
-            int seed = arc4random_uniform(2);
-            if (seed) {
-                return [one.title compare:two.title];
-            } else {
-                return [two.title compare:one.title];
-            }  
-        }];
-    }else if(_mode == ExerciseModeMistakes){
-        _questions = [StudyUtil getQuestions:_type isSingle:YES isWrong:YES chapterIndex:_chapterIndex];
-    }
-    
+    _questions = [StudyUtil getExamQuestionsByType:_type];
     [_collectionView reloadData];
 }
 
@@ -174,28 +145,16 @@ static NSInteger bottomHeight = 45;
     return _gotoBtn;
 }
 
-- (UIButton *)restartBtn{
-    if(!_restartBtn){
-        _restartBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _restartBtn.frame = CGRectMake(CXScreenWidth - 78, 25, 34, 34);
-        [_restartBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5,5,5)];
-        [_restartBtn setImage:[UIImage imageNamed:@"question_restart"] forState:UIControlStateNormal];
-        [_restartBtn setImage:[UIImage imageNamed:@"question_restart"] forState:UIControlStateHighlighted];
-        [_restartBtn addTarget:self action:@selector(restartByWrongQuestion) forControlEvents:UIControlEventTouchUpInside];
+- (UIButton *)submitBtn{
+    if(!_submitBtn){
+        _submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _submitBtn.frame = CGRectMake(CXScreenWidth - 78, 25, 34, 34);
+        [_submitBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5,5,5)];
+        [_submitBtn setImage:[UIImage imageNamed:@"exam_submit"] forState:UIControlStateNormal];
+        [_submitBtn setImage:[UIImage imageNamed:@"exam_submit"] forState:UIControlStateHighlighted];
+        [_submitBtn addTarget:self action:@selector(submitExam) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _restartBtn;
-}
-
-- (UIButton *)removeBtn{
-    if(!_removeBtn){
-        _removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _removeBtn.frame = CGRectMake(CXScreenWidth - 112, 25, 34, 34);
-        [_removeBtn setImageEdgeInsets:UIEdgeInsetsMake(4, 7,4,1)];
-        [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateNormal];
-        [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateHighlighted];
-        [_removeBtn addTarget:self action:@selector(removeQuestion) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _removeBtn;
+    return _submitBtn;
 }
 
 - (UICollectionView *)collectionView{
@@ -212,6 +171,7 @@ static NSInteger bottomHeight = 45;
         _collectionView.dataSource = self;
         _collectionView.alwaysBounceHorizontal = YES;
         _collectionView.delegate = self;
+        //        _collectionView.scrollEnabled = NO;
         _collectionView.pagingEnabled = YES;
         _collectionView.showsHorizontalScrollIndicator = NO;
         [_collectionView registerClass:[QuestionCollectionViewCell class] forCellWithReuseIdentifier:cellID];
@@ -280,27 +240,22 @@ static NSInteger bottomHeight = 45;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;{
     QuestionCollectionViewCell *cell = (QuestionCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     cell.baseDelegate = self;
+    
     NSString *key = [NSString stringWithFormat:@"%ld",indexPath.row];
     ExerciseQuestion *question = [_questions objectAtIndex:indexPath.row];
-    if([_practicedDic containsObjectForKey:key]){
+    if([_judgedDic count] != 0){
         [cell updateUIByQuestion:question allowSelect:NO];
     }else{
         [cell updateUIByQuestion:question allowSelect:YES];
     }
     //从已做过的记录中回复做题记录
-    if([_practicedDic containsObjectForKey:key]){
-        NSInteger selectedIndex = [[_practicedDic valueForKey:key] integerValue];
-        [cell showSinglePracticeAnswer:selectedIndex];
+    if([_judgedDic count] != 0){
+        NSString *selectedIndexs = [_practicedDic valueForKey:key];
+        if(selectedIndexs == nil)       selectedIndexs = @"";
+        [cell showMutiPracticeAnswer:selectedIndexs];
     }
     
-    if(question.flag == 0){
-        [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateNormal];
-        [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateHighlighted];
-    }else{
-        [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateNormal];
-        [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateHighlighted];
-    }
-    
+
     return cell;
 }
 
@@ -313,42 +268,65 @@ static NSInteger bottomHeight = 45;
     [self updatePreAndNextLabel:_index];
 }
 
-
-#pragma mark - ExerciseChapterTableViewDelegate
-
 - (void)selectOption:(NSInteger)selectedIndex{
     NSString *key = [NSString stringWithFormat:@"%ld",_index];
-    if([_practicedDic containsObjectForKey:key])    return;         //如果该题已做过 则跳过点击选项事件
-    NSString *value = [NSString stringWithFormat:@"%ld",selectedIndex];
-    [_practicedDic setValue:value forKey:key];    
+    NSString *newValue = [NSString stringWithFormat:@"%ld",selectedIndex];
+    
+    if([_judgedDic containsObjectForKey:key])  return;
+    
+    if(_index <= 59){
+          [_practicedDic setValue:newValue forKey:key];
+    }else{
+        BOOL isSelected = YES;
+        if([_practicedDic containsObjectForKey:key]){
+            NSString *value = [_practicedDic valueForKey:key];
+            if([value containsString:newValue]){
+                isSelected = NO;
+                value = [value stringByReplacingOccurrencesOfString:newValue withString:@""];
+                [_practicedDic setValue:value forKey:key];
+            }else{
+                isSelected = YES;
+                value = [NSString stringWithFormat:@"%@%@",value,newValue];
+                [_practicedDic setValue:value forKey:key];
+            }
+        }else{
+            isSelected = YES;
+            [_practicedDic setValue:newValue forKey:key];
+        }
+    }
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
     QuestionCollectionViewCell *cell = (QuestionCollectionViewCell *)[_collectionView cellForItemAtIndexPath:path];
-    BOOL isRight = [cell showSinglePracticeAnswer:selectedIndex];
-    if(isRight == YES){
-        [_judgedDic setValue:@"1" forKey:key];
-        [CXAudioPlayer playSoundByFilename:@"correct"];
-        if(_index != [_questions count] -1 )    [self performSelector:@selector(next) withObject:nil afterDelay:0.5];
-    }else{
-        [_judgedDic setValue:@"-1" forKey:key];
-        [CXAudioPlayer playSoundByFilename:@"mistake"];        //播放音乐
-        ExerciseQuestion *question = [_questions objectAtIndex:_index];
-        if(question.flag != -1)     [StudyUtil setQuestionFlag:_type quesionID:question.question_id isWrong:YES];
-    }
+    [cell setTemporarySelected:[_practicedDic objectForKey:key]];
     
 }
 
+
 - (void)questionGoto{
     ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
-    [progressVC updateData:_mode total:[_questions count] judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
-        if(index >= 0){
-            _index = index;
-            NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
-            [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-            [self updatePreAndNextLabel:index];
-        }
-    }];
-    [self presentViewController:progressVC animated:YES completion:nil];
+    if([_judgedDic count] == [_questions count]){
+        ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
+        [progressVC updateData:ExerciseModePractice total:[_questions count] judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
+            if(index >= 0){
+                _index = index;
+                NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+                [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+                [self updatePreAndNextLabel:index];
+            }
+        }];
+        [self presentViewController:progressVC animated:YES completion:nil];
+    }else{
+        [progressVC updateData:ExerciseModeExam total:[_questions count] judgedDic:_practicedDic currentIndex:_index clicked:^(NSInteger index) {
+            if(index >= 0){
+                _index = index;
+                NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+                [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+                [self updatePreAndNextLabel:index];
+            }
+        }];
+        [self presentViewController:progressVC animated:YES completion:nil];
+    }
+
 }
 
 #pragma mark - 私有方法
@@ -366,13 +344,14 @@ static NSInteger bottomHeight = 45;
 
 - (void)next{
     if(_index == [_questions count] -1){
-        [self restartByWrongQuestion];
+        [self submitExam];
         return;
     }
     ++_index;
     NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
     [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     [self updatePreAndNextLabel:_index];
+    
 }
 
 - (void)updatePreAndNextLabel:(NSInteger)index{
@@ -381,7 +360,8 @@ static NSInteger bottomHeight = 45;
         _nextLabel.text = @"下一题";
     }else if(_index == [_questions count] -1){
         _preLabel.text = @"上一题";
-        _nextLabel.text = @"错题重做";
+        if([_judgedDic count] == 0) _nextLabel.text = @"提交试卷";
+        else    _nextLabel.text = @"退出";
     }else{
         _preLabel.text = @"上一题";
         _nextLabel.text = @"下一题";
@@ -389,84 +369,81 @@ static NSInteger bottomHeight = 45;
     self.title = [NSString stringWithFormat:@"%ld/%ld",index+1,[_questions count]];
 }
 
-
-#pragma mark - 共有方法
-
-- (void)updateData:(ExerciseMode)mode type:(ExerciseType)type chapter:(NSInteger)chapterIndex{
-    _mode = mode;
-    _type = type;
-    _chapterIndex = chapterIndex;
-}
-
-- (void)restartByWrongQuestion{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"错题重做" message:@"以当前练习的错题进行下一轮练习" preferredStyle:UIAlertControllerStyleAlert];
+- (void)submitExam{
+    
+    if([_judgedDic count] == [_questions count]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"是否确认退出" message:@"您已提交过试卷" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancel];
+        
+        UIAlertAction *back = [UIAlertAction actionWithTitle:@"离开" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [super popFromCurrentViewController];
+        }];
+        [alert addAction:back];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
+    NSString *message = @"";
+    if([_practicedDic count] != 80){
+        message = @"有题目未完成,请确认是否提交";
+    }else{
+        message = @"您已完成全部试题";
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"是否提交" message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancel];
     
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        NSMutableArray *arr = [NSMutableArray array];
         for(NSInteger i = 0;i<[_questions count];i++){
+            ExerciseQuestion *question = [_questions objectAtIndex:i];
             NSString *key = [NSString stringWithFormat:@"%ld",i];
-            if([_judgedDic containsObjectForKey:key] && [[_judgedDic valueForKey:key] isEqualToString:@"-1"]){
-                [arr addObject:[_questions objectAtIndex:i]];
+            if([_practicedDic containsObjectForKey:key]){
+                NSString *val = [_practicedDic valueForKey:key];
+                BOOL isRight = NO;
+                if(question.type == 2){
+                    isRight = [StudyUtil isMutiRightAnswer:val answer:question.answer];
+                }else{
+                    isRight = [StudyUtil isSingleRightAnswer:[val integerValue] answer:question.answer];
+                }
+                if(isRight){
+                    [_judgedDic setValue:@"1" forKey:key];
+                }else{
+                    [_judgedDic setValue:@"-1" forKey:key];
+                }
+            }else{
+                [_judgedDic setValue:@"-1" forKey:key];
             }
         }
         
-        if([arr count] == 0){
-            [ToastView showErrorWithStaus:@"本轮练习无错题"];
-            return ;
-        }
         
-        _questions = arr;
-        [_practicedDic removeAllObjects];
-        [_judgedDic removeAllObjects];
-        self.title =     self.title = [NSString stringWithFormat:@"1/%ld",[_questions count]];
-        _index = 0;
-        [_collectionView reloadData];
-        NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
-        [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-        [self updatePreAndNextLabel:_index];
+        ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
+        [progressVC updateData:ExerciseModePractice total:[_questions count] judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
+            if(index >= 0){
+                _index = index;
+                NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+                [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+                [self updatePreAndNextLabel:index];
+                [_collectionView reloadData];
+            }
+        }];
+        [self presentViewController:progressVC animated:YES completion:nil];
+        
+        
     }];
     [alert addAction:confirm];
-    
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)removeQuestion{
-    ExerciseQuestion *quesion = [_questions objectAtIndex:_index];
-    
-    if(quesion.flag == 0){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"该题已移除错题集" message:@"退出后将生效" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:cancel];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-    }else{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"是否从错题集中删除" message:@"退出后重新进入错题集将生效" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:cancel];
-        
-        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            quesion.flag = 0;
-            
-            [StudyUtil setQuestionFlag:_type quesionID:quesion.question_id isWrong:NO];
-            [ToastView showBlackSuccessWithStaus:@"删除成功"];
-            [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateNormal];
-            [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateHighlighted];
-        }];
-        [alert addAction:confirm];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-    }
-}
 
 #pragma mark - 自定义界面返回事件
 - (void)popFromCurrentViewController{
     if([_judgedDic count] == [_questions count]){
         [super popFromCurrentViewController];
     }else{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"是否确认退出" message:@"当前练习未完成\ntips:已做错的题会保存在错题集" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"是否确认退出" message:@"当前试卷未提交" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         [alert addAction:cancel];
         

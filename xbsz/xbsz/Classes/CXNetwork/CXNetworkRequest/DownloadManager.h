@@ -21,4 +21,8 @@ typedef void (^downloadResume)(CGFloat currentPrpgress);
 
 - (void)downloadFromServer:(NSString *)url;
 
+- (void)downloadTikuFromServer;
+
++ (BOOL)isTikuExists;
+
 @end

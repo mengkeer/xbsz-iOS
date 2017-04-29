@@ -20,6 +20,8 @@
 
 + (void)showSuccessWithStaus:(NSString *)status;
 
++ (void)showBlackSuccessWithStaus:(NSString *)status;
+
 + (void)showSuccessWithStaus:(NSString *)status delay:(NSInteger)delay;
 
 @end

@@ -64,7 +64,6 @@
     }];
     
     self.selectIndex = 0;
-    self.showFps = YES;
 }
 
 - (void)didReceiveMemoryWarning {

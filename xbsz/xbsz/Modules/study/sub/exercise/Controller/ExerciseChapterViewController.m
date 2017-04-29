@@ -31,6 +31,11 @@ static NSString *cellID = @"ChapterCellID";
 
 @implementation ExerciseChapterViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if(_mode == ExerciseModeMistakes)   [_collectionView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -173,7 +178,7 @@ static NSString *cellID = @"ChapterCellID";
         questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
         questionVC.chapterIndex = index;
         [self.navigationController pushViewController:questionVC animated:YES];
-    }else if(_mode == ExerciseModePractice || _mode == ExerciseModePracticeRandom){
+    }else if(_mode == ExerciseModePractice || _mode == ExerciseModePracticeRandom || _mode == ExerciseModeMistakes){
         if(_segmentControl.selectedSegmentIndex == 0){
             SinglePracticeViewController *questionVC = [SinglePracticeViewController controller];
             [questionVC updateData:_mode type:_type chapter:index];

@@ -61,7 +61,6 @@
 		AD45BBBE1EAF37D100D53813 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBBD1EAF37D100D53813 /* Exercise.m */; };
 		AD45BBC11EAF37EA00D53813 /* ExerciseList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBC01EAF37EA00D53813 /* ExerciseList.m */; };
 		AD45BBC41EAF42C300D53813 /* StudyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBC31EAF42C300D53813 /* StudyUtil.m */; };
-		AD45BBC61EAF52C400D53813 /* tiku.db in Resources */ = {isa = PBXBuildFile; fileRef = AD45BBC51EAF52C400D53813 /* tiku.db */; };
 		AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */; };
 		AD592E6E1EB20DA800CBDCC8 /* QuestionSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E6B1EB20DA800CBDCC8 /* QuestionSearchViewController.m */; };
 		AD592E6F1EB20DA800CBDCC8 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E6D1EB20DA800CBDCC8 /* SearchResultViewController.m */; };
@@ -142,6 +141,13 @@
 		ADF0424B1E0192EF00171489 /* avatar7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042401E0192EF00171489 /* avatar7.jpg */; };
 		ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042411E0192EF00171489 /* avatar8.jpg */; };
 		ADF0424D1E0192EF00171489 /* avatar9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042421E0192EF00171489 /* avatar9.jpg */; };
+		ADF408CA1EB4ABFD009DB786 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF408C91EB4ABFD009DB786 /* libsqlite3.0.tbd */; };
+		ADF408CD1EB4C042009DB786 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF408CC1EB4C042009DB786 /* ExamViewController.m */; };
+		ADF408D11EB4DFC8009DB786 /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = ADF408CF1EB4DFC8009DB786 /* correct.wav */; };
+		ADF408D21EB4DFC8009DB786 /* mistake.wav in Resources */ = {isa = PBXBuildFile; fileRef = ADF408D01EB4DFC8009DB786 /* mistake.wav */; };
+		ADF408D51EB4E076009DB786 /* CXAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF408D41EB4E076009DB786 /* CXAudioPlayer.m */; };
+		ADF408D71EB4E111009DB786 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF408D61EB4E111009DB786 /* AudioToolbox.framework */; };
+		ADF408DA1EB4E53D009DB786 /* CXUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF408D91EB4E53D009DB786 /* CXUserDefaults.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,7 +253,6 @@
 		AD45BBC01EAF37EA00D53813 /* ExerciseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseList.m; sourceTree = "<group>"; };
 		AD45BBC21EAF42C300D53813 /* StudyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyUtil.h; sourceTree = "<group>"; };
 		AD45BBC31EAF42C300D53813 /* StudyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyUtil.m; sourceTree = "<group>"; };
-		AD45BBC51EAF52C400D53813 /* tiku.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = tiku.db; sourceTree = "<group>"; };
 		AD592E5D1EB0ABF000CBDCC8 /* QuestionTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTitleLabel.h; sourceTree = "<group>"; };
 		AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTitleLabel.m; sourceTree = "<group>"; };
 		AD592E6A1EB20DA800CBDCC8 /* QuestionSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionSearchViewController.h; sourceTree = "<group>"; };
@@ -403,6 +408,16 @@
 		ADF042401E0192EF00171489 /* avatar7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar7.jpg; sourceTree = "<group>"; };
 		ADF042411E0192EF00171489 /* avatar8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar8.jpg; sourceTree = "<group>"; };
 		ADF042421E0192EF00171489 /* avatar9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar9.jpg; sourceTree = "<group>"; };
+		ADF408C91EB4ABFD009DB786 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		ADF408CB1EB4C042009DB786 /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
+		ADF408CC1EB4C042009DB786 /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
+		ADF408CF1EB4DFC8009DB786 /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct.wav; sourceTree = "<group>"; };
+		ADF408D01EB4DFC8009DB786 /* mistake.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mistake.wav; sourceTree = "<group>"; };
+		ADF408D31EB4E076009DB786 /* CXAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXAudioPlayer.h; sourceTree = "<group>"; };
+		ADF408D41EB4E076009DB786 /* CXAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXAudioPlayer.m; sourceTree = "<group>"; };
+		ADF408D61EB4E111009DB786 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		ADF408D81EB4E53D009DB786 /* CXUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXUserDefaults.h; sourceTree = "<group>"; };
+		ADF408D91EB4E53D009DB786 /* CXUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXUserDefaults.m; sourceTree = "<group>"; };
 		DC26F9CD5DF9B456572E2C96 /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
 		E4C2FB6F723F9D827D81240A /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -412,6 +427,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADF408D71EB4E111009DB786 /* AudioToolbox.framework in Frameworks */,
+				ADF408CA1EB4ABFD009DB786 /* libsqlite3.0.tbd in Frameworks */,
 				39B543BDB6E83CDE2678E461 /* Pods_xbsz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -620,6 +637,8 @@
 				ADA187711EB333CB00C771A4 /* SinglePracticeViewController.m */,
 				ADE663681EB384BF00DBA92A /* MutiPracticeViewController.h */,
 				ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */,
+				ADF408CB1EB4C042009DB786 /* ExamViewController.h */,
+				ADF408CC1EB4C042009DB786 /* ExamViewController.m */,
 			);
 			name = mode;
 			path = xbsz/Modules/study/sub/exercise/Controller/mode;
@@ -735,7 +754,6 @@
 		AD30B16F1DFAC992000189DD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AD45BBC51EAF52C400D53813 /* tiku.db */,
 				ADAAE0881E7CD06400A0FA2C /* exercises.json */,
 				AD8B45391EA9E06800E8D539 /* comment.json */,
 				AD8B45371EA9DE3D00E8D539 /* comments.json */,
@@ -745,6 +763,7 @@
 				0518ECC91E6041E10018F432 /* note.json */,
 				0518ECC51E6037C60018F432 /* notes.json */,
 				AD30B1461DFAC900000189DD /* Assets.xcassets */,
+				ADF408CE1EB4DFC8009DB786 /* music */,
 				056E45741DFFE55F00D5C956 /* image */,
 				AD30B1701DFAC992000189DD /* Fonts */,
 			);
@@ -960,6 +979,10 @@
 				AD7F89291E59624A009603E4 /* NetworkMonitoring */,
 				AD45BBC21EAF42C300D53813 /* StudyUtil.h */,
 				AD45BBC31EAF42C300D53813 /* StudyUtil.m */,
+				ADF408D31EB4E076009DB786 /* CXAudioPlayer.h */,
+				ADF408D41EB4E076009DB786 /* CXAudioPlayer.m */,
+				ADF408D81EB4E53D009DB786 /* CXUserDefaults.h */,
+				ADF408D91EB4E53D009DB786 /* CXUserDefaults.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1320,9 +1343,20 @@
 			path = avatar;
 			sourceTree = "<group>";
 		};
+		ADF408CE1EB4DFC8009DB786 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				ADF408CF1EB4DFC8009DB786 /* correct.wav */,
+				ADF408D01EB4DFC8009DB786 /* mistake.wav */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
 		D83306020DE04E843C2A1432 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADF408D61EB4E111009DB786 /* AudioToolbox.framework */,
+				ADF408C91EB4ABFD009DB786 /* libsqlite3.0.tbd */,
 				AC0133D7149C83299B5B66CF /* Pods_xbsz.framework */,
 			);
 			name = Frameworks;
@@ -1405,14 +1439,15 @@
 				0518ECC81E603E480018F432 /* user.json in Resources */,
 				ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */,
 				0563B1491E794169008283C7 /* course.jpg in Resources */,
-				AD45BBC61EAF52C400D53813 /* tiku.db in Resources */,
 				ADF0424D1E0192EF00171489 /* avatar9.jpg in Resources */,
 				0518ECCA1E6041E10018F432 /* note.json in Resources */,
 				05B4D08E1E76A532005DC854 /* course.json in Resources */,
 				ADF042471E0192EF00171489 /* avatar3.jpg in Resources */,
 				ADF042441E0192EF00171489 /* avatar10.jpg in Resources */,
+				ADF408D21EB4DFC8009DB786 /* mistake.wav in Resources */,
 				ADF042461E0192EF00171489 /* avatar2.jpg in Resources */,
 				ADF042481E0192EF00171489 /* avatar4.jpg in Resources */,
+				ADF408D11EB4DFC8009DB786 /* correct.wav in Resources */,
 				ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */,
 				054B8B7C1E7B876600E4E0BD /* b27_icon_star_gray@2x.png in Resources */,
 				AD8B453A1EA9E06800E8D539 /* comment.json in Resources */,
@@ -1507,6 +1542,7 @@
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
 				05CEE4B01E85305E0033DD3D /* NJKWebViewProgress.m in Sources */,
 				AD8B86291E9A92A4007F4CEC /* CampusNote.m in Sources */,
+				ADF408CD1EB4C042009DB786 /* ExamViewController.m in Sources */,
 				05B4D06C1E7646B4005DC854 /* CourseCollectionViewCell.m in Sources */,
 				05CAAE541E81063B005F7715 /* CourseCatalogViewController.m in Sources */,
 				AD45BBB41EAF336800D53813 /* QuestionCollectionViewCell.m in Sources */,
@@ -1542,6 +1578,7 @@
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
 				AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */,
 				05CEE4B11E85305E0033DD3D /* NJKWebViewProgressView.m in Sources */,
+				ADF408DA1EB4E53D009DB786 /* CXUserDefaults.m in Sources */,
 				AD8B862A1E9A92A4007F4CEC /* Course.m in Sources */,
 				ADAAE0981E7D91F400A0FA2C /* ShareToolBarView.m in Sources */,
 				05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */,
@@ -1584,6 +1621,7 @@
 				AD8B45361EA9DCA600E8D539 /* CourseCommentList.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,
 				AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */,
+				ADF408D51EB4E076009DB786 /* CXAudioPlayer.m in Sources */,
 				AD7F88291E594D5E009603E4 /* UIView+Frame.m in Sources */,
 				0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */,
 				AD8B861B1E9A913F007F4CEC /* CXNetwork+User.m in Sources */,

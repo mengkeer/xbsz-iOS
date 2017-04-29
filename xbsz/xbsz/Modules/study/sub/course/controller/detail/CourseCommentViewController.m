@@ -66,8 +66,6 @@ static NSString *cellID = @"CourseCommentCellID";
     }
     
     [_tableView reloadData];
-    
-    CXLog(@"开始加载校园动态");
 }
 
 

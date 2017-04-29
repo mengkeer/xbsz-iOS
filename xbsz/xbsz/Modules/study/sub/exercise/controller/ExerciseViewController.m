@@ -14,6 +14,7 @@
 #import "ExerciseModeViewController.h"
 #import "StudyUtil.h"
 #import "ExerciseMode.h"
+#import "DownloadManager.h"
 
 #import "PYSearch.h"
 
@@ -71,9 +72,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     
     
     [_collectionView reloadData];
-    
-    CXLog(@"开始加载校园动态");
-
 }
 
 
@@ -150,9 +148,14 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSInteger index = indexPath.section*numberOfItems + indexPath.row;
-    ExerciseType type = [StudyUtil indexToExerciseType:index];
-    [self gotoExerciseDetailView:type];
+    if([DownloadManager isTikuExists]){
+        NSInteger index = indexPath.section*numberOfItems + indexPath.row;
+        ExerciseType type = [StudyUtil indexToExerciseType:index];
+        [self gotoExerciseDetailView:type];
+    }else{
+        [ToastView showBlackSuccessWithStaus:@"开始下载题库"];
+        [[DownloadManager manager] downloadTikuFromServer];
+    }
 }
 
 

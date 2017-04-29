@@ -85,8 +85,17 @@ static NSString *cellID = @"ChapterTableViewCellID";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] init];
     UILabel *label = [[UILabel alloc] init];
-    NSInteger num = [StudyUtil getQuestionsTotalByType:_type];
-    label.text = [NSString stringWithFormat:@"%@ (共%ld题)",[StudyUtil exerciseTypeToExerciseName:_type],num];
+    NSInteger totalNum = 0,currentNum = 0;
+    if(_mode != ExerciseModeMistakes){
+        totalNum = [StudyUtil getQuestionsTotalByType:_type];
+        currentNum = [StudyUtil getQuestionsTotalByType:_type isSingle:_isSingle];
+    }else{
+        totalNum = [StudyUtil getQuestionsTotalByType:_type isWrong:YES];
+        currentNum = [StudyUtil getQuestionsTotalByType:_type isSingle:_isSingle isWrong:YES];
+    }
+    NSString *str1 = [NSString stringWithFormat:@"%@ (共%ld%@",[StudyUtil exerciseTypeToExerciseName:_type],totalNum,_mode == ExerciseModeMistakes?@"错题":@"题"];
+    NSString *str2 = [NSString stringWithFormat:@"%@%ld题",_isSingle == YES?@"单选":@"多选",currentNum];
+    label.text = [NSString stringWithFormat:@"%@·%@)",str1,str2];
     label.font = CXSystemFont(14);
     label.textAlignment = NSTextAlignmentLeft;
     label.textColor = CXHexColor(0x4A4A4A);
@@ -128,8 +137,7 @@ static NSString *cellID = @"ChapterTableViewCellID";
         cell = [[ExerciseChapterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         cell.backgroundColor = CXWhiteColor;
     }
-    NSArray *arr = [_chapterNums objectAtIndex:indexPath.row];
-    NSInteger num = [[arr objectAtIndex:_isSingle ? 0 :1] integerValue];
+    NSInteger num = [[_chapterNums objectAtIndex:indexPath.row] integerValue];
     NSString *imageName = [NSString stringWithFormat:@"chapter_%ld",[[_indexMap objectAtIndex:indexPath.row] integerValue]];
     [cell updateUI: imageName
       chapterIndex:[[_chapterIndex objectAtIndex:indexPath.row] integerValue]
@@ -152,8 +160,13 @@ static NSString *cellID = @"ChapterTableViewCellID";
     _type = type;
     _mode = mode;
     _isSingle = isSingle;
-    _chapterIndex = [StudyUtil getChapterIndex:type];
-    _chapterNums = [StudyUtil getChapterNums:type];
+    if(_mode == ExerciseModeMistakes){
+        _chapterIndex = [StudyUtil getChapterIndex:type isSingle:isSingle isWrong:YES];
+        _chapterNums = [StudyUtil getChapterNums:type isSingle:_isSingle isWrong:YES];
+    }else{
+        _chapterIndex = [StudyUtil getChapterIndex:type isSingle:isSingle];
+        _chapterNums = [StudyUtil getChapterNums:type isSingle:isSingle];
+    }
     [_tableView reloadData];
 }
 

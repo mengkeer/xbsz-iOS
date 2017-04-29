@@ -11,6 +11,8 @@
 #import "CXNetworkMonitoring.h"
 #import <Bugly/Bugly.h>         //集成bugly服务
 #import "CXNetwork+User.h"
+#import "DownloadManager.h"
+#import "CXUserDefaults.h"
 
 @interface AppDelegate ()
 
@@ -49,6 +51,8 @@
     
 //    [Bugly startWithAppId:BuglyAppID];         //集成bugly服务
     [self JWRefreshLogin];
+    if(![DownloadManager isTikuExists])    [[DownloadManager manager] downloadTikuFromServer];
+    [CXUserDefaults setDefaultspreference];         //设置默认偏好设置
     
     return YES;
 }

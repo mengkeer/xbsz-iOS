@@ -8,7 +8,6 @@
 
 #import "CXPushViewController.h"
 
-
 @interface SetViewController : CXPushViewController
 
 @end

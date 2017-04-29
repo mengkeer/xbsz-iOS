@@ -160,11 +160,18 @@ static NSInteger numberOfItems = 5;
     }
     NSString *key = [NSString stringWithFormat:@"%ld",indexPath.row];
     if(_judgedDic != nil && [_judgedDic containsObjectForKey:key]){
-        NSInteger judge = [[_judgedDic valueForKey:key] integerValue];
-        if(judge == 1){
-            [cell updateUIByQuestionIsRight:YES];
-        }else if(judge == -1){
-            [cell updateUIByQuestionIsRight:NO];
+        if(_mode == ExerciseModeExam){
+            NSString *val = [_judgedDic valueForKey:key];
+            if([val length] != 0){
+                [cell updateUIByQuestionIsSelected:YES];
+            }
+        }else{
+            NSInteger judge = [[_judgedDic valueForKey:key] integerValue];
+            if(judge == 1){
+                [cell updateUIByQuestionIsRight:YES];
+            }else if(judge == -1){
+                [cell updateUIByQuestionIsRight:NO];
+            }
         }
     }
     return cell;
@@ -174,7 +181,7 @@ static NSInteger numberOfItems = 5;
 #pragma mark - private method
 
 - (void)cancel{
-    if(_clickBlock)     _clickBlock(-1);
+    if(_clickBlock)     _clickBlock(_currentIndex);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -184,7 +191,7 @@ static NSInteger numberOfItems = 5;
       currentIndex:(NSInteger)currentIndex clicked:(ClickBlock)clickBlock{
     _mode = mode;
     _total = total;
-    _judgedDic = judgedDic;
+    _judgedDic = judgedDic;         //模拟考试下传递过来的是错题进度  只有提交时间后才提交做题结果
     _currentIndex = currentIndex;
     _clickBlock = clickBlock;
 }
@@ -240,6 +247,19 @@ static NSInteger numberOfItems = 5;
     }else{
         _symbolLabel.layer.borderColor = CXLightGrayColor.CGColor;
         _symbolLabel.textColor = CXLightGrayColor;
+    }
+}
+
+- (void)updateUIByQuestionIsSelected:(BOOL)isSelected{
+    if(isSelected == YES){
+        _symbolLabel.layer.borderWidth = 0;
+        _symbolLabel.textColor = CXWhiteColor;
+        _symbolLabel.backgroundColor = CXHexColor(0xea986c);
+    }else{
+        _symbolLabel.layer.borderWidth = 1;
+        _symbolLabel.layer.borderColor = CXLightGrayColor.CGColor;
+        _symbolLabel.textColor = CXLightGrayColor;
+        _symbolLabel.backgroundColor = CXWhiteColor;
     }
 }
 

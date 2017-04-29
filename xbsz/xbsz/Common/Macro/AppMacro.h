@@ -36,7 +36,7 @@
 
 
 //常用单例类
-#define CXUserDefaults   ([NSUserDefaults standardUserDefaults])
+#define CXStandardUserDefaults   ([NSUserDefaults standardUserDefaults])
 #define CXApplication    ([UIApplication sharedApplication])
 #define CXAppDelegate    ([UIApplication sharedApplication].delegate)
 

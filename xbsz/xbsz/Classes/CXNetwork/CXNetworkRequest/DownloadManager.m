@@ -46,6 +46,39 @@ static id _manager = nil;
     [_downloadTask resume];
 }
 
+- (void)downloadTikuFromServer{
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:CXTiKuUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    _downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        NSLog(@"%f",1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        NSString *localPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        NSString *path = [localPath stringByAppendingPathComponent:response.suggestedFilename];
+        return [NSURL fileURLWithPath:path];
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        CXLog(@"tiku下载完成");
+    }];
+    [_downloadTask resume];
+}
+
++ (BOOL)isTikuExists{
+    // 取得沙盒目录
+    NSString *localPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // 要检查的文件目录
+    NSString *filePath = [localPath  stringByAppendingPathComponent:@"tiku.db"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:filePath]) {
+        return YES;
+    }else {
+        return NO;
+    }
+}
+
 - (void)resume{
     [_downloadTask resume];
 }

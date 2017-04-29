@@ -8,6 +8,8 @@
 
 #import "SetViewController.h"
 #import "SetItemTableViewCell.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import "CXUserDefaults.h"
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
 static NSString *cellSwitchId = @"cellSwitchCellId";
@@ -105,12 +107,21 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
             }
             [cell updateCell:@"音效" detailText:nil type:SetItemTypeSwitch iconImageName:@"set_sound"];
+            [cell setSwitched:[CXUserDefaults instance].isAudioOpen changed:^(BOOL isOpen) {
+                [CXUserDefaults instance].isAudioOpen = isOpen;
+            }];
         }else{
             cell = [tableView dequeueReusableCellWithIdentifier:cellSwitchId];
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
             }
             [cell updateCell:@"震动" detailText:nil type:SetItemTypeSwitch iconImageName:@"set_shake"];
+            [cell setSwitched:[CXUserDefaults instance].isShakeOpen changed:^(BOOL isOpen) {
+                [CXUserDefaults instance].isShakeOpen = isOpen;;
+                if(isOpen){
+                    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+                }
+            }];
         }
         
     }else if(indexPath.section == 1){

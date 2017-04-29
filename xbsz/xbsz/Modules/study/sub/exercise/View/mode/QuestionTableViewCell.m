@@ -92,10 +92,18 @@ static NSInteger symbolWidth = 35;
     return _optionLabel;
 }
 
-- (void)updateUIWithIndex:(NSInteger)index option:(NSString *)option{
+- (void)updateUIWithIndex:(NSInteger)index option:(NSString *)option isSingle:(BOOL)isSingle{
     NSString *symbolText = [StudyUtil indexConvertToSymbol:index];
     _symbolLabel.text = symbolText;
+    if(isSingle == YES){
+        _symbolLabel.layer.cornerRadius = symbolWidth/2;
+        _symbolLabel.clipsToBounds = YES;
+    }else{
+        _symbolLabel.layer.cornerRadius = 6;
+        _symbolLabel.clipsToBounds = YES;
+    }
     [self updateOptionUI:QuestionStatusSingleDefault];
+
     
     NSInteger textHeight = [self getTitleHeight:option];
     [_optionLabel mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -203,8 +211,6 @@ static NSInteger symbolWidth = 35;
         return;
     }
     
-    
-
 }
 
 - (NSInteger)getTitleHeight:(NSString *)text{

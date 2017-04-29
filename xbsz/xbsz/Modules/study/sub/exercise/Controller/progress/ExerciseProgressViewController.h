@@ -31,6 +31,8 @@ typedef void (^ClickBlock)(NSInteger index);
 
 //是否是当前焦点，根据跳转过来时的index判断
 - (void)updateUIByQuestionIndex:(NSInteger)index isFocused:(BOOL)isFocused;
+//设置当前题目已做完，但没判断正确
+- (void)updateUIByQuestionIsSelected:(BOOL)isSelected;
 
 - (void)updateUIByQuestionIsRight:(BOOL)isRight;
 

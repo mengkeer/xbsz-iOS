@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, SetItemType) {
     SetItemTypeImageAndArrow        // 右侧为图片和箭头  特指用户头像设置一栏
 };
 
+typedef void (^SwitchBlock)(BOOL isOpen);
 
 @interface SetItemTableViewCell : UITableViewCell
 
@@ -24,6 +25,8 @@ typedef NS_ENUM(NSInteger, SetItemType) {
         detailText:(NSString *)detailText
               type:(SetItemType)type
      iconImageName:(NSString *)imageName;
+
+- (void)setSwitched:(BOOL)isOpen changed:(SwitchBlock)switchBlock;
 
 //此方法需在setTitle方法后调用
 - (void)setHeadImage:(NSString *)imageUrl;

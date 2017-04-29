@@ -80,8 +80,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     
     [_collectionView reloadData];
     
-    CXLog(@"开始加载校园动态");
-
 }
 
 

@@ -10,6 +10,7 @@
 #import "PYSearch.h"
 #import "QuestionSearchViewController.h"
 #import "ExerciseChapterViewController.h"
+#import "ExamViewController.h"
 
 static NSInteger cellWidth = 80;
 static NSInteger cellHeight = 110;
@@ -178,6 +179,13 @@ static NSInteger numberOfItems = 3;
     else if(index == 3)    mode = ExerciseModeExam;
     else if(index == 4)    mode = ExerciseModeMistakes;
     else   mode = ExerciseModeUnknown;
+    
+    if(mode == ExerciseModeExam){
+        ExamViewController *exam = [ExamViewController controller];
+        exam.type = _type;
+        [self.navigationController pushViewController:exam animated:YES];
+        return;
+    }
    
     ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
     chapterVC.type = _type;
@@ -246,6 +254,14 @@ static NSInteger numberOfItems = 3;
 
 - (void)updateUIByQuestionIndex:(NSInteger)index{
     _modeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"exercise_mode%ld",index+1]];
+    [_modeImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        if(index == 0){
+            make.left.mas_equalTo(self.contentView).mas_offset(11);
+        }else{
+            make.left.mas_equalTo(self.contentView).mas_offset(8);
+        }
+    }];
+    
     _modeTitle.text = [self indexConvertToModeTitle:index];
     
 }
