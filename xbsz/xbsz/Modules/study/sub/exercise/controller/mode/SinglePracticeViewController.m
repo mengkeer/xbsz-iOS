@@ -83,6 +83,17 @@ static NSInteger bottomHeight = 45;
 //加载题库数据
 - (void)loadData{
     _questions = [StudyUtil getQuestions:_type isSingle:YES chapterIndex:_chapterIndex];
+    if(_mode == ExerciseModePracticeRandom){
+        _questions = [_questions sortedArrayUsingComparator:^NSComparisonResult(ExerciseQuestion *one, ExerciseQuestion *two) {
+            int seed = arc4random_uniform(2);
+            if (seed) {
+                return [one.title compare:two.title];
+            } else {
+                return [two.title compare:one.title];
+            }  
+        }];
+    }
+    [_collectionView reloadData];
 }
 
 - (void)addBottomView{

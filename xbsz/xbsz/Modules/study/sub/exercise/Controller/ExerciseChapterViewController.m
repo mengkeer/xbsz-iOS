@@ -173,7 +173,7 @@ static NSString *cellID = @"ChapterCellID";
         questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
         questionVC.chapterIndex = index;
         [self.navigationController pushViewController:questionVC animated:YES];
-    }else if(_mode == ExerciseModePractice){
+    }else if(_mode == ExerciseModePractice || _mode == ExerciseModePracticeRandom){
         if(_segmentControl.selectedSegmentIndex == 0){
             SinglePracticeViewController *questionVC = [SinglePracticeViewController controller];
             [questionVC updateData:_mode type:_type chapter:index];
@@ -182,7 +182,6 @@ static NSString *cellID = @"ChapterCellID";
             MutiPracticeViewController *questionVC = [MutiPracticeViewController controller];
             [questionVC updateData:_mode type:_type chapter:index];
             [self.navigationController pushViewController:questionVC animated:YES];
-
         }
     }
     else{
