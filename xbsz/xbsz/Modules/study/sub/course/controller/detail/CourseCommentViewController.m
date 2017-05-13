@@ -11,7 +11,11 @@
 #import "CommentTableViewCell.h"
 #import "CourseCommentList.h"
 
+#import "CXNetwork+Course.h"
+
 static NSString *cellID = @"CourseCommentCellID";
+static NSInteger defaultOffset = 0;
+static NSInteger limit = 10;
 
 @interface CourseCommentViewController ()<CXBaseTableViewDelegate>
 
@@ -23,6 +27,11 @@ static NSString *cellID = @"CourseCommentCellID";
 
 @implementation CourseCommentViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self loadDataAtPageIndex:CXFisrtLoadPage];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -30,8 +39,6 @@ static NSString *cellID = @"CourseCommentCellID";
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.mas_equalTo(self.view);
     }];
-    
-    [self loadDataAtPageIndex:CXFisrtLoadPage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,16 +63,24 @@ static NSString *cellID = @"CourseCommentCellID";
 
 - (void)loadDataAtPageIndex:(NSUInteger )pageIndex{
     
-    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"comments.json"];
-    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
+    [CXNetwork getCourseComments:_course.courseID offset:defaultOffset limit:limit success:^(NSObject *obj) {
+        _commentList = [CourseCommentList yy_modelWithDictionary:(NSDictionary *)obj];
+        _commentList.pageInfo.pageSize = 10;
+        _commentList.pageInfo.pageIndex = 1;
+        _commentList.pageInfo.totalRows = 25;
+        _commentList.pageInfo.totalPages = 3;
+
+        [_tableView reloadData];
+    } failure:^(NSError *error) {
+        CXLog(@"获取课程评论失败");
+    }];
     
-    if(_commentList && [_commentList.comments count]>0){
-        [_commentList.comments addObjectsFromArray:[CourseCommentList yy_modelWithJSON:jsonStr].comments];
-    }else{
-        _commentList = [CourseCommentList yy_modelWithJSON:jsonStr];
-    }
+//    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"comments.json"];
+//    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
+//    
+//    _commentList = [CourseCommentList yy_modelWithJSON:jsonStr];
     
-    [_tableView reloadData];
+//    [_tableView reloadData];
 }
 
 

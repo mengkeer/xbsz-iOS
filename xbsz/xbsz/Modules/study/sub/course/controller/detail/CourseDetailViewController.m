@@ -10,6 +10,7 @@
 #import "CourseInfoViewController.h"
 #import "RateView.h"
 #import "ShareToolBarView.h"
+#import "CXNetwork+Course.h"
 
 static CGPoint beforeScrollPoint ;
 
@@ -221,7 +222,20 @@ static CGPoint beforeScrollPoint ;
 #pragma  mark - RateViewDelegate
 
 - (void)rateView:(CGFloat)scorePoint contnet:(NSString *)content{
-    CXLog(@"评分为：%lf 内容为%@",scorePoint,content);
+    if(![[CXLocalUser instance] isLogin]){
+        [ToastView showBlackSuccessWithStaus:@"请先登录"];
+        return;
+    }
+    NSInteger point = (int)(scorePoint*5);
+    
+    [CXNetwork addCourseComment:_course.courseID content:content point:point success:^(NSObject *obj) {
+        [ToastView showBlackSuccessWithStaus:@"评论成功"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)( 1.2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[RateView instance] dismissInView:self.view.superview];
+        });
+    } failure:^(NSError *error) {
+        CXLog(@"评分失败");
+    }];
 }
 
 @end

@@ -10,16 +10,24 @@
 #ifndef URLString_h
 #define URLString_h
 
-#define CXTiKuUrl           @"http://www.slotus.cc/tiku.db"
+#define CXBaseUrl            @"http://www.slotus.cc/"
+#define CXAvatarsBaseUrl     @"http://www.slotus.cc/avatars"
+#define CXFileBaseUrl        @"http://www.slotus.cc/uploads"
+#define CXTiKuUrl            @"http://www.slotus.cc/files/tiku.db"
 
 #define CXLoginUrl          @"http://www.slotus.cc/common-api/login"
 #define CXRegisterUrl       @"http://www.slotus.cc/common-api/register"
 #define CXGetUserInfoUrl      @"http://www.slotus.cc/limit-api/getUserInfo"
 #define CXUpdateUserInfoUrl   @"http://www.slotus.cc/limit-api/updateUserInfo"
-#define CXUpdateUserAvatar    @"http://www.slotus.cc/limit-api/updateAvatar"
+#define CXUpdateUserAvatar    @"http://www.slotus.cc/file/updateAvatar"
 
 //学习
 #define CXGetCoursesUrl     @"http://www.slotus.cc/common-api/getCourses"
+#define CXGetCourseCommentUrl     @"http://www.slotus.cc/common-api/getCourseComment"
+#define CXAddCourseCommentUrl   @"http://www.slotus.cc/limit-api/addCourseComment"
+#define CXGetCourseWareUrl      @"http://www.slotus.cc/common-api/getCourseware"
+
+
 
 #define JWLoginUrl   @"https://mobile4.dhu.edu.cn/_ids_mobile/login18_9"
 #define JWRefreshLoginURL       @"https://mobile4.dhu.edu.cn/_ids_mobile/serialNoLogin18_9" 

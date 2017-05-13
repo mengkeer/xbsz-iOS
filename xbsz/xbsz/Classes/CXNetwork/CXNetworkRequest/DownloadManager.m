@@ -61,7 +61,7 @@ static id _manager = nil;
         NSString *path = [localPath stringByAppendingPathComponent:response.suggestedFilename];
         return [NSURL fileURLWithPath:path];
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-        CXLog(@"tiku下载完成");
+        CXLog(@"题库下载完成");
     }];
     [_downloadTask resume];
 }

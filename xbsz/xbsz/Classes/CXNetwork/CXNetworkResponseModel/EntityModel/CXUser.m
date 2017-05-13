@@ -11,7 +11,7 @@
 @implementation CXUser
 
 + (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"username":@"userName",@"truename":@"trueName",@"nickname":@"nickName"};
+    return @{@"username":@"userName",@"truename":@"trueName"};
 }
 
 @end

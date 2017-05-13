@@ -11,8 +11,10 @@
 #import "ChapterHeaderView.h"
 #import "DownloadManager.h"
 #import "AttachmentViewController.h"
+#import "CXNetwork+Course.h"
+#import "CourseWareList.h"
 
-static NSString *cellID = @"chapterItemID";
+static NSString *cellID = @"CatalogItemID";
 static NSString *sectionID = @"chapterheaderID";
 
 @interface CourseCatalogViewController ()<CXBaseTableViewDelegate,ChapterHeaderDelegate>
@@ -20,6 +22,10 @@ static NSString *sectionID = @"chapterheaderID";
 @property (nonatomic, strong) CXBaseTableView *tableView;
 
 @property (nonatomic, strong) NSMutableDictionary *foldInfoDic;
+
+@property (nonatomic, strong) CourseWareList *wareList;
+
+@property (nonatomic, strong) NSMutableArray *wares;
 
 @end
 
@@ -34,17 +40,53 @@ static NSString *sectionID = @"chapterheaderID";
         make.left.right.top.bottom.mas_equalTo(self.view);
     }];
     
-    _foldInfoDic = [NSMutableDictionary dictionaryWithDictionary:@{
-                                                                   @"0":@"0",
-                                                                   @"1":@"0",
-                                                                   @"2":@"0",
-                                                                   @"3":@"0"
-                                                                   }];
-    
+    _foldInfoDic = [NSMutableDictionary dictionary];
+    _wares = [NSMutableArray array];
+    [self initData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)initData{
+    [CXNetwork getCourseWare:_course.courseID success:^(NSObject *obj) {
+        _wareList = [CourseWareList yy_modelWithDictionary:(NSDictionary *)obj];
+        [self sortOutData:_wareList.courseWare];
+        [_tableView reloadData];
+    } failure:^(NSError *error) {
+        CXLog(@"获取课程目录失败");
+    }];
+}
+
+- (void)sortOutData:(NSArray *)coursewares{
+    coursewares = [coursewares sortedArrayUsingComparator:^NSComparisonResult(CourseWare  *obj1, CourseWare  *obj2) {
+        return obj1.chapter > obj2.chapter;
+    }];
+    
+    NSMutableArray *tempArr = [NSMutableArray array];
+    NSInteger lastIndex = -1;
+    if([coursewares count] != 0)    lastIndex = ((CourseWare *)([coursewares objectAtIndex:0])).chapter;
+    for(NSInteger i = 0;i<[coursewares count];i++){
+        CourseWare *temp = [coursewares objectAtIndex:i];
+        
+        if(lastIndex == -1)   return;
+        if(temp.chapter == lastIndex){
+            [tempArr addObject:temp];
+        }else{
+            [_wares addObject:[tempArr copy]];
+            [_foldInfoDic addEntriesFromDictionary:@{[NSString stringWithFormat:@"%ld",lastIndex]:@"0"}];
+            [tempArr removeAllObjects];
+            [tempArr addObject:temp];
+            lastIndex = temp.chapter;
+        }
+        
+        if(i == [coursewares count]-1){
+            [_wares addObject:[tempArr copy]];
+            [_foldInfoDic addEntriesFromDictionary:@{[NSString stringWithFormat:@"%ld",i]:@"0"}];
+        }
+    }
+    
 }
 
 #pragma mark - getter/setter
@@ -61,11 +103,11 @@ static NSString *sectionID = @"chapterheaderID";
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 45.f;
+    return 50.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 45.f;
+    return 50.f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -89,37 +131,35 @@ static NSString *sectionID = @"chapterheaderID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    CXLog(@"%@",[NSString stringWithFormat:@"点击了第%lu行",indexPath.row]);
 //    [[DownloadManager manager] downloadFromServer:@"http://www.slotus.cc/ppt.ppt"];
-    NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *path = [cachesPath stringByAppendingPathComponent:@"ppt.ppt"];
+    
+    CourseWare *ware = [[_wares objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+
     AttachmentViewController *vc = [AttachmentViewController controller];
-    vc.path = path;
-    vc.title = @"毕业设计开题报告";
+    vc.path = CXFileUrlByName(ware.file);
+    vc.title = ware.name;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
+    return [_wares count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSString *key = [NSString stringWithFormat:@"%d", (int)section];
     BOOL folded = [[_foldInfoDic objectForKey:key] boolValue];
     
-    return folded == YES ? 0:6;
+    return folded == YES ? 0:[[_wares objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    CourseChapterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if(!cell){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = CXHexAlphaColor(0xCCFFCC,0.3);
+        cell = [[CourseChapterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"第%ld节",indexPath.row+1];
-    cell.detailTextLabel.text = @"这是详情";
-    cell.backgroundColor = CXWhiteColor;
+    CourseWare *ware = [[_wares objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    [cell updateUIWithModel:ware];
     return cell;
 }
 

@@ -134,7 +134,7 @@
 #pragma mark - public method
 
 - (void)updateUIWithModel:(CourseComment *)model{
-    [self.avatarBtn yy_setImageWithURL:[NSURL URLWithString:model.avatar] forState:UIControlStateNormal placeholder:CXDefaultAvatar];
+    [self.avatarBtn yy_setImageWithURL:[NSURL URLWithString:[NSString getAvatarUrl:model.avatar]] forState:UIControlStateNormal placeholder:CXDefaultAvatar];
     [self.avatarBtn yy_setImageWithURL:[NSURL URLWithString:model.avatar] forState:UIControlStateHighlighted placeholder:CXDefaultAvatar];
     
     _nickLabel.text = model.nickname;

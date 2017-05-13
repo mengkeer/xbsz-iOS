@@ -15,6 +15,7 @@ typedef void (^ClickBlock)(NSInteger index);
 
 - (void)updateData:(ExerciseMode)mode
              total:(NSInteger )total
+         practicedDic:(NSDictionary *)practicedDic
          judgedDic:(NSDictionary *)judgedDic
       currentIndex:(NSInteger) currentIndex
            clicked:(ClickBlock)clickBlock;

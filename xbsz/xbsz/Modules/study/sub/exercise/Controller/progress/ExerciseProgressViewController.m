@@ -20,6 +20,8 @@ static NSInteger numberOfItems = 5;
 
 @property (nonatomic, assign) NSInteger currentIndex;
 
+@property (nonatomic, copy) NSDictionary *practicedDic;
+
 @property (nonatomic, copy) NSDictionary *judgedDic;
 
 @property (nonatomic, copy) ClickBlock clickBlock;
@@ -159,21 +161,22 @@ static NSInteger numberOfItems = 5;
         [cell updateUIByQuestionIndex:index+1 isFocused:NO];
     }
     NSString *key = [NSString stringWithFormat:@"%ld",indexPath.row];
-    if(_judgedDic != nil && [_judgedDic containsObjectForKey:key]){
-        if(_mode == ExerciseModeExam){
-            NSString *val = [_judgedDic valueForKey:key];
-            if([val length] != 0){
-                [cell updateUIByQuestionIsSelected:YES];
-            }
-        }else{
-            NSInteger judge = [[_judgedDic valueForKey:key] integerValue];
-            if(judge == 1){
-                [cell updateUIByQuestionIsRight:YES];
-            }else if(judge == -1){
-                [cell updateUIByQuestionIsRight:NO];
-            }
+    if([_judgedDic containsObjectForKey:key]){
+        NSInteger judge = [[_judgedDic valueForKey:key] integerValue];
+        if(judge == 1){
+            [cell updateUIByQuestionIsRight:YES];
+        }else if(judge == -1){
+            [cell updateUIByQuestionIsRight:NO];
         }
     }
+    
+    if([_practicedDic containsObjectForKey:key] && ![_judgedDic containsObjectForKey:key]){
+        NSString *val = [_practicedDic valueForKey:key];
+        if([val length] != 0){
+            [cell updateUIByQuestionIsSelected:YES];
+        }
+    }
+    
     return cell;
 }
 
@@ -187,10 +190,13 @@ static NSInteger numberOfItems = 5;
 
 - (void)updateData:(ExerciseMode)mode
              total:(NSInteger)total
+        practicedDic:(NSDictionary *)practicedDic
          judgedDic:(NSDictionary *)judgedDic
-      currentIndex:(NSInteger)currentIndex clicked:(ClickBlock)clickBlock{
+      currentIndex:(NSInteger)currentIndex
+           clicked:(ClickBlock)clickBlock{
     _mode = mode;
     _total = total;
+    _practicedDic = practicedDic;
     _judgedDic = judgedDic;         //模拟考试下传递过来的是错题进度  只有提交时间后才提交做题结果
     _currentIndex = currentIndex;
     _clickBlock = clickBlock;

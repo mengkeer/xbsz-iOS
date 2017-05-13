@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CourseWare.h"
 
 @protocol  ChapterHeaderDelegate <NSObject>
 
@@ -27,3 +28,10 @@
 - (void)updateSectionHeader:(NSString *)title section:(NSInteger)section canFold:(BOOL)canFold;
 
 @end
+
+@interface CourseChapterTableViewCell : UITableViewCell
+
+- (void)updateUIWithModel:(CourseWare *)model;
+
+@end
+

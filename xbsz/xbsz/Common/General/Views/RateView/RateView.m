@@ -132,8 +132,23 @@ static RateView *sharedObj;
 
 - (void)submit{
     
-    if(_startRateView.scorePercent == 0.0){
+    if(_startRateView.scorePercent == 0.0 ){
         [ToastView showErrorWithStaus:@"您还没评分哦😯"];
+        return ;
+    }
+    
+    if([[_commentTextView.text stringByTrim] length] == 0){
+        [ToastView showErrorWithStaus:@"输入评价内容"];
+        return ;
+    }
+    
+    if([[_commentTextView.text stringByTrim] length] <3 ){
+        [ToastView showErrorWithStaus:@"输入评价内容不得低于3个字符"];
+        return ;
+    }
+    
+    if([[_commentTextView.text stringByTrim] length] > 120 ){
+        [ToastView showErrorWithStaus:@"输入评价内容不得高于120个字符"];
         return ;
     }
     

@@ -416,7 +416,7 @@ static int avatarWidth = 40;
 - (YYAnimatedImageView *)avatarImageView{
     if(!_avatarImageView){
         _avatarImageView = [[YYAnimatedImageView alloc] init];
-        _avatarImageView.yy_imageURL = [NSURL URLWithString:_course.teacher.avatar];
+        _avatarImageView.yy_imageURL = [NSURL URLWithString:[NSString getAvatarUrl:_course.teacher.avatar]];
         _avatarImageView.layer.cornerRadius = avatarWidth/2;
         _avatarImageView.clipsToBounds = YES;
     }

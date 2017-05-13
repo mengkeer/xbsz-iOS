@@ -253,6 +253,10 @@ static NSInteger bottomHeight = 45;
         NSString *selectedIndexs = [_practicedDic valueForKey:key];
         if(selectedIndexs == nil)       selectedIndexs = @"";
         [cell showMutiPracticeAnswer:selectedIndexs];
+    }else{
+        NSString *selectedIndexs = [_practicedDic valueForKey:key];
+        if(selectedIndexs == nil)       selectedIndexs = @"";
+        [cell setTemporarySelected:selectedIndexs];
     }
     
 
@@ -298,7 +302,8 @@ static NSInteger bottomHeight = 45;
     NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
     QuestionCollectionViewCell *cell = (QuestionCollectionViewCell *)[_collectionView cellForItemAtIndexPath:path];
     [cell setTemporarySelected:[_practicedDic objectForKey:key]];
-    
+    if(_index <= 59)       [self performSelector:@selector(next) withObject:nil afterDelay:0.5];
+
 }
 
 
@@ -306,7 +311,7 @@ static NSInteger bottomHeight = 45;
     ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
     if([_judgedDic count] == [_questions count]){
         ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
-        [progressVC updateData:ExerciseModePractice total:[_questions count] judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
+        [progressVC updateData:ExerciseModePractice total:[_questions count] practicedDic:_practicedDic judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
             if(index >= 0){
                 _index = index;
                 NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
@@ -316,7 +321,7 @@ static NSInteger bottomHeight = 45;
         }];
         [self presentViewController:progressVC animated:YES completion:nil];
     }else{
-        [progressVC updateData:ExerciseModeExam total:[_questions count] judgedDic:_practicedDic currentIndex:_index clicked:^(NSInteger index) {
+        [progressVC updateData:ExerciseModeExam total:[_questions count] practicedDic:_practicedDic judgedDic:nil currentIndex:_index clicked:^(NSInteger index) {
             if(index >= 0){
                 _index = index;
                 NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
@@ -339,6 +344,7 @@ static NSInteger bottomHeight = 45;
     --_index;
     NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
     [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [_collectionView reloadItemsAtIndexPaths:@[path]];
     [self updatePreAndNextLabel:_index];
 }
 
@@ -350,6 +356,7 @@ static NSInteger bottomHeight = 45;
     ++_index;
     NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
     [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [_collectionView reloadItemsAtIndexPaths:@[path]];
     [self updatePreAndNextLabel:_index];
     
 }
@@ -420,7 +427,7 @@ static NSInteger bottomHeight = 45;
         
         
         ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
-        [progressVC updateData:ExerciseModePractice total:[_questions count] judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
+        [progressVC updateData:ExerciseModePractice total:[_questions count] practicedDic:_practicedDic judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
             if(index >= 0){
                 _index = index;
                 NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];

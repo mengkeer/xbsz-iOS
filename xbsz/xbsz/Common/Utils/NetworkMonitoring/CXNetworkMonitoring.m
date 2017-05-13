@@ -13,8 +13,6 @@ static AFNetworkReachabilityStatus status = -1;
 
 @interface CXNetworkMonitoring ()
 
-@property (nonatomic, assign) AFNetworkReachabilityStatus status;
-
 @end
 
 @implementation CXNetworkMonitoring
@@ -77,6 +75,22 @@ static AFNetworkReachabilityStatus status = -1;
 
 + (AFNetworkReachabilityStatus)currentStatus{
     return status;
+}
+
++ (BOOL)canReachable{
+    if(status == AFNetworkReachabilityStatusReachableViaWiFi || status == AFNetworkReachabilityStatusReachableViaWWAN){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
++ (BOOL)wifiOnly{
+    if(status == AFNetworkReachabilityStatusReachableViaWiFi){
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 + (void)setStatus:(AFNetworkReachabilityStatus)currentStatus{

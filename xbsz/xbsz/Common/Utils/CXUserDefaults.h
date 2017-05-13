@@ -18,4 +18,7 @@
 
 @property (nonatomic, assign) BOOL isShakeOpen;
 
+@property (nonatomic, assign) NSInteger questionFontSize;           //做题时默认字体
+@property (nonatomic, copy) NSString *sizeDescription;          //字体描述  小号 中号 大号
+
 @end

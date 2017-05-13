@@ -166,8 +166,9 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
             if(!cell){
                  cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellImageAndArrowId];
             }
+            
             [cell updateCell:@"我的头像" detailText:nil type:SetItemTypeImageAndArrow iconImageName:@"set_head"];
-            [cell setHeadImage:[CXLocalUser instance].avatar];
+            [cell setHeadImage:[NSString getAvatarUrl:[CXLocalUser instance].avatar]];
         }else if(indexPath.row == 1){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){

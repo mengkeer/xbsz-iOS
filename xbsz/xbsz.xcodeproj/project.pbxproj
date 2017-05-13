@@ -43,6 +43,7 @@
 		AD196E651EAC3C3700111EB5 /* NicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD196E641EAC3C3700111EB5 /* NicknameViewController.m */; };
 		AD196E681EAC8AFC00111EB5 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD196E671EAC8AFC00111EB5 /* EmailViewController.m */; };
 		AD196E6B1EAC8E2900111EB5 /* PhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD196E6A1EAC8E2900111EB5 /* PhoneViewController.m */; };
+		AD1D108A1EC7443000E04135 /* AppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1D10891EC7443000E04135 /* AppUtil.m */; };
 		AD2540B21E977A9900AA330D /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2540B11E977A9900AA330D /* UserInfoViewController.m */; };
 		AD2540B51E977B4100AA330D /* AuthorizedLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2540B41E977B4100AA330D /* AuthorizedLoginViewController.m */; };
 		AD2540B81E97860F00AA330D /* JWLocalUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2540B71E97860F00AA330D /* JWLocalUser.m */; };
@@ -64,6 +65,9 @@
 		AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */; };
 		AD592E6E1EB20DA800CBDCC8 /* QuestionSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E6B1EB20DA800CBDCC8 /* QuestionSearchViewController.m */; };
 		AD592E6F1EB20DA800CBDCC8 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E6D1EB20DA800CBDCC8 /* SearchResultViewController.m */; };
+		AD5B0FD01EC5E23F00C7D283 /* NSDate+CXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B0FCF1EC5E23F00C7D283 /* NSDate+CXAdd.m */; };
+		AD5B0FD31EC5E8A700C7D283 /* CXPage.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B0FD21EC5E8A700C7D283 /* CXPage.m */; };
+		AD5B0FD61EC6058E00C7D283 /* CourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B0FD51EC6058E00C7D283 /* CourseWare.m */; };
 		AD7092AA1E861CF10024427C /* DefaultTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7092A91E861CF10024427C /* DefaultTipsView.m */; };
 		AD7BD61B1EAD8ABF00F34023 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BD61A1EAD8ABF00F34023 /* SignatureViewController.m */; };
 		AD7BD61E1EAD9B2900F34023 /* MajorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BD61D1EAD9B2900F34023 /* MajorViewController.m */; };
@@ -115,6 +119,7 @@
 		ADA1876E1EB2F04000C771A4 /* ExerciseChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA1876B1EB2F04000C771A4 /* ExerciseChapterCollectionViewCell.m */; };
 		ADA1876F1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA1876D1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m */; };
 		ADA187721EB333CB00C771A4 /* SinglePracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA187711EB333CB00C771A4 /* SinglePracticeViewController.m */; };
+		ADA770091EC60746001E7D3B /* CourseWareList.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA770081EC60746001E7D3B /* CourseWareList.m */; };
 		ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */; };
 		ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = ADAAE0881E7CD06400A0FA2C /* exercises.json */; };
 		ADAAE08E1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */; };
@@ -215,6 +220,8 @@
 		AD196E671EAC8AFC00111EB5 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		AD196E691EAC8E2900111EB5 /* PhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneViewController.h; sourceTree = "<group>"; };
 		AD196E6A1EAC8E2900111EB5 /* PhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneViewController.m; sourceTree = "<group>"; };
+		AD1D10881EC7443000E04135 /* AppUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtil.h; sourceTree = "<group>"; };
+		AD1D10891EC7443000E04135 /* AppUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtil.m; sourceTree = "<group>"; };
 		AD2540B01E977A9900AA330D /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
 		AD2540B11E977A9900AA330D /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		AD2540B31E977B4100AA330D /* AuthorizedLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizedLoginViewController.h; sourceTree = "<group>"; };
@@ -259,6 +266,12 @@
 		AD592E6B1EB20DA800CBDCC8 /* QuestionSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionSearchViewController.m; sourceTree = "<group>"; };
 		AD592E6C1EB20DA800CBDCC8 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		AD592E6D1EB20DA800CBDCC8 /* SearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
+		AD5B0FCE1EC5E23F00C7D283 /* NSDate+CXAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CXAdd.h"; sourceTree = "<group>"; };
+		AD5B0FCF1EC5E23F00C7D283 /* NSDate+CXAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CXAdd.m"; sourceTree = "<group>"; };
+		AD5B0FD11EC5E8A700C7D283 /* CXPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXPage.h; sourceTree = "<group>"; };
+		AD5B0FD21EC5E8A700C7D283 /* CXPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPage.m; sourceTree = "<group>"; };
+		AD5B0FD41EC6058E00C7D283 /* CourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseWare.h; sourceTree = "<group>"; };
+		AD5B0FD51EC6058E00C7D283 /* CourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseWare.m; sourceTree = "<group>"; };
 		AD7092A81E861CF10024427C /* DefaultTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTipsView.h; sourceTree = "<group>"; };
 		AD7092A91E861CF10024427C /* DefaultTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTipsView.m; sourceTree = "<group>"; };
 		AD7BD6191EAD8ABF00F34023 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
@@ -368,6 +381,8 @@
 		ADA1876D1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseChapterTableViewCell.m; sourceTree = "<group>"; };
 		ADA187701EB333CB00C771A4 /* SinglePracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePracticeViewController.h; sourceTree = "<group>"; };
 		ADA187711EB333CB00C771A4 /* SinglePracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePracticeViewController.m; sourceTree = "<group>"; };
+		ADA770071EC60746001E7D3B /* CourseWareList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseWareList.h; sourceTree = "<group>"; };
+		ADA770081EC60746001E7D3B /* CourseWareList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseWareList.m; sourceTree = "<group>"; };
 		ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		ADAAE0881E7CD06400A0FA2C /* exercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
@@ -900,6 +915,8 @@
 				0538AAA71E6E9BDC00E7A51D /* NSString+CXAdd.m */,
 				055A3B891E84CC7D004D09CC /* UIViewController+Authorization.h */,
 				055A3B8A1E84CC7D004D09CC /* UIViewController+Authorization.m */,
+				AD5B0FCE1EC5E23F00C7D283 /* NSDate+CXAdd.h */,
+				AD5B0FCF1EC5E23F00C7D283 /* NSDate+CXAdd.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -983,6 +1000,8 @@
 				ADF408D41EB4E076009DB786 /* CXAudioPlayer.m */,
 				ADF408D81EB4E53D009DB786 /* CXUserDefaults.h */,
 				ADF408D91EB4E53D009DB786 /* CXUserDefaults.m */,
+				AD1D10881EC7443000E04135 /* AppUtil.h */,
+				AD1D10891EC7443000E04135 /* AppUtil.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1211,6 +1230,10 @@
 				AD8B86271E9A92A4007F4CEC /* CXUser.m */,
 				AD45BBB81EAF35B300D53813 /* ExerciseQuestion.h */,
 				AD45BBB91EAF35B300D53813 /* ExerciseQuestion.m */,
+				AD5B0FD11EC5E8A700C7D283 /* CXPage.h */,
+				AD5B0FD21EC5E8A700C7D283 /* CXPage.m */,
+				AD5B0FD41EC6058E00C7D283 /* CourseWare.h */,
+				AD5B0FD51EC6058E00C7D283 /* CourseWare.m */,
 			);
 			path = EntityModel;
 			sourceTree = "<group>";
@@ -1226,6 +1249,8 @@
 				AD8B862F1E9A92B1007F4CEC /* CourseList.m */,
 				AD8B45341EA9DCA600E8D539 /* CourseCommentList.h */,
 				AD8B45351EA9DCA600E8D539 /* CourseCommentList.m */,
+				ADA770071EC60746001E7D3B /* CourseWareList.h */,
+				ADA770081EC60746001E7D3B /* CourseWareList.m */,
 			);
 			path = ModularModel;
 			sourceTree = "<group>";
@@ -1524,6 +1549,7 @@
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
 				ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */,
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
+				AD5B0FD01EC5E23F00C7D283 /* NSDate+CXAdd.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
 				ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */,
 				AD45BBBA1EAF35B300D53813 /* ExerciseQuestion.m in Sources */,
@@ -1571,6 +1597,7 @@
 				AD7F891B1E595B29009603E4 /* InformViewController.m in Sources */,
 				ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */,
 				AD8B861F1E9A9191007F4CEC /* CXBaseResponseModel.m in Sources */,
+				AD5B0FD31EC5E8A700C7D283 /* CXPage.m in Sources */,
 				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
 				05CEE4A71E851DAB0033DD3D /* SchoolSceneryViewController.m in Sources */,
 				AD8B86301E9A92B1007F4CEC /* CampusNoteList.m in Sources */,
@@ -1586,6 +1613,7 @@
 				ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */,
 				ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */,
 				AD7F88DF1E595A5E009603E4 /* CXTabBarController.m in Sources */,
+				AD5B0FD61EC6058E00C7D283 /* CourseWare.m in Sources */,
 				AD7F882B1E594D5E009603E4 /* YZDisplayViewController.m in Sources */,
 				AD8B861C1E9A913F007F4CEC /* CXNetwork.m in Sources */,
 				ADA1876E1EB2F04000C771A4 /* ExerciseChapterCollectionViewCell.m in Sources */,
@@ -1613,10 +1641,12 @@
 				ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */,
 				05067FED1E7BF02200868AC1 /* CourseInfoViewController.m in Sources */,
 				AD7F891A1E595B29009603E4 /* CXLaunchViewController.m in Sources */,
+				AD1D108A1EC7443000E04135 /* AppUtil.m in Sources */,
 				ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */,
 				AD8B452A1EA890DB00E8D539 /* CourseCommentViewController.m in Sources */,
 				055A3B8B1E84CC7D004D09CC /* UIViewController+Authorization.m in Sources */,
 				AD592E6F1EB20DA800CBDCC8 /* SearchResultViewController.m in Sources */,
+				ADA770091EC60746001E7D3B /* CourseWareList.m in Sources */,
 				AD8B86281E9A92A4007F4CEC /* CampusComment.m in Sources */,
 				AD8B45361EA9DCA600E8D539 /* CourseCommentList.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,

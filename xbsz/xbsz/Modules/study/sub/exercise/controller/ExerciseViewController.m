@@ -15,6 +15,7 @@
 #import "StudyUtil.h"
 #import "ExerciseMode.h"
 #import "DownloadManager.h"
+#import "CXNetworkMonitoring.h"
 
 #import "PYSearch.h"
 
@@ -153,8 +154,12 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         ExerciseType type = [StudyUtil indexToExerciseType:index];
         [self gotoExerciseDetailView:type];
     }else{
-        [ToastView showBlackSuccessWithStaus:@"开始下载题库"];
-        [[DownloadManager manager] downloadTikuFromServer];
+        if([CXNetworkMonitoring canReachable] == YES){
+            [ToastView showBlackSuccessWithStaus:@"开始下载题库"];
+            [[DownloadManager manager] downloadTikuFromServer];
+        }else{
+            [ToastView showBlackSuccessWithStaus:@"无数据访问权限，请在设置中修改"];
+        }
     }
 }
 

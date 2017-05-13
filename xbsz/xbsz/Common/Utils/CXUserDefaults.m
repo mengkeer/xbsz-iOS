@@ -25,6 +25,7 @@ static CXUserDefaults *sharedObj;
 + (void)setDefaultspreference{
     [CXStandardUserDefaults setBool:YES forKey:@"isAudioOpen"];
     [CXStandardUserDefaults setBool:NO forKey:@"isShakeOpen"];
+    [CXStandardUserDefaults setInteger:15 forKey:@"questionFontSize"];
 }
 
 - (BOOL)isAudioOpen{
@@ -43,6 +44,27 @@ static CXUserDefaults *sharedObj;
 
 - (void)setIsShakeOpen:(BOOL)isShakeOpen{
     [CXStandardUserDefaults setBool:isShakeOpen forKey:@"isShakeOpen"];
+}
+
+- (NSInteger)questionFontSize{
+    NSInteger size = [CXStandardUserDefaults integerForKey:@"questionFontSize"];
+    return size;
+}
+
+- (void)setQuestionFontSize:(NSInteger)questionFontSize{
+    [CXStandardUserDefaults setInteger:questionFontSize forKey:@"questionFontSize"];
+}
+
+- (NSString *)sizeDescription{
+    if([CXStandardUserDefaults integerForKey:@"questionFontSize"] == 12){
+        return @"小";
+    }else if([CXStandardUserDefaults integerForKey:@"questionFontSize"] == 15){
+        return @"中";
+    }else if([CXStandardUserDefaults integerForKey:@"questionFontSize"] == 18){
+        return @"大";
+    }else{
+        return @"未知";
+    }
 }
 
 @end

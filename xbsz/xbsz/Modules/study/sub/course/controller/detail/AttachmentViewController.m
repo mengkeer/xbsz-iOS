@@ -36,10 +36,9 @@
     [self.customNavBarView addSubview:_progressView];
     
  
-    
-    _webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight)];
-//    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_path]];
-    [_webView loadFileURL:[NSURL fileURLWithPath:_path] allowingReadAccessToURL:[NSURL fileURLWithPath:_path]];
+    _webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 64, CXScreenWidth, CXScreenHeight-64)];
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_path]];
+    [_webView loadRequest:request];
     _webView.navigationDelegate = self;
     _webView.scrollView.delegate = self;
     [self.view addSubview:_webView];
@@ -110,7 +109,7 @@
 
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
-   
+    [self.progressView setProgress:0.1 animated:YES];
 }
 
 // 页面加载失败时调用

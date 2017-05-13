@@ -15,4 +15,21 @@
                    success:(CXNetworkSuccessBlock)success
                    failure:(CXNetworkFailureBlock)failure;
 
+
++ (void)getCourseComments:(NSString *)courseID
+                   offset:(NSInteger)offset
+                    limit:(NSInteger)limit
+                  success:(CXNetworkSuccessBlock)success
+                  failure:(CXNetworkFailureBlock)failure;
+
++ (void)addCourseComment:(NSString *)courseID
+                 content:(NSString *)content
+                   point:(NSInteger)point
+                 success:(CXNetworkSuccessBlock)success
+                 failure:(CXNetworkFailureBlock)failure;
+
++ (void)getCourseWare:(NSString *)courseID
+              success:(CXNetworkSuccessBlock)success
+              failure:(CXNetworkFailureBlock)failure;
+
 @end

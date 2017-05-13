@@ -7,12 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ToastView : NSObject
 
 + (void)show;
 
++ (void)showProgressBar:(NSString *)status;
+
 + (void)dismiss;
+
++ (void)showStatus:(NSString *)status;
 
 + (void)showErrorWithStaus:(NSString *)status;
 
@@ -23,5 +28,7 @@
 + (void)showBlackSuccessWithStaus:(NSString *)status;
 
 + (void)showSuccessWithStaus:(NSString *)status delay:(NSInteger)delay;
+
++ (void)showBlackSuccessWithStaus:(NSString *)status delay:(NSInteger)delay;
 
 @end

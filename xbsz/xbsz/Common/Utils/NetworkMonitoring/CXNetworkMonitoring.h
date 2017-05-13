@@ -12,6 +12,10 @@
 
 + (AFNetworkReachabilityStatus)currentStatus;
 
++ (BOOL)canReachable;
+
++ (BOOL)wifiOnly;
+
 + (void)startNetworkMonitoring;
 
 @end

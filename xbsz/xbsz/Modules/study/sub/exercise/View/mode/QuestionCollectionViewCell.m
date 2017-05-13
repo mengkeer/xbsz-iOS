@@ -108,7 +108,7 @@ static NSInteger TitlePaddingRight = 5;
 - (QuestionTitleLabel *)titleLabel{
     if(!_titleLabel){
         _titleLabel = [[QuestionTitleLabel alloc] initWithInsets:UIEdgeInsetsMake(TitlePaddingRight, TitlePaddingLeft, TitlePaddingRight, TitlePaddingRight)];
-        _titleLabel.font = CXSystemFont(15);
+        _titleLabel.font = CXSystemFont([CXUserDefaults instance].questionFontSize);
         _titleLabel.textColor = CXTextGrayColor;
         _titleLabel.numberOfLines = 0;
         _titleLabel.backgroundColor = CXHexColor(0xf5f5f5);
@@ -301,7 +301,7 @@ static NSInteger TitlePaddingRight = 5;
     CGSize size = CGSizeMake(CXScreenWidth-15*2 -TitlePaddingLeft-TitlePaddingRight, CGFLOAT_MAX);
     CGRect labelRect = [text boundingRectWithSize:size
                                                     options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin
-                                                 attributes:@{NSFontAttributeName:CXSystemFont(15),NSParagraphStyleAttributeName:paragraphStyle} context:nil] ;
+                                                 attributes:@{NSFontAttributeName:CXSystemFont([CXUserDefaults instance].questionFontSize),NSParagraphStyleAttributeName:paragraphStyle} context:nil] ;
     
     NSInteger textHeight = (int)CGRectGetHeight(labelRect)+1+TitlePaddingRight*2;
     

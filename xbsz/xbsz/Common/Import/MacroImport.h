@@ -18,6 +18,7 @@
 #import "ToastView.h"
 #import "CXLocalUser.h"
 #import "JWLocalUser.h"
+#import "CXUserDefaults.h"
 
 
 #endif /* MacroImport_h */

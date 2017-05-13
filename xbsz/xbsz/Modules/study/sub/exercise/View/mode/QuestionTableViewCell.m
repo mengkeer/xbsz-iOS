@@ -85,7 +85,7 @@ static NSInteger symbolWidth = 35;
     if(!_optionLabel){
         _optionLabel = [[UILabel alloc] init];
         _optionLabel.textAlignment = NSTextAlignmentLeft;
-        _optionLabel.font = CXSystemFont(15);
+        _optionLabel.font = CXSystemFont([CXUserDefaults instance].questionFontSize);
         _optionLabel.textColor = CXBlackColor;
         _optionLabel.numberOfLines = 0;
     }
@@ -223,7 +223,7 @@ static NSInteger symbolWidth = 35;
     CGSize size = CGSizeMake(CXScreenWidth-15-symbolWidth-10-15, CGFLOAT_MAX);
     CGRect labelRect = [text boundingRectWithSize:size
                                           options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin
-                                       attributes:@{NSFontAttributeName:CXSystemFont(15),NSParagraphStyleAttributeName:paragraphStyle} context:nil] ;
+                                       attributes:@{NSFontAttributeName:CXSystemFont([CXUserDefaults instance].questionFontSize),NSParagraphStyleAttributeName:paragraphStyle} context:nil] ;
     
     NSInteger textHeight = (int)CGRectGetHeight(labelRect)+1;
     

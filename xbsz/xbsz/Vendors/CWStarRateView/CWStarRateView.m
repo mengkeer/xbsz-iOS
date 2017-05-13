@@ -77,7 +77,7 @@
     
     int starNum = (int)starScore;
     
-    CGFloat score = (starScore - starNum) > 0.45 ? starNum + 1 :starNum+0.5;
+    CGFloat score = starNum+1;
     
     self.scorePercent = score / self.numberOfStars;
 }

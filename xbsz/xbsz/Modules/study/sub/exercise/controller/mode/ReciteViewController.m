@@ -231,7 +231,7 @@ static NSInteger bottomHeight = 45;
 
 - (void)questionGoto{
     ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
-    [progressVC updateData:_mode total:[_questions count] judgedDic:nil currentIndex:_index clicked:^(NSInteger index) {
+    [progressVC updateData:_mode total:[_questions count] practicedDic:nil judgedDic:nil currentIndex:_index clicked:^(NSInteger index) {
         if(index >= 0){
             _index = index;
             NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
@@ -251,6 +251,7 @@ static NSInteger bottomHeight = 45;
     --_index;
     NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
     [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [_collectionView reloadItemsAtIndexPaths:@[path]];
     [self updatePreAndNextLabel:_index];
 }
 
@@ -262,6 +263,7 @@ static NSInteger bottomHeight = 45;
     ++_index;
     NSIndexPath *path = [NSIndexPath indexPathForRow:_index inSection:0];
     [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    [_collectionView reloadItemsAtIndexPaths:@[path]];
     [self updatePreAndNextLabel:_index];
 
 }

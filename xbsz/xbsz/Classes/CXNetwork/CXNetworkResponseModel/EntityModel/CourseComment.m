@@ -10,5 +10,9 @@
 
 @implementation CourseComment
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"time":@"createdAt",@"avatar":@"userInfo.avatar",@"nickname":@"userInfo.nickname"};
+}
+
 
 @end

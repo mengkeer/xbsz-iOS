@@ -16,8 +16,27 @@
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
 }
 
++ (void)showProgressBar:(NSString *)status{
+    [SVProgressHUD showWithStatus:status];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+}
+
 + (void)dismiss{
     [SVProgressHUD dismiss];
+}
+
++ (void)showStatus:(NSString *)status{
+    [SVProgressHUD dismiss];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD setInfoImage:nil];
+        [SVProgressHUD showInfoWithStatus:status];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    });
 }
 
 + (void)showSuccessWithStaus:(NSString *)status{
@@ -40,6 +59,20 @@
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [SVProgressHUD dismiss];
+        });
+    });
+}
+
++ (void)showBlackSuccessWithStaus:(NSString *)status delay:(NSInteger)delay{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [SVProgressHUD dismiss];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD showSuccessWithStatus:status];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
         });
     });
 }

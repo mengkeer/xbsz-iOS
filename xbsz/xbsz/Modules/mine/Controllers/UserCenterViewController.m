@@ -29,7 +29,9 @@
 
 @property (nonatomic,strong) UIView *infoView;
 @property (nonatomic,strong) UILabel *briefLabel;       //简介
-@property (nonatomic,strong) UIButton *headBtn;     //头像
+@property (nonatomic,strong) UIButton *headBtn;     //头像背景
+@property (nonatomic,strong) UIButton *avatarBtn;     //头像
+
 
 @property (nonatomic,strong) UIView *contentView;
 
@@ -48,6 +50,9 @@
         }else{
             _briefLabel.text = @"(＾－＾) 介绍一下自己吧";
         }
+        NSString *avatarUrl = [NSString getAvatarUrl:[CXLocalUser instance].avatar];
+        [_avatarBtn yy_setImageWithURL:[NSURL URLWithString:avatarUrl] forState:UIControlStateNormal placeholder:[UIImage imageNamed:@"avatar1.jpg"]];
+
     }else{
         _nickNamelabel.text = @"请登录";
         _briefLabel.text = @"(＾－＾) 介绍一下自己吧";
@@ -134,6 +139,12 @@
         make.width.and.height.mas_equalTo(90);
         make.top.mas_equalTo(_infoView.mas_top).mas_offset(10);
     }];
+    
+    [_infoView addSubview:self.avatarBtn];
+    [_avatarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.centerY.mas_equalTo(_headBtn);
+        make.width.and.height.mas_equalTo(58);
+    }];
 
     [_infoView addSubview:self.briefLabel];
     [_briefLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -219,13 +230,23 @@
 - (UIButton *)headBtn{
     if(!_headBtn){
         _headBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_headBtn setImage:[[[UIImage imageNamed:@"avatar1.jpg"] imageByResizeToSize:CGSizeMake(58, 58) contentMode:UIViewContentModeScaleToFill] imageByRoundCornerRadius:29] forState:UIControlStateNormal];
-        [_headBtn setBackgroundImage:[UIImage imageNamed:@"mine_bg_avatar"] forState:UIControlStateNormal];
+        [_headBtn setImage:[UIImage imageNamed:@"mine_bg_avatar"] forState:UIControlStateNormal];
         _headBtn.layer.cornerRadius = 45;
         _headBtn.clipsToBounds = YES;
         [_headBtn addTarget:self action:@selector(clickLogin) forControlEvents:UIControlEventTouchUpInside];
     }
     return _headBtn;
+}
+
+- (UIButton *)avatarBtn{
+    if(!_avatarBtn){
+        _avatarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_avatarBtn setImage:[UIImage imageNamed:@"avatar1.jpg"] forState:UIControlStateNormal];
+        _avatarBtn.layer.cornerRadius = 29;
+        _avatarBtn.clipsToBounds = YES;
+        [_avatarBtn addTarget:self action:@selector(clickLogin) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _avatarBtn;
 }
 
 - (UILabel *)briefLabel{
@@ -322,8 +343,9 @@
         
         
         CXSectionButton *btn7 = [[CXSectionButton alloc] init:CGRectMake(width*2, offsetY, width, height)
-                                                     andImage:[UIImage imageNamed:@"mine7"]
-                                                     andTitle:@"失物招领"];
+                                                     andImage:[UIImage imageNamed:@"school1"]
+                                                     andTitle:@"学工服务"];
+        [btn7 addTarget:self action:@selector(gotoStudentService) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn7];
         
         CXSectionButton *btn8 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
@@ -380,8 +402,8 @@
         
         
         CXSectionButton *btn9 = [[CXSectionButton alloc] init:CGRectMake(0, offsetY, width, height)
-                                                     andImage:[UIImage imageNamed:@"school1"]
-                                                     andTitle:@"学工服务"];
+                                                     andImage:[UIImage imageNamed:@"mine7"]
+                                                     andTitle:@"失物招领"];
         [btn9 addTarget:self action:@selector(gotoStudentService) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn9];
         

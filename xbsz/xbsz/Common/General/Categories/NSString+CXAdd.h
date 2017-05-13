@@ -15,4 +15,6 @@
 //JSON数组类型的字符串 转化为  数组
 - (id)JSONValue;
 
++ (NSString *)getAvatarUrl:(NSString *)imagename;
+
 @end

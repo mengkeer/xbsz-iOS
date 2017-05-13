@@ -18,6 +18,6 @@
 
 @interface AttachmentViewController : CXWhitePushViewController
 
-@property (nonatomic, strong) NSString *path;
+@property (nonatomic, copy) NSString *path;
 
 @end

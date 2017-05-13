@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CXPage.h"
 
 @interface CourseCommentList : NSObject
 
 @property (nonatomic, strong) NSMutableArray *comments;
 
+@property (nonatomic, strong)  CXPage *pageInfo;
 @end

@@ -1,25 +1,24 @@
 //
-//  NSString+CXAdd.m
+//  NSDate+CXAdd.m
 //  xbsz
 //
-//  Created by 陈鑫 on 17/3/7.
+//  Created by lotus on 2017/5/12.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "NSString+CXAdd.h"
+#import "NSDate+CXAdd.h"
 
-@implementation NSString (CXAdd)
+@implementation NSDate (CXAdd)
 
-//将服务器端的时间转化为在客户端上显示的时间
 
 - (NSString *)convertToLocalTime{
-
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyyy-MM-dd HH-mm-ss";
-    NSDate *date = [formatter dateFromString:self];
+    NSDate *date = self;
     
     NSDate *now = [NSDate date];
-
+    
     if([date isToday]){
         formatter.dateFormat = @"今天HH:mm";
         return [formatter stringFromDate:date];
@@ -45,24 +44,7 @@
         return [formatter stringFromDate:date];
     }
     
-    return self;;
-}
-
-- (id)JSONValue{
-    NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    __autoreleasing NSError* error = nil;
-    id result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-    if (error != nil) return nil;
-    return result;
-}
-
-+ (NSString *)getAvatarUrl:(NSString *)imagename{
-    if(imagename == nil || [imagename isEqualToString:@""]){
-        return [NSString stringWithFormat:@"%@/default.png",CXAvatarsBaseUrl];
-    }else{
-        return [NSString stringWithFormat:@"%@/%@",CXAvatarsBaseUrl,imagename];
-
-    }
+    return [self stringWithFormat:@"yyyy-MM-dd"];;
 }
 
 @end
