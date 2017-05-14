@@ -16,6 +16,8 @@
 
 @property (nonatomic, assign) BOOL cusNavBarHidden;
 
+@property (nonatomic, strong) UIView *topLineView;
+
 @property (nonatomic,strong) UIView *topBgView;
 
 
@@ -56,11 +58,22 @@
     [self.titleLabel setText:self.title];
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backButton.frame = CGRectMake(0, 20, 40, 44);
-    [self.backButton setImage:[UIImage imageNamed:@"common_back_white"] forState:UIControlStateNormal];
-     [self.backButton setImage:[UIImage imageNamed:@"common_back_white"] forState:UIControlStateHighlighted];
+    self.backButton.frame = CGRectMake(3, 20, 44, 44);
+    self.backButton.imageEdgeInsets = UIEdgeInsetsMake(12, 12, 12, 12);
+    [self.backButton setImage:[UIImage imageNamed:@"back_arrow_black"] forState:UIControlStateNormal];
+//     [self.backButton setImage:[UIImage imageNamed:@"common_back_white"] forState:UIControlStateHighlighted];
     [self.backButton addTarget:self action:@selector(popFromCurrentViewController) forControlEvents:UIControlEventTouchUpInside];
     [self.customNavBarView addSubview:self.backButton];
+    
+    _topLineView = [[UIView alloc] init];
+    _topLineView.backgroundColor = CXLineColor;
+    [self.customNavBarView addSubview:_topLineView];
+    [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.customNavBarView.mas_bottom);
+        make.height.mas_equalTo(1/CXMainScale);
+    }];
+    [_topLineView setHidden:YES];
     
     
     
@@ -77,6 +90,23 @@
     maskLayer.path = maskPath.CGPath;
     _contentView.layer.mask = maskLayer;
     
+    [self autoTheme];
+}
+
+- (void)showTopLineView{
+    _topLineView.hidden = NO;
+}
+
+- (void)autoTheme{
+    NSInteger type = [CXUserDefaults instance].themeType;
+    self.titleLabel.textColor = [CXUserDefaults instance].textColor;
+    self.customNavBarView.backgroundColor = [CXUserDefaults instance].mainColor;
+    _topBgView.backgroundColor = [CXUserDefaults instance].mainColor;
+    if(type == 2){
+        [self.backButton setImage:[UIImage imageNamed:@"back_arrow_black"] forState:UIControlStateNormal];
+    }else{
+        [self.backButton setImage:[UIImage imageNamed:@"back_arrow_white"] forState:UIControlStateNormal];
+    }
 }
 
 - (void)popFromCurrentViewController

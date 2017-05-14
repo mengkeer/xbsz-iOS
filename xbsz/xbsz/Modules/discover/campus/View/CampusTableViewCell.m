@@ -227,6 +227,7 @@
 - (CommentToolBarView *)toolBarView{
     if(!_toolBarView){
         _toolBarView = [[CommentToolBarView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 45)];
+        _toolBarView.backgroundColor = CXWhiteColor;
     }
     return _toolBarView;
 }

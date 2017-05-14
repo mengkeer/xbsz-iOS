@@ -15,11 +15,11 @@
          password:(NSString *)password
           success:(CXNetworkSuccessBlock)success
           failure:(CXNetworkFailureBlock)failure{
-    
+    @weakify(self);
     NSDictionary *parameters = @{@"userName": username, @"password":password};
     [self invokePostRequest:CXLoginUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:(NSDictionary *)responseObject];
-        [self saveToken:rsp.data];
+        [weak_self saveToken:rsp.data];
         CallbackRsp(rsp);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [[CXLocalUser instance] reset];
@@ -47,9 +47,10 @@
             failure:(CXNetworkFailureBlock)failure{
     
     NSDictionary *parameters = @{@"token":token};
+    @weakify(self);
     [self invokePostRequest:CXGetUserInfoUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:responseObject];
-        [self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
+        [weak_self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
         CallbackRsp(rsp);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         InvokeFailure(error);
@@ -61,9 +62,10 @@
                success:(CXNetworkSuccessBlock)success
                failure:(CXNetworkFailureBlock)failure{
     [parameters setValue:token forKey:@"token"];
+    @weakify(self);
     [self invokePostRequest:CXUpdateUserInfoUrl parameters:[parameters copy] success:^(NSURLSessionDataTask *task, id responseObject) {
         CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:responseObject];
-         if(rsp.code == CXResponseCodeOK)   [self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
+        if(rsp.code == CXResponseCodeOK)   [weak_self saveUserInfo:((NSDictionary *)responseObject)[@"data"]];
         CallbackRsp(rsp);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         InvokeFailure(error);
@@ -79,7 +81,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
 //    manager.requestSerializer.timeoutInterval = 8;
 
-
+    @weakify(self);
     NSDictionary *parameters = @{@"token":[CXLocalUser instance].token};
     [manager POST:CXUpdateUserAvatar parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         //
@@ -93,7 +95,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:obj];
-        if(rsp.code == CXResponseCodeOK)    [self saveUserInfo:((NSDictionary *)obj)[@"data"]];
+        if(rsp.code == CXResponseCodeOK)    [weak_self saveUserInfo:((NSDictionary *)obj)[@"data"]];
         CallbackRsp(rsp);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         InvokeFailure(error);

@@ -21,9 +21,12 @@
 
 @interface UserCenterViewController ()<UIScrollViewDelegate>
 
+@property (nonatomic, strong) UIView *topBarView;
+
 @property (nonatomic,strong) UILabel *nickNamelabel;        //昵称
 
 @property (nonatomic,strong) UIView *infoBgView;        //头像区域的背景view
+@property (nonatomic, strong) UIView *cornerView;
 
 @property (nonatomic,strong) UIView *dotView;
 
@@ -31,6 +34,7 @@
 @property (nonatomic,strong) UILabel *briefLabel;       //简介
 @property (nonatomic,strong) UIButton *headBtn;     //头像背景
 @property (nonatomic,strong) UIButton *avatarBtn;     //头像
+@property (nonatomic, strong) UIButton *rightBtn;
 
 
 @property (nonatomic,strong) UIView *contentView;
@@ -54,10 +58,27 @@
         [_avatarBtn yy_setImageWithURL:[NSURL URLWithString:avatarUrl] forState:UIControlStateNormal placeholder:[UIImage imageNamed:@"avatar1.jpg"]];
 
     }else{
+        NSString *avatarUrl = [NSString getAvatarUrl:[CXLocalUser instance].avatar];
+        [_avatarBtn yy_setImageWithURL:[NSURL URLWithString:avatarUrl] forState:UIControlStateNormal placeholder:[UIImage imageNamed:@"defaultUserPhoto"]];
         _nickNamelabel.text = @"请登录";
         _briefLabel.text = @"(＾－＾) 介绍一下自己吧";
     }
     [self updateInfoViewHeight];
+    
+    //改变主题
+    NSInteger themeType = [CXUserDefaults instance].themeType;
+    _infoView.backgroundColor = [CXUserDefaults instance].centerColor;
+    _cornerView.backgroundColor = [CXUserDefaults instance].centerColor;
+    _topBarView.backgroundColor = [CXUserDefaults instance].centerColor;
+    _infoBgView.backgroundColor = [CXUserDefaults instance].centerColor;
+    
+    if(themeType == 2){
+         [_rightBtn setImage:[UIImage imageNamed:@"right_arrow_black"] forState:UIControlStateNormal];
+    }else{
+        [_rightBtn setImage:[UIImage imageNamed:@"right_arrow_white"] forState:UIControlStateNormal];
+    }
+
+    
 }
 
 - (void)viewDidLoad {
@@ -69,9 +90,9 @@
 
 - (void)createUI{
     
-    UIView *navigationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 64)];
-    navigationView.backgroundColor = CXMainColor;
-    [self.view addSubview:navigationView];
+    _topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 64)];
+    _topBarView.backgroundColor = [CXUserDefaults instance].centerColor;
+    [self.view addSubview:_topBarView];
 
     
     //创建导航栏
@@ -107,9 +128,9 @@
     [rightBtn addTarget:self action:@selector(clickSet) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:rightBtn];
     [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.and.height.mas_equalTo(20);
-        make.right.mas_equalTo(self.view).mas_offset(-15);
-        make.top.mas_equalTo(self.view).mas_offset(32);
+        make.width.and.height.mas_equalTo(40);
+        make.right.mas_equalTo(self.view).mas_offset(-5);
+        make.top.mas_equalTo(self.view).mas_offset(20);
     }];
 
     //创建用户头像与个性签名
@@ -122,10 +143,10 @@
     [self.view addSubview:scrollView];
     
      _infoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 145)];
-    _infoView.backgroundColor = CXMainColor;
+    _infoView.backgroundColor = [CXUserDefaults instance].centerColor;
     
     _infoBgView = [[UIView alloc] init];
-    _infoBgView.backgroundColor = CXMainColor;
+    _infoBgView.backgroundColor = [CXUserDefaults instance].centerColor;
     [_infoView addSubview:_infoBgView];
     [_infoBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(_infoView);
@@ -159,15 +180,15 @@
   
 //    [self updateInfoViewHeight];
     
-    UIImageView *rightArrow = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mine_right_arrow"]];
-    rightArrow.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap  = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickInfo)];
-    [rightArrow addGestureRecognizer:tap];
-    [_infoView addSubview:rightArrow];
-    [rightArrow mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(_infoView.mas_right).mas_offset(-15);
-        make.width.mas_equalTo(20);
-        make.height.mas_equalTo(20);
+    _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_rightBtn setImage:[UIImage imageNamed:@"right_arrow_black"] forState:UIControlStateNormal];
+    [_rightBtn addTarget:self action:@selector(clickInfo) forControlEvents:UIControlEventTouchUpInside];
+    [_infoView addSubview:_rightBtn];
+    [_rightBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(_infoView.mas_right).mas_offset(-10);
+        make.width.mas_equalTo(30);
+        make.height.mas_equalTo(30);
+//        make.edges.mas_equalTo();
         make.centerY.mas_equalTo(_headBtn.mas_centerY);
     }];
     
@@ -175,10 +196,10 @@
     
     [scrollView addSubview:_infoView];
     
-    UIView *backView = [[UIView alloc] init];       //内容区域圆角的背景
-    backView.backgroundColor = CXMainColor;
-    [scrollView addSubview:backView];
-    [backView mas_makeConstraints:^(MASConstraintMaker *make) {
+    _cornerView = [[UIView alloc] init];       //内容区域圆角的背景
+    _cornerView.backgroundColor = [CXUserDefaults instance].centerColor;;
+    [scrollView addSubview:_cornerView];
+    [_cornerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_infoView.mas_bottom);
         make.width.mas_equalTo(CXScreenWidth);
         make.height.mas_equalTo(CXTopCornerRadius);

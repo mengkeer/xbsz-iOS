@@ -61,7 +61,7 @@ static NSInteger bottomHeight = 45;
         [self.customNavBarView addSubview:self.removeBtn];
     }
 //    [self.customNavBarView addSubview:self.showBtn];              //暂时不显示该按钮
-    self.customNavBarView.backgroundColor  = CXBackGroundColor;
+    self.customNavBarView.backgroundColor  = [CXUserDefaults instance].bgColor;
     
     
     [self.view addSubview:self.collectionView];
@@ -111,9 +111,9 @@ static NSInteger bottomHeight = 45;
 
 - (void)addBottomView{
     UIView *bottomLeftBgView = [[UIView alloc] init];
-    bottomLeftBgView.backgroundColor = CXBackGroundColor;
+    bottomLeftBgView.backgroundColor = [CXUserDefaults instance].bgColor;
     UIView *bottomRightBgView = [[UIView alloc] init];
-    bottomRightBgView.backgroundColor = CXBackGroundColor;
+    bottomRightBgView.backgroundColor = [CXUserDefaults instance].bgColor;
     
     [bottomLeftBgView addSubview:self.preBtn];
     [bottomLeftBgView addSubview:self.preLabel];
@@ -229,7 +229,7 @@ static NSInteger bottomHeight = 45;
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-        _collectionView.backgroundColor = CXWhiteColor;
+        _collectionView.backgroundColor = [CXUserDefaults instance].bgColor;
         _collectionView.dataSource = self;
         _collectionView.alwaysBounceHorizontal = YES;
         _collectionView.delegate = self;

@@ -11,3 +11,12 @@
 @interface InformViewController : CXPushViewController
 
 @end
+
+
+@interface InformTableViewCell : UITableViewCell
+
+- (void)updateUI:(NSString *)text;
+
+- (void)showLineView:(NSInteger)currentRow totalRows:(NSInteger)totalRows;
+
+@end

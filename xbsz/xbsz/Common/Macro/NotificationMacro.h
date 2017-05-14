@@ -10,4 +10,8 @@
 #define NotificationMacro_h
 
 
+#define NotificationThemeChanged       @"ThemeChangedNotificationName"          //系统主题更改了
+#define NotificationCourseCommentSubmited           @"NotificationCourseCommentSubmited"            //发表了课程评论
+
+
 #endif /* NotificationMacro_h */

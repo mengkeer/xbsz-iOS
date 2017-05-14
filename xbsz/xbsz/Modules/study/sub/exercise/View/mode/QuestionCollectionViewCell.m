@@ -98,7 +98,7 @@ static NSInteger TitlePaddingRight = 5;
 - (UIScrollView *)scrollView{
     if(!_scrollView){
         _scrollView = [[UIScrollView alloc] init];
-        _scrollView.backgroundColor = CXWhiteColor;
+        _scrollView.backgroundColor = [CXUserDefaults instance].bgColor;
         _scrollView.showsVerticalScrollIndicator = YES;
         _scrollView.alwaysBounceVertical = YES;
     }
@@ -111,7 +111,7 @@ static NSInteger TitlePaddingRight = 5;
         _titleLabel.font = CXSystemFont([CXUserDefaults instance].questionFontSize);
         _titleLabel.textColor = CXTextGrayColor;
         _titleLabel.numberOfLines = 0;
-        _titleLabel.backgroundColor = CXHexColor(0xf5f5f5);
+        _titleLabel.backgroundColor = [CXUserDefaults instance].bgColor;
         _titleLabel.textAlignment = NSTextAlignmentLeft;
     }
     return _titleLabel;
@@ -121,7 +121,7 @@ static NSInteger TitlePaddingRight = 5;
     if(!_tableView){
         _tableView = [[CXBaseTableView alloc] initWithFrame:CGRectZero enablePullRefresh:NO];
         _tableView.baseDelegate = self;
-        _tableView.backgroundColor = CXWhiteColor;
+        _tableView.backgroundColor = [CXUserDefaults instance].bgColor;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = YES;
     }
@@ -164,6 +164,7 @@ static NSInteger TitlePaddingRight = 5;
     if(!cell){
         cell = [[QuestionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID isSingle:_isSingle];
     }
+    cell.contentView.backgroundColor = [CXUserDefaults instance].bgColor;
     if(_allowSelect == YES){
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
     }else{
@@ -246,7 +247,7 @@ static NSInteger TitlePaddingRight = 5;
     _showSinglePracticeResult = NO;
     _showMutiPracticeResult = NO;
     _showTemporarySelected = NO;
-    _allowSelect = YES;
+    _allowSelect = NO;
     
     NSInteger textHeight = [self getTitleHeight:question.title];
     

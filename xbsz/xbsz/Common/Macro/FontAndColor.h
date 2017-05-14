@@ -11,12 +11,13 @@
 
 
 //定义屏幕颜色等
-#define CXMainColor  [UIColor colorWithRed:0.89f green:0.49f blue:0.61f alpha:1.00f]
+#define CXMainColor  CXHexColor(0xfb7299)
 //#define CXMainColor  CXHexColor(0xC1CDC1)
 #define CXBackGroundColor  CXHexColor(0xF6F6F6)
 #define CXLineColor    CXHexColor(0xE8E8E8)
 #define CXWhiteColor [UIColor whiteColor]
 #define CXBlackColor   ([UIColor blackColor])
+#define CXBlackColor2       (CXHexColor(0x2c2c2c))
 #define CXRedColor   [UIColor redColor]
 #define CXGreenColor   ([UIColor greenColor])
 #define CXBlueColor  [UIColor blueColor]

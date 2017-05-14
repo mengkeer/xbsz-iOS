@@ -11,6 +11,7 @@
 
 #import "AppMacro.h"
 #import "FontAndColor.h"
+#import "NotificationMacro.h"
 #import "UtilsMacro.h"
 #import "URLString.h"
 

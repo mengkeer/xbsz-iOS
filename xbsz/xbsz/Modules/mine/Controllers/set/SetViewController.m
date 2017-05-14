@@ -9,20 +9,28 @@
 #import "SetViewController.h"
 #import "SetItemTableViewCell.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <MessageUI/MessageUI.h>
 #import "AppUtil.h"
+#import "AboutViewController.h"
+#import "UpdateInfoViewController.h"
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
 static NSString *cellSwitchId = @"cellSwitchCellId";
 static NSString *cellDetailTextId  = @"cellDetailTextId";
 static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 
-@interface SetViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@interface SetViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
 
 @implementation SetViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self autoTheme];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,7 +62,6 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 
 
 #pragma mark - UITableView delegate
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 45.f;
 }
@@ -80,6 +87,14 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if(indexPath.section == 1){
+        if(indexPath.row == 0){
+            [self selectTheme];
+            return;
+        }
+        if(indexPath.row == 1){
+            [self selectBgColor];
+            return;
+        }
         if(indexPath.row == 2){
             [self selectFont];
             return;
@@ -89,8 +104,22 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             return;
         }
     }else if(indexPath.section == 2){
-        if(indexPath.row == 1){
-            
+        if(indexPath.row == 0){
+            [self.navigationController pushViewController:[AboutViewController controller] animated:YES];
+            return;
+        }else if(indexPath.row == 1){
+            if([MFMailComposeViewController canSendMail]){
+                [self sendEmail];
+            }else{
+                [ToastView showErrorWithStaus:@"请先设置系统邮件账户"];
+//                [self alert];
+            }
+            return;
+        }
+    }else if(indexPath.section == 3){
+        if(indexPath.row == 2){
+            [self.navigationController pushViewController:[UpdateInfoViewController controller] animated:YES];
+            return;
         }
     }
     
@@ -106,7 +135,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         if([AppUtil isAfterTimeNode])   return 4;
         else return 2;
     }
-    else if(section == 3)   return 4;
+    else if(section == 3)   return 3;
     return 0;
 }
 
@@ -144,17 +173,17 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         
     }else if(indexPath.section == 1){
         if(indexPath.row == 0){
-            cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
+            cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
-                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            [cell updateCell:@"主题选择" detailText:nil type:SetItemTypeArrow iconImageName:@"set_theme"];
+            [cell updateCell:@"主题选择" detailText:[CXUserDefaults instance].themeDescription type:SetItemTypeTextAndArrow iconImageName:@"set_theme"];
         }else if(indexPath.row == 1){
-            cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
+            cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
-                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            [cell updateCell:@"做题背景" detailText:nil type:SetItemTypeArrow iconImageName:@"set_bg"];
+            [cell updateCell:@"做题背景" detailText:[CXUserDefaults instance].bgDescription type:SetItemTypeTextAndArrow iconImageName:@"set_bg"];
         }else if(indexPath.row == 2){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
@@ -209,19 +238,13 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
             }
-            [cell updateCell:@"题库版本" detailText:@"2016-12-16" type:SetItemTypeDetailText iconImageName:@"set_tiku_version"];
-        }else if(indexPath.row == 2){
-            cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(!cell){
-                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
-            }
-            [cell updateCell:@"更新说明" detailText:nil type:SetItemTypeArrow iconImageName:@"set_updateInfo"];
+            [cell updateCell:@"题库版本" detailText:@"2017-5-22" type:SetItemTypeDetailText iconImageName:@"set_tiku_version"];
         }else{
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
             }
-            [cell updateCell:@"检查更新" detailText:nil type:SetItemTypeArrow iconImageName:@"set_check"];
+            [cell updateCell:@"更新说明" detailText:nil type:SetItemTypeArrow iconImageName:@"set_updateInfo"];
         }
     }else{
         
@@ -253,24 +276,24 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 - (void)selectFont{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *male = [UIAlertAction actionWithTitle:@"小号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"小号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].questionFontSize = 12;
         [_tableView reloadRow:2 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
-    [alert addAction:male];
+    [alert addAction:type1];
     
-    UIAlertAction *female = [UIAlertAction actionWithTitle:@"中号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"中号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].questionFontSize = 15;
         [_tableView reloadRow:2 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
-    [alert addAction:female];
+    [alert addAction:type2];
     
     
-    UIAlertAction *unknown = [UIAlertAction actionWithTitle:@"大号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"大号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].questionFontSize = 18;
         [_tableView reloadRow:2 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
-    [alert addAction:unknown];
+    [alert addAction:type3];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alert addAction:cancel];
@@ -287,7 +310,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     }
     [ToastView showProgressBar:@"正在清理"];
     [cache.diskCache removeAllObjects];
-//
+
     nowCahce = cache.diskCache.totalCost;
     if(nowCahce < 0.02){
         [ToastView showBlackSuccessWithStaus:@"清理完成" delay:1.2];
@@ -296,18 +319,129 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         });
     }
     
-//    [cache.diskCache removeAllObjectsWithProgressBlock:^(int removedCount, int totalCount) {
-//        if(removedCount/removedCount >0.98){
-//            [ToastView showBlackSuccessWithStaus:@"清理完成"];
-//            [_tableView reloadRow:3 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
-//        }
-//        [ToastView showProgressBar:removedCount/totalCount status:@"正在清理"];
-//    } endBlock:^(BOOL error) {
-//        [ToastView showBlackSuccessWithStaus:@"清理完成"];
-//        [_tableView reloadRow:3 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
-//    }];
+}
+
+- (void)selectTheme{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"樱花粉" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [CXUserDefaults instance].themeType = 1;
+        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self autoTheme];
+        });
+    }];
+    [alert addAction:type1];
+    
+    UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"简洁白" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [CXUserDefaults instance].themeType = 2;
+        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self autoTheme];
+        });
+    }];
+    [alert addAction:type2];
+    
+    
+    UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"水绿色" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [CXUserDefaults instance].themeType = 3;
+        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+             [self autoTheme];
+        });
+    }];
+    [alert addAction:type3];
+    
+    UIAlertAction *type4 = [UIAlertAction actionWithTitle:@"橙色" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [CXUserDefaults instance].themeType = 4;
+        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self autoTheme];
+        });
+    }];
+    [alert addAction:type4];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)selectBgColor{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"纯白" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [CXUserDefaults instance].bgType = 1;
+        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+    }];
+    [alert addAction:type1];
+    
+    UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"浅灰" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [CXUserDefaults instance].bgType = 2;
+        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+    }];
+    [alert addAction:type2];
+    
+    
+    UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"护眼" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [CXUserDefaults instance].bgType = 3;
+        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+    }];
+    [alert addAction:type3];
+    
+    UIAlertAction *type4 = [UIAlertAction actionWithTitle:@"淡青" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [CXUserDefaults instance].bgType = 4;
+        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+    }];
+    [alert addAction:type4];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
+- (void)sendEmail{
+    // 邮件服务器
+    MFMailComposeViewController *mailCompose = [[MFMailComposeViewController alloc] init];
+    // 设置邮件代理
+    [mailCompose setMailComposeDelegate:self];
+    // 设置邮件主题
+    [mailCompose setSubject:@"软件使用反馈"];
+    // 设置收件人
+    [mailCompose setToRecipients:@[@"1812422367@qq.com"]];
+    /**
+     *  设置邮件的正文内容
+     */
+    NSString *emailContent = @"请输入反馈的问题";
+    // 是否为HTML格式
+    [mailCompose setMessageBody:emailContent isHTML:NO];
+    // 弹出邮件发送视图
+    [self presentViewController:mailCompose animated:YES completion:nil];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled: // 用户取消编辑
+            [ToastView showStatus:@"取消发送"];
+            break;
+        case MFMailComposeResultSaved: // 用户保存邮件
+            [ToastView showStatus:@"邮件已保存"];
+            break;
+        case MFMailComposeResultSent: // 用户点击发送
+            [ToastView showBlackSuccessWithStaus:@"发送成功"];
+            break;
+        case MFMailComposeResultFailed: // 用户尝试保存或发送邮件失败
+            [ToastView showErrorWithStaus:@"发送失败"];
+            break;
+    }
+    // 关闭邮件发送视图
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

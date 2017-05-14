@@ -42,6 +42,35 @@ typedef enum : NSUInteger {
  */
 - (void)refreshDisplay;
 
+/** 标题滚动视图 */
+@property (nonatomic, weak) UIScrollView *titleScrollView;
+
+/** 内容滚动视图 */
+@property (nonatomic, weak) UICollectionView *contentScrollView;
+
+/**
+ 标题滚动视图背景颜色
+ */
+@property (nonatomic, strong) UIColor *titleScrollViewColor;
+
+/** 整体内容View 包含标题好内容滚动视图 */
+@property (nonatomic, weak) UIView *contentView;
+
+/**
+ 正常标题颜色
+ */
+@property (nonatomic, strong) UIColor *norColor;
+
+/**
+ 选中标题颜色
+ */
+@property (nonatomic, strong) UIColor *selColor;
+
+/**
+ 下标颜色
+ */
+@property (nonatomic, strong) UIColor *underLineColor;
+
 
 /***********************************【顶部标题样式】********************************/
 - (void)setUpTitleEffect:(void(^)(UIColor **titleScrollViewColor,UIColor **norColor,UIColor **selColor,UIFont **titleFont,CGFloat *titleHeight,CGFloat *titleWidth))titleEffectBlock;

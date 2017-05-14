@@ -14,7 +14,6 @@
 #import "CXNetwork+Course.h"
 
 static NSString *cellID = @"CourseCommentCellID";
-static NSInteger defaultOffset = 0;
 static NSInteger limit = 10;
 
 @interface CourseCommentViewController ()<CXBaseTableViewDelegate>
@@ -22,6 +21,8 @@ static NSInteger limit = 10;
 @property (nonatomic, strong) CXBaseTableView *tableView;
 
 @property (nonatomic, strong) CourseCommentList *commentList;
+
+@property (nonatomic, strong) NSMutableArray *comments;
 
 @end
 
@@ -39,10 +40,18 @@ static NSInteger limit = 10;
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.mas_equalTo(self.view);
     }];
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:NotificationCourseCommentSubmited object:nil];
+    
+    _comments = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -61,26 +70,43 @@ static NSInteger limit = 10;
 
 #pragma mark - CXBaseTableViewDelegate
 
-- (void)loadDataAtPageIndex:(NSUInteger )pageIndex{
-    
-    [CXNetwork getCourseComments:_course.courseID offset:defaultOffset limit:limit success:^(NSObject *obj) {
-        _commentList = [CourseCommentList yy_modelWithDictionary:(NSDictionary *)obj];
-        _commentList.pageInfo.pageSize = 10;
-        _commentList.pageInfo.pageIndex = 1;
-        _commentList.pageInfo.totalRows = 25;
-        _commentList.pageInfo.totalPages = 3;
+- (void)refresh{
+    [self.tableView loadRefreshData];
+}
 
-        [_tableView reloadData];
+- (void)loadDataAtPageIndex:(NSUInteger )pageIndex{
+    @weakify(self);
+    [CXNetwork getCourseComments:_course.courseID offset:pageIndex-1 limit:limit success:^(NSObject *obj) {
+        weak_self.commentList = [CourseCommentList yy_modelWithDictionary:(NSDictionary *)obj];
+        if(pageIndex == 1){
+            [weak_self.comments removeAllObjects];
+        }
+        
+        [weak_self.comments addObjectsFromArray:_commentList.comments];
+        
+        CXPage *pageInfo = weak_self.commentList.pageInfo;
+        
+        if([weak_self.comments count] == 0){
+            [weak_self.tableView showDefaultImageWithResult:NO];
+        }else{
+            [weak_self.tableView showRefresh];
+        }
+        
+        if([weak_self.comments count] == pageInfo.count){
+            [weak_self.tableView loadNoMoreData];
+        }
+        
+        [weak_self.tableView reloadData];           //重新加载
+
     } failure:^(NSError *error) {
-        CXLog(@"获取课程评论失败");
+        if (weak_self.comments.count == 0) {
+            [weak_self.tableView showDefaultImageWithResult:YES];
+        }else{
+            [ToastView showErrorWithStaus:@"加载失败"];
+        }
+        [weak_self.tableView endRefresh];
     }];
-    
-//    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"comments.json"];
-//    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
-//    
-//    _commentList = [CourseCommentList yy_modelWithJSON:jsonStr];
-    
-//    [_tableView reloadData];
+
 }
 
 
@@ -119,7 +145,11 @@ static NSInteger limit = 10;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *view = [[UIView alloc] init];
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"评价详情 (共70人评价)";
+    label.text = @"评价详情 (共0人评价)";
+    if(_commentList  != nil && _commentList.pageInfo != 0){
+        label.text = [NSString stringWithFormat:@"评价详情 (共%ld人评价)",_commentList.pageInfo.count];
+
+    }
     label.font = CXSystemFont(14);
     label.textAlignment = NSTextAlignmentLeft;
     label.textColor = CXHexColor(0x4A4A4A);
@@ -141,7 +171,7 @@ static NSInteger limit = 10;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_commentList.comments count];
+    return [_comments count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -149,7 +179,8 @@ static NSInteger limit = 10;
     if(!cell){
         cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    [cell updateUIWithModel:[_commentList.comments objectAtIndex:indexPath.row]];
+    [cell updateUIWithModel:[_comments objectAtIndex:indexPath.row]];
+    [cell showLineView:indexPath.row totalRows:[_comments count]];
     return cell;
 }
 

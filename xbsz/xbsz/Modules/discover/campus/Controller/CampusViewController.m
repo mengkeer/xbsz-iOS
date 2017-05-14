@@ -49,6 +49,7 @@
     if(!_tableView){
         _tableView = [[CXBaseTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped enablePullRefresh:YES];
         _tableView.baseDelegate = self;
+        _tableView.backgroundColor = CXWhiteColor;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.separatorStyle = NO;
         _tableView.showEmptyTips = YES;
@@ -116,11 +117,9 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    CXLog(@"显示第%ld行",indexPath.row);
     CampusTableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell = [tableView cellForRowAtIndexPath:indexPath];
     if(cell == nil){
         cell = [[CampusTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
     }

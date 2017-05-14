@@ -13,4 +13,6 @@
 
 - (void)updateUIWithModel:(CourseComment *)model;
 
+- (void)showLineView:(NSInteger)currentRow totalRows:(NSInteger)totalRows;
+
 @end

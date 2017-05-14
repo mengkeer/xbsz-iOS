@@ -135,7 +135,7 @@
 
 - (void)updateUIWithModel:(CourseComment *)model{
     [self.avatarBtn yy_setImageWithURL:[NSURL URLWithString:[NSString getAvatarUrl:model.avatar]] forState:UIControlStateNormal placeholder:CXDefaultAvatar];
-    [self.avatarBtn yy_setImageWithURL:[NSURL URLWithString:model.avatar] forState:UIControlStateHighlighted placeholder:CXDefaultAvatar];
+    [self.avatarBtn yy_setImageWithURL:[NSURL URLWithString:[NSString getAvatarUrl:model.avatar]] forState:UIControlStateHighlighted placeholder:CXDefaultAvatar];
     
     _nickLabel.text = model.nickname;
     _timeLabel.text = [model.time convertToLocalTime];
@@ -151,6 +151,14 @@
     }];
     
     [_contentLabel sizeToFit];
+}
+
+- (void)showLineView:(NSInteger)currentRow totalRows:(NSInteger)totalRows{
+    if(currentRow == totalRows - 1){
+        _lineView.hidden = YES;
+    }else{
+        _lineView.hidden = NO;
+    }
 }
 
 @end

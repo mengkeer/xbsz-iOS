@@ -46,4 +46,14 @@ typedef NS_ENUM(NSInteger,LoadResultStatus){
 
 @property (nonatomic, assign) NSInteger currentPage;
 
+- (void)loadRefreshData;
+
+- (void)loadNoMoreData;
+
+- (void)endRefresh;
+
+- (void)showDefaultImageWithResult:(BOOL)result;
+
+- (void)showRefresh;
+
 @end

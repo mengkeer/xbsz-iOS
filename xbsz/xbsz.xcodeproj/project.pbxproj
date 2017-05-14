@@ -134,6 +134,9 @@
 		ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */; };
 		ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */; };
 		ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7463A1E77116500644812 /* CXWhitePushViewController.m */; };
+		ADCFC5351EC870990042A28F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCFC5341EC870990042A28F /* MessageUI.framework */; };
+		ADCFC5381EC89A750042A28F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC5371EC89A750042A28F /* AboutViewController.m */; };
+		ADCFC53B1EC8B3F10042A28F /* UpdateInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC53A1EC8B3F10042A28F /* UpdateInfoViewController.m */; };
 		ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
@@ -410,6 +413,11 @@
 		ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
 		ADB746391E77116500644812 /* CXWhitePushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXWhitePushViewController.h; sourceTree = "<group>"; };
 		ADB7463A1E77116500644812 /* CXWhitePushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXWhitePushViewController.m; sourceTree = "<group>"; };
+		ADCFC5341EC870990042A28F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		ADCFC5361EC89A750042A28F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		ADCFC5371EC89A750042A28F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		ADCFC5391EC8B3F10042A28F /* UpdateInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateInfoViewController.h; sourceTree = "<group>"; };
+		ADCFC53A1EC8B3F10042A28F /* UpdateInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateInfoViewController.m; sourceTree = "<group>"; };
 		ADE663681EB384BF00DBA92A /* MutiPracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiPracticeViewController.h; sourceTree = "<group>"; };
 		ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutiPracticeViewController.m; sourceTree = "<group>"; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
@@ -442,6 +450,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADCFC5351EC870990042A28F /* MessageUI.framework in Frameworks */,
 				ADF408D71EB4E111009DB786 /* AudioToolbox.framework in Frameworks */,
 				ADF408CA1EB4ABFD009DB786 /* libsqlite3.0.tbd in Frameworks */,
 				39B543BDB6E83CDE2678E461 /* Pods_xbsz.framework in Frameworks */,
@@ -1080,6 +1089,10 @@
 			children = (
 				AD7F890C1E595B29009603E4 /* SetViewController.h */,
 				AD7F890D1E595B29009603E4 /* SetViewController.m */,
+				ADCFC5361EC89A750042A28F /* AboutViewController.h */,
+				ADCFC5371EC89A750042A28F /* AboutViewController.m */,
+				ADCFC5391EC8B3F10042A28F /* UpdateInfoViewController.h */,
+				ADCFC53A1EC8B3F10042A28F /* UpdateInfoViewController.m */,
 			);
 			path = set;
 			sourceTree = "<group>";
@@ -1380,6 +1393,7 @@
 		D83306020DE04E843C2A1432 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADCFC5341EC870990042A28F /* MessageUI.framework */,
 				ADF408D61EB4E111009DB786 /* AudioToolbox.framework */,
 				ADF408C91EB4ABFD009DB786 /* libsqlite3.0.tbd */,
 				AC0133D7149C83299B5B66CF /* Pods_xbsz.framework */,
@@ -1578,6 +1592,7 @@
 				ADA187611EB2C05B00C771A4 /* ExerciseModeViewController.m in Sources */,
 				ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */,
 				AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */,
+				ADCFC5381EC89A750042A28F /* AboutViewController.m in Sources */,
 				AD3891CF1EA4C0F70074426C /* AttachmentViewController.m in Sources */,
 				AD7F891D1E595B29009603E4 /* RegisterViewController.m in Sources */,
 				AD8B452D1EA89CD200E8D539 /* CommentTableViewCell.m in Sources */,
@@ -1611,6 +1626,7 @@
 				05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */,
 				AD7F891E1E595B29009603E4 /* ResetViewController.m in Sources */,
 				ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */,
+				ADCFC53B1EC8B3F10042A28F /* UpdateInfoViewController.m in Sources */,
 				ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */,
 				AD7F88DF1E595A5E009603E4 /* CXTabBarController.m in Sources */,
 				AD5B0FD61EC6058E00C7D283 /* CourseWare.m in Sources */,

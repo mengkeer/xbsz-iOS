@@ -22,5 +22,9 @@
 
 - (void)setCustomNavBarHidden:(BOOL)hidden;
 
+- (void)autoTheme;
+
+- (void)showTopLineView;
+
 
 @end

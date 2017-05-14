@@ -230,6 +230,7 @@ static CGPoint beforeScrollPoint ;
     
     [CXNetwork addCourseComment:_course.courseID content:content point:point success:^(NSObject *obj) {
         [ToastView showBlackSuccessWithStaus:@"评论成功"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationCourseCommentSubmited object:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)( 1.2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [[RateView instance] dismissInView:self.view.superview];
         });

@@ -14,7 +14,7 @@
 + (BOOL)isAfterTimeNode{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyyy-MM-dd";
-    NSDate *date = [formatter dateFromString:@"2017-6-11"];
+    NSDate *date = [formatter dateFromString:@"2017-5-11"];
     
     NSDate *now = [NSDate date];
     if([now compare:date] == NSOrderedAscending || [now compare:date] == NSOrderedSame){

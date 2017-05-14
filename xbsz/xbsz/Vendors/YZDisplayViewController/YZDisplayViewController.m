@@ -23,10 +23,6 @@ static NSString * const ID = @"CONTENTCELL";
  *  下标宽度是否等于标题宽度
  */
 @property (nonatomic, assign) BOOL isUnderLineEqualTitleWidth;
-/**
- 标题滚动视图背景颜色
- */
-@property (nonatomic, strong) UIColor *titleScrollViewColor;
 
 
 /**
@@ -40,29 +36,15 @@ static NSString * const ID = @"CONTENTCELL";
 @property (nonatomic, assign) CGFloat titleWidth;
 
 
-/**
- 正常标题颜色
- */
-@property (nonatomic, strong) UIColor *norColor;
 
-/**
- 选中标题颜色
- */
-@property (nonatomic, strong) UIColor *selColor;
 
 /**
  标题字体
  */
 @property (nonatomic, strong) UIFont *titleFont;
 
-/** 整体内容View 包含标题好内容滚动视图 */
-@property (nonatomic, weak) UIView *contentView;
 
-/** 标题滚动视图 */
-@property (nonatomic, weak) UIScrollView *titleScrollView;
 
-/** 内容滚动视图 */
-@property (nonatomic, weak) UICollectionView *contentScrollView;
 
 /** 所以标题数组 */
 @property (nonatomic, strong) NSMutableArray *titleLabels;
@@ -133,10 +115,7 @@ static NSString * const ID = @"CONTENTCELL";
  */
 @property (nonatomic, assign) CGFloat coverCornerRadius;
 
-/**
- 下标颜色
- */
-@property (nonatomic, strong) UIColor *underLineColor;
+
 
 /**
  下标高度
@@ -240,6 +219,7 @@ static NSString * const ID = @"CONTENTCELL";
 
 - (UIView *)underLine
 {
+
     if (_underLine == nil) {
         
         UIView *underLineView = [[UIView alloc] init];
@@ -251,8 +231,8 @@ static NSString * const ID = @"CONTENTCELL";
         [self.titleScrollView addSubview:underLineView];
         
         _underLine = underLineView;
-        
     }
+    _underLine.backgroundColor = _underLineColor?_underLineColor:[UIColor redColor];
     return _isShowUnderLine?_underLine : nil;
 }
 
