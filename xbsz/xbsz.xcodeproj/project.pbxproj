@@ -97,7 +97,7 @@
 		AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89391E5976FE009603E4 /* ExerciseViewController.m */; };
 		AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F893E1E597742009603E4 /* CXStudyViewController.m */; };
 		AD8B452A1EA890DB00E8D539 /* CourseCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45291EA890DB00E8D539 /* CourseCommentViewController.m */; };
-		AD8B452D1EA89CD200E8D539 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B452C1EA89CD200E8D539 /* CommentTableViewCell.m */; };
+		AD8B452D1EA89CD200E8D539 /* CourseCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B452C1EA89CD200E8D539 /* CourseCommentTableViewCell.m */; };
 		AD8B45331EA9DC5B00E8D539 /* CourseComment.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45321EA9DC5B00E8D539 /* CourseComment.m */; };
 		AD8B45361EA9DCA600E8D539 /* CourseCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45351EA9DCA600E8D539 /* CourseCommentList.m */; };
 		AD8B45381EA9DE3D00E8D539 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = AD8B45371EA9DE3D00E8D539 /* comments.json */; };
@@ -137,6 +137,8 @@
 		ADCFC5351EC870990042A28F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCFC5341EC870990042A28F /* MessageUI.framework */; };
 		ADCFC5381EC89A750042A28F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC5371EC89A750042A28F /* AboutViewController.m */; };
 		ADCFC53B1EC8B3F10042A28F /* UpdateInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC53A1EC8B3F10042A28F /* UpdateInfoViewController.m */; };
+		ADCFC53E1EC92A400042A28F /* CampusCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC53D1EC92A400042A28F /* CampusCommentViewController.m */; };
+		ADCFC5411EC92E310042A28F /* CampusCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC5401EC92E310042A28F /* CampusCommentTableViewCell.m */; };
 		ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
@@ -341,8 +343,8 @@
 		AD7F893E1E597742009603E4 /* CXStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXStudyViewController.m; sourceTree = "<group>"; };
 		AD8B45281EA890DB00E8D539 /* CourseCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentViewController.h; sourceTree = "<group>"; };
 		AD8B45291EA890DB00E8D539 /* CourseCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCommentViewController.m; sourceTree = "<group>"; };
-		AD8B452B1EA89CD200E8D539 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
-		AD8B452C1EA89CD200E8D539 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		AD8B452B1EA89CD200E8D539 /* CourseCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentTableViewCell.h; sourceTree = "<group>"; };
+		AD8B452C1EA89CD200E8D539 /* CourseCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCommentTableViewCell.m; sourceTree = "<group>"; };
 		AD8B45311EA9DC5B00E8D539 /* CourseComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseComment.h; sourceTree = "<group>"; };
 		AD8B45321EA9DC5B00E8D539 /* CourseComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseComment.m; sourceTree = "<group>"; };
 		AD8B45341EA9DCA600E8D539 /* CourseCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentList.h; sourceTree = "<group>"; };
@@ -418,6 +420,10 @@
 		ADCFC5371EC89A750042A28F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		ADCFC5391EC8B3F10042A28F /* UpdateInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateInfoViewController.h; sourceTree = "<group>"; };
 		ADCFC53A1EC8B3F10042A28F /* UpdateInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateInfoViewController.m; sourceTree = "<group>"; };
+		ADCFC53C1EC92A400042A28F /* CampusCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusCommentViewController.h; sourceTree = "<group>"; };
+		ADCFC53D1EC92A400042A28F /* CampusCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusCommentViewController.m; sourceTree = "<group>"; };
+		ADCFC53F1EC92E310042A28F /* CampusCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusCommentTableViewCell.h; sourceTree = "<group>"; };
+		ADCFC5401EC92E310042A28F /* CampusCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusCommentTableViewCell.m; sourceTree = "<group>"; };
 		ADE663681EB384BF00DBA92A /* MutiPracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiPracticeViewController.h; sourceTree = "<group>"; };
 		ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutiPracticeViewController.m; sourceTree = "<group>"; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
@@ -493,6 +499,8 @@
 			children = (
 				0518ECA91E6012400018F432 /* CampusViewController.h */,
 				0518ECAA1E6012400018F432 /* CampusViewController.m */,
+				ADCFC53C1EC92A400042A28F /* CampusCommentViewController.h */,
+				ADCFC53D1EC92A400042A28F /* CampusCommentViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -509,6 +517,8 @@
 			children = (
 				0518ECAD1E6012400018F432 /* CampusTableViewCell.h */,
 				0518ECAE1E6012400018F432 /* CampusTableViewCell.m */,
+				ADCFC53F1EC92E310042A28F /* CampusCommentTableViewCell.h */,
+				ADCFC5401EC92E310042A28F /* CampusCommentTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -567,8 +577,8 @@
 				05B4D0851E769109005DC854 /* CourseSearchBar.m */,
 				AD8B86321E9CD7EB007F4CEC /* ChapterHeaderView.h */,
 				AD8B86331E9CD7EB007F4CEC /* ChapterHeaderView.m */,
-				AD8B452B1EA89CD200E8D539 /* CommentTableViewCell.h */,
-				AD8B452C1EA89CD200E8D539 /* CommentTableViewCell.m */,
+				AD8B452B1EA89CD200E8D539 /* CourseCommentTableViewCell.h */,
+				AD8B452C1EA89CD200E8D539 /* CourseCommentTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1595,7 +1605,7 @@
 				ADCFC5381EC89A750042A28F /* AboutViewController.m in Sources */,
 				AD3891CF1EA4C0F70074426C /* AttachmentViewController.m in Sources */,
 				AD7F891D1E595B29009603E4 /* RegisterViewController.m in Sources */,
-				AD8B452D1EA89CD200E8D539 /* CommentTableViewCell.m in Sources */,
+				AD8B452D1EA89CD200E8D539 /* CourseCommentTableViewCell.m in Sources */,
 				AD7F88DD1E595A5E009603E4 /* CXNavigationController.m in Sources */,
 				0518ECB91E6016D80018F432 /* CXLocalUser.m in Sources */,
 				AD8B45331EA9DC5B00E8D539 /* CourseComment.m in Sources */,
@@ -1604,6 +1614,7 @@
 				AD2540B21E977A9900AA330D /* UserInfoViewController.m in Sources */,
 				05CEE4AA1E8525AC0033DD3D /* CommonAPPViewController.m in Sources */,
 				AD36F8821EA3119600775F90 /* DownloadManager.m in Sources */,
+				ADCFC5411EC92E310042A28F /* CampusCommentTableViewCell.m in Sources */,
 				AD8B86341E9CD7EB007F4CEC /* ChapterHeaderView.m in Sources */,
 				AD2540B51E977B4100AA330D /* AuthorizedLoginViewController.m in Sources */,
 				AD7F89221E595B29009603E4 /* SetItemTableViewCell.m in Sources */,
@@ -1655,6 +1666,7 @@
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,
 				AD45BBC11EAF37EA00D53813 /* ExerciseList.m in Sources */,
 				ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */,
+				ADCFC53E1EC92A400042A28F /* CampusCommentViewController.m in Sources */,
 				05067FED1E7BF02200868AC1 /* CourseInfoViewController.m in Sources */,
 				AD7F891A1E595B29009603E4 /* CXLaunchViewController.m in Sources */,
 				AD1D108A1EC7443000E04135 /* AppUtil.m in Sources */,

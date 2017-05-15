@@ -6,10 +6,9 @@
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "CommentTableViewCell.h"
-#import "RateView.h"
+#import "CourseCommentTableViewCell.h"
 
-@interface CommentTableViewCell ()
+@interface CourseCommentTableViewCell ()
 
 
 @property (nonatomic, strong) UIButton *avatarBtn;
@@ -24,7 +23,7 @@
 
 @end
 
-@implementation CommentTableViewCell
+@implementation CourseCommentTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -103,7 +102,7 @@
         _nickLabel = [[UILabel alloc] init];
         _nickLabel.textAlignment = NSTextAlignmentLeft;
         _nickLabel.font = CXSystemFont(14);
-        _nickLabel.textColor = CXBlackColor;
+        _nickLabel.textColor = CXHexColor(0x406599);
         _nickLabel.text = @"用户昵称";
     }
     return _nickLabel;
@@ -124,7 +123,7 @@
     if(!_contentLabel){
         _contentLabel = [[UILabel alloc] init];
         _contentLabel.font = CXSystemFont(12);
-        _contentLabel.textColor = CXHexAlphaColor(0x000000, 0.8);
+        _contentLabel.textColor = CXBlackColor2;
         _contentLabel.text = @"";
         _contentLabel.numberOfLines = 0;
     }

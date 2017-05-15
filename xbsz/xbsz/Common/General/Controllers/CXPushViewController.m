@@ -94,7 +94,12 @@
 }
 
 - (void)showTopLineView{
-    _topLineView.hidden = NO;
+    NSInteger type = [CXUserDefaults instance].themeType;
+    if(type == 2){
+        _topLineView.hidden = NO;
+    }else{
+        _topLineView.hidden = YES;
+    }
 }
 
 - (void)autoTheme{

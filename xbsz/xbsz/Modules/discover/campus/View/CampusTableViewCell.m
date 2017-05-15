@@ -19,7 +19,7 @@
 
 //用户信息View  包含头像 昵称  地点等
 @property (nonatomic, strong) UIView *userInfoView;
-@property (nonatomic, strong) UIButton *headBtn;
+@property (nonatomic, strong) UIButton *avatarBtn;
 @property (nonatomic, strong) UILabel *nickNameLabel;
 //@property (nonatomic, strong) UILabel *locationLabel;         //暂时不显示地址  后续版本考虑添加
 
@@ -75,18 +75,19 @@
         make.left.top.right.mas_equalTo(self.contentView);
     }];
     
-    [_headBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_avatarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.contentView).mas_offset(8);
         make.centerY.mas_equalTo(_userInfoView.mas_centerY);
+        make.width.height.mas_equalTo(36);
     }];
     
     [_nickNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_headBtn.mas_right).mas_offset(15);
+        make.left.mas_equalTo(_avatarBtn.mas_right).mas_offset(15);
         make.centerY.mas_equalTo(_userInfoView.mas_centerY).mas_offset(-8);
     }];
     
     [_dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_headBtn.mas_right).mas_offset(15);
+        make.left.mas_equalTo(_avatarBtn.mas_right).mas_offset(15);
         make.centerY.mas_equalTo(_userInfoView.mas_centerY).mas_offset(8);
     }];
     
@@ -175,23 +176,23 @@
         _userInfoView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gotoUserInfo)];
         [_userInfoView addGestureRecognizer:tap];
-        [_userInfoView addSubview:self.headBtn];
+        [_userInfoView addSubview:self.avatarBtn];
         [_userInfoView addSubview:self.nickNameLabel];
         [_userInfoView addSubview:self.dateLabel];
     }
     return _userInfoView;
 }
 
-- (UIButton *)headBtn{
-    if(!_headBtn){
-        _headBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _headBtn.frame = CGRectMake(0, 0, 36, 36);
-          [_headBtn setImage:[[[UIImage imageNamed:@"avatar1.jpg"] imageByResizeToSize:CGSizeMake(36, 36) contentMode:UIViewContentModeScaleToFill] imageByRoundCornerRadius:18] forState:UIControlStateNormal];
-        _headBtn.layer.cornerRadius = 18;
-        _headBtn.clipsToBounds = YES;
-        [_headBtn addTarget:self action:@selector(gotoUserInfo) forControlEvents:UIControlEventTouchUpInside];          //暂时取消头像按钮  击事件
+- (UIButton *)avatarBtn{
+    if(!_avatarBtn){
+        _avatarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _avatarBtn.frame = CGRectMake(0, 0, 36, 36);
+          [_avatarBtn setImage:[UIImage imageNamed:@"avatar1.jpg"] forState:UIControlStateNormal];
+        _avatarBtn.layer.cornerRadius = 18;
+        _avatarBtn.clipsToBounds = YES;
+        [_avatarBtn addTarget:self action:@selector(gotoUserInfo) forControlEvents:UIControlEventTouchUpInside];          //暂时取消头像按钮  击事件
     }
-    return _headBtn;
+    return _avatarBtn;
 }
 
 - (UILabel *)nickNameLabel{
@@ -434,11 +435,12 @@
     
     NSURL *url = [NSURL URLWithString:model.imageUrl];
     
+    [_avatarBtn yy_setImageWithURL:[NSURL URLWithString:[NSString getAvatarUrl:model.user.avatar]] forState:UIControlStateNormal options:YYWebImageOptionSetImageWithFadeAnimation];
     [_sharedImageView yy_setImageWithURL:url options:YYWebImageOptionProgressiveBlur
      |YYWebImageOptionSetImageWithFadeAnimation];                               //更新分享图片url
     
     _nickNameLabel.text = model.user.nickname;                                //更新昵称
-    _dateLabel.text = [_note.create_at convertToLocalTime];
+    _dateLabel.text = [_note.time convertToLocalTime];
     _likeNumLabel.text = [NSString stringWithFormat:@"%ld次赞",_note.likes];
     _moreReplyLabel.text = [NSString stringWithFormat:@"所有%lu条评论",_note.total];
     [self autoShowOrHide];                          //根据是否有主题 与是否有评论自动隐藏与显示

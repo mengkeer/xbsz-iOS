@@ -33,7 +33,7 @@
 
 @property (nonatomic, assign) BOOL isOpend;     //帖子主题是否展开过
 
-@property (nonatomic, copy) NSString *create_at;
+@property (nonatomic, strong) NSDate *time;
 
 
 @end

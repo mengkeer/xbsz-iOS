@@ -8,7 +8,7 @@
 
 #import "CourseCommentViewController.h"
 #import "CXBaseTableView.h"
-#import "CommentTableViewCell.h"
+#import "CourseCommentTableViewCell.h"
 #import "CourseCommentList.h"
 
 #import "CXNetwork+Course.h"
@@ -175,9 +175,9 @@ static NSInteger limit = 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    CourseCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if(!cell){
-        cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[CourseCommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     [cell updateUIWithModel:[_comments objectAtIndex:indexPath.row]];
     [cell showLineView:indexPath.row totalRows:[_comments count]];

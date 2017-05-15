@@ -15,6 +15,7 @@
 #import "MoreToolBarView.h"
 #import "ShareToolBarView.h"
 #import "CommentToolBarView.h"
+#import "CampusCommentViewController.h"
 
 @interface CampusViewController ()<CXBaseTableViewDelegate>
 
@@ -145,7 +146,7 @@
             }
             break;
         case CellActionTypeReply:
-            CXLog(@"点击了回复");
+            [self gotoCommentViewController:model];
             break;
         case CellActionTypeShare:{
             [[ShareToolBarView instance] updateUIWithModel:model action:^(ShareToolBarActionTyep actionType) {
@@ -166,10 +167,9 @@
             break;
         }
         case CellActionTypeUserInfo:
-            CXLog(@"进入个人信息详细页面");
             break;
         case CellActionTypeComment:
-            CXLog(@"进入评论列表界面");
+            [self gotoCommentViewController:model];
             break;
         default:
             break;
@@ -251,6 +251,12 @@
             [toolbarView setLikeBtnSelect];
         }
     }
+}
+
+- (void)gotoCommentViewController:(CampusNote *)note{
+    CampusCommentViewController *commentVC = [CampusCommentViewController controller];
+    commentVC.note = note;
+    [self.navigationController pushViewController:commentVC animated:YES];
 }
 
 @end

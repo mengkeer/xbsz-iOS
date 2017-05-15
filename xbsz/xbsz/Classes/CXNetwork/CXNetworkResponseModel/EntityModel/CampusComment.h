@@ -11,12 +11,16 @@
 
 @interface CampusComment : NSObject
 
-
 @property (nonatomic, copy) NSString *noteID;
+
+@property (nonatomic, copy) NSString *userID;
 
 @property (nonatomic, copy) NSString *content;
 
-@property (nonatomic, strong) CXUser *user;
+@property (nonatomic, copy) NSString *avatar;
 
+@property (nonatomic, copy) NSString *nickname;
+
+@property (nonatomic, strong) NSDate *time;
 
 @end

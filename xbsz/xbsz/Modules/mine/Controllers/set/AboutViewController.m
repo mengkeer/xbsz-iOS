@@ -18,13 +18,14 @@
 @property (nonatomic, strong) UILabel *authorLabel;
 @property (nonatomic, strong) UILabel *contactLabel;
 
+@property (nonatomic, strong) UILabel *copyrightLabel;
+
 @end
 
 @implementation AboutViewController
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self autoTheme];
     [self showTopLineView];
 }
 
@@ -33,15 +34,21 @@
     self.title = @"软件相关";
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.backgroundColor = CXWhiteColor;
     scrollView.showsVerticalScrollIndicator  = YES;
     scrollView.alwaysBounceVertical = YES;
     scrollView.backgroundColor = CXBackGroundColor;
     scrollView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight-64);
     
-    [self.view addSubview:scrollView];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight-64) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(CXTopCornerRadius, CXTopCornerRadius)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight-64);
+    maskLayer.path = maskPath.CGPath;
+    scrollView.layer.mask = maskLayer;
+    
+    
+    [self.contentView addSubview:scrollView];
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.right.mas_equalTo(self.view);
+        make.left.bottom.right.mas_equalTo(self.contentView);
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
     
@@ -66,6 +73,7 @@
     [scrollView addSubview:self.versionLabel];
     [scrollView addSubview:self.authorLabel];
     [scrollView addSubview:self.contactLabel];
+    [scrollView addSubview:self.copyrightLabel];
 
     
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -98,10 +106,16 @@
         make.top.mas_equalTo(_authorLabel.mas_bottom).mas_offset(12);
     }];
     
+    [scrollView layoutIfNeeded];
     
-    
-    
-    
+    [_copyrightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(scrollView.mas_centerX);
+        make.left.mas_equalTo(scrollView.mas_left).mas_offset(20);
+        make.right.mas_equalTo(scrollView.mas_right).mas_offset(-20);
+        make.height.mas_equalTo(15);
+        make.bottom.mas_equalTo(bgView.mas_bottom).mas_offset(-20);
+    }];
+       
 }
 
 - (void)didReceiveMemoryWarning {
@@ -167,5 +181,17 @@
     }
     return _contactLabel;
 }
+
+- (UILabel *)copyrightLabel{
+    if(!_copyrightLabel){
+        _copyrightLabel = [[UILabel alloc] init];
+        _copyrightLabel.font = CXSystemFont(13);
+        _copyrightLabel.textAlignment = NSTextAlignmentCenter;
+        _copyrightLabel.textColor = CXBlackColor2;
+        _copyrightLabel.text = @"copyright © 2017年 lotus. All rights reserved";
+    }
+    return _copyrightLabel;
+}
+
 
 @end

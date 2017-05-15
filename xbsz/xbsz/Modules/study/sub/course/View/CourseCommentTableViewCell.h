@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CourseComment.h"
 
-@interface CommentTableViewCell : UITableViewCell
+@interface CourseCommentTableViewCell : UITableViewCell
 
 - (void)updateUIWithModel:(CourseComment *)model;
 
