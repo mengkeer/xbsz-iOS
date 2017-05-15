@@ -12,4 +12,6 @@
 
 + (void)playSoundByFilename:(NSString *)name;
 
++ (void)playSent;
+
 @end

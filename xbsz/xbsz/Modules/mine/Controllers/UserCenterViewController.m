@@ -175,10 +175,11 @@
         make.centerX.mas_equalTo(_infoView.mas_centerX);
         make.centerY.mas_equalTo(_infoView.mas_bottom).mas_offset(-22.5);
     }];
-    [_infoView layoutIfNeeded];          //通过在父亲视图中调用layoutIfNeeded立即更新约束
 
   
-//    [self updateInfoViewHeight];
+    [self updateInfoViewHeight];
+    
+    [_infoView layoutIfNeeded];          //通过在父亲视图中调用layoutIfNeeded立即更新约束
     
     _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_rightBtn setImage:[UIImage imageNamed:@"right_arrow_black"] forState:UIControlStateNormal];
@@ -212,6 +213,7 @@
         make.top.mas_equalTo(_infoView.mas_bottom);
         make.width.mas_equalTo(CXScreenWidth);
         make.height.mas_equalTo(SectionHeaderHeight*2+itemWidth*4+20);
+        make.bottom.mas_equalTo(scrollView.mas_bottom);
     }];
     
     
@@ -512,9 +514,14 @@
 #pragma mark - private method
 
 - (void)updateInfoViewHeight{
-    CGFloat labelHeight = [_briefLabel sizeThatFits:CGSizeMake(_briefLabel.frame.size.width, MAXFLOAT)].height;
-    NSNumber *count = @((labelHeight) / _briefLabel.font.lineHeight);
-    if([count integerValue]>1){
+    CGSize size = CGSizeMake(CXScreenWidth-40-40, CGFLOAT_MAX);
+    CGRect labelRect = [_briefLabel.text boundingRectWithSize:size
+                                          options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin
+                                       attributes:@{NSFontAttributeName:CXSystemFont(12)} context:nil];
+    
+    CGFloat labelHeight = CGRectGetHeight(labelRect);
+    CGFloat count = labelHeight / _briefLabel.font.lineHeight;
+    if(count > 1.1){
         _infoView.frame = CGRectMake(0, 0, CXScreenWidth, 160);
         [_briefLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(30);

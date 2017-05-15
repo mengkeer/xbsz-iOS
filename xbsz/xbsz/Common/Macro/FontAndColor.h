@@ -11,7 +11,8 @@
 
 
 //定义屏幕颜色等
-#define CXMainColor  CXHexColor(0xfb7299)
+//#define CXMainColor  CXHexColor(0xfb7299)
+#define CXMainColor    CXHexColor(0xfb86a8)
 //#define CXMainColor  CXHexColor(0xC1CDC1)
 #define CXBackGroundColor  CXHexColor(0xF6F6F6)
 #define CXLineColor    CXHexColor(0xE8E8E8)

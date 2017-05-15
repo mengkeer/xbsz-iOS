@@ -40,7 +40,19 @@
     return self;
 }
 
+- (instancetype)init{
+    if(self = [super init]){
+        [self initTableViewCell];
+    }
+    return self;
+}
 
+- (instancetype)initWithFrame:(CGRect)frame{
+    if(self = [super initWithFrame:frame]){
+        [self initTableViewCell];
+    }
+    return self;
+}
 
 - (void)initTableViewCell{
     [self.contentView addSubview:self.iconImageView];

@@ -88,7 +88,7 @@
 - (UIButton *)closeBtn{
     if(!_closeBtn){
         _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_closeBtn setImage:[UIImage imageNamed:@"blackClose"] forState:UIControlStateNormal];
+        [_closeBtn setImage:[UIImage imageNamed:@"common_close"] forState:UIControlStateNormal];
         _closeBtn.hidden = YES;
         _closeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         _closeBtn.frame = CGRectMake(30, 20, 44, 44);

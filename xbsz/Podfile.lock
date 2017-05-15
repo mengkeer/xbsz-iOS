@@ -24,6 +24,7 @@ PODS:
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
   - SVProgressHUD (2.0.3)
+  - TZImagePickerController (1.7.8)
   - UMengUShare/Core (6.4.0):
     - UMengUShare/Network
   - UMengUShare/Network (6.4.0)
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - Masonry
   - MJRefresh
   - SVProgressHUD
+  - TZImagePickerController
   - UMengUShare/Plugin/IDFA
   - UMengUShare/Social/ReducedQQ
   - UMengUShare/Social/ReducedSina
@@ -77,6 +79,7 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
   UMengUShare: 83f849f356db0db9f18488cfbc2055a20b150481
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
@@ -85,6 +88,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: d2a4ba41b856f226075ac4792163411f95b208b4
+PODFILE CHECKSUM: 18536487d46c986c0acf82e3ec9b648308cae6c9
 
 COCOAPODS: 1.2.0.beta.1

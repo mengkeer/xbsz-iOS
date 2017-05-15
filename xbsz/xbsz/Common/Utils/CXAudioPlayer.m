@@ -46,4 +46,8 @@ void soundCompleteCallback(SystemSoundID soundID,void * clientData){
 }
 
 
++ (void)playSent{
+    AudioServicesPlaySystemSound (1001);
+}
+
 @end

@@ -9,8 +9,12 @@
 #import "DiscoverViewController.h"
 #import "CampusViewController.h"
 #import "RecommendViewController.h"
+#import "TZImagePickerController.h"
+#import "NewPostViewController.h"
 
-@interface DiscoverViewController ()
+@interface DiscoverViewController () <TZImagePickerControllerDelegate>
+
+@property (nonatomic, strong) UIButton *cameraBtn;
 
 @end
 
@@ -100,6 +104,13 @@
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(autoTheme) name:NotificationThemeChanged object:nil];
         
     self.selectIndex = 0;
+    
+    [self.view addSubview:self.cameraBtn];
+    [_cameraBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(32);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(20);
+        make.right.mas_equalTo(self.view.mas_right).mas_offset(-15);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -135,6 +146,50 @@
     
 }
 
+- (UIButton *)cameraBtn{
+    if(!_cameraBtn){
+        _cameraBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_cameraBtn setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
+        [_cameraBtn addTarget:self action:@selector(postNote) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _cameraBtn;
+}
+
+- (void)postNote{
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+    imagePickerVc.allowCrop = YES;
+    imagePickerVc.photoWidth = 750;
+    imagePickerVc.allowPickingGif = YES;
+    imagePickerVc.allowPickingOriginalPhoto = YES;
+    imagePickerVc.autoDismiss = NO;
+    
+    NSInteger themeType = [CXUserDefaults instance].themeType;
+    if(themeType != 2){
+        imagePickerVc.navigationBar.barTintColor = [CXUserDefaults instance].mainColor;
+    }
+    
+    imagePickerVc.cropRect = CGRectMake(0 , (CXScreenHeight- CXScreenWidth)/2, CXScreenWidth, CXScreenWidth);
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
+}
+
+
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
+    [picker dismissViewControllerAnimated:NO completion:nil];
+    NewPostViewController *postVC = [NewPostViewController controller];
+    postVC.sharedImage = photos[0];
+    [self presentViewController:postVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingGifImage:(UIImage *)animatedImage sourceAssets:(id)asset{
+    [picker dismissViewControllerAnimated:NO completion:nil];
+    NewPostViewController *postVC = [NewPostViewController controller];
+    postVC.sharedImage = animatedImage;
+    [self presentViewController:postVC animated:YES completion:nil];
+}
+
+- (void)tz_imagePickerControllerDidCancel:(TZImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 @end

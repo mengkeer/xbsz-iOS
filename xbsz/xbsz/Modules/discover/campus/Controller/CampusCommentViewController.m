@@ -10,6 +10,7 @@
 #import "CXBaseTableView.h"
 #import "CampusCommentTableViewCell.h"
 #import "IQKeyboardManager.h"
+#import "CXAudioPlayer.h"
 
 #import "CXNetwork+Course.h"        //暂时以课程评论为例
 #import "CourseCommentList.h"       //暂时以课程评论为例
@@ -344,6 +345,7 @@ static NSInteger limit = 10;
         return;
     }
     
+    [CXAudioPlayer playSent];
     [ToastView showStatus:@"评论成功"];
     _writeTextField.text = @"";
     [_writeTextField resignFirstResponder];
