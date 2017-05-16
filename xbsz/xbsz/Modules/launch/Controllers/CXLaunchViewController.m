@@ -8,12 +8,6 @@
 
 #import "CXLaunchViewController.h"
 #import "CXTabBarController.h"
-//#import "UIImageView+WebCache.h"
-////#import "YPTabBarController.h"
-//#import "CXLaunchRealmModel.h"
-//#import "CXLaunchViewModel.h"
-//#import "CXAlertView.h"
-
 
 @implementation CXLaunchViewController
 
@@ -25,9 +19,16 @@
 
 - (void)createUI{
     
-    self.bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"launchBg"]];
-    self.bgImageView.frame = self.view.frame;
-    [self.view addSubview:self.bgImageView];
+//    self.bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"launchBg"]];
+//    self.bgImageView.frame = self.view.frame;
+//    [self.view addSubview:self.bgImageView];
+//    self.view.backgroundColor = CXWhiteColor;
+//
+    UIStoryboard *board = [UIStoryboard storyboardWithName: @"LaunchScreen" bundle: nil];
+    
+    UIViewController *vc = [board instantiateViewControllerWithIdentifier: @"LaunchScreen"];
+    [self.view addSubview:vc.view];
+    
     
     self.splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bilibili_splash_default"]];
     self.splashImageView.hidden = YES;

@@ -52,7 +52,7 @@
     [self.view addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(20+4);
+        make.height.mas_equalTo(20+6);
     }];
     
     
@@ -61,12 +61,12 @@
     [self.view addSubview:_contentView];
     [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.mas_equalTo(self.view);
-        make.top.mas_equalTo(_topView.mas_bottom).mas_offset(-4);
+        make.top.mas_equalTo(_topView.mas_bottom).mas_offset(-6);
     }];
 
     [_contentView layoutIfNeeded];
 
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, _contentView.height) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(4, 4)];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, _contentView.height) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(6, 6)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = CGRectMake(0, 0, CXScreenWidth, _contentView.height);
     maskLayer.path = maskPath.CGPath;
@@ -240,7 +240,7 @@
 
 - (UILabel *)placeholderLabel{
     if(!_placeholderLabel){
-        _placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 7, 100, CXSystemFont(15).lineHeight)];
+        _placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 7, 150, CXSystemFont(15).lineHeight)];
         _placeholderLabel.textColor = CXHexColor(0x707070);
         _placeholderLabel.font = CXSystemFont(15);
         _placeholderLabel.textAlignment = NSTextAlignmentLeft;

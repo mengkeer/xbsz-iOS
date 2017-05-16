@@ -63,7 +63,7 @@
     [self.view addSubview:self.appNameIV];
     [self.view addSubview:self.loginTypeLabel];
     [_loginTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_appNameIV.mas_bottom).mas_offset(50);
+        make.top.mas_equalTo(_appNameIV.mas_bottom).mas_offset(30);
         make.height.mas_equalTo(12);
         make.centerX.mas_equalTo(self.view);
     }];

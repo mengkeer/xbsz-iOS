@@ -159,6 +159,7 @@
 		ADF408D71EB4E111009DB786 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF408D61EB4E111009DB786 /* AudioToolbox.framework */; };
 		ADF408DA1EB4E53D009DB786 /* CXUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF408D91EB4E53D009DB786 /* CXUserDefaults.m */; };
 		ADFEDA811EC9C892008F30CF /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFEDA801EC9C892008F30CF /* NewPostViewController.m */; };
+		ADFEDAC51ECA942C008F30CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFEDAC41ECA942C008F30CF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -450,6 +451,7 @@
 		ADF408D91EB4E53D009DB786 /* CXUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXUserDefaults.m; sourceTree = "<group>"; };
 		ADFEDA7F1EC9C892008F30CF /* NewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
 		ADFEDA801EC9C892008F30CF /* NewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
+		ADFEDAC41ECA942C008F30CF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DC26F9CD5DF9B456572E2C96 /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
 		E4C2FB6F723F9D827D81240A /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1124,6 +1126,7 @@
 		AD7F89231E596036009603E4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				ADFEDAC41ECA942C008F30CF /* LaunchScreen.storyboard */,
 				AD7F89241E596036009603E4 /* AppDelegate.h */,
 				AD7F89251E596036009603E4 /* AppDelegate.m */,
 				AD7F89261E596036009603E4 /* main.m */,
@@ -1487,6 +1490,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADFEDAC51ECA942C008F30CF /* LaunchScreen.storyboard in Resources */,
 				AD8B45381EA9DE3D00E8D539 /* comments.json in Resources */,
 				ADF042451E0192EF00171489 /* avatar11.jpg in Resources */,
 				ADF042431E0192EF00171489 /* avatar1.jpg in Resources */,
@@ -1800,7 +1804,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yujian Yang (2FK97V4U49)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1833,7 +1836,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = W8846XSJ58;

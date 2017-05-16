@@ -25,9 +25,10 @@
     [super viewDidLoad];
     
     _topBackView = [[UIView alloc ]initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXTopCornerRadius)];
+    _topBackView.backgroundColor = [CXUserDefaults instance].mainColor;
     
     _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth,CXScreenHeight-CXStatusBarHeight-CXDisplayTitleHeight)];
-    _contentView.backgroundColor = CXWhiteColor;
+    _contentView.backgroundColor = [CXUserDefaults instance].mainColor;
     
 
     [self.view addSubview:_topBackView];

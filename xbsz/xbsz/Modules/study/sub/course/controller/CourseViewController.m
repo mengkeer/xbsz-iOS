@@ -16,14 +16,14 @@
 
 #import "PYSearch.h"
 
-static int numberOfItems = 3;           //每行的cell个数
+static int numberOfItems = 2;           //每行的cell个数
 
 static NSString *const cellID = @"CollectionCellID";
 static NSString *const headerCellID = @"CollectionHeaderCellID";
 static NSString *const footerCellID = @"CollectionFooterCellID";
 
 
-#define gap (CX_IS_IPHONE6PLUS ? 20 : CX_IS_IPHONE6 ?  15 : 14)
+#define gap (CX_IS_IPHONE6PLUS ? 18 : CX_IS_IPHONE6 ?  15 : 13.2)
 
 @interface CourseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PYSearchViewControllerDelegate,UIViewControllerPreviewingDelegate>
 
@@ -212,7 +212,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     NSInteger nums = [_courseList.courses count]/numberOfItems +1;
-    return [_courseList.courses count] % 3 == 0 ? nums-1 : nums;
+    return [_courseList.courses count] % numberOfItems  == 0 ? nums-1 : nums;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

@@ -14,6 +14,8 @@
 
 static CGPoint beforeScrollPoint ;
 
+static CGFloat imageHeight = 210;
+
 @interface CourseDetailViewController () <RateViewDelegate,UIScrollViewDelegate>
 
 @property (nonatomic, strong) YYAnimatedImageView *imageView;     //顶部imageView
@@ -55,7 +57,7 @@ static CGPoint beforeScrollPoint ;
     
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(200);
+        make.height.mas_equalTo(imageHeight);
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
     
@@ -193,10 +195,13 @@ static CGPoint beforeScrollPoint ;
     
     CGPoint center = _imageView.center;             //图片的center
     
-    if(nowOffset.y > 0.0 && center.y > ([self getStartOriginY]-100)){
+    CGFloat y1 = 64 - imageHeight/2;
+    CGFloat y2 = 64 + imageHeight/2;
+    
+    if(nowOffset.y > 0.0 && center.y > ([self getStartOriginY]-imageHeight/2)){
         if(nowOffset.y < beforeScrollPoint.y) return;
         CGFloat paddingY = nowOffset.y  - beforeScrollPoint.y;
-        CGFloat top =  _imageView.center.y - paddingY <= -36 ? -36 : _imageView.center.y - paddingY ;
+        CGFloat top =  _imageView.center.y - paddingY <= y1 ? y1 : _imageView.center.y - paddingY ;
         CGFloat gap = _imageView.center.y - top;
         _imageView.center = CGPointMake(CXScreenWidth/2, top);
         scrollView.contentOffset = beforeScrollPoint;
@@ -205,13 +210,13 @@ static CGPoint beforeScrollPoint ;
         _infoViewController.view.frame = CGRectMake(0,frame.origin.y-gap, CXScreenWidth, CGRectGetHeight(frame)+gap);
         
     }else{
-        if(nowOffset.y <= 0.0 && center.y >= -36 && center.y < 164){
-            CGFloat top =  _imageView.center.y - nowOffset.y >164 ? 164 : _imageView.center.y - nowOffset.y ;
+        if(nowOffset.y <= 0.0 && center.y >= y1 && center.y < y2){
+            CGFloat top =  _imageView.center.y - nowOffset.y >y2 ? y2 : _imageView.center.y - nowOffset.y ;
             CGFloat gap = _imageView.center.y - top;
             _imageView.center = CGPointMake(CXScreenWidth/2, top);
             scrollView.contentOffset = CGPointZero;
             
-            if(center.y >= 164)     return;
+            if(center.y >= y2)     return;
             CGRect frame = _infoViewController.view.frame;
             _infoViewController.view.frame = CGRectMake(0,frame.origin.y-gap, CXScreenWidth, CGRectGetHeight(frame)+gap);
             
