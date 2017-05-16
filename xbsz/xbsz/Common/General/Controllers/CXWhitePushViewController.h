@@ -21,4 +21,6 @@
 
 - (void)setCustomNavBarHidden:(BOOL)hidden;
 
+- (void)showTopLineView;
+
 @end

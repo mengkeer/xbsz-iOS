@@ -13,7 +13,7 @@
 #define imageWidth (CX_IS_IPHONE6PLUS ? 180 : CX_IS_IPHONE6 ? 165 : 140)
 #define imageHeight (CX_IS_IPHONE6PLUS ? 108 : CX_IS_IPHONE6 ? 99 : 84)
 #define cellWidth   imageWidth
-#define cellHeight   (imageHeight + 40)
+#define cellHeight   (imageHeight + 37)
 
 
 @interface ExerciseCollectionViewCell : UICollectionViewCell

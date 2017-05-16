@@ -46,13 +46,13 @@
     }];
     
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_imageView.mas_bottom);
+        make.top.mas_equalTo(_imageView.mas_bottom).mas_offset(2);
         make.left.right.mas_equalTo(self.contentView);
         make.height.mas_equalTo(20);
     }];
     
     [_semesterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_titleLabel.mas_bottom);
+        make.top.mas_equalTo(_titleLabel.mas_bottom).mas_offset(-5);
         make.left.right.mas_equalTo(self.contentView);
         make.height.mas_equalTo(20);
         make.bottom.mas_equalTo(self.contentView.mas_bottom);

@@ -7,6 +7,7 @@
 //
 
 #import "CXPushViewController.h"
+#import "SystemInform.h"
 
 @interface InformViewController : CXPushViewController
 
@@ -15,7 +16,7 @@
 
 @interface InformTableViewCell : UITableViewCell
 
-- (void)updateUI:(NSString *)text;
+- (void)updateUIByModel:(SystemInform *)model;
 
 - (void)showLineView:(NSInteger)currentRow totalRows:(NSInteger)totalRows;
 

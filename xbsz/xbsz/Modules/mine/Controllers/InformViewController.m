@@ -7,6 +7,9 @@
 //
 
 #import "InformViewController.h"
+#import "CXNetwork+System.h"
+#import "SystemInformList.h"
+#import "SystemInform.h"
 
 static NSString *cellID = @"InformTableViewCellID";
 
@@ -16,12 +19,15 @@ static NSString *cellID = @"InformTableViewCellID";
 
 @property (nonatomic, strong) NSMutableArray *informTexts;
 
+@property (nonatomic, strong) NSMutableArray *informs;
+
 @end
 
 @implementation InformViewController
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self loadData];
 }
 
 - (void)viewDidLoad {
@@ -46,14 +52,22 @@ static NSString *cellID = @"InformTableViewCellID";
     maskLayer.path = maskPath.CGPath;
     _tableView.layer.mask = maskLayer;
     
-    _informTexts = [NSMutableArray arrayWithObjects:@"本学期即将发布新版本",@"注意:近代史的word版题库只有序章,因为一章可能就几百题，为了做题方便，本软件将近代史题库人为分为四章，但总题数和题目内容不变，欢迎大家核对",@"如果对软件使用有什么问题，或者好的建议，bug反馈，欢迎大家发邮件给我，",@"每学期期末，如果思政有变更的话，欢迎大家把题库发给我，我好更新题库数据",@"开发人员联系方式如下：1812422367@qq.com，同时欢迎各位加我QQ或微信交流学习问题：1812422367 请备注:学习交流",nil];
-    [_tableView reloadData];
-    
+    _informs = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadData{
+    [CXNetwork getInforms:0 success:^(NSObject *obj) {
+        SystemInformList *list = [SystemInformList yy_modelWithDictionary:(NSDictionary *)obj];
+        _informs = list.informs;
+        [_tableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - UITableView delegate
@@ -75,7 +89,7 @@ static NSString *cellID = @"InformTableViewCellID";
 #pragma mark - UITableView dataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_informTexts count];
+    return [_informs count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -89,7 +103,7 @@ static NSString *cellID = @"InformTableViewCellID";
         cell = [[InformTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell updateUI:[_informTexts objectAtIndex:indexPath.row]];
+    [cell updateUIByModel:[_informs objectAtIndex:indexPath.row]];
     [cell showLineView:indexPath.row totalRows:[_informTexts count]];
     return cell;
 }
@@ -184,8 +198,18 @@ static NSString *cellID = @"InformTableViewCellID";
 
 #pragma mark - public method
 
-- (void)updateUI:(NSString *)text{
+- (void)updateUIByModel:(SystemInform *)model{
+    
+    if(model.isNew != 1){
+        [_informBtn setImage:[UIImage imageNamed:@"inform_new"] forState:UIControlStateNormal];
+        [_informBtn setImage:[UIImage imageNamed:@"inform_new"] forState:UIControlStateHighlighted];
+    }else{
+        [_informBtn setImage:[UIImage imageNamed:@"inform"] forState:UIControlStateNormal];
+        [_informBtn setImage:[UIImage imageNamed:@"inform"] forState:UIControlStateHighlighted];
+    }
 
+//    NSString *text = [NSString stringWithFormat:@"%@\t-- %@",model.content,[model.time stringWithFormat:@"yyyy-MM-dd"]];
+    NSString *text = model.content;
     _contentLabel.text = text;
     
     CGRect labelRect = [text boundingRectWithSize:CGSizeMake(CXScreenWidth-15-24-15-15, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:CXSystemFont(14)} context:nil] ;

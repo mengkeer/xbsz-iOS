@@ -23,7 +23,7 @@
 @property (nonatomic,strong) UIButton *loginBtn;
 
 @property (nonatomic,strong) UILabel *registerLabel;
-@property (nonatomic,strong) UILabel *forgetPasswordLabel;
+//@property (nonatomic,strong) UILabel *forgetPasswordLabel;
 
 @property (nonatomic,strong) UIButton *loginQQ;
 @property (nonatomic,strong) UIButton *loginWeibo;
@@ -146,24 +146,25 @@
     
     
     [self.view addSubview:self.registerLabel];
-    [self.view addSubview:self.forgetPasswordLabel];
+//    [self.view addSubview:self.forgetPasswordLabel];
     
     [_registerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.view.mas_centerX).mas_offset(-8);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.width.mas_equalTo(100);
         make.top.mas_equalTo(_loginBtn.mas_bottom).mas_offset(18);
         make.height.mas_equalTo(13);
     }];
     
-    [_forgetPasswordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view.mas_centerX).mas_offset(8);
-        make.top.mas_equalTo(_loginBtn.mas_bottom).mas_offset(18);
-        make.height.mas_equalTo(13);
-    }];
+//    [_forgetPasswordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.view.mas_centerX).mas_offset(8);
+//        make.top.mas_equalTo(_loginBtn.mas_bottom).mas_offset(18);
+//        make.height.mas_equalTo(13);
+//    }];
     
     [self.view layoutIfNeeded];
     
     
-    CGFloat baseOriginY = CXScreenHeight-(CXScreenHeight-_forgetPasswordLabel.bottom)/2-40;
+    CGFloat baseOriginY = CXScreenHeight-(CXScreenHeight-_registerLabel.bottom)/2-40;
     
     
     UILabel *socialLoginLabel = [[UILabel alloc] init];
@@ -327,7 +328,8 @@
     if(!_registerLabel){
         _registerLabel = [[UILabel alloc] init];
         _registerLabel.text = @"新用户注册";
-        _registerLabel.textColor = CXHexColor(0xf16c4d);
+        _registerLabel.textAlignment = NSTextAlignmentCenter;
+        _registerLabel.textColor = CXLightGrayColor;
         _registerLabel.font = CXSystemFont(13);
         _registerLabel.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickRegister)];
@@ -338,18 +340,18 @@
     return _registerLabel;
 }
 
-- (UILabel *)forgetPasswordLabel{
-    if(!_forgetPasswordLabel){
-        _forgetPasswordLabel = [[UILabel alloc] init];
-        _forgetPasswordLabel.text = @"忘记密码?";
-        _forgetPasswordLabel.textColor = CXLightGrayColor;
-        _forgetPasswordLabel.font = CXSystemFont(13);
-        _forgetPasswordLabel.userInteractionEnabled = YES;
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickReset)];
-        [_forgetPasswordLabel addGestureRecognizer:tap];
-    }
-    return _forgetPasswordLabel;
-}
+//- (UILabel *)forgetPasswordLabel{
+//    if(!_forgetPasswordLabel){
+//        _forgetPasswordLabel = [[UILabel alloc] init];
+//        _forgetPasswordLabel.text = @"忘记密码?";
+//        _forgetPasswordLabel.textColor = CXLightGrayColor;
+//        _forgetPasswordLabel.font = CXSystemFont(13);
+//        _forgetPasswordLabel.userInteractionEnabled = YES;
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickReset)];
+//        [_forgetPasswordLabel addGestureRecognizer:tap];
+//    }
+//    return _forgetPasswordLabel;
+//}
 
 - (UIButton *)loginQQ{
     if(!_loginQQ){

@@ -42,6 +42,20 @@
     }];
 }
 
++ (void)modiyfPassword:(NSString *)password
+          oldPassword:(NSString *)oldPassword
+              success:(CXNetworkSuccessBlock)success
+              failure:(CXNetworkFailureBlock)failure{
+    
+    NSDictionary *parameters = @{@"token":[CXLocalUser instance].token,@"password":password,@"oldPassword":oldPassword};
+    [self invokePostRequest:CXUpdateUserInfoUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:responseObject];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        InvokeFailure(error);
+    }];
+}
+
 + (void)getUserInfo:(NSString *)token
             success:(CXNetworkSuccessBlock)success
             failure:(CXNetworkFailureBlock)failure{

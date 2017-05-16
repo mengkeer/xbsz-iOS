@@ -11,7 +11,7 @@
 #import "IQKeyboardManager.h"
 #import "TZImagePickerController.h"
 
-@interface NewPostViewController () <UITextViewDelegate,TZImagePickerControllerDelegate,UIScrollViewDelegate>
+@interface NewPostViewController () <UITextViewDelegate,TZImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIView *topView;      //阴影区域
 @property (nonatomic, strong) UIView *contentView;      //主要内容区域
@@ -112,7 +112,6 @@
     _scrollView.backgroundColor = CXHexColor(0xfafafa);
     _scrollView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight-64);
     [_contentView addSubview:_scrollView];
-    _scrollView.delegate = self;
     [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(_contentView);
         make.top.mas_equalTo(_contentView.mas_top).mas_offset(44);
@@ -244,7 +243,7 @@
         _placeholderLabel.textColor = CXHexColor(0x707070);
         _placeholderLabel.font = CXSystemFont(15);
         _placeholderLabel.textAlignment = NSTextAlignmentLeft;
-        _placeholderLabel.text = @"这一刻的想法..";
+        _placeholderLabel.text = @"这一刻的想法...";
     }
     return _placeholderLabel;
 }
@@ -323,31 +322,5 @@
     
     _sharedImageView.image = _sharedImage;
 }
-
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    CGFloat offsetY = scrollView.contentOffset.y;
-//    CXLog(@"%.3f",offsetY);
-//    if(offsetY < 0){
-//        CGFloat topHeight = CGRectGetHeight(_topView.frame) - offsetY;
-//        _topView.frame = CGRectMake(0, 0, CXScreenWidth, topHeight);
-//        
-//        _contentView.frame = CGRectMake(0, topHeight-4, CXScreenWidth, CXScreenHeight-(topHeight-4));
-//        [_contentView layoutIfNeeded];
-//        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, _contentView.height) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(4, 4)];
-//        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-//        maskLayer.frame = CGRectMake(0, 0, CXScreenWidth,  _contentView.height);
-//        maskLayer.path = maskPath.CGPath;
-//        _contentView.layer.mask = maskLayer;
-//        
-//        CGFloat percent = (CXScreenHeight - topHeight)/(CXScreenHeight-24);
-//        _topView.alpha  = percent;
-//        CXLog(@"%.2lf",percent);
-//    }
-//    
-//    scrollView.contentOffset = CGPointMake(0, 0);
-    
-}
-
 
 @end

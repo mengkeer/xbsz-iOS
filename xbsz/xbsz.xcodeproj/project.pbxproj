@@ -160,6 +160,10 @@
 		ADF408DA1EB4E53D009DB786 /* CXUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF408D91EB4E53D009DB786 /* CXUserDefaults.m */; };
 		ADFEDA811EC9C892008F30CF /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFEDA801EC9C892008F30CF /* NewPostViewController.m */; };
 		ADFEDAC51ECA942C008F30CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFEDAC41ECA942C008F30CF /* LaunchScreen.storyboard */; };
+		ADFEDAC81ECACF2F008F30CF /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFEDAC71ECACF2F008F30CF /* ModifyPasswordViewController.m */; };
+		ADFEDACB1ECAE422008F30CF /* CXNetwork+System.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFEDACA1ECAE422008F30CF /* CXNetwork+System.m */; };
+		ADFEDACF1ECAE5E3008F30CF /* SystemInform.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFEDACE1ECAE5E3008F30CF /* SystemInform.m */; };
+		ADFEDAD21ECAE73C008F30CF /* SystemInformList.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFEDAD11ECAE73C008F30CF /* SystemInformList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -452,6 +456,14 @@
 		ADFEDA7F1EC9C892008F30CF /* NewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
 		ADFEDA801EC9C892008F30CF /* NewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
 		ADFEDAC41ECA942C008F30CF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ADFEDAC61ECACF2F008F30CF /* ModifyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPasswordViewController.h; sourceTree = "<group>"; };
+		ADFEDAC71ECACF2F008F30CF /* ModifyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPasswordViewController.m; sourceTree = "<group>"; };
+		ADFEDAC91ECAE422008F30CF /* CXNetwork+System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CXNetwork+System.h"; sourceTree = "<group>"; };
+		ADFEDACA1ECAE422008F30CF /* CXNetwork+System.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CXNetwork+System.m"; sourceTree = "<group>"; };
+		ADFEDACD1ECAE5E3008F30CF /* SystemInform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInform.h; sourceTree = "<group>"; };
+		ADFEDACE1ECAE5E3008F30CF /* SystemInform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemInform.m; sourceTree = "<group>"; };
+		ADFEDAD01ECAE73C008F30CF /* SystemInformList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemInformList.h; sourceTree = "<group>"; };
+		ADFEDAD11ECAE73C008F30CF /* SystemInformList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemInformList.m; sourceTree = "<group>"; };
 		DC26F9CD5DF9B456572E2C96 /* Pods-xbsz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.debug.xcconfig"; sourceTree = "<group>"; };
 		E4C2FB6F723F9D827D81240A /* Pods-xbsz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xbsz.release.xcconfig"; path = "Pods/Target Support Files/Pods-xbsz/Pods-xbsz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -704,6 +716,8 @@
 				AD94AC581EACFE130059AF3A /* BirthdayViewController.m */,
 				AD7BD6191EAD8ABF00F34023 /* SignatureViewController.h */,
 				AD7BD61A1EAD8ABF00F34023 /* SignatureViewController.m */,
+				ADFEDAC61ECACF2F008F30CF /* ModifyPasswordViewController.h */,
+				ADFEDAC71ECACF2F008F30CF /* ModifyPasswordViewController.m */,
 			);
 			path = userInfo;
 			sourceTree = "<group>";
@@ -1227,6 +1241,8 @@
 				AD8B86141E9A913F007F4CEC /* CXNetwork+User.m */,
 				AD45BBA11EAE4A5800D53813 /* CXNetwork+Course.h */,
 				AD45BBA21EAE4A5800D53813 /* CXNetwork+Course.m */,
+				ADFEDAC91ECAE422008F30CF /* CXNetwork+System.h */,
+				ADFEDACA1ECAE422008F30CF /* CXNetwork+System.m */,
 				AD36F8801EA3119600775F90 /* DownloadManager.h */,
 				AD36F8811EA3119600775F90 /* DownloadManager.m */,
 			);
@@ -1265,6 +1281,8 @@
 				AD5B0FD21EC5E8A700C7D283 /* CXPage.m */,
 				AD5B0FD41EC6058E00C7D283 /* CourseWare.h */,
 				AD5B0FD51EC6058E00C7D283 /* CourseWare.m */,
+				ADFEDACD1ECAE5E3008F30CF /* SystemInform.h */,
+				ADFEDACE1ECAE5E3008F30CF /* SystemInform.m */,
 			);
 			path = EntityModel;
 			sourceTree = "<group>";
@@ -1282,6 +1300,8 @@
 				AD8B45351EA9DCA600E8D539 /* CourseCommentList.m */,
 				ADA770071EC60746001E7D3B /* CourseWareList.h */,
 				ADA770081EC60746001E7D3B /* CourseWareList.m */,
+				ADFEDAD01ECAE73C008F30CF /* SystemInformList.h */,
+				ADFEDAD11ECAE73C008F30CF /* SystemInformList.m */,
 			);
 			path = ModularModel;
 			sourceTree = "<group>";
@@ -1580,6 +1600,7 @@
 				AD45BBA61EAEE8A000D53813 /* ReciteViewController.m in Sources */,
 				AD2540B81E97860F00AA330D /* JWLocalUser.m in Sources */,
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
+				ADFEDAD21ECAE73C008F30CF /* SystemInformList.m in Sources */,
 				ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */,
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD5B0FD01EC5E23F00C7D283 /* NSDate+CXAdd.m in Sources */,
@@ -1620,6 +1641,7 @@
 				AD8B45331EA9DC5B00E8D539 /* CourseComment.m in Sources */,
 				AD7BD61E1EAD9B2900F34023 /* MajorViewController.m in Sources */,
 				054B8B7E1E7B876600E4E0BD /* CWStarRateView.m in Sources */,
+				ADFEDAC81ECACF2F008F30CF /* ModifyPasswordViewController.m in Sources */,
 				AD2540B21E977A9900AA330D /* UserInfoViewController.m in Sources */,
 				05CEE4AA1E8525AC0033DD3D /* CommonAPPViewController.m in Sources */,
 				AD36F8821EA3119600775F90 /* DownloadManager.m in Sources */,
@@ -1636,6 +1658,7 @@
 				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
 				05CEE4A71E851DAB0033DD3D /* SchoolSceneryViewController.m in Sources */,
 				AD8B86301E9A92B1007F4CEC /* CampusNoteList.m in Sources */,
+				ADFEDACB1ECAE422008F30CF /* CXNetwork+System.m in Sources */,
 				ADA187651EB2EF3900C771A4 /* ExerciseProgressViewController.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
 				AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */,
@@ -1663,6 +1686,7 @@
 				ADFEDA811EC9C892008F30CF /* NewPostViewController.m in Sources */,
 				AD7092AA1E861CF10024427C /* DefaultTipsView.m in Sources */,
 				05B4D0861E769109005DC854 /* CourseSearchBar.m in Sources */,
+				ADFEDACF1ECAE5E3008F30CF /* SystemInform.m in Sources */,
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
 				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,

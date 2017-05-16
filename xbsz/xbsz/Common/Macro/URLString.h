@@ -15,6 +15,9 @@
 #define CXFileBaseUrl        @"http://www.slotus.cc/uploads"
 #define CXTiKuUrl            @"http://www.slotus.cc/files/tiku.db"
 
+//系统
+#define CXGetSystemInforms   @"http://www.slotus.cc/common-api/getInform"
+
 #define CXLoginUrl          @"http://www.slotus.cc/common-api/login"
 #define CXRegisterUrl       @"http://www.slotus.cc/common-api/register"
 #define CXGetUserInfoUrl      @"http://www.slotus.cc/limit-api/getUserInfo"
@@ -59,7 +62,8 @@ typedef NS_ENUM(NSUInteger,CXResponseCode){
     CXResponseCodeOK = 3300,
     CXResponseCodeUserRepeat = 4012,         //注册时用户名 重复
     CXResponseCodeTokenIsVoid = 5001,                //token为空
-    CXResponseCodeTokenIsExpired = 5002              //token过期了
+    CXResponseCodeTokenIsExpired = 5002,             //token过期了
+    CXResponseCodeOldPasswordError = 4043               //修改密码时  旧密码错误
 };
 
 

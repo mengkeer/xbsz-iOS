@@ -21,6 +21,11 @@
              success:(CXNetworkSuccessBlock)success
              failure:(CXNetworkFailureBlock)failure;
 
++ (void)modiyfPassword:(NSString *)password
+            oldPassword:(NSString *)oldPassword
+             success:(CXNetworkSuccessBlock)success
+             failure:(CXNetworkFailureBlock)failure;
+
 + (void)getUserInfo:(NSString *)token
             success:(CXNetworkSuccessBlock)success
             failure:(CXNetworkFailureBlock)failure;

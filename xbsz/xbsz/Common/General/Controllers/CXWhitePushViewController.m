@@ -16,6 +16,8 @@
 
 @property (nonatomic, assign) BOOL cusNavBarHidden;
 
+@property (nonatomic, strong) UIView *topLineView;
+
 @end
 
 @implementation CXWhitePushViewController
@@ -60,6 +62,22 @@
     [self.backButton addTarget:self action:@selector(popFromCurrentViewController) forControlEvents:UIControlEventTouchUpInside];
     [self.customNavBarView addSubview:self.backButton];
     
+    
+    _topLineView = [[UIView alloc] init];
+    _topLineView.backgroundColor = CXLineColor;
+    [self.customNavBarView addSubview:_topLineView];
+    [_topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.customNavBarView.mas_bottom);
+        make.height.mas_equalTo(1/CXMainScale);
+    }];
+    [_topLineView setHidden:YES];
+    
+    
+}
+
+- (void)showTopLineView{
+    _topLineView.hidden = NO;
 }
 
 - (void)popFromCurrentViewController

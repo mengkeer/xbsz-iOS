@@ -17,6 +17,7 @@
 #import "BirthdayViewController.h"
 #import "SignatureViewController.h"
 #import "MajorViewController.h"
+#import "ModifyPasswordViewController.h"
 
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
@@ -137,7 +138,11 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     }
     if(indexPath.section == 1){
         if(indexPath.row == 0){
+            [self.navigationController pushViewController:[ModifyPasswordViewController controller] animated:YES];
+        }
+        if(indexPath.row == 1){
             [self.navigationController pushViewController:[AuthorizedLoginViewController controller] animated:YES];
+            return;
         }
     }
     
@@ -155,6 +160,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(section == 0)    return 8;
+    if(section == 1)    return 2;
     return 1;
 }
 
@@ -221,13 +227,24 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
         }
         
     }else if(indexPath.section == 1){
-        cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
-        if(!cell){
-            cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+        if(indexPath.row == 0){
+            cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+            }
+            NSString *detailText = [CXLocalUser instance].username ;
+            [cell updateCell:@"修改密码" detailText:detailText type:SetItemTypeTextAndArrow iconImageName:@"set_modify"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }else{
+            cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+            }
+            NSString *detailText = [JWLocalUser instance].isAuthorized ? [JWLocalUser instance].JWUsername : @"";
+            [cell updateCell:@"教务网账号授权" detailText:detailText type:SetItemTypeTextAndArrow iconImageName:@"set_auth"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        NSString *detailText = [JWLocalUser instance].isAuthorized ? [JWLocalUser instance].JWUsername : @"";
-        [cell updateCell:@"教务网账号授权" detailText:detailText type:SetItemTypeTextAndArrow iconImageName:@"set_auth"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }else if(indexPath.section == 2){
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"loginCellId"];
         if(!cell) {
