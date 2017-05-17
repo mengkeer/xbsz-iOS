@@ -66,7 +66,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         _courseList = [CourseList yy_modelWithDictionary:(NSDictionary *)obj];
         [_collectionView reloadData];
     } failure:^(NSError *error) {
-        [ToastView showStatus:@"获取课程失败"];
+//        [ToastView showStatus:@"获取课程失败"];
     }];
     
     [_collectionView reloadData];

@@ -1,100 +1,20 @@
 {
     "exercises":[{
-               "exerciseID":"11",
-               "userID":"uid222",
                "icon":"http://img2.ph.126.net/vSpLidbFS0z2D2QOsdCz1Q==/905505000178320854.png",
-               "version":"1.4.5",
-               "title":"马克思",
-               "status":1,
-               "type":"纺织",
-               "startTime":"2017-03-16",
-               "endTime":"2017-06-20",
-               "semester":"2015年春",
-               "total":"1234",
-               "brief":"马克思题库最新版，更新于2017年6月20日",
-               "user":{
-                            "userID":"uid222",
-                            "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
-                            "truename":"李悦老师",
-                            "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
-                        }
+               "title":"马克思"
                },{
-               "exerciseID":"11",
-               "userID":"uid222",
                "icon":"http://img0.ph.126.net/EnIPnxR1XSy87Z8B2Qnmhw==/6631924285256869476.jpg",
-               "version":"1.4.5",
-               "title":"近代史",
-               "status":1,
-               "type":"纺织",
-               "startTime":"2017-03-16",
-               "endTime":"2017-06-20",
-               "semester":"2015年春",
-               "total":"1234",
-               "brief":"马克思题库最新版，更新于2017年6月20日",
-               "user":{
-                        "userID":"uid2333",
-                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
-                        "truename":"李悦老师",
-                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
-                    }
+               "title":"近代史"
                },{
-               "exerciseID":"11",
-               "userID":"uid222",
                "icon":"http://img2.ph.126.net/UEj7ngS2RzlWEzcY6Ke87g==/3327315699796721276.png",
-               "version":"1.4.5",
-               "title":"思修",
-               "status":1,
-               "type":"纺织",
-               "startTime":"2017-03-16",
-               "endTime":"2017-06-20",
-               "semester":"2015年春",
-               "total":"1234",
-               "brief":"马克思题库最新版，更新于2017年6月20日",
-               "user":{
-                        "userID":"uid2333",
-                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
-                        "truename":"李悦老师",
-                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
-                    }
+               "title":"思修"
                },{
-               "exerciseID":"11",
-               "userID":"uid222",
                "icon":"http://1.im.guokr.com/evnxgoe-hftYo2ZFtq15Pv_ueaGXxIAlGaGUXZQYl-g-AQAA0gAAAFBO.png",
-               "version":"1.4.5",
-               "title":"毛概1",
-               "status":1,
-               "type":"纺织",
-               "startTime":"2017-03-16",
-               "endTime":"2017-06-20",
-               "semester":"2015年春",
-               "total":"1234",
-               "brief":"马克思题库最新版，更新于2017年6月20日",
-               "user":{
-                        "userID":"uid2333",
-                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
-                        "truename":"李悦老师",
-                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
-                    }
+               "title":"毛概1"
                },{
-               "exerciseID":"11",
-               "userID":"uid222",
                "icon":"http://1.im.guokr.com/ceznNw1LATcbbujUUqnGWpEmbyyCOAl-bdq1_v5_XPkZAgAAKgEAAEpQ.jpg",
-               "version":"1.4.5",
-               "title":"毛概2",
-               "status":1,
-               "type":"纺织",
-               "startTime":"2017-03-16",
-               "endTime":"2017-06-20",
-               "semester":"2015年春",
-               "total":"1234",
-               "brief":"马克思题库最新版，更新于2017年6月20日",
-               "user":{
-                        "userID":"uid2333",
-                        "avatar":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=785610095,2402278722&fm=116&gp=0.jpg",
-                        "truename":"李悦老师",
-                        "brief":"14年财经工作经验，广泛涉猎金融的各个领域，早年曾任网易股票和财经频道主编，并先后在多家机构从事信用分析、证券分析、阳光私募、财富管理、房地产私募、信托及租赁等金融实务。2015年创立935理财咨询，系统性的整理和研究了国内80种金融投资产品，设计和开发了机器人理财顾问系统，致力于在中国推行第三方理财顾问事业。"
-                    }
-               }
+               "title":"毛概2"
+                }
     ]
 }
 

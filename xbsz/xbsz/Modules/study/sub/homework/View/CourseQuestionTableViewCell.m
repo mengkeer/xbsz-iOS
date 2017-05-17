@@ -112,28 +112,28 @@ static NSInteger symbolWidth = 35;
     [_optionLabel sizeToFit];
 }
 
-- (void)showSingleRightAnswer:(NSInteger)index answer:(NSString *)answer{
-    if([FMDBUtil isSingleRightAnswer:index answer:answer]){
-        [self updateOptionUI:QuestionStatusSingleRight];
-    }else{
-        [self updateOptionUI:QuestionStatusSingleDefault];
-    }
-}
-
-- (void)showSinglePracticeResult:(NSInteger)index
-                   selectedIndex:(NSInteger)selectedIndex
-                          answer:(NSString *)answer{
-    
-    if([FMDBUtil isSingleRightAnswer:index answer:answer]){
-        [self updateOptionUI:QuestionStatusSingleRight];
-    }else{
-        if(index == selectedIndex){
-            [self updateOptionUI:QuestionStatusSingleWrong];
-            return;
-        }
-        [self updateOptionUI:QuestionStatusSingleDefault];
-    }
-}
+//- (void)showSingleRightAnswer:(NSInteger)index answer:(NSString *)answer{
+//    if([FMDBUtil isSingleRightAnswer:index answer:answer]){
+//        [self updateOptionUI:QuestionStatusSingleRight];
+//    }else{
+//        [self updateOptionUI:QuestionStatusSingleDefault];
+//    }
+//}
+//
+//- (void)showSinglePracticeResult:(NSInteger)index
+//                   selectedIndex:(NSInteger)selectedIndex
+//                          answer:(NSString *)answer{
+//    
+//    if([FMDBUtil isSingleRightAnswer:index answer:answer]){
+//        [self updateOptionUI:QuestionStatusSingleRight];
+//    }else{
+//        if(index == selectedIndex){
+//            [self updateOptionUI:QuestionStatusSingleWrong];
+//            return;
+//        }
+//        [self updateOptionUI:QuestionStatusSingleDefault];
+//    }
+//}
 
 - (void)showMutiPracticeResult:(NSInteger)index
                  selectedIndex:(NSString *)selectedIndexs

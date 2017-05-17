@@ -151,6 +151,7 @@
 		ADDE6F5C1ECBE6A80013AFD0 /* DoHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F5B1ECBE6A80013AFD0 /* DoHomeworkViewController.m */; };
 		ADDE6F631ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F5E1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m */; };
 		ADDE6F641ECBED130013AFD0 /* CourseQuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F601ECBED130013AFD0 /* CourseQuestionTableViewCell.m */; };
+		ADDE6F681ECBF8240013AFD0 /* StudyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F671ECBF8240013AFD0 /* StudyUtil.m */; };
 		ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
@@ -463,6 +464,8 @@
 		ADDE6F5E1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseQuestionCollectionViewCell.m; sourceTree = "<group>"; };
 		ADDE6F5F1ECBED130013AFD0 /* CourseQuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseQuestionTableViewCell.h; sourceTree = "<group>"; };
 		ADDE6F601ECBED130013AFD0 /* CourseQuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseQuestionTableViewCell.m; sourceTree = "<group>"; };
+		ADDE6F661ECBF8240013AFD0 /* StudyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyUtil.h; sourceTree = "<group>"; };
+		ADDE6F671ECBF8240013AFD0 /* StudyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyUtil.m; sourceTree = "<group>"; };
 		ADE663681EB384BF00DBA92A /* MutiPracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiPracticeViewController.h; sourceTree = "<group>"; };
 		ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutiPracticeViewController.m; sourceTree = "<group>"; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
@@ -1072,6 +1075,8 @@
 				AD7F89291E59624A009603E4 /* NetworkMonitoring */,
 				AD45BBC21EAF42C300D53813 /* FMDBUtil.h */,
 				AD45BBC31EAF42C300D53813 /* FMDBUtil.m */,
+				ADDE6F661ECBF8240013AFD0 /* StudyUtil.h */,
+				ADDE6F671ECBF8240013AFD0 /* StudyUtil.m */,
 				ADF408D31EB4E076009DB786 /* CXAudioPlayer.h */,
 				ADF408D41EB4E076009DB786 /* CXAudioPlayer.m */,
 				ADF408D81EB4E53D009DB786 /* CXUserDefaults.h */,
@@ -1785,6 +1790,7 @@
 				05B4D0861E769109005DC854 /* CourseSearchBar.m in Sources */,
 				ADFEDACF1ECAE5E3008F30CF /* SystemInform.m in Sources */,
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,
+				ADDE6F681ECBF8240013AFD0 /* StudyUtil.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
 				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,
 				ADDE6F511ECB622E0013AFD0 /* HomeworkCollectionViewCell.m in Sources */,

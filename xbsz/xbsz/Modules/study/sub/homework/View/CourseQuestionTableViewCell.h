@@ -28,16 +28,18 @@ typedef NS_ENUM(NSInteger,QuestionStatus){
 
 - (void)updateUIWithIndex:(NSInteger)index option:(NSString *)option isSingle:(BOOL)isSingle;
 
-//根据答案将题目标亮  指预览模式
-- (void)showSingleRightAnswer:(NSInteger)index answer:(NSString *)answer;
-
-- (void)showSinglePracticeResult:(NSInteger)index
-                   selectedIndex:(NSInteger)selectedIndex
-                          answer:(NSString *)answer;
-
+////根据答案将题目标亮  指预览模式
+//- (void)showSingleRightAnswer:(NSInteger)index answer:(NSString *)answer;
+//
+//- (void)showSinglePracticeResult:(NSInteger)index
+//                   selectedIndex:(NSInteger)selectedIndex
+//                          answer:(NSString *)answer;
+//
 - (void)showMutiPracticeResult:(NSInteger)index
                  selectedIndex:(NSString *)selectedIndexs
                         answer:(NSString *)answer;
+
+
 
 - (void)setTemporarySelected:(NSInteger)index
               selectedIndexs:(NSString *)selectedIndexs;

@@ -36,9 +36,9 @@ static NSInteger TitlePaddingRight = 5;
 
 @property (nonatomic, assign) BOOL showRightAnswer;         //是否显示正确答案  用于预览模式
 
-@property (nonatomic, assign) NSInteger selectedIndex;          //单选模式下当前索引
+@property (nonatomic, assign) NSInteger selectedIndex;          //当前点击索引
 
-@property (nonatomic, copy) NSString *selectedIndexs;           //多选模式下当前所选索引
+@property (nonatomic, copy) NSString *selectedIndexs;           //临时选择时的索引
 
 @property (nonatomic, assign) BOOL  showSinglePracticeResult;         //是否显示结果   用于练习模式，即做题的情况下
 
@@ -185,7 +185,7 @@ static NSInteger TitlePaddingRight = 5;
     if(_showMutiPracticeResult){
         [cell showMutiPracticeResult:indexPath.row selectedIndex:_selectedIndexs answer:_question.answer];
     }
-    //多选时设置临时选中效果
+    //设置临时选中效果
     if(_showTemporarySelected){
         [cell setTemporarySelected:indexPath.row selectedIndexs:_selectedIndexs];
     }
@@ -239,7 +239,6 @@ static NSInteger TitlePaddingRight = 5;
     
     [_tableView reloadData];
 }
-
 
 - (void)updateUIByQuestion:(ExerciseQuestion *)question showRightAnswer:(BOOL)showRgihtAnswer{
     _question = question;

@@ -10,4 +10,8 @@
 
 @interface DoHomeworkViewController : CXWhitePushViewController
 
+@property (nonatomic, assign) BOOL hasRightAnswer;
+
+@property (nonatomic, assign) BOOL hasPracticed;
+
 @end
