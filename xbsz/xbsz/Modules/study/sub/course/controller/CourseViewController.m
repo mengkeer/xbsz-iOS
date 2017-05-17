@@ -33,9 +33,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 @property (nonatomic, strong) CourseList  *courseList;
 
-@property (nonatomic, strong) YYAnimatedImageView *imageView;
-
-
 @end
 
 @implementation CourseViewController
@@ -69,14 +66,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         _courseList = [CourseList yy_modelWithDictionary:(NSDictionary *)obj];
         [_collectionView reloadData];
     } failure:^(NSError *error) {
-        CXLog(@"获取课程失败");
+        [ToastView showStatus:@"获取课程失败"];
     }];
-    
-//    
-//    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"courses.json"];
-//    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
-//    
-//    _courseList = [CourseList yy_modelWithJSON:jsonStr];
     
     [_collectionView reloadData];
     
@@ -198,9 +189,12 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         NSInteger height = CGRectGetHeight(self.contentView.frame) - singalHeight*rows;;
         if(height < 0){
             height = -(-height % singalHeight);
-            height = singalHeight + height;
+            height = 2*singalHeight + height;
         }
         
+        if(height < 49){
+            height = singalHeight + height;
+        }
         
         return CGSizeMake(CXScreenWidth, height);
     }

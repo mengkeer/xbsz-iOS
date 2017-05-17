@@ -24,7 +24,6 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
 }
 
 

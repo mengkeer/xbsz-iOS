@@ -8,6 +8,7 @@
 
 #import "CXStudyViewController.h"
 #import "CourseViewController.h"
+#import "HomeworkViewController.h"
 #import "ExerciseViewController.h"
 #import "YZDisplayTitleLabel.h"
 
@@ -19,7 +20,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
+//    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
+    [self.navigationController.navigationBar setHidden:YES];        //词条语句可控制tarbar透明
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
@@ -122,10 +124,15 @@
     vc1.title = @"课程";
     [self addChildViewController:vc1];
     
-    //训练
-    ExerciseViewController *vc2 = [ExerciseViewController controller];
+    //练习
+    HomeworkViewController  *vc2 = [HomeworkViewController controller];
     vc2.title = @"练习";
     [self addChildViewController:vc2];
+    
+    //题库
+    ExerciseViewController *vc3 = [ExerciseViewController controller];
+    vc3.title = @"题库";
+    [self addChildViewController:vc3];
 
 }
 @end

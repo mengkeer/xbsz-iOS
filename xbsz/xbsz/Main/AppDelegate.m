@@ -49,7 +49,7 @@
         return NO;
     }
     
-//    [Bugly startWithAppId:BuglyAppID];         //集成bugly服务
+    [Bugly startWithAppId:BuglyAppID];         //集成bugly服务
     [self JWRefreshLogin];
     if(![DownloadManager isTikuExists])    [[DownloadManager manager] downloadTikuFromServer];
     [CXUserDefaults setDefaultspreference];         //设置默认偏好设置

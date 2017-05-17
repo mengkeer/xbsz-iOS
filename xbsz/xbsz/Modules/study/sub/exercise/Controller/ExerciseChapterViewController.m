@@ -8,7 +8,7 @@
 
 #import "ExerciseChapterViewController.h"
 #import "ExerciseChapterCollectionViewCell.h"
-#import "StudyUtil.h"
+#import "FMDBUtil.h"
 #import "UINavigationController+TZPopGesture.h"
 #import "PYSearch.h"
 #import "QuestionSearchViewController.h"
@@ -198,7 +198,7 @@ static NSString *cellID = @"ChapterCellID";
 
 - (void)popFromCurrentViewController{
     [super popFromCurrentViewController];
-    [StudyUtil closeDB];
+    [FMDBUtil closeDB];
 }
 
 @end

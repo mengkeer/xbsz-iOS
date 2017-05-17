@@ -9,7 +9,7 @@
 #import "ExerciseChapterCollectionViewCell.h"
 #import "CXBaseTableView.h"
 #import "ExerciseChapterTableViewCell.h"
-#import "StudyUtil.h"
+#import "FMDBUtil.h"
 
 static NSString *cellID = @"ChapterTableViewCellID";
 
@@ -87,13 +87,13 @@ static NSString *cellID = @"ChapterTableViewCellID";
     UILabel *label = [[UILabel alloc] init];
     NSInteger totalNum = 0,currentNum = 0;
     if(_mode != ExerciseModeMistakes){
-        totalNum = [StudyUtil getQuestionsTotalByType:_type];
-        currentNum = [StudyUtil getQuestionsTotalByType:_type isSingle:_isSingle];
+        totalNum = [FMDBUtil getQuestionsTotalByType:_type];
+        currentNum = [FMDBUtil getQuestionsTotalByType:_type isSingle:_isSingle];
     }else{
-        totalNum = [StudyUtil getQuestionsTotalByType:_type isWrong:YES];
-        currentNum = [StudyUtil getQuestionsTotalByType:_type isSingle:_isSingle isWrong:YES];
+        totalNum = [FMDBUtil getQuestionsTotalByType:_type isWrong:YES];
+        currentNum = [FMDBUtil getQuestionsTotalByType:_type isSingle:_isSingle isWrong:YES];
     }
-    NSString *str1 = [NSString stringWithFormat:@"%@ (共%ld%@",[StudyUtil exerciseTypeToExerciseName:_type],totalNum,_mode == ExerciseModeMistakes?@"错题":@"题"];
+    NSString *str1 = [NSString stringWithFormat:@"%@ (共%ld%@",[FMDBUtil exerciseTypeToExerciseName:_type],totalNum,_mode == ExerciseModeMistakes?@"错题":@"题"];
     NSString *str2 = [NSString stringWithFormat:@"%@%ld题",_isSingle == YES?@"单选":@"多选",currentNum];
     label.text = [NSString stringWithFormat:@"%@·%@)",str1,str2];
     label.font = CXSystemFont(14);
@@ -161,11 +161,11 @@ static NSString *cellID = @"ChapterTableViewCellID";
     _mode = mode;
     _isSingle = isSingle;
     if(_mode == ExerciseModeMistakes){
-        _chapterIndex = [StudyUtil getChapterIndex:type isSingle:isSingle isWrong:YES];
-        _chapterNums = [StudyUtil getChapterNums:type isSingle:_isSingle isWrong:YES];
+        _chapterIndex = [FMDBUtil getChapterIndex:type isSingle:isSingle isWrong:YES];
+        _chapterNums = [FMDBUtil getChapterNums:type isSingle:_isSingle isWrong:YES];
     }else{
-        _chapterIndex = [StudyUtil getChapterIndex:type isSingle:isSingle];
-        _chapterNums = [StudyUtil getChapterNums:type isSingle:isSingle];
+        _chapterIndex = [FMDBUtil getChapterIndex:type isSingle:isSingle];
+        _chapterNums = [FMDBUtil getChapterNums:type isSingle:isSingle];
     }
     [_tableView reloadData];
 }

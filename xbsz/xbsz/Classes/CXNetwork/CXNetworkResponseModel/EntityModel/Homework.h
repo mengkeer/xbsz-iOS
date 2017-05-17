@@ -1,15 +1,15 @@
 //
-//  Course.h
+//  Homework.h
 //  xbsz
 //
-//  Created by 陈鑫 on 17/3/13.
+//  Created by lotus on 2017/5/17.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "CXUser.h"
+#import "Homework.h"
 
-@interface Course : NSObject
+@interface Homework : NSObject
 
 @property (nonatomic, copy) NSString *courseID;
 

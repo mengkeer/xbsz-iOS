@@ -1,23 +1,23 @@
 //
-//  StudyUtil.m
+//  FMDBUtil.m
 //  xbsz
 //
 //  Created by lotus on 2017/4/25.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "StudyUtil.h"
+#import "FMDBUtil.h"
 #import "FMDB.h"
 #import "ExerciseQuestion.h"
 
 
-@implementation StudyUtil
+@implementation FMDBUtil
 
 + (instancetype)instance{
-    static StudyUtil *_instance = nil;
+    static FMDBUtil *_instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _instance = [[StudyUtil alloc] init];
+        _instance = [[FMDBUtil alloc] init];
     });
     return _instance;
 }

@@ -8,7 +8,7 @@
 
 #import "QuestionSearchViewController.h"
 #import "CXBaseTableView.h"
-#import "StudyUtil.h"
+#import "FMDBUtil.h"
 #import "ExerciseQuestion.h"
 #import "SearchResultViewController.h"
 
@@ -79,7 +79,7 @@ static NSInteger symbolWidth = 35;
 
 
 - (void)loadData:(NSString *)text{
-    _questions = [StudyUtil getSearchResultsBySearchText:text type:_type];
+    _questions = [FMDBUtil getSearchResultsBySearchText:text type:_type];
     [_tableView reloadData];
 }
 
@@ -259,7 +259,7 @@ static NSInteger symbolWidth = 35;
     }
     ExerciseQuestion *question = (ExerciseQuestion *)[_questions objectAtIndex:indexPath.row];
     NSString *beforeStr = question.type == 1 ? @"单选·" : (question.type ==2 ? @"多选·" :@"判断·");
-    NSString *text = [NSString stringWithFormat:@"%@  %@\t%@",beforeStr,[StudyUtil getPureTitle:question.title],question.answer];
+    NSString *text = [NSString stringWithFormat:@"%@  %@\t%@",beforeStr,[FMDBUtil getPureTitle:question.title],question.answer];
     [cell updateUIWithIndex:indexPath.row+1 content:text];
     return cell;
 }

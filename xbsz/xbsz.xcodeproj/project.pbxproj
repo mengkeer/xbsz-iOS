@@ -61,7 +61,7 @@
 		AD45BBBA1EAF35B300D53813 /* ExerciseQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBB91EAF35B300D53813 /* ExerciseQuestion.m */; };
 		AD45BBBE1EAF37D100D53813 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBBD1EAF37D100D53813 /* Exercise.m */; };
 		AD45BBC11EAF37EA00D53813 /* ExerciseList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBC01EAF37EA00D53813 /* ExerciseList.m */; };
-		AD45BBC41EAF42C300D53813 /* StudyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBC31EAF42C300D53813 /* StudyUtil.m */; };
+		AD45BBC41EAF42C300D53813 /* FMDBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBC31EAF42C300D53813 /* FMDBUtil.m */; };
 		AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */; };
 		AD592E6E1EB20DA800CBDCC8 /* QuestionSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E6B1EB20DA800CBDCC8 /* QuestionSearchViewController.m */; };
 		AD592E6F1EB20DA800CBDCC8 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD592E6D1EB20DA800CBDCC8 /* SearchResultViewController.m */; };
@@ -122,7 +122,6 @@
 		ADA770091EC60746001E7D3B /* CourseWareList.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA770081EC60746001E7D3B /* CourseWareList.m */; };
 		ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */; };
 		ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = ADAAE0881E7CD06400A0FA2C /* exercises.json */; };
-		ADAAE08E1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */; };
 		ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */; };
 		ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0941E7D751200A0FA2C /* ToolBarCell.m */; };
 		ADAAE0981E7D91F400A0FA2C /* ShareToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0971E7D91F400A0FA2C /* ShareToolBarView.m */; };
@@ -139,6 +138,19 @@
 		ADCFC53B1EC8B3F10042A28F /* UpdateInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC53A1EC8B3F10042A28F /* UpdateInfoViewController.m */; };
 		ADCFC53E1EC92A400042A28F /* CampusCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC53D1EC92A400042A28F /* CampusCommentViewController.m */; };
 		ADCFC5411EC92E310042A28F /* CampusCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC5401EC92E310042A28F /* CampusCommentTableViewCell.m */; };
+		ADDE6F3C1ECB138C0013AFD0 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADDE6F3B1ECB138C0013AFD0 /* AVKit.framework */; };
+		ADDE6F3E1ECB4CD40013AFD0 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = ADDE6F3D1ECB4CD40013AFD0 /* questions.json */; };
+		ADDE6F411ECB54AB0013AFD0 /* CourseQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F401ECB54AB0013AFD0 /* CourseQuestion.m */; };
+		ADDE6F441ECB55960013AFD0 /* CourseQuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F431ECB55960013AFD0 /* CourseQuestionList.m */; };
+		ADDE6F4B1ECB61560013AFD0 /* ExerciseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F4A1ECB61560013AFD0 /* ExerciseCollectionViewCell.m */; };
+		ADDE6F4E1ECB61DF0013AFD0 /* HomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F4D1ECB61DF0013AFD0 /* HomeworkViewController.m */; };
+		ADDE6F511ECB622E0013AFD0 /* HomeworkCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F501ECB622E0013AFD0 /* HomeworkCollectionViewCell.m */; };
+		ADDE6F531ECBDE040013AFD0 /* homeworks.json in Resources */ = {isa = PBXBuildFile; fileRef = ADDE6F521ECBDE040013AFD0 /* homeworks.json */; };
+		ADDE6F561ECBDEC10013AFD0 /* Homework.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F551ECBDEC10013AFD0 /* Homework.m */; };
+		ADDE6F591ECBDF5E0013AFD0 /* HomeworkList.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F581ECBDF5E0013AFD0 /* HomeworkList.m */; };
+		ADDE6F5C1ECBE6A80013AFD0 /* DoHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F5B1ECBE6A80013AFD0 /* DoHomeworkViewController.m */; };
+		ADDE6F631ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F5E1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m */; };
+		ADDE6F641ECBED130013AFD0 /* CourseQuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F601ECBED130013AFD0 /* CourseQuestionTableViewCell.m */; };
 		ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */; };
 		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
 		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
@@ -269,8 +281,8 @@
 		AD45BBBD1EAF37D100D53813 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		AD45BBBF1EAF37EA00D53813 /* ExerciseList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseList.h; sourceTree = "<group>"; };
 		AD45BBC01EAF37EA00D53813 /* ExerciseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseList.m; sourceTree = "<group>"; };
-		AD45BBC21EAF42C300D53813 /* StudyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyUtil.h; sourceTree = "<group>"; };
-		AD45BBC31EAF42C300D53813 /* StudyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyUtil.m; sourceTree = "<group>"; };
+		AD45BBC21EAF42C300D53813 /* FMDBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBUtil.h; sourceTree = "<group>"; };
+		AD45BBC31EAF42C300D53813 /* FMDBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBUtil.m; sourceTree = "<group>"; };
 		AD592E5D1EB0ABF000CBDCC8 /* QuestionTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTitleLabel.h; sourceTree = "<group>"; };
 		AD592E5E1EB0ABF000CBDCC8 /* QuestionTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTitleLabel.m; sourceTree = "<group>"; };
 		AD592E6A1EB20DA800CBDCC8 /* QuestionSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionSearchViewController.h; sourceTree = "<group>"; };
@@ -397,8 +409,6 @@
 		ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
 		ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		ADAAE0881E7CD06400A0FA2C /* exercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
-		ADAAE08A1E7CD74200A0FA2C /* ExerciseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCollectionViewCell.h; sourceTree = "<group>"; };
-		ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCollectionViewCell.m; sourceTree = "<group>"; };
 		ADAAE08C1E7CD74200A0FA2C /* ExerciseSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSearchBar.h; sourceTree = "<group>"; };
 		ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSearchBar.m; sourceTree = "<group>"; };
 		ADAAE0931E7D751200A0FA2C /* ToolBarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarCell.h; sourceTree = "<group>"; };
@@ -430,6 +440,29 @@
 		ADCFC53D1EC92A400042A28F /* CampusCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusCommentViewController.m; sourceTree = "<group>"; };
 		ADCFC53F1EC92E310042A28F /* CampusCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusCommentTableViewCell.h; sourceTree = "<group>"; };
 		ADCFC5401EC92E310042A28F /* CampusCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusCommentTableViewCell.m; sourceTree = "<group>"; };
+		ADDE6F3B1ECB138C0013AFD0 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		ADDE6F3D1ECB4CD40013AFD0 /* questions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = questions.json; sourceTree = "<group>"; };
+		ADDE6F3F1ECB54AB0013AFD0 /* CourseQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseQuestion.h; sourceTree = "<group>"; };
+		ADDE6F401ECB54AB0013AFD0 /* CourseQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseQuestion.m; sourceTree = "<group>"; };
+		ADDE6F421ECB55960013AFD0 /* CourseQuestionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseQuestionList.h; sourceTree = "<group>"; };
+		ADDE6F431ECB55960013AFD0 /* CourseQuestionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseQuestionList.m; sourceTree = "<group>"; };
+		ADDE6F491ECB61560013AFD0 /* ExerciseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCollectionViewCell.h; sourceTree = "<group>"; };
+		ADDE6F4A1ECB61560013AFD0 /* ExerciseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCollectionViewCell.m; sourceTree = "<group>"; };
+		ADDE6F4C1ECB61DF0013AFD0 /* HomeworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkViewController.h; sourceTree = "<group>"; };
+		ADDE6F4D1ECB61DF0013AFD0 /* HomeworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkViewController.m; sourceTree = "<group>"; };
+		ADDE6F4F1ECB622E0013AFD0 /* HomeworkCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkCollectionViewCell.h; sourceTree = "<group>"; };
+		ADDE6F501ECB622E0013AFD0 /* HomeworkCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkCollectionViewCell.m; sourceTree = "<group>"; };
+		ADDE6F521ECBDE040013AFD0 /* homeworks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homeworks.json; sourceTree = "<group>"; };
+		ADDE6F541ECBDEC10013AFD0 /* Homework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Homework.h; sourceTree = "<group>"; };
+		ADDE6F551ECBDEC10013AFD0 /* Homework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Homework.m; sourceTree = "<group>"; };
+		ADDE6F571ECBDF5E0013AFD0 /* HomeworkList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkList.h; sourceTree = "<group>"; };
+		ADDE6F581ECBDF5E0013AFD0 /* HomeworkList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkList.m; sourceTree = "<group>"; };
+		ADDE6F5A1ECBE6A80013AFD0 /* DoHomeworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoHomeworkViewController.h; sourceTree = "<group>"; };
+		ADDE6F5B1ECBE6A80013AFD0 /* DoHomeworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoHomeworkViewController.m; sourceTree = "<group>"; };
+		ADDE6F5D1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseQuestionCollectionViewCell.h; sourceTree = "<group>"; };
+		ADDE6F5E1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseQuestionCollectionViewCell.m; sourceTree = "<group>"; };
+		ADDE6F5F1ECBED130013AFD0 /* CourseQuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseQuestionTableViewCell.h; sourceTree = "<group>"; };
+		ADDE6F601ECBED130013AFD0 /* CourseQuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseQuestionTableViewCell.m; sourceTree = "<group>"; };
 		ADE663681EB384BF00DBA92A /* MutiPracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiPracticeViewController.h; sourceTree = "<group>"; };
 		ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutiPracticeViewController.m; sourceTree = "<group>"; };
 		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
@@ -473,6 +506,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADDE6F3C1ECB138C0013AFD0 /* AVKit.framework in Frameworks */,
 				ADCFC5351EC870990042A28F /* MessageUI.framework in Frameworks */,
 				ADF408D71EB4E111009DB786 /* AudioToolbox.framework in Frameworks */,
 				ADF408CA1EB4ABFD009DB786 /* libsqlite3.0.tbd in Frameworks */,
@@ -811,6 +845,8 @@
 			children = (
 				ADAAE0881E7CD06400A0FA2C /* exercises.json */,
 				AD8B45391EA9E06800E8D539 /* comment.json */,
+				ADDE6F521ECBDE040013AFD0 /* homeworks.json */,
+				ADDE6F3D1ECB4CD40013AFD0 /* questions.json */,
 				AD8B45371EA9DE3D00E8D539 /* comments.json */,
 				05B4D0881E769EF1005DC854 /* courses.json */,
 				0518ECC71E603E480018F432 /* user.json */,
@@ -1034,8 +1070,8 @@
 			isa = PBXGroup;
 			children = (
 				AD7F89291E59624A009603E4 /* NetworkMonitoring */,
-				AD45BBC21EAF42C300D53813 /* StudyUtil.h */,
-				AD45BBC31EAF42C300D53813 /* StudyUtil.m */,
+				AD45BBC21EAF42C300D53813 /* FMDBUtil.h */,
+				AD45BBC31EAF42C300D53813 /* FMDBUtil.m */,
 				ADF408D31EB4E076009DB786 /* CXAudioPlayer.h */,
 				ADF408D41EB4E076009DB786 /* CXAudioPlayer.m */,
 				ADF408D81EB4E53D009DB786 /* CXUserDefaults.h */,
@@ -1180,6 +1216,7 @@
 			children = (
 				ADB746191E76D69700644812 /* search */,
 				AD7F89321E5976FE009603E4 /* course */,
+				ADDE6F451ECB602E0013AFD0 /* homework */,
 				AD7F89361E5976FE009603E4 /* exercise */,
 			);
 			path = sub;
@@ -1283,6 +1320,10 @@
 				AD5B0FD51EC6058E00C7D283 /* CourseWare.m */,
 				ADFEDACD1ECAE5E3008F30CF /* SystemInform.h */,
 				ADFEDACE1ECAE5E3008F30CF /* SystemInform.m */,
+				ADDE6F3F1ECB54AB0013AFD0 /* CourseQuestion.h */,
+				ADDE6F401ECB54AB0013AFD0 /* CourseQuestion.m */,
+				ADDE6F541ECBDEC10013AFD0 /* Homework.h */,
+				ADDE6F551ECBDEC10013AFD0 /* Homework.m */,
 			);
 			path = EntityModel;
 			sourceTree = "<group>";
@@ -1302,6 +1343,10 @@
 				ADA770081EC60746001E7D3B /* CourseWareList.m */,
 				ADFEDAD01ECAE73C008F30CF /* SystemInformList.h */,
 				ADFEDAD11ECAE73C008F30CF /* SystemInformList.m */,
+				ADDE6F421ECB55960013AFD0 /* CourseQuestionList.h */,
+				ADDE6F431ECB55960013AFD0 /* CourseQuestionList.m */,
+				ADDE6F571ECBDF5E0013AFD0 /* HomeworkList.h */,
+				ADDE6F581ECBDF5E0013AFD0 /* HomeworkList.m */,
 			);
 			path = ModularModel;
 			sourceTree = "<group>";
@@ -1341,8 +1386,8 @@
 				ADA1876B1EB2F04000C771A4 /* ExerciseChapterCollectionViewCell.m */,
 				ADA1876C1EB2F04000C771A4 /* ExerciseChapterTableViewCell.h */,
 				ADA1876D1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m */,
-				ADAAE08A1E7CD74200A0FA2C /* ExerciseCollectionViewCell.h */,
-				ADAAE08B1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m */,
+				ADDE6F491ECB61560013AFD0 /* ExerciseCollectionViewCell.h */,
+				ADDE6F4A1ECB61560013AFD0 /* ExerciseCollectionViewCell.m */,
 				ADAAE08C1E7CD74200A0FA2C /* ExerciseSearchBar.h */,
 				ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */,
 			);
@@ -1401,6 +1446,47 @@
 			path = PYSearch;
 			sourceTree = "<group>";
 		};
+		ADDE6F451ECB602E0013AFD0 /* homework */ = {
+			isa = PBXGroup;
+			children = (
+				ADDE6F461ECB602E0013AFD0 /* Controller */,
+				ADDE6F471ECB602E0013AFD0 /* Model */,
+				ADDE6F481ECB602E0013AFD0 /* View */,
+			);
+			path = homework;
+			sourceTree = "<group>";
+		};
+		ADDE6F461ECB602E0013AFD0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ADDE6F4C1ECB61DF0013AFD0 /* HomeworkViewController.h */,
+				ADDE6F4D1ECB61DF0013AFD0 /* HomeworkViewController.m */,
+				ADDE6F5A1ECBE6A80013AFD0 /* DoHomeworkViewController.h */,
+				ADDE6F5B1ECBE6A80013AFD0 /* DoHomeworkViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ADDE6F471ECB602E0013AFD0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ADDE6F481ECB602E0013AFD0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ADDE6F5D1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.h */,
+				ADDE6F5E1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m */,
+				ADDE6F5F1ECBED130013AFD0 /* CourseQuestionTableViewCell.h */,
+				ADDE6F601ECBED130013AFD0 /* CourseQuestionTableViewCell.m */,
+				ADDE6F4F1ECB622E0013AFD0 /* HomeworkCollectionViewCell.h */,
+				ADDE6F501ECB622E0013AFD0 /* HomeworkCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		ADF042371E0192EF00171489 /* avatar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1431,6 +1517,7 @@
 		D83306020DE04E843C2A1432 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADDE6F3B1ECB138C0013AFD0 /* AVKit.framework */,
 				ADCFC5341EC870990042A28F /* MessageUI.framework */,
 				ADF408D61EB4E111009DB786 /* AudioToolbox.framework */,
 				ADF408C91EB4ABFD009DB786 /* libsqlite3.0.tbd */,
@@ -1523,8 +1610,10 @@
 				ADF042471E0192EF00171489 /* avatar3.jpg in Resources */,
 				ADF042441E0192EF00171489 /* avatar10.jpg in Resources */,
 				ADF408D21EB4DFC8009DB786 /* mistake.wav in Resources */,
+				ADDE6F3E1ECB4CD40013AFD0 /* questions.json in Resources */,
 				ADF042461E0192EF00171489 /* avatar2.jpg in Resources */,
 				ADF042481E0192EF00171489 /* avatar4.jpg in Resources */,
+				ADDE6F531ECBDE040013AFD0 /* homeworks.json in Resources */,
 				ADF408D11EB4DFC8009DB786 /* correct.wav in Resources */,
 				ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */,
 				054B8B7C1E7B876600E4E0BD /* b27_icon_star_gray@2x.png in Resources */,
@@ -1610,13 +1699,14 @@
 				0537E0C21E8398FA00C2F81C /* ToastView.m in Sources */,
 				05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */,
 				AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */,
-				ADAAE08E1E7CD74200A0FA2C /* ExerciseCollectionViewCell.m in Sources */,
-				AD45BBC41EAF42C300D53813 /* StudyUtil.m in Sources */,
+				AD45BBC41EAF42C300D53813 /* FMDBUtil.m in Sources */,
 				AD7BD61B1EAD8ABF00F34023 /* SignatureViewController.m in Sources */,
 				AD94AC591EACFE130059AF3A /* BirthdayViewController.m in Sources */,
 				AD196E651EAC3C3700111EB5 /* NicknameViewController.m in Sources */,
+				ADDE6F441ECB55960013AFD0 /* CourseQuestionList.m in Sources */,
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,
 				AD196E681EAC8AFC00111EB5 /* EmailViewController.m in Sources */,
+				ADDE6F4B1ECB61560013AFD0 /* ExerciseCollectionViewCell.m in Sources */,
 				05067FEC1E7BF02200868AC1 /* CourseDetailViewController.m in Sources */,
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
@@ -1643,8 +1733,10 @@
 				054B8B7E1E7B876600E4E0BD /* CWStarRateView.m in Sources */,
 				ADFEDAC81ECACF2F008F30CF /* ModifyPasswordViewController.m in Sources */,
 				AD2540B21E977A9900AA330D /* UserInfoViewController.m in Sources */,
+				ADDE6F591ECBDF5E0013AFD0 /* HomeworkList.m in Sources */,
 				05CEE4AA1E8525AC0033DD3D /* CommonAPPViewController.m in Sources */,
 				AD36F8821EA3119600775F90 /* DownloadManager.m in Sources */,
+				ADDE6F641ECBED130013AFD0 /* CourseQuestionTableViewCell.m in Sources */,
 				ADCFC5411EC92E310042A28F /* CampusCommentTableViewCell.m in Sources */,
 				AD8B86341E9CD7EB007F4CEC /* ChapterHeaderView.m in Sources */,
 				AD2540B51E977B4100AA330D /* AuthorizedLoginViewController.m in Sources */,
@@ -1652,7 +1744,9 @@
 				AD7F89281E596036009603E4 /* main.m in Sources */,
 				AD45BBA31EAE4A5800D53813 /* CXNetwork+Course.m in Sources */,
 				AD7F891B1E595B29009603E4 /* InformViewController.m in Sources */,
+				ADDE6F411ECB54AB0013AFD0 /* CourseQuestion.m in Sources */,
 				ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */,
+				ADDE6F4E1ECB61DF0013AFD0 /* HomeworkViewController.m in Sources */,
 				AD8B861F1E9A9191007F4CEC /* CXBaseResponseModel.m in Sources */,
 				AD5B0FD31EC5E8A700C7D283 /* CXPage.m in Sources */,
 				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
@@ -1660,6 +1754,7 @@
 				AD8B86301E9A92B1007F4CEC /* CampusNoteList.m in Sources */,
 				ADFEDACB1ECAE422008F30CF /* CXNetwork+System.m in Sources */,
 				ADA187651EB2EF3900C771A4 /* ExerciseProgressViewController.m in Sources */,
+				ADDE6F5C1ECBE6A80013AFD0 /* DoHomeworkViewController.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
 				AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */,
 				05CEE4B11E85305E0033DD3D /* NJKWebViewProgressView.m in Sources */,
@@ -1671,6 +1766,7 @@
 				ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */,
 				ADCFC53B1EC8B3F10042A28F /* UpdateInfoViewController.m in Sources */,
 				ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */,
+				ADDE6F631ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m in Sources */,
 				AD7F88DF1E595A5E009603E4 /* CXTabBarController.m in Sources */,
 				AD5B0FD61EC6058E00C7D283 /* CourseWare.m in Sources */,
 				AD7F882B1E594D5E009603E4 /* YZDisplayViewController.m in Sources */,
@@ -1681,6 +1777,7 @@
 				AD7F891F1E595B29009603E4 /* SetViewController.m in Sources */,
 				AD7F882A1E594D5E009603E4 /* YZDisplayTitleLabel.m in Sources */,
 				ADA187691EB2EFEC00C771A4 /* ExerciseChapterViewController.m in Sources */,
+				ADDE6F561ECBDEC10013AFD0 /* Homework.m in Sources */,
 				05CEE4B41E8530AF0033DD3D /* CXBaseWebViewController.m in Sources */,
 				AD2BE4EB1E5980CB00D0B0ED /* CXSectionButton.m in Sources */,
 				ADFEDA811EC9C892008F30CF /* NewPostViewController.m in Sources */,
@@ -1690,6 +1787,7 @@
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
 				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,
+				ADDE6F511ECB622E0013AFD0 /* HomeworkCollectionViewCell.m in Sources */,
 				AD8B862B1E9A92A4007F4CEC /* CXUser.m in Sources */,
 				AD592E6E1EB20DA800CBDCC8 /* QuestionSearchViewController.m in Sources */,
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,

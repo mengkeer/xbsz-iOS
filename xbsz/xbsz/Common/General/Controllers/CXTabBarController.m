@@ -26,8 +26,6 @@
     
     [self addChildVC:[CXStudyViewController controller] title:@"学习" image:@"tab_home" selectedImage:@"tab_home_s"];
     
-//    [self addChildVC:[CXHomeViewController controller] title:@"校园" image:@"tab_school" selectedImage:@"tab_school_s"];
-    
     [self addChildVC:[DiscoverViewController controller] title:@"发现" image:@"tab_discover" selectedImage:@"tab_discover_s"];
     
     [self addChildVC:[UserCenterViewController controller] title:@"我的" image:@"tab_mine" selectedImage:@"tab_mine_s"];
@@ -57,6 +55,19 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
 
+}
+
+
+-(BOOL)shouldAutorotate{
+    return YES;
+}
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return [self.viewControllers.lastObject supportedInterfaceOrientations];
+}
+
+-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return [self.viewControllers.lastObject preferredInterfaceOrientationForPresentation];
 }
 
 

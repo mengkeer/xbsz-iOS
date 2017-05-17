@@ -11,6 +11,8 @@
 #import "RateView.h"
 #import "ShareToolBarView.h"
 #import "CXNetwork+Course.h"
+#import <AVKit/AVKit.h>
+#import <AVFoundation/AVPlayer.h>
 
 static CGPoint beforeScrollPoint ;
 
@@ -61,7 +63,8 @@ static CGFloat imageHeight = 210;
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
     
-    [_imageView setYy_imageURL:[NSURL URLWithString:_course.imageUrl]];
+    [_imageView setYy_imageURL:[NSURL URLWithString:_course.icon]];
+    
     
     _infoViewController = [CourseInfoViewController controller];
     _infoViewController.course = _course;

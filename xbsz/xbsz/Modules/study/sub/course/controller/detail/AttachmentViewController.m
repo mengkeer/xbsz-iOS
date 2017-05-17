@@ -21,9 +21,12 @@
 
 @implementation AttachmentViewController
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    _path = @"http://www.slotus.cc/word.";
     self.customNavBarView.backgroundColor = CXBackGroundColor;
     
     CGFloat progressBarHeight = 2.f;
@@ -98,6 +101,13 @@
 //    }
 //    
 //    lastY = point.y;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+            
+            interfaceOrientation == UIInterfaceOrientationLandscapeRight );
 }
 
 #pragma  mark - WKNavigationDelegate

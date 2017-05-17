@@ -7,7 +7,7 @@
 //
 
 #import "SinglePracticeViewController.h"
-#import "StudyUtil.h"
+#import "FMDBUtil.h"
 #import "ExerciseProgressViewController.h"
 #import "QuestionCollectionViewCell.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
@@ -91,9 +91,9 @@ static NSInteger bottomHeight = 45;
 //加载题库数据
 - (void)loadData{
     if(_mode == ExerciseModePractice){
-        _questions = [StudyUtil getQuestions:_type isSingle:YES chapterIndex:_chapterIndex];
+        _questions = [FMDBUtil getQuestions:_type isSingle:YES chapterIndex:_chapterIndex];
     }else if(_mode == ExerciseModePracticeRandom){
-        _questions = [StudyUtil getQuestions:_type isSingle:YES chapterIndex:_chapterIndex];
+        _questions = [FMDBUtil getQuestions:_type isSingle:YES chapterIndex:_chapterIndex];
         _questions = [_questions sortedArrayUsingComparator:^NSComparisonResult(ExerciseQuestion *one, ExerciseQuestion *two) {
             int seed = arc4random_uniform(2);
             if (seed) {
@@ -103,7 +103,7 @@ static NSInteger bottomHeight = 45;
             }  
         }];
     }else if(_mode == ExerciseModeMistakes){
-        _questions = [StudyUtil getQuestions:_type isSingle:YES isWrong:YES chapterIndex:_chapterIndex];
+        _questions = [FMDBUtil getQuestions:_type isSingle:YES isWrong:YES chapterIndex:_chapterIndex];
     }
     
     [_collectionView reloadData];
@@ -345,7 +345,7 @@ static NSInteger bottomHeight = 45;
         [_judgedDic setValue:@"-1" forKey:key];
         [CXAudioPlayer playSoundByFilename:@"mistake"];        //播放音乐
         ExerciseQuestion *question = [_questions objectAtIndex:_index];
-        if(question.flag != -1)     [StudyUtil setQuestionFlag:_type quesionID:question.question_id isWrong:YES];
+        if(question.flag != -1)     [FMDBUtil setQuestionFlag:_type quesionID:question.question_id isWrong:YES];
     }
     
 }
@@ -468,7 +468,7 @@ static NSInteger bottomHeight = 45;
         UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [_removedDic setValue:@"0" forKey:key];
             
-            [StudyUtil setQuestionFlag:_type quesionID:quesion.question_id isWrong:YES];
+            [FMDBUtil setQuestionFlag:_type quesionID:quesion.question_id isWrong:YES];
             [ToastView showBlackSuccessWithStaus:@"取消成功"];
             [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateNormal];
             [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateHighlighted];
@@ -484,7 +484,7 @@ static NSInteger bottomHeight = 45;
         UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [_removedDic setValue:@"1" forKey:key];
             
-            [StudyUtil setQuestionFlag:_type quesionID:quesion.question_id isWrong:NO];
+            [FMDBUtil setQuestionFlag:_type quesionID:quesion.question_id isWrong:NO];
             [ToastView showBlackSuccessWithStaus:@"删除成功"];
             [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateNormal];
             [_removeBtn setImage:[UIImage imageNamed:@"question_removed"] forState:UIControlStateHighlighted];

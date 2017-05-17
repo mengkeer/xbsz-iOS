@@ -1,17 +1,17 @@
 //
-//  QuestionTableViewCell.m
+//  CourseQuestionTableViewCell.m
 //  xbsz
 //
 //  Created by lotus on 2017/4/25.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "QuestionTableViewCell.h"
+#import "CourseQuestionTableViewCell.h"
 #import "FMDBUtil.h"
 
 static NSInteger symbolWidth = 35;
 
-@interface QuestionTableViewCell ()
+@interface CourseQuestionTableViewCell ()
 
 @property (nonatomic, strong) UILabel *symbolLabel;     //符号 A，B，C，D等
 
@@ -21,7 +21,7 @@ static NSInteger symbolWidth = 35;
 
 @end
 
-@implementation QuestionTableViewCell
+@implementation CourseQuestionTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -76,7 +76,7 @@ static NSInteger symbolWidth = 35;
             _symbolLabel.layer.borderColor = CXBlackColor.CGColor;
             _symbolLabel.clipsToBounds = YES;
         }
-       
+        
     }
     return _symbolLabel;
 }
@@ -103,7 +103,7 @@ static NSInteger symbolWidth = 35;
         _symbolLabel.clipsToBounds = YES;
     }
     [self updateOptionUI:QuestionStatusSingleDefault];
-
+    
     
     NSInteger textHeight = [self getTitleHeight:option];
     [_optionLabel mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -121,8 +121,8 @@ static NSInteger symbolWidth = 35;
 }
 
 - (void)showSinglePracticeResult:(NSInteger)index
-       selectedIndex:(NSInteger)selectedIndex
-              answer:(NSString *)answer{
+                   selectedIndex:(NSInteger)selectedIndex
+                          answer:(NSString *)answer{
     
     if([FMDBUtil isSingleRightAnswer:index answer:answer]){
         [self updateOptionUI:QuestionStatusSingleRight];
@@ -139,7 +139,7 @@ static NSInteger symbolWidth = 35;
                  selectedIndex:(NSString *)selectedIndexs
                         answer:(NSString *)answer{
     
-
+    
     BOOL isRight = [FMDBUtil isMutiRightAnswer:selectedIndexs answer:answer];
     if(isRight){
         NSString *str = [NSString stringWithFormat:@"%ld",index];

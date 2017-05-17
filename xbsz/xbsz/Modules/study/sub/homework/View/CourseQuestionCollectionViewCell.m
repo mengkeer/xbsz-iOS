@@ -1,24 +1,24 @@
 //
-//  QuestionCollectionViewCell.m
+//  CourseQuestionCollectionViewCell.m
 //  xbsz
 //
 //  Created by lotus on 2017/4/25.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "QuestionCollectionViewCell.h"
+#import "CourseQuestionCollectionViewCell.h"
 #import "CXBaseTableView.h"
-#import "ExerciseQuestion.h"
-#import "FMDBUtil.h"
-#import "QuestionTableViewCell.h"
+#import "CourseQuestion.h"
+#import "CourseQuestionTableViewCell.h"
 #import "QuestionTitleLabel.h"
+#import "FMDBUtil.h"
 
 static NSString *cellID = @"QuestionTableViewCellID";
 
 static NSInteger TitlePaddingLeft = 8;
 static NSInteger TitlePaddingRight = 5;
 
-@interface QuestionCollectionViewCell () <CXBaseTableViewDelegate>
+@interface CourseQuestionCollectionViewCell () <CXBaseTableViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
@@ -28,29 +28,16 @@ static NSInteger TitlePaddingRight = 5;
 
 @property (nonatomic, strong) UIView *titleLeftView;
 
-@property (nonatomic, strong) ExerciseQuestion *question;
+@property (nonatomic, strong) CourseQuestion *question;
 
 @property (nonatomic, strong) NSArray *options;     //各个选项内容
 
 @property (nonatomic, assign) BOOL isSingle;        //是否是单选
 
-@property (nonatomic, assign) BOOL showRightAnswer;         //是否显示正确答案  用于预览模式
-
-@property (nonatomic, assign) NSInteger selectedIndex;          //单选模式下当前索引
-
-@property (nonatomic, copy) NSString *selectedIndexs;           //多选模式下当前所选索引
-
-@property (nonatomic, assign) BOOL  showSinglePracticeResult;         //是否显示结果   用于练习模式，即做题的情况下
-
-@property (nonatomic, assign) BOOL showMutiPracticeResult;
-
-@property (nonatomic, assign) BOOL showTemporarySelected;
-
-@property (nonatomic, assign) BOOL allowSelect;
 
 @end
 
-@implementation QuestionCollectionViewCell
+@implementation CourseQuestionCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
@@ -138,11 +125,7 @@ static NSInteger TitlePaddingRight = 5;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    _selectedIndex = indexPath.row;
-    if(_baseDelegate && [_baseDelegate respondsToSelector:@selector(selectOption:)]){
-        [_baseDelegate selectOption:indexPath.row];
-    }
-    [self performSelector:@selector(deselect) withObject:nil afterDelay:0.2f];
+    
 }
 
 - (void)deselect{
@@ -160,47 +143,23 @@ static NSInteger TitlePaddingRight = 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    QuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    CourseQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if(!cell){
-        cell = [[QuestionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID isSingle:_isSingle];
+        cell = [[CourseQuestionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID isSingle:_isSingle];
     }
     cell.contentView.backgroundColor = [CXUserDefaults instance].bgColor;
-    if(_allowSelect == YES){
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    }else{
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
+   
     
     [cell updateUIWithIndex:indexPath.row option:[_options objectAtIndex:indexPath.row] isSingle:_isSingle];
     
-    //预览模式下显示正确的答案
-    if(_showRightAnswer == YES){
-        [cell showSingleRightAnswer:indexPath.row answer:_question.answer];
-    }
-    //练习模式下显示单选正确答案
-    if(_showSinglePracticeResult){
-        [cell showSinglePracticeResult:indexPath.row selectedIndex:_selectedIndex answer:_question.answer];
-    }
-    //练习模式下显示多选正确答案
-    if(_showMutiPracticeResult){
-        [cell showMutiPracticeResult:indexPath.row selectedIndex:_selectedIndexs answer:_question.answer];
-    }
-    //多选时设置临时选中效果
-    if(_showTemporarySelected){
-        [cell setTemporarySelected:indexPath.row selectedIndexs:_selectedIndexs];
-    }
+
     return cell;
 }
 
 #pragma mark - public method
 
-- (void)updateUIByQuestion:(ExerciseQuestion *)question{
+- (void)updateUIByQuestion:(CourseQuestion *)question{
     _question = question;
-    _showRightAnswer = NO;
-    _showSinglePracticeResult = NO;
-    _showMutiPracticeResult = NO;
-    _showTemporarySelected = NO;
-    _allowSelect = YES;
     
     NSInteger textHeight = [self getTitleHeight:question.title];
         
@@ -211,85 +170,12 @@ static NSInteger TitlePaddingRight = 5;
         make.height.mas_equalTo(textHeight);
     }];
     
-    _options = [FMDBUtil getOptionsByString:question.option type:question.type];          //获取各个选项
-    _isSingle = question.type == 2 ? NO : YES;
+    _options = [FMDBUtil getOptionsByString:question.options type:1];          //获取各个选项
+    _isSingle = [question.type isEqualToString:@"bbb"] ? NO : YES;
     
     [_tableView reloadData];
 }
 
-- (void)updateUIByQuestion:(ExerciseQuestion *)question allowSelect:(BOOL)allowSelect{
-    _question = question;
-    _showRightAnswer = NO;
-    _showSinglePracticeResult = NO;
-    _showMutiPracticeResult = NO;
-    _showTemporarySelected = NO;
-    _allowSelect = allowSelect;
-    
-    NSInteger textHeight = [self getTitleHeight:question.title];
-    
-    [_titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(textHeight);
-    }];
-    [_titleLeftView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(textHeight);
-    }];
-    
-    _options = [FMDBUtil getOptionsByString:question.option type:question.type];          //获取各个选项
-    _isSingle = question.type == 2 ? NO : YES;
-    
-    [_tableView reloadData];
-}
-
-
-- (void)updateUIByQuestion:(ExerciseQuestion *)question showRightAnswer:(BOOL)showRgihtAnswer{
-    _question = question;
-    _showRightAnswer = showRgihtAnswer;
-    _showSinglePracticeResult = NO;
-    _showMutiPracticeResult = NO;
-    _showTemporarySelected = NO;
-    _allowSelect = NO;
-    
-    NSInteger textHeight = [self getTitleHeight:question.title];
-    
-    [_titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(textHeight);
-    }];
-    [_titleLeftView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(textHeight);
-    }];
-    
-    _options = [FMDBUtil getOptionsByString:question.option type:question.type];          //获取各个选项
-    _isSingle = question.type == 2 ? NO : YES;
-    
-    [_tableView reloadData];
-}
-
-- (BOOL)showSinglePracticeAnswer:(NSInteger)selectIndex{
-    _showSinglePracticeResult = YES;
-    _showMutiPracticeResult = NO;
-    _showTemporarySelected = NO;
-    _allowSelect = NO;
-    _selectedIndex = selectIndex;
-    [_tableView reloadData];
-    return [FMDBUtil isSingleRightAnswer:selectIndex answer:_question.answer];
-}
-
-- (BOOL)showMutiPracticeAnswer:(NSString *)selectIndexs{
-    _showSinglePracticeResult = NO;
-    _showMutiPracticeResult = YES;
-    _showTemporarySelected = NO;
-    _allowSelect = NO;
-    _selectedIndexs = selectIndexs;
-    [_tableView reloadData];
-    return [FMDBUtil isMutiRightAnswer:selectIndexs answer:_question.answer];
-}
-
-
-- (void)setTemporarySelected:(NSString *)selectedIndexs{
-    _selectedIndexs = selectedIndexs;
-    _showTemporarySelected = YES;
-    [_tableView reloadData];
-}
 
 
 - (NSInteger)getTitleHeight:(NSString *)text{

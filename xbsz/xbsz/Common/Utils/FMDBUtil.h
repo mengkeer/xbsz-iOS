@@ -1,5 +1,5 @@
 //
-//  StudyUtil.h
+//  FMDBUtil.h
 //  xbsz
 //
 //  Created by lotus on 2017/4/25.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ExerciseMode.h"
 
-@interface StudyUtil : NSObject
+@interface FMDBUtil : NSObject
 
 + (instancetype)instance;
 

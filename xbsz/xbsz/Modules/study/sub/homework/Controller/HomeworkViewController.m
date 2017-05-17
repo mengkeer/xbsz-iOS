@@ -1,21 +1,18 @@
 //
-//  CourseViewController.m
+//  HomeworkViewController.m
 //  xbsz
 //
 //  Created by lotus on 2016/12/30.
 //  Copyright © 2016年 lotus. All rights reserved.
 //
 
-#import "ExerciseViewController.h"
-#import "ExerciseCollectionViewCell.h"
-#import "ExerciseSearchBar.h"
-#import "Exercise.h"
-#import "ExerciseList.h"
-#import "ExerciseModeViewController.h"
-#import "FMDBUtil.h"
-#import "ExerciseMode.h"
-#import "DownloadManager.h"
-#import "CXNetworkMonitoring.h"
+#import "HomeworkViewController.h"
+#import "HomeworkCollectionViewCell.h"
+#import "CourseSearchBar.h"
+#import "Homework.h"
+#import "HomeworkList.h"
+#import "DoHomeworkViewController.h"
+#import "CXNetwork+Course.h"
 
 #import "PYSearch.h"
 
@@ -28,23 +25,21 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 #define gap (CX_IS_IPHONE6PLUS ? 18 : CX_IS_IPHONE6 ?  15 : 13.2)
 
-@interface ExerciseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PYSearchViewControllerDelegate,UIViewControllerPreviewingDelegate>
+@interface HomeworkViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PYSearchViewControllerDelegate,UIViewControllerPreviewingDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-@property (nonatomic, strong) ExerciseSearchBar *searchBar;
+@property (nonatomic, strong) CourseSearchBar *searchBar;
 
-@property (nonatomic, strong) ExerciseList  *exerciseList;
-
-@property (nonatomic, strong) YYAnimatedImageView *imageView;
-
+@property (nonatomic, strong) HomeworkList  *homeworkList;
 
 @end
 
-@implementation ExerciseViewController
+@implementation HomeworkViewController
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self loadData];
 }
 
 - (void)viewDidLoad {
@@ -57,9 +52,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
     }];
     
-    [self loadData];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,12 +60,14 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 - (void)loadData{
-
-    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"exercises.json"];
+    
+    
+    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"homeworks.json"];
     NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
     
-    _exerciseList = [ExerciseList yy_modelWithJSON:jsonStr];
+    _homeworkList = [HomeworkList yy_modelWithJSON:jsonStr];
     [_collectionView reloadData];
+    
 }
 
 
@@ -91,41 +85,65 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         _collectionView.alwaysBounceVertical = YES;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
-        [_collectionView registerClass:[ExerciseCollectionViewCell class] forCellWithReuseIdentifier:cellID];
+        [_collectionView registerClass:[HomeworkCollectionViewCell class] forCellWithReuseIdentifier:cellID];
+        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerCellID];
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerCellID];
+        
+        _collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+        
+        [self.collectionView addSubview:self.searchBar];
         
     }
     return _collectionView;
 }
 
+
 - (void)viewWillLayoutSubviews{
     _collectionView.contentOffset = CGPointMake(0, 0);
+}
+
+- (CourseSearchBar *)searchBar{
+    if(!_searchBar){
+        @weakify(self);
+        _searchBar = [[CourseSearchBar alloc] initWithFrame:CGRectMake(gap, -30, CXScreenWidth-2*gap, 30)];
+        [_searchBar setClicked:^{
+            [weak_self gotoSearchView];
+        }];
+    }
+    return _searchBar;
 }
 
 
 #pragma mark - action method
 
-- (void)gotoExerciseDetailView:(ExerciseType)type{
-    ExerciseModeViewController *chapterVC = [ExerciseModeViewController controller];
-    chapterVC.type = type;
-    [self.navigationController pushViewController:chapterVC animated:YES];
+- (void)gotoSearchView{
+    // 1. 创建热门搜索
+    NSArray *hotSeaches = @[@"密码学", @"网络攻防", @"数据结构", @"线性代数", @"算法" , @"C++程序设计", @"数据库", @"操作系统", @"Linux系统",@"iOS程序设计"];
+    // 2. 创建控制器
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"搜索课程" didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        // 开始搜索执行以下代码
+        // 如：跳转到指定控制器
+        [searchViewController dismissViewControllerAnimated:YES completion:nil];
+        [ToastView showErrorWithStaus:@"暂未开设此课程"];
+    }];
+    // 3. 设置风格
+    searchViewController.hotSearchStyle = PYHotSearchStyleColorfulTag;
+    searchViewController.searchHistoryStyle = PYSearchHistoryStyleDefault;
+    // 4. 设置代理
+    searchViewController.delegate = self;
+    // 5. 跳转到搜索控制器
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (void)gotoDoHomeworkView:(Homework *)homework{
+    [self.navigationController pushViewController:[DoHomeworkViewController controller] animated:YES];
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if([DownloadManager isTikuExists]){
-        NSInteger index = indexPath.section*numberOfItems + indexPath.row;
-        ExerciseType type = [FMDBUtil indexToExerciseType:index];
-        [self gotoExerciseDetailView:type];
-    }else{
-        if([CXNetworkMonitoring canReachable] == YES){
-            [ToastView showBlackSuccessWithStaus:@"开始下载题库"];
-            [[DownloadManager manager] downloadTikuFromServer];
-        }else{
-            [ToastView showBlackSuccessWithStaus:@"无数据访问权限，请在设置中修改"];
-        }
-    }
+    [self gotoDoHomeworkView:[_homeworkList.homeworks objectAtIndex:(indexPath.section)*numberOfItems+indexPath.row]];
 }
 
 
@@ -156,8 +174,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     
     
-    NSInteger rows = [_exerciseList.exercises count] / numberOfItems +1;
-    if([_exerciseList.exercises count]%numberOfItems == 0)  rows -= 1;
+    NSInteger rows = [_homeworkList.homeworks count] / numberOfItems +1;
+    if([_homeworkList.homeworks count] % numberOfItems == 0)  rows -= 1;
     
     if(section == rows - 1){
         
@@ -169,7 +187,11 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
             height = 2*singalHeight + height;
         }
         
-    
+        if(height < 49){
+            height = singalHeight + height;
+        }
+        
+        
         return CGSizeMake(CXScreenWidth, height);
     }
     return CGSizeZero;
@@ -179,22 +201,22 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 #pragma mark - UICollectionDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    NSInteger nums = [_exerciseList.exercises count]/numberOfItems +1;
-    return [_exerciseList.exercises count] % numberOfItems == 0 ? nums-1 : nums;
+    NSInteger nums = [_homeworkList.homeworks count]/numberOfItems +1;
+    return [_homeworkList.homeworks count] % numberOfItems  == 0 ? nums-1 : nums;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    if([_exerciseList.exercises count] >= (section+1)*numberOfItems){
+    if([_homeworkList.homeworks count] >= (section+1)*numberOfItems){
         return numberOfItems;
     }else{
-        return [_exerciseList.exercises count]%numberOfItems;
+        return [_homeworkList.homeworks count]%numberOfItems;
     }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;{
-    ExerciseCollectionViewCell *cell = (ExerciseCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
+    HomeworkCollectionViewCell *cell = (HomeworkCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     NSInteger index = (indexPath.section == 0 ? indexPath.row : (indexPath.section)*numberOfItems+indexPath.row);
-    [cell updateCellWithModel:[_exerciseList.exercises objectAtIndex:index]];
+    [cell updateCellWithModel:[_homeworkList.homeworks objectAtIndex:index]];
     if(CX3DTouchOpened)       [cell registerTouch:self];
     return cell;
 }
@@ -245,25 +267,22 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location{
     //防止重复加入
-    if ([self.presentedViewController isKindOfClass:[ExerciseModeViewController class]]){
+    if ([self.presentedViewController isKindOfClass:[DoHomeworkViewController class]]){
         return nil;
     }else{
-        ExerciseModeViewController *peekViewController = [[ExerciseModeViewController alloc] init];
-        peekViewController.beforePeekedViewConreoller = self;
-        peekViewController.type = [FMDBUtil indexToExerciseType:[self getIndexByPreviewing:previewingContext]];
+        DoHomeworkViewController *peekViewController = [[DoHomeworkViewController alloc] init];
         return peekViewController;
     }
 }
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit{
-    ExerciseModeViewController *popViewController = [ExerciseModeViewController controller];
-    popViewController.type = [FMDBUtil indexToExerciseType:[self getIndexByPreviewing:previewingContext]];
+    DoHomeworkViewController *popViewController = [DoHomeworkViewController controller];
     [self showViewController:popViewController sender:self];
 }
 
 
 - (NSInteger)getIndexByPreviewing:(id<UIViewControllerPreviewing>)previewingContext{
-    ExerciseCollectionViewCell  *cell = (ExerciseCollectionViewCell *)[[[previewingContext sourceView] superview] superview];
+    HomeworkCollectionViewCell  *cell = (HomeworkCollectionViewCell *)[[[previewingContext sourceView] superview] superview];
     NSIndexPath *indexPath = [_collectionView indexPathForCell:cell];
     NSInteger index = indexPath.section*numberOfItems + indexPath.row;
     return index;

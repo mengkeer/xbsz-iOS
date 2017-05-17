@@ -6,7 +6,6 @@
 //  Copyright © 2016年 lotus. All rights reserved.
 //
 
-#import "CXPushViewController.h"
 #import "YZDisplayViewController.h"
 
 @interface DiscoverViewController :YZDisplayViewController

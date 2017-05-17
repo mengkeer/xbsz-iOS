@@ -10,7 +10,7 @@
 #import "QuestionCollectionViewCell.h"
 #import "ExerciseQuestion.h"
 #import "ExerciseProgressViewController.h"
-#import "StudyUtil.h"
+#import "FMDBUtil.h"
 
 static NSString *cellID = @"ExerciseQuestionCellID";
 static NSInteger bottomHeight = 45;
@@ -59,7 +59,7 @@ static NSInteger bottomHeight = 45;
 }
 //加载题库数据
 - (void)loadData{
-    _questions = [StudyUtil getQuestions:_type isSingle:_isSingle chapterIndex:_chapterIndex];
+    _questions = [FMDBUtil getQuestions:_type isSingle:_isSingle chapterIndex:_chapterIndex];
     CXLog(@"加载题目数据完成");
 }
 
