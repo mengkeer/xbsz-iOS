@@ -84,7 +84,7 @@ static NSInteger limit = 10;
         
         [weak_self.comments addObjectsFromArray:_commentList.comments];
         
-        CXPage *pageInfo = weak_self.commentList.pageInfo;
+        NSInteger total = weak_self.commentList.total;;
         
         if([weak_self.comments count] == 0){
             [weak_self.tableView showDefaultImageWithResult:NO];
@@ -92,7 +92,7 @@ static NSInteger limit = 10;
             [weak_self.tableView showRefresh];
         }
         
-        if([weak_self.comments count] == pageInfo.count){
+        if([weak_self.comments count] == total){
             [weak_self.tableView loadNoMoreData];
         }
         
@@ -146,8 +146,8 @@ static NSInteger limit = 10;
     UIView *view = [[UIView alloc] init];
     UILabel *label = [[UILabel alloc] init];
     label.text = @"评价详情 (共0人评价)";
-    if(_commentList  != nil && _commentList.pageInfo != 0){
-        label.text = [NSString stringWithFormat:@"评价详情 (共%ld人评价)",_commentList.pageInfo.count];
+    if(_commentList  != nil && _commentList.total != 0){
+        label.text = [NSString stringWithFormat:@"评价详情 (共%ld人评价)",_commentList.total];
 
     }
     label.font = CXSystemFont(14);

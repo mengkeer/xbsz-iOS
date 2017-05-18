@@ -1,17 +1,19 @@
 //
-//  CourseCommentList.h
+//  CampusCommentList.h
 //  xbsz
 //
-//  Created by lotus on 2017/4/21.
+//  Created by lotus on 2017/5/18.
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "CXPage.h"
 
-@interface CourseCommentList : NSObject
+@interface CampusCommentList : NSObject
 
 @property (nonatomic, strong) NSMutableArray *comments;
 
-@property (nonatomic, assign)  NSInteger total;
+@property (nonatomic, assign) NSInteger total;
+
+
 @end
+

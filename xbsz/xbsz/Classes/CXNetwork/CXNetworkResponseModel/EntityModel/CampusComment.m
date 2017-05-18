@@ -10,6 +10,9 @@
 
 @implementation CampusComment
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"noteID":@"noteId",@"time":@"createdAt",@"avatar":@"userInfo.avatar",@"nickname":@"userInfo.nickname"};
+}
 
 
 @end

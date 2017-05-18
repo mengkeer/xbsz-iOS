@@ -24,7 +24,7 @@
 //@property (nonatomic, strong) UILabel *locationLabel;         //暂时不显示地址  后续版本考虑添加
 
 //用户分享的图片
-@property (nonatomic, strong) UIImageView *sharedImageView;
+@property (nonatomic, strong) YYAnimatedImageView *sharedImageView;
 
 @property (nonatomic, strong) UIView *lineView;     //工具栏下的分割线
 
@@ -218,9 +218,10 @@
 }
 
 
-- (UIImageView *)sharedImageView{
+- (YYAnimatedImageView *)sharedImageView{
     if(!_sharedImageView){
         _sharedImageView = [[YYAnimatedImageView alloc] init];
+        _sharedImageView.userInteractionEnabled = YES;
     }
     return _sharedImageView;
 }
@@ -474,6 +475,10 @@
                 break;
         }
     }];
+}
+
+- (void)registerTouch:(id)delegate{
+    [delegate registerForPreviewingWithDelegate:delegate sourceView:_sharedImageView];
 }
 
 

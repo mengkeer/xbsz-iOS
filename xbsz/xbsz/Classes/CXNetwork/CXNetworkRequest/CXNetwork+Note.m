@@ -64,7 +64,40 @@
         InvokeFailure(error);
     }];
     
+}
+
++ (void)getNoteComments:(NSString *)noteID
+                 offset:(NSInteger)offset
+                  limit:(NSInteger)limit
+                success:(CXNetworkSuccessBlock)success
+                failure:(CXNetworkFailureBlock)failure{
     
+    NSDictionary *parameters = nil;
+    
+    parameters = @{@"noteId":noteID,@"offset":[NSString stringWithFormat:@"%ld",offset],@"limit":[NSString stringWithFormat:@"%ld",limit]};
+    
+    [self invokePostRequest:CXGetNoteCommentsUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:(NSDictionary *)responseObject];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        InvokeFailure(error);
+    }];
+}
+
++ (void)addNoteComment:(NSString *)noteID
+               content:(NSString *)content
+               success:(CXNetworkSuccessBlock)success
+               failure:(CXNetworkFailureBlock)failure{
+    NSDictionary *parameters = nil;
+    
+    parameters = @{@"token":[CXLocalUser instance].token,@"noteId":noteID,@"content":content};
+    
+    [self invokePostRequest:CXAddNoteCommentUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:(NSDictionary *)responseObject];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        InvokeFailure(error);
+    }];
 }
 
 @end

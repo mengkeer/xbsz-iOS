@@ -12,8 +12,9 @@
 #import "IQKeyboardManager.h"
 #import "CXAudioPlayer.h"
 
-#import "CXNetwork+Course.h"        //暂时以课程评论为例
-#import "CourseCommentList.h"       //暂时以课程评论为例
+#import "CXNetwork+Note.h"
+#import "CampusCommentList.h"
+#import "CampusComment.h"
 
 
 static NSString *cellID = @"InformTableViewCellID";
@@ -24,7 +25,7 @@ static NSInteger limit = 10;
 
 @property (nonatomic, strong) CXBaseTableView *tableView;
 
-@property (nonatomic, strong) CourseCommentList *commentList;
+@property (nonatomic, strong) CampusCommentList *commentList;
 
 @property (nonatomic, strong) NSMutableArray *comments;
 
@@ -38,6 +39,7 @@ static NSInteger limit = 10;
 
 @property (nonatomic, strong) UIView *totalView;
 
+@property (nonatomic, assign) NSInteger total;
 
 @end
 
@@ -115,6 +117,78 @@ static NSInteger limit = 10;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)refreshData{
+    [self.tableView loadRefreshData];
+}
+
+- (void)loadDataAtPageIndex:(NSUInteger )pageIndex{
+    @weakify(self);
+    [CXNetwork getNoteComments:_note.noteID offset:pageIndex-1 limit:limit success:^(NSObject *obj) {
+        weak_self.commentList = [CampusCommentList yy_modelWithDictionary:(NSDictionary *)obj];
+        if(pageIndex == 1){
+            [weak_self.comments removeAllObjects];
+        }
+        
+        [weak_self.comments addObjectsFromArray:_commentList.comments];
+        
+        _total = weak_self.commentList.total;
+        
+        if([weak_self.comments count] == 0){
+            [weak_self.tableView showDefaultImageWithResult:NO];
+        }else{
+            [weak_self.tableView showRefresh];
+        }
+        
+        if([weak_self.comments count] == _total){
+            [weak_self.tableView loadNoMoreData];
+        }
+        
+        [weak_self.tableView reloadData];           //重新加载
+        if(pageIndex == 1){
+            [self.tableView scrollToRow:0 inSection:0 atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+
+    } failure:^(NSError *error) {
+        if (weak_self.comments.count == 0) {
+            [weak_self.tableView showDefaultImageWithResult:YES];
+        }else{
+            [ToastView showErrorWithStaus:@"加载失败"];
+        }
+        [weak_self.tableView endRefresh];
+    }];
+}
+
+
+#pragma mark - 3DTouch Item
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems{
+    
+    // 生成UIPreviewAction
+    UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"开始评论" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        CampusCommentViewController *VC = [CampusCommentViewController controller];
+        VC.note = _note;
+        [self.beforePeekedViewConreoller.navigationController pushViewController:VC animated:YES];
+        
+    }];
+    
+    UIPreviewAction *action2 = [UIPreviewAction actionWithTitle:@"保存图片" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+         UIImageWriteToSavedPhotosAlbum(_sharedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+    }];
+    
+
+    NSArray *actions = @[action1,action2];
+    return actions;
+}
+
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if(error == nil){
+        [ToastView showStatus:@"保存成功"];
+    }else{
+        [ToastView showStatus:@"保存失败"];
+    }
 }
 
 
@@ -207,45 +281,6 @@ static NSInteger limit = 10;
     return _totalView;
 }
 
-#pragma mark - 私有方法
-
-- (void)loadDataAtPageIndex:(NSUInteger )pageIndex{
-    @weakify(self);
-    [CXNetwork getCourseComments:@"C1491831796925" offset:pageIndex-1 limit:limit success:^(NSObject *obj) {
-        weak_self.commentList = [CourseCommentList yy_modelWithDictionary:(NSDictionary *)obj];
-        if(pageIndex == 1){
-            [weak_self.comments removeAllObjects];
-        }
-        
-        [weak_self.comments addObjectsFromArray:_commentList.comments];
-        
-        CXPage *pageInfo = weak_self.commentList.pageInfo;
-        
-        if([weak_self.comments count] == 0){
-            [weak_self.tableView showDefaultImageWithResult:NO];
-        }else{
-            [weak_self.tableView showRefresh];
-        }
-        
-        if([weak_self.comments count] == pageInfo.count){
-            [weak_self.tableView loadNoMoreData];
-        }
-        
-        [weak_self.tableView reloadData];           //重新加载
-        
-        
-    } failure:^(NSError *error) {
-        if (weak_self.comments.count == 0) {
-            [weak_self.tableView showDefaultImageWithResult:YES];
-        }else{
-            [ToastView showErrorWithStaus:@"加载失败"];
-        }
-        [weak_self.tableView endRefresh];
-    }];
-    
-}
-
-
 #pragma mark - UITableView delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewAutomaticDimension;
@@ -285,11 +320,11 @@ static NSInteger limit = 10;
                 make.height.mas_equalTo(15);
             }];
         }
-        if(_commentList == nil || _commentList.pageInfo == nil || _commentList.pageInfo.count  <0){
+        if(_total == 0){
             _totalLabel.text = @"共0条回复";
 
         }else{
-            _totalLabel.text = [NSString stringWithFormat:@"共%ld条回复",_commentList.pageInfo.count];
+            _totalLabel.text = [NSString stringWithFormat:@"共%ld条回复",_total];
         }
         return cell;
         
@@ -345,10 +380,18 @@ static NSInteger limit = 10;
         return;
     }
     
-    [CXAudioPlayer playSent];
-    [ToastView showStatus:@"评论成功"];
-    _writeTextField.text = @"";
-    [_writeTextField resignFirstResponder];
+    [CXNetwork addNoteComment:_note.noteID content:[_writeTextField.text stringByTrim] success:^(NSObject *obj) {
+        [CXAudioPlayer playSent];
+        [ToastView showStatus:@"评论成功"];
+         [_writeTextField resignFirstResponder];
+        _writeTextField.text = @"";
+        [self refreshData];
+    } failure:^(NSError *error) {
+        [ToastView showStatus:@"评论失败"];
+    }];
+    
+
+   
     
 }
 

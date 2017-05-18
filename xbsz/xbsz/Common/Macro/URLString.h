@@ -36,6 +36,8 @@
 //校园动态
 #define CXPublishNoteUrl    @"http://www.slotus.cc/file/publishNote"
 #define CXGetNotesUrl       @"http://www.slotus.cc/common-api/getNotes"
+#define CXGetNoteCommentsUrl   @"http://www.slotus.cc/common-api/getThreadNotes"
+#define CXAddNoteCommentUrl    @"http://www.slotus.cc/limit-api/threadNote"
 
 
 #define JWLoginUrl   @"https://mobile4.dhu.edu.cn/_ids_mobile/login18_9"

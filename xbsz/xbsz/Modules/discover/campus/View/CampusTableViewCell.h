@@ -31,4 +31,6 @@ typedef void(^CellActionBlock)(id model , CommentCellActionType actionType);
 
 - (void)updateUIWithModel:(CampusNote *)model hasLiked:(BOOL)liked action:(CellActionBlock)actiobBlock;
 
+- (void)registerTouch:(id)delegate;
+
 @end

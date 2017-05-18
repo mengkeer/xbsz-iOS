@@ -20,7 +20,7 @@
 
 static NSInteger limit = 10;
 
-@interface CampusViewController ()<CXBaseTableViewDelegate>
+@interface CampusViewController ()<CXBaseTableViewDelegate,UIViewControllerPreviewingDelegate>
 
 @property (nonatomic, strong) CXBaseTableView *tableView;
 
@@ -64,7 +64,6 @@ static NSInteger limit = 10;
 
 - (void)refreshData{
     [self.tableView loadRefreshData];
-    [self.tableView setContentOffset:CGPointMake(0, 0)];
 }
 
 
@@ -108,6 +107,9 @@ static NSInteger limit = 10;
         }
         
         [weak_self.tableView reloadData];           //重新加载
+        if(pageIndex == 1){
+            [self.tableView scrollToRow:0 inSection:0 atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
     } failure:^(NSError *error) {
         if (weak_self.notes.count == 0) {
             [weak_self.tableView showDefaultImageWithResult:YES];
@@ -182,7 +184,7 @@ static NSInteger limit = 10;
     [cell updateUIWithModel:[_notes objectAtIndex:indexPath.row] hasLiked:hasLiked action:^(id model, CommentCellActionType actionType) {
         [self handleAction:actionType model:(CampusNote *)model];
     }];
-
+    if(CX3DTouchOpened)       [cell registerTouch:self];
     return cell;
 }
 
@@ -311,5 +313,37 @@ static NSInteger limit = 10;
     commentVC.note = note;
     [self.navigationController pushViewController:commentVC animated:YES];
 }
+
+#pragma mark - 3DTouch Delegate
+
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location{
+    //防止重复加入
+    if ([self.presentedViewController isKindOfClass:[CampusCommentViewController class]]){
+        return nil;
+    }else{
+        CampusCommentViewController *peekViewController = [[CampusCommentViewController alloc] init];
+        peekViewController.note = [_notes objectAtIndex:[self getIndexByPreviewing:previewingContext]];
+        peekViewController.beforePeekedViewConreoller = self;
+        peekViewController.sharedImage = ((YYAnimatedImageView *)[previewingContext sourceView]).image;
+        return peekViewController;
+    }
+}
+
+- (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit{
+    CampusCommentViewController *popViewController = [CampusCommentViewController controller];
+    popViewController.note = [_notes objectAtIndex:[self getIndexByPreviewing:previewingContext]];
+    popViewController.beforePeekedViewConreoller = self;
+    popViewController.sharedImage = ((YYAnimatedImageView *)[previewingContext sourceView]).image;
+    [self showViewController:popViewController sender:self];
+}
+
+
+- (NSInteger)getIndexByPreviewing:(id<UIViewControllerPreviewing>)previewingContext{
+    CampusTableViewCell  *cell = (CampusTableViewCell *)[[[previewingContext sourceView] superview] superview];
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+    NSInteger index = indexPath.row;
+    return index;
+}
+
 
 @end

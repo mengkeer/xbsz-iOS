@@ -22,6 +22,16 @@
            limit:(NSInteger)limit
          success:(CXNetworkSuccessBlock)success
          failure:(CXNetworkFailureBlock)failure;
-    
+
++ (void)getNoteComments:(NSString *)noteID
+                 offset:(NSInteger)offset
+                  limit:(NSInteger)limit
+                success:(CXNetworkSuccessBlock)success
+                failure:(CXNetworkFailureBlock)failure;
+
++ (void)addNoteComment:(NSString *)noteID
+               content:(NSString *)content
+               success:(CXNetworkSuccessBlock)success
+               failure:(CXNetworkFailureBlock)failure;
 
 @end

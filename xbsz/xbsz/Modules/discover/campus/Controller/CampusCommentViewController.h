@@ -13,4 +13,8 @@
 
 @property (nonatomic, strong) CampusNote *note;
 
+@property (nonatomic, strong) UIImage *sharedImage;     //用于3D Touch保存图片
+
+@property (nonatomic, strong) UIViewController *beforePeekedViewConreoller;
+
 @end
