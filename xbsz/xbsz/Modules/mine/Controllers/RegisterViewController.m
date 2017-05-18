@@ -310,7 +310,7 @@
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pattern];
         BOOL isMatched = [pred evaluateWithObject:_userNameField.text];
         if(!isMatched){
-            [ToastView showErrorWithStaus:@"请输入正确的用户名(6-20为字母或数字)"];
+            [ToastView showErrorWithStaus:@"请输入正确的用户名(6-20位字母或数字)"];
             return NO;
         }
     }else{
@@ -330,7 +330,7 @@
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pattern];
         BOOL isMatched = [pred evaluateWithObject:_passwordFiled.text];
         if(!isMatched){
-            [ToastView showErrorWithStaus:@"密码错误(6-20为字母或数字)"];
+            [ToastView showErrorWithStaus:@"密码错误(6-20位字母或数字)"];
             return NO;
         }
     }else{

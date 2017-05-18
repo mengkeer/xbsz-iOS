@@ -58,7 +58,7 @@
 
 + (NSString *)getAvatarUrl:(NSString *)imagename{
     if(imagename == nil || [imagename isEqualToString:@""]){
-        return [NSString stringWithFormat:@"%@/default.png",CXAvatarsBaseUrl];
+        return CXDefaultUserAvatarUrl;
     }else{
         return [NSString stringWithFormat:@"%@/%@",CXAvatarsBaseUrl,imagename];
 

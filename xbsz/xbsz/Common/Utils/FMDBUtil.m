@@ -39,14 +39,20 @@
 + (ExerciseType)indexToExerciseType:(NSInteger)index{
     ExerciseType type ;
     if(index == 0){
-        type = ExerciseTypeMarx;
+        type = ExerciseTypeNetworkSecurity;
     }else if(index == 1){
-        type = ExerciseTypeHistory;
+        type = ExerciseTypePassword;
     }else if(index == 2){
-        type = ExerciseTypeThought;
+        type = ExerciseTypeSystemSecurity;
     }else if(index == 3){
-        type = ExerciseTypeMao1;
+        type = ExerciseTypeMarx;
     }else if(index == 4){
+        type = ExerciseTypeHistory;
+    }else if(index == 5){
+        type = ExerciseTypeThought;
+    }else if(index == 6){
+        type = ExerciseTypeMao1;
+    }else if(index == 7){
         type = ExerciseTypeMao2;
     }else{
         type = ExerciseTypeUnknown;
@@ -65,6 +71,12 @@
         return @"近代史";
     }else if(type == ExerciseTypeThought){
         return @"思修";
+    }else if(type == ExerciseTypeNetworkSecurity){
+        return @"网络安全";
+    }else if(type == ExerciseTypePassword){
+        return @"密码学";
+    }else if(type == ExerciseTypeSystemSecurity){
+        return @"系统安全";
     }else{
         return @"未知课程";
     }
@@ -81,6 +93,12 @@
         return @"history";
     }else if(type == ExerciseTypeThought){
         return @"thought";
+    }else if(type == ExerciseTypeNetworkSecurity){
+        return @"network";
+    }else if(type == ExerciseTypePassword){
+        return @"password";
+    }else if(type == ExerciseTypeSystemSecurity){
+        return @"system";
     }else{
         return @"unknown";
     }

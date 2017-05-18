@@ -225,7 +225,7 @@
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",pattern];
         BOOL isMatched = [pred evaluateWithObject:_oldTextField.text] && [pred evaluateWithObject:_pwdTextField.text];
         if(!isMatched){
-            [ToastView showErrorWithStaus:@"密码错误(6-20为字母或数字)"];
+            [ToastView showErrorWithStaus:@"密码错误(6-20位字母或数字)"];
             return NO;
         }
         if([_oldTextField.text isEqualToString:_pwdTextField.text]){

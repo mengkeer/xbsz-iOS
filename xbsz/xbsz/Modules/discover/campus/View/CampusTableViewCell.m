@@ -433,7 +433,7 @@
     _actionBlock = actiobBlock;
     _note = model;
     
-    NSURL *url = [NSURL URLWithString:model.imageUrl];
+    NSURL *url = [NSURL URLWithString:CXNoteImageUrlByname(model.img)];
     
     [_avatarBtn yy_setImageWithURL:[NSURL URLWithString:[NSString getAvatarUrl:model.user.avatar]] forState:UIControlStateNormal options:YYWebImageOptionSetImageWithFadeAnimation];
     [_sharedImageView yy_setImageWithURL:url options:YYWebImageOptionProgressiveBlur

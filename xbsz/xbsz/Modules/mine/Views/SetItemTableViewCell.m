@@ -201,7 +201,7 @@
 }
 
 - (void)setHeadImage:(NSString *)imageUrl{
-    _headImageView.yy_imageURL = [NSURL URLWithString:imageUrl];
+    [_headImageView yy_setImageWithURL:[NSURL URLWithString:imageUrl] placeholder:CXDefaultAvatar];
 }
 
 - (void)switchChanged:(UISwitch *)switched{

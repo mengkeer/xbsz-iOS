@@ -61,7 +61,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (void)loadData{
     
-    
     NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"homeworks.json"];
     NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
     

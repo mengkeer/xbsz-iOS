@@ -13,7 +13,9 @@
 #define CXBaseUrl            @"http://www.slotus.cc/"
 #define CXAvatarsBaseUrl     @"http://www.slotus.cc/avatars"
 #define CXFileBaseUrl        @"http://www.slotus.cc/uploads"
+#define CXNoteBaseUrl        @"http://www.slotus.cc/note"
 #define CXTiKuUrl            @"http://www.slotus.cc/files/tiku.db"
+#define CXDefaultUserAvatarUrl  @"http://www.slotus.cc/files/avatar.png"
 
 //系统
 #define CXGetSystemInforms   @"http://www.slotus.cc/common-api/getInform"
@@ -30,6 +32,10 @@
 #define CXAddCourseCommentUrl   @"http://www.slotus.cc/limit-api/addCourseComment"
 #define CXGetCourseWareUrl      @"http://www.slotus.cc/common-api/getCourseware"
 
+
+//校园动态
+#define CXPublishNoteUrl    @"http://www.slotus.cc/file/publishNote"
+#define CXGetNotesUrl       @"http://www.slotus.cc/common-api/getNotes"
 
 
 #define JWLoginUrl   @"https://mobile4.dhu.edu.cn/_ids_mobile/login18_9"

@@ -15,7 +15,7 @@
 
 @property (nonatomic, copy) NSString *noteID;         //帖子id
 
-@property (nonatomic, copy) NSString *imageUrl;
+@property (nonatomic, copy) NSString *img;
 
 @property (nonatomic, assign) NSInteger width;          //图片宽度
 

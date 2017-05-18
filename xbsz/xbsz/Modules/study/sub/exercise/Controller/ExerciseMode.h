@@ -18,6 +18,9 @@ typedef NS_ENUM(NSUInteger,ExerciseMode){
 };
 
 typedef NS_ENUM(NSInteger,ExerciseType){
+    ExerciseTypeNetworkSecurity,        //网络安全
+    ExerciseTypePassword,       //密码学
+    ExerciseTypeSystemSecurity,         //系统安全
     ExerciseTypeMao1,       //毛概1
     ExerciseTypeMao2,       //毛概2
     ExerciseTypeHistory,        //近代史

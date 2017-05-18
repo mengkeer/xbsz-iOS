@@ -420,6 +420,7 @@ static NSInteger TitlePaddingRight = 5;
 
 - (BOOL)showPracticeAnswer:(NSString *)text{
     _blankTextView.text = [NSString stringWithFormat:@"参考答案:%@",_question.answer];
+    _placeholderLabel.hidden = YES;
     return [_question.answer isEqualToString:text];
 }
 

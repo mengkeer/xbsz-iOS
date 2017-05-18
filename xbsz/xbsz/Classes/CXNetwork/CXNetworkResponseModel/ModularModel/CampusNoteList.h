@@ -18,4 +18,6 @@
 
 @property (nonatomic, strong) NSMutableDictionary *loves;
 
+@property (nonatomic, assign) NSInteger total;
+
 @end

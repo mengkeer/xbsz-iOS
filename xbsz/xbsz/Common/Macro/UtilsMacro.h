@@ -23,6 +23,7 @@
 
 #define  CXDefaultAvatar    [UIImage imageNamed:@"defaultUserPhoto"]
 #define  CXFileUrlByName(fileName)             ([NSString stringWithFormat:@"%@/%@",CXFileBaseUrl,fileName])
+#define  CXNoteImageUrlByname(fileName)             ([NSString stringWithFormat:@"%@/%@",CXNoteBaseUrl,fileName])
 
 
 #endif /* UtilsMacro_h */

@@ -15,7 +15,10 @@
 #import "MoreToolBarView.h"
 #import "ShareToolBarView.h"
 #import "CommentToolBarView.h"
+#import "CXNetwork+Note.h"
 #import "CampusCommentViewController.h"
+
+static NSInteger limit = 10;
 
 @interface CampusViewController ()<CXBaseTableViewDelegate>
 
@@ -23,6 +26,12 @@
 
 @property (nonatomic, strong) CampusNoteList *noteList;
 
+@property (nonatomic, strong) NSMutableArray *notes;
+
+@property (nonatomic, strong) NSMutableDictionary *likes;
+
+@property (nonatomic, strong) NSMutableDictionary *dislikes;
+ 
 @end
 
 @implementation CampusViewController
@@ -37,13 +46,27 @@
     }];
     
     [self loadDataAtPageIndex:CXFisrtLoadPage];
+    _notes = [NSMutableArray array];
+    _likes = [NSMutableDictionary dictionary];
+    _dislikes = [NSMutableDictionary dictionary];
     
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:NotificationCampusNotePublished object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)refreshData{
+    [self.tableView loadRefreshData];
+    [self.tableView setContentOffset:CGPointMake(0, 0)];
+}
+
 
 #pragma mark getter / setter
 - (UITableView *)tableView{
@@ -61,32 +84,49 @@
 #pragma mark  CXBaseTableViewDelegate
 
 - (void)loadDataAtPageIndex:(NSUInteger )pageIndex{
-
-    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"notes.json"];
-    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
     
-//    CXUser *user = [CXUser yy_modelWithJSON:jsonStr];
+    @weakify(self);
     
-//    CampusNote *note = [CampusNote yy_modelWithJSON:jsonStr];
+    [CXNetwork getNotesByPageOffset:pageIndex-1 limit:limit success:^(NSObject *obj) {
+        weak_self.noteList = [CampusNoteList yy_modelWithDictionary:(NSDictionary *)obj];
+        if(pageIndex == 1){
+                [weak_self.notes removeAllObjects];
+        }
     
-    if(_noteList && [_noteList.notes count]>0){
-        [_noteList.notes addObjectsFromArray:[CampusNoteList yy_modelWithJSON:jsonStr].notes];
-    }else{
-        _noteList = [CampusNoteList yy_modelWithJSON:jsonStr];
-    }
-    
-    [_tableView reloadData];
-    
-    CXLog(@"开始加载校园动态");
+        [weak_self.notes addObjectsFromArray:_noteList.notes];
+        
+        NSInteger total = weak_self.noteList.total;
+        
+        if([weak_self.notes count] == 0){
+            [weak_self.tableView showDefaultImageWithResult:NO];
+        }else{
+            [weak_self.tableView showRefresh];
+        }
+        
+        if([weak_self.notes count] == total){
+            [weak_self.tableView loadNoMoreData];
+        }
+        
+        [weak_self.tableView reloadData];           //重新加载
+    } failure:^(NSError *error) {
+        if (weak_self.notes.count == 0) {
+            [weak_self.tableView showDefaultImageWithResult:YES];
+        }else{
+            [ToastView showErrorWithStaus:@"加载失败"];
+        }
+        [weak_self.tableView endRefresh];
+    }];
 }
 
 #pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == [_notes count]) return 49;
     return UITableViewAutomaticDimension;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == [_notes count])     return 49;
     return 300;
 }
 
@@ -108,7 +148,7 @@
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_noteList.notes count];
+    return [_notes count]+1;
 }
 
 
@@ -118,15 +158,28 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(indexPath.row == [_notes count]){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"normalCellID"];
+        if(cell == nil){
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"normalCellID"];
+            cell.contentView.backgroundColor = CXWhiteColor;
+        }
+        return cell;
+    }
+    
     CampusTableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if(cell == nil){
         cell = [[CampusTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
     }
-    CampusNote *note = [_noteList.notes objectAtIndex:indexPath.row];
+    CampusNote *note = [_notes objectAtIndex:indexPath.row];
+    if([_likes objectForKey:note.noteID] == nil){
+        [_likes setObject:@"1" forKey:note.noteID];
+    }
     BOOL hasLiked = [[_noteList.likes objectForKey:note.noteID] isEqualToString:@"1"] ? YES:NO;
-    [cell updateUIWithModel:[_noteList.notes objectAtIndex:indexPath.row] hasLiked:hasLiked action:^(id model, CommentCellActionType actionType) {
+    [cell updateUIWithModel:[_notes objectAtIndex:indexPath.row] hasLiked:hasLiked action:^(id model, CommentCellActionType actionType) {
         [self handleAction:actionType model:(CampusNote *)model];
     }];
 

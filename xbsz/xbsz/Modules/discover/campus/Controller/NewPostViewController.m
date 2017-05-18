@@ -10,6 +10,7 @@
 #import "CXAudioPlayer.h"
 #import "IQKeyboardManager.h"
 #import "TZImagePickerController.h"
+#import "CXNetwork+Note.h"
 
 @interface NewPostViewController () <UITextViewDelegate,TZImagePickerControllerDelegate>
 
@@ -273,7 +274,17 @@
     if(![[CXLocalUser instance] isLogin]){
         [ToastView showStatus:@"请先登录"];
     }else{
-        [CXAudioPlayer playSent];
+        [CXNetwork publishNote:_sharedImage isBig:_uploadSwitch.isOn subject:[_subjectTextView.text stringByTrim] location:@"东华大学图书馆"
+            success:^(NSObject *obj) {
+                [ToastView showBlackSuccessWithStaus:@"发送成功"];
+                [CXAudioPlayer playSent];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NotificationCampusNotePublished object:nil];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                });
+        } failure:^(NSError *error) {
+            [ToastView showBlackSuccessWithStaus:@"发送失败"];
+        }];
     }
 }
 

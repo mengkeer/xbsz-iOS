@@ -10,5 +10,9 @@
 
 @implementation CampusNote
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"noteID":@"noteId",@"user":@"userInfo",@"time":@"updatedAt"};
+}
+
 
 @end

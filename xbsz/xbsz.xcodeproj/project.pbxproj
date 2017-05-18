@@ -69,6 +69,8 @@
 		AD5B0FD31EC5E8A700C7D283 /* CXPage.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B0FD21EC5E8A700C7D283 /* CXPage.m */; };
 		AD5B0FD61EC6058E00C7D283 /* CourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B0FD51EC6058E00C7D283 /* CourseWare.m */; };
 		AD7092AA1E861CF10024427C /* DefaultTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7092A91E861CF10024427C /* DefaultTipsView.m */; };
+		AD77A9E01ECCB14500D6CC9E /* sizheng.json in Resources */ = {isa = PBXBuildFile; fileRef = AD77A9DF1ECCB14500D6CC9E /* sizheng.json */; };
+		AD77A9E31ECD839700D6CC9E /* CXNetwork+Note.m in Sources */ = {isa = PBXBuildFile; fileRef = AD77A9E21ECD839700D6CC9E /* CXNetwork+Note.m */; };
 		AD7BD61B1EAD8ABF00F34023 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BD61A1EAD8ABF00F34023 /* SignatureViewController.m */; };
 		AD7BD61E1EAD9B2900F34023 /* MajorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7BD61D1EAD9B2900F34023 /* MajorViewController.m */; };
 		AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F881D1E594D5E009603E4 /* YYReachability.m */; };
@@ -298,6 +300,9 @@
 		AD5B0FD51EC6058E00C7D283 /* CourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseWare.m; sourceTree = "<group>"; };
 		AD7092A81E861CF10024427C /* DefaultTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTipsView.h; sourceTree = "<group>"; };
 		AD7092A91E861CF10024427C /* DefaultTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTipsView.m; sourceTree = "<group>"; };
+		AD77A9DF1ECCB14500D6CC9E /* sizheng.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sizheng.json; sourceTree = "<group>"; };
+		AD77A9E11ECD839700D6CC9E /* CXNetwork+Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CXNetwork+Note.h"; sourceTree = "<group>"; };
+		AD77A9E21ECD839700D6CC9E /* CXNetwork+Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CXNetwork+Note.m"; sourceTree = "<group>"; };
 		AD7BD6191EAD8ABF00F34023 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
 		AD7BD61A1EAD8ABF00F34023 /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureViewController.m; sourceTree = "<group>"; };
 		AD7BD61C1EAD9B2900F34023 /* MajorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MajorViewController.h; sourceTree = "<group>"; };
@@ -846,6 +851,7 @@
 		AD30B16F1DFAC992000189DD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AD77A9DF1ECCB14500D6CC9E /* sizheng.json */,
 				ADAAE0881E7CD06400A0FA2C /* exercises.json */,
 				AD8B45391EA9E06800E8D539 /* comment.json */,
 				ADDE6F521ECBDE040013AFD0 /* homeworks.json */,
@@ -1287,6 +1293,8 @@
 				ADFEDACA1ECAE422008F30CF /* CXNetwork+System.m */,
 				AD36F8801EA3119600775F90 /* DownloadManager.h */,
 				AD36F8811EA3119600775F90 /* DownloadManager.m */,
+				AD77A9E11ECD839700D6CC9E /* CXNetwork+Note.h */,
+				AD77A9E21ECD839700D6CC9E /* CXNetwork+Note.m */,
 			);
 			path = CXNetworkRequest;
 			sourceTree = "<group>";
@@ -1618,6 +1626,7 @@
 				ADDE6F3E1ECB4CD40013AFD0 /* questions.json in Resources */,
 				ADF042461E0192EF00171489 /* avatar2.jpg in Resources */,
 				ADF042481E0192EF00171489 /* avatar4.jpg in Resources */,
+				AD77A9E01ECCB14500D6CC9E /* sizheng.json in Resources */,
 				ADDE6F531ECBDE040013AFD0 /* homeworks.json in Resources */,
 				ADF408D11EB4DFC8009DB786 /* correct.wav in Resources */,
 				ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */,
@@ -1754,6 +1763,7 @@
 				ADDE6F4E1ECB61DF0013AFD0 /* HomeworkViewController.m in Sources */,
 				AD8B861F1E9A9191007F4CEC /* CXBaseResponseModel.m in Sources */,
 				AD5B0FD31EC5E8A700C7D283 /* CXPage.m in Sources */,
+				AD77A9E31ECD839700D6CC9E /* CXNetwork+Note.m in Sources */,
 				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
 				05CEE4A71E851DAB0033DD3D /* SchoolSceneryViewController.m in Sources */,
 				AD8B86301E9A92B1007F4CEC /* CampusNoteList.m in Sources */,
