@@ -38,21 +38,21 @@
 
 + (ExerciseType)indexToExerciseType:(NSInteger)index{
     ExerciseType type ;
-    if(index == 0){
+    if(index == 5){
         type = ExerciseTypeNetworkSecurity;
-    }else if(index == 1){
-        type = ExerciseTypePassword;
-    }else if(index == 2){
-        type = ExerciseTypeSystemSecurity;
-    }else if(index == 3){
-        type = ExerciseTypeMarx;
-    }else if(index == 4){
-        type = ExerciseTypeHistory;
-    }else if(index == 5){
-        type = ExerciseTypeThought;
     }else if(index == 6){
-        type = ExerciseTypeMao1;
+        type = ExerciseTypePassword;
     }else if(index == 7){
+        type = ExerciseTypeSystemSecurity;
+    }else if(index == 0){
+        type = ExerciseTypeMarx;
+    }else if(index == 1){
+        type = ExerciseTypeHistory;
+    }else if(index == 2){
+        type = ExerciseTypeThought;
+    }else if(index == 3){
+        type = ExerciseTypeMao1;
+    }else if(index == 4){
         type = ExerciseTypeMao2;
     }else{
         type = ExerciseTypeUnknown;
@@ -194,7 +194,7 @@
             }
         }
         return  [ans sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
-            return [obj1 compare:obj2];
+            return [obj1 integerValue] > [obj2 integerValue];
         }];
     }
     return [NSArray array];
@@ -250,7 +250,15 @@
             }
         }
         
-        NSArray *ans = [temp allValuesSortedByKeys];
+        NSArray *keys = [temp allKeys];
+        keys = [keys sortedArrayUsingComparator:^NSComparisonResult(NSString *obj1, NSString *obj2) {
+            return [obj1 integerValue] > [obj2 integerValue];
+        }];
+        
+        NSMutableArray *ans = [NSMutableArray array];
+        for(NSString *key in keys){
+            [ans addObject:[temp valueForKey:key]];
+        }
         return ans;
     }
     return [NSArray array];
@@ -345,6 +353,35 @@
     return [NSArray array];
 }
 
+//+ (NSArray *)getOptionsByString:(NSString *)optionStr type:(NSInteger)type{
+//    
+//    NSMutableArray *ans = [NSMutableArray array];
+//    if(type == 3){
+//        [ans addObject:@"对"];
+//        [ans addObject:@"错"];
+//        return ans;
+//    }
+//    
+//    NSString *temp = @"";
+//    for (size_t i = 0; i < [optionStr length]; i++) {
+//        unichar ch = [optionStr characterAtIndex:i];
+//        if (ch <= 'F' && ch >= 'A') {
+//            temp = [NSString stringWithFormat:@"%C",ch];
+//            ch = [optionStr characterAtIndex:++i];
+//            while (ch < 'A' || ch > 'F') {
+//                temp = [temp stringByAppendingString:[NSString stringWithFormat:@"%C",ch]];
+//                if (i >= [optionStr length] - 1)
+//                    break;
+//                ch = [optionStr characterAtIndex:++i];
+//            }
+//            [ans addObject:[self getSubstring:temp]];
+//            --i;
+//        }
+//        
+//    }
+//    return ans;
+//}
+
 + (NSArray *)getOptionsByString:(NSString *)optionStr type:(NSInteger)type{
     
     NSMutableArray *ans = [NSMutableArray array];
@@ -355,18 +392,20 @@
     }
     
     NSString *temp = @"";
+    unichar lastSymbol = 'A';
     for (size_t i = 0; i < [optionStr length]; i++) {
         unichar ch = [optionStr characterAtIndex:i];
-        if (ch <= 'F' && ch >= 'A') {
+        if (ch <= 'F' && ch >= 'A' && ch == lastSymbol) {
             temp = [NSString stringWithFormat:@"%C",ch];
             ch = [optionStr characterAtIndex:++i];
-            while (ch < 'A' || ch > 'F') {
+            while (ch < 'A' || ch > 'F' || ch != lastSymbol + 1) {
                 temp = [temp stringByAppendingString:[NSString stringWithFormat:@"%C",ch]];
                 if (i >= [optionStr length] - 1)
                     break;
                 ch = [optionStr characterAtIndex:++i];
             }
             [ans addObject:[self getSubstring:temp]];
+            lastSymbol = lastSymbol + 1;
             --i;
         }
         
@@ -377,7 +416,7 @@
 //从第一个汉字或数字开始  去除前面非汉字
 + (NSString *)getSubstring:(NSString *)option{
     NSInteger index = 0;
-    for(size_t i = 0;i < [option length];i++){
+    for(size_t i = 1;i < [option length];i++){
         unichar ch = [option characterAtIndex:i];
         if([self isOptionStart:ch]){
             index = i;
@@ -397,6 +436,10 @@
     }
     //①②③④⑤...
     if(ch == 0x2460 || ch == 0x2461 || ch == 0x2462 || ch == 0x2463 || ch == 0x2464 || ch == 0x2465 || ch == 0x2466){
+        return YES;
+    }
+    
+    if((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')){
         return YES;
     }
     

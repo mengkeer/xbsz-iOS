@@ -13,13 +13,16 @@
 #import "AppUtil.h"
 #import "AboutViewController.h"
 #import "UpdateInfoViewController.h"
+//#import <WebKit/WebKit.h>
+
+#import <StoreKit/StoreKit.h> 
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
 static NSString *cellSwitchId = @"cellSwitchCellId";
 static NSString *cellDetailTextId  = @"cellDetailTextId";
 static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 
-@interface SetViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,MFMailComposeViewControllerDelegate>
+@interface SetViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,MFMailComposeViewControllerDelegate,SKPaymentTransactionObserver,SKProductsRequestDelegate,SKStoreProductViewControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -52,8 +55,10 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     maskLayer.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+400);
     maskLayer.path = maskPath.CGPath;
     _tableView.layer.mask = maskLayer;
-
     
+    //应用内购买监听
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,8 +90,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if(indexPath.section == 1){
+    if(indexPath.section == 2){
         if(indexPath.row == 0){
             [self selectTheme];
             return;
@@ -103,7 +107,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             [self cleanCache];
             return;
         }
-    }else if(indexPath.section == 2){
+    }else if(indexPath.section == 3){
         if(indexPath.row == 0){
             [self.navigationController pushViewController:[AboutViewController controller] animated:YES];
             return;
@@ -111,12 +115,29 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             if([MFMailComposeViewController canSendMail]){
                 [self sendEmail];
             }else{
-                [ToastView showErrorWithStaus:@"请先设置系统邮件账户"];
-//                [self alert];
+                [ToastView showErrorWithStaus:@"未设置系统邮件账号，请手动发送邮件至1812422367@qq.com"];
             }
             return;
+        }else if(indexPath.row == 2){
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/us/app/%E5%AD%A6%E9%9C%B8%E6%80%9D%E6%94%BF-%E4%B8%9C%E5%8D%8E%E5%A4%A7%E5%AD%A6/id1247054879?l=zh&ls=1&mt=8"]];
+            SKStoreProductViewController *storeViewContorller = [[SKStoreProductViewController alloc]init];
+            storeViewContorller.delegate=self;
+            [ToastView showProgressBar:@"Loading..."];
+            
+            [storeViewContorller loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier:@"1247054879"}
+                                        completionBlock:^(BOOL result,NSError*error)   {
+                if(error)  {
+                    NSLog(@"error %@ with userInfo %@",error,[error userInfo]);
+                }else{
+                    [self presentViewController:storeViewContorller animated:YES completion:^{
+                        [ToastView dismiss];
+                    }];
+                }
+            }];
+            return;
+            
         }
-    }else if(indexPath.section == 3){
+    }else if(indexPath.section == 4){
         if(indexPath.row == 2){
             [self.navigationController pushViewController:[UpdateInfoViewController controller] animated:YES];
             return;
@@ -129,24 +150,41 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 #pragma mark - UITableView dataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section == 0)    return 2;
-    else if(section == 1)   return 4;
-    else if(section == 2){
-        if([AppUtil isAfterTimeNode])   return 4;
+    if(section == 0)    return 1;
+    else if(section == 1)    return 2;
+    else if(section == 2)   return 4;
+    else if(section == 3){
+        if([AppUtil isAfterAppUpperTimeNode])   return 3;
         else return 2;
     }
-    else if(section == 3)   return 3;
+    else if(section == 4)   return 3;
     return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 5;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SetItemTableViewCell *cell;
     if(indexPath.section == 0){
+        cell = [tableView dequeueReusableCellWithIdentifier:cellSwitchId];
+        if(!cell){
+            cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
+        }
+        [cell updateCell:@"无广告/恢复购买" detailText:nil type:SetItemTypeSwitch iconImageName:@"set_buy"];
+        @weakify(self);
+        [cell setSwitched:![CXUserDefaults instance].hasAd changed:^(BOOL isOpen) {
+            if([CXUserDefaults instance].hasPurchased == NO){
+                [CXUserDefaults instance].hasAd = YES;
+                [weak_self clearAD];
+            }else{
+                [CXUserDefaults instance].hasAd = !isOpen;
+                [ToastView showStatus:@"重启后生效"];
+            }
+        }];
+    }else if(indexPath.section == 1){
         
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellSwitchId];
@@ -171,7 +209,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             }];
         }
         
-    }else if(indexPath.section == 1){
+    }else if(indexPath.section == 2){
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
@@ -196,10 +234,11 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
             YYImageCache *cache = [YYWebImageManager sharedManager].cache;
-            NSString *num = [NSString stringWithFormat:@"%.2lfM",cache.diskCache.totalCost/(1024.0*1024.0)];
+            NSInteger wkNum = [AppUtil getCacheSize];
+            NSString *num = [NSString stringWithFormat:@"%.2lfM",(cache.diskCache.totalCost+wkNum)/(1024.0*1024.0)];
             [cell updateCell:@"清除缓存" detailText:num type:SetItemTypeTextAndArrow iconImageName:@"set_clear"];
         }
-    }else if(indexPath.section == 2){
+    }else if(indexPath.section == 3){
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
             if(!cell){
@@ -217,22 +256,22 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
             }
-            [cell updateCell:@"友情打赏" detailText:nil type:SetItemTypeArrow iconImageName:@"set_smile"];
+            [cell updateCell:@"给我好评" detailText:nil type:SetItemTypeArrow iconImageName:@"set_good"];
         }else{
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellArrowId];
             }
-            [cell updateCell:@"给我好评" detailText:nil type:SetItemTypeArrow iconImageName:@"set_good"];
+            [cell updateCell:@"友情打赏" detailText:nil type:SetItemTypeArrow iconImageName:@"set_smile"];
         }
         
-    }else if(indexPath.section == 3){
+    }else if(indexPath.section == 4){
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellDetailTextId];
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
             }
-            [cell updateCell:@"当前版本" detailText:@"V1.4" type:SetItemTypeDetailText iconImageName:@"set_version"];
+            [cell updateCell:@"当前版本" detailText:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] type:SetItemTypeDetailText iconImageName:@"set_version"];
         }else if(indexPath.row == 1){
             cell = [tableView dequeueReusableCellWithIdentifier:cellDetailTextId];
             if(!cell){
@@ -310,6 +349,8 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     }
     [ToastView showProgressBar:@"正在清理"];
     [cache.diskCache removeAllObjects];
+    [AppUtil cleanCache];
+
 
     nowCahce = cache.diskCache.totalCost;
     if(nowCahce < 0.02){
@@ -443,5 +484,127 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     // 关闭邮件发送视图
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+//去除广告
+- (void)clearAD{
+    if([SKPaymentQueue canMakePayments]){
+        [ToastView showProgressBar:@"连接中..."];
+        [self requestProductData:@"cc.slotus.dhu.ad"];
+    }else{
+        CXLog(@"不允许程序内付费");
+    }
+}
+
+//请求商品
+- (void)requestProductData:(NSString *)type{
+    NSArray *product = [[NSArray alloc] initWithObjects:type, nil];
+    
+    NSSet *nsset = [NSSet setWithArray:product];
+    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:nsset];
+    request.delegate = self;
+    [request start];
+}
+
+//收到产品返回信息
+- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
+    
+    CXLog(@"--------------收到产品反馈消息---------------------");
+    NSArray *product = response.products;
+    if([product count] == 0){
+        CXLog(@"--------------没有商品------------------");
+        [ToastView showStatus:@"购买失败"];
+        return;
+    }
+    
+//    CXLog(@"productID:%@", response.invalidProductIdentifiers);
+    
+    SKProduct *p = nil;
+    for (SKProduct *pro in product) {
+        CXLog(@"%@", [pro description]);
+        CXLog(@"%@", [pro localizedTitle]);
+        CXLog(@"%@", [pro localizedDescription]);
+        CXLog(@"%@", [pro price]);
+        CXLog(@"%@", [pro productIdentifier]);
+        
+        if([pro.productIdentifier isEqualToString:@"cc.slotus.dhu.ad"]){
+            p = pro;
+        }
+    }
+    
+    SKPayment *payment = [SKPayment paymentWithProduct:p];
+    
+    CXLog(@"发送购买请求");
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+}
+
+//请求失败
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
+    NSLog(@"------------------错误-----------------:%@", error);
+    [ToastView dismiss];
+
+}
+
+- (void)requestDidFinish:(SKRequest *)request{
+    NSLog(@"------------反馈信息结束-----------------");
+}
+
+
+//监听购买结果
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transaction{
+    for(SKPaymentTransaction *tran in transaction){
+        switch (tran.transactionState) {
+            case SKPaymentTransactionStatePurchased:{
+                [ToastView showStatus:@"购买成功，重启后生效" delay:0.5];
+                [CXUserDefaults instance].hasAd = NO;
+                [CXUserDefaults instance].hasPurchased = YES;
+                [_tableView reloadRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationFade];
+                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+                break;
+            }
+            case SKPaymentTransactionStatePurchasing:
+                [ToastView dismiss];
+                break;
+            case SKPaymentTransactionStateRestored:{
+                [ToastView showStatus:@"恢复购买，重启后生效" delay:0.5];
+                [CXUserDefaults instance].hasAd = NO;
+                [CXUserDefaults instance].hasPurchased = YES;
+                [_tableView reloadRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationFade];
+                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+                break;
+            }
+            case SKPaymentTransactionStateFailed:{
+                [ToastView showStatus:@"付款失败" delay:0.5];
+                [_tableView reloadRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationFade];
+                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
+                
+                break;
+            }
+            default:{
+                [ToastView dismiss];
+                break;
+            }
+        }
+    }
+}
+
+//交易结束
+- (void)completeTransaction:(SKPaymentTransaction *)transaction{
+    CXLog(@"交易结束");
+    
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+}
+
+
+- (void)dealloc{
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+}
+
+//APP Store评分取消
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController{
+    [self dismissViewControllerAnimated:YES completion:^{
+        CXLog(@"APP Store评分取消");
+    }];
+}
+
 
 @end

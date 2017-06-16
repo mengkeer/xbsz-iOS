@@ -41,6 +41,8 @@
 
 @property (nonatomic, copy) NSString *suit;                 //适合人群
 
+@property (nonatomic, assign) NSInteger applyStatus;         //0,1,2,3,4
+
 @property (nonatomic, strong) CXUser *teacher;                     //该课程的教师
 
 @end

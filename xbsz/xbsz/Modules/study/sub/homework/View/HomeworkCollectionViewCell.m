@@ -7,7 +7,7 @@
 //
 
 #import "HomeworkCollectionViewCell.h"
-#import "Course.h"
+#import "Homework.h"
 
 @interface HomeworkCollectionViewCell ()
 
@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
-@property (nonatomic, strong) UILabel *semesterLabel;
+@property (nonatomic, strong) UILabel *detailLabel;
 
 @end
 
@@ -36,7 +36,7 @@
     
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.titleLabel];
-    [self.contentView addSubview:self.semesterLabel];
+    [self.contentView addSubview:self.detailLabel];
     
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(imageWidth);
@@ -51,7 +51,7 @@
         make.height.mas_equalTo(20);
     }];
     
-    [_semesterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_titleLabel.mas_bottom).mas_offset(-5);
         make.left.right.mas_equalTo(self.contentView);
         make.height.mas_equalTo(20);
@@ -84,24 +84,24 @@
     return _titleLabel;
 }
 
-- (UILabel *)semesterLabel{
-    if(!_semesterLabel){
-        _semesterLabel = [[UILabel alloc] init];
-        _semesterLabel.textColor = CXLightGrayColor;
-        _semesterLabel.font = CXSystemFont(10);
-        _semesterLabel.textAlignment = NSTextAlignmentCenter;
+- (UILabel *)detailLabel{
+    if(!_detailLabel){
+        _detailLabel = [[UILabel alloc] init];
+        _detailLabel.textColor = CXLightGrayColor;
+        _detailLabel.font = CXSystemFont(10);
+        _detailLabel.textAlignment = NSTextAlignmentCenter;
     }
-    return _semesterLabel;
+    return _detailLabel;
 }
 
 
 #pragma mark - public method
 
 - (void)updateCellWithModel:(id)model{
-    Course *course = model;
-    _titleLabel.text = course.title;
-    _semesterLabel.text = course.semester;
-    NSURL *url = [NSURL URLWithString:course.icon];
+    Homework *homework = model;
+    _titleLabel.text = homework.course.title;
+    _detailLabel.text = homework.title;
+    NSURL *url = [NSURL URLWithString:homework.course.icon];
     [_imageView yy_setImageWithURL:url options:0];
 }
 

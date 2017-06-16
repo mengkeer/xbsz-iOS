@@ -9,7 +9,7 @@
 #import "CXNetworkMonitoring.h"
 #import "AFNetworkReachabilityManager.h"
 
-static AFNetworkReachabilityStatus status = -1;
+static AFNetworkReachabilityStatus status = 1;
 
 @interface CXNetworkMonitoring ()
 

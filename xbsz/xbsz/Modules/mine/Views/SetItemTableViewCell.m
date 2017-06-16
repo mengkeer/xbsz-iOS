@@ -200,6 +200,10 @@
     _iSwitch.on = isOpen;
 }
 
+- (void)setSwitchOpend:(BOOL)isOpen{
+    _iSwitch.on = isOpen;
+}
+
 - (void)setHeadImage:(NSString *)imageUrl{
     [_headImageView yy_setImageWithURL:[NSURL URLWithString:imageUrl] placeholder:CXDefaultAvatar];
 }

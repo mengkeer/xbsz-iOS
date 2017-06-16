@@ -102,7 +102,4 @@
     return UIInterfaceOrientationPortrait;
 }
 
-
-
-
 @end

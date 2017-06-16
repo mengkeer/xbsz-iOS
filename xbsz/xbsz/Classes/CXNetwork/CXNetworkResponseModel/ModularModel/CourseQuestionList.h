@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Homework.h"
 
 @interface CourseQuestionList : NSObject
 
 @property (nonatomic, strong) NSMutableArray *questions;
+
+@property (nonatomic, strong) Homework *homework;
 
 @end

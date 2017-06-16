@@ -14,6 +14,9 @@
 
 + (void)setDefaultspreference;
 
+@property (nonatomic, assign) BOOL hasAd;
+@property (nonatomic, assign) BOOL hasPurchased;
+
 @property (nonatomic, assign) BOOL isAudioOpen;
 
 @property (nonatomic, assign) BOOL isShakeOpen;

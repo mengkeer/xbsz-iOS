@@ -22,6 +22,10 @@
                   success:(CXNetworkSuccessBlock)success
                   failure:(CXNetworkFailureBlock)failure;
 
++ (void)applyCourse:(NSString *)courseID
+            success:(CXNetworkSuccessBlock)success
+            failure:(CXNetworkFailureBlock)failure;
+
 + (void)addCourseComment:(NSString *)courseID
                  content:(NSString *)content
                    point:(NSInteger)point
@@ -31,5 +35,14 @@
 + (void)getCourseWare:(NSString *)courseID
               success:(CXNetworkSuccessBlock)success
               failure:(CXNetworkFailureBlock)failure;
+
+
++ (void)getHomeworks:(NSString *)courseID
+                   success:(CXNetworkSuccessBlock)success
+                   failure:(CXNetworkFailureBlock)failure;
+
++ (void)getHomeworkQuestions:(NSString *)exerciseID
+                     success:(CXNetworkSuccessBlock)success
+                     failure:(CXNetworkFailureBlock)failure;
 
 @end

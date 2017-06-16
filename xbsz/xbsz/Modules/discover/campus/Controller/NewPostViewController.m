@@ -226,8 +226,9 @@
     if(!_sharedImageView){
         _sharedImageView = [[YYAnimatedImageView alloc] init];
         _sharedImageView.image = _sharedImage;
-        _sharedImageView.contentMode = UIViewContentModeScaleToFill;
         _sharedImageView.userInteractionEnabled = YES;
+        _sharedImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _sharedImageView.clipsToBounds = YES;
         @weakify(self);
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
             [weak_self changeImage];
@@ -273,6 +274,8 @@
 - (void)clickSend{
     if(![[CXLocalUser instance] isLogin]){
         [ToastView showStatus:@"请先登录"];
+    }else if([[_subjectTextView.text stringByTrim] isEqualToString:@""]){
+        [ToastView showStatus:@"请输入帖子主题"];
     }else{
         [CXNetwork publishNote:_sharedImage isBig:_uploadSwitch.isOn subject:[_subjectTextView.text stringByTrim] location:@"东华大学图书馆"
             success:^(NSObject *obj) {
@@ -298,7 +301,7 @@
 
 - (void)changeImage{
     TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
-    imagePickerVc.allowCrop = YES;
+//    imagePickerVc.allowCrop = YES;
     imagePickerVc.photoWidth = 750;
     imagePickerVc.allowPickingGif = YES;
     imagePickerVc.allowPickingOriginalPhoto = YES;

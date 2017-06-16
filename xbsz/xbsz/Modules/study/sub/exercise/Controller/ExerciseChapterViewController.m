@@ -17,15 +17,23 @@
 #import "SinglePracticeViewController.h"
 #import "MutiPracticeViewController.h"
 
+#import "AppUtil.h"
+
+@import GoogleMobileAds;
+
+
 static NSString *cellID = @"ChapterCellID";
 
-@interface ExerciseChapterViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ExerciseChapterTableViewDelegate>
+@interface ExerciseChapterViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ExerciseChapterTableViewDelegate,GADBannerViewDelegate>
 
 @property (nonatomic, strong) UISegmentedControl *segmentControl;
 
 @property (nonatomic, strong) UIButton *searchBtn;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) GADBannerView *bannerView;
+
 
 @end
 
@@ -34,6 +42,11 @@ static NSString *cellID = @"ChapterCellID";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if(_mode == ExerciseModeMistakes)   [_collectionView reloadData];
+    [self tz_addPopGestureToView:_collectionView];
+    
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[ kGADSimulatorID ];
+    if([AppUtil showAD])     [self.bannerView loadRequest:request];
 }
 
 - (void)viewDidLoad {
@@ -57,7 +70,21 @@ static NSString *cellID = @"ChapterCellID";
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
     
-    [self tz_addPopGestureToView:_collectionView];
+    //添加广告
+    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    self.bannerView.adUnitID = @"ca-app-pub-7139153640152838/2219205900";
+    self.bannerView.rootViewController = self;
+    
+    [self.view addSubview:self.bannerView];
+    [self.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(320);
+        make.height.mas_equalTo(50);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
+    }];
+    
+    self.bannerView.delegate = self;
+    
 }
 
 
@@ -199,6 +226,16 @@ static NSString *cellID = @"ChapterCellID";
 - (void)popFromCurrentViewController{
     [super popFromCurrentViewController];
     [FMDBUtil closeDB];
+}
+
+#pragma mark - 广告代理事件
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    bannerView.hidden = NO;
+}
+
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
 }
 
 @end

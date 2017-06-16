@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CXBaseViewController.h"
 
-@interface CXLaunchViewController : UIViewController
+@interface CXLaunchViewController : CXBaseViewController
 
 //背景图片
 @property (nonatomic,strong) UIImageView *bgImageView;

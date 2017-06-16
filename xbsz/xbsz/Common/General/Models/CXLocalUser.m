@@ -52,6 +52,7 @@ static CXLocalUser *instance = nil;
     instance.avatar = user.avatar;
     instance.nickname = user.nickname;
     instance.truename = user.truename;
+    instance.studentID = user.studentID;
     instance.gender = user.gender;
     instance.email = user.email;
     instance.mobile = user.mobile;
@@ -79,9 +80,10 @@ static CXLocalUser *instance = nil;
 - (void)encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:self.token forKey:@"token"];
     [aCoder encodeObject:self.userID forKey:@"userID"];
+    [aCoder encodeObject:self.studentID forKey:@"studentID"];
     [aCoder encodeObject:self.username forKey:@"username"];
     [aCoder encodeObject:self.nickname forKey:@"nickname"];
-    [aCoder encodeObject:self.truename forKey:@"trueName"];
+    [aCoder encodeObject:self.truename forKey:@"truename"];
     [aCoder encodeObject:self.avatar forKey:@"avatar"];
     [aCoder encodeObject:[NSNumber numberWithInteger:self.gender] forKey:@"gender"];
     [aCoder encodeObject:self.email forKey:@"email"];
@@ -97,6 +99,7 @@ static CXLocalUser *instance = nil;
     if (self = [super init]) {
         self.token = [aDecoder decodeObjectForKey:@"token"];
         self.userID = [aDecoder decodeObjectForKey:@"userID"];
+        self.studentID = [aDecoder decodeObjectForKey:@"studentID"];
         self.username = [aDecoder decodeObjectForKey:@"username"];
         self.nickname = [aDecoder decodeObjectForKey:@"nickname"];
         self.truename = [aDecoder decodeObjectForKey:@"truename"];

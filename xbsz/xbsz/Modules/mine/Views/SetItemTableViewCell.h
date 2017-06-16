@@ -28,6 +28,8 @@ typedef void (^SwitchBlock)(BOOL isOpen);
 
 - (void)setSwitched:(BOOL)isOpen changed:(SwitchBlock)switchBlock;
 
+- (void)setSwitchOpend:(BOOL)isOpen;
+
 //此方法需在setTitle方法后调用
 - (void)setHeadImage:(NSString *)imageUrl;
 

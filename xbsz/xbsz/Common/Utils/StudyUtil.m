@@ -20,13 +20,13 @@
 }
 
 + (QuestionType)getQuestionTypeByString:(NSString *)str{
-    if([str isEqualToString:@"single"]){
+    if([str isEqualToString:@"choice"]){
         return QuestionTypeSingle;
-    }else if([str isEqualToString:@"muti"]){
+    }else if([str isEqualToString:@"choice"]){
         return QuestionTypeMuti;
-    }else if([str isEqualToString:@"judge"]){
+    }else if([str isEqualToString:@"choice"]){
         return QuestionTypeJudge;
-    }else if([str isEqualToString:@"blank"]){
+    }else if([str isEqualToString:@"answer"]){
         return QuestionTypeBlank;
     }else{
         return QuestionTypeUnknown;
@@ -44,6 +44,39 @@
 
 // ccc代表判断  以后要改
 
+//+ (NSArray *)getOptionsByString:(NSString *)optionStr type:(NSString *)typeStr{
+//    
+//    NSMutableArray *ans = [NSMutableArray array];
+//    QuestionType type = [self getQuestionTypeByString:typeStr];
+//    if(type == QuestionTypeJudge){
+//        [ans addObject:@"对"];
+//        [ans addObject:@"错"];
+//        return ans;
+//    }
+//    
+//    if(type != QuestionTypeSingle && type != QuestionTypeMuti)  return ans;
+//    
+//    
+//    NSString *temp = @"";
+//    for (size_t i = 0; i < [optionStr length]; i++) {
+//        unichar ch = [optionStr characterAtIndex:i];
+//        if (ch <= 'F' && ch >= 'A') {
+//            temp = [NSString stringWithFormat:@"%C",ch];
+//            ch = [optionStr characterAtIndex:++i];
+//            while (ch < 'A' || ch > 'F') {
+//                temp = [temp stringByAppendingString:[NSString stringWithFormat:@"%C",ch]];
+//                if (i >= [optionStr length] - 1)
+//                break;
+//                ch = [optionStr characterAtIndex:++i];
+//            }
+//            [ans addObject:[self getSubstring:temp]];
+//            --i;
+//        }
+//        
+//    }
+//    return ans;
+//}
+
 + (NSArray *)getOptionsByString:(NSString *)optionStr type:(NSString *)typeStr{
     
     NSMutableArray *ans = [NSMutableArray array];
@@ -56,24 +89,33 @@
     
     if(type != QuestionTypeSingle && type != QuestionTypeMuti)  return ans;
     
-    
-    NSString *temp = @"";
-    for (size_t i = 0; i < [optionStr length]; i++) {
-        unichar ch = [optionStr characterAtIndex:i];
-        if (ch <= 'F' && ch >= 'A') {
-            temp = [NSString stringWithFormat:@"%C",ch];
-            ch = [optionStr characterAtIndex:++i];
-            while (ch < 'A' || ch > 'F') {
-                temp = [temp stringByAppendingString:[NSString stringWithFormat:@"%C",ch]];
-                if (i >= [optionStr length] - 1)
-                break;
-                ch = [optionStr characterAtIndex:++i];
-            }
-            [ans addObject:[self getSubstring:temp]];
-            --i;
-        }
-        
+    NSArray *arr = [optionStr componentsSeparatedByString:@"￥"] ;
+    for(NSInteger i = 0;i<[arr count]-1;i++){
+        NSString *option = [arr objectAtIndex:i];
+        [ans addObject:[self getSubstring:[option substringFromIndex:1]]];
     }
+    
+    
+//    NSString *temp = @"";
+//    unichar lastSymbol = 'A';
+//    for (size_t i = 0; i < [optionStr length]; i++) {
+//        unichar ch = [optionStr characterAtIndex:i];
+//        if (ch <= 'F' && ch >= 'A' && ch == lastSymbol) {
+//            temp = [NSString stringWithFormat:@"%C",ch];
+//            ch = [optionStr characterAtIndex:++i];
+//            while (ch != lastSymbol + 1) {
+//                temp = [temp stringByAppendingString:[NSString stringWithFormat:@"%C",ch]];
+//                if (i >= [optionStr length] - 1)
+//                    break;
+//                ch = [optionStr characterAtIndex:++i];
+//            }
+//            [ans addObject:[self getSubstring:temp]];
+//            lastSymbol = lastSymbol + 1;
+//            --i;
+//        }
+//        
+//    }
+    
     return ans;
 }
 
@@ -100,6 +142,10 @@
     }
     //①②③④⑤...
     if(ch == 0x2460 || ch == 0x2461 || ch == 0x2462 || ch == 0x2463 || ch == 0x2464 || ch == 0x2465 || ch == 0x2466){
+        return YES;
+    }
+    
+    if((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')){
         return YES;
     }
     

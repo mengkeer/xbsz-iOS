@@ -11,9 +11,10 @@
 
 @implementation HomeworkList
 
+
 + (NSDictionary *)modelContainerPropertyGenericClass{
     return @{
-             @"homeworks":Homework.class
+             @"exercises":Homework.class
         };
 }
 

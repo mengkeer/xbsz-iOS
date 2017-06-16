@@ -30,7 +30,14 @@
 #define CXGetCoursesUrl     @"http://www.slotus.cc/common-api/getCourses"
 #define CXGetCourseCommentUrl     @"http://www.slotus.cc/common-api/getCourseComment"
 #define CXAddCourseCommentUrl   @"http://www.slotus.cc/limit-api/addCourseComment"
+#define CXApplyCourseUrl   @"http://www.slotus.cc/limit-api/applyCourse"
 #define CXGetCourseWareUrl      @"http://www.slotus.cc/common-api/getCourseware"
+
+#define CXGetHomeworksUrl   @"http://www.slotus.cc/limit-api/getExerciseList"
+#define CXGetHomeworkQuestionssUrl   @"http://www.slotus.cc/limit-api/getExercise"
+
+
+
 
 
 //校园动态
@@ -53,10 +60,13 @@
 #define  JWURLMyScore                 @"http://wxserver.dhu.edu.cn/msmis/course.do?method=getScore"
 #define  JWURLMyScorePoint                  @"http://wxserver.dhu.edu.cn/msmis/studentMsg.do?method=scorePoint"
 
-#define  JWURLMyBookInfo                           @"http://wxserver.dhu.edu.cn/msmis/mlMag.do?method=showLibraryUserInfo"
-#define    JWURLMyTuition                                 @"http://wxserver.dhu.edu.cn/msmis/wd_mobile.do?method=tuitionQuery"
+#define  JWURLMyBookInfo               @"http://wxserver.dhu.edu.cn/msmis/mlMag.do?method=showLibraryUserInfo"
+#define    JWURLMyTuition                @"http://wxserver.dhu.edu.cn/msmis/wd_mobile.do?method=tuitionQuery"
+#define JWURLMySchedule                  @"http://wxserver.dhu.edu.cn/msmis/wd_mobile.do?method=taskCalendar"
 
 //校园应用
+#define JWURLDHUCalendar          @"http://wxserver.dhu.edu.cn/msmis/wd_mobile.do?method=dhuCalendar"
+
 #define  JWURLStudentService    @"http://dhuservice.dhu.edu.cn/sscwp_app/login.do?method=index&iportal.uxid=131340126"
 #define  JWURLSchoolScenery      @"http://wxserver.dhu.edu.cn/msmis/wd_mobile.do?method=schoolView"
 #define  JWURLPhoneYellowPages                    @"http://wxserver.dhu.edu.cn/msmis/queryMag.do?method=dhhyShow"
@@ -64,6 +74,7 @@
 #define   JWURLEmployment             @"http://wxserver.dhu.edu.cn/msmis/wd_mobile.do?method=imain"
 #define   JWURLBookFind              @"http://wxserver.dhu.edu.cn/msmis/mlMag.do?method=show"
 #define   JWURLFreeClassroom         @"http://wxserver.dhu.edu.cn/msmis/dhu/mobile/kyjs/kyjs.jsp"
+#define   JWURLAlumniAssociation    @"http://alumni.dhu.edu.cn/"
 
 
 typedef NS_ENUM(NSUInteger,CXResponseCode){

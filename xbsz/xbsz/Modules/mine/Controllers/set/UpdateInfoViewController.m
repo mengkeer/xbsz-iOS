@@ -97,7 +97,7 @@
         _explainLabel.textAlignment = NSTextAlignmentCenter;
         _explainLabel.textColor = CXBlackColor2;
         _explainLabel.numberOfLines = 0;
-        NSString *text = @"更新时间:2017-05-22\n1.添加更多设置选项，如主题，背景颜色等\n2.新增思政做题功能3.修复若干bug\n注意:更新日志以App Store为准";
+        NSString *text = @"更新时间:2017-06-10\n\n1.更新题库为2017上学期思政题库\n2.修复若干bug\n3.如果有建议或建议，请发送邮件至1812422367@qq.com";
         
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];

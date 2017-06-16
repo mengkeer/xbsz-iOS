@@ -24,7 +24,7 @@
 //@property (nonatomic, strong) UILabel *locationLabel;         //暂时不显示地址  后续版本考虑添加
 
 //用户分享的图片
-@property (nonatomic, strong) YYAnimatedImageView *sharedImageView;
+//@property (nonatomic, strong) YYAnimatedImageView *sharedImageView;
 
 @property (nonatomic, strong) UIView *lineView;     //工具栏下的分割线
 
@@ -222,6 +222,12 @@
     if(!_sharedImageView){
         _sharedImageView = [[YYAnimatedImageView alloc] init];
         _sharedImageView.userInteractionEnabled = YES;
+        _sharedImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _sharedImageView.clipsToBounds = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+            _actionBlock(self,_note,CellActionTypeSourceImage);
+        }];
+        [_sharedImageView addGestureRecognizer:tap];
     }
     return _sharedImageView;
 }
@@ -291,7 +297,7 @@
         _moreReplyLabel.textAlignment = NSTextAlignmentLeft;
         _moreReplyLabel.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-            _actionBlock(_note,CellActionTypeComment);
+            _actionBlock(self,_note,CellActionTypeComment);
         }];
         [_moreReplyLabel addGestureRecognizer:tap];
     }
@@ -400,7 +406,7 @@
 #pragma mark private method
 
 - (void)gotoUserInfo{
-    if(_actionBlock)    _actionBlock(_note,CellActionTypeUserInfo);
+    if(_actionBlock)    _actionBlock(self,_note,CellActionTypeUserInfo);
 }
 
 - (void)addSeeMoreButton{
@@ -447,29 +453,31 @@
     [self autoShowOrHide];                          //根据是否有主题 与是否有评论自动隐藏与显示
     if(_note.subject != nil && [_note.subject isNotBlank])          [self autoWordsLabel];                  //更新帖子主题
     
-    
-    CGFloat height = model.height;
-    CGFloat width = model.width;
-//    CXLog(@"高度为：%d",(int)(CXScreenWidth * height/width));
-    
+    NSInteger imageWidth = model.width;
+    NSInteger imageHeight = model.height;
+  
     [_sharedImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-          make.height.mas_equalTo(CXScreenWidth * height/width).priority(750);
+        if(imageWidth > imageHeight){
+            make.height.mas_equalTo(CXScreenWidth * imageHeight/imageWidth).priority(750);
+        }else{
+            make.height.mas_equalTo(CXScreenWidth).priority(750);
+        }
     }];
     
     [self.toolBarView updateUIByStatus:liked action:^(CommentToolBarView *view, ToolBarActionType actionType) {
         switch (actionType) {
             case ToolBarClickTypeLike:{
-                _actionBlock(model,CellActionTypeLike);
+                _actionBlock(self,model,CellActionTypeLike);
                 break;
             }
             case ToolBarClickTypeReply:
-                _actionBlock(model,CellActionTypeReply);
+                _actionBlock(self,model,CellActionTypeReply);
                 break;
             case ToolBarClickTypeShare:
-                 _actionBlock(model,CellActionTypeShare);
+                 _actionBlock(self,model,CellActionTypeShare);
                 break;
             case ToolBarClickTypeMore:
-                _actionBlock(model,CellActionTypeMore);
+                _actionBlock(self,model,CellActionTypeMore);
                 break;
             default:
                 break;

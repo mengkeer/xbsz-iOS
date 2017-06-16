@@ -14,10 +14,10 @@
                    success:(CXNetworkSuccessBlock)success
                    failure:(CXNetworkFailureBlock)failure{
     NSDictionary *parameters = nil;
-    if(status >= 0){
-         parameters = @{@"status": [NSString stringWithFormat:@"%ld",status]};
+    if([CXLocalUser instance].isLogin){
+        parameters = @{@"token":[CXLocalUser instance].token};
     }
-    
+
     [self invokePostRequest:CXGetCoursesUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:(NSDictionary *)responseObject];
         CallbackRsp(rsp);
@@ -42,7 +42,21 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         InvokeFailure(error);
     }];
+}
+
++ (void)applyCourse:(NSString *)courseID
+            success:(CXNetworkSuccessBlock)success
+            failure:(CXNetworkFailureBlock)failure{
+    NSDictionary *parameters = nil;
     
+    parameters = @{@"courseId": courseID,@"token":[CXLocalUser instance].token};
+    
+    [self invokePostRequest:CXApplyCourseUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:(NSDictionary *)responseObject];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        InvokeFailure(error);
+    }];
 }
 
 + (void)addCourseComment:(NSString *)courseID
@@ -74,4 +88,35 @@
         InvokeFailure(error);
     }];
 }
+
++ (void)getHomeworks:(NSString *)courseID
+             success:(CXNetworkSuccessBlock)success
+             failure:(CXNetworkFailureBlock)failure{
+    NSDictionary *parameters = nil;
+    if(courseID == nil){
+        parameters = @{@"token":[CXLocalUser instance].token};
+    }else{
+        parameters = @{@"courseId":courseID,@"token":[CXLocalUser instance].token};
+    }
+    [self invokePostRequest:CXGetHomeworksUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:(NSDictionary *)responseObject];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        InvokeFailure(error);
+    }];
+}
+
++ (void)getHomeworkQuestions:(NSString *)exerciseID
+                     success:(CXNetworkSuccessBlock)success
+                     failure:(CXNetworkFailureBlock)failure{
+    NSDictionary *parameters = @{@"exerciseId":exerciseID,@"token":[CXLocalUser instance].token};
+    
+    [self invokePostRequest:CXGetHomeworkQuestionssUrl parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+        CXBaseResponseModel *rsp = [CXBaseResponseModel yy_modelWithDictionary:(NSDictionary *)responseObject];
+        CallbackRsp(rsp);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        InvokeFailure(error);
+    }];
+}
+
 @end

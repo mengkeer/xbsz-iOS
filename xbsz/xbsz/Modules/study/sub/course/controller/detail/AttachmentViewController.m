@@ -41,6 +41,7 @@
  
     _webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 64, CXScreenWidth, CXScreenHeight-64)];
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:_path]];
+    request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     [_webView loadRequest:request];
     _webView.navigationDelegate = self;
     _webView.scrollView.delegate = self;
@@ -67,6 +68,9 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
         CGFloat newProgress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
+        if(newProgress > 0){
+            [ToastView dismiss];
+        }
         if (newProgress == 1) {
             [self.progressView setProgress:newProgress animated:YES];
             // 之后0.3秒延迟隐藏
@@ -114,17 +118,17 @@
 
 // 内容开始返回时调用
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
-   
+    
 }
 
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
-    [self.progressView setProgress:0.1 animated:YES];
+    [ToastView showProgressBar:@"Loading..."];
 }
 
 // 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation {
-  
+    [ToastView dismiss];
 }
 
 @end

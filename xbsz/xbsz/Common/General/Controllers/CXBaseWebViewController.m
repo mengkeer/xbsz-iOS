@@ -26,6 +26,12 @@
 
 @implementation CXBaseWebViewController
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [ToastView dismiss];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.customNavBarView.backgroundColor = CXBackGroundColor;
@@ -91,7 +97,8 @@
         [_closeBtn setImage:[UIImage imageNamed:@"common_close"] forState:UIControlStateNormal];
         _closeBtn.hidden = YES;
         _closeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-        _closeBtn.frame = CGRectMake(30, 20, 44, 44);
+        _closeBtn.frame = CGRectMake(30, 20, 34, 44);
+        _closeBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 5, 10, 5);
         [_closeBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeBtn;
@@ -133,7 +140,7 @@
             [ToastView showSuccessWithStaus:@"QQ分享"];
             break;
         case ShareToolBarActionTyepQzone:
-            [ToastView showSuccessWithStaus:@"QQ控件分享"];
+            [ToastView showSuccessWithStaus:@"QQ空间分享"];
             break;
         case ShareToolBarActionTyepWeibo:
             [ToastView showSuccessWithStaus:@"微博分享"];
@@ -155,6 +162,7 @@
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
         CGFloat newProgress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
 //        CXLog(@"%lf",newProgress);
+        if(newProgress > 0)     [ToastView dismiss];
         if (newProgress == 1) {
             [self.progressView setProgress:newProgress animated:YES];
             // 之后0.3秒延迟隐藏
@@ -187,6 +195,7 @@
 // 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     if([AFNetworkReachabilityManager sharedManager].reachable){
+        [ToastView showProgressBar:@"Loading..."];
         self.tipsView.hidden = YES;
     }else{
         self.tipsView.hidden = NO;

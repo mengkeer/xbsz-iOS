@@ -61,16 +61,13 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (void)loadData{
     
-    
     [CXNetwork getCoursesByStatus:-1 success:^(NSObject *obj) {
         _courseList = [CourseList yy_modelWithDictionary:(NSDictionary *)obj];
         [_collectionView reloadData];
     } failure:^(NSError *error) {
 //        [ToastView showStatus:@"获取课程失败"];
     }];
-    
-    [_collectionView reloadData];
-    
+        
 }
 
 

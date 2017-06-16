@@ -90,7 +90,7 @@ static id _instance = nil;
 
 +(NSError*) netWorkErrorWithCode:(NSInteger) code message:(NSString*) message{
     
-    if(code == 502){
+    if(code == CXResponseCodeTokenIsExpired){
         [[CXLocalUser instance] reset];
     }
     NSError *newError = [NSError errorWithDomain:@"CXNetWorkResponseError" code:code userInfo:[NSDictionary dictionaryWithObject:message?message:@"" forKey:NSLocalizedDescriptionKey]];

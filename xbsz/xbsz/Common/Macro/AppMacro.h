@@ -31,8 +31,10 @@
 
 
 //启动次数
-#define AppLaunchTimes @"AppLaunchTimes"
-#define AppLastLaunchTime @"AppLastLaunchTime"
+#define APPFirstLaunchTime @"APPFirstLaunchTime"
+
+//题库修改时间
+#define TikuModTime    @"TikuModTime"
 
 
 //常用单例类

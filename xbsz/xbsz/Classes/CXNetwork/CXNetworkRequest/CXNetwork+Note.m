@@ -26,7 +26,7 @@
     CGSize size = image.size;
     
     NSString *width = [NSString stringWithFormat:@"%lf",size.width];
-    NSString *height = [NSString stringWithFormat:@"%lf",size.width];
+    NSString *height = [NSString stringWithFormat:@"%lf",size.height];
 
     
     NSDictionary *parameters = @{@"token":[CXLocalUser instance].token,@"subject":subject,@"location":location,@"width":width,@"height":height};

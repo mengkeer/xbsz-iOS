@@ -14,6 +14,7 @@
 #import "FMDBUtil.h"
 #import "ExerciseProgressViewController.h"
 #import "IQKeyboardManager.h"
+#import "CXNetwork+Course.h"
 
 static NSString *cellID = @"CourseQuestionCellID";
 static NSString *blankCellID = @"BlankQuestionCellID";
@@ -90,12 +91,24 @@ static NSInteger bottomHeight = 45;
 }
 
 - (void)loadData{
-    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"questions.json"];
-    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
-    
-    _questionList = [CourseQuestionList yy_modelWithJSON:jsonStr];
-    
-    _questions = _questionList.questions;
+    [ToastView showProgressBar:@"获取题目中..."];
+
+    [CXNetwork getHomeworkQuestions:_homework.exerciseID success:^(NSObject *obj) {
+        _questionList = [CourseQuestionList yy_modelWithDictionary:(NSDictionary *)obj];
+        
+        [ToastView showStatus:@"获取成功" delay:1];
+        _questions = _questionList.questions;
+        
+        _index = 0;
+        [self updatePreAndNextLabel:_index];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_collectionView reloadData];
+        });
+        
+    } failure:^(NSError *error) {
+        [ToastView showStatus:@"获取失败" delay:1];
+    }];
 }
 
 - (void)addBottomView{

@@ -8,7 +8,7 @@
 
 #import "CXPushViewController.h"
 
-@interface NewPostViewController : UIViewController
+@interface NewPostViewController : CXBaseViewController
 
 @property (nonatomic, strong) UIImage *sharedImage;
 

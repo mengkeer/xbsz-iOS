@@ -1,3 +1,4 @@
+
 //
 //  CXNetwork+download.m
 //  xbsz
@@ -7,6 +8,8 @@
 //
 
 #import "DownloadManager.h"
+#import "CXNetwork.h"
+#import "CXNetworkMonitoring.h"
 
 static id _manager = nil;
 
@@ -48,6 +51,19 @@ static id _manager = nil;
 
 - (void)downloadTikuFromServer{
     
+    //删除源文件
+    // 取得沙盒目录
+    NSString *localPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // 要检查的文件目录
+    NSString *filePath = [localPath  stringByAppendingPathComponent:@"tiku.db"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:filePath]) {
+        NSError *err = nil;
+        [fileManager removeItemAtPath:filePath error:&err];
+//        if(err != nil)  return;
+    }
+    
+    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
@@ -59,9 +75,17 @@ static id _manager = nil;
     } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         NSString *localPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
         NSString *path = [localPath stringByAppendingPathComponent:response.suggestedFilename];
+        //保存修改时间
+        NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
+        
+        NSDate *fileModDate = [fields valueForKey:@"Last-Modified"];
+        
+        [CXStandardUserDefaults setObject:fileModDate forKey:TikuModTime ];
+        
+        
         return [NSURL fileURLWithPath:path];
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-        CXLog(@"题库下载完成");
+        [ToastView showStatus:@"题库更新完成" delay:2];
     }];
     [_downloadTask resume];
 }
@@ -76,6 +100,40 @@ static id _manager = nil;
         return YES;
     }else {
         return NO;
+    }
+}
+
++ (BOOL)isTikuExpired{
+    
+    if([CXNetworkMonitoring canReachable] == NO)    return NO;
+    
+    // 取得沙盒目录
+    NSString *localPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // 要检查的文件目录
+    NSString *filePath = [localPath  stringByAppendingPathComponent:@"tiku.db"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:filePath]) {
+        
+        NSURL *url = [NSURL URLWithString:CXTiKuUrl];
+        // 询问服务器是否有修改
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        [request setHTTPMethod:@"HEAD"];
+        NSHTTPURLResponse *response;
+        NSError *error = nil;
+        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        if ([response respondsToSelector:@selector(allHeaderFields)] && error == nil) {
+            NSDate *nowModTime = [[response allHeaderFields] objectForKey:@"Last-Modified"];
+            NSDate *lastModTime = (NSDate *)[CXStandardUserDefaults objectForKey:TikuModTime];
+            if(lastModTime == nil || [lastModTime compare:nowModTime] == NSOrderedAscending){
+                return YES;
+            }else{
+                return NO;
+            }
+        }else{
+            return NO;
+        }
+    }else {
+        return YES;
     }
 }
 

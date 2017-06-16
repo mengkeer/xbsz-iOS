@@ -166,7 +166,7 @@
         _authorLabel.font = CXSystemFont(13);
         _authorLabel.textAlignment = NSTextAlignmentCenter;
         _authorLabel.textColor = CXBlackColor2;
-        _authorLabel.text = @"by 东华大学信安1301班·陈鑫";
+        _authorLabel.text = @"by 东华大学信安1301班·么么哒";
     }
     return _authorLabel;
 }

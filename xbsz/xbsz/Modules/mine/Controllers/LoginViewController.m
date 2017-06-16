@@ -164,64 +164,64 @@
     [self.view layoutIfNeeded];
     
     
-    CGFloat baseOriginY = CXScreenHeight-(CXScreenHeight-_registerLabel.bottom)/2-40;
+//    CGFloat baseOriginY = CXScreenHeight-(CXScreenHeight-_registerLabel.bottom)/2-40;
     
     
     UILabel *socialLoginLabel = [[UILabel alloc] init];
     socialLoginLabel.text = @"社交账号直接登录";
     socialLoginLabel.textColor = CXLightGrayColor;
     socialLoginLabel.font = CXSystemFont(13);
-    [self.view addSubview:socialLoginLabel];
+//    [self.view addSubview:socialLoginLabel];        //暂时去除社交账号登录
     
-    [socialLoginLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.mas_equalTo(self.view.mas_centerX);
-        make.top.mas_equalTo(baseOriginY);
-        make.height.mas_equalTo(13);
-    }];
+//    [socialLoginLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.mas_equalTo(self.view.mas_centerX);
+//        make.top.mas_equalTo(baseOriginY);
+//        make.height.mas_equalTo(13);
+//    }];
     
     UIView *leftLineView = [[UIView alloc] init];
     leftLineView.backgroundColor = CXHexAlphaColor(0x000000, 0.2);
-    [self.view addSubview:leftLineView];
-    [leftLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(1/CXMainScale);
-        make.right.mas_equalTo(socialLoginLabel.mas_left).mas_offset(-8);
-        make.width.mas_equalTo(60);
-        make.centerY.mas_equalTo(socialLoginLabel.mas_centerY);
-    }];
+//    [self.view addSubview:leftLineView];        //暂时去除社交账号登录
+//    [leftLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(1/CXMainScale);
+//        make.right.mas_equalTo(socialLoginLabel.mas_left).mas_offset(-8);
+//        make.width.mas_equalTo(60);
+//        make.centerY.mas_equalTo(socialLoginLabel.mas_centerY);
+//    }];
     
     UIView *rightLineView = [[UIView alloc] init];
     rightLineView.backgroundColor = CXHexAlphaColor(0x000000, 0.2);
-    [self.view addSubview:rightLineView];
-    [rightLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(1/CXMainScale);
-        make.left.mas_equalTo(socialLoginLabel.mas_right).mas_offset(8);
-        make.width.mas_equalTo(60);
-        make.centerY.mas_equalTo(socialLoginLabel.mas_centerY);
-    }];
+//    [self.view addSubview:rightLineView];       //暂时去除社交账号登录
+//    [rightLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(1/CXMainScale);
+//        make.left.mas_equalTo(socialLoginLabel.mas_right).mas_offset(8);
+//        make.width.mas_equalTo(60);
+//        make.centerY.mas_equalTo(socialLoginLabel.mas_centerY);
+//    }];
     
+    //暂时去除第三方登录
+//    [self.view addSubview:self.loginWechat];
+//    [self.view addSubview:self.loginQQ];
+//    [self.view addSubview:self.loginWeibo];
     
-    [self.view addSubview:self.loginWechat];
-    [self.view addSubview:self.loginQQ];
-    [self.view addSubview:self.loginWeibo];
-    
-    
-    [_loginWechat mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(socialLoginLabel.mas_bottom).mas_offset(25);
-        make.centerX.mas_equalTo(self.view.mas_centerX);
-        make.width.and.height.mas_equalTo(90);
-    }];
-    
-    [_loginQQ mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(_loginWechat.mas_left);
-        make.centerY.mas_equalTo(_loginWechat.mas_centerY);
-        make.width.height.mas_equalTo(90);
-    }];
-    
-    [_loginWeibo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(_loginWechat.mas_right);
-        make.width.height.mas_equalTo(90);
-        make.centerY.mas_equalTo(_loginWechat.mas_centerY);
-    }];
+//    
+//    [_loginWechat mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(socialLoginLabel.mas_bottom).mas_offset(25);
+//        make.centerX.mas_equalTo(self.view.mas_centerX);
+//        make.width.and.height.mas_equalTo(90);
+//    }];
+//    
+//    [_loginQQ mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(_loginWechat.mas_left);
+//        make.centerY.mas_equalTo(_loginWechat.mas_centerY);
+//        make.width.height.mas_equalTo(90);
+//    }];
+//    
+//    [_loginWeibo mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(_loginWechat.mas_right);
+//        make.width.height.mas_equalTo(90);
+//        make.centerY.mas_equalTo(_loginWechat.mas_centerY);
+//    }];
     
     
     
@@ -257,8 +257,9 @@
     if(!_loginTypeLabel){
         _loginTypeLabel = [[UILabel alloc] init];
         _loginTypeLabel.font = CXSystemFont(12);
-        _loginTypeLabel.text = @"上次登录方式:QQ授权登录";
+        _loginTypeLabel.text = @"上次登录方式:账号密码登录";
         _loginTypeLabel.textColor = CXHexColor(0xf16c4d);
+        _loginTypeLabel.hidden = YES;
     }
     return _loginTypeLabel;
 }

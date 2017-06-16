@@ -11,8 +11,13 @@
 #import "HomeworkViewController.h"
 #import "ExerciseViewController.h"
 #import "YZDisplayTitleLabel.h"
+#import "AppUtil.h"
 
-@interface CXStudyViewController ()
+@import GoogleMobileAds;
+
+@interface CXStudyViewController ()<GADBannerViewDelegate>
+
+@property (nonatomic, strong) GADBannerView *bannerView;
 
 @end
 
@@ -23,6 +28,10 @@
 //    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
     [self.navigationController.navigationBar setHidden:YES];        //词条语句可控制tarbar透明
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[ kGADSimulatorID ];
+    if([AppUtil showAD])    [self.bannerView loadRequest:request];
 }
 
 - (void)autoTheme{
@@ -103,6 +112,22 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(autoTheme) name:NotificationThemeChanged object:nil];
     
     self.selectIndex = 0;
+    
+    
+    //添加广告
+    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    self.bannerView.adUnitID = @"ca-app-pub-7139153640152838/2557283100";
+    self.bannerView.rootViewController = self;
+    
+    [self.view addSubview:self.bannerView];
+    [self.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(320);
+        make.height.mas_equalTo(50);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.bottom.mas_equalTo(self.view.mas_bottom).mas_offset(-CXTabbarHeight);
+    }];
+
+    self.bannerView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,15 +144,15 @@
 - (void)setUpAllViewController
 {
     
-    //课程
+//    课程
     CourseViewController  *vc1 = [CourseViewController controller];
     vc1.title = @"课程";
     [self addChildViewController:vc1];
     
     //练习
-    HomeworkViewController  *vc2 = [HomeworkViewController controller];
-    vc2.title = @"练习";
-    [self addChildViewController:vc2];
+//    HomeworkViewController  *vc2 = [HomeworkViewController controller];
+//    vc2.title = @"练习";
+//    [self addChildViewController:vc2];
     
     //题库
     ExerciseViewController *vc3 = [ExerciseViewController controller];
@@ -135,4 +160,15 @@
     [self addChildViewController:vc3];
 
 }
+
+#pragma mark - 广告代理事件
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    bannerView.hidden = NO;
+}
+
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
+}
+
 @end

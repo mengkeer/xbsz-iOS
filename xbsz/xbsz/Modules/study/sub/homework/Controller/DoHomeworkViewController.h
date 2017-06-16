@@ -7,11 +7,14 @@
 //
 
 #import "CXWhitePushViewController.h"
+#import "Homework.h"
 
 @interface DoHomeworkViewController : CXWhitePushViewController
 
 @property (nonatomic, assign) BOOL hasRightAnswer;
 
 @property (nonatomic, assign) BOOL hasPracticed;
+
+@property (nonatomic, strong) Homework *homework;
 
 @end

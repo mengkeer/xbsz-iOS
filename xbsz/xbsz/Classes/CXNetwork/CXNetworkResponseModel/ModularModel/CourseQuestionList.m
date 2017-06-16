@@ -11,6 +11,11 @@
 
 @implementation CourseQuestionList
 
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"homework":@"exercise"};
+}
+
+
 + (NSDictionary *)modelContainerPropertyGenericClass{
     return @{
              @"questions":CourseQuestion.class

@@ -8,27 +8,50 @@
 
 #import "CXLaunchViewController.h"
 #import "CXTabBarController.h"
+#import "DownloadManager.h"
+#import "CXNetworkMonitoring.h"
+
+#import "AppUtil.h"
+
+@import GoogleMobileAds;
+
+
+
+@interface CXLaunchViewController () <GADInterstitialDelegate>
+
+@property(nonatomic, strong) GADInterstitial *interstitial;
+
+@end
 
 @implementation CXLaunchViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
 
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self createUI];
+    
+    self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-7139153640152838/7024508708"];
+    self.interstitial.delegate = self;
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on test devices.
+    request.testDevices =   @[ kGADSimulatorID ];
+    [self.interstitial loadRequest:request];
 }
 
 - (void)createUI{
-    
-//    self.bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"launchBg"]];
-//    self.bgImageView.frame = self.view.frame;
-//    [self.view addSubview:self.bgImageView];
-//    self.view.backgroundColor = CXWhiteColor;
-//
     UIStoryboard *board = [UIStoryboard storyboardWithName: @"LaunchScreen" bundle: nil];
     
     UIViewController *vc = [board instantiateViewControllerWithIdentifier: @"LaunchScreen"];
+    [self addChildViewController:vc];
     [self.view addSubview:vc.view];
-    
+    [vc.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.mas_equalTo(self.view);
+    }];
     
     self.splashImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bilibili_splash_default"]];
     self.splashImageView.hidden = YES;
@@ -41,36 +64,22 @@
         make.centerY.mas_equalTo(self.view.mas_centerY);
     }];
     
-    NSString *launchTimes = [CXStandardUserDefaults objectForKey:AppLaunchTimes];
+    NSString *launchTimes = [CXStandardUserDefaults objectForKey:APPFirstLaunchTime];
     
-    //App不是第一次启动
-    if([launchTimes isNotBlank]){
-        
-        //以背景图片加载 如果有的话  现在暂时取消  以动画形式加载
-        @weakify(self);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self launchWithAnimate];
-        });
-        
-    }else{
-        //App第一次启动
-        @weakify(self);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self launchWithAnimate];
-        });
-        
-        /**
-         *  动画加载之后如果有网要进行网络请求缓存图片，
-         *  如果没有网络那么不必开启计数器，因此计数器要放在网络请求成功之后开启
-         */
-        
-        if ([YYReachability reachability].status != YYReachabilityStatusNone) { // 有网状态
+
+    @weakify(self);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        @strongify(self);
+        [self launchWithAnimate];
+    });
+    //第一次启动应用
+    if(![launchTimes isNotBlank]){
+        if ([CXNetworkMonitoring canReachable] == YES) { // 有网状态
             [self loadLaunchDataWhenAppFirstOpen];
         }
         
     }
+        
     
 }
 
@@ -87,67 +96,54 @@
     
     
     @weakify(self);
-    [UIView animateWithDuration:1.5f delay:0.5f usingSpringWithDamping:0.2f initialSpringVelocity:8.0f options:0 animations:^{
+    [UIView animateWithDuration:1.5f delay:1.0f usingSpringWithDamping:0.2f initialSpringVelocity:8.0f options:0 animations:^{
         @strongify(self);
         [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         // 切换根控制器
+        NSString *launchTime  = [CXStandardUserDefaults objectForKey:APPFirstLaunchTime];
+        if(launchTime == nil)   [CXStandardUserDefaults setObject:[[NSDate date] stringWithFormat:@"yyyy-MM-dd HH-mm-ss"]  forKey:APPFirstLaunchTime];
         
-        CATransition *anim = [CATransition animation];
+        //App不是第一次启动
+        if([launchTime isNotBlank]){
+            if ([self.interstitial isReady] && [AppUtil showAD]) {
+                [self.interstitial presentFromRootViewController:self];
+            }else{
+                [self gotoRootViewController];
+            }
+        }else{
+            [self gotoRootViewController];
+        }
+            
+      
         
-        anim.type = @"rippleEffect";
-        
-        anim.duration = 1.0f;
-        
-        [CXApplication.keyWindow.layer addAnimation:anim forKey:nil];
-        CXApplication.keyWindow.rootViewController = [CXTabBarController controller];
-//        [[UIApplication sharedApplication].keyWindow sendSubviewToBack:[UIApplication sharedApplication].keyWindow.rootViewController.view];
-//
+//      [[UIApplication sharedApplication].keyWindow sendSubviewToBack:[UIApplication sharedApplication].keyWindow.rootViewController.view];
+
     }];
 
 }
 
 - (void)loadLaunchDataWhenAppFirstOpen{
-    
-    
+    if(![DownloadManager isTikuExists]){
+        [[DownloadManager manager] downloadTikuFromServer];
+    }
 }
 
+- (void)gotoRootViewController{
+    CATransition *anim = [CATransition animation];
+    
+    anim.type = @"rippleEffect";
+    
+    anim.duration = 1.0f;
+    
+    [CXApplication.keyWindow.layer addAnimation:anim forKey:nil];
+    CXApplication.keyWindow.rootViewController = [CXTabBarController controller];
+}
+
+
+#pragma mark  - 广告代理事件
+
+- (void)interstitialWillDismissScreen:(GADInterstitial *)ad {
+    [self gotoRootViewController];
+}
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

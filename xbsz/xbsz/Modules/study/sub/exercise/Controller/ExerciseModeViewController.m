@@ -12,20 +12,34 @@
 #import "ExerciseChapterViewController.h"
 #import "ExamViewController.h"
 
+#import "AppUtil.h"
+
+@import GoogleMobileAds;
+
 static NSInteger cellWidth = 80;
 static NSInteger cellHeight = 110;
 static NSString *cellID = @"ExerciseModeCollectionViewCell";
 static NSInteger numberOfItems = 3;
 
-@interface ExerciseModeViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface ExerciseModeViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,GADBannerViewDelegate>
 
 @property (nonatomic, strong) UIButton *searchBtn;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
+
+@property (nonatomic, strong) GADBannerView *bannerView;
+
 @end
 
 @implementation ExerciseModeViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[ kGADSimulatorID ];
+    if([AppUtil showAD])     [self.bannerView loadRequest:request];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,6 +55,22 @@ static NSInteger numberOfItems = 3;
         make.top.mas_equalTo(self.view.mas_top).mas_offset(64);
         make.bottom.mas_equalTo(self.view.mas_bottom);
     }];
+    
+    //添加广告
+    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    self.bannerView.adUnitID = @"ca-app-pub-7139153640152838/9742472707";
+    self.bannerView.rootViewController = self;
+    
+    [self.view addSubview:self.bannerView];
+    [self.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(320);
+        make.height.mas_equalTo(50);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
+    }];
+
+    
+    self.bannerView.delegate = self;
     
 }
 
@@ -201,6 +231,16 @@ static NSInteger numberOfItems = 3;
     chapterVC.type = type;
     chapterVC.mode = mode;
     [modeVC.navigationController pushViewController:chapterVC animated:YES];
+}
+
+#pragma mark - 广告代理事件
+
+- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+    bannerView.hidden = NO;
+}
+
+- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
 }
 
 @end

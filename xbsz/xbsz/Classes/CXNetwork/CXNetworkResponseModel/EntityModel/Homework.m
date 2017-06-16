@@ -11,7 +11,7 @@
 @implementation Homework
 
 + (NSDictionary *)modelCustomPropertyMapper {
-    return @{@"courseID":@"courseId",@"userID":@"xalUserId"};
+    return @{@"courseID":@"courseId",@"exerciseID":@"exerciseId"};
 }
 
 @end

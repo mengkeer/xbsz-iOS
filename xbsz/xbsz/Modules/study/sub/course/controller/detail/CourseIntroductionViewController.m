@@ -344,10 +344,10 @@ static int avatarWidth = 40;
         _noticeLabel.textColor = CXLightGrayColor;
         _noticeLabel.numberOfLines = 0;
         // 调整行间距
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"下周课程将在140机房"];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"暂无通告"];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         [paragraphStyle setLineSpacing:3];
-        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [_course.suit length])];
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [@"暂无通告" length])];
         _noticeLabel.attributedText = attributedString;
         
         [_noticeLabel sizeToFit];

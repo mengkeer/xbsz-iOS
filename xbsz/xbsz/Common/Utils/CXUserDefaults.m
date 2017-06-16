@@ -26,6 +26,34 @@ static CXUserDefaults *sharedObj;
   
 }
 
+- (BOOL)hasAd{
+    if([CXStandardUserDefaults objectForKey:@"hasAd"] == nil){
+        [CXStandardUserDefaults setBool:YES forKey:@"hasAd"];
+        [CXStandardUserDefaults synchronize];
+    }
+    BOOL hasAd = [CXStandardUserDefaults boolForKey:@"hasAd"];
+    return hasAd;
+}
+
+- (void)setHasAd:(BOOL)hasAd{
+    [CXStandardUserDefaults setBool:hasAd forKey:@"hasAd"];
+    [CXStandardUserDefaults synchronize];
+}
+
+- (BOOL)hasPurchased{
+    if([CXStandardUserDefaults objectForKey:@"hasPurchased"] == nil){
+        [CXStandardUserDefaults setBool:NO forKey:@"hasPurchased"];
+        [CXStandardUserDefaults synchronize];
+    }
+    BOOL hasPurchased = [CXStandardUserDefaults boolForKey:@"hasPurchased"];
+    return hasPurchased;
+}
+
+- (void)setHasPurchased:(BOOL)hasPurchased{
+    [CXStandardUserDefaults setBool:hasPurchased forKey:@"hasPurchased"];
+    [CXStandardUserDefaults synchronize];
+}
+
 - (BOOL)isAudioOpen{
     if([CXStandardUserDefaults objectForKey:@"isAudioOpen"] == nil){
         [CXStandardUserDefaults setBool:YES forKey:@"isAudioOpen"];

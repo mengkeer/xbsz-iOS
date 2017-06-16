@@ -17,12 +17,17 @@ typedef NS_ENUM(NSUInteger,CommentCellActionType){
     CellActionTypeMore = 1<<3,        //更多
     
     CellActionTypeUserInfo,             //点击进入用户信息页面
+    CellActionTypeSourceImage,          //点击进入原图
     CellActionTypeComment               //点击进入评论列表
 };
 
-typedef void(^CellActionBlock)(id model , CommentCellActionType actionType);
+typedef void(^CellActionBlock)(id cell,id model , CommentCellActionType actionType);
 
 @interface CampusTableViewCell : UITableViewCell
+
+//用户分享的图片
+@property (nonatomic, strong) YYAnimatedImageView *sharedImageView;
+
 
 @property (nonatomic, strong) CampusNote *note;
 

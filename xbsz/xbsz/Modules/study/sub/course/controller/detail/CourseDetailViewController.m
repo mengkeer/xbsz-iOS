@@ -23,6 +23,7 @@ static CGFloat imageHeight = 210;
 @property (nonatomic, strong) YYAnimatedImageView *imageView;     //顶部imageView
 @property (nonatomic, strong) UIButton *shareBtn;
 @property (nonatomic, strong) UIButton *commentBtn;
+@property (nonatomic, strong) UIButton *joinBtn;
 
 @property (nonatomic, strong) Course *course;
 
@@ -54,7 +55,11 @@ static CGFloat imageHeight = 210;
     self.view.backgroundColor = CXWhiteColor;
     
     [self.customNavBarView addSubview:self.shareBtn];            //添加分享按钮
-    [self.customNavBarView addSubview:self.commentBtn];
+    if(_course.applyStatus == 3){
+        [self.customNavBarView addSubview:self.commentBtn];
+    }else{
+        [self.customNavBarView addSubview:self.joinBtn];
+    }
     [self.view addSubview:self.imageView];
     
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,7 +70,7 @@ static CGFloat imageHeight = 210;
     
     [_imageView setYy_imageURL:[NSURL URLWithString:_course.icon]];
     
-    
+
     _infoViewController = [CourseInfoViewController controller];
     _infoViewController.course = _course;
     _infoViewController.delegate = self;
@@ -75,7 +80,9 @@ static CGFloat imageHeight = 210;
         make.left.right.mas_equalTo(self.view);
         make.top.mas_equalTo(_imageView.mas_bottom);
         make.bottom.mas_equalTo(self.view);
+
     }];
+    
 }
 
 
@@ -125,13 +132,26 @@ static CGFloat imageHeight = 210;
 - (UIButton *)commentBtn{
     if(!_commentBtn){
         _commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _commentBtn.frame = CGRectMake(CXScreenWidth - 70, 20, 20, 44);
+        _commentBtn.frame = CGRectMake(CXScreenWidth - 65, 20, 20, 44);
         [_commentBtn setImage:[UIImage imageNamed:@"course_comment"] forState:UIControlStateNormal];
         [_commentBtn setImage:[UIImage imageNamed:@"course_comment"] forState:UIControlStateHighlighted];
         [_commentBtn addTarget:self action:@selector(showCommentDialog) forControlEvents:UIControlEventTouchUpInside];
     }
     return _commentBtn;
 }
+
+- (UIButton *)joinBtn{
+    if(!_joinBtn){
+        _joinBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _joinBtn.frame = CGRectMake(CXScreenWidth - 75, 25, 34, 34);
+        [_joinBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+        [_joinBtn setImage:[UIImage imageNamed:@"course_add"] forState:UIControlStateNormal];
+        [_joinBtn setImage:[UIImage imageNamed:@"course_add"] forState:UIControlStateHighlighted];
+        [_joinBtn addTarget:self action:@selector(joinCourse) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _joinBtn;
+}
+
 
 - (YYAnimatedImageView *)imageView{
     if(!_imageView){
@@ -156,6 +176,50 @@ static CGFloat imageHeight = 210;
     [RateView instance].delegate = self;
 }
 
+- (void)joinCourse{
+    if(![[CXLocalUser instance] isLogin]){
+        [ToastView showStatus:@"请先登录"];
+        return;
+    }
+    
+    if([CXLocalUser instance].truename == nil ||  [[CXLocalUser instance].truename isEqualToString:@""] || [CXLocalUser instance].studentID == nil ||  [[CXLocalUser instance].studentID  isEqualToString:@""]){
+        [ToastView showStatus:@"请先绑定学号与真实姓名"];
+        return;
+    }
+    
+    NSString *title = nil;
+    NSString *message = nil;
+    if(_course.applyStatus == 0){
+        title = @"是否申请";
+        message = @"您未申请过该课程";
+    }else if(_course.applyStatus == 1){
+        title = @"无法申请";
+        message = @"您已申请过该课程,正在审核中";
+    }else{
+        title = @"是否再次申请?";
+        message = @"您之前的申请已被拒绝";
+    }
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:_course.applyStatus ==1 ?@"确认":@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"申请" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+      
+        [CXNetwork applyCourse:_course.courseID success:^(NSObject *obj) {
+            [ToastView showStatus:@"申请成功，请等待审核"];
+            if(_course.applyStatus == 0 || _course.applyStatus == 2) _course.applyStatus = 1;
+        } failure:^(NSError *error) {
+            [ToastView showStatus:[NSString stringWithFormat:@"申请失败，%@",error.userInfo[@"NSLocalizedDescription"]]];
+        }];
+        
+        
+    }];
+    if(_course.applyStatus != 1)     [alert addAction:confirm];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
 - (void)handleShareAction:(ShareToolBarActionTyep) actionType{
     switch (actionType) {
         case ShareToolBarActionTyepPYQ:
@@ -168,7 +232,7 @@ static CGFloat imageHeight = 210;
             [ToastView showSuccessWithStaus:@"QQ分享"];
             break;
         case ShareToolBarActionTyepQzone:
-            [ToastView showSuccessWithStaus:@"QQ控件分享"];
+            [ToastView showSuccessWithStaus:@"QQ空间分享"];
             break;
         case ShareToolBarActionTyepWeibo:
             [ToastView showSuccessWithStaus:@"微博分享"];
@@ -231,7 +295,7 @@ static CGFloat imageHeight = 210;
 
 - (void)rateView:(CGFloat)scorePoint contnet:(NSString *)content{
     if(![[CXLocalUser instance] isLogin]){
-        [ToastView showBlackSuccessWithStaus:@"请先登录"];
+        [ToastView showStatus:@"请先登录"];
         return;
     }
     NSInteger point = (int)(scorePoint*5);

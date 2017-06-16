@@ -361,12 +361,13 @@
         
         CXSectionButton *btn6 = [[CXSectionButton alloc] init:CGRectMake(width, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"mine6"]
-                                                     andTitle:@"通讯录"];
+                                                     andTitle:@"个人日程"];
         [_contentView addSubview:btn6];
+        [btn6 addTarget:self action:@selector(gotoMySchedule) forControlEvents:UIControlEventTouchUpInside];
         
         
         CXSectionButton *btn7 = [[CXSectionButton alloc] init:CGRectMake(width*2, offsetY, width, height)
-                                                     andImage:[UIImage imageNamed:@"school1"]
+                                                     andImage:[UIImage imageNamed:@"mine7"]
                                                      andTitle:@"学工服务"];
         [btn7 addTarget:self action:@selector(gotoStudentService) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn7];
@@ -425,9 +426,9 @@
         
         
         CXSectionButton *btn9 = [[CXSectionButton alloc] init:CGRectMake(0, offsetY, width, height)
-                                                     andImage:[UIImage imageNamed:@"mine7"]
-                                                     andTitle:@"失物招领"];
-        [btn9 addTarget:self action:@selector(gotoStudentService) forControlEvents:UIControlEventTouchUpInside];
+                                                     andImage:[UIImage imageNamed:@"school1"]
+                                                     andTitle:@"东华校历"];
+        [btn9 addTarget:self action:@selector(gotoDHUCalendar) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn9];
         
         
@@ -483,7 +484,8 @@
         
         CXSectionButton *btn16 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
                                                       andImage:[UIImage imageNamed:@"school8"]
-                                                      andTitle:@"表白墙"];
+                                                      andTitle:@"校友会"];
+        [btn16 addTarget:self action:@selector(gotoAlumniAssociation) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn16];
         
         offsetY += height;
@@ -610,9 +612,15 @@
     [self gotoAuthCommonView:@"借书查询" url:JWURLMyBookInfo];
 }
 
+- (void)gotoMySchedule{
+    [self gotoAuthCommonView:@"个人日程" url:JWURLMySchedule];
+}
+
 - (void)gotoMyTuition{
     [self gotoAuthCommonView:@"学费查询" url:JWURLMyTuition];
 }
+
+
 
 
 - (void)gotoStudentService{
@@ -622,6 +630,11 @@
     }
     NSString *url = [JWURLStudentService stringByReplacingOccurrencesOfString:@"131340126" withString:[JWLocalUser instance].JWUsername];
     [self gotoCommonView:@"学工服务" url:url];
+}
+
+
+- (void)gotoDHUCalendar{
+    [self gotoCommonView:@"东华校历" url:JWURLDHUCalendar];
 }
 
 - (void)gotoSchoolLecture{
@@ -636,14 +649,17 @@
     [self gotoCommonView:@"空余教室" url:JWURLFreeClassroom];
 }
 
-- (void)gotoEmployment{
-     [self gotoCommonView:@"就业服务" url:JWURLEmployment];
-}
-
 - (void)gotoBookFind{
     [self gotoCommonView:@"书籍查询" url:JWURLBookFind];
 }
 
+- (void)gotoEmployment{
+     [self gotoCommonView:@"就业服务" url:JWURLEmployment];
+}
+
+- (void)gotoAlumniAssociation{
+    [self gotoCommonView:@"校友会" url:JWURLAlumniAssociation];
+}
 
 
 - (void)gotoSchoolScenery{

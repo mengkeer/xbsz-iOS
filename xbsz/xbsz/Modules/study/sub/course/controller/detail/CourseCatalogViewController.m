@@ -131,6 +131,10 @@ static NSString *sectionID = @"chapterheaderID";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    CXLog(@"%@",[NSString stringWithFormat:@"点击了第%lu行",indexPath.row]);
 //    [[DownloadManager manager] downloadFromServer:@"http://www.slotus.cc/ppt.ppt"];
+    if(_course.applyStatus != 3){
+        [ToastView showStatus:@"请先申请学习该课程"];
+        return;
+    }
     
     CourseWare *ware = [[_wares objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 

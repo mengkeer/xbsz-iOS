@@ -156,8 +156,8 @@
 
 - (void)postNote{
     TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
-    imagePickerVc.allowCrop = YES;
-    imagePickerVc.photoWidth = 750;
+//    imagePickerVc.allowCrop = YES;
+    imagePickerVc.photoWidth = CXScreenWidth*CXMainScale;
     imagePickerVc.allowPickingGif = YES;
     imagePickerVc.allowPickingOriginalPhoto = YES;
     imagePickerVc.autoDismiss = NO;

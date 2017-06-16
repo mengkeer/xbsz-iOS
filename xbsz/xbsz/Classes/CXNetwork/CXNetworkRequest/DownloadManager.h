@@ -23,6 +23,9 @@ typedef void (^downloadResume)(CGFloat currentPrpgress);
 
 - (void)downloadTikuFromServer;
 
+//题库是否存在或过期
 + (BOOL)isTikuExists;
+
++ (BOOL)isTikuExpired;
 
 @end

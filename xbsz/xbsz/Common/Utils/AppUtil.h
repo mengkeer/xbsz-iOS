@@ -10,7 +10,15 @@
 
 @interface AppUtil : NSObject
 
-// 是否在时间节点之后  根据上架前后改变某些功能 如好评  友情赞赏
-+ (BOOL)isAfterTimeNode;
+// 是否在广告时间节点之后  设置安装一天后显示广告
++ (BOOL)isAfterAdTimeNode;
+// 是否在App上架时间节点之后
++ (BOOL)isAfterAppUpperTimeNode;
+
++ (BOOL)showAD;
+
++ (NSInteger)getCacheSize;
+
++ (void) cleanCache;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface HomeworkList : NSObject
 
-@property (nonatomic, strong) NSMutableArray *homeworks;
+@property (nonatomic, strong) NSMutableArray *exercises;
 
 @end

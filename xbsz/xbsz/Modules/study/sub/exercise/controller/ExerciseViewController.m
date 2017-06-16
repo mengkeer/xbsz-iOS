@@ -38,6 +38,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 @property (nonatomic, strong) YYAnimatedImageView *imageView;
 
+@property (nonatomic, copy) NSArray *exercises;
+
 
 @end
 
@@ -45,6 +47,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    [self loadData];
 }
 
 - (void)viewDidLoad {
@@ -56,8 +60,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         make.centerX.mas_equalTo(self.contentView.mas_centerX);
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
     }];
-    
-    [self loadData];
     
     
 }
@@ -73,6 +75,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
     
     _exerciseList = [ExerciseList yy_modelWithJSON:jsonStr];
+    _exercises = [_exerciseList.exercises subarrayWithRange:NSMakeRange(3, 5)];
     [_collectionView reloadData];
 }
 
@@ -156,8 +159,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     
     
-    NSInteger rows = [_exerciseList.exercises count] / numberOfItems +1;
-    if([_exerciseList.exercises count]%numberOfItems == 0)  rows -= 1;
+    NSInteger rows = [_exercises count] / numberOfItems +1;
+    if([_exercises count]%numberOfItems == 0)  rows -= 1;
     
     if(section == rows - 1){
         
@@ -179,22 +182,22 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 #pragma mark - UICollectionDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    NSInteger nums = [_exerciseList.exercises count]/numberOfItems +1;
-    return [_exerciseList.exercises count] % numberOfItems == 0 ? nums-1 : nums;
+    NSInteger nums = [_exercises count]/numberOfItems +1;
+    return [_exercises count] % numberOfItems == 0 ? nums-1 : nums;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    if([_exerciseList.exercises count] >= (section+1)*numberOfItems){
+    if([_exercises count] >= (section+1)*numberOfItems){
         return numberOfItems;
     }else{
-        return [_exerciseList.exercises count]%numberOfItems;
+        return [_exercises count]%numberOfItems;
     }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;{
     ExerciseCollectionViewCell *cell = (ExerciseCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     NSInteger index = (indexPath.section == 0 ? indexPath.row : (indexPath.section)*numberOfItems+indexPath.row);
-    [cell updateCellWithModel:[_exerciseList.exercises objectAtIndex:index]];
+    [cell updateCellWithModel:[_exercises objectAtIndex:index]];
     if(CX3DTouchOpened)       [cell registerTouch:self];
     return cell;
 }

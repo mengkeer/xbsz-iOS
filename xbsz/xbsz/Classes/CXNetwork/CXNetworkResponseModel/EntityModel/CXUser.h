@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy) NSString *userID;
 @property (nonatomic, copy) NSString *username;             //登录名
+@property (nonatomic, copy) NSString *studentID;        //学号
 @property (nonatomic, copy) NSString *avatar;                   //头像
 @property (nonatomic, copy) NSString *nickname;                 //昵称
 @property (nonatomic, copy) NSString *truename;                 //真实姓名

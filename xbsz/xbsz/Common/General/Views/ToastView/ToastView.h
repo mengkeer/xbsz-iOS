@@ -19,6 +19,8 @@
 
 + (void)showStatus:(NSString *)status;
 
++ (void)showStatus:(NSString *)status delay:(NSInteger)delay;
+
 + (void)showErrorWithStaus:(NSString *)status;
 
 + (void)showErrorWithStaus:(NSString *)status delay:(NSInteger)delay;

@@ -82,8 +82,13 @@ static MoreToolBarView *sharedObj;
     self.frame = CGRectMake(0, 0, CXScreenWidth, height);
     self.center = CGPointMake(CXScreenWidth/2, CXScreenHeight + height/2);
 
-    _cellImageNames = [NSMutableArray arrayWithObjects:@"more_love",@"more_dislike",@"more_digup",@"more_digdown",@"more_report", nil];
-    _cellTitles = [NSMutableArray arrayWithObjects:@"收藏",@"不感兴趣",@"顶",@"踩",@"举报", nil];
+//    _cellImageNames = [NSMutableArray arrayWithObjects:@"more_love",@"more_dislike",@"more_digup",@"more_digdown",@"more_report", nil];
+//    _cellTitles = [NSMutableArray arrayWithObjects:@"收藏",@"不感兴趣",@"顶",@"踩",@"举报", nil];
+    
+    
+        _cellImageNames = [NSMutableArray arrayWithObjects:@"more_love",@"more_digup", nil];
+        _cellTitles = [NSMutableArray arrayWithObjects:@"保存图片",@"赞", nil];
+    
     
     [self addSubview:self.collectionView];
     [self addSubview:self.cancleLabel];
@@ -137,17 +142,15 @@ static MoreToolBarView *sharedObj;
 
 - (void)updateUIWithModel:(CampusNote *)model action:(MoreToolBarActionBlock)actionBlock{
     NSString *digupNum = model.likes>0 ? [NSString stringWithFormat:@"顶 %ld",model.likes] : @"顶" ;
-    NSString *digdownNum = model.dislikes>0 ? [NSString stringWithFormat:@"踩 %ld",model.dislikes] : @"踩" ;
     
-    [_cellTitles replaceObjectAtIndex:2 withObject:digupNum];
-    [_cellTitles replaceObjectAtIndex:3 withObject:digdownNum];
+    [_cellTitles replaceObjectAtIndex:1 withObject:digupNum];
     [_collectionView reloadData];
     _collectionView.contentOffset = CGPointMake(0, 0);
     _actionBlock = actionBlock;
 }
 
-- (void)updateUIByLoved:(BOOL)loved liked:(BOOL)liked disliked:(BOOL)disliked{
-    _loved = loved,_liked = liked,_disliked = disliked;
+- (void)updateUIByLoved:(BOOL)loved liked:(BOOL)liked{
+    _loved = loved,_liked = liked;
     if(loved == YES){
         [_cellImageNames replaceObjectAtIndex:0 withObject:@"more_love_press"];
     }else{
@@ -155,16 +158,11 @@ static MoreToolBarView *sharedObj;
     }
     
     if(liked == YES){
-        [_cellImageNames replaceObjectAtIndex:2 withObject:@"more_digup_press"];
+        [_cellImageNames replaceObjectAtIndex:1 withObject:@"more_digup_press"];
     }else{
-        [_cellImageNames replaceObjectAtIndex:2 withObject:@"more_digup"];
+        [_cellImageNames replaceObjectAtIndex:1 withObject:@"more_digup"];
     }
     
-    if(disliked == YES){
-        [_cellImageNames replaceObjectAtIndex:3 withObject:@"more_digdown_press"];
-    }else{
-        [_cellImageNames replaceObjectAtIndex:3 withObject:@"more_digdown"];
-    }
     [_collectionView reloadData];
 }
 
@@ -211,25 +209,23 @@ static MoreToolBarView *sharedObj;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if(!_actionBlock)   return;
     if(indexPath.row == 0){
-        _actionBlock(MoreToolBarActionTyepLove);
+        _actionBlock(MoreToolBarActionTypeSave);
+        if(_loved == NO){
+            [_cellImageNames replaceObjectAtIndex:0 withObject:@"more_love_press"];
+            [_collectionView reloadData];
+            _loved = YES;
+        }
     }else if(indexPath.row == 1){
-        _actionBlock(MoreToolBarActionTyepDislike);
-    }else if(indexPath.row == 2){
         _actionBlock(MoreToolBarActionTyepDigup);
         if(_liked == NO){
-            [_cellImageNames replaceObjectAtIndex:2 withObject:@"more_digup_press"];
+            [_cellImageNames replaceObjectAtIndex:1 withObject:@"more_digup_press"];
             [_collectionView reloadData];
             _liked = YES;
         }
+    }else if(indexPath.row == 2){
     }else if(indexPath.row == 3){
-        _actionBlock(MoreToolBarActionTyepDigdown);
-        if(_disliked == NO){
-            [_cellImageNames replaceObjectAtIndex:3 withObject:@"more_digdown_press"];
-            [_collectionView reloadData];
-            _disliked = YES;
-        }
     }else if(indexPath.row == 4){
-        _actionBlock(MoreToolBarActionTyepReport);
+//        _actionBlock(MoreToolBarActionTyepReport);
     }
 }
 

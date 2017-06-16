@@ -18,6 +18,8 @@
 #import "SignatureViewController.h"
 #import "MajorViewController.h"
 #import "ModifyPasswordViewController.h"
+#import "TruenameViewController.h"
+#import "XuehaoViewController.h"
 
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
@@ -138,9 +140,18 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     }
     if(indexPath.section == 1){
         if(indexPath.row == 0){
-            [self.navigationController pushViewController:[ModifyPasswordViewController controller] animated:YES];
+            [self.navigationController pushViewController:[TruenameViewController controller] animated:YES];
+            return;
         }
         if(indexPath.row == 1){
+            [self.navigationController pushViewController:[XuehaoViewController controller] animated:YES];
+            return;
+        }
+        if(indexPath.row == 2){
+            [self.navigationController pushViewController:[ModifyPasswordViewController controller] animated:YES];
+            return;
+        }
+        if(indexPath.row == 3){
             [self.navigationController pushViewController:[AuthorizedLoginViewController controller] animated:YES];
             return;
         }
@@ -160,7 +171,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(section == 0)    return 8;
-    if(section == 1)    return 2;
+    if(section == 1)    return 4;
     return 1;
 }
 
@@ -232,8 +243,19 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
             }
-            NSString *detailText = [CXLocalUser instance].username ;
-            [cell updateCell:@"修改密码" detailText:detailText type:SetItemTypeTextAndArrow iconImageName:@"set_modify"];
+            [cell updateCell:@"真实姓名" detailText:[CXLocalUser instance].truename type:SetItemTypeTextAndArrow iconImageName:@"set_truename"];
+        }else if(indexPath.row == 1){
+            cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+            }
+            [cell updateCell:@"学号" detailText:[CXLocalUser instance].studentID type:SetItemTypeTextAndArrow iconImageName:@"set_xuehao"];
+        }else  if(indexPath.row == 2){
+            cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellTextAndArrowId];
+            }
+            [cell updateCell:@"修改密码" detailText:@"" type:SetItemTypeTextAndArrow iconImageName:@"set_modify"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }else{
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
@@ -405,6 +427,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     
     UIAlertAction *quit = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[CXLocalUser instance] reset];
+        [[JWLocalUser instance] reset];
         [self.navigationController popViewControllerAnimated:YES];
     }];
     [alert addAction:quit];

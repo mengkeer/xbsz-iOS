@@ -26,81 +26,18 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = CXWhiteColor;
     self.window.rootViewController = [CXLaunchViewController controller];
-//    self.window.rootViewController = [CXTabBarController    controller];
     [self.window makeKeyAndVisible];
     
     [CXNetworkMonitoring startNetworkMonitoring];
     
-    [self create3DTouchItems];
-    
-    //通过3D Touch启动应用
-    UIApplicationShortcutItem *shortcutItem = [launchOptions valueForKey:UIApplicationLaunchOptionsShortcutItemKey];
-    //如果是从快捷选项标签启动app，则根据不同标识执行不同操作，然后返回NO，防止调用- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
-    if (shortcutItem) {
-        if([shortcutItem.type isEqualToString:CX3DTouchItemTypeShare]){
-            CXLog(@"通过3D Touch进入分享界面");
-        } else if ([shortcutItem.type isEqualToString:CX3DTouchItemTypeSearch]) {//进入搜索界面
-            CXLog(@"通过3D Touch进入搜索界面");
-        } else if ([shortcutItem.type isEqualToString:CX3DTouchItemTypeLove]) {//进入收藏界面
-            CXLog(@"通过3D Touch进入收藏界面");
-        }else{
-            CXLog(@"通过3D Touch反馈Bug");
-        }
-        return NO;
-    }
-    
     [Bugly startWithAppId:BuglyAppID];         //集成bugly服务
     [self JWRefreshLogin];
-    if(![DownloadManager isTikuExists])    [[DownloadManager manager] downloadTikuFromServer];
+    if([DownloadManager isTikuExpired])    [[DownloadManager manager] downloadTikuFromServer];
     [CXUserDefaults setDefaultspreference];         //设置默认偏好设置
     
     return YES;
 }
 
-
-
-
-- (void)create3DTouchItems{
-    
-    UIApplicationShortcutIcon *icon1 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeShare];
-    UIApplicationShortcutIcon *icon2 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeSearch];
-    UIApplicationShortcutIcon *icon3 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeLove];
-    UIApplicationShortcutIcon *icon4 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeMail];
-    
-//创建自定义图标的icon
-//    UIApplicationShortcutIcon *icon2 = [UIApplicationShortcutIcon iconWithTemplateImageName:@"分享.png"];
- 
-    //创建快捷选项
-    UIApplicationShortcutItem * item1 = [[UIApplicationShortcutItem alloc] initWithType:CX3DTouchItemTypeShare localizedTitle:@"分享“学霸思政”" localizedSubtitle:nil icon:icon1 userInfo:nil];
-    
-    UIApplicationShortcutItem * item2 = [[UIApplicationShortcutItem alloc] initWithType:CX3DTouchItemTypeSearch localizedTitle:@"搜索题目" localizedSubtitle:nil icon:icon2 userInfo:nil];
-    
-    UIApplicationShortcutItem * item3 = [[UIApplicationShortcutItem alloc] initWithType:CX3DTouchItemTypeLove localizedTitle:@"我的收藏" localizedSubtitle:nil icon:icon3 userInfo:nil];
-    
-    UIApplicationShortcutItem * item4 = [[UIApplicationShortcutItem alloc] initWithType:CX3DTouchItemTypeMail localizedTitle:@"bug反馈" localizedSubtitle:nil icon:icon4 userInfo:nil];
-    
-    //添加到快捷选项数组
-    [UIApplication sharedApplication].shortcutItems = @[item1,item2,item3,item4];
-}
-
-//如果app在后台，通过快捷选项标签进入app，则调用该方法，如果app不在后台已杀死，则处理通过快捷选项标签进入app的逻辑在- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions中
-- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
-    
-    if([shortcutItem.type isEqualToString:CX3DTouchItemTypeShare]){
-        CXLog(@"通过3D Touch进入分享界面");
-    } else if ([shortcutItem.type isEqualToString:CX3DTouchItemTypeSearch]) {//进入搜索界面
-        CXLog(@"通过3D Touch进入搜索界面");
-    } else if ([shortcutItem.type isEqualToString:CX3DTouchItemTypeLove]) {//进入收藏界面
-        CXLog(@"通过3D Touch进入收藏界面");
-    }else{
-        CXLog(@"通过3D Touch反馈Bug");
-    }
-
-    
-    if (completionHandler) {
-        completionHandler(YES);
-    }
-}
 
 //进入前台时重新获取教务网CASTGC参数   类似于Token
 - (void)applicationWillEnterForeground:(UIApplication *)application{
@@ -136,6 +73,5 @@
         CXLog(@"刷新获取Token失败");
     }];
 }
-
 
 @end

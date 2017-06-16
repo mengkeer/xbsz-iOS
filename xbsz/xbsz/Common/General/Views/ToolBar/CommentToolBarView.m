@@ -44,7 +44,7 @@
     
     [self addSubview:self.likeBtn];
     [self addSubview:self.replyBtn];
-    [self addSubview:self.shareBtn];
+//    [self addSubview:self.shareBtn];
     [self addSubview:self.moreBtn];
     
     [_likeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,11 +59,11 @@
         make.centerY.mas_equalTo(self.mas_centerY);
     }];
     
-    [_shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(32);
-        make.left.mas_equalTo(_replyBtn.mas_right).mas_offset(6);
-        make.centerY.mas_equalTo(self.mas_centerY);
-    }];
+//    [_shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.height.mas_equalTo(32);
+//        make.left.mas_equalTo(_replyBtn.mas_right).mas_offset(6);
+//        make.centerY.mas_equalTo(self.mas_centerY);
+//    }];
     
     [_moreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(32);

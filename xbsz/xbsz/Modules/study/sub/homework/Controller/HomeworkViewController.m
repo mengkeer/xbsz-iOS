@@ -33,6 +33,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 @property (nonatomic, strong) HomeworkList  *homeworkList;
 
+@property (nonatomic, strong) NSMutableArray *homeworks;
+
 @end
 
 @implementation HomeworkViewController
@@ -52,6 +54,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
     }];
     
+    _homeworks = [NSMutableArray array];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,13 +63,19 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 - (void)loadData{
+
+    if(![[CXLocalUser instance] isLogin]){
+        return;
+    }
     
-    NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"homeworks.json"];
-    NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
-    
-    _homeworkList = [HomeworkList yy_modelWithJSON:jsonStr];
-    [_collectionView reloadData];
-    
+    [CXNetwork getHomeworks:nil success:^(NSObject *obj) {
+         _homeworkList = [HomeworkList yy_modelWithDictionary:(NSDictionary *)obj];
+        _homeworks = _homeworkList.exercises;
+        [_collectionView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+        
 }
 
 
@@ -136,13 +145,15 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 - (void)gotoDoHomeworkView:(Homework *)homework{
-    [self.navigationController pushViewController:[DoHomeworkViewController controller] animated:YES];
+    DoHomeworkViewController *vc = [DoHomeworkViewController controller];
+    vc.homework = homework;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self gotoDoHomeworkView:[_homeworkList.homeworks objectAtIndex:(indexPath.section)*numberOfItems+indexPath.row]];
+    [self gotoDoHomeworkView:[_homeworks objectAtIndex:(indexPath.section)*numberOfItems+indexPath.row]];
 }
 
 
@@ -173,8 +184,8 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     
     
-    NSInteger rows = [_homeworkList.homeworks count] / numberOfItems +1;
-    if([_homeworkList.homeworks count] % numberOfItems == 0)  rows -= 1;
+    NSInteger rows = [_homeworks count] / numberOfItems +1;
+    if([_homeworks count] % numberOfItems == 0)  rows -= 1;
     
     if(section == rows - 1){
         
@@ -200,22 +211,22 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 #pragma mark - UICollectionDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    NSInteger nums = [_homeworkList.homeworks count]/numberOfItems +1;
-    return [_homeworkList.homeworks count] % numberOfItems  == 0 ? nums-1 : nums;
+    NSInteger nums = [_homeworks count]/numberOfItems +1;
+    return [_homeworks count] % numberOfItems  == 0 ? nums-1 : nums;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    if([_homeworkList.homeworks count] >= (section+1)*numberOfItems){
+    if([_homeworks count] >= (section+1)*numberOfItems){
         return numberOfItems;
     }else{
-        return [_homeworkList.homeworks count]%numberOfItems;
+        return [_homeworks count]%numberOfItems;
     }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;{
     HomeworkCollectionViewCell *cell = (HomeworkCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     NSInteger index = (indexPath.section == 0 ? indexPath.row : (indexPath.section)*numberOfItems+indexPath.row);
-    [cell updateCellWithModel:[_homeworkList.homeworks objectAtIndex:index]];
+    [cell updateCellWithModel:[_homeworks objectAtIndex:index]];
     if(CX3DTouchOpened)       [cell registerTouch:self];
     return cell;
 }

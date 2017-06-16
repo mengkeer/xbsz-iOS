@@ -15,6 +15,7 @@ typedef NS_ENUM(NSUInteger,MoreToolBarActionTyep){
     MoreToolBarActionTyepDislike,                   //不感兴趣
     MoreToolBarActionTyepLove,                   //收藏
     MoreToolBarActionTyepReport,                     //举报
+    MoreToolBarActionTypeSave,                  //保存图片
     
     MoreToolBarActionTyepCancel                     //取消
 };
@@ -27,7 +28,7 @@ typedef void (^MoreToolBarActionBlock)(MoreToolBarActionTyep actionType);
 
 - (void)updateUIWithModel: (CampusNote *)model action:(MoreToolBarActionBlock)actionBlock;
 
-- (void)updateUIByLoved:(BOOL)loved liked:(BOOL)liked disliked:(BOOL)disliked;
+- (void)updateUIByLoved:(BOOL)loved liked:(BOOL)liked;
 
 - (void)showInView:(UIView *)view;
 
