@@ -107,8 +107,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
                 [self handleImagePicker];
                 break;
             case 1:{
-                [self.navigationController wxs_pushViewController:[NicknameViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//                [self.navigationController pushViewController:[NicknameViewController controller] animated:YES];
+                [self.lcNavigationController pushViewController:[NicknameViewController controller]];
                 break;
             }
             case 2:{
@@ -116,28 +115,23 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
                 break;
             }
             case 3:{
-                [self.navigationController wxs_pushViewController:[EmailViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//                [self.navigationController pushViewController:[EmailViewController controller] animated:YES];
+                [self.lcNavigationController pushViewController:[EmailViewController controller]];
                 break;
             }
             case 4:{
-                [self.navigationController wxs_pushViewController:[PhoneViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//                [self.navigationController pushViewController:[PhoneViewController controller] animated:YES];
+                [self.lcNavigationController pushViewController:[PhoneViewController controller]];
                 break;
             }
             case 5:{
-                [self.navigationController wxs_pushViewController:[MajorViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//                [self.navigationController pushViewController:[MajorViewController controller] animated:YES];
+                [self.lcNavigationController pushViewController:[MajorViewController controller]];
                 break;
             }
             case 6:{
-                [self.navigationController wxs_pushViewController:[BirthdayViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//                [self.navigationController pushViewController:[BirthdayViewController controller] animated:YES];
+                [self.lcNavigationController pushViewController:[BirthdayViewController controller]];
                 break;
             }
             case 7:{
-                [self.navigationController wxs_pushViewController:[SignatureViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//                [self.navigationController pushViewController:[SignatureViewController controller] animated:YES];
+                [self.lcNavigationController pushViewController:[SignatureViewController controller]];
                 break;
             }
             default:
@@ -146,23 +140,19 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     }
     if(indexPath.section == 1){
         if(indexPath.row == 0){
-            [self.navigationController wxs_pushViewController:[TruenameViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//            [self.navigationController pushViewController:[TruenameViewController controller] animated:YES];
+            [self.lcNavigationController pushViewController:[TruenameViewController controller]];
             return;
         }
         if(indexPath.row == 1){
-            [self.navigationController wxs_pushViewController:[XuehaoViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//            [self.navigationController pushViewController:[XuehaoViewController controller] animated:YES];
+            [self.lcNavigationController pushViewController:[XuehaoViewController controller]];
             return;
         }
         if(indexPath.row == 2){
-            [self.navigationController wxs_pushViewController:[ModifyPasswordViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//            [self.navigationController pushViewController:[ModifyPasswordViewController controller] animated:YES];
+            [self.lcNavigationController pushViewController:[ModifyPasswordViewController controller]];
             return;
         }
         if(indexPath.row == 3){
-            [self.navigationController wxs_pushViewController:[AuthorizedLoginViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//            [self.navigationController pushViewController:[AuthorizedLoginViewController controller] animated:YES];
+            [self.lcNavigationController pushViewController:[AuthorizedLoginViewController controller]];
             return;
         }
     }
@@ -438,7 +428,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     UIAlertAction *quit = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[CXLocalUser instance] reset];
         [[JWLocalUser instance] reset];
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.lcNavigationController popViewController];
     }];
     [alert addAction:quit];
     

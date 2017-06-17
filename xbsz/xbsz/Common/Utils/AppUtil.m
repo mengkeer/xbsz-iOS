@@ -10,7 +10,6 @@
 
 @implementation AppUtil
 
-
 + (BOOL)isAfterAdTimeNode{
     NSString *launchTime  = [CXStandardUserDefaults objectForKey:APPFirstLaunchTime];
     if(launchTime == nil)   return NO;
@@ -25,7 +24,7 @@
     NSDate *date = [formatter dateFromString:launchTime];
 
     NSDate *now = [NSDate date];
-    if([[date dateByAddingHours:1] compare:now] == NSOrderedAscending){
+    if([[date dateByAddingHours:3] compare:now] == NSOrderedAscending){
         return YES;
     }
     

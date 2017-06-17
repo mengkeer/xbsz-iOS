@@ -47,9 +47,12 @@ static NSInteger bottomHeight = 45;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.fd_interactivePopDisabled = YES;
-    id traget = self.navigationController.interactivePopGestureRecognizer.delegate;
-    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:traget action:nil];
-    [self.view addGestureRecognizer:pan];
+    [CXUserDefaults instance].forbidPopGesture = YES;
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [CXUserDefaults instance].forbidPopGesture = NO;
 }
 
 - (void)viewDidLoad {
@@ -60,7 +63,7 @@ static NSInteger bottomHeight = 45;
     if(_mode == ExerciseModeMistakes){
         [self.customNavBarView addSubview:self.removeBtn];
     }
-//    [self.customNavBarView addSubview:self.showBtn];              //暂时不显示该按钮
+    [self.customNavBarView addSubview:self.showBtn];              //暂时不显示该按钮
     self.customNavBarView.backgroundColor  = [CXUserDefaults instance].bgColor;
     
     

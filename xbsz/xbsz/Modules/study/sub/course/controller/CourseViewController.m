@@ -139,7 +139,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 - (void)gotoCourseDetailView:(Course *)course{
     CourseDetailViewController *detailViewController = [CourseDetailViewController controller];
     [detailViewController updateDetailWithCourse: course];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    [self.lcNavigationController pushViewController:detailViewController];
 }
 
 #pragma mark - UICollectionViewDelegate

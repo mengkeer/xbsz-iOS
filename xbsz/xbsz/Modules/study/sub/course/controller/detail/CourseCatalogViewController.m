@@ -141,8 +141,7 @@ static NSString *sectionID = @"chapterheaderID";
     AttachmentViewController *vc = [AttachmentViewController controller];
     vc.path = CXFileUrlByName(ware.file);
     vc.title = ware.name;
-    [self.navigationController wxs_pushViewController:vc animationType:WXSTransitionAnimationTypeInsideThenPush];
-//    [self.navigationController pushViewController:vc animated:YES];
+    [self.lcNavigationController pushViewController:vc];
 }
 
 #pragma mark - UITableViewDataSource

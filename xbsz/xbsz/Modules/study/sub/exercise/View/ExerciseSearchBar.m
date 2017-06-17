@@ -10,7 +10,7 @@
 
 @interface ExerciseSearchBar ()
 
-@property (nonatomic, copy) ActionBlock actionBlock;
+@property (nonatomic, copy) SearchBarActionBlock actionBlock;
 
 
 @property (nonatomic, strong) UIImageView *imageView;
@@ -95,7 +95,7 @@
 }
 
 
-- (void)setClicked:(ActionBlock)action{
+- (void)setClicked:(SearchBarActionBlock)action{
     _actionBlock = action;
 }
 

@@ -116,7 +116,7 @@ static CXUserDefaults *sharedObj;
 
 - (NSInteger)themeType{
     if([CXStandardUserDefaults objectForKey:@"themeType"] == nil){
-        [CXStandardUserDefaults setInteger:1 forKey:@"themeType"];
+        [CXStandardUserDefaults setInteger:2 forKey:@"themeType"];
         [CXStandardUserDefaults synchronize];
     }
     return [CXStandardUserDefaults integerForKey:@"themeType"];
@@ -214,6 +214,20 @@ static CXUserDefaults *sharedObj;
     }else{
         return CXHexColor(0xd1d8c2);
     }
+}
+
+- (void)setForbidPopGesture:(BOOL)forbidPopGesture{
+    [CXStandardUserDefaults setBool:forbidPopGesture forKey:@"forbidPopGesture"];
+    [CXStandardUserDefaults synchronize];
+}
+
+- (BOOL)forbidPopGesture{
+    if([CXStandardUserDefaults objectForKey:@"forbidPopGesture"] == nil){
+        [CXStandardUserDefaults setBool:NO forKey:@"forbidPopGesture"];
+        [CXStandardUserDefaults synchronize];
+    }
+    BOOL hasAd = [CXStandardUserDefaults boolForKey:@"forbidPopGesture"];
+    return hasAd;
 }
 
 

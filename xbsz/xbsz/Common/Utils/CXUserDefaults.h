@@ -27,13 +27,14 @@
 @property (nonatomic, assign) NSInteger themeType;
 @property (nonatomic, copy) NSString *themeDescription;         // 不保存到本地
 @property (nonatomic, strong) UIColor *centerColor;     // 不保存到本地
-@property (nonatomic, strong) UIColor *mainColor;                    //不保存到本地
+@property (nonatomic, strong) UIColor *mainColor;
 @property (nonatomic, strong) UIColor *textColor;
 
 
 @property (nonatomic, assign) NSInteger bgType;
-@property (nonatomic, copy) NSString *bgDescription;
+@property (nonatomic, copy) NSString *bgDescription;        //不保存到本地
 @property (nonatomic, strong) UIColor *bgColor;
 
-
+//是否禁止返回手势
+@property (nonatomic, assign) BOOL forbidPopGesture;
 @end

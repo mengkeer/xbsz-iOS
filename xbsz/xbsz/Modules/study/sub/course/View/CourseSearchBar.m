@@ -95,7 +95,7 @@
 }
 
 
-- (void)setClicked:(ActionBlock)action{
+- (void)setClicked:(SearchBarActionBlock)action{
     _actionBlock = action;
 }
 

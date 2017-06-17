@@ -8,7 +8,6 @@
 
 #import "CourseIntroductionViewController.h"
 #import "CWStarRateView.h"
-#import "UINavigationController+TZPopGesture.h"
 
 static int titleHeight = 40;
 static int avatarWidth = 40;
@@ -204,8 +203,6 @@ static int avatarWidth = 40;
         make.top.mas_equalTo(_nameLable.mas_bottom);
         make.bottom.mas_equalTo(_scrollView.mas_bottom).mas_offset(-40);
     }];
-    
-     [self tz_addPopGestureToView:_scrollView];
 }
 
 

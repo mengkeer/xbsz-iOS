@@ -47,6 +47,9 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    [self.navigationController.navigationBar setHidden:YES];        //词条语句可控制tarbar透明
+
+    
     if([[CXLocalUser instance] isLogin]){
         _nickNamelabel.text = [CXLocalUser instance].nickname;
         if([CXLocalUser instance].signature != nil && [[CXLocalUser instance].signature length] != 0){
@@ -533,12 +536,12 @@
 }
 
 - (void)clickMessage{
-    [self.navigationController pushViewController:[InformViewController controller] animated:YES];
+    [self.lcNavigationController pushViewController:[InformViewController controller]];
 }
 
 - (void)clickLogin{
     if([[CXLocalUser instance] isLogin]){
-        [self.navigationController pushViewController:[UserInfoViewController controller] animated:YES];
+        [self.lcNavigationController pushViewController:[UserInfoViewController controller]];
     }else{
         [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
     }
@@ -546,7 +549,7 @@
 
 - (void)clickInfo{
     if([[CXLocalUser instance] isLogin]){
-         [self.navigationController pushViewController:[UserInfoViewController controller] animated:YES];
+        [self.lcNavigationController pushViewController:[UserInfoViewController controller]];
     }else{
         [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
     }
@@ -555,7 +558,7 @@
 - (void)clickSet{
     
     SetViewController *set = [SetViewController controller];
-    [self.navigationController pushViewController:set animated:YES];
+    [self.lcNavigationController pushViewController:set];
 }
 
 #pragma mark - UIScrollView Delegate
@@ -577,7 +580,7 @@
     CXBaseWebViewController *webViewController = [CXBaseWebViewController controller];
     webViewController.title = title;
     webViewController.url = url;
-    [self.navigationController pushViewController:webViewController animated:YES];
+    [self.lcNavigationController pushViewController:webViewController];
 }
 
 - (void)gotoAuthCommonView:(NSString *)title  url:(NSString *)url{
@@ -588,7 +591,7 @@
     CXBaseWebViewController *webViewController = [CXBaseWebViewController controller];
     webViewController.title = title;
     webViewController.url = url;
-    [self.navigationController pushViewController:webViewController animated:YES];
+    [self.lcNavigationController pushViewController:webViewController];
 }
 
 
@@ -665,7 +668,7 @@
 - (void)gotoSchoolScenery{
     SchoolSceneryViewController *school = [SchoolSceneryViewController controller];
     school.url = JWURLSchoolScenery;
-    [self.navigationController pushViewController:school animated:YES];
+    [self.lcNavigationController pushViewController:school];
 }
 
 

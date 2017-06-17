@@ -13,7 +13,6 @@
 #import "AppUtil.h"
 #import "AboutViewController.h"
 #import "UpdateInfoViewController.h"
-//#import <WebKit/WebKit.h>
 
 #import <StoreKit/StoreKit.h> 
 
@@ -109,8 +108,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         }
     }else if(indexPath.section == 3){
         if(indexPath.row == 0){
-            [self.navigationController wxs_pushViewController:[AboutViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//            [self.navigationController pushViewController:[AboutViewController controller] animated:YES];
+            [self.lcNavigationController pushViewController:[AboutViewController controller]];
             return;
         }else if(indexPath.row == 1){
             if([MFMailComposeViewController canSendMail]){
@@ -140,8 +138,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         }
     }else if(indexPath.section == 4){
         if(indexPath.row == 2){
-            [self.navigationController wxs_pushViewController:[UpdateInfoViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
-//            [self.navigationController pushViewController:[UpdateInfoViewController controller] animated:YES];
+            [self.lcNavigationController pushViewController:[UpdateInfoViewController controller]];
             return;
         }
     }

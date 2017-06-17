@@ -162,7 +162,7 @@ static NSInteger numberOfItems = 3;
                 QuestionSearchViewController *vc = [QuestionSearchViewController controller];
                 vc.type = _type;
                 vc.searchText = [searchText stringByTrim];
-                [self.navigationController pushViewController:vc animated:YES];
+                [self.lcNavigationController pushViewController:vc];
             });
       
         }
@@ -214,24 +214,24 @@ static NSInteger numberOfItems = 3;
     if(mode == ExerciseModeExam){
         ExamViewController *exam = [ExamViewController controller];
         exam.type = _type;
-        [self.navigationController wxs_pushViewController:exam animationType:WXSTransitionAnimationTypeInsideThenPush];
+        [self.lcNavigationController pushViewController:exam];
         return;
     }
    
     ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
     chapterVC.type = _type;
     chapterVC.mode = mode;
-    [self.navigationController wxs_pushViewController:chapterVC animationType:WXSTransitionAnimationTypeInsideThenPush];
+    [self.lcNavigationController pushViewController:chapterVC];
 }
 
 - (void)gotoChapterViewController:(ExerciseType)type mode:(ExerciseMode)mode{
     ExerciseModeViewController *modeVC = [ExerciseModeViewController controller];
     modeVC.type = type;
-    [self.navigationController wxs_pushViewController:modeVC animationType:WXSTransitionAnimationTypeInsideThenPush];
+    [self.beforePeekedViewConreoller.lcNavigationController pushViewController:modeVC];
     ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
     chapterVC.type = type;
     chapterVC.mode = mode;
-    [self.navigationController wxs_pushViewController:modeVC animationType:WXSTransitionAnimationTypeInsideThenPush];
+    [modeVC.lcNavigationController pushViewController:chapterVC];
 }
 
 #pragma mark - 广告代理事件

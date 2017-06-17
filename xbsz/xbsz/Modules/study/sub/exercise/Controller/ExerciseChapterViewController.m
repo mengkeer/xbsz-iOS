@@ -9,7 +9,6 @@
 #import "ExerciseChapterViewController.h"
 #import "ExerciseChapterCollectionViewCell.h"
 #import "FMDBUtil.h"
-#import "UINavigationController+TZPopGesture.h"
 #import "PYSearch.h"
 #import "QuestionSearchViewController.h"
 #import "CXNavigationController.h"
@@ -42,10 +41,9 @@ static NSString *cellID = @"ChapterCellID";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if(_mode == ExerciseModeMistakes)   [_collectionView reloadData];
-//    [self tz_addPopGestureToView:_collectionView];        //取消侧滑返回
     
     GADRequest *request = [GADRequest request];
-    request.testDevices = @[ kGADSimulatorID ];
+    request.testDevices = @[ kGADSimulatorID];
     if([AppUtil showAD])     [self.bannerView loadRequest:request];
 }
 
@@ -183,7 +181,7 @@ static NSString *cellID = @"ChapterCellID";
                 QuestionSearchViewController *vc = [QuestionSearchViewController controller];
                 vc.type = _type;
                 vc.searchText = [searchText stringByTrim];
-                [self.navigationController pushViewController:vc animated:YES];
+                [self.lcNavigationController pushViewController:vc];
             });
             
           
@@ -206,16 +204,17 @@ static NSString *cellID = @"ChapterCellID";
         questionVC.type = _type;
         questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
         questionVC.chapterIndex = index;
-        [self.navigationController wxs_pushViewController:questionVC animationType:WXSTransitionAnimationTypeInsideThenPush];
+        [self.lcNavigationController pushViewController:questionVC];
+
     }else if(_mode == ExerciseModePractice || _mode == ExerciseModePracticeRandom || _mode == ExerciseModeMistakes){
         if(_segmentControl.selectedSegmentIndex == 0){
             SinglePracticeViewController *questionVC = [SinglePracticeViewController controller];
             [questionVC updateData:_mode type:_type chapter:index];
-            [self.navigationController wxs_pushViewController:questionVC animationType:WXSTransitionAnimationTypeInsideThenPush];
+            [self.lcNavigationController pushViewController:questionVC];
         }else{
             MutiPracticeViewController *questionVC = [MutiPracticeViewController controller];
             [questionVC updateData:_mode type:_type chapter:index];
-            [self.navigationController wxs_pushViewController:questionVC animationType:WXSTransitionAnimationTypeInsideThenPush];
+            [self.lcNavigationController pushViewController:questionVC];
         }
     }
     else{

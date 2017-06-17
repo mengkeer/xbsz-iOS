@@ -39,9 +39,12 @@ static NSInteger bottomHeight = 45;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.fd_interactivePopDisabled = YES;
-    id traget = self.navigationController.interactivePopGestureRecognizer.delegate;
-    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:traget action:nil];
-    [self.view addGestureRecognizer:pan];
+    [CXUserDefaults instance].forbidPopGesture = YES;
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [CXUserDefaults instance].forbidPopGesture = NO;
 }
 
 - (void)viewDidLoad {

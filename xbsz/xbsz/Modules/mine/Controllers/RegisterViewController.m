@@ -290,7 +290,7 @@
         [CXNetwork userRegister:_userNameField.text password:_passwordFiled.text nickname:_nickFiled.text success:^(NSObject *obj) {
             [ToastView showSuccessWithStaus:@"注册成功" delay:1];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.navigationController popViewControllerAnimated:YES];
+                [self.lcNavigationController popViewController];
             });
         } failure:^(NSError *error) {
             if(error.code == CXResponseCodeUserRepeat){

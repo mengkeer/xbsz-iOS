@@ -237,7 +237,7 @@ static NSInteger symbolWidth = 35;
     [self performSelector:@selector(deselect) withObject:nil afterDelay:0.2f];
     SearchResultViewController *resultVC = [SearchResultViewController controller];
     resultVC.question = [_questions objectAtIndex:indexPath.row];
-    [self.navigationController wxs_pushViewController:resultVC animationType:WXSTransitionAnimationTypeInsideThenPush];
+    [self.lcNavigationController pushViewController:resultVC];
 }
 
 - (void)deselect{
@@ -301,7 +301,7 @@ static NSInteger symbolWidth = 35;
 #pragma mark - private method
 
 - (void)cancel{
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.lcNavigationController popViewController];
 }
 
 

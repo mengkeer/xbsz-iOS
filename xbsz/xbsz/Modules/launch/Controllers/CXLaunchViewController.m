@@ -137,7 +137,11 @@
     anim.duration = 1.0f;
     
     [CXApplication.keyWindow.layer addAnimation:anim forKey:nil];
-    CXApplication.keyWindow.rootViewController = [CXTabBarController controller];
+    
+    LCNavigationController *navC = [[LCNavigationController alloc] initWithRootViewController:[CXTabBarController controller]];
+
+    
+    CXApplication.keyWindow.rootViewController = navC;
 }
 
 
