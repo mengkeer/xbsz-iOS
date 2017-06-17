@@ -42,7 +42,7 @@ static NSString *cellID = @"ChapterCellID";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if(_mode == ExerciseModeMistakes)   [_collectionView reloadData];
-    [self tz_addPopGestureToView:_collectionView];
+//    [self tz_addPopGestureToView:_collectionView];        //取消侧滑返回
     
     GADRequest *request = [GADRequest request];
     request.testDevices = @[ kGADSimulatorID ];
@@ -178,13 +178,15 @@ static NSString *cellID = @"ChapterCellID";
         if(searchText == nil || [[searchText stringByTrim] length] == 0){
             [ToastView showErrorWithStaus:@"搜索内容为空"];
         }else{
-            [searchViewController dismissViewControllerAnimated:NO completion:nil];
+            [searchViewController.navigationController dismissViewControllerAnimated:NO completion:nil];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                QuestionSearchViewController *vc = [QuestionSearchViewController controller];
+                vc.type = _type;
+                vc.searchText = [searchText stringByTrim];
+                [self.navigationController pushViewController:vc animated:YES];
+            });
             
-            QuestionSearchViewController *vc = [QuestionSearchViewController controller];
-            vc.type = _type;
-            vc.searchText = [searchText stringByTrim];
-
-            [self.navigationController pushViewController:vc animated:YES];
+          
         }
     }];
     // 3. 设置风格
@@ -192,7 +194,7 @@ static NSString *cellID = @"ChapterCellID";
     searchViewController.searchHistoryStyle = PYSearchHistoryStyleDefault;
     // 4. 设置代理
     // 5. 跳转到搜索控制器
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    CXNavigationController *nav = [[CXNavigationController alloc] initWithRootViewController:searchViewController];
     [self presentViewController:nav animated:YES completion:nil];}
 
 #pragma mark - ExerciseChapterTableViewDelegate
@@ -204,16 +206,16 @@ static NSString *cellID = @"ChapterCellID";
         questionVC.type = _type;
         questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
         questionVC.chapterIndex = index;
-        [self.navigationController pushViewController:questionVC animated:YES];
+        [self.navigationController wxs_pushViewController:questionVC animationType:WXSTransitionAnimationTypeInsideThenPush];
     }else if(_mode == ExerciseModePractice || _mode == ExerciseModePracticeRandom || _mode == ExerciseModeMistakes){
         if(_segmentControl.selectedSegmentIndex == 0){
             SinglePracticeViewController *questionVC = [SinglePracticeViewController controller];
             [questionVC updateData:_mode type:_type chapter:index];
-            [self.navigationController pushViewController:questionVC animated:YES];
+            [self.navigationController wxs_pushViewController:questionVC animationType:WXSTransitionAnimationTypeInsideThenPush];
         }else{
             MutiPracticeViewController *questionVC = [MutiPracticeViewController controller];
             [questionVC updateData:_mode type:_type chapter:index];
-            [self.navigationController pushViewController:questionVC animated:YES];
+            [self.navigationController wxs_pushViewController:questionVC animationType:WXSTransitionAnimationTypeInsideThenPush];
         }
     }
     else{

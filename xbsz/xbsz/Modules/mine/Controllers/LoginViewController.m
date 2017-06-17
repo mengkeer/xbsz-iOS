@@ -388,7 +388,7 @@
 #pragma mark - private method
 
 - (void)clickRegister{
-    [self.navigationController pushViewController:[RegisterViewController controller] animated:YES];
+    [self.navigationController wxs_pushViewController:[RegisterViewController controller]  animationType:WXSTransitionAnimationTypeInsideThenPush];
 }
 
 - (void)clickReset{

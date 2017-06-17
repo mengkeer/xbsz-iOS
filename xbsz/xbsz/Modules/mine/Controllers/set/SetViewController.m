@@ -109,7 +109,8 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         }
     }else if(indexPath.section == 3){
         if(indexPath.row == 0){
-            [self.navigationController pushViewController:[AboutViewController controller] animated:YES];
+            [self.navigationController wxs_pushViewController:[AboutViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
+//            [self.navigationController pushViewController:[AboutViewController controller] animated:YES];
             return;
         }else if(indexPath.row == 1){
             if([MFMailComposeViewController canSendMail]){
@@ -139,7 +140,8 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         }
     }else if(indexPath.section == 4){
         if(indexPath.row == 2){
-            [self.navigationController pushViewController:[UpdateInfoViewController controller] animated:YES];
+            [self.navigationController wxs_pushViewController:[UpdateInfoViewController controller] animationType:WXSTransitionAnimationTypeInsideThenPush];
+//            [self.navigationController pushViewController:[UpdateInfoViewController controller] animated:YES];
             return;
         }
     }
@@ -317,20 +319,20 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"小号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].questionFontSize = 12;
-        [_tableView reloadRow:2 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:2 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type1];
     
     UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"中号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].questionFontSize = 15;
-        [_tableView reloadRow:2 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:2 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type2];
     
     
     UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"大号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].questionFontSize = 18;
-        [_tableView reloadRow:2 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:2 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type3];
     
@@ -356,7 +358,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     if(nowCahce < 0.02){
         [ToastView showBlackSuccessWithStaus:@"清理完成" delay:1.2];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [_tableView reloadRow:3 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+            [_tableView reloadRow:3 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
         });
     }
     
@@ -367,7 +369,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"樱花粉" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].themeType = 1;
-        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:0 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self autoTheme];
         });
@@ -376,7 +378,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"简洁白" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].themeType = 2;
-        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:0 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self autoTheme];
         });
@@ -386,7 +388,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"水绿色" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].themeType = 3;
-        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:0 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              [self autoTheme];
         });
@@ -395,7 +397,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type4 = [UIAlertAction actionWithTitle:@"橙色" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].themeType = 4;
-        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:0 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self autoTheme];
         });
@@ -413,26 +415,26 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"纯白" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].bgType = 1;
-        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:1 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type1];
     
     UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"浅灰" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].bgType = 2;
-        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:1 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type2];
     
     
     UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"护眼" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].bgType = 3;
-        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:1 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type3];
     
     UIAlertAction *type4 = [UIAlertAction actionWithTitle:@"淡青" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].bgType = 4;
-        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:1 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type4];
     
@@ -540,7 +542,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 //请求失败
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
     NSLog(@"------------------错误-----------------:%@", error);
-    [ToastView dismiss];
+    [ToastView showErrorWithStaus:@"拉取信息失败"];
 
 }
 

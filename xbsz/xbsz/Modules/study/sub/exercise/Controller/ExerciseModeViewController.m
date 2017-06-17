@@ -157,13 +157,14 @@ static NSInteger numberOfItems = 3;
         if(searchText == nil || [[searchText stringByTrim] length] == 0){
             [ToastView showErrorWithStaus:@"搜索内容为空"];
         }else{
-            [searchViewController dismissViewControllerAnimated:NO completion:nil];
-            
-            QuestionSearchViewController *vc = [QuestionSearchViewController controller];
-            vc.type = _type;
-            vc.searchText = [searchText stringByTrim];
-            
-            [self.navigationController pushViewController:vc animated:YES];
+            [searchViewController.navigationController dismissViewControllerAnimated:NO completion:nil];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                QuestionSearchViewController *vc = [QuestionSearchViewController controller];
+                vc.type = _type;
+                vc.searchText = [searchText stringByTrim];
+                [self.navigationController pushViewController:vc animated:YES];
+            });
+      
         }
     }];
     // 3. 设置风格
@@ -213,24 +214,24 @@ static NSInteger numberOfItems = 3;
     if(mode == ExerciseModeExam){
         ExamViewController *exam = [ExamViewController controller];
         exam.type = _type;
-        [self.navigationController pushViewController:exam animated:YES];
+        [self.navigationController wxs_pushViewController:exam animationType:WXSTransitionAnimationTypeInsideThenPush];
         return;
     }
    
     ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
     chapterVC.type = _type;
     chapterVC.mode = mode;
-    [self.navigationController pushViewController:chapterVC animated:YES];
+    [self.navigationController wxs_pushViewController:chapterVC animationType:WXSTransitionAnimationTypeInsideThenPush];
 }
 
 - (void)gotoChapterViewController:(ExerciseType)type mode:(ExerciseMode)mode{
     ExerciseModeViewController *modeVC = [ExerciseModeViewController controller];
     modeVC.type = type;
-    [self.beforePeekedViewConreoller.navigationController pushViewController:modeVC animated:YES];
+    [self.navigationController wxs_pushViewController:modeVC animationType:WXSTransitionAnimationTypeInsideThenPush];
     ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
     chapterVC.type = type;
     chapterVC.mode = mode;
-    [modeVC.navigationController pushViewController:chapterVC animated:YES];
+    [self.navigationController wxs_pushViewController:modeVC animationType:WXSTransitionAnimationTypeInsideThenPush];
 }
 
 #pragma mark - 广告代理事件

@@ -15,5 +15,6 @@
 #import  <YYWebImage/YYWebImage.h>
 #import  <YYModel/YYModel.h>
 #import "AFNetworking.h"
+#import "UINavigationController+WXSTransition.h"
 
 #endif /* PodsImport_h */

@@ -10,7 +10,7 @@
 
 @interface CourseSearchBar ()
 
-@property (nonatomic, copy) ActionBlock actionBlock;
+@property (nonatomic, copy) SearchBarActionBlock actionBlock;
 
 
 @property (nonatomic, strong) UIImageView *imageView;

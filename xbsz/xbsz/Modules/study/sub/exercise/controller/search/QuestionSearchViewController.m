@@ -29,6 +29,9 @@ static NSInteger symbolWidth = 35;
 
 @implementation QuestionSearchViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -234,7 +237,7 @@ static NSInteger symbolWidth = 35;
     [self performSelector:@selector(deselect) withObject:nil afterDelay:0.2f];
     SearchResultViewController *resultVC = [SearchResultViewController controller];
     resultVC.question = [_questions objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:resultVC animated:YES];
+    [self.navigationController wxs_pushViewController:resultVC animationType:WXSTransitionAnimationTypeInsideThenPush];
 }
 
 - (void)deselect{

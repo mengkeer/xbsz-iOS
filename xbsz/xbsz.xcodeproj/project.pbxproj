@@ -24,7 +24,6 @@
 		054B8B7E1E7B876600E4E0BD /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B8B7B1E7B876600E4E0BD /* CWStarRateView.m */; };
 		055A3B881E84BAB0004D09CC /* UINavigationController+TZPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 055A3B871E84BAB0004D09CC /* UINavigationController+TZPopGesture.m */; };
 		055A3B8B1E84CC7D004D09CC /* UIViewController+Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 055A3B8A1E84CC7D004D09CC /* UIViewController+Authorization.m */; };
-		0563B1491E794169008283C7 /* course.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0563B1481E794169008283C7 /* course.jpg */; };
 		05B4D06C1E7646B4005DC854 /* CourseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */; };
 		05B4D0861E769109005DC854 /* CourseSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D0851E769109005DC854 /* CourseSearchBar.m */; };
 		05B4D0891E769EF1005DC854 /* courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B4D0881E769EF1005DC854 /* courses.json */; };
@@ -60,6 +59,22 @@
 		AD30B1471DFAC900000189DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD30B1461DFAC900000189DD /* Assets.xcassets */; };
 		AD36F8821EA3119600775F90 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD36F8811EA3119600775F90 /* DownloadManager.m */; };
 		AD3891CF1EA4C0F70074426C /* AttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3891CE1EA4C0F70074426C /* AttachmentViewController.m */; };
+		AD3F016D1EF40C5D0074D6A5 /* UINavigationController+WXSTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F014D1EF40C5D0074D6A5 /* UINavigationController+WXSTransition.m */; };
+		AD3F016E1EF40C5D0074D6A5 /* UIViewController+WXSTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F014F1EF40C5D0074D6A5 /* UIViewController+WXSTransition.m */; };
+		AD3F016F1EF40C5D0074D6A5 /* UIViewController+WXSTransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01511EF40C5D0074D6A5 /* UIViewController+WXSTransitionProperty.m */; };
+		AD3F01701EF40C5D0074D6A5 /* WXSPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01531EF40C5D0074D6A5 /* WXSPercentDrivenInteractiveTransition.m */; };
+		AD3F01711EF40C5D0074D6A5 /* WXSTransitionManager+BoomAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01551EF40C5D0074D6A5 /* WXSTransitionManager+BoomAnimation.m */; };
+		AD3F01721EF40C5D0074D6A5 /* WXSTransitionManager+BrickAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01571EF40C5D0074D6A5 /* WXSTransitionManager+BrickAnimation.m */; };
+		AD3F01731EF40C5D0074D6A5 /* WXSTransitionManager+CoverAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01591EF40C5D0074D6A5 /* WXSTransitionManager+CoverAnimation.m */; };
+		AD3F01741EF40C5D0074D6A5 /* WXSTransitionManager+FragmentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F015B1EF40C5D0074D6A5 /* WXSTransitionManager+FragmentAnimation.m */; };
+		AD3F01751EF40C5D0074D6A5 /* WXSTransitionManager+InsideThenPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F015D1EF40C5D0074D6A5 /* WXSTransitionManager+InsideThenPushAnimation.m */; };
+		AD3F01761EF40C5D0074D6A5 /* WXSTransitionManager+PageAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F015F1EF40C5D0074D6A5 /* WXSTransitionManager+PageAnimation.m */; };
+		AD3F01771EF40C5D0074D6A5 /* WXSTransitionManager+SpreadAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01611EF40C5D0074D6A5 /* WXSTransitionManager+SpreadAnimation.m */; };
+		AD3F01781EF40C5D0074D6A5 /* WXSTransitionManager+SystermAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01631EF40C5D0074D6A5 /* WXSTransitionManager+SystermAnimation.m */; };
+		AD3F01791EF40C5D0074D6A5 /* WXSTransitionManager+TypeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01651EF40C5D0074D6A5 /* WXSTransitionManager+TypeTool.m */; };
+		AD3F017A1EF40C5D0074D6A5 /* WXSTransitionManager+ViewMoveAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01671EF40C5D0074D6A5 /* WXSTransitionManager+ViewMoveAnimation.m */; };
+		AD3F017B1EF40C5D0074D6A5 /* WXSTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F01691EF40C5D0074D6A5 /* WXSTransitionManager.m */; };
+		AD3F017C1EF40C5D0074D6A5 /* WXSTransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3F016B1EF40C5D0074D6A5 /* WXSTransitionProperty.m */; };
 		AD45BBA31EAE4A5800D53813 /* CXNetwork+Course.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBA21EAE4A5800D53813 /* CXNetwork+Course.m */; };
 		AD45BBA61EAEE8A000D53813 /* ReciteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBA51EAEE8A000D53813 /* ReciteViewController.m */; };
 		AD45BBB41EAF336800D53813 /* QuestionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBB11EAF336800D53813 /* QuestionCollectionViewCell.m */; };
@@ -166,17 +181,6 @@
 		ADDE6F641ECBED130013AFD0 /* CourseQuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F601ECBED130013AFD0 /* CourseQuestionTableViewCell.m */; };
 		ADDE6F681ECBF8240013AFD0 /* StudyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F671ECBF8240013AFD0 /* StudyUtil.m */; };
 		ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */; };
-		ADF042431E0192EF00171489 /* avatar1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042381E0192EF00171489 /* avatar1.jpg */; };
-		ADF042441E0192EF00171489 /* avatar10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042391E0192EF00171489 /* avatar10.jpg */; };
-		ADF042451E0192EF00171489 /* avatar11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423A1E0192EF00171489 /* avatar11.jpg */; };
-		ADF042461E0192EF00171489 /* avatar2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423B1E0192EF00171489 /* avatar2.jpg */; };
-		ADF042471E0192EF00171489 /* avatar3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423C1E0192EF00171489 /* avatar3.jpg */; };
-		ADF042481E0192EF00171489 /* avatar4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423D1E0192EF00171489 /* avatar4.jpg */; };
-		ADF042491E0192EF00171489 /* avatar5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423E1E0192EF00171489 /* avatar5.jpg */; };
-		ADF0424A1E0192EF00171489 /* avatar6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF0423F1E0192EF00171489 /* avatar6.jpg */; };
-		ADF0424B1E0192EF00171489 /* avatar7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042401E0192EF00171489 /* avatar7.jpg */; };
-		ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042411E0192EF00171489 /* avatar8.jpg */; };
-		ADF0424D1E0192EF00171489 /* avatar9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = ADF042421E0192EF00171489 /* avatar9.jpg */; };
 		ADF408CA1EB4ABFD009DB786 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF408C91EB4ABFD009DB786 /* libsqlite3.0.tbd */; };
 		ADF408CD1EB4C042009DB786 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF408CC1EB4C042009DB786 /* ExamViewController.m */; };
 		ADF408D11EB4DFC8009DB786 /* correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = ADF408CF1EB4DFC8009DB786 /* correct.wav */; };
@@ -222,7 +226,6 @@
 		055A3B871E84BAB0004D09CC /* UINavigationController+TZPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+TZPopGesture.m"; sourceTree = "<group>"; };
 		055A3B891E84CC7D004D09CC /* UIViewController+Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Authorization.h"; sourceTree = "<group>"; };
 		055A3B8A1E84CC7D004D09CC /* UIViewController+Authorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Authorization.m"; sourceTree = "<group>"; };
-		0563B1481E794169008283C7 /* course.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = course.jpg; sourceTree = "<group>"; };
 		05B4D06A1E7646B4005DC854 /* CourseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCollectionViewCell.h; sourceTree = "<group>"; };
 		05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCollectionViewCell.m; sourceTree = "<group>"; };
 		05B4D0841E769109005DC854 /* CourseSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseSearchBar.h; sourceTree = "<group>"; };
@@ -293,6 +296,39 @@
 		AD36F8811EA3119600775F90 /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		AD3891CD1EA4C0F70074426C /* AttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentViewController.h; sourceTree = "<group>"; };
 		AD3891CE1EA4C0F70074426C /* AttachmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentViewController.m; sourceTree = "<group>"; };
+		AD3F014C1EF40C5D0074D6A5 /* UINavigationController+WXSTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+WXSTransition.h"; sourceTree = "<group>"; };
+		AD3F014D1EF40C5D0074D6A5 /* UINavigationController+WXSTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+WXSTransition.m"; sourceTree = "<group>"; };
+		AD3F014E1EF40C5D0074D6A5 /* UIViewController+WXSTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WXSTransition.h"; sourceTree = "<group>"; };
+		AD3F014F1EF40C5D0074D6A5 /* UIViewController+WXSTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WXSTransition.m"; sourceTree = "<group>"; };
+		AD3F01501EF40C5D0074D6A5 /* UIViewController+WXSTransitionProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WXSTransitionProperty.h"; sourceTree = "<group>"; };
+		AD3F01511EF40C5D0074D6A5 /* UIViewController+WXSTransitionProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WXSTransitionProperty.m"; sourceTree = "<group>"; };
+		AD3F01521EF40C5D0074D6A5 /* WXSPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		AD3F01531EF40C5D0074D6A5 /* WXSPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
+		AD3F01541EF40C5D0074D6A5 /* WXSTransitionManager+BoomAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+BoomAnimation.h"; sourceTree = "<group>"; };
+		AD3F01551EF40C5D0074D6A5 /* WXSTransitionManager+BoomAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+BoomAnimation.m"; sourceTree = "<group>"; };
+		AD3F01561EF40C5D0074D6A5 /* WXSTransitionManager+BrickAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+BrickAnimation.h"; sourceTree = "<group>"; };
+		AD3F01571EF40C5D0074D6A5 /* WXSTransitionManager+BrickAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+BrickAnimation.m"; sourceTree = "<group>"; };
+		AD3F01581EF40C5D0074D6A5 /* WXSTransitionManager+CoverAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+CoverAnimation.h"; sourceTree = "<group>"; };
+		AD3F01591EF40C5D0074D6A5 /* WXSTransitionManager+CoverAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+CoverAnimation.m"; sourceTree = "<group>"; };
+		AD3F015A1EF40C5D0074D6A5 /* WXSTransitionManager+FragmentAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+FragmentAnimation.h"; sourceTree = "<group>"; };
+		AD3F015B1EF40C5D0074D6A5 /* WXSTransitionManager+FragmentAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+FragmentAnimation.m"; sourceTree = "<group>"; };
+		AD3F015C1EF40C5D0074D6A5 /* WXSTransitionManager+InsideThenPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+InsideThenPushAnimation.h"; sourceTree = "<group>"; };
+		AD3F015D1EF40C5D0074D6A5 /* WXSTransitionManager+InsideThenPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+InsideThenPushAnimation.m"; sourceTree = "<group>"; };
+		AD3F015E1EF40C5D0074D6A5 /* WXSTransitionManager+PageAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+PageAnimation.h"; sourceTree = "<group>"; };
+		AD3F015F1EF40C5D0074D6A5 /* WXSTransitionManager+PageAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+PageAnimation.m"; sourceTree = "<group>"; };
+		AD3F01601EF40C5D0074D6A5 /* WXSTransitionManager+SpreadAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+SpreadAnimation.h"; sourceTree = "<group>"; };
+		AD3F01611EF40C5D0074D6A5 /* WXSTransitionManager+SpreadAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+SpreadAnimation.m"; sourceTree = "<group>"; };
+		AD3F01621EF40C5D0074D6A5 /* WXSTransitionManager+SystermAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+SystermAnimation.h"; sourceTree = "<group>"; };
+		AD3F01631EF40C5D0074D6A5 /* WXSTransitionManager+SystermAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+SystermAnimation.m"; sourceTree = "<group>"; };
+		AD3F01641EF40C5D0074D6A5 /* WXSTransitionManager+TypeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+TypeTool.h"; sourceTree = "<group>"; };
+		AD3F01651EF40C5D0074D6A5 /* WXSTransitionManager+TypeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+TypeTool.m"; sourceTree = "<group>"; };
+		AD3F01661EF40C5D0074D6A5 /* WXSTransitionManager+ViewMoveAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXSTransitionManager+ViewMoveAnimation.h"; sourceTree = "<group>"; };
+		AD3F01671EF40C5D0074D6A5 /* WXSTransitionManager+ViewMoveAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXSTransitionManager+ViewMoveAnimation.m"; sourceTree = "<group>"; };
+		AD3F01681EF40C5D0074D6A5 /* WXSTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTransitionManager.h; sourceTree = "<group>"; };
+		AD3F01691EF40C5D0074D6A5 /* WXSTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSTransitionManager.m; sourceTree = "<group>"; };
+		AD3F016A1EF40C5D0074D6A5 /* WXSTransitionProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTransitionProperty.h; sourceTree = "<group>"; };
+		AD3F016B1EF40C5D0074D6A5 /* WXSTransitionProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXSTransitionProperty.m; sourceTree = "<group>"; };
+		AD3F016C1EF40C5D0074D6A5 /* WXSTypedefConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXSTypedefConfig.h; sourceTree = "<group>"; };
 		AD45BBA11EAE4A5800D53813 /* CXNetwork+Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CXNetwork+Course.h"; sourceTree = "<group>"; };
 		AD45BBA21EAE4A5800D53813 /* CXNetwork+Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CXNetwork+Course.m"; sourceTree = "<group>"; };
 		AD45BBA41EAEE8A000D53813 /* ReciteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReciteViewController.h; sourceTree = "<group>"; };
@@ -504,17 +540,6 @@
 		ADDE6F671ECBF8240013AFD0 /* StudyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyUtil.m; sourceTree = "<group>"; };
 		ADE663681EB384BF00DBA92A /* MutiPracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiPracticeViewController.h; sourceTree = "<group>"; };
 		ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutiPracticeViewController.m; sourceTree = "<group>"; };
-		ADF042381E0192EF00171489 /* avatar1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar1.jpg; sourceTree = "<group>"; };
-		ADF042391E0192EF00171489 /* avatar10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar10.jpg; sourceTree = "<group>"; };
-		ADF0423A1E0192EF00171489 /* avatar11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar11.jpg; sourceTree = "<group>"; };
-		ADF0423B1E0192EF00171489 /* avatar2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar2.jpg; sourceTree = "<group>"; };
-		ADF0423C1E0192EF00171489 /* avatar3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar3.jpg; sourceTree = "<group>"; };
-		ADF0423D1E0192EF00171489 /* avatar4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar4.jpg; sourceTree = "<group>"; };
-		ADF0423E1E0192EF00171489 /* avatar5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar5.jpg; sourceTree = "<group>"; };
-		ADF0423F1E0192EF00171489 /* avatar6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar6.jpg; sourceTree = "<group>"; };
-		ADF042401E0192EF00171489 /* avatar7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar7.jpg; sourceTree = "<group>"; };
-		ADF042411E0192EF00171489 /* avatar8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar8.jpg; sourceTree = "<group>"; };
-		ADF042421E0192EF00171489 /* avatar9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar9.jpg; sourceTree = "<group>"; };
 		ADF408C91EB4ABFD009DB786 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		ADF408CB1EB4C042009DB786 /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
 		ADF408CC1EB4C042009DB786 /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
@@ -644,15 +669,6 @@
 				055A3B871E84BAB0004D09CC /* UINavigationController+TZPopGesture.m */,
 			);
 			path = TZScrollViewPopGesture;
-			sourceTree = "<group>";
-		};
-		056E45741DFFE55F00D5C956 /* image */ = {
-			isa = PBXGroup;
-			children = (
-				0563B1481E794169008283C7 /* course.jpg */,
-				ADF042371E0192EF00171489 /* avatar */,
-			);
-			path = image;
 			sourceTree = "<group>";
 		};
 		05B4D0671E763676005DC854 /* Model */ = {
@@ -921,7 +937,6 @@
 				0518ECC51E6037C60018F432 /* notes.json */,
 				AD30B1461DFAC900000189DD /* Assets.xcassets */,
 				ADF408CE1EB4DFC8009DB786 /* music */,
-				056E45741DFFE55F00D5C956 /* image */,
 				AD30B1701DFAC992000189DD /* Fonts */,
 			);
 			path = Resources;
@@ -932,6 +947,46 @@
 			children = (
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		AD3F014B1EF40C5D0074D6A5 /* WXSTransition */ = {
+			isa = PBXGroup;
+			children = (
+				AD3F014C1EF40C5D0074D6A5 /* UINavigationController+WXSTransition.h */,
+				AD3F014D1EF40C5D0074D6A5 /* UINavigationController+WXSTransition.m */,
+				AD3F014E1EF40C5D0074D6A5 /* UIViewController+WXSTransition.h */,
+				AD3F014F1EF40C5D0074D6A5 /* UIViewController+WXSTransition.m */,
+				AD3F01501EF40C5D0074D6A5 /* UIViewController+WXSTransitionProperty.h */,
+				AD3F01511EF40C5D0074D6A5 /* UIViewController+WXSTransitionProperty.m */,
+				AD3F01521EF40C5D0074D6A5 /* WXSPercentDrivenInteractiveTransition.h */,
+				AD3F01531EF40C5D0074D6A5 /* WXSPercentDrivenInteractiveTransition.m */,
+				AD3F01541EF40C5D0074D6A5 /* WXSTransitionManager+BoomAnimation.h */,
+				AD3F01551EF40C5D0074D6A5 /* WXSTransitionManager+BoomAnimation.m */,
+				AD3F01561EF40C5D0074D6A5 /* WXSTransitionManager+BrickAnimation.h */,
+				AD3F01571EF40C5D0074D6A5 /* WXSTransitionManager+BrickAnimation.m */,
+				AD3F01581EF40C5D0074D6A5 /* WXSTransitionManager+CoverAnimation.h */,
+				AD3F01591EF40C5D0074D6A5 /* WXSTransitionManager+CoverAnimation.m */,
+				AD3F015A1EF40C5D0074D6A5 /* WXSTransitionManager+FragmentAnimation.h */,
+				AD3F015B1EF40C5D0074D6A5 /* WXSTransitionManager+FragmentAnimation.m */,
+				AD3F015C1EF40C5D0074D6A5 /* WXSTransitionManager+InsideThenPushAnimation.h */,
+				AD3F015D1EF40C5D0074D6A5 /* WXSTransitionManager+InsideThenPushAnimation.m */,
+				AD3F015E1EF40C5D0074D6A5 /* WXSTransitionManager+PageAnimation.h */,
+				AD3F015F1EF40C5D0074D6A5 /* WXSTransitionManager+PageAnimation.m */,
+				AD3F01601EF40C5D0074D6A5 /* WXSTransitionManager+SpreadAnimation.h */,
+				AD3F01611EF40C5D0074D6A5 /* WXSTransitionManager+SpreadAnimation.m */,
+				AD3F01621EF40C5D0074D6A5 /* WXSTransitionManager+SystermAnimation.h */,
+				AD3F01631EF40C5D0074D6A5 /* WXSTransitionManager+SystermAnimation.m */,
+				AD3F01641EF40C5D0074D6A5 /* WXSTransitionManager+TypeTool.h */,
+				AD3F01651EF40C5D0074D6A5 /* WXSTransitionManager+TypeTool.m */,
+				AD3F01661EF40C5D0074D6A5 /* WXSTransitionManager+ViewMoveAnimation.h */,
+				AD3F01671EF40C5D0074D6A5 /* WXSTransitionManager+ViewMoveAnimation.m */,
+				AD3F01681EF40C5D0074D6A5 /* WXSTransitionManager.h */,
+				AD3F01691EF40C5D0074D6A5 /* WXSTransitionManager.m */,
+				AD3F016A1EF40C5D0074D6A5 /* WXSTransitionProperty.h */,
+				AD3F016B1EF40C5D0074D6A5 /* WXSTransitionProperty.m */,
+				AD3F016C1EF40C5D0074D6A5 /* WXSTypedefConfig.h */,
+			);
+			path = WXSTransition;
 			sourceTree = "<group>";
 		};
 		AD45BBAB1EAF336800D53813 /* mode */ = {
@@ -971,6 +1026,7 @@
 		AD7F881A1E594D5E009603E4 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				AD3F014B1EF40C5D0074D6A5 /* WXSTransition */,
 				05CEE4AB1E85305E0033DD3D /* NJKWebViewProgress */,
 				055A3B851E84BAB0004D09CC /* TZScrollViewPopGesture */,
 				054B8B771E7B876600E4E0BD /* CWStarRateView */,
@@ -1560,24 +1616,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		ADF042371E0192EF00171489 /* avatar */ = {
-			isa = PBXGroup;
-			children = (
-				ADF042381E0192EF00171489 /* avatar1.jpg */,
-				ADF042391E0192EF00171489 /* avatar10.jpg */,
-				ADF0423A1E0192EF00171489 /* avatar11.jpg */,
-				ADF0423B1E0192EF00171489 /* avatar2.jpg */,
-				ADF0423C1E0192EF00171489 /* avatar3.jpg */,
-				ADF0423D1E0192EF00171489 /* avatar4.jpg */,
-				ADF0423E1E0192EF00171489 /* avatar5.jpg */,
-				ADF0423F1E0192EF00171489 /* avatar6.jpg */,
-				ADF042401E0192EF00171489 /* avatar7.jpg */,
-				ADF042411E0192EF00171489 /* avatar8.jpg */,
-				ADF042421E0192EF00171489 /* avatar9.jpg */,
-			);
-			path = avatar;
-			sourceTree = "<group>";
-		};
 		ADF408CE1EB4DFC8009DB786 /* music */ = {
 			isa = PBXGroup;
 			children = (
@@ -1674,34 +1712,22 @@
 			files = (
 				ADFEDAC51ECA942C008F30CF /* LaunchScreen.storyboard in Resources */,
 				AD8B45381EA9DE3D00E8D539 /* comments.json in Resources */,
-				ADF042451E0192EF00171489 /* avatar11.jpg in Resources */,
-				ADF042431E0192EF00171489 /* avatar1.jpg in Resources */,
 				0518ECC81E603E480018F432 /* user.json in Resources */,
 				ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */,
-				0563B1491E794169008283C7 /* course.jpg in Resources */,
-				ADF0424D1E0192EF00171489 /* avatar9.jpg in Resources */,
 				0518ECCA1E6041E10018F432 /* note.json in Resources */,
 				05B4D08E1E76A532005DC854 /* course.json in Resources */,
-				ADF042471E0192EF00171489 /* avatar3.jpg in Resources */,
-				ADF042441E0192EF00171489 /* avatar10.jpg in Resources */,
 				ADF408D21EB4DFC8009DB786 /* mistake.wav in Resources */,
 				ADDE6F3E1ECB4CD40013AFD0 /* questions.json in Resources */,
-				ADF042461E0192EF00171489 /* avatar2.jpg in Resources */,
-				ADF042481E0192EF00171489 /* avatar4.jpg in Resources */,
 				AD77A9E01ECCB14500D6CC9E /* sizheng.json in Resources */,
 				ADDE6F531ECBDE040013AFD0 /* homeworks.json in Resources */,
 				ADF408D11EB4DFC8009DB786 /* correct.wav in Resources */,
-				ADF0424C1E0192EF00171489 /* avatar8.jpg in Resources */,
 				054B8B7C1E7B876600E4E0BD /* b27_icon_star_gray@2x.png in Resources */,
 				AD8B453A1EA9E06800E8D539 /* comment.json in Resources */,
-				ADF042491E0192EF00171489 /* avatar5.jpg in Resources */,
 				054B8B7D1E7B876600E4E0BD /* b27_icon_star_yellow@2x.png in Resources */,
 				AD30B1471DFAC900000189DD /* Assets.xcassets in Resources */,
 				ADB7462D1E76DA8B00644812 /* PYSearch.bundle in Resources */,
 				0518ECC61E6037C60018F432 /* notes.json in Resources */,
-				ADF0424B1E0192EF00171489 /* avatar7.jpg in Resources */,
 				05B4D0891E769EF1005DC854 /* courses.json in Resources */,
-				ADF0424A1E0192EF00171489 /* avatar6.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1766,16 +1792,20 @@
 				AD2540B81E97860F00AA330D /* JWLocalUser.m in Sources */,
 				AD7F88DA1E595A5E009603E4 /* UIViewController+CXInit.m in Sources */,
 				ADFEDAD21ECAE73C008F30CF /* SystemInformList.m in Sources */,
+				AD3F01721EF40C5D0074D6A5 /* WXSTransitionManager+BrickAnimation.m in Sources */,
 				ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */,
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD5B0FD01EC5E23F00C7D283 /* NSDate+CXAdd.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
 				ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */,
+				AD3F01741EF40C5D0074D6A5 /* WXSTransitionManager+FragmentAnimation.m in Sources */,
 				AD45BBBA1EAF35B300D53813 /* ExerciseQuestion.m in Sources */,
 				0537E0C21E8398FA00C2F81C /* ToastView.m in Sources */,
 				05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */,
+				AD3F01751EF40C5D0074D6A5 /* WXSTransitionManager+InsideThenPushAnimation.m in Sources */,
 				AD29F4831E5B235F008346BD /* CXBaseTableView.m in Sources */,
 				AD45BBC41EAF42C300D53813 /* FMDBUtil.m in Sources */,
+				AD3F01761EF40C5D0074D6A5 /* WXSTransitionManager+PageAnimation.m in Sources */,
 				AD7BD61B1EAD8ABF00F34023 /* SignatureViewController.m in Sources */,
 				AD94AC591EACFE130059AF3A /* BirthdayViewController.m in Sources */,
 				AD196E651EAC3C3700111EB5 /* NicknameViewController.m in Sources */,
@@ -1784,6 +1814,7 @@
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,
 				AD196E681EAC8AFC00111EB5 /* EmailViewController.m in Sources */,
 				ADDE6F4B1ECB61560013AFD0 /* ExerciseCollectionViewCell.m in Sources */,
+				AD3F01701EF40C5D0074D6A5 /* WXSPercentDrivenInteractiveTransition.m in Sources */,
 				05067FEC1E7BF02200868AC1 /* CourseDetailViewController.m in Sources */,
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
@@ -1795,6 +1826,7 @@
 				AD45BBB41EAF336800D53813 /* QuestionCollectionViewCell.m in Sources */,
 				AD7F882C1E594D5E009603E4 /* YZFlowLayout.m in Sources */,
 				ADA187721EB333CB00C771A4 /* SinglePracticeViewController.m in Sources */,
+				AD3F017A1EF40C5D0074D6A5 /* WXSTransitionManager+ViewMoveAnimation.m in Sources */,
 				AD8B86311E9A92B1007F4CEC /* CourseList.m in Sources */,
 				ADA187611EB2C05B00C771A4 /* ExerciseModeViewController.m in Sources */,
 				ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */,
@@ -1818,6 +1850,7 @@
 				ADDE6F641ECBED130013AFD0 /* CourseQuestionTableViewCell.m in Sources */,
 				ADCFC5411EC92E310042A28F /* CampusCommentTableViewCell.m in Sources */,
 				AD8B86341E9CD7EB007F4CEC /* ChapterHeaderView.m in Sources */,
+				AD3F017B1EF40C5D0074D6A5 /* WXSTransitionManager.m in Sources */,
 				AD2540B51E977B4100AA330D /* AuthorizedLoginViewController.m in Sources */,
 				AD7F89221E595B29009603E4 /* SetItemTableViewCell.m in Sources */,
 				AD77A9E61ECDEA9800D6CC9E /* CampusCommentList.m in Sources */,
@@ -1858,12 +1891,15 @@
 				ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */,
 				AD45BBBE1EAF37D100D53813 /* Exercise.m in Sources */,
 				AD7F891F1E595B29009603E4 /* SetViewController.m in Sources */,
+				AD3F01711EF40C5D0074D6A5 /* WXSTransitionManager+BoomAnimation.m in Sources */,
 				AD7F882A1E594D5E009603E4 /* YZDisplayTitleLabel.m in Sources */,
 				ADA187691EB2EFEC00C771A4 /* ExerciseChapterViewController.m in Sources */,
+				AD3F016E1EF40C5D0074D6A5 /* UIViewController+WXSTransition.m in Sources */,
 				ADDE6F561ECBDEC10013AFD0 /* Homework.m in Sources */,
 				05CEE4B41E8530AF0033DD3D /* CXBaseWebViewController.m in Sources */,
 				AD2BE4EB1E5980CB00D0B0ED /* CXSectionButton.m in Sources */,
 				ADFEDA811EC9C892008F30CF /* NewPostViewController.m in Sources */,
+				AD3F016D1EF40C5D0074D6A5 /* UINavigationController+WXSTransition.m in Sources */,
 				AD7092AA1E861CF10024427C /* DefaultTipsView.m in Sources */,
 				05B4D0861E769109005DC854 /* CourseSearchBar.m in Sources */,
 				ADFEDACF1ECAE5E3008F30CF /* SystemInform.m in Sources */,
@@ -1872,11 +1908,14 @@
 				ADDE6F681ECBF8240013AFD0 /* StudyUtil.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
 				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,
+				AD3F017C1EF40C5D0074D6A5 /* WXSTransitionProperty.m in Sources */,
 				ADDE6F511ECB622E0013AFD0 /* HomeworkCollectionViewCell.m in Sources */,
 				AD8B862B1E9A92A4007F4CEC /* CXUser.m in Sources */,
+				AD3F01731EF40C5D0074D6A5 /* WXSTransitionManager+CoverAnimation.m in Sources */,
 				AD592E6E1EB20DA800CBDCC8 /* QuestionSearchViewController.m in Sources */,
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
 				AD196E6B1EAC8E2900111EB5 /* PhoneViewController.m in Sources */,
+				AD3F01791EF40C5D0074D6A5 /* WXSTransitionManager+TypeTool.m in Sources */,
 				0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */,
 				AD45BBB71EAF339500D53813 /* QuestionTableViewCell.m in Sources */,
 				055A3B881E84BAB0004D09CC /* UINavigationController+TZPopGesture.m in Sources */,
@@ -1889,6 +1928,7 @@
 				AD1D108A1EC7443000E04135 /* AppUtil.m in Sources */,
 				AD77A9EC1ED0ABA100D6CC9E /* XuehaoViewController.m in Sources */,
 				AD11DCAA1EED353200B861C7 /* PhotoBrowserViewController.m in Sources */,
+				AD3F01771EF40C5D0074D6A5 /* WXSTransitionManager+SpreadAnimation.m in Sources */,
 				ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */,
 				AD8B452A1EA890DB00E8D539 /* CourseCommentViewController.m in Sources */,
 				055A3B8B1E84CC7D004D09CC /* UIViewController+Authorization.m in Sources */,
@@ -1898,11 +1938,13 @@
 				AD8B45361EA9DCA600E8D539 /* CourseCommentList.m in Sources */,
 				AD7F88DB1E595A5E009603E4 /* CXBaseDisplayViewController.m in Sources */,
 				AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */,
+				AD3F016F1EF40C5D0074D6A5 /* UIViewController+WXSTransitionProperty.m in Sources */,
 				ADF408D51EB4E076009DB786 /* CXAudioPlayer.m in Sources */,
 				AD7F88291E594D5E009603E4 /* UIView+Frame.m in Sources */,
 				0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */,
 				AD8B861B1E9A913F007F4CEC /* CXNetwork+User.m in Sources */,
 				05067FEE1E7BF02200868AC1 /* CourseIntroductionViewController.m in Sources */,
+				AD3F01781EF40C5D0074D6A5 /* WXSTransitionManager+SystermAnimation.m in Sources */,
 				AD7F88DE1E595A5E009603E4 /* CXPushViewController.m in Sources */,
 				ADB7462F1E76DA8B00644812 /* PYSearchSuggestionViewController.m in Sources */,
 				05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */,

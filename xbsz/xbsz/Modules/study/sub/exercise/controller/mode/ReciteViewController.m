@@ -10,6 +10,7 @@
 #import "QuestionCollectionViewCell.h"
 #import "ExerciseQuestion.h"
 #import "ExerciseProgressViewController.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 #import "FMDBUtil.h"
 
 static NSString *cellID = @"ExerciseQuestionCellID";
@@ -34,6 +35,14 @@ static NSInteger bottomHeight = 45;
 @end
 
 @implementation ReciteViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.fd_interactivePopDisabled = YES;
+    id traget = self.navigationController.interactivePopGestureRecognizer.delegate;
+    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:traget action:nil];
+    [self.view addGestureRecognizer:pan];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

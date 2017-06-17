@@ -19,7 +19,7 @@
     [super viewDidLoad];
   
     self.title = @"搜索结果显示";
-    self.customNavBarView.backgroundColor = CXBackGroundColor;
+    self.customNavBarView.backgroundColor  = [CXUserDefaults instance].bgColor;
     
     QuestionCollectionViewCell *contentView = [[QuestionCollectionViewCell alloc] initWithFrame:CGRectZero];
     contentView.backgroundColor = CXWhiteColor;

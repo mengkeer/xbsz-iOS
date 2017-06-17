@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-typedef void (^ActionBlock)();
+typedef void (^SearchBarActionBlock)();
 
 @interface ExerciseSearchBar : UIView
 
-- (void)setClicked:(ActionBlock)action;
+- (void)setClicked:(SearchBarActionBlock)action;
 
 @end

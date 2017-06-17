@@ -90,7 +90,7 @@
     if(!_avatarBtn){
         _avatarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _avatarBtn.frame = CGRectMake(0, 0, 36, 36);
-        [_avatarBtn setImage:[[[UIImage imageNamed:@"avatar1.jpg"] imageByResizeToSize:CGSizeMake(36, 36) contentMode:UIViewContentModeScaleToFill] imageByRoundCornerRadius:18] forState:UIControlStateNormal];
+        [_avatarBtn setImage:[[[UIImage imageNamed:@"defaultUserPhoto"] imageByResizeToSize:CGSizeMake(36, 36) contentMode:UIViewContentModeScaleToFill] imageByRoundCornerRadius:18] forState:UIControlStateNormal];
         _avatarBtn.layer.cornerRadius = 18;
         _avatarBtn.clipsToBounds = YES;
     }

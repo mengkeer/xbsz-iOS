@@ -55,7 +55,7 @@
             _briefLabel.text = @"(＾－＾) 介绍一下自己吧";
         }
         NSString *avatarUrl = [NSString getAvatarUrl:[CXLocalUser instance].avatar];
-        [_avatarBtn yy_setImageWithURL:[NSURL URLWithString:avatarUrl] forState:UIControlStateNormal placeholder:[UIImage imageNamed:@"avatar1.jpg"]];
+        [_avatarBtn yy_setImageWithURL:[NSURL URLWithString:avatarUrl] forState:UIControlStateNormal placeholder:[UIImage imageNamed:@"defaultUserPhoto"]];
 
     }else{
         NSString *avatarUrl = [NSString getAvatarUrl:[CXLocalUser instance].avatar];
@@ -264,7 +264,7 @@
 - (UIButton *)avatarBtn{
     if(!_avatarBtn){
         _avatarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_avatarBtn setImage:[UIImage imageNamed:@"avatar1.jpg"] forState:UIControlStateNormal];
+        [_avatarBtn setImage:[UIImage imageNamed:@"defaultUserPhoto"] forState:UIControlStateNormal];
         _avatarBtn.layer.cornerRadius = 29;
         _avatarBtn.clipsToBounds = YES;
         [_avatarBtn addTarget:self action:@selector(clickLogin) forControlEvents:UIControlEventTouchUpInside];

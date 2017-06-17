@@ -25,7 +25,7 @@
     NSDate *date = [formatter dateFromString:launchTime];
 
     NSDate *now = [NSDate date];
-    if([[date dateByAddingDays:1] compare:now] == NSOrderedAscending){
+    if([[date dateByAddingHours:1] compare:now] == NSOrderedAscending){
         return YES;
     }
     
@@ -49,8 +49,10 @@
 + (BOOL)showAD{
     BOOL hasAd = [CXUserDefaults instance].hasAd;
     if(hasAd && [self isAfterAdTimeNode]){
+        CXLog(@"显示广告");
         return YES;
     }else{
+        CXLog(@"无广告");
         return NO;
     }
 }
