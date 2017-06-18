@@ -11,7 +11,7 @@
 
 static const CGFloat LCAnimationDuration = 0.50f;   // Push / Pop 动画持续时间
 static const CGFloat LCMaxBlackMaskAlpha = 0.80f;   // 黑色背景透明度
-static const CGFloat LCZoomRatio         = 0.94f;   // 后面视图缩放比   //此为开发人员自定义  原为0.9
+static const CGFloat LCZoomRatio         = 0.95f;   // 后面视图缩放比   //此为开发人员自定义  原为0.9
 static const CGFloat LCShadowOpacity     = 0.80f;   // 滑动返回时当前视图的阴影透明度
 static const CGFloat LCShadowRadius      = 8.00f;   // 滑动返回时当前视图的阴影半径
 
@@ -248,6 +248,7 @@ typedef enum : NSUInteger {
     
     [self.view bringSubviewToFront:self.blackMask];
     [self.view addSubview:viewController.view];
+    self.view.backgroundColor = CXBlackColor;           //自定义修改背景颜色
     
     [UIView animateWithDuration:LCAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         
@@ -290,6 +291,8 @@ typedef enum : NSUInteger {
     currentVC.view.layer.shadowColor   = [UIColor blackColor].CGColor;
     currentVC.view.layer.shadowOpacity = LCShadowOpacity;
     currentVC.view.layer.shadowRadius  = LCShadowRadius;
+    self.view.backgroundColor = CXBlackColor;           //自定义修改背景颜色
+
     
     [UIView animateWithDuration:LCAnimationDuration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         
@@ -357,6 +360,18 @@ typedef enum : NSUInteger {
 
 - (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     
+}
+
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait ;
+}
+
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+
+-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationPortrait;
 }
 
 @end

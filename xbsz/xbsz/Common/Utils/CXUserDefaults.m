@@ -226,8 +226,8 @@ static CXUserDefaults *sharedObj;
         [CXStandardUserDefaults setBool:NO forKey:@"forbidPopGesture"];
         [CXStandardUserDefaults synchronize];
     }
-    BOOL hasAd = [CXStandardUserDefaults boolForKey:@"forbidPopGesture"];
-    return hasAd;
+    BOOL forbidPopGesture = [CXStandardUserDefaults boolForKey:@"forbidPopGesture"];
+    return forbidPopGesture;
 }
 
 

@@ -140,7 +140,6 @@
     
     LCNavigationController *navC = [[LCNavigationController alloc] initWithRootViewController:[CXTabBarController controller]];
 
-    
     CXApplication.keyWindow.rootViewController = navC;
 }
 

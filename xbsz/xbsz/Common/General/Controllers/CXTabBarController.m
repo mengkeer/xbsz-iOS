@@ -58,19 +58,17 @@
 }
 
 
--(BOOL)shouldAutorotate{
-    return YES;
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait ;
 }
 
--(UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    return [self.viewControllers.lastObject supportedInterfaceOrientations];
+- (BOOL)shouldAutorotate{
+    return NO;
 }
 
 -(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
-    return [self.viewControllers.lastObject preferredInterfaceOrientationForPresentation];
+    return UIInterfaceOrientationPortrait;
 }
-
-
 
 
 @end

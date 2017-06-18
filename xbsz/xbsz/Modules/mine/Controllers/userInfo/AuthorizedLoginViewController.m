@@ -12,7 +12,8 @@
 
 @interface AuthorizedLoginViewController ()<UITextFieldDelegate>
 
-@property (nonatomic, strong) UILabel *loginLabel;
+@property (nonatomic, strong) UIImageView *iconImageView;
+
 @property (nonatomic, strong) UILabel *timeLabel;
 
 @property (nonatomic, strong) UITextField *userNameField;
@@ -46,121 +47,114 @@
 
 - (void)createUI{
     
-    [self.contentView addSubview:self.loginLabel];
-    [_loginLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.contentView.mas_top).mas_offset(40);
-        make.left.right.mas_equalTo(self.contentView);
-        make.height.mas_equalTo(20);
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.showsVerticalScrollIndicator  = YES;
+    scrollView.alwaysBounceVertical = YES;
+    scrollView.backgroundColor = CXBackGroundColor;
+    scrollView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight-64);
+    [self.view addSubview:scrollView];
+    [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
     
+    UIView *bgView = [[UIView alloc] init];
+    bgView.backgroundColor = CXWhiteColor;
+    [scrollView addSubview:bgView];
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
+        make.top.mas_equalTo(scrollView.mas_top);
+        make.height.mas_equalTo(CXScreenHeight-64);
+    }];
+    
+    
+    [scrollView addSubview:self.iconImageView];
+    [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(scrollView.mas_top).mas_offset(36);
+        make.width.height.mas_equalTo(72);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+    }];
+    
+    
     if(_isAuthorized){
-        [self.contentView addSubview:self.timeLabel];
+        [scrollView addSubview:self.timeLabel];
         [_timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(_loginLabel.mas_bottom).mas_offset(20);
-            make.left.right.mas_equalTo(self.contentView);
+            make.top.mas_equalTo(_iconImageView.mas_bottom).mas_offset(20);
+            make.left.right.mas_equalTo(self.view);
             make.height.mas_equalTo(20);
         }];
     }
     
-    
-    [self.contentView addSubview:self.userNameField];
+    [scrollView addSubview:self.userNameField];
     [_userNameField mas_makeConstraints:^(MASConstraintMaker *make) {
         if(_isAuthorized)    make.top.mas_equalTo(self.timeLabel.mas_bottom).mas_offset(20);
-        else   make.top.mas_equalTo(self.loginLabel.mas_bottom).mas_offset(20);
-        make.height.mas_equalTo(45);
-        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(20);
-        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-20);
-    }];
-    
-    [self.contentView layoutIfNeeded];
-    
-    //设置上半部分圆角
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_userNameField.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(4, 4)];
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = _userNameField.bounds;
-    maskLayer.path = maskPath.CGPath;
-    
-    //设置边框
-    CAShapeLayer *borderLayer = [[CAShapeLayer alloc] init];
-    borderLayer.frame = _userNameField.bounds;
-    borderLayer.path = maskPath.CGPath;
-    borderLayer.lineWidth = 1/CXMainScale;
-    borderLayer.strokeColor = CXLightGrayColor.CGColor;   // 边框颜色
-    borderLayer.fillColor = CXClearColor.CGColor;
-    
-    _userNameField.layer.mask = maskLayer;
-    [_userNameField.layer addSublayer:borderLayer];
-    
-    
-    [self.contentView addSubview:self.passwordFiled];
-    [_passwordFiled mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.mas_equalTo(_userNameField.mas_bottom);
-        make.left.mas_equalTo(self.contentView.mas_left).mas_equalTo(20);
-        make.right.mas_equalTo(self.contentView.mas_right).mas_equalTo(-20);
+        else   make.top.mas_equalTo(self.iconImageView.mas_bottom).mas_offset(20);
+        make.top.mas_equalTo(_iconImageView.mas_bottom).mas_equalTo(30);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
         make.height.mas_equalTo(45);
     }];
     
-    [self.contentView layoutIfNeeded];
-    
-    //设置下半部分圆角
-    UIBezierPath *passwordPath = [UIBezierPath bezierPathWithRoundedRect:_passwordFiled.bounds byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerBottomRight cornerRadii:CGSizeMake(4, 4)];
-    
-    CAShapeLayer *passwordMask = [[CAShapeLayer alloc] init];
-    passwordMask.path = passwordPath.CGPath;
-    passwordMask.frame = _passwordFiled.bounds;
-    
-    CAShapeLayer *passwordLayer = [[CAShapeLayer alloc] init];
-    passwordLayer.frame = _passwordFiled.bounds;
-    passwordLayer.path = passwordPath.CGPath;
-    passwordLayer.lineWidth = 1/CXMainScale;
-    passwordLayer.strokeColor = CXLightGrayColor.CGColor;
-    passwordLayer.fillColor = CXClearColor.CGColor;
-    
-    _passwordFiled.layer.mask = passwordMask;
-    [_passwordFiled.layer addSublayer:passwordLayer];
-    
-    //覆盖两文本框中间加深的那条线
-    UIView *middleLine = [[UIView alloc] init];
-    middleLine.backgroundColor = CXWhiteColor;
-    [self.contentView addSubview:middleLine];
-    [middleLine mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *lineView1 = [[UIView alloc] init];
+    lineView1.backgroundColor = CXLineColor;
+    [scrollView addSubview:lineView1];
+    [lineView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(_userNameField.mas_bottom);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
         make.height.mas_equalTo(1/CXMainScale);
-        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(20);
-        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-20);
-        make.bottom.mas_equalTo(_passwordFiled.mas_top);
     }];
     
     
-    [self.contentView addSubview:self.loginBtn];
+    [scrollView addSubview:self.passwordFiled];
+    [_passwordFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_userNameField.mas_bottom);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
+        make.height.mas_equalTo(50);
+    }];
+    
+    UIView *lineView2 = [[UIView alloc] init];
+    lineView2.backgroundColor = CXLineColor;
+    [scrollView addSubview:lineView2];
+    [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(_passwordFiled.mas_bottom);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
+        make.height.mas_equalTo(1/CXMainScale);
+    }];
+    
+    
+    [scrollView addSubview:self.loginBtn];
     [_loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.contentView.mas_left).mas_offset(20);
-        make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-20);
-        make.height.mas_equalTo(40);
         make.top.mas_equalTo(_passwordFiled.mas_bottom).mas_offset(30);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
+        make.height.mas_equalTo(50);
     }];
     
-    [self.contentView addSubview:self.tipsLabel];
+    
+    [scrollView addSubview:self.tipsLabel];
     [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.loginBtn.mas_bottom).mas_offset(20);
-        make.left.right.mas_equalTo(self.contentView);
+        make.left.right.mas_equalTo(self.view);
         make.height.mas_equalTo(15);
     }];
 }
 
 #pragma mark - getter/setter
 
-- (UILabel *)loginLabel{
-    if(!_loginLabel){
-        _loginLabel = [[UILabel alloc] init];
-        _loginLabel.textAlignment = NSTextAlignmentCenter;
-        _loginLabel.text = @"使用门户信息网站账号登录";
-        CGAffineTransform matrix = CGAffineTransformMake(1, 0, tanf(-15 * (CGFloat)M_PI / 180), 1, 0, 0);
-        _loginLabel.transform = matrix;
-        _loginLabel.textColor = CXHexColor(0xf16c4d);
-        _loginLabel.font = [UIFont italicSystemFontOfSize:17];
+- (UIImageView *)iconImageView{
+    if(!_iconImageView){
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+        //获取app中所有icon名字数组
+        NSArray *iconsArr = infoDict[@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];
+        NSString *iconLastName = [iconsArr lastObject];
+        
+        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconLastName]];
+        _iconImageView.contentMode = UIViewContentModeScaleToFill;
     }
-    return _loginLabel;
+    return _iconImageView;
 }
 
 - (UILabel *)timeLabel{
@@ -240,9 +234,7 @@
         _tipsLabel = [[UILabel alloc] init];
         _tipsLabel.textAlignment = NSTextAlignmentCenter;
         _tipsLabel.text = @"tips:该账号为门户信息网站(my.dhu.edu.cn)的账号";
-        CGAffineTransform matrix = CGAffineTransformMake(1, 0, tanf(-15 * (CGFloat)M_PI / 180), 1, 0, 0);
-        _tipsLabel.transform = matrix;
-        _tipsLabel.textColor = CXHexColor(0xf16c4d);
+        _tipsLabel.textColor = CXHexColor(0x707070);
         _tipsLabel.font = [UIFont italicSystemFontOfSize:11];
     }
     return _tipsLabel;
@@ -251,7 +243,7 @@
 #pragma mark - Action
 - (void)authorize{
     if([[_userNameField.text stringByTrim] isEqualToString:@""] || [[_passwordFiled.text stringByTrim] isEqualToString:@""]){
-        [ToastView showErrorWithStaus:@"信息填写有误🙃"];
+        [ToastView showStatus:@"信息填写有误🙃"];
     }else{
         [self getJWUserInfo:_userNameField.text password:_passwordFiled.text];
     }
@@ -263,13 +255,13 @@
     
     [CXNetwork JWLogin:username password:password success:^(NSObject *obj) {
         if(obj){
-            [ToastView showSuccessWithStaus:@"授权成功" delay:1];
+            [ToastView showStatus:@"授权成功" delay:1];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.lcNavigationController popViewController];
             });
         }
     } failure:^(NSError *error) {
-        [ToastView showErrorWithStaus:@"授权失败，账号或密码错误" delay:1];
+        [ToastView showStatus:@"授权失败，账号或密码错误" delay:1];
     }];
     
 }

@@ -764,8 +764,6 @@
 			children = (
 				AD2540B01E977A9900AA330D /* UserInfoViewController.h */,
 				AD2540B11E977A9900AA330D /* UserInfoViewController.m */,
-				AD2540B31E977B4100AA330D /* AuthorizedLoginViewController.h */,
-				AD2540B41E977B4100AA330D /* AuthorizedLoginViewController.m */,
 				AD196E631EAC3C3700111EB5 /* NicknameViewController.h */,
 				AD196E641EAC3C3700111EB5 /* NicknameViewController.m */,
 				AD7BD61C1EAD9B2900F34023 /* MajorViewController.h */,
@@ -784,6 +782,8 @@
 				AD77A9EA1ED0ABA100D6CC9E /* XuehaoViewController.m */,
 				ADFEDAC61ECACF2F008F30CF /* ModifyPasswordViewController.h */,
 				ADFEDAC71ECACF2F008F30CF /* ModifyPasswordViewController.m */,
+				AD2540B31E977B4100AA330D /* AuthorizedLoginViewController.h */,
+				AD2540B41E977B4100AA330D /* AuthorizedLoginViewController.m */,
 			);
 			path = userInfo;
 			sourceTree = "<group>";

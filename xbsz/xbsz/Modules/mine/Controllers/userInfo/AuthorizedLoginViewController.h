@@ -6,8 +6,8 @@
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
-#import "CXPushViewController.h"
+#import "CXWhitePushViewController.h"
 
-@interface AuthorizedLoginViewController : CXPushViewController
+@interface AuthorizedLoginViewController : CXWhitePushViewController
 
 @end
