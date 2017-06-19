@@ -74,7 +74,6 @@
 		AD5B0FD01EC5E23F00C7D283 /* NSDate+CXAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B0FCF1EC5E23F00C7D283 /* NSDate+CXAdd.m */; };
 		AD5B0FD31EC5E8A700C7D283 /* CXPage.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B0FD21EC5E8A700C7D283 /* CXPage.m */; };
 		AD5B0FD61EC6058E00C7D283 /* CourseWare.m in Sources */ = {isa = PBXBuildFile; fileRef = AD5B0FD51EC6058E00C7D283 /* CourseWare.m */; };
-		AD6CF28C1EF6B38100C8E528 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6CF28B1EF6B38100C8E528 /* MKStoreKit.m */; };
 		AD7092AA1E861CF10024427C /* DefaultTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7092A91E861CF10024427C /* DefaultTipsView.m */; };
 		AD77A9E01ECCB14500D6CC9E /* sizheng.json in Resources */ = {isa = PBXBuildFile; fileRef = AD77A9DF1ECCB14500D6CC9E /* sizheng.json */; };
 		AD77A9E31ECD839700D6CC9E /* CXNetwork+Note.m in Sources */ = {isa = PBXBuildFile; fileRef = AD77A9E21ECD839700D6CC9E /* CXNetwork+Note.m */; };
@@ -310,8 +309,6 @@
 		AD5B0FD21EC5E8A700C7D283 /* CXPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXPage.m; sourceTree = "<group>"; };
 		AD5B0FD41EC6058E00C7D283 /* CourseWare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseWare.h; sourceTree = "<group>"; };
 		AD5B0FD51EC6058E00C7D283 /* CourseWare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseWare.m; sourceTree = "<group>"; };
-		AD6CF28A1EF6B38100C8E528 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
-		AD6CF28B1EF6B38100C8E528 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
 		AD7092A81E861CF10024427C /* DefaultTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultTipsView.h; sourceTree = "<group>"; };
 		AD7092A91E861CF10024427C /* DefaultTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultTipsView.m; sourceTree = "<group>"; };
 		AD77A9DF1ECCB14500D6CC9E /* sizheng.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sizheng.json; sourceTree = "<group>"; };
@@ -928,15 +925,6 @@
 			path = xbsz/Modules/study/sub/exercise/Controller/search;
 			sourceTree = SOURCE_ROOT;
 		};
-		AD6CF2891EF6B38100C8E528 /* MKStoreKit */ = {
-			isa = PBXGroup;
-			children = (
-				AD6CF28A1EF6B38100C8E528 /* MKStoreKit.h */,
-				AD6CF28B1EF6B38100C8E528 /* MKStoreKit.m */,
-			);
-			path = MKStoreKit;
-			sourceTree = "<group>";
-		};
 		AD7092A71E861CC70024427C /* DefaultTipsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -949,7 +937,6 @@
 		AD7F881A1E594D5E009603E4 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				AD6CF2891EF6B38100C8E528 /* MKStoreKit */,
 				AD1FDB3A1EF56CC90036612C /* LCNavigationController */,
 				05CEE4AB1E85305E0033DD3D /* NJKWebViewProgress */,
 				054B8B771E7B876600E4E0BD /* CWStarRateView */,
@@ -1728,7 +1715,6 @@
 				AD7BD61B1EAD8ABF00F34023 /* SignatureViewController.m in Sources */,
 				AD94AC591EACFE130059AF3A /* BirthdayViewController.m in Sources */,
 				AD196E651EAC3C3700111EB5 /* NicknameViewController.m in Sources */,
-				AD6CF28C1EF6B38100C8E528 /* MKStoreKit.m in Sources */,
 				AD11DCAF1EED35ED00B861C7 /* UIImageView+EGFWebCache.m in Sources */,
 				ADDE6F441ECB55960013AFD0 /* CourseQuestionList.m in Sources */,
 				AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */,

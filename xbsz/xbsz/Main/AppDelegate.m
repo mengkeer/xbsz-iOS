@@ -35,7 +35,6 @@
     [CXUserDefaults setDefaultspreference];         //设置默认偏好设置
     
     
-    
     return YES;
 }
 

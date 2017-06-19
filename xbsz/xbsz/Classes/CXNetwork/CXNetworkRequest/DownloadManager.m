@@ -85,7 +85,7 @@ static id _manager = nil;
         
         return [NSURL fileURLWithPath:path];
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-        [ToastView showStatus:@"题库更新完成" delay:2];
+        [ToastView showStatus:@"题库更新完成" delay:3.5];
     }];
     [_downloadTask resume];
 }
