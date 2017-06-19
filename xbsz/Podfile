@@ -5,6 +5,7 @@ target 'xbsz' do
 #    pod 'ReactiveCocoa' , '2.5'
     pod 'Masonry'
 #    pod 'Realm'
+    pod 'IDMPhotoBrowser'
     pod 'FMDB'
     pod 'AFNetworking'
     pod 'YYCategories'
@@ -18,7 +19,7 @@ target 'xbsz' do
     pod 'YYWebImage'
     pod 'SVProgressHUD'
     pod 'Bugly'
-    pod 'SDWebImage', '~> 3.7.1'
+#    pod 'SDWebImage', '~> 3.7.1'
     #社会化分享与授权登录组件
     pod 'UMengUShare/Plugin/IDFA'
     pod 'UMengUShare/Social/ReducedWeChat'

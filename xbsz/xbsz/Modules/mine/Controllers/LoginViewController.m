@@ -15,7 +15,7 @@
 @interface LoginViewController ()<UITextFieldDelegate>
 
 @property (nonatomic,strong) UIButton *closeBtn;
-@property (nonatomic,strong) UIImageView *appNameIV;
+@property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic,strong) UILabel *loginTypeLabel;
 @property (nonatomic,strong) UITextField *userNameField;
 @property (nonatomic,strong) UITextField *passwordFiled;
@@ -23,7 +23,6 @@
 @property (nonatomic,strong) UIButton *loginBtn;
 
 @property (nonatomic,strong) UILabel *registerLabel;
-//@property (nonatomic,strong) UILabel *forgetPasswordLabel;
 
 @property (nonatomic,strong) UIButton *loginQQ;
 @property (nonatomic,strong) UIButton *loginWeibo;
@@ -36,12 +35,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear: animated];
     [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
+    _userNameField.text = @"";
+    _passwordFiled.text = @"";
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    [self.view setBackgroundColor:CXBackGroundColor];
+    [self.view setBackgroundColor:CXWhiteColor];
     
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
@@ -60,81 +61,57 @@
 
 - (void)createUI{
     [self.view addSubview:self.closeBtn];
-    [self.view addSubview:self.appNameIV];
-    [self.view addSubview:self.loginTypeLabel];
-    [_loginTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_appNameIV.mas_bottom).mas_offset(30);
-        make.height.mas_equalTo(12);
-        make.centerX.mas_equalTo(self.view);
+    [self.view addSubview:self.iconImageView];
+//    [self.view addSubview:self.loginTypeLabel];
+    
+    [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(80);
+        make.width.height.mas_equalTo(72);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
     }];
+    
+//    [_loginTypeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(_iconImageView.mas_bottom).mas_offset(30);
+//        make.height.mas_equalTo(12);
+//        make.centerX.mas_equalTo(self.view);
+//    }];
     
     [self.view addSubview:self.userNameField];
     [_userNameField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_loginTypeLabel.mas_bottom).mas_offset(25);
-        make.height.mas_equalTo(45);
-        make.left.mas_equalTo(self.view.mas_left).mas_offset(20);
-        make.right.mas_equalTo(self.view.mas_right).mas_offset(-20);
+        make.top.mas_equalTo(_iconImageView.mas_bottom).mas_offset(32);
+        make.height.mas_equalTo(50);
+        make.left.mas_equalTo(self.view.mas_left).mas_offset(30);
+        make.right.mas_equalTo(self.view.mas_right).mas_offset(-30);
     }];
-    
-    [self.view layoutIfNeeded];
-    
-    //设置上半部分圆角
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_userNameField.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(4, 4)];
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = _userNameField.bounds;
-    maskLayer.path = maskPath.CGPath;
-    
-    //设置边框
-    CAShapeLayer *borderLayer = [[CAShapeLayer alloc] init];
-    borderLayer.frame = _userNameField.bounds;
-    borderLayer.path = maskPath.CGPath;
-    borderLayer.lineWidth = 1/CXMainScale;
-    borderLayer.strokeColor = CXLightGrayColor.CGColor;   // 边框颜色
-    borderLayer.fillColor = CXClearColor.CGColor;
-    
-    _userNameField.layer.mask = maskLayer;
-    [_userNameField.layer addSublayer:borderLayer];
+    UIView *lineView1 = [[UIView alloc] init];
+    lineView1.backgroundColor = CXLineColor;
+    [self.view addSubview:lineView1];
+    [lineView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(_userNameField.mas_bottom);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
+        make.height.mas_equalTo(1/CXMainScale);
+    }];
     
     
     [self.view addSubview:self.passwordFiled];
     [_passwordFiled mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.mas_equalTo(_userNameField.mas_bottom);
-        make.left.mas_equalTo(self.view.mas_left).mas_equalTo(20);
-        make.right.mas_equalTo(self.view.mas_right).mas_equalTo(-20);
-        make.height.mas_equalTo(45);
+        make.left.mas_equalTo(self.view.mas_left).mas_equalTo(30);
+        make.right.mas_equalTo(self.view.mas_right).mas_equalTo(-30);
+        make.height.mas_equalTo(50);
     }];
-    
-    [self.view layoutIfNeeded];
-    
-    //设置下半部分圆角
-    UIBezierPath *passwordPath = [UIBezierPath bezierPathWithRoundedRect:_passwordFiled.bounds byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerBottomRight cornerRadii:CGSizeMake(4, 4)];
-    
-    CAShapeLayer *passwordMask = [[CAShapeLayer alloc] init];
-    passwordMask.path = passwordPath.CGPath;
-    passwordMask.frame = _passwordFiled.bounds;
-    
-    CAShapeLayer *passwordLayer = [[CAShapeLayer alloc] init];
-    passwordLayer.frame = _passwordFiled.bounds;
-    passwordLayer.path = passwordPath.CGPath;
-    passwordLayer.lineWidth = 1/CXMainScale;
-    passwordLayer.strokeColor = CXLightGrayColor.CGColor;
-    passwordLayer.fillColor = CXClearColor.CGColor;
-    
-    _passwordFiled.layer.mask = passwordMask;
-    [_passwordFiled.layer addSublayer:passwordLayer];
-    
-    //覆盖两文本框中间加深的那条线
-    UIView *middleLine = [[UIView alloc] init];
-    middleLine.backgroundColor = CXWhiteColor;
-    [self.view addSubview:middleLine];
-    [middleLine mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *lineView2 = [[UIView alloc] init];
+    lineView2.backgroundColor = CXLineColor;
+    [self.view addSubview:lineView2];
+    [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(_passwordFiled.mas_bottom);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
         make.height.mas_equalTo(1/CXMainScale);
-        make.left.mas_equalTo(self.view.mas_left).mas_offset(20);
-        make.right.mas_equalTo(self.view.mas_right).mas_offset(-20);
-        make.bottom.mas_equalTo(_passwordFiled.mas_top);
     }];
     
+ 
     
     [self.view addSubview:self.loginBtn];
     [_loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -146,7 +123,6 @@
     
     
     [self.view addSubview:self.registerLabel];
-//    [self.view addSubview:self.forgetPasswordLabel];
     
     [_registerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view.mas_centerX);
@@ -154,76 +130,6 @@
         make.top.mas_equalTo(_loginBtn.mas_bottom).mas_offset(18);
         make.height.mas_equalTo(13);
     }];
-    
-//    [_forgetPasswordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(self.view.mas_centerX).mas_offset(8);
-//        make.top.mas_equalTo(_loginBtn.mas_bottom).mas_offset(18);
-//        make.height.mas_equalTo(13);
-//    }];
-    
-    [self.view layoutIfNeeded];
-    
-    
-//    CGFloat baseOriginY = CXScreenHeight-(CXScreenHeight-_registerLabel.bottom)/2-40;
-    
-    
-    UILabel *socialLoginLabel = [[UILabel alloc] init];
-    socialLoginLabel.text = @"社交账号直接登录";
-    socialLoginLabel.textColor = CXLightGrayColor;
-    socialLoginLabel.font = CXSystemFont(13);
-//    [self.view addSubview:socialLoginLabel];        //暂时去除社交账号登录
-    
-//    [socialLoginLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.mas_equalTo(self.view.mas_centerX);
-//        make.top.mas_equalTo(baseOriginY);
-//        make.height.mas_equalTo(13);
-//    }];
-    
-    UIView *leftLineView = [[UIView alloc] init];
-    leftLineView.backgroundColor = CXHexAlphaColor(0x000000, 0.2);
-//    [self.view addSubview:leftLineView];        //暂时去除社交账号登录
-//    [leftLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(1/CXMainScale);
-//        make.right.mas_equalTo(socialLoginLabel.mas_left).mas_offset(-8);
-//        make.width.mas_equalTo(60);
-//        make.centerY.mas_equalTo(socialLoginLabel.mas_centerY);
-//    }];
-    
-    UIView *rightLineView = [[UIView alloc] init];
-    rightLineView.backgroundColor = CXHexAlphaColor(0x000000, 0.2);
-//    [self.view addSubview:rightLineView];       //暂时去除社交账号登录
-//    [rightLineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(1/CXMainScale);
-//        make.left.mas_equalTo(socialLoginLabel.mas_right).mas_offset(8);
-//        make.width.mas_equalTo(60);
-//        make.centerY.mas_equalTo(socialLoginLabel.mas_centerY);
-//    }];
-    
-    //暂时去除第三方登录
-//    [self.view addSubview:self.loginWechat];
-//    [self.view addSubview:self.loginQQ];
-//    [self.view addSubview:self.loginWeibo];
-    
-//    
-//    [_loginWechat mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(socialLoginLabel.mas_bottom).mas_offset(25);
-//        make.centerX.mas_equalTo(self.view.mas_centerX);
-//        make.width.and.height.mas_equalTo(90);
-//    }];
-//    
-//    [_loginQQ mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.mas_equalTo(_loginWechat.mas_left);
-//        make.centerY.mas_equalTo(_loginWechat.mas_centerY);
-//        make.width.height.mas_equalTo(90);
-//    }];
-//    
-//    [_loginWeibo mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(_loginWechat.mas_right);
-//        make.width.height.mas_equalTo(90);
-//        make.centerY.mas_equalTo(_loginWechat.mas_centerY);
-//    }];
-    
-    
     
 }
 
@@ -245,12 +151,17 @@
     return _closeBtn;
 }
 
-- (UIImageView *)appNameIV{
-    if(!_appNameIV){
-        _appNameIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_app_name"]];//#f16c4d
-        _appNameIV.frame = CGRectMake((CXScreenWidth-180)/2, 70, 180, 50);
+- (UIImageView *)iconImageView{
+    if(!_iconImageView){
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+        //获取app中所有icon名字数组
+        NSArray *iconsArr = infoDict[@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];
+        NSString *iconLastName = [iconsArr lastObject];
+        
+        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconLastName]];
+        _iconImageView.contentMode = UIViewContentModeScaleToFill;
     }
-    return _appNameIV;
+    return _iconImageView;
 }
 
 - (UILabel *)loginTypeLabel{
@@ -340,19 +251,6 @@
     }
     return _registerLabel;
 }
-
-//- (UILabel *)forgetPasswordLabel{
-//    if(!_forgetPasswordLabel){
-//        _forgetPasswordLabel = [[UILabel alloc] init];
-//        _forgetPasswordLabel.text = @"忘记密码?";
-//        _forgetPasswordLabel.textColor = CXLightGrayColor;
-//        _forgetPasswordLabel.font = CXSystemFont(13);
-//        _forgetPasswordLabel.userInteractionEnabled = YES;
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickReset)];
-//        [_forgetPasswordLabel addGestureRecognizer:tap];
-//    }
-//    return _forgetPasswordLabel;
-//}
 
 - (UIButton *)loginQQ{
     if(!_loginQQ){

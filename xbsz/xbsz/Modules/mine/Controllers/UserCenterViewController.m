@@ -543,7 +543,7 @@
     if([[CXLocalUser instance] isLogin]){
         [self.lcNavigationController pushViewController:[UserInfoViewController controller]];
     }else{
-        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
+        [self presentViewController:[[LCNavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
     }
 }
 

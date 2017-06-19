@@ -8,10 +8,11 @@
 
 #import "RegisterViewController.h"
 #import "CXNetwork+User.h"
+#import "CXBaseWebViewController.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate>
 
-@property (nonatomic,strong) UIImageView *appNameIV;
+@property (nonatomic, strong) UIImageView *iconImageView;
 
 @property (nonatomic,strong) UITextField *userNameField;
 @property (nonatomic,strong) UITextField *nickFiled;
@@ -24,134 +25,91 @@
 
 @implementation RegisterViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear: animated];
+    _userNameField.text = @"";
+    _nickFiled.text = @"";
+    _passwordFiled.text = @"";
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self showTopLineView];
+
     self.title = @"注册";
+    self.view.backgroundColor = CXWhiteColor;
     
-    [self setShowTopRadius:NO];
-    
-    [self.view addSubview:self.appNameIV];
+    [self.view addSubview:self.iconImageView];
+    [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(80);
+        make.width.height.mas_equalTo(72);
+        make.centerX.mas_equalTo(self.view.mas_centerX);
+    }];
     
     [self.view addSubview:self.userNameField];
     [_userNameField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_appNameIV.mas_bottom).mas_offset(50);
-        make.height.mas_equalTo(45);
-        make.left.mas_equalTo(self.view.mas_left).mas_offset(20);
-        make.right.mas_equalTo(self.view.mas_right).mas_offset(-20);
+        make.top.mas_equalTo(_iconImageView.mas_bottom).mas_offset(35);
+        make.height.mas_equalTo(50);
+        make.left.mas_equalTo(self.view.mas_left).mas_offset(30);
+        make.right.mas_equalTo(self.view.mas_right).mas_offset(-30);
+    }];
+    UIView *lineView1 = [[UIView alloc] init];
+    lineView1.backgroundColor = CXLineColor;
+    [self.view addSubview:lineView1];
+    [lineView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(_userNameField.mas_bottom);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
+        make.height.mas_equalTo(1/CXMainScale);
     }];
     
-    [self.view layoutIfNeeded];
-    
-    //设置上半部分圆角
-    
-    UIBezierPath *usernamePath = [UIBezierPath bezierPathWithRoundedRect:_userNameField.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(4, 4)];
-    CAShapeLayer *userMask = [[CAShapeLayer alloc] init];
-    userMask.frame = _userNameField.bounds;
-    userMask.path = usernamePath.CGPath;
-    
-    //设置边框
-    CAShapeLayer *userLayer = [[CAShapeLayer alloc] init];
-    userLayer.frame = _userNameField.bounds;
-    userLayer.path = usernamePath.CGPath;
-    userLayer.lineWidth = 1/CXMainScale;
-    userLayer.strokeColor = CXLightGrayColor.CGColor;   // 边框颜色
-    userLayer.fillColor = CXClearColor.CGColor;
-    
-    _userNameField.layer.mask = userMask;
-    [_userNameField.layer addSublayer:userLayer];
-    
-    
+   
     
     [self.view addSubview:self.nickFiled];
     [_nickFiled mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_userNameField.mas_bottom);
-        make.left.mas_equalTo(self.view.mas_left).mas_equalTo(20);
-        make.right.mas_equalTo(self.view.mas_right).mas_equalTo(-20);
-        make.height.mas_equalTo(45);
+        make.left.mas_equalTo(self.view.mas_left).mas_equalTo(30);
+        make.right.mas_equalTo(self.view.mas_right).mas_equalTo(-40);
+        make.height.mas_equalTo(50);
     }];
-    
-    [self.view layoutIfNeeded];
-    
-    UIBezierPath *nickPath = [UIBezierPath bezierPathWithRect:_nickFiled.bounds];
-    
-    
-    CAShapeLayer *nickMask = [[CAShapeLayer alloc] init];
-    nickMask.path = nickPath.CGPath;
-    nickMask.frame = _nickFiled.bounds;
-    
-    CAShapeLayer *nickLayer = [[CAShapeLayer alloc] init];
-    nickLayer.frame = _passwordFiled.bounds;
-    nickLayer.path = nickPath.CGPath;
-    nickLayer.lineWidth = 1/CXMainScale;
-    nickLayer.strokeColor = CXLightGrayColor.CGColor;
-    nickLayer.fillColor = CXClearColor.CGColor;
-    
-    _nickFiled.layer.mask = nickMask;
-    [_nickFiled.layer addSublayer:nickLayer];
-
-    
-    
-    //覆盖两文本框中间加深的那条线
-    UIView *middleLine1 = [[UIView alloc] init];
-    middleLine1.backgroundColor = CXWhiteColor;
-    [self.view addSubview:middleLine1];
-    [middleLine1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *lineView2 = [[UIView alloc] init];
+    lineView2.backgroundColor = CXLineColor;
+    [self.view addSubview:lineView2];
+    [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(_nickFiled.mas_bottom);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
         make.height.mas_equalTo(1/CXMainScale);
-        make.left.mas_equalTo(self.view.mas_left).mas_offset(20);
-        make.right.mas_equalTo(self.view.mas_right).mas_offset(-20);
-        make.bottom.mas_equalTo(_nickFiled.mas_top);
     }];
-    
     
     
     [self.view addSubview:self.passwordFiled];
     [_passwordFiled mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.mas_equalTo(_nickFiled.mas_bottom);
-        make.left.mas_equalTo(self.view.mas_left).mas_equalTo(20);
-        make.right.mas_equalTo(self.view.mas_right).mas_equalTo(-20);
-        make.height.mas_equalTo(45);
+        make.left.mas_equalTo(self.view.mas_left).mas_equalTo(30);
+        make.right.mas_equalTo(self.view.mas_right).mas_equalTo(-30);
+        make.height.mas_equalTo(50);
     }];
-    
-    [self.view layoutIfNeeded];
-    
-    //设置下半部分圆角
-    UIBezierPath *passwordPath = [UIBezierPath bezierPathWithRoundedRect:_passwordFiled.bounds byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerBottomRight cornerRadii:CGSizeMake(4, 4)];
-    
-    CAShapeLayer *passwordMask = [[CAShapeLayer alloc] init];
-    passwordMask.path = passwordPath.CGPath;
-    passwordMask.frame = _passwordFiled.bounds;
-    
-    CAShapeLayer *passwordLayer = [[CAShapeLayer alloc] init];
-    passwordLayer.frame = _passwordFiled.bounds;
-    passwordLayer.path = passwordPath.CGPath;
-    passwordLayer.lineWidth = 1/CXMainScale;
-    passwordLayer.strokeColor = CXLightGrayColor.CGColor;
-    passwordLayer.fillColor = CXClearColor.CGColor;
-    
-    _passwordFiled.layer.mask = passwordMask;
-    [_passwordFiled.layer addSublayer:passwordLayer];
-    
-    //覆盖两文本框中间加深的那条线
-    UIView *middleLine2 = [[UIView alloc] init];
-    middleLine2.backgroundColor = CXWhiteColor;
-    [self.view addSubview:middleLine2];
-    [middleLine2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *lineView3 = [[UIView alloc] init];
+    lineView3.backgroundColor = CXLineColor;
+    [self.view addSubview:lineView3];
+    [lineView3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(_passwordFiled.mas_bottom);
+        make.left.mas_equalTo(self.view).mas_offset(30);
+        make.right.mas_equalTo(self.view).mas_offset(-30);
         make.height.mas_equalTo(1/CXMainScale);
-        make.left.mas_equalTo(self.view.mas_left).mas_offset(20);
-        make.right.mas_equalTo(self.view.mas_right).mas_offset(-20);
-        make.bottom.mas_equalTo(_passwordFiled.mas_top);
     }];
     
     
     [self.view addSubview:self.registerBtn];
     [_registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.view.mas_left).mas_offset(20);
-        make.right.mas_equalTo(self.view.mas_right).mas_offset(-20);
+        make.right.mas_equalTo(self.view.mas_right).mas_offset(-30);
         make.height.mas_equalTo(40);
         make.top.mas_equalTo(_passwordFiled.mas_bottom).mas_offset(30);
     }];
-    
+ 
     
   
     
@@ -172,6 +130,9 @@
     rightInfoLabel.font = CXSystemFont(13);
     rightInfoLabel.textColor = CXHexColor(0x63B8FF);
     rightInfoLabel.text = @"用户协议";
+    rightInfoLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapProtocol = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userProtocol)];
+    [rightInfoLabel addGestureRecognizer:tapProtocol];
     [self.view addSubview:rightInfoLabel];
     [rightInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(leftInfoLabel.mas_right);
@@ -189,12 +150,17 @@
 
 #pragma mark - getter / setter
 
-- (UIImageView *)appNameIV{
-    if(!_appNameIV){
-        _appNameIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_app_name"]];//#f16c4d
-        _appNameIV.frame = CGRectMake((CXScreenWidth-180)/2, 120, 180, 50);
+- (UIImageView *)iconImageView{
+    if(!_iconImageView){
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+        //获取app中所有icon名字数组
+        NSArray *iconsArr = infoDict[@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];
+        NSString *iconLastName = [iconsArr lastObject];
+        
+        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconLastName]];
+        _iconImageView.contentMode = UIViewContentModeScaleToFill;
     }
-    return _appNameIV;
+    return _iconImageView;
 }
 
 - (UITextField *)userNameField{
@@ -339,6 +305,15 @@
     }
     
     return YES;
+}
+
+-(void)userProtocol{
+    CXBaseWebViewController *webViewController = [CXBaseWebViewController controller];
+    webViewController.title = @"用户协议";
+    webViewController.hideShareBtn = YES;
+    webViewController.url = CXUserProtocolUrl;
+    [self.lcNavigationController pushViewController:webViewController];
+    
 }
 
 #pragma mark - UITextFieldDelegate

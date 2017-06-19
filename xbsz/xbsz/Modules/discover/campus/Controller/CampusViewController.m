@@ -17,7 +17,7 @@
 #import "CommentToolBarView.h"
 #import "CXNetwork+Note.h"
 #import "CampusCommentViewController.h"
-#import "PhotoBrowserViewController.h"
+#import "IDMPhotoBrowser.h"
 
 static NSInteger limit = 10;
 
@@ -224,22 +224,25 @@ static NSInteger limit = 10;
         case CellActionTypeUserInfo:
             break;
         case CellActionTypeSourceImage:{
-            UIView *backView = [[UIView alloc]initWithFrame:self.view.bounds];
-            backView.alpha = 0.0;
-            backView.backgroundColor = [UIColor blackColor];
-            [self.view addSubview:backView];
-            [UIView animateWithDuration:0.25 animations:^{
-                backView.alpha = 1.0;
-            }];
-            //    SArticleModel *model = self.arrayReadModel[indexPath.row];
-            NSArray *urls = [NSArray arrayWithObjects:CXNoteImageUrlByname(model.img), nil];
-            NSArray *parentImageViews = [NSArray arrayWithObjects:((CampusTableViewCell *)cell).sharedImageView,nil];
-            PhotoBrowserViewController *browser = [PhotoBrowserViewController photoBrowserWithSelectedIndex:0
-                                                                                                       urls:urls
-                                                                                           parentImageViews:parentImageViews];
-            [self presentViewController:browser animated:YES completion:^{
-                [backView removeFromSuperview];
-            }];
+            NSMutableArray *photos = [NSMutableArray new];
+            
+            IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:CXNoteImageUrlByname(model.img)]];
+            photo.caption = model.subject;
+            [photos addObject:photo];
+        
+            UIImageView *sourceImageView = ((CampusTableViewCell *)cell).sharedImageView;
+
+            IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotos:photos animatedFromView:sourceImageView];
+            browser.view.backgroundColor = CXBlackColor;
+            browser.scaleImage = sourceImageView.image;
+            browser.displayToolbar = NO;
+            browser.usePopAnimation = YES;
+            browser.displayDoneButton = NO;
+            browser.dismissOnTouch = YES;
+            browser.autoHideInterface = NO;
+
+            [self presentViewController:browser animated:YES completion:nil];
+            
             break;
         }
         case CellActionTypeComment:

@@ -14,6 +14,8 @@
 
 @interface CXBaseWebViewController : CXWhitePushViewController
 
+@property (nonatomic, assign) BOOL hideShareBtn;
+
 @property (nonatomic, strong) WKWebView *webView;
 
 @property (nonatomic, copy) NSString *url;

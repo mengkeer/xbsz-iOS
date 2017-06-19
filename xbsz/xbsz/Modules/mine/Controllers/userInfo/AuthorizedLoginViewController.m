@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) UILabel *tipsLabel;
 
+@property (nonatomic, strong) UILabel  *tipsLabel2;
+
 @property (nonatomic, assign) BOOL isAuthorized;
 
 @end
@@ -140,6 +142,18 @@
         make.left.right.mas_equalTo(self.view);
         make.height.mas_equalTo(15);
     }];
+    
+    [scrollView addSubview:self.tipsLabel2];
+    //获取文字高度
+    CGRect labelRect = [self.tipsLabel2.text boundingRectWithSize:CGSizeMake(CXScreenWidth-40, CGFLOAT_MAX) options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:CXSystemFont(11)} context:nil] ;
+    
+    NSInteger textHeight = (int)CGRectGetHeight(labelRect)+1;
+    [_tipsLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_tipsLabel.mas_bottom).mas_offset(15);
+        make.left.mas_equalTo(self.view).mas_offset(20);
+        make.right.mas_equalTo(self.view).mas_offset(-20);
+        make.height.mas_equalTo(textHeight);
+    }];
 }
 
 #pragma mark - getter/setter
@@ -238,6 +252,18 @@
         _tipsLabel.font = [UIFont italicSystemFontOfSize:11];
     }
     return _tipsLabel;
+}
+
+- (UILabel *)tipsLabel2{
+    if(!_tipsLabel2){
+        _tipsLabel2 = [[UILabel alloc] init];
+        _tipsLabel2.textAlignment = NSTextAlignmentCenter;
+        _tipsLabel2.text = @"tips:账号密码只会保存到本地,不会上传到后台服务器,请放心登录";
+        _tipsLabel2.textColor = CXHexColor(0x707070);
+        _tipsLabel2.numberOfLines = 0;
+        _tipsLabel2.font = [UIFont italicSystemFontOfSize:11];
+    }
+    return _tipsLabel2;
 }
 
 #pragma mark - Action

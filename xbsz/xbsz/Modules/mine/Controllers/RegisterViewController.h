@@ -6,8 +6,8 @@
 //  Copyright © 2016年 lotus. All rights reserved.
 //
 
-#import "CXPushViewController.h"
+#import "CXWhitePushViewController.h"
 
-@interface RegisterViewController : CXPushViewController
+@interface RegisterViewController : CXWhitePushViewController
 
 @end

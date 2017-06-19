@@ -7,6 +7,7 @@
 //
 
 #import "UpdateInfoViewController.h"
+#import "CXNetworkMonitoring.h"
 
 @interface UpdateInfoViewController ()
 
@@ -22,6 +23,41 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self showTopLineView];
+    
+    if([CXNetworkMonitoring canReachable] == NO){
+        _explainLabel.textAlignment = NSTextAlignmentCenter;
+        return;
+    }
+    
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSString *storeString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@",APPID];
+    [manager GET:storeString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *array = responseObject[@"results"];
+        NSDictionary *dic  = [array firstObject];
+        NSString *storeVersion = dic[@"version"];
+        NSString *releaseNotes = dic[@"releaseNotes"];      //更新说明
+        
+        NSString *dateStr = dic[@"currentVersionReleaseDate"];
+        
+        NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+
+        NSString *text = [NSString stringWithFormat:@"当前版本V%@\n\n",currentVersion];
+        text = [text stringByAppendingString:[NSString stringWithFormat:@"最新版本V%@ - date at %@\n\n",storeVersion,dateStr]];
+         if(releaseNotes == nil){
+             text = [text stringByAppendingString:@"更新说明: 暂无"];
+         }else{
+             text = [text stringByAppendingString:@"更新说明:\n"];
+             text = [text stringByAppendingString:releaseNotes];
+         }
+        
+        _explainLabel.text = text;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+
 }
 
 - (void)viewDidLoad {
@@ -93,11 +129,11 @@
 - (UILabel *)explainLabel{
     if(!_explainLabel){
         _explainLabel = [[UILabel alloc] init];
-        _explainLabel.font = CXSystemFont(17);
-        _explainLabel.textAlignment = NSTextAlignmentCenter;
-        _explainLabel.textColor = CXBlackColor2;
+        _explainLabel.font = CXSystemFont(13);
+        _explainLabel.textAlignment = NSTextAlignmentLeft;
+        _explainLabel.textColor = CXHexColor(0x4f4f4f);
         _explainLabel.numberOfLines = 0;
-        NSString *text = @"更新时间:2017-06-10\n\n1.更新题库为2017上学期思政题库\n2.修复若干bug\n3.如果有建议或建议，请发送邮件至1812422367@qq.com";
+        NSString *text = @"无网络连接，请重新尝试";
         
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];

@@ -73,9 +73,9 @@
 }
 
 -(void)loadImage{
-    [self.imageView egf_setImageWithURL:[NSURL URLWithString:self.imageStr] placeholderImage:self.placeHolder options:EGFWebImageRetryFailed progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    [self.imageView egf_setImageWithURL:[NSURL URLWithString:self.imageStr] placeholderImage:self.placeHolder options:YYWebImageOptionIgnoreFailedURL progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         self.progressCircle.progress = (float)receivedSize/expectedSize ;
-    } completed:^(UIImage *image, NSError *error, EGFImageCacheType cacheType, NSURL *imageURL) {
+    } completed:^(UIImage *image, NSError *error, YYWebImageFromType cacheType, NSURL *imageURL) {
         [self.progressCircle removeFromSuperview];
         [self adjustFrames];
     }];

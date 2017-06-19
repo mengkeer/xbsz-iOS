@@ -7,7 +7,6 @@
 //
 
 #import "PhotoBrowserAnimator.h"
-#import "SDImageCache.h"
 
 
 @interface PhotoBrowserAnimator()<UIViewControllerAnimatedTransitioning>
@@ -128,7 +127,8 @@
 - (UIImage *)dummyImage {
     
     NSString *key = _photos.urls[_photos.selectedIndex];
-    UIImage *image = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:key];
+    YYImageCache *cache = [YYWebImageManager sharedManager].cache;
+    UIImage *image = [cache getImageForKey:key];
     
     if (image == nil) {
         if (_photos.selectedIndex < [_photos.parentImageViews count]) {

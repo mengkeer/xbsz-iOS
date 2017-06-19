@@ -7,42 +7,41 @@
 //
 
 #import "UIImageView+EGFWebCache.h"
-#import "UIImageView+WebCache.h"
 
 @implementation UIImageView (EGFWebCache)
 
 - (void)egf_setImageWithURL:(NSURL *)url {
-    [self egf_setImageWithURL:url placeholderImage:nil options:EGFWebImageRetryFailed progress:nil completed:nil];
+    [self egf_setImageWithURL:url placeholderImage:nil options:YYWebImageOptionIgnoreFailedURL progress:nil completed:nil];
 }
 
 - (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder {
-    [self egf_setImageWithURL:url placeholderImage:placeholder options:EGFWebImageRetryFailed progress:nil completed:nil];
+    [self egf_setImageWithURL:url placeholderImage:placeholder options:YYWebImageOptionIgnoreFailedURL progress:nil completed:nil];
 }
 
-- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(EGFWebImageOptions)options {
+- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(YYWebImageOptions)options {
     [self egf_setImageWithURL:url placeholderImage:placeholder options:options progress:nil completed:nil];
 }
 
 - (void)egf_setImageWithURL:(NSURL *)url completed:(EGFWebImageCompletionBlock)completedBlock {
-    [self egf_setImageWithURL:url placeholderImage:nil options:EGFWebImageRetryFailed progress:nil completed:completedBlock];
+    [self egf_setImageWithURL:url placeholderImage:nil options:YYWebImageOptionIgnoreFailedURL progress:nil completed:completedBlock];
 }
 
 - (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder completed:(EGFWebImageCompletionBlock)completedBlock {
-    [self egf_setImageWithURL:url placeholderImage:placeholder options:EGFWebImageRetryFailed progress:nil completed:completedBlock];
+    [self egf_setImageWithURL:url placeholderImage:placeholder options:YYWebImageOptionIgnoreFailedURL progress:nil completed:completedBlock];
 }
 
-- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(EGFWebImageOptions)options completed:(EGFWebImageCompletionBlock)completedBlock {
+- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(YYWebImageOptions)options completed:(EGFWebImageCompletionBlock)completedBlock {
     [self egf_setImageWithURL:url placeholderImage:placeholder options:options progress:nil completed:completedBlock];
 }
 
-- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(EGFWebImageOptions)options progress:(EGFWebImageDownloaderProgressBlock)progressBlock completed:(EGFWebImageCompletionBlock)completedBlock {
-    [self sd_setImageWithURL:url placeholderImage:placeholder options:(SDWebImageOptions)options progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(YYWebImageOptions)options progress:(EGFWebImageDownloaderProgressBlock)progressBlock completed:(EGFWebImageCompletionBlock)completedBlock {
+    [self yy_setImageWithURL:url placeholder:placeholder options:(YYWebImageOptions)options progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         if (progressBlock) {
             progressBlock(receivedSize, expectedSize);
         }
-    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    } transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
         if (completedBlock) {
-            completedBlock(image, error, (EGFImageCacheType)cacheType, imageURL);
+            completedBlock(image, error, from, url);
         }
     }];
 }

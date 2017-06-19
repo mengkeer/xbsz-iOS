@@ -66,6 +66,8 @@
 
 //一些第三方服务所需要的App ID  与  App Key
 
+#define APPID           @"1247054879"
+
 #define    BuglyAppID       @"c48b5790e9"
 
 

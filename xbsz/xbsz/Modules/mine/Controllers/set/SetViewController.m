@@ -118,12 +118,11 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             }
             return;
         }else if(indexPath.row == 2){
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/us/app/%E5%AD%A6%E9%9C%B8%E6%80%9D%E6%94%BF-%E4%B8%9C%E5%8D%8E%E5%A4%A7%E5%AD%A6/id1247054879?l=zh&ls=1&mt=8"]];
             SKStoreProductViewController *storeViewContorller = [[SKStoreProductViewController alloc]init];
             storeViewContorller.delegate=self;
             [ToastView showProgressBar:@"Loading..."];
             
-            [storeViewContorller loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier:@"1247054879"}
+            [storeViewContorller loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier:APPID}
                                         completionBlock:^(BOOL result,NSError*error)   {
                 if(error)  {
                     NSLog(@"error %@ with userInfo %@",error,[error userInfo]);

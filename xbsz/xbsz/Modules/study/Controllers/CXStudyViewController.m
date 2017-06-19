@@ -128,6 +128,8 @@
     }];
 
     self.bannerView.delegate = self;
+    
+    [AppUtil checkUpdate:self];     //检查更新
 }
 
 - (void)didReceiveMemoryWarning {

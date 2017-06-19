@@ -17,6 +17,8 @@
 
 + (BOOL)showAD;
 
++ (void)checkUpdate:(UIViewController *)controller;
+
 + (NSInteger)getCacheSize;
 
 + (void) cleanCache;

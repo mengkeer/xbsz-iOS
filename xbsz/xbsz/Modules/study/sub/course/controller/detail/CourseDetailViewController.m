@@ -55,11 +55,13 @@ static CGFloat imageHeight = 210;
     self.view.backgroundColor = CXWhiteColor;
     
     [self.customNavBarView addSubview:self.shareBtn];            //添加分享按钮
-    if(_course.applyStatus == 3){
-        [self.customNavBarView addSubview:self.commentBtn];
-    }else{
-        [self.customNavBarView addSubview:self.joinBtn];
-    }
+    //暂时去除课程学习权限
+//    if(_course.applyStatus == 3){
+//        [self.customNavBarView addSubview:self.commentBtn];
+//    }else{
+//        [self.customNavBarView addSubview:self.joinBtn];
+//    }
+    [self.customNavBarView addSubview:self.commentBtn];
     [self.view addSubview:self.imageView];
     
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {

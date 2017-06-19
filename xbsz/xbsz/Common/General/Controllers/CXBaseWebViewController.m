@@ -38,7 +38,7 @@
     
     [self.customNavBarView addSubview:self.closeBtn];
     
-     [self.customNavBarView addSubview:self.shareBtn];
+    if(_hideShareBtn == NO)    [self.customNavBarView addSubview:self.shareBtn];
     
     CGFloat progressBarHeight = 2.f;
     CGRect navigationBarBounds = self.customNavBarView.bounds;

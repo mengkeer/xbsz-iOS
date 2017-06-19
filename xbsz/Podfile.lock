@@ -15,17 +15,23 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - Bugly (2.4.2)
+  - DACircularProgress (2.3.1)
   - DZNEmptyDataSet (1.8.1)
   - FDFullscreenPopGesture (1.1)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - IDMPhotoBrowser (1.11.3):
+    - DACircularProgress
+    - pop
+    - SDWebImage (= 4.0.0)
   - IQKeyboardManager (4.0.6)
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
-  - SDWebImage (3.7.6):
-    - SDWebImage/Core (= 3.7.6)
-  - SDWebImage/Core (3.7.6)
+  - pop (1.0.9)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
   - SVProgressHUD (2.0.3)
   - TZImagePickerController (1.7.8)
   - UMengUShare/Core (6.4.0):
@@ -58,10 +64,10 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - FDFullscreenPopGesture
   - FMDB
+  - IDMPhotoBrowser
   - IQKeyboardManager
   - Masonry
   - MJRefresh
-  - SDWebImage (~> 3.7.1)
   - SVProgressHUD
   - TZImagePickerController
   - UMengUShare/Plugin/IDFA
@@ -76,13 +82,16 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bugly: b09cd3c7e54048a0e079be88a7a99610f14eab8f
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  IDMPhotoBrowser: b96159fe4adb991a844068eb17dab9c0b7d7e51a
   IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
   UMengUShare: 83f849f356db0db9f18488cfbc2055a20b150481
@@ -93,6 +102,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 83977d20b1c39d9ca7094db6baf38449dec13098
+PODFILE CHECKSUM: c645745f55c5698d0dc0ac7582966e7c4d929398
 
 COCOAPODS: 1.2.0.beta.1

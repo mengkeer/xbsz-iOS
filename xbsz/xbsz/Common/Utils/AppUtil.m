@@ -7,6 +7,7 @@
 //
 
 #import "AppUtil.h"
+#import "CXNetworkMonitoring.h"
 
 @implementation AppUtil
 
@@ -35,7 +36,7 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd";
-    NSDate *date = [formatter dateFromString:@"2017-06-16"];
+    NSDate *date = [formatter dateFromString:@"2017-06-22"];
     
     NSDate *now = [NSDate date];
     if([date compare:now] == NSOrderedAscending){
@@ -54,6 +55,56 @@
         CXLog(@"无广告");
         return NO;
     }
+}
+
++ (void)checkUpdate:(UIViewController *)controller{
+    if([CXNetworkMonitoring canReachable] == NO || [self isAfterAppUpperTimeNode] == NO)    return;
+    
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
+
+    NSString *storeString = [NSString stringWithFormat:@"https://itunes.apple.com/lookup?id=%@",APPID];
+    [manager GET:storeString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *array = responseObject[@"results"];
+        NSDictionary *dic  = [array firstObject];
+        NSString *storeVersion = dic[@"version"];
+        
+        NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        
+        if([currentVersion compare:storeVersion options:NSNumericSearch] == NSOrderedAscending){
+            
+            
+            //跳转到appstore更新
+//            NSString *releaseNotes = dic[@"releaseNotes"];
+            NSString *trackUrl =dic[@"trackViewUrl"];
+            
+            UIAlertController *alertController=[UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"发现新版本V%@",currentVersion] message:nil preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"下次再说" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            
+            
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"前往更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackUrl]];
+                
+            }];
+            
+            [alertController addAction:action1];
+            
+            [alertController addAction:action2];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [controller presentViewController:alertController animated:YES completion:nil];
+            });
+            
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+    
+
 }
 
 + (NSInteger)getCacheSize{

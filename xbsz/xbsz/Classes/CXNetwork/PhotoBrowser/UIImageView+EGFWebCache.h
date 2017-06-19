@@ -31,16 +31,16 @@ typedef NS_ENUM(NSInteger, EGFImageCacheType) {
 
 typedef void(^EGFWebImageDownloaderProgressBlock)(NSInteger receivedSize, NSInteger expectedSize);
 
-typedef void(^EGFWebImageCompletionBlock)(UIImage *image, NSError *error, EGFImageCacheType cacheType, NSURL *imageURL);
+typedef void(^EGFWebImageCompletionBlock)(UIImage *image, NSError *error, YYWebImageFromType cacheType, NSURL *imageURL);
 
 @interface UIImageView (EGFWebCache)
 
 - (void)egf_setImageWithURL:(NSURL *)url;
 - (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder;
-- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(EGFWebImageOptions)options;
+- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(YYWebImageOptions)options;
 - (void)egf_setImageWithURL:(NSURL *)url completed:(EGFWebImageCompletionBlock)completedBlock;
 - (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder completed:(EGFWebImageCompletionBlock)completedBlock;
-- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(EGFWebImageOptions)options completed:(EGFWebImageCompletionBlock)completedBlock;
-- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(EGFWebImageOptions)options progress:(EGFWebImageDownloaderProgressBlock)progressBlock completed:(EGFWebImageCompletionBlock)completedBlock;
+- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(YYWebImageOptions)options completed:(EGFWebImageCompletionBlock)completedBlock;
+- (void)egf_setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(YYWebImageOptions)options progress:(EGFWebImageDownloaderProgressBlock)progressBlock completed:(EGFWebImageCompletionBlock)completedBlock;
 
 @end
