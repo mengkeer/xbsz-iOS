@@ -168,7 +168,7 @@ static NSInteger limit = 10;
     UIPreviewAction *action1 = [UIPreviewAction actionWithTitle:@"开始评论" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
         CampusCommentViewController *VC = [CampusCommentViewController controller];
         VC.note = _note;
-        [self.beforePeekedViewConreoller.navigationController pushViewController:VC animated:YES];
+        [self.beforePeekedViewConreoller.lcNavigationController pushViewController:VC];
         
     }];
     

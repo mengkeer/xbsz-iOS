@@ -228,10 +228,13 @@ static NSInteger numberOfItems = 3;
     ExerciseModeViewController *modeVC = [ExerciseModeViewController controller];
     modeVC.type = type;
     [self.beforePeekedViewConreoller.lcNavigationController pushViewController:modeVC];
-    ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
-    chapterVC.type = type;
-    chapterVC.mode = mode;
-    [modeVC.lcNavigationController pushViewController:chapterVC];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
+        chapterVC.type = type;
+        chapterVC.mode = mode;
+        [modeVC.lcNavigationController pushViewController:chapterVC];
+    });
+
 }
 
 #pragma mark - 广告代理事件
