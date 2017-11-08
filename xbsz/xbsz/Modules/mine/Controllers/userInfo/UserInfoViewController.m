@@ -50,7 +50,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     self.title = @"个人资料";
     
     
-     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight-64.f)];
+     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight-CX_PHONE_NAVIGATIONBAR_HEIGHT)];
     [self.contentView addSubview:_tableView];
     _tableView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight+400);
     _tableView.backgroundColor = CXBackGroundColor;
@@ -58,6 +58,9 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     _tableView.separatorColor = CXLineColor;
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.dataSource = self;
+    _tableView.estimatedSectionHeaderHeight = 0;
+    _tableView.estimatedSectionFooterHeight = 0;
+    _tableView.estimatedRowHeight = 0;
     
     //高度加400没有特别意思  只是为了保证高度足够高
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+400) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(CXTopCornerRadius, CXTopCornerRadius)];

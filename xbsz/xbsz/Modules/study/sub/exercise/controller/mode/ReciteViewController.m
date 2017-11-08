@@ -57,7 +57,7 @@ static NSInteger bottomHeight = 45;
     
     [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(CXScreenHeight-[self getStartOriginY]-bottomHeight);
+        make.height.mas_equalTo(CXScreenHeight-[self getStartOriginY]-bottomHeight-CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.width.mas_equalTo(CXScreenWidth);
         make.left.mas_equalTo(self.view.mas_left);
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);

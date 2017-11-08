@@ -68,7 +68,7 @@
 
 
 //应用里一些常见宽高或其他定义
-#define CXStatusBarHeight  20
+#define CXStatusBarHeight  (CX_IS_IPHONEX ? 44.f : 20.f)
 #define CXNavigationBarHeight 64
 #define CXTabbarHeight  (49.f + CX_PHONEX_HOME_INDICATOR_HEIGHT)
 #define CXDisplayTitleHeight   32           //CXStudyViewController等的导航高度

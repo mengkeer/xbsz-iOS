@@ -25,7 +25,7 @@ PODS:
     - DACircularProgress
     - pop
     - SDWebImage (= 4.0.0)
-  - IQKeyboardManager (4.0.6)
+  - IQKeyboardManager (5.0.2)
   - Masonry (1.0.2)
   - MJRefresh (3.1.12)
   - pop (1.0.9)
@@ -87,7 +87,7 @@ SPEC CHECKSUMS:
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   IDMPhotoBrowser: b96159fe4adb991a844068eb17dab9c0b7d7e51a
-  IQKeyboardManager: c52debb1967799ae7addb98eab0cf328083a874f
+  IQKeyboardManager: 5ab84749f20f682f784160c2c63bef4f19d10d26
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce

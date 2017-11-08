@@ -58,7 +58,7 @@
      设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
      */
     [self setUpContentViewFrame:^(UIView *contentView) {
-        contentView.frame = CGRectMake(0, 20, CXScreenWidth, CXScreenHeight - CXStatusBarHeight);
+        contentView.frame = CGRectMake(0, CX_PHONE_STATUSBAR_HEIGHT, CXScreenWidth, CXScreenHeight - CXStatusBarHeight);
         contentView.backgroundColor = CXMainColor;
     }];
     
@@ -107,7 +107,7 @@
     [self.view addSubview:self.cameraBtn];
     [_cameraBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(32);
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(20);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(CX_PHONE_STATUSBAR_HEIGHT);
         make.right.mas_equalTo(self.view.mas_right).mas_offset(-15);
     }];
 }

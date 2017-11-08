@@ -53,7 +53,7 @@
     scrollView.showsVerticalScrollIndicator  = YES;
     scrollView.alwaysBounceVertical = YES;
     scrollView.backgroundColor = CXBackGroundColor;
-    scrollView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight-64);
+    scrollView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight-CX_PHONE_NAVIGATIONBAR_HEIGHT);
     [self.view addSubview:scrollView];
     [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.mas_equalTo(self.view);
@@ -66,7 +66,7 @@
     [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
         make.top.mas_equalTo(scrollView.mas_top);
-        make.height.mas_equalTo(CXScreenHeight-64);
+        make.height.mas_equalTo(CXScreenHeight-CX_PHONE_NAVIGATIONBAR_HEIGHT);
     }];
     
     

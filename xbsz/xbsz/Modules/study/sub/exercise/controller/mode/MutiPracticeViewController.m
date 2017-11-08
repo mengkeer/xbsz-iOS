@@ -69,7 +69,7 @@ static NSInteger bottomHeight = 45;
     
     [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(CXScreenHeight-[self getStartOriginY]-bottomHeight);
+        make.height.mas_equalTo(CXScreenHeight-[self getStartOriginY]-bottomHeight-CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.width.mas_equalTo(CXScreenWidth);
         make.left.mas_equalTo(self.view.mas_left);
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
@@ -126,7 +126,7 @@ static NSInteger bottomHeight = 45;
     [self.view addSubview:bottomRightBgView];
     [bottomLeftBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(bottomHeight);
+        make.height.mas_equalTo(bottomHeight+CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.width.mas_equalTo(CXScreenWidth/2);
     }];
     
@@ -140,13 +140,13 @@ static NSInteger bottomHeight = 45;
         make.centerX.mas_equalTo(bottomLeftBgView.mas_centerX);
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(13);
-        make.bottom.mas_equalTo(bottomLeftBgView.mas_bottom).mas_offset(-2);
+        make.top.mas_equalTo(_preBtn.mas_bottom);
         
     }];
     
     [bottomRightBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(bottomHeight);
+        make.height.mas_equalTo(bottomHeight+CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.width.mas_equalTo(CXScreenWidth/2);
     }];
     
@@ -160,7 +160,7 @@ static NSInteger bottomHeight = 45;
         make.centerX.mas_equalTo(bottomRightBgView.mas_centerX);
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(13);
-        make.bottom.mas_equalTo(bottomRightBgView.mas_bottom).mas_offset(-2);
+        make.top.mas_equalTo(_nextBtn.mas_bottom);
     }];
 }
 
@@ -170,7 +170,7 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)gotoBtn{
     if(!_gotoBtn){
         _gotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _gotoBtn.frame = CGRectMake(CXScreenWidth - 44, 25, 34, 34);
+        _gotoBtn.frame = CGRectMake(CXScreenWidth - 44, CX_PHONE_STATUSBAR_HEIGHT+5, 34, 34);
         [_gotoBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateNormal];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateHighlighted];
@@ -182,7 +182,7 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)restartBtn{
     if(!_restartBtn){
         _restartBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _restartBtn.frame = CGRectMake(CXScreenWidth - 78, 25, 34, 34);
+        _restartBtn.frame = CGRectMake(CXScreenWidth - 78, CX_PHONE_STATUSBAR_HEIGHT+5, 34, 34);
         [_restartBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5,5,5)];
         [_restartBtn setImage:[UIImage imageNamed:@"question_restart"] forState:UIControlStateNormal];
         [_restartBtn setImage:[UIImage imageNamed:@"question_restart"] forState:UIControlStateHighlighted];
@@ -194,7 +194,7 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)removeBtn{
     if(!_removeBtn){
         _removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _removeBtn.frame = CGRectMake(CXScreenWidth - 112, 25, 34, 34);
+        _removeBtn.frame = CGRectMake(CXScreenWidth - 112, CX_PHONE_STATUSBAR_HEIGHT+5, 34, 34);
         [_removeBtn setImageEdgeInsets:UIEdgeInsetsMake(4, 7,4,1)];
         [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateNormal];
         [_removeBtn setImage:[UIImage imageNamed:@"question_remove"] forState:UIControlStateHighlighted];
@@ -207,10 +207,10 @@ static NSInteger bottomHeight = 45;
     if(!_showBtn){
         _showBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         if(_mode != ExerciseModeMistakes){
-            _showBtn.frame = CGRectMake(CXScreenWidth - 112, 25, 34, 34);
+            _showBtn.frame = CGRectMake(CXScreenWidth - 112, CX_PHONE_STATUSBAR_HEIGHT+5, 34, 34);
             [_showBtn setImageEdgeInsets:UIEdgeInsetsMake(4, 6,4,2)];
         }else{
-            _showBtn.frame = CGRectMake(CXScreenWidth - 146, 25, 34, 34);
+            _showBtn.frame = CGRectMake(CXScreenWidth - 146, CX_PHONE_STATUSBAR_HEIGHT+5, 34, 34);
             [_showBtn setImageEdgeInsets:UIEdgeInsetsMake(4, 7,4,1)];
         }
         

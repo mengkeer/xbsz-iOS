@@ -93,7 +93,7 @@
 
 - (void)createUI{
     
-    _topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 64)];
+    _topBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CX_PHONE_NAVIGATIONBAR_HEIGHT)];
     _topBarView.backgroundColor = [CXUserDefaults instance].centerColor;
     [self.view addSubview:_topBarView];
 
@@ -102,7 +102,7 @@
     [self.view addSubview:self.nickNamelabel];
     [_nickNamelabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(16);
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(34);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(CX_PHONE_STATUSBAR_HEIGHT+14);
         make.centerX.mas_equalTo(self.view.mas_centerX);
     }];
     
@@ -113,7 +113,7 @@
     [leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.and.height.mas_equalTo(20);
         make.left.mas_equalTo(self.view).mas_offset(15);
-        make.top.mas_equalTo(self.view).mas_offset(32);
+        make.top.mas_equalTo(self.view).mas_offset(CX_PHONE_STATUSBAR_HEIGHT+12);
     }];
     
     _dotView = [[UIView alloc] init];
@@ -133,11 +133,11 @@
     [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.and.height.mas_equalTo(40);
         make.right.mas_equalTo(self.view).mas_offset(-5);
-        make.top.mas_equalTo(self.view).mas_offset(20);
+        make.top.mas_equalTo(self.view).mas_offset(CX_PHONE_STATUSBAR_HEIGHT);
     }];
 
     //创建用户头像与个性签名
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64.f, CXScreenWidth, CXScreenHeight-64.f-49.f)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, CX_PHONE_NAVIGATIONBAR_HEIGHT, CXScreenWidth, CXScreenHeight-CX_PHONE_NAVIGATIONBAR_HEIGHT-CX_PHONE_TABBAR_HEIGHT)];
     scrollView.backgroundColor = CXBackGroundColor;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.alwaysBounceVertical = YES;

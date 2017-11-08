@@ -50,7 +50,7 @@
         [_saveBtn setTitleColor:CXHexColor(0xc6c9d2) forState:UIControlStateNormal];
         _saveBtn.titleLabel.font = CXSystemBoldFont(15);
         CGFloat width = [title sizeWithAttributes:@{NSFontAttributeName:CXSystemBoldFont(15)}].width;
-        _saveBtn.frame = CGRectMake(CXScreenWidth-15-width, 20, width, 44);
+        _saveBtn.frame = CGRectMake(CXScreenWidth-15-width, CX_PHONE_STATUSBAR_HEIGHT, width, 44);
         [_saveBtn addTarget:self action:@selector(saveNickname) forControlEvents:UIControlEventTouchUpInside];
         [_saveBtn setEnabled:NO];
     }

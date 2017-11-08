@@ -140,7 +140,7 @@
     if(!_closeBtn){
         _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _closeBtn.titleLabel.font = CXSystemFont(16);
-        _closeBtn.frame = CGRectMake(CXScreenWidth - 32, 27, 22, 22);
+        _closeBtn.frame = CGRectMake(CXScreenWidth - 32, CX_PHONE_STATUSBAR_HEIGHT+7, 22, 22);
         [_closeBtn setImage:[UIImage imageNamed:@"common_close"] forState:UIControlStateNormal];
         @weakify(self);
         [_closeBtn addBlockForControlEvents:UIControlEventTouchUpInside block:^(id  _Nonnull sender) {

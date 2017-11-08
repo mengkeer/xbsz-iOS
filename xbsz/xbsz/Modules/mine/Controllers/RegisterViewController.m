@@ -42,7 +42,7 @@
     
     [self.view addSubview:self.iconImageView];
     [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(80);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(CX_PHONE_NAVIGATIONBAR_HEIGHT+16);
         make.width.height.mas_equalTo(72);
         make.centerX.mas_equalTo(self.view.mas_centerX);
     }];

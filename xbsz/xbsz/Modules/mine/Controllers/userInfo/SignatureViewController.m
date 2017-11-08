@@ -50,7 +50,7 @@
         UIFont *font = [UIFont boldSystemFontOfSize:15];
         _saveBtn.titleLabel.font = font;
         CGFloat width = [title sizeWithAttributes:@{NSFontAttributeName:font}].width;
-        _saveBtn.frame = CGRectMake(CXScreenWidth-10-width, 20, width, 44);
+        _saveBtn.frame = CGRectMake(CXScreenWidth-10-width, CX_PHONE_STATUSBAR_HEIGHT, width, 44);
         [_saveBtn addTarget:self action:@selector(saveSignature) forControlEvents:UIControlEventTouchUpInside];
         [_saveBtn setEnabled:NO];
     }

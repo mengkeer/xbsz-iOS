@@ -39,7 +39,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     self.title = @"设置";
     self.view.backgroundColor = CXBackGroundColor;
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight-64.f)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight-CX_PHONE_NAVIGATIONBAR_HEIGHT)];
     [self.contentView addSubview:_tableView];
     _tableView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight+300);
     _tableView.backgroundColor = CXBackGroundColor;
@@ -47,6 +47,9 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     _tableView.separatorColor = CXLineColor;
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.dataSource = self;
+    _tableView.estimatedRowHeight = 0;
+    _tableView.estimatedSectionFooterHeight = 0;
+    _tableView.estimatedSectionHeaderHeight = 0;
     
     
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+300) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(CXTopCornerRadius, CXTopCornerRadius)];

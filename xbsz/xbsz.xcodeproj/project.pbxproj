@@ -556,21 +556,6 @@
 			path = campus;
 			sourceTree = "<group>";
 		};
-		05C21ACE1E5BE5AD00D7BA6C /* dynamic */ = {
-			isa = PBXGroup;
-			children = (
-				05C21ACF1E5BE5AD00D7BA6C /* Controllers */,
-			);
-			path = dynamic;
-			sourceTree = "<group>";
-		};
-		05C21ACF1E5BE5AD00D7BA6C /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		05C21AD01E5BE5AD00D7BA6C /* recommend */ = {
 			isa = PBXGroup;
 			children = (
@@ -1045,7 +1030,6 @@
 				05C21ACC1E5BE5AD00D7BA6C /* DiscoverViewController.h */,
 				05C21ACD1E5BE5AD00D7BA6C /* DiscoverViewController.m */,
 				05C21ACA1E5BE5AD00D7BA6C /* campus */,
-				05C21ACE1E5BE5AD00D7BA6C /* dynamic */,
 				05C21AD01E5BE5AD00D7BA6C /* recommend */,
 			);
 			path = discover;

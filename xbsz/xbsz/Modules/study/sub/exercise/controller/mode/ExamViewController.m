@@ -104,7 +104,7 @@ static NSInteger bottomHeight = 45;
     [self.view addSubview:bottomRightBgView];
     [bottomLeftBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(bottomHeight);
+        make.height.mas_equalTo(bottomHeight+CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.width.mas_equalTo(CXScreenWidth/2);
     }];
     
@@ -118,13 +118,13 @@ static NSInteger bottomHeight = 45;
         make.centerX.mas_equalTo(bottomLeftBgView.mas_centerX);
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(13);
-        make.bottom.mas_equalTo(bottomLeftBgView.mas_bottom).mas_offset(-2);
+        make.top.mas_equalTo(_preBtn.mas_bottom);
         
     }];
     
     [bottomRightBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(bottomHeight);
+        make.height.mas_equalTo(bottomHeight+CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.width.mas_equalTo(CXScreenWidth/2);
     }];
     
@@ -138,7 +138,7 @@ static NSInteger bottomHeight = 45;
         make.centerX.mas_equalTo(bottomRightBgView.mas_centerX);
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(13);
-        make.bottom.mas_equalTo(bottomRightBgView.mas_bottom).mas_offset(-2);
+        make.top.mas_equalTo(_nextBtn.mas_bottom);
     }];
 }
 
@@ -148,7 +148,7 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)gotoBtn{
     if(!_gotoBtn){
         _gotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _gotoBtn.frame = CGRectMake(CXScreenWidth - 44, 25, 34, 34);
+        _gotoBtn.frame = CGRectMake(CXScreenWidth - 44, CX_PHONE_STATUSBAR_HEIGHT+5, 34, 34);
         [_gotoBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateNormal];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateHighlighted];
@@ -160,7 +160,7 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)submitBtn{
     if(!_submitBtn){
         _submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _submitBtn.frame = CGRectMake(CXScreenWidth - 78, 25, 34, 34);
+        _submitBtn.frame = CGRectMake(CXScreenWidth - 78, CX_PHONE_STATUSBAR_HEIGHT+5, 34, 34);
         [_submitBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5,5,5)];
         [_submitBtn setImage:[UIImage imageNamed:@"exam_submit"] forState:UIControlStateNormal];
         [_submitBtn setImage:[UIImage imageNamed:@"exam_submit"] forState:UIControlStateHighlighted];
