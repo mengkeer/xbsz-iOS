@@ -178,7 +178,7 @@
 - (UITextField *)userNameField{
     if(!_userNameField){
         _userNameField = [[UITextField alloc] init];
-        _userNameField.placeholder = @"手机号或邮箱";
+        _userNameField.placeholder = @"用户名";
         _userNameField.backgroundColor = CXWhiteColor;
         _userNameField.clearButtonMode=UITextFieldViewModeWhileEditing;
         _userNameField.returnKeyType = UIReturnKeyNext;
@@ -192,7 +192,7 @@
         [leftView addSubview:imageView];
         
         _userNameField.leftView = leftView;
-        _userNameField.leftViewMode=UITextFieldViewModeAlways; //此处用来设置leftview现实时机
+        _userNameField.leftViewMode = UITextFieldViewModeAlways; //此处用来设置leftview实现时机
     }
     return _userNameField;
 }

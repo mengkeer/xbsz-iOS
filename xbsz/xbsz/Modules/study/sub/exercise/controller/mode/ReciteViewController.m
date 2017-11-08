@@ -89,8 +89,9 @@ static NSInteger bottomHeight = 45;
     [self.view addSubview:bottomLeftBgView];
     [self.view addSubview:bottomRightBgView];
     [bottomLeftBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(bottomHeight);
+        make.left.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view);
+        make.height.mas_equalTo(bottomHeight+CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.width.mas_equalTo(CXScreenWidth/2);
     }];
     
@@ -104,13 +105,14 @@ static NSInteger bottomHeight = 45;
         make.centerX.mas_equalTo(bottomLeftBgView.mas_centerX);
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(13);
-        make.bottom.mas_equalTo(bottomLeftBgView.mas_bottom).mas_offset(-2);
+        make.top.mas_equalTo(_preBtn.mas_bottom);
 
     }];
     
     [bottomRightBgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(bottomHeight);
+        make.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view);
+        make.height.mas_equalTo(bottomHeight+CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.width.mas_equalTo(CXScreenWidth/2);
     }];
     
@@ -124,7 +126,7 @@ static NSInteger bottomHeight = 45;
         make.centerX.mas_equalTo(bottomRightBgView.mas_centerX);
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(13);
-        make.bottom.mas_equalTo(bottomRightBgView.mas_bottom).mas_offset(-2);
+        make.top.mas_equalTo(_nextBtn.mas_bottom);
     }];
 }
 
@@ -138,7 +140,7 @@ static NSInteger bottomHeight = 45;
 - (UIButton *)gotoBtn{
     if(!_gotoBtn){
         _gotoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _gotoBtn.frame = CGRectMake(CXScreenWidth - 49, 20, 44, 44);
+        _gotoBtn.frame = CGRectMake(CXScreenWidth - 49, CX_PHONE_STATUSBAR_HEIGHT, 44, 44);
         [_gotoBtn setImageEdgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateNormal];
         [_gotoBtn setImage:[UIImage imageNamed:@"question_goto"] forState:UIControlStateHighlighted];

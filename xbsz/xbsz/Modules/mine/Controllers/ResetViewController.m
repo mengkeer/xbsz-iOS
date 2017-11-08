@@ -171,7 +171,7 @@
 - (UITextField *)userNameField{
     if(!_userNameField){
         _userNameField = [[UITextField alloc] init];
-        _userNameField.placeholder = @"手机号或邮箱";
+        _userNameField.placeholder = @"用户名";
         _userNameField.backgroundColor = CXWhiteColor;
         _userNameField.clearButtonMode=UITextFieldViewModeWhileEditing;
         _userNameField.returnKeyType = UIReturnKeyNext;

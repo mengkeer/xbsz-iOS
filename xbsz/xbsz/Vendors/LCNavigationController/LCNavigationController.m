@@ -11,7 +11,7 @@
 
 static const CGFloat LCAnimationDuration = 0.50f;   // Push / Pop 动画持续时间
 static const CGFloat LCMaxBlackMaskAlpha = 0.80f;   // 黑色背景透明度
-static const CGFloat LCZoomRatio         = 0.95f;   // 后面视图缩放比   //此为开发人员自定义  原为0.9
+static const CGFloat LCZoomRatio         = 0.96f;   // 后面视图缩放比   //此为开发人员自定义  原为0.9
 static const CGFloat LCShadowOpacity     = 0.80f;   // 滑动返回时当前视图的阴影透明度
 static const CGFloat LCShadowRadius      = 8.00f;   // 滑动返回时当前视图的阴影半径
 

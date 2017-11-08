@@ -30,7 +30,7 @@
     
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.titleLabel];
-    
+        
     
     [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(self.contentView);

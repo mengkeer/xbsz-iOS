@@ -21,6 +21,10 @@
 #define CX_IS_IPHONE6 (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0f)
 #define CX_IS_IPHONE6PLUS (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0f)
 #define CX_IS_RETINA ([[UIScreen mainScreen] scale] == 2.0f)
+#define CX_IS_IPHONEX (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 812.0f)     //是否是iPhoneX
+
+
+
 
 //定义屏幕框高等
 #define CXScreenBounds ([UIScreen mainScreen].bounds)
@@ -28,6 +32,13 @@
 #define CXScreenHeight ([UIScreen mainScreen].bounds.size.height)
 #define CXScreenRect   (CGRectMake(0,0,CXScreenWidth,CXScreenHeight))
 #define CXMainScale     ([UIScreen mainScreen].scale)
+#define CX_PHONE_STATUSBAR_HEIGHT  (CX_IS_IPHONEX ? 44.f : 20.f)
+#define CX_PHONE_NAVIGATIONBAR_HEIGHT   (CX_IS_IPHONEX ? 88.f : 64.f)
+#define CX_PHONEX_HOME_INDICATOR_HEIGHT   (CX_IS_IPHONEX ? 34.f : 0)
+#define CX_PHONE_TABBAR_HEIGHT (49.f + CX_PHONEX_HOME_INDICATOR_HEIGHT)        //系统推荐是49.f  + 34.f
+
+
+
 
 
 //启动次数
@@ -59,7 +70,7 @@
 //应用里一些常见宽高或其他定义
 #define CXStatusBarHeight  20
 #define CXNavigationBarHeight 64
-#define CXTabbarHeight  49          
+#define CXTabbarHeight  (49.f + CX_PHONEX_HOME_INDICATOR_HEIGHT)
 #define CXDisplayTitleHeight   32           //CXStudyViewController等的导航高度
 #define CXTopCornerRadius 8         //导航栏下的弧度  eg：SetViewController
 #define CXDisplayContentHeight    (CXScreenHeight-CXStatusBarHeight-CXDisplayTitleHeight-CXTabbarHeight)

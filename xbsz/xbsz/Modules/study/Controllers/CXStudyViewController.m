@@ -7,8 +7,6 @@
 //
 
 #import "CXStudyViewController.h"
-#import "CourseViewController.h"
-#import "HomeworkViewController.h"
 #import "ExerciseViewController.h"
 #import "YZDisplayTitleLabel.h"
 #import "AppUtil.h"
@@ -68,7 +66,7 @@
      设置整体内容的frame,包含（标题滚动视图和内容滚动视图）
      */
     [self setUpContentViewFrame:^(UIView *contentView) {
-        contentView.frame = CGRectMake(0, 20, CXScreenWidth, CXScreenHeight - CXStatusBarHeight);
+        contentView.frame = CGRectMake(0, CX_PHONE_STATUSBAR_HEIGHT, CXScreenWidth, CXScreenHeight - CX_PHONE_STATUSBAR_HEIGHT);
         contentView.backgroundColor = CXMainColor;
     }];
     
@@ -114,20 +112,20 @@
     self.selectIndex = 0;
     
     
-    //添加广告
-    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
-    self.bannerView.adUnitID = @"ca-app-pub-7139153640152838/2557283100";
-    self.bannerView.rootViewController = self;
-    
-    [self.view addSubview:self.bannerView];
-    [self.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(320);
-        make.height.mas_equalTo(50);
-        make.centerX.mas_equalTo(self.view.mas_centerX);
-        make.bottom.mas_equalTo(self.view.mas_bottom).mas_offset(-CXTabbarHeight);
-    }];
-
-    self.bannerView.delegate = self;
+//    //添加广告
+//    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+//    self.bannerView.adUnitID = @"ca-app-pub-7139153640152838/2557283100";
+//    self.bannerView.rootViewController = self;
+//
+//    [self.view addSubview:self.bannerView];
+//    [self.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(320);
+//        make.height.mas_equalTo(50);
+//        make.centerX.mas_equalTo(self.view.mas_centerX);
+//        make.bottom.mas_equalTo(self.view.mas_bottom).mas_offset(-CXTabbarHeight);
+//    }];
+//
+//    self.bannerView.delegate = self;
     
     [AppUtil checkUpdate:self];     //检查更新
 }
@@ -143,34 +141,21 @@
 
 #pragma mark - Private
 // 添加所有子控制器
-- (void)setUpAllViewController
-{
-    
-//    课程
-    CourseViewController  *vc1 = [CourseViewController controller];
-    vc1.title = @"课程";
-    [self addChildViewController:vc1];
-    
-    //练习
-//    HomeworkViewController  *vc2 = [HomeworkViewController controller];
-//    vc2.title = @"练习";
-//    [self addChildViewController:vc2];
-    
+- (void)setUpAllViewController{
     //题库
     ExerciseViewController *vc3 = [ExerciseViewController controller];
     vc3.title = @"题库";
     [self addChildViewController:vc3];
-
 }
 
 #pragma mark - 广告代理事件
 
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    bannerView.hidden = NO;
-}
-
-- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
-}
+//- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+//    bannerView.hidden = NO;
+//}
+//
+//- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+//    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
+//}
 
 @end

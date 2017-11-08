@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05067FEC1E7BF02200868AC1 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05067FE71E7BF02200868AC1 /* CourseDetailViewController.m */; };
-		05067FED1E7BF02200868AC1 /* CourseInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05067FE91E7BF02200868AC1 /* CourseInfoViewController.m */; };
-		05067FEE1E7BF02200868AC1 /* CourseIntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05067FEB1E7BF02200868AC1 /* CourseIntroductionViewController.m */; };
 		05067FF31E7BF1E900868AC1 /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05067FF21E7BF1E900868AC1 /* RateView.m */; };
 		0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECAA1E6012400018F432 /* CampusViewController.m */; };
 		0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0518ECAE1E6012400018F432 /* CampusTableViewCell.m */; };
@@ -23,13 +20,10 @@
 		054B8B7D1E7B876600E4E0BD /* b27_icon_star_yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 054B8B791E7B876600E4E0BD /* b27_icon_star_yellow@2x.png */; };
 		054B8B7E1E7B876600E4E0BD /* CWStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 054B8B7B1E7B876600E4E0BD /* CWStarRateView.m */; };
 		055A3B8B1E84CC7D004D09CC /* UIViewController+Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 055A3B8A1E84CC7D004D09CC /* UIViewController+Authorization.m */; };
-		05B4D06C1E7646B4005DC854 /* CourseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */; };
-		05B4D0861E769109005DC854 /* CourseSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 05B4D0851E769109005DC854 /* CourseSearchBar.m */; };
 		05B4D0891E769EF1005DC854 /* courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B4D0881E769EF1005DC854 /* courses.json */; };
 		05B4D08E1E76A532005DC854 /* course.json in Resources */ = {isa = PBXBuildFile; fileRef = 05B4D08D1E76A532005DC854 /* course.json */; };
 		05C21AD41E5BE5AD00D7BA6C /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21ACD1E5BE5AD00D7BA6C /* DiscoverViewController.m */; };
 		05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C21AD31E5BE5AD00D7BA6C /* RecommendViewController.m */; };
-		05CAAE541E81063B005F7715 /* CourseCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CAAE531E81063B005F7715 /* CourseCatalogViewController.m */; };
 		05CEE4A71E851DAB0033DD3D /* SchoolSceneryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CEE4A61E851DAB0033DD3D /* SchoolSceneryViewController.m */; };
 		05CEE4AA1E8525AC0033DD3D /* CommonAPPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CEE4A91E8525AC0033DD3D /* CommonAPPViewController.m */; };
 		05CEE4B01E85305E0033DD3D /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CEE4AD1E85305E0033DD3D /* NJKWebViewProgress.m */; };
@@ -58,7 +52,6 @@
 		AD2BE4EB1E5980CB00D0B0ED /* CXSectionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2BE4EA1E5980CB00D0B0ED /* CXSectionButton.m */; };
 		AD30B1471DFAC900000189DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD30B1461DFAC900000189DD /* Assets.xcassets */; };
 		AD36F8821EA3119600775F90 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD36F8811EA3119600775F90 /* DownloadManager.m */; };
-		AD3891CF1EA4C0F70074426C /* AttachmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3891CE1EA4C0F70074426C /* AttachmentViewController.m */; };
 		AD45BBA31EAE4A5800D53813 /* CXNetwork+Course.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBA21EAE4A5800D53813 /* CXNetwork+Course.m */; };
 		AD45BBA61EAEE8A000D53813 /* ReciteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBA51EAEE8A000D53813 /* ReciteViewController.m */; };
 		AD45BBB41EAF336800D53813 /* QuestionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD45BBB11EAF336800D53813 /* QuestionCollectionViewCell.m */; };
@@ -108,8 +101,6 @@
 		AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F892B1E59624A009603E4 /* CXNetworkMonitoring.m */; };
 		AD7F893C1E5976FE009603E4 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F89391E5976FE009603E4 /* ExerciseViewController.m */; };
 		AD7F893F1E597742009603E4 /* CXStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F893E1E597742009603E4 /* CXStudyViewController.m */; };
-		AD8B452A1EA890DB00E8D539 /* CourseCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45291EA890DB00E8D539 /* CourseCommentViewController.m */; };
-		AD8B452D1EA89CD200E8D539 /* CourseCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B452C1EA89CD200E8D539 /* CourseCommentTableViewCell.m */; };
 		AD8B45331EA9DC5B00E8D539 /* CourseComment.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45321EA9DC5B00E8D539 /* CourseComment.m */; };
 		AD8B45361EA9DCA600E8D539 /* CourseCommentList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B45351EA9DCA600E8D539 /* CourseCommentList.m */; };
 		AD8B45381EA9DE3D00E8D539 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = AD8B45371EA9DE3D00E8D539 /* comments.json */; };
@@ -123,7 +114,6 @@
 		AD8B862B1E9A92A4007F4CEC /* CXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B86271E9A92A4007F4CEC /* CXUser.m */; };
 		AD8B86301E9A92B1007F4CEC /* CampusNoteList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B862D1E9A92B1007F4CEC /* CampusNoteList.m */; };
 		AD8B86311E9A92B1007F4CEC /* CourseList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B862F1E9A92B1007F4CEC /* CourseList.m */; };
-		AD8B86341E9CD7EB007F4CEC /* ChapterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8B86331E9CD7EB007F4CEC /* ChapterHeaderView.m */; };
 		AD94AC591EACFE130059AF3A /* BirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD94AC581EACFE130059AF3A /* BirthdayViewController.m */; };
 		ADA187611EB2C05B00C771A4 /* ExerciseModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA187601EB2C05B00C771A4 /* ExerciseModeViewController.m */; };
 		ADA187651EB2EF3900C771A4 /* ExerciseProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA187641EB2EF3900C771A4 /* ExerciseProgressViewController.m */; };
@@ -132,18 +122,10 @@
 		ADA1876F1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA1876D1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m */; };
 		ADA187721EB333CB00C771A4 /* SinglePracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA187711EB333CB00C771A4 /* SinglePracticeViewController.m */; };
 		ADA770091EC60746001E7D3B /* CourseWareList.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA770081EC60746001E7D3B /* CourseWareList.m */; };
-		ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */; };
 		ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = ADAAE0881E7CD06400A0FA2C /* exercises.json */; };
 		ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */; };
 		ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0941E7D751200A0FA2C /* ToolBarCell.m */; };
 		ADAAE0981E7D91F400A0FA2C /* ShareToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAAE0971E7D91F400A0FA2C /* ShareToolBarView.m */; };
-		ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */; };
-		ADB7462D1E76DA8B00644812 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADB746201E76DA8B00644812 /* PYSearch.bundle */; };
-		ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746231E76DA8B00644812 /* PYSearchConst.m */; };
-		ADB7462F1E76DA8B00644812 /* PYSearchSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746251E76DA8B00644812 /* PYSearchSuggestionViewController.m */; };
-		ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746271E76DA8B00644812 /* PYSearchViewController.m */; };
-		ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */; };
-		ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */; };
 		ADB7463B1E77116500644812 /* CXWhitePushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB7463A1E77116500644812 /* CXWhitePushViewController.m */; };
 		ADCFC5351EC870990042A28F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADCFC5341EC870990042A28F /* MessageUI.framework */; };
 		ADCFC5381EC89A750042A28F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCFC5371EC89A750042A28F /* AboutViewController.m */; };
@@ -155,14 +137,9 @@
 		ADDE6F411ECB54AB0013AFD0 /* CourseQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F401ECB54AB0013AFD0 /* CourseQuestion.m */; };
 		ADDE6F441ECB55960013AFD0 /* CourseQuestionList.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F431ECB55960013AFD0 /* CourseQuestionList.m */; };
 		ADDE6F4B1ECB61560013AFD0 /* ExerciseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F4A1ECB61560013AFD0 /* ExerciseCollectionViewCell.m */; };
-		ADDE6F4E1ECB61DF0013AFD0 /* HomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F4D1ECB61DF0013AFD0 /* HomeworkViewController.m */; };
-		ADDE6F511ECB622E0013AFD0 /* HomeworkCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F501ECB622E0013AFD0 /* HomeworkCollectionViewCell.m */; };
 		ADDE6F531ECBDE040013AFD0 /* homeworks.json in Resources */ = {isa = PBXBuildFile; fileRef = ADDE6F521ECBDE040013AFD0 /* homeworks.json */; };
 		ADDE6F561ECBDEC10013AFD0 /* Homework.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F551ECBDEC10013AFD0 /* Homework.m */; };
 		ADDE6F591ECBDF5E0013AFD0 /* HomeworkList.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F581ECBDF5E0013AFD0 /* HomeworkList.m */; };
-		ADDE6F5C1ECBE6A80013AFD0 /* DoHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F5B1ECBE6A80013AFD0 /* DoHomeworkViewController.m */; };
-		ADDE6F631ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F5E1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m */; };
-		ADDE6F641ECBED130013AFD0 /* CourseQuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F601ECBED130013AFD0 /* CourseQuestionTableViewCell.m */; };
 		ADDE6F681ECBF8240013AFD0 /* StudyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDE6F671ECBF8240013AFD0 /* StudyUtil.m */; };
 		ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE663691EB384BF00DBA92A /* MutiPracticeViewController.m */; };
 		ADF408CA1EB4ABFD009DB786 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF408C91EB4ABFD009DB786 /* libsqlite3.0.tbd */; };
@@ -172,6 +149,13 @@
 		ADF408D51EB4E076009DB786 /* CXAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF408D41EB4E076009DB786 /* CXAudioPlayer.m */; };
 		ADF408D71EB4E111009DB786 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF408D61EB4E111009DB786 /* AudioToolbox.framework */; };
 		ADF408DA1EB4E53D009DB786 /* CXUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF408D91EB4E53D009DB786 /* CXUserDefaults.m */; };
+		ADF556261FB32A74009B3FA8 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF556191FB32A73009B3FA8 /* NSBundle+PYSearchExtension.m */; };
+		ADF556271FB32A74009B3FA8 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADF5561A1FB32A73009B3FA8 /* PYSearch.bundle */; };
+		ADF556281FB32A74009B3FA8 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF5561D1FB32A73009B3FA8 /* PYSearchConst.m */; };
+		ADF556291FB32A74009B3FA8 /* PYSearchSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF5561F1FB32A73009B3FA8 /* PYSearchSuggestionViewController.m */; };
+		ADF5562A1FB32A74009B3FA8 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF556211FB32A73009B3FA8 /* PYSearchViewController.m */; };
+		ADF5562B1FB32A74009B3FA8 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF556231FB32A73009B3FA8 /* UIColor+PYSearchExtension.m */; };
+		ADF5562C1FB32A74009B3FA8 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF556251FB32A74009B3FA8 /* UIView+PYSearchExtension.m */; };
 		ADFEDA811EC9C892008F30CF /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFEDA801EC9C892008F30CF /* NewPostViewController.m */; };
 		ADFEDAC51ECA942C008F30CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADFEDAC41ECA942C008F30CF /* LaunchScreen.storyboard */; };
 		ADFEDAC81ECACF2F008F30CF /* ModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFEDAC71ECACF2F008F30CF /* ModifyPasswordViewController.m */; };
@@ -181,12 +165,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05067FE61E7BF02200868AC1 /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
-		05067FE71E7BF02200868AC1 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
-		05067FE81E7BF02200868AC1 /* CourseInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseInfoViewController.h; sourceTree = "<group>"; };
-		05067FE91E7BF02200868AC1 /* CourseInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseInfoViewController.m; sourceTree = "<group>"; };
-		05067FEA1E7BF02200868AC1 /* CourseIntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseIntroductionViewController.h; sourceTree = "<group>"; };
-		05067FEB1E7BF02200868AC1 /* CourseIntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseIntroductionViewController.m; sourceTree = "<group>"; };
 		05067FF11E7BF1E900868AC1 /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
 		05067FF21E7BF1E900868AC1 /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
 		0518ECA91E6012400018F432 /* CampusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CampusViewController.h; sourceTree = "<group>"; };
@@ -208,18 +186,12 @@
 		054B8B7B1E7B876600E4E0BD /* CWStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStarRateView.m; sourceTree = "<group>"; };
 		055A3B891E84CC7D004D09CC /* UIViewController+Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Authorization.h"; sourceTree = "<group>"; };
 		055A3B8A1E84CC7D004D09CC /* UIViewController+Authorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Authorization.m"; sourceTree = "<group>"; };
-		05B4D06A1E7646B4005DC854 /* CourseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCollectionViewCell.h; sourceTree = "<group>"; };
-		05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCollectionViewCell.m; sourceTree = "<group>"; };
-		05B4D0841E769109005DC854 /* CourseSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseSearchBar.h; sourceTree = "<group>"; };
-		05B4D0851E769109005DC854 /* CourseSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseSearchBar.m; sourceTree = "<group>"; };
 		05B4D0881E769EF1005DC854 /* courses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = courses.json; sourceTree = "<group>"; };
 		05B4D08D1E76A532005DC854 /* course.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = course.json; sourceTree = "<group>"; };
 		05C21ACC1E5BE5AD00D7BA6C /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		05C21ACD1E5BE5AD00D7BA6C /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		05C21AD21E5BE5AD00D7BA6C /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
 		05C21AD31E5BE5AD00D7BA6C /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
-		05CAAE521E81063B005F7715 /* CourseCatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCatalogViewController.h; sourceTree = "<group>"; };
-		05CAAE531E81063B005F7715 /* CourseCatalogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCatalogViewController.m; sourceTree = "<group>"; };
 		05CEE4A51E851DAB0033DD3D /* SchoolSceneryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolSceneryViewController.h; sourceTree = "<group>"; };
 		05CEE4A61E851DAB0033DD3D /* SchoolSceneryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolSceneryViewController.m; sourceTree = "<group>"; };
 		05CEE4A81E8525AC0033DD3D /* CommonAPPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAPPViewController.h; sourceTree = "<group>"; };
@@ -278,8 +250,6 @@
 		AD30B1751DFACA0C000189DD /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		AD36F8801EA3119600775F90 /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
 		AD36F8811EA3119600775F90 /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
-		AD3891CD1EA4C0F70074426C /* AttachmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentViewController.h; sourceTree = "<group>"; };
-		AD3891CE1EA4C0F70074426C /* AttachmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentViewController.m; sourceTree = "<group>"; };
 		AD45BBA11EAE4A5800D53813 /* CXNetwork+Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CXNetwork+Course.h"; sourceTree = "<group>"; };
 		AD45BBA21EAE4A5800D53813 /* CXNetwork+Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CXNetwork+Course.m"; sourceTree = "<group>"; };
 		AD45BBA41EAEE8A000D53813 /* ReciteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReciteViewController.h; sourceTree = "<group>"; };
@@ -383,10 +353,6 @@
 		AD7F89391E5976FE009603E4 /* ExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseViewController.m; sourceTree = "<group>"; };
 		AD7F893D1E597742009603E4 /* CXStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXStudyViewController.h; sourceTree = "<group>"; };
 		AD7F893E1E597742009603E4 /* CXStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXStudyViewController.m; sourceTree = "<group>"; };
-		AD8B45281EA890DB00E8D539 /* CourseCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentViewController.h; sourceTree = "<group>"; };
-		AD8B45291EA890DB00E8D539 /* CourseCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCommentViewController.m; sourceTree = "<group>"; };
-		AD8B452B1EA89CD200E8D539 /* CourseCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentTableViewCell.h; sourceTree = "<group>"; };
-		AD8B452C1EA89CD200E8D539 /* CourseCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseCommentTableViewCell.m; sourceTree = "<group>"; };
 		AD8B45311EA9DC5B00E8D539 /* CourseComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseComment.h; sourceTree = "<group>"; };
 		AD8B45321EA9DC5B00E8D539 /* CourseComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseComment.m; sourceTree = "<group>"; };
 		AD8B45341EA9DCA600E8D539 /* CourseCommentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseCommentList.h; sourceTree = "<group>"; };
@@ -411,8 +377,6 @@
 		AD8B862D1E9A92B1007F4CEC /* CampusNoteList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CampusNoteList.m; sourceTree = "<group>"; };
 		AD8B862E1E9A92B1007F4CEC /* CourseList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseList.h; sourceTree = "<group>"; };
 		AD8B862F1E9A92B1007F4CEC /* CourseList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseList.m; sourceTree = "<group>"; };
-		AD8B86321E9CD7EB007F4CEC /* ChapterHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChapterHeaderView.h; path = xbsz/Modules/study/sub/course/View/ChapterHeaderView.h; sourceTree = SOURCE_ROOT; };
-		AD8B86331E9CD7EB007F4CEC /* ChapterHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChapterHeaderView.m; path = xbsz/Modules/study/sub/course/View/ChapterHeaderView.m; sourceTree = SOURCE_ROOT; };
 		AD94AC571EACFE130059AF3A /* BirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayViewController.h; sourceTree = "<group>"; };
 		AD94AC581EACFE130059AF3A /* BirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayViewController.m; sourceTree = "<group>"; };
 		ADA1875F1EB2C05B00C771A4 /* ExerciseModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseModeViewController.h; path = xbsz/Modules/study/sub/exercise/Controller/ExerciseModeViewController.h; sourceTree = SOURCE_ROOT; };
@@ -430,8 +394,6 @@
 		ADA187711EB333CB00C771A4 /* SinglePracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePracticeViewController.m; sourceTree = "<group>"; };
 		ADA770071EC60746001E7D3B /* CourseWareList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseWareList.h; sourceTree = "<group>"; };
 		ADA770081EC60746001E7D3B /* CourseWareList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseWareList.m; sourceTree = "<group>"; };
-		ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
-		ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
 		ADAAE0881E7CD06400A0FA2C /* exercises.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exercises.json; sourceTree = "<group>"; };
 		ADAAE08C1E7CD74200A0FA2C /* ExerciseSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseSearchBar.h; sourceTree = "<group>"; };
 		ADAAE08D1E7CD74200A0FA2C /* ExerciseSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseSearchBar.m; sourceTree = "<group>"; };
@@ -439,20 +401,6 @@
 		ADAAE0941E7D751200A0FA2C /* ToolBarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarCell.m; sourceTree = "<group>"; };
 		ADAAE0961E7D91F400A0FA2C /* ShareToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareToolBarView.h; sourceTree = "<group>"; };
 		ADAAE0971E7D91F400A0FA2C /* ShareToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareToolBarView.m; sourceTree = "<group>"; };
-		ADB7461E1E76DA8B00644812 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
-		ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
-		ADB746201E76DA8B00644812 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
-		ADB746211E76DA8B00644812 /* PYSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearch.h; sourceTree = "<group>"; };
-		ADB746221E76DA8B00644812 /* PYSearchConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchConst.h; sourceTree = "<group>"; };
-		ADB746231E76DA8B00644812 /* PYSearchConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchConst.m; sourceTree = "<group>"; };
-		ADB746241E76DA8B00644812 /* PYSearchSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchSuggestionViewController.h; sourceTree = "<group>"; };
-		ADB746251E76DA8B00644812 /* PYSearchSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchSuggestionViewController.m; sourceTree = "<group>"; };
-		ADB746261E76DA8B00644812 /* PYSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchViewController.h; sourceTree = "<group>"; };
-		ADB746271E76DA8B00644812 /* PYSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchViewController.m; sourceTree = "<group>"; };
-		ADB746281E76DA8B00644812 /* UIColor+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PYSearchExtension.h"; sourceTree = "<group>"; };
-		ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYSearchExtension.m"; sourceTree = "<group>"; };
-		ADB7462A1E76DA8B00644812 /* UIView+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYSearchExtension.h"; sourceTree = "<group>"; };
-		ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
 		ADB746391E77116500644812 /* CXWhitePushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXWhitePushViewController.h; sourceTree = "<group>"; };
 		ADB7463A1E77116500644812 /* CXWhitePushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXWhitePushViewController.m; sourceTree = "<group>"; };
 		ADCFC5341EC870990042A28F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -472,21 +420,11 @@
 		ADDE6F431ECB55960013AFD0 /* CourseQuestionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseQuestionList.m; sourceTree = "<group>"; };
 		ADDE6F491ECB61560013AFD0 /* ExerciseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCollectionViewCell.h; sourceTree = "<group>"; };
 		ADDE6F4A1ECB61560013AFD0 /* ExerciseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCollectionViewCell.m; sourceTree = "<group>"; };
-		ADDE6F4C1ECB61DF0013AFD0 /* HomeworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkViewController.h; sourceTree = "<group>"; };
-		ADDE6F4D1ECB61DF0013AFD0 /* HomeworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkViewController.m; sourceTree = "<group>"; };
-		ADDE6F4F1ECB622E0013AFD0 /* HomeworkCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkCollectionViewCell.h; sourceTree = "<group>"; };
-		ADDE6F501ECB622E0013AFD0 /* HomeworkCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkCollectionViewCell.m; sourceTree = "<group>"; };
 		ADDE6F521ECBDE040013AFD0 /* homeworks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homeworks.json; sourceTree = "<group>"; };
 		ADDE6F541ECBDEC10013AFD0 /* Homework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Homework.h; sourceTree = "<group>"; };
 		ADDE6F551ECBDEC10013AFD0 /* Homework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Homework.m; sourceTree = "<group>"; };
 		ADDE6F571ECBDF5E0013AFD0 /* HomeworkList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkList.h; sourceTree = "<group>"; };
 		ADDE6F581ECBDF5E0013AFD0 /* HomeworkList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkList.m; sourceTree = "<group>"; };
-		ADDE6F5A1ECBE6A80013AFD0 /* DoHomeworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoHomeworkViewController.h; sourceTree = "<group>"; };
-		ADDE6F5B1ECBE6A80013AFD0 /* DoHomeworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoHomeworkViewController.m; sourceTree = "<group>"; };
-		ADDE6F5D1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseQuestionCollectionViewCell.h; sourceTree = "<group>"; };
-		ADDE6F5E1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseQuestionCollectionViewCell.m; sourceTree = "<group>"; };
-		ADDE6F5F1ECBED130013AFD0 /* CourseQuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseQuestionTableViewCell.h; sourceTree = "<group>"; };
-		ADDE6F601ECBED130013AFD0 /* CourseQuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseQuestionTableViewCell.m; sourceTree = "<group>"; };
 		ADDE6F661ECBF8240013AFD0 /* StudyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudyUtil.h; sourceTree = "<group>"; };
 		ADDE6F671ECBF8240013AFD0 /* StudyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudyUtil.m; sourceTree = "<group>"; };
 		ADE663681EB384BF00DBA92A /* MutiPracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiPracticeViewController.h; sourceTree = "<group>"; };
@@ -501,6 +439,20 @@
 		ADF408D61EB4E111009DB786 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		ADF408D81EB4E53D009DB786 /* CXUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXUserDefaults.h; sourceTree = "<group>"; };
 		ADF408D91EB4E53D009DB786 /* CXUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXUserDefaults.m; sourceTree = "<group>"; };
+		ADF556181FB32A73009B3FA8 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
+		ADF556191FB32A73009B3FA8 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
+		ADF5561A1FB32A73009B3FA8 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
+		ADF5561B1FB32A73009B3FA8 /* PYSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearch.h; sourceTree = "<group>"; };
+		ADF5561C1FB32A73009B3FA8 /* PYSearchConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchConst.h; sourceTree = "<group>"; };
+		ADF5561D1FB32A73009B3FA8 /* PYSearchConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchConst.m; sourceTree = "<group>"; };
+		ADF5561E1FB32A73009B3FA8 /* PYSearchSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchSuggestionViewController.h; sourceTree = "<group>"; };
+		ADF5561F1FB32A73009B3FA8 /* PYSearchSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchSuggestionViewController.m; sourceTree = "<group>"; };
+		ADF556201FB32A73009B3FA8 /* PYSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchViewController.h; sourceTree = "<group>"; };
+		ADF556211FB32A73009B3FA8 /* PYSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchViewController.m; sourceTree = "<group>"; };
+		ADF556221FB32A73009B3FA8 /* UIColor+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PYSearchExtension.h"; sourceTree = "<group>"; };
+		ADF556231FB32A73009B3FA8 /* UIColor+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYSearchExtension.m"; sourceTree = "<group>"; };
+		ADF556241FB32A74009B3FA8 /* UIView+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYSearchExtension.h"; sourceTree = "<group>"; };
+		ADF556251FB32A74009B3FA8 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
 		ADFEDA7F1EC9C892008F30CF /* NewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
 		ADFEDA801EC9C892008F30CF /* NewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
 		ADFEDAC41ECA942C008F30CF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -534,25 +486,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05067FE51E7BF02200868AC1 /* detail */ = {
-			isa = PBXGroup;
-			children = (
-				05067FE61E7BF02200868AC1 /* CourseDetailViewController.h */,
-				05067FE71E7BF02200868AC1 /* CourseDetailViewController.m */,
-				05067FE81E7BF02200868AC1 /* CourseInfoViewController.h */,
-				05067FE91E7BF02200868AC1 /* CourseInfoViewController.m */,
-				05067FEA1E7BF02200868AC1 /* CourseIntroductionViewController.h */,
-				05067FEB1E7BF02200868AC1 /* CourseIntroductionViewController.m */,
-				05CAAE521E81063B005F7715 /* CourseCatalogViewController.h */,
-				05CAAE531E81063B005F7715 /* CourseCatalogViewController.m */,
-				AD8B45281EA890DB00E8D539 /* CourseCommentViewController.h */,
-				AD8B45291EA890DB00E8D539 /* CourseCommentViewController.m */,
-				AD3891CD1EA4C0F70074426C /* AttachmentViewController.h */,
-				AD3891CE1EA4C0F70074426C /* AttachmentViewController.m */,
-			);
-			path = detail;
-			sourceTree = "<group>";
-		};
 		05067FF01E7BF16E00868AC1 /* RateView */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,28 +544,6 @@
 				054B8B7B1E7B876600E4E0BD /* CWStarRateView.m */,
 			);
 			path = CWStarRateView;
-			sourceTree = "<group>";
-		};
-		05B4D0671E763676005DC854 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		05B4D0681E763676005DC854 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				05B4D06A1E7646B4005DC854 /* CourseCollectionViewCell.h */,
-				05B4D06B1E7646B4005DC854 /* CourseCollectionViewCell.m */,
-				05B4D0841E769109005DC854 /* CourseSearchBar.h */,
-				05B4D0851E769109005DC854 /* CourseSearchBar.m */,
-				AD8B86321E9CD7EB007F4CEC /* ChapterHeaderView.h */,
-				AD8B86331E9CD7EB007F4CEC /* ChapterHeaderView.m */,
-				AD8B452B1EA89CD200E8D539 /* CourseCommentTableViewCell.h */,
-				AD8B452C1EA89CD200E8D539 /* CourseCommentTableViewCell.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		05C21ACA1E5BE5AD00D7BA6C /* campus */ = {
@@ -937,10 +848,10 @@
 		AD7F881A1E594D5E009603E4 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				ADF556171FB32A73009B3FA8 /* PYSearch */,
 				AD1FDB3A1EF56CC90036612C /* LCNavigationController */,
 				05CEE4AB1E85305E0033DD3D /* NJKWebViewProgress */,
 				054B8B771E7B876600E4E0BD /* CWStarRateView */,
-				ADB7461D1E76DA8B00644812 /* PYSearch */,
 				AD7F881B1E594D5E009603E4 /* YYKit */,
 				AD7F881E1E594D5E009603E4 /* YZDisplayViewController */,
 			);
@@ -1249,22 +1160,9 @@
 		AD7F89311E5976FE009603E4 /* sub */ = {
 			isa = PBXGroup;
 			children = (
-				ADB746191E76D69700644812 /* search */,
-				AD7F89321E5976FE009603E4 /* course */,
-				ADDE6F451ECB602E0013AFD0 /* homework */,
 				AD7F89361E5976FE009603E4 /* exercise */,
 			);
 			path = sub;
-			sourceTree = "<group>";
-		};
-		AD7F89321E5976FE009603E4 /* course */ = {
-			isa = PBXGroup;
-			children = (
-				ADAAE0761E7AE89300A0FA2C /* Controller */,
-				05B4D0671E763676005DC854 /* Model */,
-				05B4D0681E763676005DC854 /* View */,
-			);
-			path = course;
 			sourceTree = "<group>";
 		};
 		AD7F89361E5976FE009603E4 /* exercise */ = {
@@ -1400,16 +1298,6 @@
 			path = xbsz/Modules/study/sub/exercise/Controller/progress;
 			sourceTree = SOURCE_ROOT;
 		};
-		ADAAE0761E7AE89300A0FA2C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				05067FE51E7BF02200868AC1 /* detail */,
-				ADAAE0791E7AE89300A0FA2C /* CourseViewController.h */,
-				ADAAE07A1E7AE89300A0FA2C /* CourseViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		ADAAE0801E7CC87200A0FA2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1433,99 +1321,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		ADB746191E76D69700644812 /* search */ = {
-			isa = PBXGroup;
-			children = (
-				ADB7461A1E76D69700644812 /* Controller */,
-				ADB7461B1E76D69700644812 /* Model */,
-				ADB7461C1E76D69700644812 /* View */,
-			);
-			path = search;
-			sourceTree = "<group>";
-		};
-		ADB7461A1E76D69700644812 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		ADB7461B1E76D69700644812 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		ADB7461C1E76D69700644812 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		ADB7461D1E76DA8B00644812 /* PYSearch */ = {
-			isa = PBXGroup;
-			children = (
-				ADB7461E1E76DA8B00644812 /* NSBundle+PYSearchExtension.h */,
-				ADB7461F1E76DA8B00644812 /* NSBundle+PYSearchExtension.m */,
-				ADB746201E76DA8B00644812 /* PYSearch.bundle */,
-				ADB746211E76DA8B00644812 /* PYSearch.h */,
-				ADB746221E76DA8B00644812 /* PYSearchConst.h */,
-				ADB746231E76DA8B00644812 /* PYSearchConst.m */,
-				ADB746241E76DA8B00644812 /* PYSearchSuggestionViewController.h */,
-				ADB746251E76DA8B00644812 /* PYSearchSuggestionViewController.m */,
-				ADB746261E76DA8B00644812 /* PYSearchViewController.h */,
-				ADB746271E76DA8B00644812 /* PYSearchViewController.m */,
-				ADB746281E76DA8B00644812 /* UIColor+PYSearchExtension.h */,
-				ADB746291E76DA8B00644812 /* UIColor+PYSearchExtension.m */,
-				ADB7462A1E76DA8B00644812 /* UIView+PYSearchExtension.h */,
-				ADB7462B1E76DA8B00644812 /* UIView+PYSearchExtension.m */,
-			);
-			path = PYSearch;
-			sourceTree = "<group>";
-		};
-		ADDE6F451ECB602E0013AFD0 /* homework */ = {
-			isa = PBXGroup;
-			children = (
-				ADDE6F461ECB602E0013AFD0 /* Controller */,
-				ADDE6F471ECB602E0013AFD0 /* Model */,
-				ADDE6F481ECB602E0013AFD0 /* View */,
-			);
-			path = homework;
-			sourceTree = "<group>";
-		};
-		ADDE6F461ECB602E0013AFD0 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				ADDE6F4C1ECB61DF0013AFD0 /* HomeworkViewController.h */,
-				ADDE6F4D1ECB61DF0013AFD0 /* HomeworkViewController.m */,
-				ADDE6F5A1ECBE6A80013AFD0 /* DoHomeworkViewController.h */,
-				ADDE6F5B1ECBE6A80013AFD0 /* DoHomeworkViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		ADDE6F471ECB602E0013AFD0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		ADDE6F481ECB602E0013AFD0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				ADDE6F5D1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.h */,
-				ADDE6F5E1ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m */,
-				ADDE6F5F1ECBED130013AFD0 /* CourseQuestionTableViewCell.h */,
-				ADDE6F601ECBED130013AFD0 /* CourseQuestionTableViewCell.m */,
-				ADDE6F4F1ECB622E0013AFD0 /* HomeworkCollectionViewCell.h */,
-				ADDE6F501ECB622E0013AFD0 /* HomeworkCollectionViewCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		ADF408CE1EB4DFC8009DB786 /* music */ = {
 			isa = PBXGroup;
 			children = (
@@ -1533,6 +1328,28 @@
 				ADF408D01EB4DFC8009DB786 /* mistake.wav */,
 			);
 			path = music;
+			sourceTree = "<group>";
+		};
+		ADF556171FB32A73009B3FA8 /* PYSearch */ = {
+			isa = PBXGroup;
+			children = (
+				ADF556181FB32A73009B3FA8 /* NSBundle+PYSearchExtension.h */,
+				ADF556191FB32A73009B3FA8 /* NSBundle+PYSearchExtension.m */,
+				ADF5561A1FB32A73009B3FA8 /* PYSearch.bundle */,
+				ADF5561B1FB32A73009B3FA8 /* PYSearch.h */,
+				ADF5561C1FB32A73009B3FA8 /* PYSearchConst.h */,
+				ADF5561D1FB32A73009B3FA8 /* PYSearchConst.m */,
+				ADF5561E1FB32A73009B3FA8 /* PYSearchSuggestionViewController.h */,
+				ADF5561F1FB32A73009B3FA8 /* PYSearchSuggestionViewController.m */,
+				ADF556201FB32A73009B3FA8 /* PYSearchViewController.h */,
+				ADF556211FB32A73009B3FA8 /* PYSearchViewController.m */,
+				ADF556221FB32A73009B3FA8 /* UIColor+PYSearchExtension.h */,
+				ADF556231FB32A73009B3FA8 /* UIColor+PYSearchExtension.m */,
+				ADF556241FB32A74009B3FA8 /* UIView+PYSearchExtension.h */,
+				ADF556251FB32A74009B3FA8 /* UIView+PYSearchExtension.m */,
+			);
+			name = PYSearch;
+			path = "../../../../../Downloads/PYSearch-master/PYSearch";
 			sourceTree = "<group>";
 		};
 		D83306020DE04E843C2A1432 /* Frameworks */ = {
@@ -1635,8 +1452,8 @@
 				AD8B453A1EA9E06800E8D539 /* comment.json in Resources */,
 				054B8B7D1E7B876600E4E0BD /* b27_icon_star_yellow@2x.png in Resources */,
 				AD30B1471DFAC900000189DD /* Assets.xcassets in Resources */,
-				ADB7462D1E76DA8B00644812 /* PYSearch.bundle in Resources */,
 				0518ECC61E6037C60018F432 /* notes.json in Resources */,
+				ADF556271FB32A74009B3FA8 /* PYSearch.bundle in Resources */,
 				05B4D0891E769EF1005DC854 /* courses.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1697,6 +1514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADA1876F1EB2F04000C771A4 /* ExerciseChapterTableViewCell.m in Sources */,
+				ADF556261FB32A74009B3FA8 /* NSBundle+PYSearchExtension.m in Sources */,
 				05067FF31E7BF1E900868AC1 /* RateView.m in Sources */,
 				AD45BBA61EAEE8A000D53813 /* ReciteViewController.m in Sources */,
 				AD2540B81E97860F00AA330D /* JWLocalUser.m in Sources */,
@@ -1706,7 +1524,6 @@
 				AD7F891C1E595B29009603E4 /* LoginViewController.m in Sources */,
 				AD5B0FD01EC5E23F00C7D283 /* NSDate+CXAdd.m in Sources */,
 				AD29F48D1E5B244E008346BD /* UIAlertController+CXAlertController.m in Sources */,
-				ADAAE07C1E7AE89300A0FA2C /* CourseViewController.m in Sources */,
 				AD45BBBA1EAF35B300D53813 /* ExerciseQuestion.m in Sources */,
 				0537E0C21E8398FA00C2F81C /* ToastView.m in Sources */,
 				05F472FB1E7132640085345F /* MoreToolBarView.m in Sources */,
@@ -1721,14 +1538,11 @@
 				AD196E681EAC8AFC00111EB5 /* EmailViewController.m in Sources */,
 				ADDE6F4B1ECB61560013AFD0 /* ExerciseCollectionViewCell.m in Sources */,
 				AD1FDB3D1EF56CC90036612C /* LCNavigationController.m in Sources */,
-				05067FEC1E7BF02200868AC1 /* CourseDetailViewController.m in Sources */,
 				AD7F892C1E59624A009603E4 /* CXNetworkMonitoring.m in Sources */,
 				AD7F88DC1E595A5E009603E4 /* CXBaseViewController.m in Sources */,
 				05CEE4B01E85305E0033DD3D /* NJKWebViewProgress.m in Sources */,
 				AD8B86291E9A92A4007F4CEC /* CampusNote.m in Sources */,
 				ADF408CD1EB4C042009DB786 /* ExamViewController.m in Sources */,
-				05B4D06C1E7646B4005DC854 /* CourseCollectionViewCell.m in Sources */,
-				05CAAE541E81063B005F7715 /* CourseCatalogViewController.m in Sources */,
 				AD45BBB41EAF336800D53813 /* QuestionCollectionViewCell.m in Sources */,
 				AD7F882C1E594D5E009603E4 /* YZFlowLayout.m in Sources */,
 				ADA187721EB333CB00C771A4 /* SinglePracticeViewController.m in Sources */,
@@ -1737,9 +1551,7 @@
 				ADAAE08F1E7CD74200A0FA2C /* ExerciseSearchBar.m in Sources */,
 				AD29F4881E5B23C9008346BD /* CXBaseCollectionView.m in Sources */,
 				ADCFC5381EC89A750042A28F /* AboutViewController.m in Sources */,
-				AD3891CF1EA4C0F70074426C /* AttachmentViewController.m in Sources */,
 				AD7F891D1E595B29009603E4 /* RegisterViewController.m in Sources */,
-				AD8B452D1EA89CD200E8D539 /* CourseCommentTableViewCell.m in Sources */,
 				AD7F88DD1E595A5E009603E4 /* CXNavigationController.m in Sources */,
 				0518ECB91E6016D80018F432 /* CXLocalUser.m in Sources */,
 				AD8B45331EA9DC5B00E8D539 /* CourseComment.m in Sources */,
@@ -1748,32 +1560,29 @@
 				054B8B7E1E7B876600E4E0BD /* CWStarRateView.m in Sources */,
 				ADFEDAC81ECACF2F008F30CF /* ModifyPasswordViewController.m in Sources */,
 				AD2540B21E977A9900AA330D /* UserInfoViewController.m in Sources */,
+				ADF556291FB32A74009B3FA8 /* PYSearchSuggestionViewController.m in Sources */,
 				ADDE6F591ECBDF5E0013AFD0 /* HomeworkList.m in Sources */,
 				05CEE4AA1E8525AC0033DD3D /* CommonAPPViewController.m in Sources */,
 				AD77A9EB1ED0ABA100D6CC9E /* TruenameViewController.m in Sources */,
 				AD36F8821EA3119600775F90 /* DownloadManager.m in Sources */,
-				ADDE6F641ECBED130013AFD0 /* CourseQuestionTableViewCell.m in Sources */,
 				ADCFC5411EC92E310042A28F /* CampusCommentTableViewCell.m in Sources */,
-				AD8B86341E9CD7EB007F4CEC /* ChapterHeaderView.m in Sources */,
 				AD2540B51E977B4100AA330D /* AuthorizedLoginViewController.m in Sources */,
+				ADF5562A1FB32A74009B3FA8 /* PYSearchViewController.m in Sources */,
 				AD7F89221E595B29009603E4 /* SetItemTableViewCell.m in Sources */,
+				ADF5562B1FB32A74009B3FA8 /* UIColor+PYSearchExtension.m in Sources */,
 				AD77A9E61ECDEA9800D6CC9E /* CampusCommentList.m in Sources */,
 				AD7F89281E596036009603E4 /* main.m in Sources */,
 				AD45BBA31EAE4A5800D53813 /* CXNetwork+Course.m in Sources */,
 				AD7F891B1E595B29009603E4 /* InformViewController.m in Sources */,
 				ADDE6F411ECB54AB0013AFD0 /* CourseQuestion.m in Sources */,
-				ADB746301E76DA8B00644812 /* PYSearchViewController.m in Sources */,
-				ADDE6F4E1ECB61DF0013AFD0 /* HomeworkViewController.m in Sources */,
 				AD8B861F1E9A9191007F4CEC /* CXBaseResponseModel.m in Sources */,
 				AD5B0FD31EC5E8A700C7D283 /* CXPage.m in Sources */,
 				AD77A9E31ECD839700D6CC9E /* CXNetwork+Note.m in Sources */,
-				ADB746321E76DA8B00644812 /* UIView+PYSearchExtension.m in Sources */,
 				AD11DCAC1EED353200B861C7 /* ProgressCircle.m in Sources */,
 				05CEE4A71E851DAB0033DD3D /* SchoolSceneryViewController.m in Sources */,
 				AD8B86301E9A92B1007F4CEC /* CampusNoteList.m in Sources */,
 				ADFEDACB1ECAE422008F30CF /* CXNetwork+System.m in Sources */,
 				ADA187651EB2EF3900C771A4 /* ExerciseProgressViewController.m in Sources */,
-				ADDE6F5C1ECBE6A80013AFD0 /* DoHomeworkViewController.m in Sources */,
 				AD7F89271E596036009603E4 /* AppDelegate.m in Sources */,
 				AD592E5F1EB0ABF000CBDCC8 /* QuestionTitleLabel.m in Sources */,
 				05CEE4B11E85305E0033DD3D /* NJKWebViewProgressView.m in Sources */,
@@ -1784,15 +1593,12 @@
 				AD7F891E1E595B29009603E4 /* ResetViewController.m in Sources */,
 				ADE6636A1EB384BF00DBA92A /* MutiPracticeViewController.m in Sources */,
 				ADCFC53B1EC8B3F10042A28F /* UpdateInfoViewController.m in Sources */,
-				ADB7462C1E76DA8B00644812 /* NSBundle+PYSearchExtension.m in Sources */,
 				AD11DCA91EED353200B861C7 /* PhotoBrowserPhotos.m in Sources */,
-				ADDE6F631ECBED130013AFD0 /* CourseQuestionCollectionViewCell.m in Sources */,
 				AD7F88DF1E595A5E009603E4 /* CXTabBarController.m in Sources */,
 				AD5B0FD61EC6058E00C7D283 /* CourseWare.m in Sources */,
 				AD7F882B1E594D5E009603E4 /* YZDisplayViewController.m in Sources */,
 				AD8B861C1E9A913F007F4CEC /* CXNetwork.m in Sources */,
 				ADA1876E1EB2F04000C771A4 /* ExerciseChapterCollectionViewCell.m in Sources */,
-				ADB746311E76DA8B00644812 /* UIColor+PYSearchExtension.m in Sources */,
 				AD45BBBE1EAF37D100D53813 /* Exercise.m in Sources */,
 				AD7F891F1E595B29009603E4 /* SetViewController.m in Sources */,
 				AD7F882A1E594D5E009603E4 /* YZDisplayTitleLabel.m in Sources */,
@@ -1802,31 +1608,27 @@
 				AD2BE4EB1E5980CB00D0B0ED /* CXSectionButton.m in Sources */,
 				ADFEDA811EC9C892008F30CF /* NewPostViewController.m in Sources */,
 				AD7092AA1E861CF10024427C /* DefaultTipsView.m in Sources */,
-				05B4D0861E769109005DC854 /* CourseSearchBar.m in Sources */,
 				ADFEDACF1ECAE5E3008F30CF /* SystemInform.m in Sources */,
 				AD11DCAB1EED353200B861C7 /* PhotoViewController.m in Sources */,
 				AD7F88281E594D5E009603E4 /* YYReachability.m in Sources */,
 				ADDE6F681ECBF8240013AFD0 /* StudyUtil.m in Sources */,
 				AD7F89201E595B29009603E4 /* UserCenterViewController.m in Sources */,
 				05F472F81E7131890085345F /* CommentToolBarView.m in Sources */,
-				ADDE6F511ECB622E0013AFD0 /* HomeworkCollectionViewCell.m in Sources */,
 				AD8B862B1E9A92A4007F4CEC /* CXUser.m in Sources */,
 				AD592E6E1EB20DA800CBDCC8 /* QuestionSearchViewController.m in Sources */,
+				ADF556281FB32A74009B3FA8 /* PYSearchConst.m in Sources */,
 				0518ECB01E6012400018F432 /* CampusTableViewCell.m in Sources */,
 				AD196E6B1EAC8E2900111EB5 /* PhoneViewController.m in Sources */,
 				0538AAA81E6E9BDC00E7A51D /* NSString+CXAdd.m in Sources */,
 				AD45BBB71EAF339500D53813 /* QuestionTableViewCell.m in Sources */,
 				AD7F88D91E595A5E009603E4 /* UIView+CXAdd.m in Sources */,
 				AD45BBC11EAF37EA00D53813 /* ExerciseList.m in Sources */,
-				ADB7462E1E76DA8B00644812 /* PYSearchConst.m in Sources */,
 				ADCFC53E1EC92A400042A28F /* CampusCommentViewController.m in Sources */,
-				05067FED1E7BF02200868AC1 /* CourseInfoViewController.m in Sources */,
 				AD7F891A1E595B29009603E4 /* CXLaunchViewController.m in Sources */,
 				AD1D108A1EC7443000E04135 /* AppUtil.m in Sources */,
 				AD77A9EC1ED0ABA100D6CC9E /* XuehaoViewController.m in Sources */,
 				AD11DCAA1EED353200B861C7 /* PhotoBrowserViewController.m in Sources */,
 				ADAAE0951E7D751200A0FA2C /* ToolBarCell.m in Sources */,
-				AD8B452A1EA890DB00E8D539 /* CourseCommentViewController.m in Sources */,
 				055A3B8B1E84CC7D004D09CC /* UIViewController+Authorization.m in Sources */,
 				AD592E6F1EB20DA800CBDCC8 /* SearchResultViewController.m in Sources */,
 				ADA770091EC60746001E7D3B /* CourseWareList.m in Sources */,
@@ -1837,10 +1639,9 @@
 				ADF408D51EB4E076009DB786 /* CXAudioPlayer.m in Sources */,
 				AD7F88291E594D5E009603E4 /* UIView+Frame.m in Sources */,
 				0518ECAF1E6012400018F432 /* CampusViewController.m in Sources */,
+				ADF5562C1FB32A74009B3FA8 /* UIView+PYSearchExtension.m in Sources */,
 				AD8B861B1E9A913F007F4CEC /* CXNetwork+User.m in Sources */,
-				05067FEE1E7BF02200868AC1 /* CourseIntroductionViewController.m in Sources */,
 				AD7F88DE1E595A5E009603E4 /* CXPushViewController.m in Sources */,
-				ADB7462F1E76DA8B00644812 /* PYSearchSuggestionViewController.m in Sources */,
 				05C21AD51E5BE5AD00D7BA6C /* RecommendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1949,6 +1750,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1986,6 +1788,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

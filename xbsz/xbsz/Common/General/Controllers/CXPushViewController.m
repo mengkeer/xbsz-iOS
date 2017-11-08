@@ -46,11 +46,11 @@
 
 
 - (void)initCustomNavBar {
-    self.customNavBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 64)];
+    self.customNavBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CX_PHONE_NAVIGATIONBAR_HEIGHT)];
     self.customNavBarView.backgroundColor = CXMainColor;
     [self.view addSubview:self.customNavBarView];
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 20, CXScreenWidth-150, 44)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, CX_PHONE_STATUSBAR_HEIGHT, CXScreenWidth-150, 44)];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.font = CXSystemBoldFont(16);
     self.titleLabel.textColor = CXWhiteColor;
@@ -58,7 +58,7 @@
     [self.titleLabel setText:self.title];
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backButton.frame = CGRectMake(3, 20, 44, 44);
+    self.backButton.frame = CGRectMake(3, CX_PHONE_STATUSBAR_HEIGHT, 44, 44);
     self.backButton.imageEdgeInsets = UIEdgeInsetsMake(12, 12, 12, 12);
     [self.backButton setImage:[UIImage imageNamed:@"back_arrow_black"] forState:UIControlStateNormal];
 //     [self.backButton setImage:[UIImage imageNamed:@"common_back_white"] forState:UIControlStateHighlighted];
@@ -77,11 +77,11 @@
     
     
     
-    _topBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, CXScreenWidth,CXTopCornerRadius)];
+    _topBgView = [[UIView alloc] initWithFrame:CGRectMake(0, CX_PHONE_NAVIGATIONBAR_HEIGHT, CXScreenWidth,CXTopCornerRadius)];
     _topBgView.backgroundColor = CXMainColor;
     [self.view addSubview:_topBgView];
     
-    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, CXScreenWidth, CXScreenHeight-64)];
+    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, CX_PHONE_NAVIGATIONBAR_HEIGHT, CXScreenWidth, CXScreenHeight-64)];
     _contentView.backgroundColor = CXBackGroundColor;
     [self.view addSubview:_contentView];
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, CXScreenWidth, _contentView.height) byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(CXTopCornerRadius, CXTopCornerRadius)];
@@ -134,12 +134,12 @@
 
 - (float)getStartOriginY
 {
-    return self.cusNavBarHidden?0.0f:64.f; // navigationBar ＋ statusBar
+    return self.cusNavBarHidden?0.0f:CX_PHONE_NAVIGATIONBAR_HEIGHT; // navigationBar ＋ statusBar
 }
 
 - (float)getContentViewHeight
 {
-    return self.cusNavBarHidden?CXScreenHeight:(CXScreenHeight - 64.f);
+    return self.cusNavBarHidden?CXScreenHeight:(CXScreenHeight - CX_PHONE_NAVIGATIONBAR_HEIGHT);
 }
 
 - (void)setCustomNavBarHidden:(BOOL)hidden {

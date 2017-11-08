@@ -51,7 +51,7 @@ static NSInteger numberOfItems = 5;
     [self.view addSubview:headView];
     [headView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(self.view);
-        make.height.mas_equalTo(64);
+        make.height.mas_equalTo(CX_PHONE_NAVIGATIONBAR_HEIGHT);
     }];
     
     [headView addSubview:self.titleLabel];
@@ -59,13 +59,13 @@ static NSInteger numberOfItems = 5;
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(120);
         make.centerX.mas_equalTo(self.view.mas_centerX);
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(20);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(CX_PHONE_STATUSBAR_HEIGHT);
         make.height.mas_equalTo(44);
     }];
     
     [_cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(50);
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(20);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(CX_PHONE_STATUSBAR_HEIGHT);
         make.right.mas_equalTo(self.view.mas_right).mas_offset(-15);
         make.height.mas_equalTo(44);
     }];
@@ -73,12 +73,8 @@ static NSInteger numberOfItems = 5;
     [self.view addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(64);
-        if(_mode == ExerciseModeRecite){
-            make.bottom.mas_equalTo(self.view.mas_bottom);
-        }else{
-            make.bottom.mas_equalTo(self.view.mas_bottom);
-        }
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(CX_PHONE_NAVIGATIONBAR_HEIGHT);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
     }];
 }
 

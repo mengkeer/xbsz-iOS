@@ -380,6 +380,11 @@ static NSInteger limit = 10;
         return;
     }
     
+    if(![[CXLocalUser instance] isLogin]){
+        [ToastView showStatus:@"请先登录"];
+        return;
+    }
+    
     [CXNetwork addNoteComment:_note.noteID content:[_writeTextField.text stringByTrim] success:^(NSObject *obj) {
         [CXAudioPlayer playSent];
         [ToastView showStatus:@"评论成功"];

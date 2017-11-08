@@ -36,11 +36,11 @@
     
     self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-7139153640152838/7024508708"];
     self.interstitial.delegate = self;
-    
-    GADRequest *request = [GADRequest request];
-    // Requests test ads on test devices.
-    request.testDevices =   @[ kGADSimulatorID ];
-    [self.interstitial loadRequest:request];
+//
+//    GADRequest *request = [GADRequest request];
+//    // Requests test ads on test devices.
+//    request.testDevices =   @[ kGADSimulatorID ];
+//    [self.interstitial loadRequest:request];
 }
 
 - (void)createUI{

@@ -57,7 +57,7 @@ static NSString *cellID = @"ChapterCellID";
         make.width.mas_equalTo(120);
         make.centerX.mas_equalTo(self.customNavBarView.mas_centerX);
         make.height.mas_equalTo(26);
-        make.top.mas_equalTo(self.customNavBarView.mas_top).mas_offset(29);
+        make.top.mas_equalTo(self.customNavBarView.mas_top).mas_offset(CX_PHONE_STATUSBAR_HEIGHT+9);
     }];
     
     [self.view addSubview:self.collectionView];
@@ -68,20 +68,20 @@ static NSString *cellID = @"ChapterCellID";
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
     
-    //添加广告
-    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
-    self.bannerView.adUnitID = @"ca-app-pub-7139153640152838/2219205900";
-    self.bannerView.rootViewController = self;
+//    //添加广告
+//    self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+//    self.bannerView.adUnitID = @"ca-app-pub-7139153640152838/2219205900";
+//    self.bannerView.rootViewController = self;
     
-    [self.view addSubview:self.bannerView];
-    [self.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(320);
-        make.height.mas_equalTo(50);
-        make.centerX.mas_equalTo(self.view.mas_centerX);
-        make.bottom.mas_equalTo(self.view.mas_bottom);
-    }];
-    
-    self.bannerView.delegate = self;
+//    [self.view addSubview:self.bannerView];
+//    [self.bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(320);
+//        make.height.mas_equalTo(50);
+//        make.centerX.mas_equalTo(self.view.mas_centerX);
+//        make.bottom.mas_equalTo(self.view.mas_bottom).mas_offset(-CX_PHONEX_HOME_INDICATOR_HEIGHT);
+//    }];
+//
+//    self.bannerView.delegate = self;
     
 }
 
@@ -105,7 +105,7 @@ static NSString *cellID = @"ChapterCellID";
 - (UIButton *)searchBtn{
     if(!_searchBtn){
         _searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _searchBtn.frame = CGRectMake(CXScreenWidth - 47, 20, 44, 44);
+        _searchBtn.frame = CGRectMake(CXScreenWidth - 47, CX_PHONE_STATUSBAR_HEIGHT, 44, 44);
         _searchBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 12, 0, 12);
         [_searchBtn setImage:[UIImage imageNamed:@"question_search"] forState:UIControlStateNormal];
         [_searchBtn setImage:[UIImage imageNamed:@"question_search"] forState:UIControlStateHighlighted];
@@ -231,12 +231,12 @@ static NSString *cellID = @"ChapterCellID";
 
 #pragma mark - 广告代理事件
 
-- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
-    bannerView.hidden = NO;
-}
-
-- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
-    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
-}
+//- (void)adViewDidReceiveAd:(GADBannerView *)bannerView {
+//    bannerView.hidden = NO;
+//}
+//
+//- (void)adView:(GADBannerView *)adView didFailToReceiveAdWithError:(GADRequestError *)error {
+//    NSLog(@"adView:didFailToReceiveAdWithError: %@", error.localizedDescription);
+//}
 
 @end

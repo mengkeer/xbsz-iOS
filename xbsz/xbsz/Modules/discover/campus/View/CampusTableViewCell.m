@@ -279,7 +279,6 @@
         _sharedWordsLabel.numberOfLines = 0;
         _sharedWordsLabel.textVerticalAlignment = YYTextVerticalAlignmentTop;
         _sharedWordsLabel.attributedText = _words;
-        _sharedWordsLabel.textColor = CXBlackColor;
 //        _sharedWordsLabel.lineBreakMode = NSLineBreakByWordWrapping;
         
         [self addSeeMoreButton];

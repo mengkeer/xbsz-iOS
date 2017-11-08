@@ -43,11 +43,11 @@
 
 
 - (void)initCustomNavBar {
-    self.customNavBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, 64)];
+    self.customNavBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CXScreenWidth, CX_PHONE_NAVIGATIONBAR_HEIGHT)];
     self.customNavBarView.backgroundColor = CXWhiteColor;
     [self.view addSubview:self.customNavBarView];
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 20, CXScreenWidth-150, 44)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, CX_PHONE_STATUSBAR_HEIGHT, CXScreenWidth-150, 44)];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.font = CXSystemFont(16);
     self.titleLabel.textColor = CXBlackColor;
@@ -55,7 +55,7 @@
     [self.titleLabel setText:self.title];
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backButton.frame = CGRectMake(3, 20, 44, 44);
+    self.backButton.frame = CGRectMake(3, CX_PHONE_STATUSBAR_HEIGHT, 44, 44);
     [self.backButton setImageEdgeInsets:UIEdgeInsetsMake(0, 12, 0, 12)];
     [self.backButton setImage:[UIImage imageNamed:@"common_back_black"] forState:UIControlStateNormal];
     [self.backButton setImage:[UIImage imageNamed:@"common_back_black"] forState:UIControlStateHighlighted];
@@ -100,12 +100,12 @@
 
 - (float)getStartOriginY
 {
-    return self.cusNavBarHidden?0.0f:64.f; // navigationBar ＋ statusBar
+    return self.cusNavBarHidden?0.0f:CX_PHONE_NAVIGATIONBAR_HEIGHT; // navigationBar ＋ statusBar
 }
 
 - (float)getContentViewHeight
 {
-    return self.cusNavBarHidden?CXScreenHeight:(CXScreenHeight - 64.f);
+    return self.cusNavBarHidden?CXScreenHeight:(CXScreenHeight - CX_PHONE_NAVIGATIONBAR_HEIGHT);
 }
 
 - (void)setCustomNavBarHidden:(BOOL)hidden {

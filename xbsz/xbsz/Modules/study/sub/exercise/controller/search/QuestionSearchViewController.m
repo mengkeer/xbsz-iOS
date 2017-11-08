@@ -43,7 +43,7 @@ static NSInteger symbolWidth = 35;
     [self.view addSubview:topView];
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(64);
+        make.height.mas_equalTo(CX_PHONE_NAVIGATIONBAR_HEIGHT);
     }];
     
     [topView addSubview:self.searchField];
@@ -55,14 +55,14 @@ static NSInteger symbolWidth = 35;
                                        attributes:@{NSFontAttributeName:CXSystemFont(16)} context:nil];
     
     [_cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view).mas_offset(20);
+        make.top.mas_equalTo(self.view).mas_offset(CX_PHONE_STATUSBAR_HEIGHT);
         make.right.mas_equalTo(self.view.mas_right).mas_offset(-10);
         make.width.mas_equalTo(CGRectGetWidth(labelRect)+5);
         make.height.mas_equalTo(44);
     }];
     
     [_searchField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view).mas_offset(27);
+        make.top.mas_equalTo(self.view).mas_offset(CX_PHONE_STATUSBAR_HEIGHT+7);
         make.left.mas_equalTo(self.view).mas_offset(10);
         make.right.mas_equalTo(_cancelBtn.mas_left).mas_offset(-7);
         make.height.mas_equalTo(30);
@@ -71,7 +71,7 @@ static NSInteger symbolWidth = 35;
     [self.view addSubview:self.tableView];
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(64);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(CX_PHONE_NAVIGATIONBAR_HEIGHT);
     }];
     [self loadData:_searchText];
 }

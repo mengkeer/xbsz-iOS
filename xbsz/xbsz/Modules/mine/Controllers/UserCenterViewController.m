@@ -47,7 +47,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    [self.navigationController.navigationBar setHidden:YES];        //词条语句可控制tarbar透明
+    [self.navigationController.navigationBar setHidden:YES];        //此条语句可控制tabbar透明
 
     
     if([[CXLocalUser instance] isLogin]){
@@ -670,13 +670,6 @@
     school.url = JWURLSchoolScenery;
     [self.lcNavigationController pushViewController:school];
 }
-
-
-
-
-
-
-
 
 
 @end

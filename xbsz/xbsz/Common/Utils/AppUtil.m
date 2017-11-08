@@ -25,7 +25,7 @@
     NSDate *date = [formatter dateFromString:launchTime];
 
     NSDate *now = [NSDate date];
-    if([[date dateByAddingHours:3] compare:now] == NSOrderedAscending){
+    if([[date dateByAddingHours:12] compare:now] == NSOrderedAscending){
         return YES;
     }
     
