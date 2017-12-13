@@ -97,7 +97,7 @@
         [_closeBtn setImage:[UIImage imageNamed:@"common_close"] forState:UIControlStateNormal];
         _closeBtn.hidden = YES;
         _closeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-        _closeBtn.frame = CGRectMake(30, 20, 34, 44);
+        _closeBtn.frame = CGRectMake(30, CX_PHONE_STATUSBAR_HEIGHT, 34, 44);
         _closeBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 5, 10, 5);
         [_closeBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -107,7 +107,7 @@
 - (UIButton *)shareBtn{
     if(!_shareBtn){
         _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _shareBtn.frame = CGRectMake(CXScreenWidth - 35, 20, 20, 44);
+        _shareBtn.frame = CGRectMake(CXScreenWidth - 35, CX_PHONE_STATUSBAR_HEIGHT, 20, 44);
         [_shareBtn setImage:[UIImage imageNamed:@"course_share"] forState:UIControlStateNormal];
         [_shareBtn setImage:[UIImage imageNamed:@"course_share"] forState:UIControlStateHighlighted];
         [_shareBtn addTarget:self action:@selector(showShareBar) forControlEvents:UIControlEventTouchUpInside];

@@ -59,7 +59,8 @@ static NSInteger limit = 10;
     
     _tableView = [[CXBaseTableView alloc] initWithFrame:CGRectZero enablePullRefresh:YES];
     [self.contentView addSubview:_tableView];
-    _tableView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight-64-45);
+    self.contentView.backgroundColor = CXWhiteColor;
+    _tableView.contentSize = CGSizeMake(CXScreenWidth, CXScreenHeight-CX_PHONE_NAVIGATIONBAR_HEIGHT-45-CX_PHONEX_HOME_INDICATOR_HEIGHT);
     _tableView.backgroundColor = CXWhiteColor;
     _tableView.delegate = self;
     _tableView.separatorColor = CXLineColor;
@@ -70,16 +71,17 @@ static NSInteger limit = 10;
     
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
-        make.bottom.mas_equalTo(self.contentView).mas_offset(-45);
+        make.bottom.mas_equalTo(self.contentView).mas_offset(-45-CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.top.mas_equalTo(self.customNavBarView.mas_bottom);
     }];
     
     
     _bottomView = [UIView new];
     _bottomView.backgroundColor = CXWhiteColor;
-    [self.view addSubview:_bottomView];
+    [self.contentView addSubview:_bottomView];
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.mas_equalTo(self.view);
+        make.left.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view.mas_bottom).mas_offset(-CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.height.mas_equalTo(45);
     }];
     

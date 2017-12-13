@@ -170,21 +170,21 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SetItemTableViewCell *cell;
     if(indexPath.section == 0){
-        cell = [tableView dequeueReusableCellWithIdentifier:cellSwitchId];
+        cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
         if(!cell){
             cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
         }
-        [cell updateCell:@"无广告/恢复购买" detailText:nil type:SetItemTypeSwitch iconImageName:@"set_buy"];
-        @weakify(self);
-        [cell setSwitched:![CXUserDefaults instance].hasAd changed:^(BOOL isOpen) {
-            if([CXUserDefaults instance].hasPurchased == NO){
-                [CXUserDefaults instance].hasAd = YES;
-                [weak_self clearAD];
-            }else{
-                [CXUserDefaults instance].hasAd = !isOpen;
-                [ToastView showStatus:@"重启后生效"];
-            }
-        }];
+        [cell updateCell:@"友情赞助" detailText:nil type:SetItemTypeArrow iconImageName:@"set_buy"];
+//        @weakify(self);
+//        [cell setSwitched:![CXUserDefaults instance].hasAd changed:^(BOOL isOpen) {
+//            if([CXUserDefaults instance].hasPurchased == NO){
+//                [CXUserDefaults instance].hasAd = YES;
+//                [weak_self clearAD];
+//            }else{
+//                [CXUserDefaults instance].hasAd = !isOpen;
+//                [ToastView showStatus:@"重启后生效"];
+//            }
+//        }];
     }else if(indexPath.section == 1){
         
         if(indexPath.row == 0){

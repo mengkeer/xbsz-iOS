@@ -53,7 +53,7 @@
     [self.view addSubview:_topView];
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(20+6);
+        make.height.mas_equalTo(CX_PHONE_STATUSBAR_HEIGHT+6);
     }];
     
     

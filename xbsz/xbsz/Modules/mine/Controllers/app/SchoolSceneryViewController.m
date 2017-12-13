@@ -27,6 +27,11 @@
     self.customNavBarView.backgroundColor = CXHexAlphaColor(0xF6F6F6, 0.5);
     
     self.webView.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight);
+    if (@available(iOS 11.0, *)) {
+        self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+    }
     
 }
 
