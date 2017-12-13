@@ -283,7 +283,7 @@
         if(obj){
             [ToastView showStatus:@"授权成功" delay:1];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.lcNavigationController popViewController];
+                [self.navigationController popViewControllerAnimated:YES];
             });
         }
     } failure:^(NSError *error) {

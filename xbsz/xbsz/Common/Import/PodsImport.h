@@ -15,6 +15,6 @@
 #import  <YYWebImage/YYWebImage.h>
 #import  <YYModel/YYModel.h>
 #import "AFNetworking.h"
-#import "LCNavigationController.h"
+//#import "LCNavigationController.h"
 
 #endif /* PodsImport_h */

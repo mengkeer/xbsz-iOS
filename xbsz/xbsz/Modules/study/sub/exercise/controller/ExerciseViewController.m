@@ -111,7 +111,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 - (void)gotoExerciseDetailView:(ExerciseType)type{
     ExerciseModeViewController *chapterVC = [ExerciseModeViewController controller];
     chapterVC.type = type;
-    [self.lcNavigationController pushViewController:chapterVC];
+    [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
 #pragma mark - UICollectionViewDelegate

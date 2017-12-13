@@ -286,7 +286,7 @@
 #pragma mark - private method
 
 - (void)clickRegister{
-    [self.lcNavigationController pushViewController:[RegisterViewController controller]];
+    [self.navigationController pushViewController:[RegisterViewController controller] animated:YES];
 }
 
 - (void)clickReset{

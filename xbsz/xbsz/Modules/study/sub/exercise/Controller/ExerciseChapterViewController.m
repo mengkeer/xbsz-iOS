@@ -130,6 +130,7 @@ static NSString *cellID = @"ChapterCellID";
         _collectionView.delegate = self;
         _collectionView.pagingEnabled = YES;
         _collectionView.showsHorizontalScrollIndicator = NO;
+        [_collectionView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
         [_collectionView registerClass:[ExerciseChapterCollectionViewCell class] forCellWithReuseIdentifier:cellID];
     }
     return _collectionView;
@@ -181,7 +182,7 @@ static NSString *cellID = @"ChapterCellID";
                 QuestionSearchViewController *vc = [QuestionSearchViewController controller];
                 vc.type = _type;
                 vc.searchText = [searchText stringByTrim];
-                [self.lcNavigationController pushViewController:vc];
+                [self.navigationController pushViewController:vc animated:YES];
             });
             
           
@@ -204,17 +205,16 @@ static NSString *cellID = @"ChapterCellID";
         questionVC.type = _type;
         questionVC.isSingle = _segmentControl.selectedSegmentIndex == 0 ? YES : NO;
         questionVC.chapterIndex = index;
-        [self.lcNavigationController pushViewController:questionVC];
-
+        [self.navigationController pushViewController:questionVC animated:YES];
     }else if(_mode == ExerciseModePractice || _mode == ExerciseModePracticeRandom || _mode == ExerciseModeMistakes){
         if(_segmentControl.selectedSegmentIndex == 0){
             SinglePracticeViewController *questionVC = [SinglePracticeViewController controller];
             [questionVC updateData:_mode type:_type chapter:index];
-            [self.lcNavigationController pushViewController:questionVC];
+            [self.navigationController pushViewController:questionVC animated:YES];
         }else{
             MutiPracticeViewController *questionVC = [MutiPracticeViewController controller];
             [questionVC updateData:_mode type:_type chapter:index];
-            [self.lcNavigationController pushViewController:questionVC];
+            [self.navigationController pushViewController:questionVC animated:YES];
         }
     }
     else{

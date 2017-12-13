@@ -82,7 +82,7 @@
 
 - (void)popFromCurrentViewController
 {
-    [self.lcNavigationController popViewController];//回退到上一个页面；
+    [self.navigationController popViewControllerAnimated:YES];//回退到上一个页面；
 }
 
 

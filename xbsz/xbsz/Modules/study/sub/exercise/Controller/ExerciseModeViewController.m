@@ -11,6 +11,7 @@
 #import "QuestionSearchViewController.h"
 #import "ExerciseChapterViewController.h"
 #import "ExamViewController.h"
+#import "CXNavigationController.h"
 
 #import "AppUtil.h"
 
@@ -162,7 +163,7 @@ static NSInteger numberOfItems = 3;
                 QuestionSearchViewController *vc = [QuestionSearchViewController controller];
                 vc.type = _type;
                 vc.searchText = [searchText stringByTrim];
-                [self.lcNavigationController pushViewController:vc];
+                [self.navigationController pushViewController:vc animated:YES];
             });
       
         }
@@ -172,7 +173,7 @@ static NSInteger numberOfItems = 3;
     searchViewController.searchHistoryStyle = PYSearchHistoryStyleDefault;
     // 4. 设置代理
     // 5. 跳转到搜索控制器
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    UINavigationController *nav = [[CXNavigationController alloc] initWithRootViewController:searchViewController];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -214,25 +215,25 @@ static NSInteger numberOfItems = 3;
     if(mode == ExerciseModeExam){
         ExamViewController *exam = [ExamViewController controller];
         exam.type = _type;
-        [self.lcNavigationController pushViewController:exam];
+        [self.navigationController pushViewController:exam animated:YES];
         return;
     }
    
     ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
     chapterVC.type = _type;
     chapterVC.mode = mode;
-    [self.lcNavigationController pushViewController:chapterVC];
+    [self.navigationController pushViewController:chapterVC animated:YES];
 }
 
 - (void)gotoChapterViewController:(ExerciseType)type mode:(ExerciseMode)mode{
     ExerciseModeViewController *modeVC = [ExerciseModeViewController controller];
     modeVC.type = type;
-    [self.beforePeekedViewConreoller.lcNavigationController pushViewController:modeVC];
+    [self.beforePeekedViewConreoller.navigationController pushViewController:modeVC animated:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         ExerciseChapterViewController *chapterVC = [ExerciseChapterViewController controller];
         chapterVC.type = type;
         chapterVC.mode = mode;
-        [modeVC.lcNavigationController pushViewController:chapterVC];
+        [self.navigationController pushViewController:chapterVC animated:YES];
     });
 
 }

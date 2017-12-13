@@ -7,6 +7,7 @@
 //
 
 #import "CXBaseViewController.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 @interface CXBaseViewController ()
 
@@ -20,8 +21,10 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
-    self.navigationController.navigationBar.translucent = YES;
+//    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
+//    self.fd_prefersNavigationBarHidden = YES;
+    [self.navigationController.navigationBar setHidden:YES];
+//    self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 

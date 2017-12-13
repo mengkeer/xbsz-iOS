@@ -38,5 +38,17 @@
     return [self.viewControllers.lastObject preferredInterfaceOrientationForPresentation];
 }
 
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    if (self.childViewControllers.count >= 1) {
+        viewController.hidesBottomBarWhenPushed = YES;
+    }
+    [super pushViewController:viewController animated:animated];
+    if (@available(iOS 11.0, *)){
+        CGRect frame = self.tabBarController.tabBar.frame;
+        frame.origin.y = [UIScreen mainScreen].bounds.size.height - frame.size.height;
+        self.tabBarController.tabBar.frame = frame;
+    }
+}
+
 
 @end

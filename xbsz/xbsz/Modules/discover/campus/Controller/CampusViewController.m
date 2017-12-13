@@ -347,7 +347,7 @@ static NSInteger limit = 10;
 - (void)gotoCommentViewController:(CampusNote *)note{
     CampusCommentViewController *commentVC = [CampusCommentViewController controller];
     commentVC.note = note;
-    [self.lcNavigationController pushViewController:commentVC];
+    [self.navigationController pushViewController:commentVC animated:YES];
 }
 
 #pragma mark - 3DTouch Delegate

@@ -24,7 +24,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 //    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
-    [self.navigationController.navigationBar setHidden:YES];        //词条语句可控制tarbar透明
+//    [self.navigationController.navigationBar setHidden:YES];        //词条语句可控制tarbar透明
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     GADRequest *request = [GADRequest request];

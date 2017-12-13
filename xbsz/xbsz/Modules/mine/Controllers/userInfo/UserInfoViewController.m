@@ -110,7 +110,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
                 [self handleImagePicker];
                 break;
             case 1:{
-                [self.lcNavigationController pushViewController:[NicknameViewController controller]];
+                [self.navigationController pushViewController:[NicknameViewController controller] animated:YES];
                 break;
             }
             case 2:{
@@ -118,23 +118,23 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
                 break;
             }
             case 3:{
-                [self.lcNavigationController pushViewController:[EmailViewController controller]];
+                [self.navigationController pushViewController:[EmailViewController controller] animated:YES];
                 break;
             }
             case 4:{
-                [self.lcNavigationController pushViewController:[PhoneViewController controller]];
+                [self.navigationController pushViewController:[PhoneViewController controller] animated:YES];
                 break;
             }
             case 5:{
-                [self.lcNavigationController pushViewController:[MajorViewController controller]];
+                [self.navigationController pushViewController:[MajorViewController controller] animated:YES];
                 break;
             }
             case 6:{
-                [self.lcNavigationController pushViewController:[BirthdayViewController controller]];
+                [self.navigationController pushViewController:[BirthdayViewController controller] animated:YES];
                 break;
             }
             case 7:{
-                [self.lcNavigationController pushViewController:[SignatureViewController controller]];
+                [self.navigationController pushViewController:[SignatureViewController controller] animated:YES];
                 break;
             }
             default:
@@ -143,19 +143,19 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     }
     if(indexPath.section == 1){
         if(indexPath.row == 0){
-            [self.lcNavigationController pushViewController:[TruenameViewController controller]];
+            [self.navigationController pushViewController:[TruenameViewController controller] animated:YES];
             return;
         }
         if(indexPath.row == 1){
-            [self.lcNavigationController pushViewController:[XuehaoViewController controller]];
+            [self.navigationController pushViewController:[XuehaoViewController controller] animated:YES];
             return;
         }
         if(indexPath.row == 2){
-            [self.lcNavigationController pushViewController:[ModifyPasswordViewController controller]];
+            [self.navigationController pushViewController:[ModifyPasswordViewController controller] animated:YES];
             return;
         }
         if(indexPath.row == 3){
-            [self.lcNavigationController pushViewController:[AuthorizedLoginViewController controller]];
+            [self.navigationController pushViewController:[AuthorizedLoginViewController controller] animated:YES];
             return;
         }
     }
@@ -431,7 +431,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
     UIAlertAction *quit = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [[CXLocalUser instance] reset];
         [[JWLocalUser instance] reset];
-        [self.lcNavigationController popViewController];
+        [self.navigationController popViewControllerAnimated:YES];
     }];
     [alert addAction:quit];
     

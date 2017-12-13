@@ -111,7 +111,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         }
     }else if(indexPath.section == 3){
         if(indexPath.row == 0){
-            [self.lcNavigationController pushViewController:[AboutViewController controller]];
+            [self.navigationController pushViewController:[AboutViewController controller] animated:YES];
             return;
         }else if(indexPath.row == 1){
             if([MFMailComposeViewController canSendMail]){
@@ -140,7 +140,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         }
     }else if(indexPath.section == 4){
         if(indexPath.row == 2){
-            [self.lcNavigationController pushViewController:[UpdateInfoViewController controller]];
+            [self.navigationController pushViewController:[UpdateInfoViewController controller] animated:YES];
             return;
         }
     }

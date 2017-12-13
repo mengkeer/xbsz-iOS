@@ -138,9 +138,7 @@
     
     [CXApplication.keyWindow.layer addAnimation:anim forKey:nil];
     
-    LCNavigationController *navC = [[LCNavigationController alloc] initWithRootViewController:[CXTabBarController controller]];
-
-    CXApplication.keyWindow.rootViewController = navC;
+    CXApplication.keyWindow.rootViewController = [CXTabBarController controller];
 }
 
 

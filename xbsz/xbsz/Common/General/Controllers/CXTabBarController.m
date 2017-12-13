@@ -11,6 +11,7 @@
 #import "CXStudyViewController.h"
 #import "UserCenterViewController.h"
 #import "DiscoverViewController.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 @interface CXTabBarController ()<UITabBarControllerDelegate>
 
@@ -23,6 +24,7 @@
     self.tabBar.tintColor = CXMainColor;
     self.tabBar.translucent = YES;
     self.delegate = self;
+    
     
     [self addChildVC:[CXStudyViewController controller] title:@"学习" image:@"tab_home" selectedImage:@"tab_home_s"];
     

@@ -16,6 +16,7 @@
 //APP Controller
 #import "CXBaseWebViewController.h"
 #import "SchoolSceneryViewController.h"
+#import "CXNavigationController.h"
 
 #define SectionHeaderHeight   45
 
@@ -47,7 +48,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    [self.navigationController.navigationBar setHidden:YES];        //此条语句可控制tabbar透明
+//    [self.navigationController.navigationBar setHidden:YES];        //此条语句可控制tabbar透明
 
     
     if([[CXLocalUser instance] isLogin]){
@@ -536,29 +537,29 @@
 }
 
 - (void)clickMessage{
-    [self.lcNavigationController pushViewController:[InformViewController controller]];
+    [self.navigationController pushViewController:[InformViewController controller] animated:YES];
 }
 
 - (void)clickLogin{
     if([[CXLocalUser instance] isLogin]){
-        [self.lcNavigationController pushViewController:[UserInfoViewController controller]];
+        [self.navigationController pushViewController:[UserInfoViewController controller] animated:YES];
     }else{
-        [self presentViewController:[[LCNavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
+        [self presentViewController:[[CXNavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
     }
 }
 
 - (void)clickInfo{
     if([[CXLocalUser instance] isLogin]){
-        [self.lcNavigationController pushViewController:[UserInfoViewController controller]];
+        [self.navigationController pushViewController:[UserInfoViewController controller] animated:YES];
     }else{
-        [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
+        [self presentViewController:[[CXNavigationController alloc] initWithRootViewController:[LoginViewController controller]] animated:YES completion:nil];
     }
 }
 
 - (void)clickSet{
     
     SetViewController *set = [SetViewController controller];
-    [self.lcNavigationController pushViewController:set];
+    [self.navigationController pushViewController:set animated:YES];
 }
 
 #pragma mark - UIScrollView Delegate
@@ -580,7 +581,7 @@
     CXBaseWebViewController *webViewController = [CXBaseWebViewController controller];
     webViewController.title = title;
     webViewController.url = url;
-    [self.lcNavigationController pushViewController:webViewController];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 - (void)gotoAuthCommonView:(NSString *)title  url:(NSString *)url{
@@ -591,7 +592,7 @@
     CXBaseWebViewController *webViewController = [CXBaseWebViewController controller];
     webViewController.title = title;
     webViewController.url = url;
-    [self.lcNavigationController pushViewController:webViewController];
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 
@@ -668,7 +669,7 @@
 - (void)gotoSchoolScenery{
     SchoolSceneryViewController *school = [SchoolSceneryViewController controller];
     school.url = JWURLSchoolScenery;
-    [self.lcNavigationController pushViewController:school];
+    [self.navigationController pushViewController:school animated:YES];
 }
 
 
