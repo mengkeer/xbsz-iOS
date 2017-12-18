@@ -312,7 +312,7 @@
 
     [CXNetwork getUserInfo:token success:^(NSObject *obj) {
         if(obj && ((NSDictionary *)obj)[@"userInfo"]){
-            [ToastView showSuccessWithStaus:@"登录成功" delay:1];
+            [ToastView showBlackSuccessWithStaus:@"登录成功" delay:1];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self dismissViewControllerAnimated:YES completion:nil];
             });

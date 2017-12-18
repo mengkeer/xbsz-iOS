@@ -147,7 +147,7 @@ static NSInteger bottomHeight = 45;
     
     [bottomRightBgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.bottom.mas_equalTo(self.view);
-        make.height.mas_equalTo(bottomHeight);
+        make.height.mas_equalTo(bottomHeight+CX_PHONEX_HOME_INDICATOR_HEIGHT);
         make.width.mas_equalTo(CXScreenWidth/2);
     }];
     

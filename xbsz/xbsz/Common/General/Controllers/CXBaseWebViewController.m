@@ -38,7 +38,7 @@
     
     [self.customNavBarView addSubview:self.closeBtn];
     
-    if(_hideShareBtn == NO)    [self.customNavBarView addSubview:self.shareBtn];
+//    if(_hideShareBtn == NO)    [self.customNavBarView addSubview:self.shareBtn];
     
     CGFloat progressBarHeight = 2.f;
     CGRect navigationBarBounds = self.customNavBarView.bounds;
@@ -97,7 +97,7 @@
         [_closeBtn setImage:[UIImage imageNamed:@"common_close"] forState:UIControlStateNormal];
         _closeBtn.hidden = YES;
         _closeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-        _closeBtn.frame = CGRectMake(30, CX_PHONE_STATUSBAR_HEIGHT, 34, 44);
+        _closeBtn.frame = CGRectMake(36, CX_PHONE_STATUSBAR_HEIGHT, 34, 44);
         _closeBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 5, 10, 5);
         [_closeBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }

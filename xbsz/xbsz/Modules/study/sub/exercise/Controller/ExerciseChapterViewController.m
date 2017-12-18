@@ -15,6 +15,7 @@
 #import "ReciteViewController.h"
 #import "SinglePracticeViewController.h"
 #import "MutiPracticeViewController.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
 
 #import "AppUtil.h"
 
