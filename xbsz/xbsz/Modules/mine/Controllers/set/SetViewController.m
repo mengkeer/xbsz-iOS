@@ -92,7 +92,9 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 2){
+    if(indexPath.section == 0 && indexPath.row == 0){
+        [self clearAD];
+    }if(indexPath.section == 2){
         if(indexPath.row == 0){
             [self selectTheme];
             return;
@@ -278,7 +280,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
             }
-            [cell updateCell:@"题库版本" detailText:@"2017-5-22" type:SetItemTypeDetailText iconImageName:@"set_tiku_version"];
+            [cell updateCell:@"题库版本" detailText:@"2017-12-22" type:SetItemTypeDetailText iconImageName:@"set_tiku_version"];
         }else{
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
             if(!cell){
@@ -490,7 +492,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 - (void)clearAD{
     if([SKPaymentQueue canMakePayments]){
         [ToastView showProgressBar:@"连接中..."];
-        [self requestProductData:@"cc.slotus.dhu.ad"];
+        [self requestProductData:APP_IAP_AD];
     }else{
         CXLog(@"不允许程序内付费");
     }
@@ -513,7 +515,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     NSArray *product = response.products;
     if([product count] == 0){
         CXLog(@"--------------没有商品------------------");
-        [ToastView showStatus:@"购买失败"];
+        [ToastView showStatus:@"付款失败"];
         return;
     }
     
@@ -527,7 +529,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         CXLog(@"%@", [pro price]);
         CXLog(@"%@", [pro productIdentifier]);
         
-        if([pro.productIdentifier isEqualToString:@"cc.slotus.dhu.ad"]){
+        if([pro.productIdentifier isEqualToString:APP_IAP_AD]){
             p = pro;
         }
     }
@@ -555,7 +557,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     for(SKPaymentTransaction *tran in transaction){
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchased:{
-                [ToastView showStatus:@"购买成功，重启后生效" delay:0.5];
+                [ToastView showStatus:@"多谢您的赞助，谢谢！！" delay:0.5];
                 [CXUserDefaults instance].hasAd = NO;
                 [CXUserDefaults instance].hasPurchased = YES;
                 [_tableView reloadRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationFade];
@@ -566,7 +568,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
                 [ToastView dismiss];
                 break;
             case SKPaymentTransactionStateRestored:{
-                [ToastView showStatus:@"恢复购买，重启后生效" delay:0.5];
+                [ToastView showStatus:@"多谢您的赞助，谢谢！！" delay:0.5];
                 [CXUserDefaults instance].hasAd = NO;
                 [CXUserDefaults instance].hasPurchased = YES;
                 [_tableView reloadRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationFade];
