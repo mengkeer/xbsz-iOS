@@ -231,4 +231,18 @@ static CXUserDefaults *sharedObj;
 }
 
 
+- (NSInteger)iconIndex{
+    if([CXStandardUserDefaults objectForKey:@"iconIndex"] == nil){
+        [CXStandardUserDefaults setInteger:99 forKey:@"iconIndex"];
+        [CXStandardUserDefaults synchronize];
+    }
+    NSInteger iconIndex = [CXStandardUserDefaults integerForKey:@"iconIndex"];
+    return iconIndex;
+}
+
+- (void)setIconIndex:(NSInteger)iconIndex{
+    [CXStandardUserDefaults setInteger:iconIndex forKey:@"iconIndex"];
+    [CXStandardUserDefaults synchronize];
+}
+
 @end

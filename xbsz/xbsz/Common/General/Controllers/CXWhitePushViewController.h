@@ -13,6 +13,8 @@
 @property (nonatomic,strong) UIView *customNavBarView;
 @property (nonatomic,assign) BOOL showTopRadius;
 
+@property (nonatomic, strong) UILabel *titleLabel;
+
 - (float)getStartOriginY;
 
 - (float)getContentViewHeight;

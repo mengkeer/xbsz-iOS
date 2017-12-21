@@ -26,7 +26,10 @@ static NSString *const headerCellID = @"CollectionHeaderCellID";
 static NSString *const footerCellID = @"CollectionFooterCellID";
 
 
-#define gap (CX_IS_IPHONE6PLUS ? 18 : CX_IS_IPHONE6 ?  15 : 13.2)
+#define vgap (CX_IS_IPHONE6PLUS ? 18 : CX_IS_IPHONE6 ?  15 : 13.2)
+#define hgap (CXScreenWidth - (cellWidth*2))/3
+
+
 
 @interface ExerciseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PYSearchViewControllerDelegate,UIViewControllerPreviewingDelegate>
 
@@ -47,7 +50,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
     [self loadData];
 }
 
@@ -75,7 +77,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
     
     _exerciseList = [ExerciseList yy_modelWithJSON:jsonStr];
-    _exercises = [_exerciseList.exercises subarrayWithRange:NSMakeRange(3, 5)];
+    _exercises = _exerciseList.exercises;
     [_collectionView reloadData];
 }
 
@@ -140,16 +142,16 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 //最小行间距
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return gap;
+    return vgap;
 }
 
 //最小列间距
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return gap;
+    return hgap;
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(gap, gap, 0, gap);
+    return UIEdgeInsetsMake(hgap, hgap, 0, hgap);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
@@ -164,7 +166,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     
     if(section == rows - 1){
         
-        NSUInteger singalHeight = (cellHeight + gap);
+        NSUInteger singalHeight = (cellHeight + vgap);
         
         NSInteger height = CGRectGetHeight(self.contentView.frame) - singalHeight*rows;;
         if(height < 0){

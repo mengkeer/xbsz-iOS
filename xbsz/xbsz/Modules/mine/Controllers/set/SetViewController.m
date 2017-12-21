@@ -13,6 +13,7 @@
 #import "AppUtil.h"
 #import "AboutViewController.h"
 #import "UpdateInfoViewController.h"
+#import "AppIconViewController.h"
 
 #import <StoreKit/StoreKit.h> 
 
@@ -92,8 +93,12 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 0 && indexPath.row == 0){
-        [self clearAD];
+    if(indexPath.section == 0){
+        if(indexPath.row == 0)  [self clearAD];
+        if(indexPath.row == 1){
+            AppIconViewController *vc = [[AppIconViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }if(indexPath.section == 2){
         if(indexPath.row == 0){
             [self selectTheme];
@@ -153,7 +158,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 #pragma mark - UITableView dataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section == 0)    return 1;
+    if(section == 0)    return 2;
     else if(section == 1)    return 2;
     else if(section == 2)   return 4;
     else if(section == 3){
@@ -172,11 +177,20 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SetItemTableViewCell *cell;
     if(indexPath.section == 0){
-        cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-        if(!cell){
-            cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
+        if(indexPath.row == 0){
+            cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
+            }
+            [cell updateCell:@"友情赞助" detailText:nil type:SetItemTypeArrow iconImageName:@"set_buy"];
+        }else{
+            cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
+            if(!cell){
+                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
+            }
+            [cell updateCell:@"APP图标" detailText:nil type:SetItemTypeArrow iconImageName:@"set_icon"];
         }
-        [cell updateCell:@"友情赞助" detailText:nil type:SetItemTypeArrow iconImageName:@"set_buy"];
+      
 //        @weakify(self);
 //        [cell setSwitched:![CXUserDefaults instance].hasAd changed:^(BOOL isOpen) {
 //            if([CXUserDefaults instance].hasPurchased == NO){

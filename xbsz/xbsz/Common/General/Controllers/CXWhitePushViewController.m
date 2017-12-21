@@ -12,8 +12,6 @@
 
 @property (nonatomic,strong) UIButton *backButton;
 
-@property (nonatomic, strong) UILabel *titleLabel;
-
 @property (nonatomic, assign) BOOL cusNavBarHidden;
 
 @property (nonatomic, strong) UIView *topLineView;

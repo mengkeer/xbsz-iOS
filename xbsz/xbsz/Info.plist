@@ -2,6 +2,68 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>晴</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>晴</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>多云</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>多云</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>小雨</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>小雨</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>大雨</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>大雨</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>雪</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>雪</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>UINewsstandIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UINewsstandBindingEdge</key>
+			<string>UINewsstandBindingEdgeLeft</string>
+			<key>UINewsstandBindingType</key>
+			<string>UINewsstandBindingTypeMagazine</string>
+		</dict>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -19,7 +81,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.3.0</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>8</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>Application requires iPhone environment</string>
