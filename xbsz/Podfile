@@ -19,6 +19,7 @@ target 'xbsz' do
     pod 'YYWebImage'
     pod 'SVProgressHUD'
     pod 'Bugly'
+    pod 'TZScrollViewPopGesture'
 #    pod 'SDWebImage', '~> 3.7.1'
     #社会化分享与授权登录组件
 #    pod 'ReactiveCocoa', '~> 6.0'

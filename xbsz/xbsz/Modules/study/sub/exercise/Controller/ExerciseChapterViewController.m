@@ -16,6 +16,7 @@
 #import "SinglePracticeViewController.h"
 #import "MutiPracticeViewController.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
+#import "UINavigationController+TZPopGesture.h"
 
 #import "AppUtil.h"
 
@@ -131,7 +132,8 @@ static NSString *cellID = @"ChapterCellID";
         _collectionView.delegate = self;
         _collectionView.pagingEnabled = YES;
         _collectionView.showsHorizontalScrollIndicator = NO;
-        [_collectionView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+//        [_collectionView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+        [self tz_addPopGestureToView:_collectionView];
         [_collectionView registerClass:[ExerciseChapterCollectionViewCell class] forCellWithReuseIdentifier:cellID];
     }
     return _collectionView;
