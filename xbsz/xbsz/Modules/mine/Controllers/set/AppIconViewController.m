@@ -21,10 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"应用图标设置";
-    self.customNavBarView.backgroundColor = CXHexAlphaColor(0xF6F6F6, 0.3);
-    self.titleLabel.textColor = CXHexAlphaColor(0x000000, 0.3);
+    self.customNavBarView.backgroundColor = CXHexAlphaColor(0xF6F6F6, 0.2);
+    self.titleLabel.textColor = CXHexAlphaColor(0x000000, 0.2);
     _iconArr = [NSMutableArray array];
-    _iconNameArr = @[@"大雨",@"多云",@"晴",@"小雨",@"雪"];
+    _iconNameArr = @[@"icon_shiki",@"大雨",@"多云",@"晴",@"小雨",@"雪"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"set_app_bg"]];
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollView.showsVerticalScrollIndicator = YES;
@@ -34,12 +34,12 @@
     CGFloat height = width+30;
     CGFloat originX = width/2;
     CGFloat originY = 30.f+CX_PHONE_NAVIGATIONBAR_HEIGHT;
-    NSInteger currentIndex = [CXUserDefaults instance].iconIndex;
+    NSString *iconName = [CXUserDefaults instance].iconName;
     for(NSInteger i = 0;i< 5;i++){
         NSString *imageName = [_iconNameArr objectAtIndex:i];
         AppIconView *iconView = [[AppIconView alloc] initWithFrame:CGRectMake(originX, originY, width, height)];
         iconView.tag = 100+i;
-        [iconView updateUIByIconName:imageName isSelected: currentIndex == i];
+        [iconView updateUIByIconName:imageName isSelected:[imageName isEqualToString:iconName]];
         [scrollView addSubview:iconView];
         originX += (width + width/2);
         if(originX >= CXScreenWidth-10) originX = width/2;
@@ -53,11 +53,18 @@
         [iconView addGestureRecognizer:tapGesture];
     }
 
+    UIButton *resetBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    resetBtn.frame = CGRectMake(CXScreenWidth-70-15, CX_PHONE_STATUSBAR_HEIGHT, 70, 44);
+    [resetBtn setTitle:@"恢复默认" forState:UIControlStateNormal];
+    resetBtn.titleLabel.font = CXSystemFont(16);
+    [resetBtn setTitleColor:CXHexAlphaColor(0x000000, 0.3) forState:UIControlStateNormal];
+    [self.customNavBarView addSubview:resetBtn];
+    [resetBtn addTarget:self action:@selector(didResetBtn) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didClick:(UITapGestureRecognizer *)gesture{
     NSInteger tag = gesture.view.tag;
-    [CXUserDefaults instance].iconIndex = tag % 100;
+    [CXUserDefaults instance].iconName = [_iconNameArr objectAtIndex:gesture.view.tag % 100];
     for(NSInteger i = 0;i < _iconArr.count;i++){
         NSString *imageName = [_iconNameArr objectAtIndex:i];
         AppIconView *view = [_iconArr objectAtIndex:i];
@@ -68,6 +75,17 @@
     };
 }
 
+- (void)didResetBtn{
+    [CXUserDefaults instance].iconName = nil;
+    for(NSInteger i = 0;i < _iconArr.count;i++){
+        NSString *imageName = [_iconNameArr objectAtIndex:i];
+        AppIconView *view = [_iconArr objectAtIndex:i];
+        [view updateUIByIconName:imageName isSelected:[imageName isEqualToString:[CXUserDefaults instance].iconName ]];
+        if(i == _iconArr.count - 1){
+            [self setAppIconWithName:nil];
+        }
+    };
+}
 
 - (void)setAppIconWithName:(NSString *)iconName {
     if (![[UIApplication sharedApplication] supportsAlternateIcons]) {
@@ -81,9 +99,7 @@
     [UIApplication sharedApplication];
     [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
     }];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [ToastView showSuccessWithStaus:@"更换成功"];
-    });
+    [ToastView showSuccessWithStaus:@"更换成功"];
 }
 
 - (void)didReceiveMemoryWarning {

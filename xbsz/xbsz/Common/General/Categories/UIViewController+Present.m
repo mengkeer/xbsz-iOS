@@ -8,6 +8,7 @@
 
 #import "UIViewController+Present.h"
 #import <objc/runtime.h>
+#import "AppIconViewController.h"
 
 @implementation UIViewController (Present)
 
@@ -29,7 +30,7 @@
         NSLog(@"message : %@",((UIAlertController *)viewControllerToPresent).message);
         
         UIAlertController *alertController = (UIAlertController *)viewControllerToPresent;
-        if (alertController.title == nil && alertController.message == nil) {
+        if (alertController.title == nil && alertController.message == nil && alertController.preferredStyle != UIAlertControllerStyleActionSheet && alertController.actions.count == 1) {
             return;
         } else {
             [self dy_presentViewController:viewControllerToPresent animated:flag completion:completion];

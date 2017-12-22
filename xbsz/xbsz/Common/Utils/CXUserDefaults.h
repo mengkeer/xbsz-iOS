@@ -38,6 +38,6 @@
 //是否禁止返回手势
 @property (nonatomic, assign) BOOL forbidPopGesture;
 
-@property (nonatomic, assign) NSInteger iconIndex;
+@property (nonatomic, copy) NSString *iconName;
 
 @end

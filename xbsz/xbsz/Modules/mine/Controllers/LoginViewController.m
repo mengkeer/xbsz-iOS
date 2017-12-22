@@ -153,12 +153,17 @@
 
 - (UIImageView *)iconImageView{
     if(!_iconImageView){
-        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-        //获取app中所有icon名字数组
-        NSArray *iconsArr = infoDict[@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];
-        NSString *iconLastName = [iconsArr lastObject];
-        
-        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconLastName]];
+        NSString *iconName = [CXUserDefaults instance].iconName;
+        if([iconName isEqualToString:@"AppIcon"]){
+            NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+            //获取app中所有icon名字数组
+            NSArray *iconsArr = infoDict[@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];
+            iconName = [iconsArr lastObject];
+        }
+    
+        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];
+        _iconImageView.layer.cornerRadius = 12;
+        _iconImageView.layer.masksToBounds = YES;
         _iconImageView.contentMode = UIViewContentModeScaleToFill;
     }
     return _iconImageView;

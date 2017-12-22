@@ -231,17 +231,21 @@ static CXUserDefaults *sharedObj;
 }
 
 
-- (NSInteger)iconIndex{
-    if([CXStandardUserDefaults objectForKey:@"iconIndex"] == nil){
-        [CXStandardUserDefaults setInteger:99 forKey:@"iconIndex"];
+- (NSString *)iconName{
+    if([CXStandardUserDefaults objectForKey:@"iconName"] == nil){
+        [CXStandardUserDefaults setObject:@"AppIcon" forKey:@"iconName"];
         [CXStandardUserDefaults synchronize];
     }
-    NSInteger iconIndex = [CXStandardUserDefaults integerForKey:@"iconIndex"];
-    return iconIndex;
+    NSString *iconName = [CXStandardUserDefaults objectForKey:@"iconName"];
+    return iconName;
 }
 
-- (void)setIconIndex:(NSInteger)iconIndex{
-    [CXStandardUserDefaults setInteger:iconIndex forKey:@"iconIndex"];
+- (void)setIconName:(NSString *)iconName{
+    if(iconName == nil || [iconName isEqualToString:@""]){
+        [CXStandardUserDefaults setObject:@"AppIcon" forKey:@"iconName"];
+    }else{
+        [CXStandardUserDefaults setObject:iconName forKey:@"iconName"];
+    }
     [CXStandardUserDefaults synchronize];
 }
 
