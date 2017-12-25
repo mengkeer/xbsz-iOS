@@ -78,7 +78,10 @@
 //一些第三方服务所需要的App ID  与  App Key
 
 #define APPID           @"1247054879"
-#define APP_IAP_AD       @"cc.slotus.dhu.support"
+#define APP_IAP_AD1       @"cc.slotus.dhu.support"
+#define APP_IAP_AD2       @"cc.slotus.dhu.support2"
+#define APP_IAP_AD3       @"cc.slotus.dhu.support3"
+
 
 #define    BuglyAppID       @"c48b5790e9"
 

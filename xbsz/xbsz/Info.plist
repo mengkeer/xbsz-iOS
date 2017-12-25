@@ -15,47 +15,47 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>晴</key>
+			<key>icon_saber</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>晴</string>
+					<string>icon_saber</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>多云</key>
+			<key>icon_unknown1</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>多云</string>
+					<string>icon_unknown1</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>小雨</key>
+			<key>icon_unknown2</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>小雨</string>
+					<string>icon_unknown2</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>大雨</key>
+			<key>icon_mai1</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>大雨</string>
+					<string>icon_mai1</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
-			<key>雪</key>
+			<key>icon_mai2</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>雪</string>
+					<string>icon_mai2</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>

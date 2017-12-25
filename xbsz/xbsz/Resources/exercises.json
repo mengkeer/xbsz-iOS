@@ -1,18 +1,18 @@
 {
     "exercises":[{
-               "icon":"http://img2.ph.126.net/vSpLidbFS0z2D2QOsdCz1Q==/905505000178320854.png",
+               "icon":"marx.png",
                "title":"马克思"
                },{
-               "icon":"http://img0.ph.126.net/EnIPnxR1XSy87Z8B2Qnmhw==/6631924285256869476.jpg",
+               "icon":"history.jpg",
                "title":"近代史"
                },{
-               "icon":"http://img2.ph.126.net/UEj7ngS2RzlWEzcY6Ke87g==/3327315699796721276.png",
+               "icon":"thought.png",
                "title":"思修"
                },{
-               "icon":"http://1.im.guokr.com/evnxgoe-hftYo2ZFtq15Pv_ueaGXxIAlGaGUXZQYl-g-AQAA0gAAAFBO.png",
+               "icon":"mao1.png",
                "title":"毛概1"
                },{
-               "icon":"http://1.im.guokr.com/ceznNw1LATcbbujUUqnGWpEmbyyCOAl-bdq1_v5_XPkZAgAAKgEAAEpQ.jpg",
+               "icon":"mao2.jpg",
                "title":"毛概2"
                 }
     ]

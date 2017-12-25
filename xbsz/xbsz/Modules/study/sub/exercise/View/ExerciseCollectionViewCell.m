@@ -81,8 +81,9 @@
 - (void)updateCellWithModel:(id)model{
     Exercise *exercise = (Exercise *)model;
     _titleLabel.text = exercise.title;
-    NSURL *url = [NSURL URLWithString:exercise.icon];
-    [_imageView yy_setImageWithURL:url options:0];
+//    NSURL *url = [NSURL URLWithString:exercise.icon];
+//    [_imageView yy_setImageWithURL:url options:0];
+    _imageView.image = [UIImage imageNamed:exercise.icon];
 }
 
 - (void)registerTouch:(id)delegate{

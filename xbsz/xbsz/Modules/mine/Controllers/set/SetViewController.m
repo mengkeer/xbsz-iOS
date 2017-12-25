@@ -25,6 +25,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 @interface SetViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,MFMailComposeViewControllerDelegate,SKPaymentTransactionObserver,SKProductsRequestDelegate,SKStoreProductViewControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, copy) NSString *purchaseID;
 
 @end
 
@@ -76,7 +77,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(section != 0){
-        return 20.f;
+        return 15.f;
     }
     return 0.001;
 }
@@ -94,7 +95,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
-        if(indexPath.row == 0)  [self clearAD];
+        if(indexPath.row == 0)  [self selectSupport];
         if(indexPath.row == 1){
             AppIconViewController *vc = [[AppIconViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
@@ -379,6 +380,35 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
 }
 
+- (void)selectSupport{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    @weakify(self);
+    UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"友情赞助1元" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weak_self.purchaseID = APP_IAP_AD1;
+        [weak_self applySupprt];
+    }];
+    [alert addAction:type1];
+    
+    UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"友情赞助6元" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weak_self.purchaseID = APP_IAP_AD2;
+        [weak_self applySupprt];
+    }];
+    [alert addAction:type2];
+    
+    
+    UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"友情赞助12元" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        weak_self.purchaseID = APP_IAP_AD3;
+        [weak_self applySupprt];
+    }];
+    [alert addAction:type3];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
 - (void)selectTheme{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
@@ -502,11 +532,11 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//去除广告
-- (void)clearAD{
+//友情赞助
+- (void)applySupprt{
     if([SKPaymentQueue canMakePayments]){
         [ToastView showProgressBar:@"连接中..."];
-        [self requestProductData:APP_IAP_AD];
+        [self requestProductData:self.purchaseID];
     }else{
         CXLog(@"不允许程序内付费");
     }
@@ -543,7 +573,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
         CXLog(@"%@", [pro price]);
         CXLog(@"%@", [pro productIdentifier]);
         
-        if([pro.productIdentifier isEqualToString:APP_IAP_AD]){
+        if([pro.productIdentifier isEqualToString:self.purchaseID]){
             p = pro;
         }
     }

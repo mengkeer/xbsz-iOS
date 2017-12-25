@@ -86,7 +86,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(section == 0 || section == 3)    return 0;
-    return 20;
+    return 15.f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
