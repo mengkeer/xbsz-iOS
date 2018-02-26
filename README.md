@@ -4,6 +4,8 @@
 
 [App Store下载地址](https://itunes.apple.com/cn/app/%E5%AD%A6%E9%9C%B8%E6%80%9D%E6%94%BF-%E6%80%9D%E6%94%BF%E5%81%9A%E9%A2%98/id1247054879?l=zh&ls=1&mt=8)
 
+[Android版本下载地址](http://app.mi.com/details?id=cc.slotus.xuebasizheng)
+
 ### 版本特性
 
 * 支持马克思，毛概，思修，近代史做题等
@@ -33,12 +35,4 @@
 - 新增思政做题功能
 - 新增教务网授权登录功能
 - 更多功能等
-
-
-
-
-
-
-
-
 
