@@ -15,6 +15,7 @@
 #import "CXNetwork+Note.h"
 #import "CampusCommentList.h"
 #import "CampusComment.h"
+#import "UITextField+Placeholder.h"
 
 
 static NSString *cellID = @"InformTableViewCellID";
@@ -207,8 +208,10 @@ static NSInteger limit = 10;
         [_writeTextField setFont:[UIFont systemFontOfSize:12.0]];
         [_writeTextField setTextColor:CXBlackColor2];
         _writeTextField.delegate = self;
+        
+        [_writeTextField setPlaceholderColor: CXHexColor(0x707070)];
     
-        [_writeTextField setValue:CXHexColor(0x707070) forKeyPath:@"_placeholderLabel.textColor"];
+//        [_writeTextField setValue:CXHexColor(0x707070) forKeyPath:@"_placeholderLabel.textColor"];
         
         _writeTextField.inputAccessoryView = [[UIView alloc] init];
         

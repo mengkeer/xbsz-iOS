@@ -168,6 +168,8 @@
     }
     
     imagePickerVc.cropRect = CGRectMake(0 , (CXScreenHeight- CXScreenWidth)/2, CXScreenWidth, CXScreenWidth);
+    
+    imagePickerVc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:imagePickerVc animated:YES completion:nil];
 }
 
@@ -176,6 +178,8 @@
     [picker dismissViewControllerAnimated:NO completion:nil];
     NewPostViewController *postVC = [NewPostViewController controller];
     postVC.sharedImage = photos[0];
+    postVC.modalPresentationStyle = UIModalPresentationFullScreen;
+    postVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:postVC animated:YES completion:nil];
 }
 

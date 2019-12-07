@@ -2,15 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>学霸思政</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>icon_shiki</key>
+			<key>icon_mai1</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string>icon_shiki</string>
+					<string>icon_mai1</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>icon_mai2</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>icon_mai2</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -20,6 +35,15 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>icon_saber</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
+			<key>icon_shiki</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>icon_shiki</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -38,24 +62,6 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>icon_unknown2</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>icon_mai1</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>icon_mai1</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>icon_mai2</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>icon_mai2</string>
 				</array>
 				<key>UIPrerenderedIcon</key>
 				<false/>
@@ -82,12 +88,6 @@
 			<string>UINewsstandBindingTypeMagazine</string>
 		</dict>
 	</dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
-	<key>CFBundleDisplayName</key>
-	<string>学霸思政</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -97,9 +97,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>8</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>Application requires iPhone environment</string>

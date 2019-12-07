@@ -62,8 +62,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
         make.centerX.mas_equalTo(self.contentView.mas_centerX);
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
     }];
-    
-    
+    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {

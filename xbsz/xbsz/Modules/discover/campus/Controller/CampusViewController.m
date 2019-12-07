@@ -18,7 +18,6 @@
 #import "CXNetwork+Note.h"
 #import "CampusCommentViewController.h"
 #import "IDMPhotoBrowser.h"
-#import "TinyCampusTableViewCell.h"
 
 static NSInteger limit = 10;
 
@@ -30,6 +29,10 @@ static NSInteger limit = 10;
 
 @property (nonatomic, strong) NSMutableArray *notes;
 
+@property (nonatomic, strong) NSMutableDictionary *likes;
+
+@property (nonatomic, strong) NSMutableDictionary *loves;
+ 
 @end
 
 @implementation CampusViewController
@@ -45,6 +48,8 @@ static NSInteger limit = 10;
     
     [self loadDataAtPageIndex:CXFisrtLoadPage];
     _notes = [NSMutableArray array];
+    _likes = [NSMutableDictionary dictionary];
+    _loves = [NSMutableDictionary dictionary];
     
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData) name:NotificationCampusNotePublished object:nil];
 }
@@ -119,14 +124,14 @@ static NSInteger limit = 10;
 #pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat height = [TinyCampusTableViewCell heightForModel:[_notes objectAtIndex:indexPath.row]];
-    return height;
+    if(indexPath.row == [_notes count]) return 49;
+    return UITableViewAutomaticDimension;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if(indexPath.row == [_notes count])     return 49;
-//    return 300;
-//}
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == [_notes count])     return 49;
+    return 300;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01f;
@@ -146,7 +151,7 @@ static NSInteger limit = 10;
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_notes count];
+    return [_notes count]+1;
 }
 
 
@@ -166,18 +171,19 @@ static NSInteger limit = 10;
         return cell;
     }
     
-    TinyCampusTableViewCell *cell;
+    CampusTableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:@"cellID"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if(cell == nil){
-        cell = [[TinyCampusTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
+        cell = [[CampusTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellID"];
     }
     CampusNote *note = [_notes objectAtIndex:indexPath.row];
-    @weakify(self);
-    [cell updateUIWithModel:note action:^(id cell,id model, TinyCommentCellActionType actionType) {
-        [weak_self handleAction:actionType model:(CampusNote *)model cell:cell];
-    } didClickMore:^{
-        [weak_self.tableView reloadData];
+    if([_likes objectForKey:note.noteID] == nil){
+        [_likes setObject:@"0" forKey:note.noteID];
+    }
+    BOOL hasLiked = [[_likes objectForKey:note.noteID] isEqualToString:@"1"] ? YES:NO;
+    [cell updateUIWithModel:[_notes objectAtIndex:indexPath.row] hasLiked:hasLiked action:^(id cell,id model, CommentCellActionType actionType) {
+        [self handleAction:actionType model:(CampusNote *)model cell:cell];
     }];
     if(CX3DTouchOpened)       [cell registerTouch:self];
     return cell;
@@ -185,28 +191,46 @@ static NSInteger limit = 10;
 
 #pragma mark private method
 
-- (void)handleAction:(TinyCommentCellActionType)type model:(CampusNote *)model cell:(id)cell{
+- (void)handleAction:(CommentCellActionType)type model:(CampusNote *)model cell:(id)cell{
     switch (type) {
-        case TinyCommentCellActionTypeReply:
+        case CellActionTypeLike:
+            if([[_likes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
+                [ToastView showErrorWithStaus:@"已经赞过了"];
+            }else{
+                CXLog(@"开始点赞");
+                [_likes setValue:@"1" forKey:model.noteID];
+            }
+            break;
+        case CellActionTypeReply:
             [self gotoCommentViewController:model];
             break;
-        case TinyCommentCellActionTypeMore:{
+        case CellActionTypeShare:{
+            [[ShareToolBarView instance] updateUIWithModel:model action:^(ShareToolBarActionTyep actionType) {
+                [self handleShareAction:actionType model:model];
+            }];
+            [[ShareToolBarView instance] showInView:self.view.window];
+            break;
+        }
+        case CellActionTypeMore:{
             [[MoreToolBarView instance] updateUIWithModel:model action:^(MoreToolBarActionTyep actionType) {
                 [self handleMoreAction:actionType model:model cell:cell];
-            }]  ;
+            }];
+            BOOL loved = [[_loves objectForKey:model.noteID] isEqualToString:@"1"] ? YES:NO;
+            BOOL liked = [[_likes objectForKey:model.noteID] isEqualToString:@"1"] ? YES:NO;
+            [[MoreToolBarView instance] updateUIByLoved:loved liked:liked];
             [[MoreToolBarView instance] showInView:self.view.window];
             break;
         }
-        case TinyCommentCellActionTypeUserInfo:
+        case CellActionTypeUserInfo:
             break;
-        case TinyCommentCellActionTypeSourceImage:{
+        case CellActionTypeSourceImage:{
             NSMutableArray *photos = [NSMutableArray new];
             
             IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:CXNoteImageUrlByname(model.img)]];
             photo.caption = model.subject;
             [photos addObject:photo];
         
-            UIImageView *sourceImageView = ((TinyCampusTableViewCell *)cell).sharedImageView;
+            UIImageView *sourceImageView = ((CampusTableViewCell *)cell).sharedImageView;
 
             IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotos:photos animatedFromView:sourceImageView];
             browser.view.backgroundColor = CXBlackColor;
@@ -221,7 +245,7 @@ static NSInteger limit = 10;
             
             break;
         }
-        case TinyCommentCellActionTypeComment:
+        case CellActionTypeComment:
             [self gotoCommentViewController:model];
             break;
         default:
@@ -260,7 +284,38 @@ static NSInteger limit = 10;
 - (void)handleMoreAction:(MoreToolBarActionTyep) actionType model:(CampusNote *)model cell:(id) cell{
     switch (actionType) {
         case MoreToolBarActionTypeSave:
-            UIImageWriteToSavedPhotosAlbum(((TinyCampusTableViewCell *)cell).sharedImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+            if([[_loves objectForKey:model.noteID] isEqualToString:@"1"] == YES){
+                [ToastView showErrorWithStaus:@"已经保存了"];
+            }else{
+                UIImageWriteToSavedPhotosAlbum(((CampusTableViewCell *)cell).sharedImageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+                [_loves setValue:@"1" forKey:model.noteID];
+            }
+            break;
+        case MoreToolBarActionTyepDislike:
+            CXLog(@"不感兴趣");
+            break;
+        case MoreToolBarActionTyepDigup:{
+            if([[_likes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
+                [ToastView showErrorWithStaus:@"已经赞过了"];
+            }else{
+                CXLog(@"开始点赞");
+                //注：此处需要手动出发toolbar栏里的点赞效果
+                [self digUpWithModel:model];
+                [_likes setValue:@"1" forKey:model.noteID];
+            }
+            break;
+        }
+        case MoreToolBarActionTyepDigdown:{
+            if([[_noteList.dislikes objectForKey:model.noteID] isEqualToString:@"1"] == YES){
+                [ToastView showErrorWithStaus:@"已经踩过了"];
+            }else{
+                CXLog(@"开始踩");
+                [_noteList.dislikes setValue:@"1" forKey:model.noteID];
+            }
+            break;
+        }
+        case MoreToolBarActionTyepReport:
+            CXLog(@"举报");
             break;
         case MoreToolBarActionTyepCancel:
             [[MoreToolBarView instance] dismissInView:self.view.window];
@@ -276,6 +331,16 @@ static NSInteger limit = 10;
         [ToastView showStatus:@"保存成功" delay:0.8];
     }else{
         [ToastView showStatus:@"保存失败" delay:0.8];
+    }
+}
+
+//根据model中的noteID出发点赞效果  指在MoreToolBar里点赞时出发toolBar点赞按钮的效果
+- (void)digUpWithModel:(CampusNote *)model{
+    for(CampusTableViewCell *cell in _tableView.visibleCells){
+        if([cell.note.noteID isEqualToString:model.noteID]){
+            CommentToolBarView *toolbarView = cell.toolBarView;
+            [toolbarView setLikeBtnSelect];
+        }
     }
 }
 
@@ -310,7 +375,7 @@ static NSInteger limit = 10;
 
 
 - (NSInteger)getIndexByPreviewing:(id<UIViewControllerPreviewing>)previewingContext{
-    TinyCampusTableViewCell  *cell = (TinyCampusTableViewCell *)[[[previewingContext sourceView] superview] superview];
+    CampusTableViewCell  *cell = (CampusTableViewCell *)[[[previewingContext sourceView] superview] superview];
     NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
     NSInteger index = indexPath.row;
     return index;
@@ -318,3 +383,4 @@ static NSInteger limit = 10;
 
 
 @end
+

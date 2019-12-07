@@ -20,9 +20,12 @@
 #define CX_IS_IPHONE5 (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 568.0f)
 #define CX_IS_IPHONE6 (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0f)
 #define CX_IS_IPHONE6PLUS (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0f)
-#define CX_IS_RETINA ([[UIScreen mainScreen] scale] == 2.0f)
+#define CX_IS_RETINA ([[UIScreen mainScreen] scale] == 2.0f || [[UIScreen mainScreen] scale] == 3.0f)
 #define CX_IS_IPHONEX (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 812.0f)     //是否是iPhoneX
 
+#define CX_IS_IPHONEXMAX (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 896.0f)     //是否是iPhoneX
+
+#define CX_IS_FRINGE (CX_IS_IPHONEX || CX_IS_IPHONEXMAX)     //是否是iPhoneX
 
 
 
@@ -32,9 +35,9 @@
 #define CXScreenHeight ([UIScreen mainScreen].bounds.size.height)
 #define CXScreenRect   (CGRectMake(0,0,CXScreenWidth,CXScreenHeight))
 #define CXMainScale     ([UIScreen mainScreen].scale)
-#define CX_PHONE_STATUSBAR_HEIGHT  (CX_IS_IPHONEX ? 44.f : 20.f)
-#define CX_PHONE_NAVIGATIONBAR_HEIGHT   (CX_IS_IPHONEX ? 88.f : 64.f)
-#define CX_PHONEX_HOME_INDICATOR_HEIGHT   (CX_IS_IPHONEX ? 34.f : 0)
+#define CX_PHONE_STATUSBAR_HEIGHT  (CX_IS_FRINGE ? 44.f : 20.f)
+#define CX_PHONE_NAVIGATIONBAR_HEIGHT   (CX_IS_FRINGE ? 88.f : 64.f)
+#define CX_PHONEX_HOME_INDICATOR_HEIGHT   (CX_IS_FRINGE ? 34.f : 0)
 #define CX_PHONE_TABBAR_HEIGHT (49.f + CX_PHONEX_HOME_INDICATOR_HEIGHT)        //系统推荐是49.f  + 34.f
 
 

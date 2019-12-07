@@ -211,7 +211,7 @@
 - (YYLabel *)aboutLabel{
     if(!_aboutLabel){
         _aboutLabel = [[YYLabel alloc] init];
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:@"注:本软件与Android版学霸思政为同一人开发，Android版学霸思政如有需求请前往小米应用中心下载,谢谢大家支持！"];
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:@"注:本软件与Android版学霸思政为同一人开发，Android版学霸思政如有需求请前往小米应用中心下载,谢谢大家支持\nQQ反馈群：780036162"];
         attr.yy_font = CXSystemFont(13);
         attr.yy_color = CXBlackColor2;
         _aboutLabel.lineBreakMode = NSLineBreakByCharWrapping;
@@ -240,7 +240,7 @@
         _copyrightLabel.font = CXSystemFont(13);
         _copyrightLabel.textAlignment = NSTextAlignmentCenter;
         _copyrightLabel.textColor = CXBlackColor2;
-        _copyrightLabel.text = @"copyright © 2017年 lotus. All rights reserved";
+        _copyrightLabel.text = @"copyright © 2019年 lotus. All rights reserved";
     }
     return _copyrightLabel;
 }
