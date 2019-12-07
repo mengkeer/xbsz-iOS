@@ -24,7 +24,7 @@
     self.customNavBarView.backgroundColor = CXHexAlphaColor(0xF6F6F6, 0.2);
     self.titleLabel.textColor = CXHexAlphaColor(0x000000, 0.2);
     _iconArr = [NSMutableArray array];
-    _iconNameArr = @[@"icon_shiki",@"icon_saber",@"icon_mai1",@"icon_unknown1",@"icon_unknown2",@"icon_mai2"];
+    _iconNameArr = @[@"icon_shiki",@"icon_saber",@"icon_mai1",@"icon_unknown1",@"icon_unknown2",@"icon_mai2",@"icon_unknown3"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"set_app_bg"]];
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollView.showsVerticalScrollIndicator = YES;
@@ -35,7 +35,7 @@
     CGFloat originX = width/2;
     CGFloat originY = 30.f+CX_PHONE_NAVIGATIONBAR_HEIGHT;
     NSString *iconName = [CXUserDefaults instance].iconName;
-    for(NSInteger i = 0;i< 6;i++){
+    for(NSInteger i = 0;i< _iconNameArr.count;i++){
         NSString *imageName = [_iconNameArr objectAtIndex:i];
         AppIconView *iconView = [[AppIconView alloc] initWithFrame:CGRectMake(originX, originY, width, height)];
         iconView.tag = 100+i;

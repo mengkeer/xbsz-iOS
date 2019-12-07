@@ -60,6 +60,15 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+			<key>icon_unknown3</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>icon_unknown3</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 		</dict>
 		<key>UINewsstandIcon</key>
 		<dict>
