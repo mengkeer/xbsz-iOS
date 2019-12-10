@@ -96,10 +96,10 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
         if(indexPath.row == 0)  [self selectSupport];
-        if(indexPath.row == 1){
-            AppIconViewController *vc = [[AppIconViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
+//        if(indexPath.row == 1){
+//            AppIconViewController *vc = [[AppIconViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
     }if(indexPath.section == 2){
         if(indexPath.row == 0){
             [self selectTheme];
@@ -159,7 +159,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 #pragma mark - UITableView dataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section == 0)    return 2;
+    if(section == 0)    return 1;
     else if(section == 1)    return 2;
     else if(section == 2)   return 4;
     else if(section == 3){
@@ -295,7 +295,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             if(!cell){
                 cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellDetailTextId];
             }
-            [cell updateCell:@"题库版本" detailText:@"2017-12-22" type:SetItemTypeDetailText iconImageName:@"set_tiku_version"];
+            [cell updateCell:@"题库版本" detailText:@"每学期自动更新" type:SetItemTypeDetailText iconImageName:@"set_tiku_version"];
         }else{
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
             if(!cell){

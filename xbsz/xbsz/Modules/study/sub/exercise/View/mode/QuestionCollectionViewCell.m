@@ -164,12 +164,13 @@ static NSInteger TitlePaddingRight = 5;
     if(!cell){
         cell = [[QuestionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID isSingle:_isSingle];
     }
+    cell.backgroundColor = [CXUserDefaults instance].bgColor;
     cell.contentView.backgroundColor = [CXUserDefaults instance].bgColor;
-    if(_allowSelect == YES){
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    }else{
+//    if(_allowSelect == YES){
+//        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+//    }else{
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
+//    }
     
     [cell updateUIWithIndex:indexPath.row option:[_options objectAtIndex:indexPath.row] isSingle:_isSingle];
     

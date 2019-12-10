@@ -19,6 +19,7 @@ static NSInteger bottomHeight = 45;
 
 @property (nonatomic, strong) UIButton *gotoBtn;
 @property (nonatomic, strong) UIButton *submitBtn;
+@property (nonatomic, strong) UIButton *showBtn;
 
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -58,6 +59,7 @@ static NSInteger bottomHeight = 45;
    
     [self.customNavBarView addSubview:self.gotoBtn];
     [self.customNavBarView addSubview:self.submitBtn];
+    [self.customNavBarView addSubview:self.showBtn];
     self.customNavBarView.backgroundColor  = [CXUserDefaults instance].bgColor;
     
     
@@ -167,6 +169,19 @@ static NSInteger bottomHeight = 45;
         [_submitBtn addTarget:self action:@selector(submitExam) forControlEvents:UIControlEventTouchUpInside];
     }
     return _submitBtn;
+}
+
+- (UIButton *)showBtn{
+    if(!_showBtn){
+        _showBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+       _showBtn.frame = CGRectMake(CXScreenWidth - 112, CX_PHONE_STATUSBAR_HEIGHT+5, 34, 34);
+                [_showBtn setImageEdgeInsets:UIEdgeInsetsMake(4, 6,4,2)];
+        
+        [_showBtn setImage:[UIImage imageNamed:@"show_answer"] forState:UIControlStateNormal];
+        [_showBtn setImage:[UIImage imageNamed:@"show_answer"] forState:UIControlStateHighlighted];
+        [_showBtn addTarget:self action:@selector(showAnswer) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _showBtn;
 }
 
 - (UICollectionView *)collectionView{
@@ -343,7 +358,12 @@ static NSInteger bottomHeight = 45;
         }];
         [self presentViewController:progressVC animated:YES completion:nil];
     }
+}
 
+- (void)showAnswer{
+    ExerciseQuestion *question = [_questions objectAtIndex:_index];
+    NSString *str = [NSString stringWithFormat:@"正确答案为%@",question.answer];
+    [ToastView showStatus:str];
 }
 
 #pragma mark - 私有方法
@@ -415,7 +435,7 @@ static NSInteger bottomHeight = 45;
     [alert addAction:cancel];
     
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        NSInteger grade = 0;
         for(NSInteger i = 0;i<[_questions count];i++){
             ExerciseQuestion *question = [_questions objectAtIndex:i];
             NSString *key = [NSString stringWithFormat:@"%ld",i];
@@ -428,6 +448,8 @@ static NSInteger bottomHeight = 45;
                     isRight = [FMDBUtil isSingleRightAnswer:[val integerValue] answer:question.answer];
                 }
                 if(isRight){
+                    if (question.type == 2) grade += 2;
+                    if (question.type == 1 || question.type == 3) grade += 1;
                     [_judgedDic setValue:@"1" forKey:key];
                 }else{
                     [_judgedDic setValue:@"-1" forKey:key];
@@ -436,24 +458,48 @@ static NSInteger bottomHeight = 45;
                 [_judgedDic setValue:@"-1" forKey:key];
             }
         }
-        
-        
-        ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
-        [progressVC updateData:ExerciseModePractice total:[_questions count] practicedDic:_practicedDic judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
-            if(index >= 0){
-                _index = index;
-                NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
-                [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-                [self updatePreAndNextLabel:index];
-                [_collectionView reloadData];
-            }
-        }];
-        [self presentViewController:progressVC animated:YES completion:nil];
-        
-        
+        [self presentExamGrade: grade];
     }];
     [alert addAction:confirm];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)presentExamGrade:(NSInteger)grade {
+    NSString *gradeStr = [NSString stringWithFormat:@"考试成绩：%d", grade];
+    NSString *message = @"";
+    if (grade < 50) {
+        message = @"学海无涯，回头是岸！";
+    } else if (grade < 80) {
+        message = @"再接再厉！";
+    } else if (grade < 95) {
+        message = @"做的不错！";
+    } else {
+        message = @"完美！";
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:gradeStr message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"退出" style: UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [super popFromCurrentViewController];
+    }];
+    [alert addAction:cancel];
+    
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"查看错题" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        ExerciseProgressViewController *progressVC = [ExerciseProgressViewController controller];
+              [progressVC updateData:ExerciseModePractice total:[_questions count] practicedDic:_practicedDic judgedDic:_judgedDic currentIndex:_index clicked:^(NSInteger index) {
+                  if(index >= 0){
+                      _index = index;
+                      NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+                      [_collectionView scrollToItemAtIndexPath:path atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+                      [self updatePreAndNextLabel:index];
+                      [_collectionView reloadData];
+                  }
+              }];
+              [self presentViewController:progressVC animated:YES completion:nil];
+          
+      }];
+      [alert addAction:confirm];
+      [self presentViewController:alert animated:YES completion:nil];
 }
 
 
