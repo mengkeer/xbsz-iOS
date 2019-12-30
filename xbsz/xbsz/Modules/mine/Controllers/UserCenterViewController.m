@@ -431,7 +431,7 @@
         
         CXSectionButton *btn9 = [[CXSectionButton alloc] init:CGRectMake(0, offsetY, width, height)
                                                      andImage:[UIImage imageNamed:@"school1"]
-                                                     andTitle:@"东华校历"];
+                                                     andTitle:@"校历"];
         [btn9 addTarget:self action:@selector(gotoDHUCalendar) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn9];
         
@@ -638,7 +638,7 @@
 
 
 - (void)gotoDHUCalendar{
-    [self gotoCommonView:@"东华校历" url:JWURLDHUCalendar];
+    [self gotoCommonView:@"校历" url:JWURLDHUCalendar];
 }
 
 - (void)gotoSchoolLecture{

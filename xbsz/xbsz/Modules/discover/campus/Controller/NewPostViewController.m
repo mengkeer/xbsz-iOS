@@ -277,7 +277,7 @@
     }else if([[_subjectTextView.text stringByTrim] isEqualToString:@""]){
         [ToastView showStatus:@"请输入帖子主题"];
     }else{
-        [CXNetwork publishNote:_sharedImage isBig:_uploadSwitch.isOn subject:[_subjectTextView.text stringByTrim] location:@"东华大学图书馆"
+        [CXNetwork publishNote:_sharedImage isBig:_uploadSwitch.isOn subject:[_subjectTextView.text stringByTrim] location:@"图书馆"
             success:^(NSObject *obj) {
                 [ToastView showBlackSuccessWithStaus:@"发送成功"];
                 [CXAudioPlayer playSent];

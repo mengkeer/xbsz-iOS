@@ -325,7 +325,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
             [self presentViewController:take animated:YES completion:nil];
 
         }else{
-            [self showAlert:@"无法访问您的相机" message:@"请在”设置-东华微课堂-相机“中启用访问"];
+            [self showAlert:@"无法访问您的相机" message:@"请在”设置-学霸思政-相机“中启用访问"];
         }
     }];
     [alert addAction:takePhoto];
@@ -338,7 +338,7 @@ static NSString *cellImageAndArrowId = @"cellImageAndArrowId";
             pick.allowsEditing = YES;
             [self presentViewController:pick animated:YES completion:nil];
         }else{
-            [self showAlert:@"无法访问您的相册" message:@"请在”设置-东华微课堂-照片“中启用访问"];
+            [self showAlert:@"无法访问您的相册" message:@"请在”设置-学霸思政-照片“中启用访问"];
         }
     }];
     [alert addAction:selectPhtot];
