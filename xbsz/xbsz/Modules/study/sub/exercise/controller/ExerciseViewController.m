@@ -27,9 +27,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 
 #define vgap (CX_IS_IPHONE6PLUS ? 18 : CX_IS_IPHONE6 ?  15 : 13.2)
-#define hgap (CXScreenWidth - (cellWidth*2))/3
-
-
+#define hgap floorf((CXScreenWidth - (cellWidth*2))/3)
 
 @interface ExerciseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PYSearchViewControllerDelegate,UIViewControllerPreviewingDelegate>
 
@@ -67,11 +65,9 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
 }
 
 - (void)loadData{
-
     NSString *fileName = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"exercises.json"];
     NSString *jsonStr = [NSString stringWithContentsOfFile:fileName encoding:NSUTF8StringEncoding error:nil];
     
@@ -79,7 +75,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     _exercises = _exerciseList.exercises;
     [_collectionView reloadData];
 }
-
 
 #pragma mark - getter/setter
 
@@ -106,7 +101,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     _collectionView.contentOffset = CGPointMake(0, 0);
 }
 
-
 #pragma mark - action method
 
 - (void)gotoExerciseDetailView:(ExerciseType)type{
@@ -132,7 +126,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
     }
 }
 
-
 #pragma mark - UICollctionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -145,7 +138,7 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 //最小列间距
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return hgap;
 }
 
@@ -158,8 +151,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
-    
-    
     NSInteger rows = [_exercises count] / numberOfItems +1;
     if([_exercises count]%numberOfItems == 0)  rows -= 1;
     
@@ -172,7 +163,6 @@ static NSString *const footerCellID = @"CollectionFooterCellID";
             height = -(-height % singalHeight);
             height = 2*singalHeight + height;
         }
-        
     
         return CGSizeMake(CXScreenWidth, height);
     }

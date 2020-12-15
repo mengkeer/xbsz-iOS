@@ -174,15 +174,17 @@ static NSInteger numberOfItems = 3;
     // 4. 设置代理
     // 5. 跳转到搜索控制器
     UINavigationController *nav = [[CXNavigationController alloc] initWithRootViewController:searchViewController];
+    
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
+    nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
     [self presentViewController:nav animated:YES completion:nil];
 }
-
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self gotoChapterViewController:indexPath.row];
 }
-
 
 #pragma mark - UICollectionDataSource
 
@@ -261,7 +263,6 @@ static NSInteger numberOfItems = 3;
 }
 
 - (void)initCollectionCell{
-    
     [self.contentView addSubview:self.modeImageView];
     [_modeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(64);
@@ -296,7 +297,6 @@ static NSInteger numberOfItems = 3;
     return _modeImageView;
 }
 
-
 - (void)updateUIByQuestionIndex:(NSInteger)index{
     _modeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"exercise_mode%ld",index+1]];
     [_modeImageView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -326,6 +326,5 @@ static NSInteger numberOfItems = 3;
         return @"未知模式";
     }
 }
-
 
 @end

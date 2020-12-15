@@ -28,7 +28,7 @@
     
     [self addChildVC:[CXStudyViewController controller] title:@"学习" image:@"tab_home" selectedImage:@"tab_home_s"];
     
-    [self addChildVC:[DiscoverViewController controller] title:@"发现" image:@"tab_discover" selectedImage:@"tab_discover_s"];
+//    [self addChildVC:[DiscoverViewController controller] title:@"发现" image:@"tab_discover" selectedImage:@"tab_discover_s"];
     
     [self addChildVC:[UserCenterViewController controller] title:@"我的" image:@"tab_mine" selectedImage:@"tab_mine_s"];
 }
@@ -47,13 +47,10 @@
 }
 
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
 

@@ -25,9 +25,11 @@
 
 #define CX_IS_IPHONEXMAX (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 896.0f)     //是否是iPhoneX
 
-#define CX_IS_FRINGE (CX_IS_IPHONEX || CX_IS_IPHONEXMAX)     //是否是iPhoneX
+#define CX_IS_IPHONE12 (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 844.0f)     //是否是iPhone 12
 
+#define CX_IS_IPHONE12MAX (CX_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 926.0f)     //是否是iPhone 12 Pro MAX
 
+#define CX_IS_FRINGE (CX_IS_IPHONEX || CX_IS_IPHONEXMAX || CX_IS_IPHONE12 || CX_IS_IPHONE12MAX)     //是否有刘海屏
 
 //定义屏幕框高等
 #define CXScreenBounds ([UIScreen mainScreen].bounds)

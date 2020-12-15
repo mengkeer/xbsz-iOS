@@ -44,11 +44,6 @@
 		AD196E651EAC3C3700111EB5 /* NicknameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD196E641EAC3C3700111EB5 /* NicknameViewController.m */; };
 		AD196E681EAC8AFC00111EB5 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD196E671EAC8AFC00111EB5 /* EmailViewController.m */; };
 		AD196E6B1EAC8E2900111EB5 /* PhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD196E6A1EAC8E2900111EB5 /* PhoneViewController.m */; };
-		AD1C4C3C1FF1190700F6740F /* mao2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD1C4C391FF1190700F6740F /* mao2.jpg */; };
-		AD1C4C3D1FF1190700F6740F /* marx.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C4C3A1FF1190700F6740F /* marx.png */; };
-		AD1C4C3E1FF1190700F6740F /* mao1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C4C3B1FF1190700F6740F /* mao1.png */; };
-		AD1C4C411FF1190F00F6740F /* history.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AD1C4C3F1FF1190F00F6740F /* history.jpg */; };
-		AD1C4C421FF1190F00F6740F /* thought.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C4C401FF1190F00F6740F /* thought.png */; };
 		AD1D108A1EC7443000E04135 /* AppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1D10891EC7443000E04135 /* AppUtil.m */; };
 		AD1FDB3D1EF56CC90036612C /* LCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1FDB3C1EF56CC90036612C /* LCNavigationController.m */; };
 		AD2540B21E977A9900AA330D /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2540B11E977A9900AA330D /* UserInfoViewController.m */; };
@@ -254,11 +249,6 @@
 		AD196E671EAC8AFC00111EB5 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		AD196E691EAC8E2900111EB5 /* PhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneViewController.h; sourceTree = "<group>"; };
 		AD196E6A1EAC8E2900111EB5 /* PhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneViewController.m; sourceTree = "<group>"; };
-		AD1C4C391FF1190700F6740F /* mao2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mao2.jpg; sourceTree = "<group>"; };
-		AD1C4C3A1FF1190700F6740F /* marx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marx.png; sourceTree = "<group>"; };
-		AD1C4C3B1FF1190700F6740F /* mao1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mao1.png; sourceTree = "<group>"; };
-		AD1C4C3F1FF1190F00F6740F /* history.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = history.jpg; sourceTree = "<group>"; };
-		AD1C4C401FF1190F00F6740F /* thought.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thought.png; sourceTree = "<group>"; };
 		AD1D10881EC7443000E04135 /* AppUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtil.h; sourceTree = "<group>"; };
 		AD1D10891EC7443000E04135 /* AppUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtil.m; sourceTree = "<group>"; };
 		AD1FDB3B1EF56CC90036612C /* LCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCNavigationController.h; sourceTree = "<group>"; };
@@ -700,18 +690,6 @@
 			path = xbsz/Modules/study/sub/exercise/Controller/mode;
 			sourceTree = SOURCE_ROOT;
 		};
-		AD1C4C381FF118FA00F6740F /* exercise */ = {
-			isa = PBXGroup;
-			children = (
-				AD1C4C3B1FF1190700F6740F /* mao1.png */,
-				AD1C4C3F1FF1190F00F6740F /* history.jpg */,
-				AD1C4C401FF1190F00F6740F /* thought.png */,
-				AD1C4C391FF1190700F6740F /* mao2.jpg */,
-				AD1C4C3A1FF1190700F6740F /* marx.png */,
-			);
-			path = exercise;
-			sourceTree = "<group>";
-		};
 		AD1FDB3A1EF56CC90036612C /* LCNavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -837,7 +815,6 @@
 		AD30B16F1DFAC992000189DD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AD1C4C381FF118FA00F6740F /* exercise */,
 				AD54AD401FEBD482003157A2 /* icons */,
 				AD77A9DF1ECCB14500D6CC9E /* sizheng.json */,
 				ADAAE0881E7CD06400A0FA2C /* exercises.json */,
@@ -852,16 +829,8 @@
 				0518ECC51E6037C60018F432 /* notes.json */,
 				AD30B1461DFAC900000189DD /* Assets.xcassets */,
 				ADF408CE1EB4DFC8009DB786 /* music */,
-				AD30B1701DFAC992000189DD /* Fonts */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		AD30B1701DFAC992000189DD /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		AD45BBAB1EAF336800D53813 /* mode */ = {
@@ -1528,8 +1497,6 @@
 				AD8B45381EA9DE3D00E8D539 /* comments.json in Resources */,
 				AD3482501FED23710046E195 /* icon_shiki@3x.png in Resources */,
 				0518ECC81E603E480018F432 /* user.json in Resources */,
-				AD1C4C3C1FF1190700F6740F /* mao2.jpg in Resources */,
-				AD1C4C3E1FF1190700F6740F /* mao1.png in Resources */,
 				AD3482601FEE0AE40046E195 /* icon_unknown2@3x.png in Resources */,
 				AD3482681FEE0C910046E195 /* icon_mai2@2x.png in Resources */,
 				ADAAE0891E7CD06400A0FA2C /* exercises.json in Resources */,
@@ -1545,15 +1512,12 @@
 				ADDE6F531ECBDE040013AFD0 /* homeworks.json in Resources */,
 				ADF408D11EB4DFC8009DB786 /* correct.wav in Resources */,
 				054B8B7C1E7B876600E4E0BD /* b27_icon_star_gray@2x.png in Resources */,
-				AD1C4C421FF1190F00F6740F /* thought.png in Resources */,
 				AD34825C1FEE08DC0046E195 /* icon_unknown1@3x.png in Resources */,
 				AD8B453A1EA9E06800E8D539 /* comment.json in Resources */,
 				054B8B7D1E7B876600E4E0BD /* b27_icon_star_yellow@2x.png in Resources */,
-				AD1C4C3D1FF1190700F6740F /* marx.png in Resources */,
 				AD30B1471DFAC900000189DD /* Assets.xcassets in Resources */,
 				AD12A5101FF3C3D80092C5DB /* icon_unknown3@3x.png in Resources */,
 				AD34825F1FEE0AE40046E195 /* icon_unknown2@2x.png in Resources */,
-				AD1C4C411FF1190F00F6740F /* history.jpg in Resources */,
 				AD3482641FEE0B8C0046E195 /* icon_mai1@3x.png in Resources */,
 				0518ECC61E6037C60018F432 /* notes.json in Resources */,
 				AD3482631FEE0B8C0046E195 /* icon_mai1@2x.png in Resources */,
@@ -1907,7 +1871,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = JEG6FHYV5D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1923,7 +1887,7 @@
 				INFOPLIST_FILE = xbsz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.6.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-Objc",
@@ -1947,7 +1911,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = JEG6FHYV5D;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1963,7 +1927,7 @@
 				INFOPLIST_FILE = xbsz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.5.2;
+				MARKETING_VERSION = 1.6.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-Objc",

@@ -15,7 +15,6 @@
 #define cellWidth   imageWidth
 #define cellHeight   (imageHeight + 28)
 
-
 @interface ExerciseCollectionViewCell : UICollectionViewCell
 
 - (void)updateCellWithModel:(id)model;

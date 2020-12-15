@@ -10,46 +10,42 @@
 #ifndef URLString_h
 #define URLString_h
 
-
-
-#define CXBaseUrl            @"http://www.slotus.cc/"
-#define CXAvatarsBaseUrl     @"http://www.slotus.cc/avatars"
-#define CXFileBaseUrl        @"http://www.slotus.cc/uploads"
-#define CXNoteBaseUrl        @"http://www.slotus.cc/note"
-#define CXTiKuUrl            @"http://www.slotus.cc/files/tiku.db"
-#define CXDefaultUserAvatarUrl  @"http://www.slotus.cc/files/avatar.png"
+#define CXBaseUrl            @"http:114.215.155.80"
+#define CXAvatarsBaseUrl     @"http:114.215.155.80/avatars"
+#define CXFileBaseUrl        @"http:114.215.155.80/uploads"
+#define CXNoteBaseUrl        @"http:114.215.155.80/note"
+#define CXTiKuUrl            @"http:114.215.155.80/files/tiku.db"
+#define CXDefaultUserAvatarUrl  @"http:114.215.155.80/files/avatar.png"
 
 //用户协议
-#define CXUserProtocolUrl     @"http://www.slotus.cc/agreement.htm"
+#define CXUserProtocolUrl     @"http:114.215.155.80/agreement.htm"
 
 //系统
-#define CXGetSystemInforms   @"http://www.slotus.cc/common-api/getInform"
+#define CXGetSystemInforms   @"http:114.215.155.80/common-api/getInform"
 
-#define CXLoginUrl          @"http://www.slotus.cc/common-api/login"
-#define CXRegisterUrl       @"http://www.slotus.cc/common-api/register"
-#define CXGetUserInfoUrl      @"http://www.slotus.cc/limit-api/getUserInfo"
-#define CXUpdateUserInfoUrl   @"http://www.slotus.cc/limit-api/updateUserInfo"
-#define CXUpdateUserAvatar    @"http://www.slotus.cc/file/updateAvatar"
+#define CXLoginUrl          @"http:114.215.155.80/common-api/login"
+#define CXRegisterUrl       @"http:114.215.155.80/common-api/register"
+#define CXGetUserInfoUrl      @"http:114.215.155.80/limit-api/getUserInfo"
+#define CXUpdateUserInfoUrl   @"http:114.215.155.80/limit-api/updateUserInfo"
+#define CXUpdateUserAvatar    @"http:114.215.155.80/file/updateAvatar"
 
 //学习
-#define CXGetCoursesUrl     @"http://www.slotus.cc/common-api/getCourses"
-#define CXGetCourseCommentUrl     @"http://www.slotus.cc/common-api/getCourseComment"
-#define CXAddCourseCommentUrl   @"http://www.slotus.cc/limit-api/addCourseComment"
-#define CXApplyCourseUrl   @"http://www.slotus.cc/limit-api/applyCourse"
-#define CXGetCourseWareUrl      @"http://www.slotus.cc/common-api/getCourseware"
+#define CXGetCoursesUrl     @"http:114.215.155.80/common-api/getCourses"
+#define CXGetCourseCommentUrl     @"http:114.215.155.80/common-api/getCourseComment"
+#define CXAddCourseCommentUrl   @"http:114.215.155.80/limit-api/addCourseComment"
+#define CXApplyCourseUrl   @"http:114.215.155.80/limit-api/applyCourse"
+#define CXGetCourseWareUrl      @"http:114.215.155.80/common-api/getCourseware"
 
-#define CXGetHomeworksUrl   @"http://www.slotus.cc/limit-api/getExerciseList"
-#define CXGetHomeworkQuestionssUrl   @"http://www.slotus.cc/limit-api/getExercise"
-
-
+#define CXGetHomeworksUrl   @"http:114.215.155.80/limit-api/getExerciseList"
+#define CXGetHomeworkQuestionssUrl   @"http:114.215.155.80/limit-api/getExercise"
 
 
 
 //校园动态
-#define CXPublishNoteUrl    @"http://www.slotus.cc/file/publishNote"
-#define CXGetNotesUrl       @"http://www.slotus.cc/common-api/getNotes"
-#define CXGetNoteCommentsUrl   @"http://www.slotus.cc/common-api/getThreadNotes"
-#define CXAddNoteCommentUrl    @"http://www.slotus.cc/limit-api/threadNote"
+#define CXPublishNoteUrl    @"http:114.215.155.80/file/publishNote"
+#define CXGetNotesUrl       @"http:114.215.155.80/common-api/getNotes"
+#define CXGetNoteCommentsUrl   @"http:114.215.155.80/common-api/getThreadNotes"
+#define CXAddNoteCommentUrl    @"http:114.215.155.80/limit-api/threadNote"
 
 
 #define JWLoginUrl   @"https://mobile4.dhu.edu.cn/_ids_mobile/login18_9"

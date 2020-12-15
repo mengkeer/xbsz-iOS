@@ -1,18 +1,18 @@
 {
     "exercises":[{
-               "icon":"marx.png",
+               "icon":"marx",
                "title":"马克思"
                },{
-               "icon":"history.jpg",
+               "icon":"history",
                "title":"近代史"
                },{
-               "icon":"thought.png",
+               "icon":"thought",
                "title":"思修"
                },{
-               "icon":"mao1.png",
+               "icon":"mao1",
                "title":"毛概1"
                },{
-               "icon":"mao2.jpg",
+               "icon":"mao2",
                "title":"毛概2"
                 }
     ]

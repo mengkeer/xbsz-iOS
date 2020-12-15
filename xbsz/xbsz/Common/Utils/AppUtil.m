@@ -33,10 +33,9 @@
 }
 
 + (BOOL)isAfterAppUpperTimeNode{
-    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd";
-    NSDate *date = [formatter dateFromString:@"2017-06-23"];
+    NSDate *date = [formatter dateFromString:@"2020-12-20"];
     
     NSDate *now = [NSDate date];
     if([date compare:now] == NSOrderedAscending){

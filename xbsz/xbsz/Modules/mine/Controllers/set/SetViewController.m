@@ -15,14 +15,14 @@
 #import "UpdateInfoViewController.h"
 #import "AppIconViewController.h"
 
-#import <StoreKit/StoreKit.h> 
+#import <StoreKit/StoreKit.h>
 
 static NSString *cellArrowId = @"SetItemArrowCellId";
 static NSString *cellSwitchId = @"cellSwitchCellId";
 static NSString *cellDetailTextId  = @"cellDetailTextId";
 static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 
-@interface SetViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,MFMailComposeViewControllerDelegate,SKPaymentTransactionObserver,SKProductsRequestDelegate,SKStoreProductViewControllerDelegate>
+@interface SetViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,MFMailComposeViewControllerDelegate,SKStoreProductViewControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, copy) NSString *purchaseID;
@@ -59,10 +59,6 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     maskLayer.frame = CGRectMake(0, 0, CXScreenWidth, CXScreenHeight+400);
     maskLayer.path = maskPath.CGPath;
     _tableView.layer.mask = maskLayer;
-    
-    //应用内购买监听
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,13 +90,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 0){
-        if(indexPath.row == 0)  [self selectSupport];
-//        if(indexPath.row == 1){
-//            AppIconViewController *vc = [[AppIconViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }
-    }if(indexPath.section == 2){
+    if (indexPath.section == 1){
         if(indexPath.row == 0){
             [self selectTheme];
             return;
@@ -117,7 +107,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             [self cleanCache];
             return;
         }
-    }else if(indexPath.section == 3){
+    } else if(indexPath.section == 2){
         if(indexPath.row == 0){
             [self.navigationController pushViewController:[AboutViewController controller] animated:YES];
             return;
@@ -146,64 +136,36 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             return;
             
         }
-    }else if(indexPath.section == 4){
+    }else if(indexPath.section == 3){
         if(indexPath.row == 2){
             [self.navigationController pushViewController:[UpdateInfoViewController controller] animated:YES];
             return;
         }
     }
-    
 }
 
 
 #pragma mark - UITableView dataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section == 0)    return 1;
-    else if(section == 1)    return 2;
-    else if(section == 2)   return 4;
-    else if(section == 3){
+    if(section == 0)    return 2;
+    else if(section == 1)   return 4;
+    else if(section == 2){
         if([AppUtil isAfterAppUpperTimeNode])   return 3;
         else return 2;
     }
-    else if(section == 4)   return 3;
+    else if(section == 3)   return 3;
     return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return 4;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     SetItemTableViewCell *cell;
     if(indexPath.section == 0){
-        if(indexPath.row == 0){
-            cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(!cell){
-                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
-            }
-            [cell updateCell:@"友情赞助" detailText:nil type:SetItemTypeArrow iconImageName:@"set_buy"];
-        }else{
-            cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
-            if(!cell){
-                cell = [[SetItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellSwitchId];
-            }
-            [cell updateCell:@"APP图标" detailText:nil type:SetItemTypeArrow iconImageName:@"set_icon"];
-        }
-      
-//        @weakify(self);
-//        [cell setSwitched:![CXUserDefaults instance].hasAd changed:^(BOOL isOpen) {
-//            if([CXUserDefaults instance].hasPurchased == NO){
-//                [CXUserDefaults instance].hasAd = YES;
-//                [weak_self clearAD];
-//            }else{
-//                [CXUserDefaults instance].hasAd = !isOpen;
-//                [ToastView showStatus:@"重启后生效"];
-//            }
-//        }];
-    }else if(indexPath.section == 1){
-        
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellSwitchId];
             if(!cell){
@@ -227,7 +189,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             }];
         }
         
-    }else if(indexPath.section == 2){
+    }else if(indexPath.section == 1){
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellTextAndArrowId];
             if(!cell){
@@ -256,7 +218,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             NSString *num = [NSString stringWithFormat:@"%.2lfM",(cache.diskCache.totalCost+wkNum)/(1024.0*1024.0)];
             [cell updateCell:@"清除缓存" detailText:num type:SetItemTypeTextAndArrow iconImageName:@"set_clear"];
         }
-    }else if(indexPath.section == 3){
+    } else if(indexPath.section == 2){
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellArrowId];
             if(!cell){
@@ -283,7 +245,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             [cell updateCell:@"友情打赏" detailText:nil type:SetItemTypeArrow iconImageName:@"set_smile"];
         }
         
-    }else if(indexPath.section == 4){
+    }else if(indexPath.section == 3){
         if(indexPath.row == 0){
             cell = [tableView dequeueReusableCellWithIdentifier:cellDetailTextId];
             if(!cell){
@@ -304,7 +266,6 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
             [cell updateCell:@"更新说明" detailText:nil type:SetItemTypeArrow iconImageName:@"set_updateInfo"];
         }
     }else{
-        
         NSString *cellId = @"NormalCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (cell == nil) {
@@ -335,20 +296,20 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"小号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].questionFontSize = 12;
-        [_tableView reloadRow:2 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:2 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type1];
     
     UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"中号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].questionFontSize = 15;
-        [_tableView reloadRow:2 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:2 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type2];
     
     
     UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"大号" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].questionFontSize = 18;
-        [_tableView reloadRow:2 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:2 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type3];
     
@@ -358,7 +319,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)cleanCache{
+- (void)cleanCache {
     YYImageCache *cache = [YYWebImageManager sharedManager].cache;
     CGFloat nowCahce = cache.diskCache.totalCost;
     if (nowCahce <= 0.00001) {
@@ -374,47 +335,18 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     if(nowCahce < 0.02){
         [ToastView showBlackSuccessWithStaus:@"清理完成" delay:1.2];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [_tableView reloadRow:3 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+            [_tableView reloadRow:3 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
         });
     }
     
 }
-
-- (void)selectSupport{
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    @weakify(self);
-    UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"友情赞助1元" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weak_self.purchaseID = APP_IAP_AD1;
-        [weak_self applySupprt];
-    }];
-    [alert addAction:type1];
-    
-    UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"友情赞助6元" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weak_self.purchaseID = APP_IAP_AD2;
-        [weak_self applySupprt];
-    }];
-    [alert addAction:type2];
-    
-    
-    UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"友情赞助12元" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weak_self.purchaseID = APP_IAP_AD3;
-        [weak_self applySupprt];
-    }];
-    [alert addAction:type3];
-    
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    [alert addAction:cancel];
-    
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 
 - (void)selectTheme{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"樱花粉" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].themeType = 1;
-        [_tableView reloadRow:0 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self autoTheme];
         });
@@ -423,7 +355,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"简洁白" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].themeType = 2;
-        [_tableView reloadRow:0 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self autoTheme];
         });
@@ -433,7 +365,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"水绿色" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].themeType = 3;
-        [_tableView reloadRow:0 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              [self autoTheme];
         });
@@ -442,7 +374,7 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type4 = [UIAlertAction actionWithTitle:@"橙色" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].themeType = 4;
-        [_tableView reloadRow:0 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self autoTheme];
         });
@@ -460,26 +392,26 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     
     UIAlertAction *type1 = [UIAlertAction actionWithTitle:@"纯白" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].bgType = 1;
-        [_tableView reloadRow:1 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type1];
     
     UIAlertAction *type2 = [UIAlertAction actionWithTitle:@"浅灰" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].bgType = 2;
-        [_tableView reloadRow:1 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type2];
     
     
     UIAlertAction *type3 = [UIAlertAction actionWithTitle:@"护眼" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].bgType = 3;
-        [_tableView reloadRow:1 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type3];
     
     UIAlertAction *type4 = [UIAlertAction actionWithTitle:@"淡青" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [CXUserDefaults instance].bgType = 4;
-        [_tableView reloadRow:1 inSection:2 withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView reloadRow:1 inSection:1 withRowAnimation:UITableViewRowAnimationFade];
     }];
     [alert addAction:type4];
     
@@ -530,120 +462,6 @@ static NSString *cellTextAndArrowId = @"cellTextAndArrowId";
     }
     // 关闭邮件发送视图
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-//友情赞助
-- (void)applySupprt{
-    if([SKPaymentQueue canMakePayments]){
-        [ToastView showProgressBar:@"连接中..."];
-        [self requestProductData:self.purchaseID];
-    }else{
-        CXLog(@"不允许程序内付费");
-    }
-}
-
-//请求商品
-- (void)requestProductData:(NSString *)type{
-    NSArray *product = [[NSArray alloc] initWithObjects:type, nil];
-    
-    NSSet *nsset = [NSSet setWithArray:product];
-    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:nsset];
-    request.delegate = self;
-    [request start];
-}
-
-//收到产品返回信息
-- (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
-    
-    CXLog(@"--------------收到产品反馈消息---------------------");
-    NSArray *product = response.products;
-    if([product count] == 0){
-        CXLog(@"--------------没有商品------------------");
-        [ToastView showStatus:@"付款失败"];
-        return;
-    }
-    
-//    CXLog(@"productID:%@", response.invalidProductIdentifiers);
-    
-    SKProduct *p = nil;
-    for (SKProduct *pro in product) {
-        CXLog(@"%@", [pro description]);
-        CXLog(@"%@", [pro localizedTitle]);
-        CXLog(@"%@", [pro localizedDescription]);
-        CXLog(@"%@", [pro price]);
-        CXLog(@"%@", [pro productIdentifier]);
-        
-        if([pro.productIdentifier isEqualToString:self.purchaseID]){
-            p = pro;
-        }
-    }
-    
-    SKPayment *payment = [SKPayment paymentWithProduct:p];
-    
-    CXLog(@"发送购买请求");
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
-}
-
-//请求失败
-- (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
-    NSLog(@"------------------错误-----------------:%@", error);
-    [ToastView showErrorWithStaus:@"拉取信息失败"];
-
-}
-
-- (void)requestDidFinish:(SKRequest *)request{
-    NSLog(@"------------反馈信息结束-----------------");
-}
-
-
-//监听购买结果
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transaction{
-    for(SKPaymentTransaction *tran in transaction){
-        switch (tran.transactionState) {
-            case SKPaymentTransactionStatePurchased:{
-                [ToastView showStatus:@"多谢您的赞助，谢谢！！" delay:0.5];
-                [CXUserDefaults instance].hasAd = NO;
-                [CXUserDefaults instance].hasPurchased = YES;
-                [_tableView reloadRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationFade];
-                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
-                break;
-            }
-            case SKPaymentTransactionStatePurchasing:
-                [ToastView dismiss];
-                break;
-            case SKPaymentTransactionStateRestored:{
-                [ToastView showStatus:@"多谢您的赞助，谢谢！！" delay:0.5];
-                [CXUserDefaults instance].hasAd = NO;
-                [CXUserDefaults instance].hasPurchased = YES;
-                [_tableView reloadRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationFade];
-                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
-                break;
-            }
-            case SKPaymentTransactionStateFailed:{
-                [ToastView showStatus:@"付款失败" delay:0.5];
-                [_tableView reloadRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationFade];
-                [[SKPaymentQueue defaultQueue] finishTransaction:tran];
-                
-                break;
-            }
-            default:{
-                [ToastView dismiss];
-                break;
-            }
-        }
-    }
-}
-
-//交易结束
-- (void)completeTransaction:(SKPaymentTransaction *)transaction{
-    CXLog(@"交易结束");
-    
-    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-}
-
-
-- (void)dealloc{
-    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 }
 
 //APP Store评分取消

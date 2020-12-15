@@ -197,6 +197,10 @@ static NSString *cellID = @"ChapterCellID";
     // 4. 设置代理
     // 5. 跳转到搜索控制器
     CXNavigationController *nav = [[CXNavigationController alloc] initWithRootViewController:searchViewController];
+    
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
+    nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+
     [self presentViewController:nav animated:YES completion:nil];}
 
 #pragma mark - ExerciseChapterTableViewDelegate

@@ -427,34 +427,32 @@
         hLine4.backgroundColor = CXLineColor;
         [_contentView addSubview:hLine4];
         
-        
-        
+    
         CXSectionButton *btn9 = [[CXSectionButton alloc] init:CGRectMake(0, offsetY, width, height)
-                                                     andImage:[UIImage imageNamed:@"school1"]
-                                                     andTitle:@"校历"];
-        [btn9 addTarget:self action:@selector(gotoDHUCalendar) forControlEvents:UIControlEventTouchUpInside];
+                                                      andImage:[UIImage imageNamed:@"school2"]
+                                                      andTitle:@"校园讲座"];
         [_contentView addSubview:btn9];
+        [btn9 addTarget:self action:@selector(gotoSchoolLecture) forControlEvents:UIControlEventTouchUpInside];
         
         
         CXSectionButton *btn10 = [[CXSectionButton alloc] init:CGRectMake(width, offsetY, width, height)
-                                                      andImage:[UIImage imageNamed:@"school2"]
-                                                      andTitle:@"校园讲座"];
+                                                      andImage:[UIImage imageNamed:@"school3"]
+                                                      andTitle:@"校园风光"];
+        [btn10 addTarget:self action:@selector(gotoSchoolScenery) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn10];
-        [btn10 addTarget:self action:@selector(gotoSchoolLecture) forControlEvents:UIControlEventTouchUpInside];
+        
         
         
         CXSectionButton *btn11 = [[CXSectionButton alloc] init:CGRectMake(width*2, offsetY, width, height)
-                                                      andImage:[UIImage imageNamed:@"school3"]
-                                                      andTitle:@"校园风光"];
-        [btn11 addTarget:self action:@selector(gotoSchoolScenery) forControlEvents:UIControlEventTouchUpInside];
-        [_contentView addSubview:btn11];
-        
-        
-        
-        CXSectionButton *btn12 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
                                                       andImage:[UIImage imageNamed:@"school4"]
                                                       andTitle:@"电话黄页"];
-        [btn12 addTarget:self action:@selector(gotoYellowPages) forControlEvents:UIControlEventTouchUpInside];
+        [btn11 addTarget:self action:@selector(gotoYellowPages) forControlEvents:UIControlEventTouchUpInside];
+        [_contentView addSubview:btn11];
+        
+        CXSectionButton *btn12 = [[CXSectionButton alloc] init:CGRectMake(width * 3, offsetY, width, height)
+                                                     andImage:[UIImage imageNamed:@"school5"]
+                                                     andTitle:@"空余教室"];
+        [btn12 addTarget:self action:@selector(gotoFreeClassroom) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn12];
         
         
@@ -464,33 +462,19 @@
         [_contentView addSubview:hLine5];
         
         
-        
         CXSectionButton *btn13 = [[CXSectionButton alloc] init:CGRectMake(0, offsetY, width, height)
-                                                     andImage:[UIImage imageNamed:@"school5"]
-                                                     andTitle:@"空余教室"];
-        [btn13 addTarget:self action:@selector(gotoFreeClassroom) forControlEvents:UIControlEventTouchUpInside];
+                                                      andImage:[UIImage imageNamed:@"school6"]
+                                                      andTitle:@"书目检索"];
+        [btn13 addTarget:self action:@selector(gotoBookFind) forControlEvents:UIControlEventTouchUpInside];
         [_contentView addSubview:btn13];
-    
         
         
         CXSectionButton *btn14 = [[CXSectionButton alloc] init:CGRectMake(width, offsetY, width, height)
-                                                      andImage:[UIImage imageNamed:@"school6"]
-                                                      andTitle:@"书目检索"];
-        [btn14 addTarget:self action:@selector(gotoBookFind) forControlEvents:UIControlEventTouchUpInside];
-        [_contentView addSubview:btn14];
-        
-        
-        CXSectionButton *btn15 = [[CXSectionButton alloc] init:CGRectMake(width*2, offsetY, width, height)
                                                       andImage:[UIImage imageNamed:@"school7"]
                                                       andTitle:@"就业服务"];
-        [btn15 addTarget:self action:@selector(gotoEmployment) forControlEvents:UIControlEventTouchUpInside];
-        [_contentView addSubview:btn15];
+        [btn14 addTarget:self action:@selector(gotoEmployment) forControlEvents:UIControlEventTouchUpInside];
+        [_contentView addSubview:btn14];
         
-        CXSectionButton *btn16 = [[CXSectionButton alloc] init:CGRectMake(width*3, offsetY, width, height)
-                                                      andImage:[UIImage imageNamed:@"school8"]
-                                                      andTitle:@"校友会"];
-        [btn16 addTarget:self action:@selector(gotoAlumniAssociation) forControlEvents:UIControlEventTouchUpInside];
-        [_contentView addSubview:btn16];
         
         offsetY += height;
         UIView *hLine6 = [[UIView alloc] initWithFrame:CGRectMake(0, offsetY-1/CXMainScale, CXScreenWidth, 1/CXMainScale)];
@@ -508,11 +492,6 @@
         UIView *vLine6 = [[UIView alloc] initWithFrame:CGRectMake(width*3, startY , 1/CXMainScale ,  offsetY-startY)];
         vLine6.backgroundColor = CXLineColor;
         [_contentView addSubview:vLine6];
-
-        
-        
-        
-        
     }
     return _contentView;
 }

@@ -240,7 +240,7 @@
         _copyrightLabel.font = CXSystemFont(13);
         _copyrightLabel.textAlignment = NSTextAlignmentCenter;
         _copyrightLabel.textColor = CXBlackColor2;
-        _copyrightLabel.text = @"copyright © 2019年 lotus. All rights reserved";
+        _copyrightLabel.text = @"copyright © 2020年 lotus. All rights reserved";
     }
     return _copyrightLabel;
 }

@@ -78,11 +78,10 @@ static id _manager = nil;
         //保存修改时间
         NSDictionary *fields = [(NSHTTPURLResponse *)response allHeaderFields];
         
-        NSDate *fileModDate = [fields valueForKey:@"Last-Modified"];
+        NSString *fileModDate = [fields valueForKey:@"Last-Modified"];
         
         [CXStandardUserDefaults setObject:fileModDate forKey:TikuModTime ];
-        
-        
+
         return [NSURL fileURLWithPath:path];
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         if(error != nil){
@@ -126,8 +125,18 @@ static id _manager = nil;
         NSError *error = nil;
         [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         if ([response respondsToSelector:@selector(allHeaderFields)] && error == nil) {
-            NSDate *nowModTime = [[response allHeaderFields] objectForKey:@"Last-Modified"];
-            NSDate *lastModTime = (NSDate *)[CXStandardUserDefaults objectForKey:TikuModTime];
+            NSString *nowModTimeStr = [[response allHeaderFields] objectForKey:@"Last-Modified"];
+            NSString *lastModTimeStr = [CXStandardUserDefaults objectForKey:TikuModTime];
+                        
+            if (![lastModTimeStr isKindOfClass:NSString.class]) return YES;
+            if (![lastModTimeStr containsString:@"GMT"]) return YES;
+            if (![nowModTimeStr containsString:@"GMT"]) return YES;
+            
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter  setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss 'GMT'"];
+            NSDate *nowModTime = [dateFormatter dateFromString:nowModTimeStr];
+            NSDate *lastModTime = [dateFormatter dateFromString:lastModTimeStr];
+            
             if(lastModTime == nil || [lastModTime compare:nowModTime] == NSOrderedAscending){
                 return YES;
             }else{

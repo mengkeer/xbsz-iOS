@@ -11,7 +11,7 @@
 
 @interface ExerciseCollectionViewCell ()
 
-@property (nonatomic, strong) YYAnimatedImageView *imageView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
@@ -29,7 +29,6 @@
 }
 
 - (void)initCollectionCell{
-    
     self.contentView.backgroundColor = CXWhiteColor;
     
     [self.contentView addSubview:self.imageView];
@@ -47,16 +46,14 @@
         make.left.right.mas_equalTo(self.contentView);
         make.height.mas_equalTo(24);
     }];
-    
- 
 }
 
 
 #pragma mark - getter/setter
 
-- (YYAnimatedImageView *)imageView{
+- (UIImageView *)imageView{
     if(!_imageView){
-        _imageView = [[YYAnimatedImageView alloc] init];
+        _imageView = [[UIImageView alloc] init];
         _imageView.userInteractionEnabled = YES;
         _imageView.layer.cornerRadius = 4;
         _imageView.clipsToBounds = YES;
@@ -83,7 +80,8 @@
     _titleLabel.text = exercise.title;
 //    NSURL *url = [NSURL URLWithString:exercise.icon];
 //    [_imageView yy_setImageWithURL:url options:0];
-    _imageView.image = [UIImage imageNamed:exercise.icon];
+    UIImage *image = [UIImage imageNamed:exercise.icon];
+    _imageView.image = image;
 }
 
 - (void)registerTouch:(id)delegate{
