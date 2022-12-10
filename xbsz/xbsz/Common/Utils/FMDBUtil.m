@@ -382,7 +382,7 @@
 //    return ans;
 //}
 
-+ (NSArray *)getOptionsByString:(NSString *)optionStr type:(NSInteger)type{
++ (NSArray *)getOptionsByString:(NSString *)optionStr type:(NSInteger)type {
     
     NSMutableArray *ans = [NSMutableArray array];
     if(type == 3){
@@ -442,6 +442,7 @@
     if((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')){
         return YES;
     }
+    if (ch == 0x201c) return YES; // for (unichar) ch = U+201c u'“'
     
     return NO;
 }

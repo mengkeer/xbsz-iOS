@@ -31,15 +31,37 @@
 
 #define CX_IS_FRINGE (CX_IS_IPHONEX || CX_IS_IPHONEXMAX || CX_IS_IPHONE12 || CX_IS_IPHONE12MAX)     //是否有刘海屏
 
+//状态栏
+#define CX_PHONE_STATUSBAR_HEIGHT \
+^(){\
+if (@available(iOS 13.0, *)) {\
+    UIStatusBarManager *statusBarManager = [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager;\
+    return statusBarManager.statusBarFrame.size.height;\
+} else {\
+    return [UIApplication sharedApplication].statusBarFrame.size.height;\
+}\
+}() \
+
+//底部指示条
+#define CX_PHONEX_HOME_INDICATOR_HEIGHT \
+^(){\
+if (@available(iOS 11.0, *)) {\
+    UIEdgeInsets safeAreaInsets = [[UIApplication sharedApplication] delegate].window.safeAreaInsets;\
+    return safeAreaInsets.bottom;\
+} else {\
+    return UIEdgeInsetsMake(0, 0, 0, 0).bottom;\
+}\
+}() \
+
 //定义屏幕框高等
 #define CXScreenBounds ([UIScreen mainScreen].bounds)
 #define CXScreenWidth  ([UIScreen mainScreen].bounds.size.width)
 #define CXScreenHeight ([UIScreen mainScreen].bounds.size.height)
 #define CXScreenRect   (CGRectMake(0,0,CXScreenWidth,CXScreenHeight))
 #define CXMainScale     ([UIScreen mainScreen].scale)
-#define CX_PHONE_STATUSBAR_HEIGHT  (CX_IS_FRINGE ? 44.f : 20.f)
-#define CX_PHONE_NAVIGATIONBAR_HEIGHT   (CX_IS_FRINGE ? 88.f : 64.f)
-#define CX_PHONEX_HOME_INDICATOR_HEIGHT   (CX_IS_FRINGE ? 34.f : 0)
+//#define CX_PHONE_STATUSBAR_HEIGHT  (CX_IS_FRINGE ? 44.f : 20.f)
+#define CX_PHONE_NAVIGATIONBAR_HEIGHT   (CX_PHONE_STATUSBAR_HEIGHT + 44)
+//#define CX_PHONEX_HOME_INDICATOR_HEIGHT   (CX_IS_FRINGE ? 34.f : 0)
 #define CX_PHONE_TABBAR_HEIGHT (49.f + CX_PHONEX_HOME_INDICATOR_HEIGHT)        //系统推荐是49.f  + 34.f
 
 
