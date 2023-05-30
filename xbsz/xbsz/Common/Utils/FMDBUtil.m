@@ -38,46 +38,46 @@
 
 + (ExerciseType)indexToExerciseType:(NSInteger)index{
     ExerciseType type ;
-    if(index == 5){
-        type = ExerciseTypeNetworkSecurity;
-    }else if(index == 6){
+    if (index == 5){
+        type = ExerciseTypeXiGai;
+    } else if (index == 6) {
         type = ExerciseTypePassword;
-    }else if(index == 7){
+    } else if (index == 7) {
         type = ExerciseTypeSystemSecurity;
-    }else if(index == 0){
+    } else if (index == 0) {
         type = ExerciseTypeMarx;
-    }else if(index == 1){
+    } else if (index == 1) {
         type = ExerciseTypeHistory;
-    }else if(index == 2){
+    } else if (index == 2) {
         type = ExerciseTypeThought;
-    }else if(index == 3){
+    } else if (index == 3) {
         type = ExerciseTypeMao1;
-    }else if(index == 4){
+    } else if (index == 4) {
         type = ExerciseTypeMao2;
-    }else{
+    } else {
         type = ExerciseTypeUnknown;
     }
     return type;
 }
 
 + (NSString *)exerciseTypeToExerciseName:(ExerciseType)type{
-    if(type == ExerciseTypeMao1){
+    if (type == ExerciseTypeMao1) {
         return @"毛概1";
-    }else if(type == ExerciseTypeMao2){
+    } else if (type == ExerciseTypeMao2) {
         return @"毛概2";
-    }else if(type == ExerciseTypeMarx){
+    } else if (type == ExerciseTypeMarx) {
         return @"马克思";
-    }else if(type == ExerciseTypeHistory){
+    } else if (type == ExerciseTypeHistory) {
         return @"近代史";
-    }else if(type == ExerciseTypeThought){
+    } else if (type == ExerciseTypeThought) {
         return @"思修";
-    }else if(type == ExerciseTypeNetworkSecurity){
-        return @"网络安全";
-    }else if(type == ExerciseTypePassword){
+    } else if (type == ExerciseTypeXiGai) {
+        return @"习概";
+    } else if (type == ExerciseTypePassword) {
         return @"密码学";
-    }else if(type == ExerciseTypeSystemSecurity){
+    } else if (type == ExerciseTypeSystemSecurity) {
         return @"系统安全";
-    }else{
+    } else{
         return @"未知课程";
     }
 }
@@ -85,21 +85,21 @@
 + (NSString *)exerciseTypeToTableName:(ExerciseType)type{
     if(type == ExerciseTypeMao1){
         return @"mao1";
-    }else if(type == ExerciseTypeMao2){
+    } else if (type == ExerciseTypeMao2) {
         return @"mao2";
-    }else if(type == ExerciseTypeMarx){
+    } else if (type == ExerciseTypeMarx) {
         return @"marx";
-    }else if(type == ExerciseTypeHistory){
+    } else if (type == ExerciseTypeHistory) {
         return @"history";
-    }else if(type == ExerciseTypeThought){
+    } else if (type == ExerciseTypeThought) {
         return @"thought";
-    }else if(type == ExerciseTypeNetworkSecurity){
-        return @"network";
-    }else if(type == ExerciseTypePassword){
+    } else if (type == ExerciseTypeXiGai) {
+        return @"xigai";
+    } else if (type == ExerciseTypePassword) {
         return @"password";
-    }else if(type == ExerciseTypeSystemSecurity){
+    } else if (type == ExerciseTypeSystemSecurity) {
         return @"system";
-    }else{
+    } else{
         return @"unknown";
     }
 }
